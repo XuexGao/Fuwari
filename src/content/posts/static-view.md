@@ -23,66 +23,70 @@ lang: ''
 
 现在我们确实可以看到每个文章（即/posts/xxx）的访问量了，但是我们要如何展示给用户呢？
 
-# 使用Umami API查询
+# 逆向Umami的只读页面！
 
-> 这个API太煞笔了，API文档到处乱扔，调用接口每一页都不一样。但是我已经帮你们摸清楚了😋
+> 感谢nightNya提供的方案，你是天才！
 
-首先我们要创建一个API Key
+首先我们启用分享URL
 
-![](https://fast-r2.afo.im/myblog/img/e8d57efd-60f8-402d-bc36-331feef5aa57.webp)
+![](https://fast-r2.afo.im/myblog/img/023f687b-6e4a-46d8-b7f2-4778f20ebe99.webp)
 
-接下来获取你的站点ID，请不要泄露！否则你的站点统计数据可能会不再真实！
+注意这里的 `7PoDRgCzHFTs2vWB` ，每个站点都不一样
 
-![](https://fast-r2.afo.im/myblog/img/99f9eea0-3e8f-4513-9486-d0cf04d50204.webp)
-
-拼接URL，尝试手动调用。参考文档： https://umami.is/docs/api/website-stats-api
-
-```firestore-security-rules
-curl --location 'https://api.umami.is/v1/websites/你的站点ID/pageviews?startAt=0&endAt=1750177628313&unit=year&timezone=Asia/Shanghai&url=要查询的路径' \
---header 'x-umami-api-key: 你的Umami Cloud API Key'
-```
-
-这里解释几个关键Params，其他的照搬
-
-startAt：统计开始时间。Unix时间戳，我们填写为0让Umami从1970年开始统计
-
-endAt：统计结束时间。Unix时间戳，我们可以使用 `Date.now()` ，即当前时间，和startAt参数联动即可实现统计总浏览量
-
-url：要查询的路径，填写为你的文章页去除了Host的路径，如 `/posts/hello` 。注意！Umami会将 `/posts/hello` 和 `/posts/hello` 视为两个不同的路径，请注意你的博客框架是否使用 `/` 
-
-最终你大概会得到一个这样的响应，如图
+接着我们请求 `https://us.umami.is/api/share/7PoDRgCzHFTs2vWB`，得到
 
 ```json
 {
-    "pageviews": [
-        {
-            "x": "2024-12-31T16:00:00Z",
-            "y": 12932
-        }
-    ],
-    "sessions": [
-        {
-            "x": "2024-12-31T16:00:00Z",
-            "y": 3253
-        }
-    ]
+  "websiteId": "a66a5fd4-98b0-4108-8606-cb7094f380ac",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3ZWJzaXRlSWQiOiJhNjZhNWZkNC05OGIwLTQxMDgtODYwNi1jYjcwOTRmMzgwYWMiLCJpYXQiOjE3NTA4MDIwMzB9.X5GQT5kslh6r25sFlap4Asz1NDA7mN3kcZW8wqbrnBc"
 }
 ```
 
-这就代表你的这篇文章的浏览量为12932次，而访问数为3253
+再接着我们请求
+
+`https://us.umami.is/api/websites/a66a5fd4-98b0-4108-8606-cb7094f380ac/stats?startAt=0&endAt=1750805999999&unit=hour&timezone=Asia/Hong_Kong&url=/posts/cf-fastip/&compare=false`
+
+这里解释几个关键Params，其他的照搬
+
+- startAt：统计开始时间。Unix时间戳，我们填写为0让Umami从1970年开始统计
+
+- endAt：统计结束时间。Unix时间戳，我们可以使用 `Date.now()` ，即当前时间，和startAt参数联动即可实现统计总浏览量
+
+- url：要查询的路径，填写为你的文章页去除了Host的路径，如 `/posts/hello` 。注意！Umami会将 `/posts/hello` 和 `/posts/hello` 视为两个不同的路径，请注意你的博客框架是否使用 `/`
+
+你会得到
+
+```json
+{
+    "pageviews": {
+        "value": 1655,
+        "prev": 0
+    },
+    "visitors": {
+        "value": 343,
+        "prev": 0
+    },
+    "visits": {
+        "value": 411,
+        "prev": 0
+    },
+    "bounces": {
+        "value": 183,
+        "prev": 0
+    },
+    "totaltime": {
+        "value": 30592,
+        "prev": 0
+    }
+}
+```
+
+`pageviews.vlaue` 即浏览量。 `visits.value` 即访问次数。
 
 > Tips：浏览量记录为任意用户只要访问了则计数一次。而访问数记录不会记录单IP多次重复访问和同一时间段的多次请求不同页面
 
-需要注意，Umami Cloud API有速率限制：**每个 API 密钥限制为每 15 秒 50 次调用。**
+Enjoy it！
 
-你当然可以创建多个API做API池，但是我们不能直接将API Key暴露给用户，所以无论如何，我们都需要一个反代API来帮我们查询
-
-# 使用Cloudflare Worker代理查询
-
-具体代码就不写了，AI时代自己实现吧。
-
-大致逻辑为帮你查询然后记录到KV设置缓存（防止Umami API到达速率限制）
-
-Over，享受它吧！最终效果：
+最终效果：
 
 ![](https://fast-r2.afo.im/myblog/img/ce822960-f7ef-444e-84d1-fa0758e2b5e8.webp)

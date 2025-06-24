@@ -8,7 +8,7 @@
 
 - 主节点1： https://www.afo.im （Cloudflare）
 
-- 主节点2： https://afo.im （Cloudflare 301 到主节点1）
+- 主节点2： https://afo.im （Cloudflare 302 到主节点1）
 
 - https://eo3-blog.afo.im （EdgeOne CDN）
 
@@ -16,7 +16,7 @@
 
 - https://vercel-blog.afo.im （Vercel）
 
-- https://sbgfw.afo.im （Cloudflare 301 到IP站点）
+- https://sbgfw.afo.im （Cloudflare 302 到IP站点）
 
 - https://46.232.60.28:44444 （IP站点）
 
