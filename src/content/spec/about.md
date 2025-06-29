@@ -2,27 +2,9 @@
 
 **Fuwari牛逼，我这辈子都不会改博客框架了**
 
-本站的所有访问节点： 
+IP站点（实验性）： 
 
-> 如果您访问的域名并不在下述列表中，您的连接可能会被监听或者网站页面被篡改，请切换到我们的官方节点继续安全访问
-> 
-> 一般情况下，所有节点的内容应当都是同步的，如果您发现部分节点内容过时，请[联系二叉树树](https://s.afo.im/tit)
-
-- 主节点1： https://www.afo.im （EdgeOne CDN Free回源Cloudflare）
-
-- 主节点2： https://afo.im （EdgeOne CDN Free 301 到主节点1）
-
-- https://eopage-blog.afo.im （EdgeOne CDN Free回源EdgeOne Page）
-
-- https://cf-blog.afo.im （Cloudflare）
-
-- [https://eo2-blog.afo.im](https://eo2-blog.afo.im) （EdgeOne Page）
-
-- https://netlify-blog.afo.im （Netlify）
-
-- https://vercel-blog.afo.im （Vercel）
-
-- https://render-blog.afo.im （Render）
+> 如果内容过时，请[联系二叉树树](https://s.afo.im/tit)
 
 - https://sbgfw.afo.im （Cloudflare 302 到IP站点）
 
@@ -34,32 +16,30 @@
 
 # 友情链接
 
-- 卡拉彼丘是世界上最好玩的游戏！给我玩！ https://klbq.idreamsky.com
+- 带我入坑网站的超级大坏比： https://phira.dmocken.top/
 
-- 带我入坑网站的超级大坏比：https://phira.dmocken.top/
+- 谷歌搜索 `site rbq.*` 找到的： https://saltedfishes.com
 
-- site rbq.*找到的：https://saltedfishes.com
-
-- 在***教了我很多的好朋友：https://ie.cx
+- 在***教了我很多的好朋友： https://ie.cx
 
 - 晓晴博客： https://www.toubiec.cn/
 
 - 酷丁博客： https://coldin.top
 
-- 私人grgk：https://sub.grgk.me
+- 私人grgk： https://sub.grgk.me
 
-- Gunbrad的博客：https://gunbrad.xyz
+- Gunbrad的博客： https://gunbrad.xyz
 
-- 幻空博客：https://blog.huankong.top
+- 幻空博客： https://blog.huankong.top
 
-- 曾经天天和我斗嘴并且抄我博客的😡：https://blog.muyoung.com/
+- 曾经天天和我斗嘴并且抄我博客的😡： https://blog.muyoung.com/
 
-- 非常酷的Kotlin Compose Web WASM 全Canvas网站：https://nyayurin.github.io/Yutori-Docs/
+- 非常酷的Kotlin Compose Web WASM 全Canvas网站： https://nyayurin.github.io/Yutori-Docs/
 
-- 奶昔论坛：https://forum.naixi.net/
+- 奶昔论坛： https://forum.naixi.net/
 
-- LINUX.DO：https://linux.do
+- LINUX.DO： https://linux.do
 
-- 宝塔开心版：https://bt.sb
+- 宝塔开心版： https://bt.sb
 
-- NodeSeek：https://www.nodeseek.com/
+- NodeSeek： https://www.nodeseek.com/
