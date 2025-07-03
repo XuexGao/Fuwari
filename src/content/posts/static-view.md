@@ -2,7 +2,7 @@
 title: 静态博客也想展示文章浏览量？当然可以！
 published: 2025-06-18
 description: '利用Umami等站点分析软件可以让管理员了解站点活跃度，但是如果我们想向用户展示一些数据呢？'
-image: 'https://sb-r2.afo.im/myblog/img/db0ed566-92be-4b34-81b7-d5cf8618c1e8.webp'
+image: 'https://sb-r2.afo.im/myblog/img/acacac41-e1e1-4a15-bdae-05683656916c.webp'
 tags: [Cloudflare, Umami]
 category: '教程'
 draft: false 
@@ -10,6 +10,8 @@ lang: ''
 ---
 
 # 引言
+
+
 
 如果你用过WordPress，Halo等动态博客框架，你大概会在用户视角访问博文的时候看到浏览量这个信息。
 
