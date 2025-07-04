@@ -7,10 +7,9 @@ image: https://sb-r2.afo.im/fuwari-blog/img/2024-10-17-09-55-55-image.webp
 lang: ''
 published: 2024-10-17
 tags:
-
-- Fleek
-- IPFS
-  title: 使用基于IPFS的Fleek部署静态网站、托管图床、部署服务
+  - Fleek
+  - IPFS
+title: 使用基于IPFS的Fleek部署静态网站、托管图床、部署服务
 
 ---
 
