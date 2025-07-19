@@ -6,7 +6,7 @@
 
 > 如果内容过时，请[联系二叉树树](https://s.afo.im/tit)
 
-- 个人域： https://afo.im
+- 个人域： https://2x.nz
 
 - IP站点： https://46.232.60.28:44444
 
