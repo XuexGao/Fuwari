@@ -1,6 +1,6 @@
 ---
 title: "加群向导&其他网站&常见问题"
-image: https://pic.php.afo.im/?img=h
+image: https://pic.eo-php.afo.im/?img=h
 published: 2025-05-24
 pinned: true
 category: '置顶'
