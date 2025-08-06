@@ -11,7 +11,6 @@ lang: ''
 
 此文本来是针对于 matrix.afo.im 的，现在更改为了 m.2x.nz
 
-
 ---
 
 # 正式开始
@@ -56,7 +55,6 @@ lang: ''
 
 在结束 Github OAuth2 授权 后。浏览器会自动返回到 `m.2x.nz` 域，点击 Continue
 
-
 ![](../assets/images/b0d2fa63-37a9-487e-91e3-b98d6af92307.webp)
 
 现在，你已成功登入Matrix
@@ -68,3 +66,15 @@ lang: ''
 ![](../assets/images/ca8af0a4-f0fd-43a6-ae8b-5eb50bf61bae.webp)
 
 ![](../assets/images/e1349ad5-a482-43b2-add5-f57cd341e90e.webp)
+
+# 疑难解答
+
+### 本服务器
+
+无法注册？：直接点击登录，然后通过Github授权即可
+
+如何更改我的密码？：Github单点登录无密码，您只需要保证您的Github账户不丢失/封禁即可
+
+### 联邦
+
+如何加入？：输入 `#acofork:m.2x.nz` 即可加入
