@@ -80,3 +80,7 @@ lang: ''
 ### 联邦
 
 如何加入？：输入 `#acofork:m.2x.nz` 即可加入
+
+### 通知
+
+安卓如果无法使用 `Google通知` 可以尝试安装 https://play.google.com/store/apps/details?id=chat.fluffy.fluffychat 。然后安装Ntfy配置通知 https://github.com/krille-chan/fluffychat/wiki/Push-Notifications-without-Google-Services
