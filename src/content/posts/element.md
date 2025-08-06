@@ -1,7 +1,7 @@
 ---
 title: 关于如何加入我们自托管的m.2x.nz端到端加密聊天服务器
 published: 2025-08-06
-description: '我在一台主机上托管了一个synapse，现在你可以使用Element通过我的邀请链接加入这个端到端加密聊天服务器'
+description: '我在一台主机上托管了synapse，现在你可以使用Element通过我的邀请链接加入这个端到端加密聊天服务器'
 image: ../assets/images/d676d367-061a-48ea-9157-ce00c6120232.webp
 tags: [Matrix]
 category: '教程'
