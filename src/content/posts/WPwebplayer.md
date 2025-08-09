@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+
+> 本文章非站长本人撰写，由他人Pr添加： https://github.com/afoim/fuwari/pull/23
+
 # WPWebPlayer（html网站播放组件）  
 一款简单，简洁，轻量的网站音乐播放器  [体验界面](https://wpwebplayer.112601.xyz/)
 ![示例](https://imgbed.112601.xyz/file/1752422083916.png)  
