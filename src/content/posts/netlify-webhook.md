@@ -59,3 +59,5 @@ Bot即刻推送文章更新消息 √
 # Bot端
 
 ![](../assets/images/2025-08-09-23-36-50-5ec10aad91b98d8d36699c7956c705f0.png)
+
+![](../assets/images/2025-08-09-23-39-27-cfc2d6a91a07455adbcee0c491143640.png)
