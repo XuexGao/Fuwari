@@ -97,19 +97,14 @@ const className = Astro.props.class;
 {slug && (
     <script define:vars={{ slug, umamiConfig }}>
         // 获取访问量统计
-        async function fetchPageViews() {
+        async function fetchPageViews(isRetry = false) {
             if (!umamiConfig.enable) {
                 return;
             }
             
             try {
-                // 第一步：获取网站ID和token
-                const shareResponse = await fetch(`${umamiConfig.baseUrl}/api/share/${umamiConfig.shareId}`);
-                if (!shareResponse.ok) {
-                    throw new Error('获取分享信息失败');
-                }
-                const shareData = await shareResponse.json();
-                const { websiteId, token } = shareData;
+                // 调用全局工具获取 Umami 分享数据
+                const { websiteId, token } = await getUmamiShareData(umamiConfig.baseUrl, umamiConfig.shareId);
                 
                 // 第二步：获取统计数据
                 const currentTimestamp = Date.now();
@@ -122,6 +117,10 @@ const className = Astro.props.class;
                 });
                 
                 if (!statsResponse.ok) {
+                    if (statsResponse.status === 401 && !isRetry) {
+                        clearUmamiShareCache();
+                        return fetchPageViews(true);
+                    }
                     throw new Error('获取统计数据失败');
                 }
                 
