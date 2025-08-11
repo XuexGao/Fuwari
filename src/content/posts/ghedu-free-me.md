@@ -54,3 +54,7 @@ lang: ''
 ![](../assets/images/2025-08-11-22-42-56-de9a3668c84d4209aa997c643711befb.png)
 
 NameCheap的NS传播似乎有些慢，等等咯~
+
+半小时后有咯~
+
+![](../assets/images/2025-08-11-22-54-37-image.png)
