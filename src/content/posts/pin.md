@@ -1,6 +1,6 @@
 ---
 title: "加群向导"
-image: https://eopageapi.2x.nz/pic?img=h
+image: https://eopageapi.2x.nz/pic?img=ua
 published: 2025-05-24
 pinned: true
 category: '置顶'

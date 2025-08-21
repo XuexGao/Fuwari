@@ -2,7 +2,7 @@
 category: 记录
 description: 一些记录，不定时更新
 draft: false
-image: https://eopageapi.2x.nz/pic?img=h
+image: https://eopageapi.2x.nz/pic?img=ua
 lang: zh_CN
 published: 1999-01-01
 tags:
