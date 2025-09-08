@@ -61,11 +61,11 @@ root@AcoFork-NAS:~/oci#
 
 首先前往
 
-![](../assets/images/2025-09-09-06-43-04-image.png)
+![](../assets/images/2025-09-09-07-00-37-image.png)
 
 添加你的DNS账号。**hw** 用来做CDN域名的自治解析，**cf** 用来后续签发SSL
 
-![](../assets/images/2025-09-09-06-43-41-image.png)
+![](../assets/images/2025-09-09-06-59-59-image.png)
 
 点进去，确保能获取到域名
 
