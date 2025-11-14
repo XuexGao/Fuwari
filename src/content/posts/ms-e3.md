@@ -17,9 +17,9 @@ lang: ""
 > 注： 不建议碰Symphony
 
 # 正式开始
-注册一个全局管理员，一路下一步，纳税人识别号随便填 https://signup.microsoft.com/get-started/signup?products=35dffc92-9eb4-4d5c-82c2-2582b37bb9c4&culture=zh-cn&country=cn 
+注册一个全局管理员，一路下一步，纳税人识别号随便填（认认真真写，地址精确到你区县就好了，国家一定要填CN，不然后面没办法走支付宝） https://signup.microsoft.com/get-started/signup?products=35dffc92-9eb4-4d5c-82c2-2582b37bb9c4&culture=zh-cn&country=cn 
 
-买 E3 https://admin.cloud.microsoft/?pid=C69E7747-2566-4897-8CBA-B998ED3BAB88&quan=25&bc=1&sku=189a915c-fe4f-4ffa-bde4-85b9628d07a0&ru=PDP#/Purchase/checkout
+买 E3（选择支付宝即可） https://admin.cloud.microsoft/?pid=C69E7747-2566-4897-8CBA-B998ED3BAB88&quan=25&bc=1&sku=189a915c-fe4f-4ffa-bde4-85b9628d07a0&ru=PDP#/Purchase/checkout
 
 进 微软365管理中心 [主页 - Microsoft 365 admin center](https://admin.cloud.microsoft/#/homepage)
 
