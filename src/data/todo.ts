@@ -11,6 +11,6 @@ export const todoConfig: TodoConfig = {
         { content: "做视频：anuneko.com米哈游AI上手体验", completed: true },
         { content: "完善Bot插件：anuneko.com米哈游AI聊天机器人（支持pick）", completed: true },
 { content: "写文章：当anuneko bot插件完善后，编写开发文章", completed: true },
-{ content: "更新文章：Serverless，添加Render，Zeabur，ESA Pages", completed: false },
+{ content: "更新文章：Serverless，添加Render，Zeabur", completed: true },
     ],
 };
