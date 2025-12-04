@@ -11,7 +11,7 @@ export const todoConfig: TodoConfig = {
         { content: "做视频：如何使用OBS优雅的录视频", completed: false },
         { content: "做视频：博客时光流逝卡片", completed: false },
         { content: "做视频：博客访客统计新UI", completed: false },
-        { content: "自建Umami并从云迁移到自建", completed: false },
+        { content: "自建Umami并从云迁移到自建", completed: true },
         { content: "更改文章底下的链接，用正则删去查询（?=xxx）", completed: false },
         { content: "做视频：anuneko.com米哈游AI上手体验", completed: true },
         { content: "完善Bot插件：anuneko.com米哈游AI聊天机器人（支持pick）", completed: true },
