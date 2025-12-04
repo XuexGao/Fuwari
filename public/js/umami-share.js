@@ -14,7 +14,7 @@
         localStorage.removeItem(cacheKey);
       }
     }
-    const res = await fetch(`${baseUrl}/analytics/us/api/share/${shareId}`);
+    const res = await fetch(`${baseUrl}/api/share/${shareId}`);
     if (!res.ok) {
       throw new Error('获取 Umami 分享信息失败');
     }
