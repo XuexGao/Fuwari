@@ -10,6 +10,7 @@ export const todoConfig: TodoConfig = {
 		{ content: "做视频：Cloudflare 利用Origin Rules 6转4 访问家里云", completed: false },
         { content: "做视频：如何使用OBS优雅的录视频", completed: false },
         { content: "做视频：博客时光流逝卡片", completed: false },
+        { content: "做视频：博客访客统计新UI", completed: false },
         { content: "做视频：anuneko.com米哈游AI上手体验", completed: true },
         { content: "完善Bot插件：anuneko.com米哈游AI聊天机器人（支持pick）", completed: true },
         { content: "写文章：当anuneko bot插件完善后，编写开发文章", completed: true },
