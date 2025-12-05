@@ -13,7 +13,7 @@ export const todoConfig: TodoConfig = {
         { content: "做视频：博客访客统计新UI", completed: false },
         { content: "写文章：Umami迁移记录", completed: false },
         { content: "自建Umami并从云迁移到自建", completed: true },
-        { content: "更改文章底下的链接，用正则删去查询（?=xxx）", completed: false },
+        { content: "更改文章底下的链接，用正则删去查询（?=xxx）", completed: true },
         { content: "做视频：anuneko.com米哈游AI上手体验", completed: true },
         { content: "完善Bot插件：anuneko.com米哈游AI聊天机器人（支持pick）", completed: true },
         { content: "写文章：当anuneko bot插件完善后，编写开发文章", completed: true },
