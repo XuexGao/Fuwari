@@ -22,7 +22,7 @@ title: Fuwari静态博客搭建教程
 
 5. 一个[Cloudflare](https://cloudflare.com)账号：用于创建一个Pages并且绑定域名支持访问
 
-6. [MarkText](https://www.marktext.cc)：这是一个可视化MarkDown编辑器，因为Fuwari的每一篇文章/页面都是MarkDown，所以需要一个好用的编辑器
+6.  [黑曜石（Obsidian）](/posts/obsidian/)：这是一个可视化MarkDown编辑器，因为Fuwari的每一篇文章/页面都是MarkDown，所以需要一个好用的编辑器
 
 7. 你得会用MarkDown语法来编写文章，如果你不会可以参见：[Markdown 基本语法 | Markdown 官方教程](https://markdown.com.cn/basic-syntax/)
 
