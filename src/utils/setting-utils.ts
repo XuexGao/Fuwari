@@ -45,7 +45,7 @@ export function setRainbowSpeed(speed: number): void {
 
 export function getBgBlur(): number {
 	const stored = localStorage.getItem("bg-blur");
-	return stored ? Number.parseInt(stored) : 0; // Default blur is 0
+	return stored ? Number.parseInt(stored) : 4; // Default blur is 4
 }
 
 export function setBgBlur(blur: number): void {
