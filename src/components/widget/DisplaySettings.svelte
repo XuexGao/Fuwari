@@ -30,80 +30,69 @@ let rainbowSpeed = getRainbowSpeed();
 let bgBlur = getBgBlur();
 let hideBg = getHideBg();
 let isDevMode = getDevMode();
-let devServer = getDevServer();
-let animationId: number;
-let lastUpdate = 0;
-let rainbowHue = 0; // Independent hue for background rotation
+	let devServer = getDevServer();
+	let animationId: number;
 
-const defaultHue = getDefaultHue();
+	const defaultHue = getDefaultHue();
 
-function resetHue() {
-	hue = getDefaultHue();
-}
-
-$: if ((hue || hue === 0) && !isRainbowMode) {
-	setHue(hue);
-}
-
-$: {
-	setBgBlur(bgBlur);
-}
-
-function switchTheme(newTheme: string) {
-	theme = newTheme;
-	setTheme(newTheme);
-}
-
-function updateRainbow() {
-	if (!isRainbowMode) return;
-
-	hue = (hue + rainbowSpeed * 0.05) % 360;
-	setHue(hue, false);
-
-	animationId = requestAnimationFrame(updateRainbow);
-}
-
-function toggleRainbow() {
-	isRainbowMode = !isRainbowMode;
-	setRainbowMode(isRainbowMode);
-
-	if (isRainbowMode) {
-		lastUpdate = performance.now();
-		rainbowHue = 0; // Reset rotation start
-		animationId = requestAnimationFrame(updateRainbow);
-	} else {
-		cancelAnimationFrame(animationId);
-		// Reset background rotation to 0 when stopped
-		setBgHueRotate(0);
+	function resetHue() {
+		hue = getDefaultHue();
 	}
-}
 
-function toggleHideBg() {
-	hideBg = !hideBg;
-	setHideBg(hideBg);
-}
-
-function toggleDevMode() {
-	isDevMode = !isDevMode;
-	setDevMode(isDevMode);
-}
-
-function onDevServerChange() {
-	setDevServer(devServer);
-}
-
-function onSpeedChange() {
-	setRainbowSpeed(rainbowSpeed);
-}
-
-onMount(() => {
-	if (isRainbowMode) {
-		updateRainbow();
+	$: if ((hue || hue === 0) && !isRainbowMode) {
+		setHue(hue);
 	}
-	return () => {
-		if (animationId) cancelAnimationFrame(animationId);
-	};
-});
+
+	$: {
+		setBgBlur(bgBlur);
+	}
+
+	function switchTheme(newTheme: string) {
+		theme = newTheme;
+		setTheme(newTheme);
+	}
+
+	function toggleRainbow() {
+		isRainbowMode = !isRainbowMode;
+		setRainbowMode(isRainbowMode);
+
+		if (isRainbowMode) {
+			document.documentElement.classList.add("is-rainbow-mode");
+            document.documentElement.style.setProperty("--rainbow-duration", `${120 / rainbowSpeed}s`);
+		} else {
+            document.documentElement.classList.remove("is-rainbow-mode");
+            document.documentElement.style.removeProperty("--rainbow-duration");
+			setHue(hue); // Restore the static hue
+		}
+	}
+
+	function toggleHideBg() {
+		hideBg = !hideBg;
+		setHideBg(hideBg);
+	}
+
+	function toggleDevMode() {
+		isDevMode = !isDevMode;
+		setDevMode(isDevMode);
+	}
+
+	function onDevServerChange() {
+		setDevServer(devServer);
+	}
+
+	function onSpeedChange() {
+		setRainbowSpeed(rainbowSpeed);
+        if (isRainbowMode) {
+             document.documentElement.style.setProperty("--rainbow-duration", `${120 / rainbowSpeed}s`);
+        }
+	}
+
+	onMount(() => {
+		if (isRainbowMode) {
+            document.documentElement.classList.add("is-rainbow-mode");
+            document.documentElement.style.setProperty("--rainbow-duration", `${120 / rainbowSpeed}s`);
+		}
+	});
 </script>
 
 <div id="display-setting" class="float-panel float-panel-closed absolute transition-all w-80 right-4 px-4 py-4">

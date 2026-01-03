@@ -1,6 +1,35 @@
 @tailwind components;
 
 @layer components {
+    /* Rainbow Mode Animation */
+    @keyframes rainbow-backdrop {
+        0% { backdrop-filter: hue-rotate(0deg); }
+        100% { backdrop-filter: hue-rotate(360deg); }
+    }
+
+    html.is-rainbow-mode .card-base {
+        position: relative;
+    }
+
+    html.is-rainbow-mode .card-base::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        border-radius: inherit;
+        animation: rainbow-backdrop linear infinite;
+        animation-duration: var(--rainbow-duration, 5s);
+    }
+
+    /* Protect images and other sensitive media from color rotation */
+    html.is-rainbow-mode .card-base img,
+    html.is-rainbow-mode .card-base video,
+    html.is-rainbow-mode .card-base iframe {
+        position: relative;
+        z-index: 2;
+    }
+
     .card-base {
         @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
         @apply border border-black/5 dark:border-white/10;
