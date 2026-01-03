@@ -6,6 +6,19 @@ image: ../assets/images/uptimeflare.png
 draft: false
 lang: ""
 ---
+# 从KV迁移
+由于原项目于26/1/3将数据存储从KV迁移到了D1，并且配备了完备的i18n，如果你仍在运营旧版的UptimeFlare，建议升级，下面是迁移教程
+
+首先，将你之前配置的Cloudflare API令牌添加一个新的权限 **编辑D1**
+
+然后备份根目录的 `uptime.config.ts` ，直接 把原仓库删了，Fork我的仓库
+
+::github{repo="afoim/UptimeFlare"}
+
+接下来编辑新的 `uptime.config.ts`
+
+参阅 [UptimeFlare/uptime.config.ts at main · afoim/UptimeFlare](https://github.com/afoim/UptimeFlare/blob/main/uptime.config.ts) 主要就是将自定义callback迁移到官方的WebHook方法
+
 # 前言
 本来这个教程应该是永远都不会出的，因为在此之前，我曾经给大家介绍了一个无需自托管的监控服务：[UptimeRobot](/posts/uptimerobot/) 
 
