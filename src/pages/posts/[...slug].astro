@@ -166,21 +166,64 @@ const jsonLd = {
 
             
             <!-- Giscus 评论区 -->
-            <script src="https://giscus.app/client.js"
-                    data-repo="afoim/giscus-fuwari"
-                    data-repo-id="R_kgDOOi8quw"
-                    data-category="Announcements"
-                    data-category-id="DIC_kwDOOi8qu84CprDV"
-                    data-mapping="pathname"
-                    data-strict="0"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="top"
-                    data-theme="preferred_color_scheme"
-                    data-lang="zh-CN"
-                    data-loading="lazy"
-                    crossorigin="anonymous"
-                    async>
+            <div id="giscus-container"></div>
+            <script is:inline>
+                function loadGiscus() {
+                    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                    
+                    const script = document.createElement('script');
+                    script.src = "https://giscus.app/client.js";
+                    script.setAttribute("data-repo", "afoim/giscus-fuwari");
+                    script.setAttribute("data-repo-id", "R_kgDOOi8quw");
+                    script.setAttribute("data-category", "Announcements");
+                    script.setAttribute("data-category-id", "DIC_kwDOOi8qu84CprDV");
+                    script.setAttribute("data-mapping", "pathname");
+                    script.setAttribute("data-strict", "0");
+                    script.setAttribute("data-reactions-enabled", "1");
+                    script.setAttribute("data-emit-metadata", "0");
+                    script.setAttribute("data-input-position", "top");
+                    script.setAttribute("data-theme", theme);
+                    script.setAttribute("data-lang", "zh-CN");
+                    script.setAttribute("data-loading", "lazy");
+                    script.setAttribute("crossorigin", "anonymous");
+                    script.async = true;
+                    
+                    const container = document.getElementById('giscus-container');
+                    if (container) {
+                        container.innerHTML = '';
+                        container.appendChild(script);
+                    }
+                }
+
+                // 监听主题变化
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            const iframe = document.querySelector('iframe.giscus-frame');
+                            if (iframe) {
+                                const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                                iframe.contentWindow.postMessage({
+                                    giscus: {
+                                        setConfig: {
+                                            theme: theme
+                                        }
+                                    }
+                                }, 'https://giscus.app');
+                            }
+                        }
+                    });
+                });
+
+                observer.observe(document.documentElement, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+
+                // 初始加载
+                loadGiscus();
+
+                // 支持 Swup 页面切换
+                document.addEventListener('swup:contentReplaced', loadGiscus);
             </script>
     <br>
 
