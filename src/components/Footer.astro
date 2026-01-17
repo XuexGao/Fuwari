@@ -80,7 +80,7 @@ try {
             div.appendChild(valueSpan);
 
             const iconImg = document.createElement('img');
-            iconImg.className = 'server-icon h-5 ml-1 hidden';
+            iconImg.className = 'server-icon h-4 ml-1 hidden';
             iconImg.alt = 'Server Icon';
             div.appendChild(iconImg);
 
@@ -132,6 +132,19 @@ try {
         async function initServerInfo() {
             const containers = document.querySelectorAll('.server-info-container');
             if (containers.length === 0) return;
+
+            // Check for Dev Mode
+            const isDevMode = localStorage.getItem("dev-mode") === "true";
+            if (isDevMode) {
+                const devServer = localStorage.getItem("dev-server");
+                containers.forEach(container => {
+                    container.innerHTML = '';
+                    const elements = createServerEntry({ text: 'Dev Node' });
+                    container.appendChild(elements.div);
+                    updateEntryDisplay(elements, devServer);
+                });
+                return;
+            }
 
             window.__serverInfoCache = window.__serverInfoCache || {};
             const cache = window.__serverInfoCache;
