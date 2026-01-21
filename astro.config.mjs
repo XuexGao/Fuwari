@@ -68,7 +68,7 @@ export default defineConfig({
 				"material-symbols-light": ["*"],
 				"material-symbols": ["*"],
 			},
-			iconDir: "public/icons", // Add this line to specify the directory for local SVG icons
+			iconDir: "public/icons",
 		}),
 		svelte(),
 		sitemap(),
