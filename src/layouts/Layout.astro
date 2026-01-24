@@ -639,12 +639,20 @@ if (window.swup) {
 <script is:inline>
     // Giscus Loader
     function loadGiscus() {
+        console.log('[Giscus] Attempting to load Giscus...');
         const container = document.getElementById('giscus-container');
-        if (!container) return;
+        if (!container) {
+            console.log('[Giscus] No container found, skipping.');
+            return;
+        }
         
         // Prevent double loading if script is already there
-        if (container.querySelector('script[src*="giscus"]')) return;
+        if (container.querySelector('script[src*="giscus"]')) {
+             console.log('[Giscus] Script already exists, skipping.');
+             return;
+        }
 
+        console.log('[Giscus] Container found, creating script...');
         const script = document.createElement('script');
         script.src = "https://giscus.app/client.js";
         script.async = true;
@@ -666,18 +674,43 @@ if (window.swup) {
 
         // Theme handling
         const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        console.log(`[Giscus] Setting initial theme to: ${theme}`);
         script.setAttribute('data-theme', theme);
 
         container.appendChild(script);
+        console.log('[Giscus] Script appended to container.');
     }
 
     function initGiscus() {
+        console.log('[Giscus] initGiscus called.');
         loadGiscus();
         
         // Listen for Swup navigation
-        if (window.swup) {
-            window.swup.hooks.on('page:view', loadGiscus);
-        }
+        // Use a polling mechanism to wait for swup if it's not immediately available
+        const checkSwup = setInterval(() => {
+            if (window.swup) {
+                console.log('[Giscus] Swup detected via polling, registering hooks.');
+                clearInterval(checkSwup);
+                
+                window.swup.hooks.on('page:view', () => {
+                    console.log('[Giscus] Swup page:view triggered.');
+                    loadGiscus();
+                });
+                
+                // Also listen for content:replace to be safe, as page:view might sometimes fire before content is fully swapped in edge cases
+                window.swup.hooks.on('content:replace', () => {
+                    console.log('[Giscus] Swup content:replace triggered.');
+                    // Small delay to ensure DOM is ready
+                    setTimeout(loadGiscus, 0);
+                });
+
+            } else {
+                console.log('[Giscus] Waiting for Swup...');
+            }
+        }, 200);
+        
+        // Stop polling after 5 seconds to prevent infinite loop
+        setTimeout(() => clearInterval(checkSwup), 5000);
     }
 
     if (document.readyState === 'loading') {
@@ -693,6 +726,7 @@ if (window.swup) {
                 const iframe = document.querySelector('iframe.giscus-frame');
                 if (iframe) {
                     const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                    console.log(`[Giscus] Theme changed to: ${theme}, updating iframe.`);
                     iframe.contentWindow.postMessage({
                         giscus: { setConfig: { theme: theme } }
                     }, 'https://giscus.app');
