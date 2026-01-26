@@ -474,7 +474,6 @@
             // Compare
             const storedMap = new Map(
                 storedPosts
-                    .filter(p => p.id && p.id.startsWith(`${SCOPE_ID}:`))
                     .map(p => [p.guid, p])
             );
             
