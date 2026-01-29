@@ -1,11 +1,10 @@
 ---
 title: 隐私政策
-published: 2026-01-30T03:20:15
-description: '本隐私政策适用于AcoFork Blog（以下简称“我们”）。'
-image: ''
-
-draft: false 
-lang: ''
+published: 1999-01-01T03:20:15
+description: 本隐私政策适用于AcoFork Blog（以下简称“我们”）。
+image: ""
+draft: false
+lang: ""
 ---
 
 # All Cookies
@@ -25,3 +24,4 @@ lang: ''
 ### Targeting and advertising cookies（定位和廣告cookies）
 - Google Adsense：提供广告服务，由 Google 提供
 
+*latest update: 2026/01/30*
