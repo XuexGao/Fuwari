@@ -62,4 +62,23 @@ text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,imag
 image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
 ```
 
-最后，如果您想做到图片必须是 **游客访问** ，又不想让他人滥用。很抱歉，目前做不到，如果您担心资费问题，应当将图片这类静态资产放到各大Pages上提供，而不是按量计费的对象存储等服务，从根源上保护您的钱包
+最后，如果您想做到图片必须是 **游客访问** ，又不想让他人滥用。可以使用CORP（Cross-Origin-Resource-Policy）
+
+只需要在别人拉取图片时返回一个CORP响应头，如： **Cross-Origin-Resource-Policy: same-origin** 
+
+当CORP响应头返回的策略中和将要拉取资源的源不匹配，**浏览器会阻止资源在页面加载，但并不会阻断原始请求**
+
+|      值       |                    描述                     |
+| :----------: | :---------------------------------------: |
+| same-origin  |        同源。仅允许 `example.com` 拉取对应资源        |
+|  same-site   | 同站。仅允许 `*.example.com` `example.com` 拉取资源 |
+| cross-origin |          **默认值**。允许所有源，任何人都可以拉取           |
+
+设置后跨站引用会被浏览器阻止
+
+- Chromium（Edge/Chrome）
+> 另外提一嘴，Chromium 最近推了一个更新，导致CORS/CORP错误默认不显示在控制台，需要勾选 **显示控制台中的CORS错误** [控制台功能参考  |  Chrome DevTools  |  Chrome for Developers](https://developer.chrome.com/docs/devtools/console/reference?utm_source=chatgpt.com&hl=zh-cn#cors-errors)
+![](../assets/images/avatar-1.png)
+
+- Firefox
+![](../assets/images/avatar-2.png)
