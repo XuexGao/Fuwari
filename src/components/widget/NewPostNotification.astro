@@ -260,8 +260,9 @@
             const safeId = 'diff-' + post.guid.replace(/[^a-zA-Z0-9-_]/g, '_');
             
             if (isUpdated && post.diff) {
+                // Use data-diff-toggle attribute for delegation
                 diffButton = `
-                <button onclick="window.toggleDiff('${safeId}')" class="ml-auto text-xs text-[var(--primary)] hover:underline focus:outline-none pointer-events-auto">
+                <button data-diff-toggle="${safeId}" class="ml-auto text-xs text-[var(--primary)] hover:underline focus:outline-none pointer-events-auto">
                     查看变更
                 </button>`;
             }
@@ -362,13 +363,14 @@
     
             // Add event delegation for toggles
             // Ensure we don't add duplicate listeners to list
-            // A simple way is to re-create the listener or check via a flag. 
-            // But since this function runs once, it's fine.
             if (!list.hasAttribute('data-listening')) {
                 list.addEventListener('click', (e) => {
                     const btn = e.target.closest('[data-diff-toggle]');
                     if (btn) {
                         const targetId = btn.getAttribute('data-diff-toggle');
+                        // Use querySelector to find the element within the list or document
+                        // Since IDs might be reused if not careful (though safeId tries to be unique), 
+                        // scoping to the panel is safer but document.getElementById is standard.
                         const target = document.getElementById(targetId);
                         if (target) {
                             target.classList.toggle('hidden');
@@ -379,50 +381,7 @@
             }
         }
         
-        // Helper to trigger open from outside (used by auto-open logic above)
-        // We need to expose openPanel or move the auto-open logic inside setupEventListeners or keep it here
-        // The previous code called openPanel() which was defined below. 
-        // We need to make sure openPanel is available.
-        function openPanel() {
-            panel.classList.remove('hidden');
-            requestAnimationFrame(() => {
-                panel.classList.remove('translate-y-4', 'opacity-0', 'scale-95');
-            });
-            dot?.classList.add('hidden');
-        }
-
-        const closePanel = () => {
-            panel.classList.add('translate-y-4', 'opacity-0', 'scale-95');
-            setTimeout(() => {
-                panel.classList.add('hidden');
-            }, 300); // Match transition duration
-        };
-
-        // Event Listeners
-        minimizedBtn.onclick = () => {
-            if (panel.classList.contains('hidden')) {
-                openPanel();
-            } else {
-                closePanel();
-            }
-        };
-
-        minimizeBtn.onclick = (e) => {
-            e.stopPropagation();
-            closePanel();
-        };
-
-        // Add event delegation for toggles
-        // Remove and re-add to ensure freshness
-        // Or better, just use one listener on the container that always works
-        // The previous check if (!list.hasAttribute('data-listening')) might be persisting across re-renders improperly if Astro keeps DOM
-        // Let's make it robust:
-        
-        // Remove existing listener if possible? No easy way without reference.
-        // Instead, let's use a unique attribute or just replace the node (expensive)
-        // Or simpler: assign onclick handler to the list container which bubbles up
-        
-        // Use a window-level handler for maximum robustness, filtering by ID
+        // Expose toggle function globally for inline onclick (backup)
         window.toggleDiff = function(safeId) {
             const target = document.getElementById(safeId);
             if (target) {
@@ -545,8 +504,11 @@
             if (detectedChanges.length > 0) {
                 // Intercept: If all posts in the feed are detected as new (likely due to ID change or cache issue), suppress notification
                 const isAllNew = detectedChanges.length === currentPosts.length && detectedChanges.every(p => !p.isUpdated);
-                if (isAllNew) {
-                    console.log('[Notification] Intercepted "all new" posts scenario. Suppressing notification.');
+                // Also intercept if ALL posts are detected as updated (likely a full rebuild/re-hash of content without meaningful changes)
+                const isAllUpdated = detectedChanges.length === currentPosts.length && detectedChanges.every(p => p.isUpdated);
+
+                if (isAllNew || isAllUpdated) {
+                    console.log('[Notification] Intercepted "all new/updated" posts scenario. Suppressing notification.');
                     // Update DB to sync with new state
                     await savePosts(db, currentPosts);
                     // Clear state
