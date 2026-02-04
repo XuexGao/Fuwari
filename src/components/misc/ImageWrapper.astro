@@ -7,12 +7,13 @@ interface Props {
 	alt?: string;
 	position?: string;
 	basePath?: string;
+    loading?: "eager" | "lazy";
 }
 import { Image } from "astro:assets";
 import { imageFallbackConfig, siteConfig } from "../../config";
 import { url } from "../../utils/url-utils";
 
-const { id, src, alt, position = "center", basePath = "/" } = Astro.props;
+const { id, src, alt, position = "center", basePath = "/", loading = "lazy" } = Astro.props;
 const className = Astro.props.class;
 
 const isLocal = !(
@@ -47,11 +48,11 @@ const imageClass = "w-full h-full object-cover";
 const imageStyle = `object-position: ${position}`;
 ---
 <div id={id} class:list={[className, 'overflow-hidden relative image-wrapper']} style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-    {isLocal && img && <Image src={img} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle}/>}
+    {isLocal && img && <Image src={img} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle} widths={[200, 400, 800]} sizes="(max-width: 640px) 100vw, 400px" loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} />}
     {!isLocal && (
         imageFallbackConfig.enable && src.includes(imageFallbackConfig.originalDomain) ? 
-            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle} onerror={`this.onerror=null; this.src='${(isPublic ? url(src) : src).replace(imageFallbackConfig.originalDomain, imageFallbackConfig.fallbackDomain)}';`}/> :
-            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle}/>
+            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} onerror={`this.onerror=null; this.src='${(isPublic ? url(src) : src).replace(imageFallbackConfig.originalDomain, imageFallbackConfig.fallbackDomain)}';`}/> :
+            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} />
     )}
 </div>
 

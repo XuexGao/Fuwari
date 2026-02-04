@@ -10,6 +10,7 @@ interface Props {
 
 const className = Astro.props.class;
 ---
+
 <div id="sidebar" class:list={[className, "w-full"]}>
     <div class="flex flex-col w-full gap-4 mb-4">
         <Profile></Profile>
@@ -18,7 +19,7 @@ const className = Astro.props.class;
         <!-- 赞助标 -->
         <div class="overflow-hidden flex justify-center">
             <a href="https://secbit.ai/" target="_blank" rel="noopener noreferrer">
-                <img src="/aff/secbit-banner-1.gif" alt="Secbit" class="w-full max-w-[280px] rounded-lg hover:opacity-90 transition-opacity" />
+                <img src="/aff/secbit-banner-1.gif" alt="Secbit" width="280" height="35" class="w-full max-w-[280px] rounded-lg hover:opacity-90 transition-opacity" />
             </a>
         </div>
         <div class="overflow-hidden flex justify-center">
