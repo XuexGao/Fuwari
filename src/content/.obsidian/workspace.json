@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/deepwiki.md",
+                "file": "posts/warden-worker.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "deepwiki"
+              "title": "warden-worker"
             }
           },
           {
@@ -185,6 +185,7 @@
   },
   "active": "f6b5e7abc96521b9",
   "lastOpenFiles": [
+    "posts/deepwiki.md",
     "assets/images/deepwiki-5.png",
     "assets/images/deepwiki-4.png",
     "assets/images/deepwiki-3.png",
@@ -192,12 +193,10 @@
     "assets/images/deepwiki-1.png",
     "assets/images/deepwiki.png",
     "posts/posts-diff.md",
-    "posts/deepwiki.md",
     "assets/images/posts-diff-6.png",
     "assets/images/posts-diff-5.png",
     "assets/images/posts-diff-4.png",
     "assets/images/posts-diff-3.png",
-    "assets/images/posts-diff-2.png",
     "posts/giscus-akismet.md",
     "posts/obsidian.md",
     "posts/review-ddos.md",

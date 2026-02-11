@@ -85,7 +85,7 @@ Poweshell可以这样生成
 
 使用移动端Bitwarden创建账号（使用白名单邮箱）
 
-接下来，前往网页端，启用2FA： https://cfbw.2x.nz （用另一个TOTP验证器存储）
+接下来，前往网页端（ `/demo.html` 默认使用的是 Vaultwarden的前端，可能会有些Bug），启用2FA： https://cfbw.2x.nz （用另一个TOTP验证器存储）
 
 *顺便一提，想要修改邮箱或主密码也可以在网页端进行了*
 
