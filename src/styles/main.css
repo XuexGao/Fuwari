@@ -97,14 +97,6 @@
         mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
     }
 
-    .hide-scrollbar, .scrollbar-none {
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-    .hide-scrollbar::-webkit-scrollbar, .scrollbar-none::-webkit-scrollbar {
-        display: none;
-    }
-
     .text-90 {
         @apply text-black/90 dark:text-white/90
     }
@@ -138,6 +130,26 @@
     .btn-regular-dark.success {
         @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
     }
+}
+
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body {
+    overflow: visible;
+}
+
+*:not(html):not(body) {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+*:not(html):not(body)::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
 }
 
 .custom-md img, #post-cover img {

@@ -83,8 +83,7 @@ const bannerOffset =
 ---
 
 <!DOCTYPE html>
-    <html lang={siteLang} class="bg-[var(--page-bg)] transition text-[12px] md:text-[16px] dark"  
-	  data-overlayscrollbars-initialize>  <!-- 手机端适配 -->
+    <html lang={siteLang} class="bg-[var(--page-bg)] transition text-[12px] md:text-[16px] dark">
 
 	<head>
 
@@ -237,9 +236,7 @@ const bannerOffset =
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
 
 	</head>
-	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
-		  data-overlayscrollbars-initialize
-	>
+	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}>
 
 <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
 <script data-swup-ignore-script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
@@ -467,13 +464,6 @@ var _hmt = _hmt || [];
 </style>
 
 <script>
-import 'overlayscrollbars/overlayscrollbars.css';
-import {
-	OverlayScrollbars,
-	// ScrollbarsHidingPlugin,
-	// SizeObserverPlugin,
-	// ClickScrollPlugin
-} from 'overlayscrollbars';
 import {getHue, getStoredTheme, setHue, setTheme, getBgBlur, setBgBlur, getHideBg, setHideBg} from "../utils/setting-utils";
 import {pathsEqual, url} from "../utils/url-utils";
 import {
@@ -561,36 +551,6 @@ function loadHue() {
 function loadBgBlur() {
 	setBgBlur(getBgBlur())
     setHideBg(getHideBg())
-}
-
-function initCustomScrollbar() {
-	const bodyElement = document.querySelector('body');
-	if (!bodyElement) return;
-	OverlayScrollbars(
-		// docs say that a initialization to the body element would affect native functionality like window.scrollTo
-		// but just leave it here for now
-		{
-			target: bodyElement,
-			cancel: {
-				nativeScrollbarsOverlaid: true,    // don't initialize the overlay scrollbar if there is a native one
-			}
-		}, {
-		scrollbars: {
-			theme: 'scrollbar-base scrollbar-auto py-1',
-			autoHide: 'move',
-			autoHideDelay: 500,
-			autoHideSuspend: false,
-		},
-	});
-	
-	const katexElements = document.querySelectorAll('.katex-display') as NodeListOf<HTMLElement>;
-	katexElements.forEach((ele) => {
-		OverlayScrollbars(ele, {
-			scrollbars: {
-				theme: 'scrollbar-base scrollbar-auto py-1',
-			}
-		});
-	});
 }
 
 function showBanner() {
@@ -683,7 +643,6 @@ const setup = () => {
 			navbar.classList.add('navbar-hidden')
 		}
 	})
-	window.swup.hooks.on('content:replace', initCustomScrollbar)
 	window.swup.hooks.on('visit:start', (visit: {to: {url: string}}) => {
 		// change banner height immediately when a link is clicked
 		const bodyElement = document.querySelector('body')
@@ -813,6 +772,22 @@ import { Fancybox } from "@fancyapps/ui"
 import "@fancyapps/ui/dist/fancybox/fancybox.css"
 
 const setup = () => {
+	const cleanupFancybox = () => {
+		try {
+			Fancybox.close()
+		} catch {}
+		document.querySelectorAll('.fancybox__container').forEach(el => el.remove())
+		document.documentElement.style.removeProperty('overflow')
+		document.body.style.removeProperty('overflow')
+	}
+	const restoreNativeScrollIfSafe = () => {
+		const hasFancybox = !!document.querySelector('.fancybox__container')
+		const hasCookieModal = !!document.querySelector('.cc_overlay, .cc_modal, .cc_preferences, .cc_dialog, .cc_cp, .cc_nb, .cc_banner')
+		if (hasFancybox || hasCookieModal) return
+		document.documentElement.style.removeProperty('overflow')
+		document.body.style.removeProperty('overflow')
+	}
+
 	Fancybox.bind(".custom-md img, #post-cover img", {
 		wheel: 'zoom',
 		clickContent: 'close',
@@ -850,10 +825,27 @@ const setup = () => {
 	window.swup.hooks.on(
 		"content:replace",
 		() => {
+			cleanupFancybox()
 			Fancybox.unbind(".custom-md img, #post-cover img")
 		},
 		{ before: true },
 	)
+
+	window.swup.hooks.on(
+		"visit:start",
+		() => {
+			cleanupFancybox()
+		},
+		{ before: true },
+	)
+
+	window.addEventListener('keydown', (e) => {
+		if (e.key !== 'Escape') return
+		setTimeout(restoreNativeScrollIfSafe, 0)
+	})
+	document.addEventListener('click', () => {
+		setTimeout(restoreNativeScrollIfSafe, 0)
+	}, true)
 }
 
 if (window.swup) {

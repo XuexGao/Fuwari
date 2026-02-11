@@ -58,6 +58,7 @@ export default defineConfig({
 				"fa6-brands": ["*"],
 				"fa6-regular": ["*"],
 				"fa6-solid": ["*"],
+				mingcute: ["*"],
 				"simple-icons": ["*"],
 				"material-symbols-light": ["*"],
 				"material-symbols": ["*"],
