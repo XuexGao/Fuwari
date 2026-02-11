@@ -11,7 +11,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "XieGai Blog",
+	title: "XieGao Blog",
 	
 	subtitle: "技术分享与实践",
 	description:
