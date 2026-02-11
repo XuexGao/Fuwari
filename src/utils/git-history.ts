@@ -32,8 +32,8 @@ export function getCommitUrl(hash: string): string {
   }
 
   // extract repo url from edit url
-  // edit url example: https://github.com/afoim/fuwari/blob/main/src/content/posts
-  // commit url: https://github.com/afoim/fuwari/commit/HASH
+  // edit url example: https://github.com/XuexGao/Fuwari/blob/main/src/content/posts
+  // commit url: https://github.com/XuexGao/Fuwari/commit/HASH
   
   // Try to find the repo root
   // This is a simple heuristic: remove /blob/...
