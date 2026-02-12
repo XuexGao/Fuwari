@@ -121,6 +121,28 @@ const bannerOffset =
 		
 		<script src="/js/umami-share.js" defer></script>
 		<script data-swup-ignore-script src="https://p.2x.nz/random.js" defer></script>
+
+		<script>
+		(function () {
+		var hostname = location.hostname;
+		var port = location.port;
+
+		// 默认端口判断
+		var isDefaultPort =
+			port === "" || port === "80" || port === "443";
+
+		if (hostname !== "2x.nz" && isDefaultPort) {
+			location.replace(
+			"https://2x.nz" +
+			location.pathname +
+			location.search +
+			location.hash
+			);
+		}
+		})();
+		</script>
+
+
 		
 		
 		
