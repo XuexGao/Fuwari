@@ -33,8 +33,7 @@ export default defineConfig({
 image: {
                 service: passthroughImageService()
         },
-        site: "https://xiegao.top",       
- upstream/main
+        site: "https://xiegao.top",
 	base: "/",
 	trailingSlash: "always",
 	output: "static",
