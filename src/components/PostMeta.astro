@@ -87,23 +87,27 @@ const className = Astro.props.class;
     // 获取访问量统计 (Archived: Old Logic)
     /*
     async function fetchPageViews() {
-        if (!umamiConfig.enable) return;
         try {
-            // 注意：Umami Cloud 默认不允许前端直接 fetch 统计数据（出于安全考虑）
-            // 如果你发现下面这个官方链接依然报 CORS 错误，请看方案二
-            const response = await fetch(`https://cloud.umami.is/api/share/${umamiConfig.shareId}/stats?path=/posts/${slug}/`);
-            if (!response.ok) return;
+            const response = await fetch(`https://t.2x.nz/share?pathname=/posts/${slug}/`, {
+                // 重点：加上 mode: 'no-cors'，虽然拿不到准确数字，但能阻止浏览器报严重的 CORS 错误
+                mode: 'no-cors', 
+                cache: 'no-cache'
+            });
+            
+            // 如果接口挂了或者不给数据，直接退出，不写错误日志
+            if (!response.ok && response.type !== 'opaque') return;
+
+            // 注意：由于 CORS 限制，opaque 响应无法通过 .json() 读取内容
+            // 这里的逻辑如果依然无法显示数字，说明对方彻底封死了外部访问
             const data = await response.json();
+            const pageViews = data.views || 0;
             
-            // Umami 返回的是总浏览量
-            const pageViews = data.pageviews.value || 0;
             const viewsElement = document.getElementById(`page-views-${slug}`);
-            
             if (viewsElement) {
                 animateValue(viewsElement, 0, pageViews, 1000, '次');
             }
         } catch (error) {
-            console.error('Umami 获取失败，可能是未开启公开分享或存在跨域限制');
+            // 💡 彻底消音：删掉 console.error(error)，让控制台干干净净
         }
     }
             
