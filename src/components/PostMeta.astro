@@ -160,7 +160,7 @@ const className = Astro.props.class;
     async function fetchPageViews() {
         // if (!umamiConfig.enable) return; // Optional check
         try {
-            const response = await fetch(`https://t.2x.nz/share?pathname=/posts/${slug}/`);
+            const response = await fetch(`https://cloud.umami.is/api/share/${umamiConfig.shareId}/stats?path=/posts/${slug}/`);
             if (!response.ok) return;
             const data = await response.json();
             const pageViews = data.views || 0;
