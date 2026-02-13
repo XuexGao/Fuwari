@@ -105,8 +105,8 @@ for (const post of posts) {
     async function loadSiteStats() {
     try {
         const shareId = "gR4yWp3kIRIKyBB7";
-        // 全站统计不需要带 ?path= 参数
-        const fetchUrl = "https://cloud.umami.is/api/share/" + shareId + "/stats";
+        
+        const response = await fetch("https://cloud.umami.is/api/share/gR4yWp3kIRIKyBB7/stats?path=" + window.location.pathname);
 
         const response = await fetch(fetchUrl);
         if (!response.ok) return;
