@@ -86,24 +86,45 @@ const className = Astro.props.class;
 
     // 获取访问量统计 (Archived: Old Logic)
     /*
-async function loadPageViews() {
+    async function fetchPageViews() {
+    // 1. 定义你的配置
+    const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28"; // 例如: 8848a-xxx-xxx
+    const baseUrl = "https://u.xiegao.top";
+    
     try {
-        const shareId = "gR4yWp3kIRIKyBB7"; 
-        const path = window.location.pathname;
-        const api = "https://cloud.umami.is/api/share/" + shareId + "/stats?path=" + path;
-        
-        const response = await fetch(api);
+        // 2. 构造请求 URL
+        // 使用你的自建 API 终点，统计该路径的所有历史数据 (startAt=0)
+        const url = `${baseUrl}/api/websites/${websiteId}/stats?path=/posts/${slug}/&startAt=0&endAt=${Date.now()}`;
+
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
         if (!response.ok) return;
 
         const data = await response.json();
-        const views = data.pageviews?.value || 0;
-
-        const element = document.getElementById('post-pageviews');
-        if (element) {
-            element.innerHTML = views;
+        
+        // 3. 提取阅读量 (自建版通常在 data.pageviews.value)
+        const pageViews = data.pageviews?.value || 0;
+        
+        const viewsElement = document.getElementById(`page-views-${slug}`);
+        
+        if (viewsElement) {
+            const currentViews = parseInt(viewsElement.textContent) || 0;
+            if (currentViews !== pageViews) {
+                if (currentViews === 0) {
+                     animateValue(viewsElement, currentViews, pageViews, 1000, '次');
+                } else {
+                     viewsElement.innerHTML = `${pageViews} 次`;
+                }
+            }
         }
-    } catch (e) {
-        console.log("Stats update skipped.");
+    } catch (error) {
+        // 自建版如果挂了，我们静默失败，不给控制台报红字
+        console.warn('Umami stats sync skipped.');
     }
 }
             
