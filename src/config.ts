@@ -81,9 +81,9 @@ export const navBarConfig: NavBarConfig = {
 			external: false, // Show an external link icon and will open in a new tab
 		},
 		{
-			name: "统计"
-			url: "https://u.xiegao.top/share/IoWiNCvTUPxaDg5x"
-            external: true
+			name: "统计",
+			url: "https://u.xiegao.top/share/IoWiNCvTUPxaDg5x",
+            external: true,
 		},
 		{
 			name: "云盘",
