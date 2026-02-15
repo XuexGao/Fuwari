@@ -81,6 +81,11 @@ export const navBarConfig: NavBarConfig = {
 			external: false, // Show an external link icon and will open in a new tab
 		},
 		{
+			name: "统计"
+			url: "https://u.xiegao.top"
+            external: true
+		}
+		{
 			name: "云盘",
 			url: "https://pan.xiegao.top", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
@@ -113,11 +118,6 @@ export const profileConfig: ProfileConfig = {
 			icon: "github", // Local icon
 			url: "https://github.com/XuexGao",
 		},
-		{
-			name: "Folo",
-			icon: "folo", // Local icon
-			url: "https://app.folo.is/share/feeds/245004133358075904",
-		}
 	],
 };
 
