@@ -37,6 +37,22 @@ jobs:
         with:
           node-version: '20'
 
+      - name: 安装依赖
+        run: npm install --no-save
+
+      - name: 格式化代码 (Lint)
+        run: |
+          npm run lint || true
+          
+          # 如果有更改，提交更改
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "style: auto fix lint issues"
+            git push
+          fi
+
       - name: 获取变更文件 (PR 触发)
         if: github.event_name == 'pull_request'
         id: changed-files
@@ -215,12 +231,23 @@ jobs:
             # 获取变更文件
             files=$(gh pr diff "$pr" --name-only)
             
+            # 打印原始文件列表以供调试
+            echo "PR #$pr 原始变更文件列表:"
+            echo "$files"
+            
             # 过滤相关文件
             relevant_files=""
             # 使用 while read 循环处理包含空格的文件名
             while IFS= read -r f; do
+              # 去除可能的空白符
+              f=$(echo "$f" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+              if [ -z "$f" ]; then continue; fi
+              
               if [[ "$f" == src/data/friends/* ]] || [[ "$f" == src/data/sponsors/* ]]; then
+                echo "发现相关文件: $f"
                 relevant_files="$relevant_files \"$f\""
+              else
+                echo "忽略无关文件: $f"
               fi
             done <<< "$files"
             

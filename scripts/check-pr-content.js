@@ -25,17 +25,7 @@ const colors = {
  */
 function validateJson(filePath) {
     try {
-        let content = fs.readFileSync(filePath, 'utf8');
-        
-        // Remove BOM if present
-        if (content.charCodeAt(0) === 0xFEFF) {
-            content = content.slice(1);
-        }
-        
-        // Basic cleanup for common issues (like trailing commas which are invalid in JSON but common)
-        // Note: Regex cleanup for JSON is risky, but we can try minimal fixes or just rely on strict parsing
-        // Let's stick to strict parsing for now, but BOM removal is critical.
-        
+        const content = fs.readFileSync(filePath, 'utf8');
         const data = JSON.parse(content);
         
         // Basic schema check
