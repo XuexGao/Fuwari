@@ -61,12 +61,17 @@ const { remarkPluginFrontmatter } = await entry.render();
         </div>
 
         <!-- metadata -->
-        <PostMetadata published={published} updated={updated} hideUpdateDate={true} hidePublishedDate={true} slug={entry.slug} class="mb-2 md:mb-4"></PostMetadata>
+        <PostMetadata
+            published={published}
+            updated={updated}
+            hideUpdateDate={true}
+            hidePublishedDate={false}
+            slug={entry.slug}
+            class="mb-2 md:mb-4"
+        ></PostMetadata>
 
         <!-- word count, read time and page views -->
         <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition">
-            <div>{formatPostDateForDisplay(published)}</div>
-            <div>|</div>
             <div>{remarkPluginFrontmatter.words} 字</div>
             <div>|</div>
             <div>{remarkPluginFrontmatter.minutes} 分钟</div>
