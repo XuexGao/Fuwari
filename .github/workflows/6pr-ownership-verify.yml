@@ -1,13 +1,11 @@
 name: 6PR Ownership Verification Final
 
 on:
-  workflow_run:
-    workflows: ["5PR Ownership Verification Init"]
-    types:
-      - completed
-  workflow_dispatch:
+  pull_request:
+    types: [synchronize, reopened]
   issue_comment:
     types: [created]
+  workflow_dispatch:
 
 permissions:
   pull-requests: write
@@ -54,7 +52,7 @@ jobs:
                 }
               );
 
-              // 查找包含 .txt 的验证评论
+              // 找到最近的验证 URL
               let verifyUrl = null;
 
               for (const comment of comments.reverse()) {
@@ -87,10 +85,16 @@ jobs:
                 }
 
                 if (text.trim() !== prHash.trim()) {
-                  throw new Error("File content mismatch");
+                  throw new Error(
+                    "File content mismatch. Expected: " +
+                    prHash +
+                    " Got: " +
+                    text.trim()
+                  );
                 }
 
                 // ===== SUCCESS =====
+
                 await github.rest.issues.createComment({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
@@ -122,24 +126,33 @@ jobs:
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: prNumber,
-                  body: `所有权验证未成功，详细日志：${log}`
+                  body: "所有权验证未成功，详细日志：" + log
                 });
 
                 console.log("Verification failed:", log);
               }
             }
 
-            // 如果是评论触发
+            // ===== 触发来源判断 =====
+
             if (context.eventName === "issue_comment") {
 
-              if (!context.payload.issue.pull_request) return;
+              if (!context.payload.issue.pull_request) {
+                console.log("Not a PR comment.");
+                return;
+              }
 
               const prNumber = context.payload.issue.number;
               await verifyPR(prNumber);
 
+            } else if (context.eventName === "pull_request") {
+
+              const prNumber = context.payload.pull_request.number;
+              await verifyPR(prNumber);
+
             } else {
 
-              // workflow_run 或 手动触发
+              // 手动触发：检查所有 PR
               const prs = await github.paginate(
                 github.rest.pulls.list,
                 {
