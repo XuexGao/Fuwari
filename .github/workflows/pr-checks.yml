@@ -120,6 +120,17 @@ jobs:
             
             # 添加新标签
             if [ -n "$add_label" ]; then
+              # 尝试创建标签（如果不存在），颜色默认为灰色或特定颜色
+              # 链接检查通过: 0E8A16 (绿色)
+              # 错误类: D73A4A (红色)
+              local color="EDEDED"
+              if [ "$add_label" == "链接检查通过" ]; then
+                color="0E8A16"
+              elif [[ "$add_label" == *"不可达"* ]] || [[ "$add_label" == *"无效"* ]]; then
+                color="D73A4A"
+              fi
+              
+              gh label create "$add_label" --color "$color" --force || true
               gh pr edit "$pr" --add-label "$add_label"
             fi
           }
@@ -185,6 +196,14 @@ jobs:
               fi
             done
             if [ -n "$add_label" ]; then
+              # 尝试创建标签（如果不存在）
+              local color="EDEDED"
+              if [ "$add_label" == "链接检查通过" ]; then
+                color="0E8A16"
+              elif [[ "$add_label" == *"不可达"* ]] || [[ "$add_label" == *"无效"* ]]; then
+                color="D73A4A"
+              fi
+              gh label create "$add_label" --color "$color" --force || true
               gh pr edit "$pr" --add-label "$add_label"
             fi
           }
