@@ -253,6 +253,22 @@ jobs:
               return
             }
 
+            const vipPaths = parsedEntries
+              .filter((e) => Object.prototype.hasOwnProperty.call(e.data, 'vip'))
+              .map((e) => e.path)
+            if (vipPaths.length) {
+              await createComment(
+                [
+                  '检测到 JSON 存在 vip 字段，已终止自动流程。',
+                  '',
+                  '请从以下文件移除 vip 字段后再 push 更新（移除后才会继续自动校验/自动合并）：',
+                  '',
+                  ...vipPaths.map((p) => `- ${p}`),
+                ].join('\n')
+              )
+              return
+            }
+
             const primaryKind = touchedSponsors ? 'sponsor' : 'friend'
             const primary = parsedEntries.find((e) => e.kind === primaryKind) || parsedEntries[0]
 
@@ -487,9 +503,24 @@ jobs:
               return
             }
 
+            const vipPaths = parsedEntries
+              .filter((e) => Object.prototype.hasOwnProperty.call(e.data, 'vip'))
+              .map((e) => e.path)
+            if (vipPaths.length) {
+              await createComment(
+                [
+                  '检测到 JSON 存在 vip 字段，已终止自动流程。',
+                  '',
+                  '请从以下文件移除 vip 字段后再 push 更新，然后再次回复“准备完毕”：',
+                  '',
+                  ...vipPaths.map((p) => `- ${p}`),
+                ].join('\n')
+              )
+              return
+            }
+
             const primaryKind = prLabels.has(LABEL_SPONSOR) ? 'sponsor' : 'friend'
             const primary = parsedEntries.find((e) => e.kind === primaryKind) || parsedEntries[0]
-            const hasVipField = Object.prototype.hasOwnProperty.call(primary.data, 'vip')
 
             await github.rest.pulls.update({
               owner,
@@ -581,11 +612,6 @@ jobs:
               } catch (e) {
                 if (e.status !== 404) throw e
               }
-            }
-
-            if (hasVipField) {
-              await createComment('检测到 JSON 存在 vip 字段：已通过校验但不进行自动合并，请维护者手动处理。')
-              return
             }
 
             try {
