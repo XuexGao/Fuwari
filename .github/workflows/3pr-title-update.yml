@@ -2,7 +2,7 @@ name: 3PR Title Update From JSON
 
 on:
   workflow_run:
-    workflows: ["PR JSON Check"]
+    workflows: ["2PR JSON Check"]
     types:
       - completed
   workflow_dispatch:

@@ -2,7 +2,7 @@ name: 4PR Link Availability Check
 
 on:
   workflow_run:
-    workflows: ["PR Title Update From JSON"]
+    workflows: ["3PR Title Update From JSON"]
     types:
       - completed
   workflow_dispatch:
