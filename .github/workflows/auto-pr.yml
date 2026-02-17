@@ -23,6 +23,7 @@ jobs:
       - name: Label PR by changed paths
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.PAT }}
           script: |
             const owner = context.repo.owner
             const repo = context.repo.repo
@@ -333,6 +334,7 @@ jobs:
       - name: Verify ownership and auto-merge
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.PAT }}
           script: |
             const owner = context.repo.owner
             const repo = context.repo.repo
