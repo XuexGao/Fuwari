@@ -329,8 +329,18 @@ jobs:
                       '基础校验已通过，需要进行双向链接验证：',
                       '',
                       `1) 请在你的友链页面添加本站友链（必须为绝对链接）：${siteBase}`,
-                      '2) 然后更新本 PR 的友链 JSON，增加字段：backlink（填写你的友链页面 URL，必须是 http/https 绝对链接）',
-                      '3) push 更新后 Action 会自动重新校验并在通过后自动合并，无需额外评论',
+                      '2) 然后更新本 PR 的友链 JSON，增加字段 backlink（填写你的友链页面 URL，必须是 http/https 绝对链接）',
+                      '',
+                      '示例：',
+                      '{',
+                      '  "name": "...",',
+                      '  "avatar": "...",',
+                      '  "url": "...",',
+                      '  "backlink": "https://example.com/friends/"',
+                      '}',
+                      '',
+                      `3) 请确保你的 backlink 页面中包含指向本站的链接 href=${siteBase}（必须完全一致的绝对链接）`,
+                      '4) push 更新后 Action 会自动重新校验并在通过后自动合并，无需额外评论',
                     ].join('\n')
                   )
                   return
