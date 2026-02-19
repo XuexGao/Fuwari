@@ -95,6 +95,11 @@ export const navBarConfig: NavBarConfig = {
 			external: false, // Show an external link icon and will open in a new tab
 		},
 		{
+			name: "画廊",
+			url: "/gallery/", // Internal links should not include the base path, as it is automatically added
+			external: false, // Show an external link icon and will open in a new tab
+		},
+		{
 			name: "统计",
 			url: "https://u.2x.nz/share/CdkXbGgZr6ECKOyK", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
@@ -103,7 +108,7 @@ export const navBarConfig: NavBarConfig = {
 			name: "论坛",
 			url: "https://i.2x.nz", // Internal links should not include the base path, as it is automatically added
 			external: true, // Show an external link icon and will open in a new tab
-		},
+		}
 	],
 };
 

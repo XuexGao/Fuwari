@@ -1,0 +1,280 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<MainGridLayout title="画廊">
+	<div class="card-base p-6 md:p-8">
+		<div class="flex items-center justify-between gap-3 flex-wrap mb-6">
+			<div class="flex items-center gap-2">
+				<div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
+					<Icon name="material-symbols:photo-library-rounded" class="text-[1.5rem]"></Icon>
+				</div>
+				<h1 class="text-2xl font-bold text-90">画廊</h1>
+			</div>
+			<div class="flex items-center gap-2">
+				<button id="btn-h" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium">横屏</button>
+				<button id="btn-v" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium">竖屏</button>
+				<a
+					id="open-source"
+					class="btn-regular h-9 px-3 rounded-lg text-sm font-medium"
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://p.2x.nz"
+				>
+					图源
+				</a>
+			</div>
+		</div>
+
+		<div class="text-sm text-50 mb-5 leading-relaxed">
+			数据源来自 <span class="font-medium text-75">https://p.2x.nz/random.js</span>。
+		</div>
+
+		<div id="gallery" class="gallery-grid"></div>
+		<div id="sentinel" class="h-10"></div>
+		<div id="status" class="text-sm text-50 mt-3"></div>
+	</div>
+
+	<style>
+		.gallery-grid {
+			width: 100%;
+		}
+		.gallery-item {
+			margin-bottom: 16px;
+		}
+	</style>
+
+	<script>
+		import Masonry from "masonry-layout";
+		import imagesLoaded from "imagesloaded";
+
+		const RANDOM_JS_URL = "https://p.2x.nz/random.js";
+		const DOMAIN = "https://p.2x.nz";
+
+		let counts = { h: 0, v: 0 };
+		let currentType = "h";
+		let used = new Set();
+		let loading = false;
+		let msnry = null;
+		let io = null;
+		let resizeHandler = null;
+
+		function getColumns() {
+			const w = window.innerWidth;
+			if (w >= 1024) return 4;
+			if (w >= 768) return 3;
+			return 2;
+		}
+
+		function getLayoutConfig(galleryEl) {
+			const gutter = 16;
+			const cols = getColumns();
+			const width = galleryEl.clientWidth || 0;
+			const columnWidth = Math.max(
+				120,
+				Math.floor((width - gutter * (cols - 1)) / cols),
+			);
+			return { gutter, cols, columnWidth };
+		}
+
+		function setStatus(text) {
+			const statusEl = document.getElementById("status");
+			if (!statusEl) return;
+			statusEl.textContent = text || "";
+		}
+
+		function setActiveButton() {
+			const btnH = document.getElementById("btn-h");
+			const btnV = document.getElementById("btn-v");
+			if (!btnH || !btnV) return;
+			const activeClasses = ["ring-2", "ring-[var(--primary)]"];
+			for (const c of activeClasses) {
+				btnH.classList.toggle(c, currentType === "h");
+				btnV.classList.toggle(c, currentType === "v");
+			}
+		}
+
+		async function fetchCounts() {
+			try {
+				const res = await fetch(RANDOM_JS_URL, { cache: "no-store" });
+				if (!res.ok) throw new Error(String(res.status));
+				const text = await res.text();
+				const m = text.match(/var\\s+counts\\s*=\\s*(\\{[^;]+\\})\\s*;/);
+				if (!m) throw new Error("counts not found");
+				const parsed = JSON.parse(m[1]);
+				const h = Number(parsed.h || 0);
+				const v = Number(parsed.v || 0);
+				if (!Number.isFinite(h) || !Number.isFinite(v)) throw new Error("counts invalid");
+				counts = { h, v };
+				setStatus(`横屏 ${h} 张 · 竖屏 ${v} 张`);
+			} catch (e) {
+				counts = { h: 1074, v: 4003 };
+				setStatus("无法获取 counts，已使用默认数量");
+			}
+		}
+
+		function pickUniqueIndex(max, maxTries = 20) {
+			if (!max) return null;
+			for (let i = 0; i < maxTries; i++) {
+				const n = Math.floor(Math.random() * max) + 1;
+				const key = `${currentType}:${n}`;
+				if (!used.has(key)) {
+					used.add(key);
+					return n;
+				}
+			}
+			const n = Math.floor(Math.random() * max) + 1;
+			used.add(`${currentType}:${n}`);
+			return n;
+		}
+
+		function buildImgUrl(n) {
+			return `${DOMAIN}/ri/${currentType}/${n}.webp`;
+		}
+
+		function buildCard(url, width) {
+			const a = document.createElement("a");
+			a.href = url;
+			a.target = "_blank";
+			a.rel = "noopener noreferrer";
+			a.className = "gallery-item block";
+			a.style.width = `${width}px`;
+
+			const wrapper = document.createElement("div");
+			wrapper.className =
+				"card-base overflow-hidden rounded-xl active:scale-[0.99] transition";
+
+			const img = document.createElement("img");
+			img.src = url;
+			img.loading = "lazy";
+			img.decoding = "async";
+			img.alt = "gallery";
+			img.className = "w-full h-auto block";
+
+			wrapper.appendChild(img);
+			a.appendChild(wrapper);
+			return a;
+		}
+
+		function clearGallery() {
+			const galleryEl = document.getElementById("gallery");
+			if (!galleryEl) return;
+			galleryEl.innerHTML = "";
+			used = new Set();
+			if (msnry) {
+				msnry.destroy();
+				msnry = null;
+			}
+		}
+
+		async function loadMore(batch = 20) {
+			const galleryEl = document.getElementById("gallery");
+			if (!galleryEl || loading) return;
+			const max = counts[currentType];
+			if (!max) return;
+			loading = true;
+			try {
+				const { gutter, columnWidth } = getLayoutConfig(galleryEl);
+				if (!msnry) {
+					msnry = new Masonry(galleryEl, {
+						itemSelector: ".gallery-item",
+						gutter,
+						columnWidth,
+						transitionDuration: "0.2s",
+					});
+				}
+
+				const frag = document.createDocumentFragment();
+				const items = [];
+				for (let i = 0; i < batch; i++) {
+					const n = pickUniqueIndex(max);
+					if (!n) break;
+					const url = buildImgUrl(n);
+					const el = buildCard(url, columnWidth);
+					items.push(el);
+					frag.appendChild(el);
+				}
+				galleryEl.appendChild(frag);
+				imagesLoaded(items, () => {
+					if (!msnry) return;
+					msnry.appended(items);
+					msnry.layout();
+				});
+			} finally {
+				loading = false;
+			}
+		}
+
+		function setType(type) {
+			if (type !== "h" && type !== "v") return;
+			if (currentType === type) return;
+			currentType = type;
+			setActiveButton();
+			clearGallery();
+			loadMore(24);
+		}
+
+		function setupInfiniteLoad() {
+			const sentinelEl = document.getElementById("sentinel");
+			if (!sentinelEl) return;
+			if (io) io.disconnect();
+			io = new IntersectionObserver(
+				(entries) => {
+					if (entries.some((e) => e.isIntersecting)) loadMore(20);
+				},
+				{ rootMargin: "600px 0px" },
+			);
+			io.observe(sentinelEl);
+		}
+
+		function setupResize() {
+			if (resizeHandler) window.removeEventListener("resize", resizeHandler);
+			resizeHandler = () => {
+				const galleryEl = document.getElementById("gallery");
+				if (!galleryEl || !msnry) return;
+				const { gutter, columnWidth } = getLayoutConfig(galleryEl);
+				for (const el of galleryEl.querySelectorAll(".gallery-item")) {
+					el.style.width = `${columnWidth}px`;
+				}
+				msnry.options.gutter = gutter;
+				msnry.options.columnWidth = columnWidth;
+				msnry.layout();
+			};
+			window.addEventListener("resize", resizeHandler, { passive: true });
+		}
+
+		async function init() {
+			const galleryEl = document.getElementById("gallery");
+			if (!galleryEl) return;
+			if (galleryEl.dataset.inited === "true") return;
+			galleryEl.dataset.inited = "true";
+
+			setActiveButton();
+			await fetchCounts();
+			clearGallery();
+			await loadMore(24);
+
+			const btnH = document.getElementById("btn-h");
+			const btnV = document.getElementById("btn-v");
+			if (btnH) btnH.addEventListener("click", () => setType("h"));
+			if (btnV) btnV.addEventListener("click", () => setType("v"));
+
+			setupInfiniteLoad();
+			setupResize();
+		}
+
+		function initIfPresent() {
+			const galleryEl = document.getElementById("gallery");
+			if (!galleryEl) return;
+			init();
+		}
+
+		if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initIfPresent);
+		else initIfPresent();
+
+		document.addEventListener("astro:after-swap", initIfPresent);
+		document.addEventListener("content:replace", initIfPresent);
+		document.addEventListener("swup:contentReplaced", initIfPresent);
+	</script>
+</MainGridLayout>
