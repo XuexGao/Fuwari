@@ -266,12 +266,11 @@
   const BASE_HEIGHT = 900;
   
   $: activeRatios = ratios.filter(r => r.checked);
-  $: if (activeRatios.length === 0) {
-      // Default fallback if nothing selected
-      ratios[2].checked = true; // 16:9
-  }
   
-  $: maxWidthRatio = activeRatios.reduce((max, r) => (r.w / r.h) > max ? (r.w / r.h) : max, 0);
+  // Gracefully handle no selection: force 16:9 as visual default without checking it in UI
+  $: visualRatios = activeRatios.length > 0 ? activeRatios : [ratios[2]]; // Fallback to 16:9
+  
+  $: maxWidthRatio = visualRatios.reduce((max, r) => (r.w / r.h) > max ? (r.w / r.h) : max, 0);
   $: canvasWidth = Math.round(BASE_HEIGHT * maxWidthRatio);
   $: canvasHeight = BASE_HEIGHT;
 
@@ -591,7 +590,7 @@
         />
 
         <!-- Ratio Guides -->
-        {#each activeRatios as ratio}
+        {#each visualRatios as ratio}
             {#if (BASE_HEIGHT * (ratio.w / ratio.h)) < canvasWidth}
                 <g class="ratio-guide">
                     <rect 
@@ -930,7 +929,7 @@
                         <label>导出尺寸 (可多选)</label>
                     </div>
                     <div class="grid grid-cols-4 gap-1">
-                        {#each activeRatios.length === 1 ? [] : ratios as ratio}
+                        {#each activeRatios.length === 0 ? [] : (activeRatios.length === 1 ? [] : ratios) as ratio}
                             {#if activeRatios.find(r => r.label === ratio.label)}
                                 <label class="flex items-center justify-center gap-1 p-1 border rounded cursor-pointer transition-all text-xs {exportConfig.exportRatios.includes(ratio.label) ? 'border-[var(--primary)] bg-[var(--primary)]/5 text-[var(--primary)]' : 'border-[var(--line-color)] bg-transparent text-gray-700 dark:text-gray-300'}">
                                     <input 
@@ -950,7 +949,11 @@
                             {/if}
                         {/each}
                     </div>
-                    {#if activeRatios.length === 1}
+                    {#if activeRatios.length === 0}
+                        <p class="text-[10px] text-red-500 text-left mt-0.5 font-bold">
+                            请至少选择一个画板比例以进行导出
+                        </p>
+                    {:else if activeRatios.length === 1}
                         <p class="text-[10px] text-gray-400 dark:text-gray-500 text-left mt-0.5">
                             当前仅预览 {activeRatios[0].label}，将导出此尺寸
                         </p>
@@ -962,7 +965,11 @@
                 </div>
             </div>
 
-            <button on:click={doExport} class="w-full px-4 py-3 bg-[var(--primary)] text-white hover:brightness-110 rounded-xl font-bold transition-all shadow-lg shadow-[var(--primary)]/30 text-sm flex items-center justify-center gap-2 mt-2">
+            <button 
+                on:click={doExport} 
+                disabled={activeRatios.length === 0}
+                class="w-full px-4 py-3 bg-[var(--primary)] text-white hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:brightness-100 rounded-xl font-bold transition-all shadow-lg shadow-[var(--primary)]/30 text-sm flex items-center justify-center gap-2 mt-2"
+            >
                 <Icon icon="material-symbols:download" class="w-5 h-5" />
                 导出图片
             </button>
