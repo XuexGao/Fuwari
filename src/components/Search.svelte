@@ -63,12 +63,10 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 				const keywordLower = keyword.toLowerCase();
 				const searchText =
 					`${post.title} ${post.description} ${post.content}`.toLowerCase();
-				const urlPath = `/posts/${post.link}`;
 
-				// 支持内容搜索和URL后缀搜索
+				// 支持内容搜索和文章 slug 搜索（排除 /posts/ 通用前缀）
 				return (
 					searchText.includes(keywordLower) ||
-					urlPath.toLowerCase().includes(keywordLower) ||
 					post.link.toLowerCase().includes(keywordLower)
 				);
 			})
@@ -96,7 +94,7 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 					},
 					excerpt: highlightText(excerpt, keyword),
 					urlPath: `/posts/${post.link}`,
-					urlPathHighlighted: highlightText(`/posts/${post.link}`, keyword),
+					urlPathHighlighted: `/posts/${highlightText(post.link, keyword)}`,
 				};
 			});
 
