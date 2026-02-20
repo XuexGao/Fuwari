@@ -53,27 +53,27 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 	isSearching = true;
 
 	try {
+		const keywords = keyword
+			.toLowerCase()
+			.split(/\s+/)
+			.filter((k) => k.length > 0);
+
 		const searchResults = posts
 			.filter((post) => {
-				const keywordLower = keyword.toLowerCase();
 				const searchText =
-					`${post.title} ${post.description} ${post.content}`.toLowerCase();
+					`${post.title} ${post.description} ${post.content} ${post.link}`.toLowerCase();
 
-				// 支持内容搜索和文章 slug 搜索（排除 /posts/ 通用前缀）
-				return (
-					searchText.includes(keywordLower) ||
-					post.link.toLowerCase().includes(keywordLower)
-				);
+				return keywords.every((k) => searchText.includes(k));
 			})
 			.map((post) => {
-				const keywordLower = keyword.toLowerCase();
 				const titleLower = post.title.toLowerCase();
 				const descriptionLower = post.description.toLowerCase();
 				const contentLower = post.content.toLowerCase();
 				const linkLower = post.link.toLowerCase();
 
-				const contentIndex = contentLower.indexOf(keywordLower);
 				let excerpt = "";
+				const firstKeyword = keywords[0];
+				const contentIndex = contentLower.indexOf(firstKeyword);
 				if (contentIndex !== -1) {
 					const start = Math.max(0, contentIndex - 50);
 					const end = Math.min(post.content.length, contentIndex + 100);
@@ -85,15 +85,20 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 				}
 
 				let matchCount = 0;
-				const regex = new RegExp(keywordLower, "gi");
-				const titleMatches = titleLower.match(regex);
-				const descriptionMatches = descriptionLower.match(regex);
-				const contentMatches = contentLower.match(regex);
-				const linkMatches = linkLower.match(regex);
-				if (titleMatches) matchCount += titleMatches.length;
-				if (descriptionMatches) matchCount += descriptionMatches.length;
-				if (contentMatches) matchCount += contentMatches.length;
-				if (linkMatches) matchCount += linkMatches.length;
+				keywords.forEach((k) => {
+					const regex = new RegExp(
+						k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+						"gi",
+					);
+					const titleMatches = titleLower.match(regex);
+					const descriptionMatches = descriptionLower.match(regex);
+					const contentMatches = contentLower.match(regex);
+					const linkMatches = linkLower.match(regex);
+					if (titleMatches) matchCount += titleMatches.length;
+					if (descriptionMatches) matchCount += descriptionMatches.length;
+					if (contentMatches) matchCount += contentMatches.length;
+					if (linkMatches) matchCount += linkMatches.length;
+				});
 
 				return {
 					url: url(`/posts/${post.link}/`),

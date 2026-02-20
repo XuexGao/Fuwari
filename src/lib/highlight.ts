@@ -14,6 +14,14 @@ export function escapeRegExp(str: string): string {
 export function highlightText(text: string, keyword: string): string {
 	if (!text) return "";
 	if (!keyword) return escapeHtml(text);
-	const reg = new RegExp(`(${escapeRegExp(keyword)})`, "ig");
-	return escapeHtml(text).replace(reg, '<span class="hl no-wrap">$1</span>');
+
+	const keywords = keyword.split(/\s+/).filter((k) => k.length > 0);
+	if (keywords.length === 0) return escapeHtml(text);
+
+	let result = escapeHtml(text);
+	keywords.forEach((k) => {
+		const reg = new RegExp(`(${escapeRegExp(k)})`, "ig");
+		result = result.replace(reg, '<span class="hl no-wrap">$1</span>');
+	});
+	return result;
 }
