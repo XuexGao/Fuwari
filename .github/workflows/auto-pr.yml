@@ -190,13 +190,22 @@ jobs:
               }
             }
 
-            async function setLabels({ addLabels, removeLabels }) {
+            async function setLabels({ addLabels, removeLabels, skipIfSame }) {
               const addSet = new Set(addLabels || [])
               const removeSet = new Set(removeLabels || [])
               for (const x of addSet) removeSet.delete(x)
 
               const current = await github.rest.issues.get({ owner, repo, issue_number: pull_number })
               const currentLabels = new Set((current.data.labels || []).map((l) => l.name))
+
+              if (skipIfSame) {
+                for (const name of addSet) {
+                  if (currentLabels.has(name)) {
+                    core.info(`Label ${name} already set, skip label operations`)
+                    return
+                  }
+                }
+              }
 
               const finalRemove = Array.from(removeSet).filter((name) => currentLabels.has(name))
               if (finalRemove.length) {
@@ -349,7 +358,7 @@ jobs:
             const allOk = avatarCheck.ok && (!siteCheck || siteCheck.ok)
             if (allOk && siteCheck) addReach.push(LABEL_ALL_OK)
 
-            await setLabels({ addLabels: addReach, removeLabels: removeReach })
+            await setLabels({ addLabels: addReach, removeLabels: removeReach, skipIfSame: true })
 
             const existingLabelNames = new Set((context.payload.pull_request.labels || []).map((l) => l.name))
             core.info(`bidir: event.action=${context.payload.action || ''}`)
@@ -651,13 +660,22 @@ jobs:
               }
             }
 
-            async function setLabels({ addLabels, removeLabels }) {
+            async function setLabels({ addLabels, removeLabels, skipIfSame }) {
               const addSet = new Set(addLabels || [])
               const removeSet = new Set(removeLabels || [])
               for (const x of addSet) removeSet.delete(x)
 
               const current = await github.rest.issues.get({ owner, repo, issue_number: pull_number })
               const currentLabels = new Set((current.data.labels || []).map((l) => l.name))
+
+              if (skipIfSame) {
+                for (const name of addSet) {
+                  if (currentLabels.has(name)) {
+                    core.info(`Label ${name} already set, skip label operations`)
+                    return
+                  }
+                }
+              }
 
               const finalRemove = Array.from(removeSet).filter((name) => currentLabels.has(name))
               if (finalRemove.length) {
@@ -832,7 +850,7 @@ jobs:
             const allOk = avatarCheck.ok && (!siteCheck || siteCheck.ok)
             if (allOk && siteCheck) addReach.push(LABEL_ALL_OK)
 
-            await setLabels({ addLabels: addReach, removeLabels: removeReach })
+            await setLabels({ addLabels: addReach, removeLabels: removeReach, skipIfSame: true })
 
             if (!avatarCheck.ok || (siteCheck && !siteCheck.ok)) {
               await createComment('检测到链接不可达，请修复后再次回复“准备完毕”。')
