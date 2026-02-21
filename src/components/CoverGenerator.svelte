@@ -219,7 +219,7 @@ function handleFontUpload(e: Event) {
 
 async function loadLocalFonts() {
 	if (!("queryLocalFonts" in window)) {
-		localFontError = "您的浏览器不支持本地字体访问 API (仅限 Chrome/Edge)";
+		localFontError = "仅支持 PC端新版Chrome/Edge等Chromium内核的浏览器";
 		return;
 	}
 	isLoadingLocalFonts = true;
