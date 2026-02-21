@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "spec/announcement.md",
+                "file": "posts/cf-fastip.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "announcement"
+              "title": "cf-fastip"
             }
           }
         ]
@@ -171,6 +171,9 @@
   },
   "active": "f6b5e7abc96521b9",
   "lastOpenFiles": [
+    "assets/images/cf-fastip-3.png",
+    "assets/images/cf-fastip-2.png",
+    "spec/announcement.md",
     "posts/auto-pr-link.md",
     "assets/images/auto-pr-link-12.png",
     "assets/images/auto-pr-link-11.png",
@@ -181,8 +184,6 @@
     "assets/images/auto-pr-link-6.png",
     "assets/images/auto-pr-link-5.png",
     "assets/images/auto-pr-link-4.png",
-    "assets/images/auto-pr-link-3.png",
-    "spec/announcement.md",
     "posts/avatar.md",
     "posts/alist-for-aliyun.md",
     "posts/gal.md",
