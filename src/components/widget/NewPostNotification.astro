@@ -208,21 +208,42 @@ import { Icon } from "astro-icon/components";
             const text = await response.text();
             const parser = new DOMParser();
             const xml = parser.parseFromString(text, 'text/xml');
+            
+            const channelLink = xml.querySelector("channel > link")?.textContent?.trim();
+            let prodOrigin = "";
+            if (channelLink) {
+                try {
+                    prodOrigin = new URL(channelLink).origin;
+                } catch {}
+            }
+            const currentOrigin = window.location.origin;
+            
             const items = Array.from(xml.querySelectorAll('item'));
             
             return items.map(item => {
                 const title = item.querySelector('title')?.textContent || '';
-                const link = (item.querySelector('link')?.textContent || '').trim();
-                const rawGuid = (item.querySelector('guid')?.textContent || '').trim();
-                const guid = normalizeGuid(rawGuid || link, link);
+                let link = (item.querySelector('link')?.textContent || '').trim();
+                let rawGuid = (item.querySelector('guid')?.textContent || '').trim();
                 const pubDate = new Date(item.querySelector('pubDate')?.textContent || '').getTime();
-                const description = item.querySelector('description')?.textContent || '';
+                let description = item.querySelector('description')?.textContent || '';
                 
                 // Try to get content from multiple possible sources to ensure we capture it
-                const contentEncoded = item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded')[0]?.textContent;
-                const content = contentEncoded || 
+                let contentEncoded = item.getElementsByTagNameNS('http://purl.org/rss/1.0/modules/content/', 'encoded')[0]?.textContent;
+                let content = contentEncoded || 
                                 item.getElementsByTagName('content:encoded')[0]?.textContent || 
                                 item.querySelector('content')?.textContent || '';
+
+                // Replace production origin with current origin
+                if (prodOrigin && prodOrigin !== currentOrigin) {
+                    link = link.replaceAll(prodOrigin, currentOrigin);
+                    if (rawGuid.includes(prodOrigin)) {
+                        rawGuid = rawGuid.replaceAll(prodOrigin, currentOrigin);
+                    }
+                    description = description.replaceAll(prodOrigin, currentOrigin);
+                    content = content.replaceAll(prodOrigin, currentOrigin);
+                }
+
+                const guid = normalizeGuid(rawGuid || link, link);
 
                 return {
                     title,

@@ -19,6 +19,31 @@ function isLogEnabled() {
 	return (window as any).__fuwariDiffLog === true;
 }
 
+function decodeHtmlEntities(value: string) {
+	const t = document.createElement("textarea");
+	t.innerHTML = String(value ?? "");
+	return t.value;
+}
+
+function normalizeUrlForCompare(raw: string) {
+	const v = decodeHtmlEntities(String(raw ?? "").trim());
+	if (!v) return "";
+	try {
+		const url = new URL(v, window.location.origin);
+		const entries = Array.from(url.searchParams.entries()).sort((a, b) => {
+			const k = a[0].localeCompare(b[0]);
+			if (k !== 0) return k;
+			return a[1].localeCompare(b[1]);
+		});
+		const qs = entries
+			.map(([k, val]) => `${encodeURIComponent(k)}=${encodeURIComponent(val)}`)
+			.join("&");
+		return `${url.pathname}${qs ? `?${qs}` : ""}`;
+	} catch {
+		return v;
+	}
+}
+
 function normalizeGuid(guid: string, link: string) {
 	const value = (guid || link || "").trim();
 	if (!value) return "";
@@ -203,14 +228,15 @@ function normalizeForMatch(line: string) {
 }
 
 function findImgBySrc(container: HTMLElement, src: string) {
-	const norm = String(src || "").trim();
-	if (!norm) return null;
+	const normPath = normalizeUrlForCompare(src);
+	if (!normPath) return null;
 	const imgs = container.querySelectorAll("img");
 	for (const img of imgs) {
 		if (!(img instanceof HTMLImageElement)) continue;
 		const cand = img.getAttribute("src") || img.getAttribute("data-src") || "";
-		if (cand === norm) return img;
-		if (cand && norm && (cand.includes(norm) || norm.includes(cand)))
+		const candPath = normalizeUrlForCompare(cand);
+		if (candPath === normPath) return img;
+		if (candPath && normPath && (candPath.includes(normPath) || normPath.includes(candPath)))
 			return img;
 	}
 	return null;
@@ -417,16 +443,29 @@ function applyInlineDiff(container: HTMLElement, diffParts: DiffPart[]) {
 				if (isReplace) {
 					const oldHtml = row.type === "del" ? row.text : next.text;
 					const newHtml = row.type === "add" ? row.text : next.text;
-					const target = findBlockByText(container, newHtml);
+					const oldKey = normalizeForMatch(oldHtml);
+					const newKey = normalizeForMatch(newHtml);
+					let target: HTMLElement | null = null;
+					let isImgReplace = false;
+
+					if (newKey.kind === "img") {
+						target = findImgBySrc(container, newKey.value);
+						isImgReplace = true;
+					} else {
+						target = findBlockByText(container, newHtml);
+					}
+
 					if (target instanceof HTMLElement) {
-						target.classList.add("post-inline-diff-add-target");
-						target.setAttribute("data-post-inline-diff-add-target", "1");
-						const useListItem = target.tagName === "LI";
-						const node = createDeletionNode(
-							oldHtml,
-							!anchorState.inserted,
-							useListItem,
-						);
+						if (isImgReplace) {
+							target.classList.add("post-inline-diff-add-target-img");
+							target.setAttribute("data-post-inline-diff-add-target-img", "1");
+						} else {
+							target.classList.add("post-inline-diff-add-target");
+							target.setAttribute("data-post-inline-diff-add-target", "1");
+						}
+						const t =
+							oldKey.kind === "img" ? `[图片] ${oldKey.value}` : oldKey.value;
+						const node = createDeletionNode(t, !anchorState.inserted, false);
 						if (!anchorState.inserted) anchorState.inserted = true;
 						target.parentNode?.insertBefore(node, target);
 						idx += 2;
