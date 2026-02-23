@@ -65,15 +65,24 @@ jobs:
             }
 
             const files = await listAllFiles()
-            const paths = files.map((f) => f.filename)
 
-            const touchedFriends = paths.some((p) => p.startsWith('src/data/friends/'))
-            const touchedSponsors = paths.some((p) => p.startsWith('src/data/sponsors/'))
-
-            if (!touchedFriends && !touchedSponsors) {
-              core.info('No friends/sponsors changes detected. Skip.')
+            if (files.length !== 1) {
+              await createComment('PR 必须仅包含一个文件变更。')
               return
             }
+            const file = files[0]
+            if (!file.filename.startsWith('src/data/friends/') && !file.filename.startsWith('src/data/sponsors/')) {
+              await createComment('只允许更改 src/data/friends/ 或 src/data/sponsors/ 下的文件。')
+              return
+            }
+            if (file.status !== 'added' && file.status !== 'modified') {
+              await createComment('只允许新增或编辑文件。')
+              return
+            }
+
+            const paths = files.map((f) => f.filename)
+            const touchedFriends = file.filename.startsWith('src/data/friends/')
+            const touchedSponsors = file.filename.startsWith('src/data/sponsors/')
 
             for (const name of [
               LABEL_FRIEND,
@@ -746,12 +755,22 @@ jobs:
             }
 
             const files = await listAllFiles()
-            const relevant = files.filter((f) => {
-              if (f.status === 'removed') return false
-              if (f.filename.startsWith('src/data/friends/')) return true
-              if (f.filename.startsWith('src/data/sponsors/')) return true
-              return false
-            })
+
+            if (files.length !== 1) {
+              await createComment('PR 必须仅包含一个文件变更。')
+              return
+            }
+            const file = files[0]
+            if (!file.filename.startsWith('src/data/friends/') && !file.filename.startsWith('src/data/sponsors/')) {
+              await createComment('只允许更改 src/data/friends/ 或 src/data/sponsors/ 下的文件。')
+              return
+            }
+            if (file.status !== 'added' && file.status !== 'modified') {
+              await createComment('只允许新增或编辑文件。')
+              return
+            }
+
+            const relevant = files
 
             const invalidSuffix = relevant.filter((f) => !f.filename.endsWith('.json')).map((f) => f.filename)
             if (invalidSuffix.length) {
