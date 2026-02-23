@@ -316,6 +316,9 @@ export default defineConfig({
 		],
 	},
 	vite: {
+		server: {
+		allowedHosts: ['2x.nz']
+	},
 		build: {
 			rollupOptions: {
 				onwarn(warning, warn) {
