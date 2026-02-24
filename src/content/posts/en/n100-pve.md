@@ -1,6 +1,6 @@
 ---
 title: "N100 - PVE (fnOS+Debian) Infrastructure Records"
-description: "Here’s a professional translation of the text:  “Setting up PVE on an N100 small server, followed by the installation of FlyNet NAS and Debian within the system, facilitates the separation of tracking and build hosting. This architecture is designed for scalability and ease of migration.”"
+description: "Here’s the translation:  “Setting up PVE on a N100 small server, followed by installing FlyNet NAS and Debian within it, enabling a separation of tracking and build servers for scalability and ease of migration.”"
 category: "Record"
 draft: false
 image: ../../assets/images/N100-PVE_cover.webp
@@ -13,55 +13,55 @@ tags:
 
 :::
 
-# Okay, please provide the text. I’m ready when you are.
+# Configuration & Requirements
 
-- N100 CPU frequency: minimum 700 MHz, maximum 3400 MHz | TDP: 6 W
+- N100 CPU Frequency: Minimum 700 MHz, Maximum 3400 MHz | TDP: 6W
 
 - 8GB of RAM
 
 - 128GB M.2 NVMe SSD
 
-- 512GB SATA HDD
+- 512GB SATA Hard Disk Drive
 
-- Realtek R8168 is a wired network card.
+- Here’s the translation of “Realtek R8168 has a wired network card” into professional English:  “The Realtek R8168 utilizes a wired network interface.”
 
-- USB network card
+- Here’s the translation:  “USB wired network card”
 
-- USB drive (as a PVE guidance disk)
+- USB drive (as a Pathfinder guided disk)
 
-# Okay, please provide the text. I’m ready when you are.
+# 目标
 
-1. All systems are managed through PVE.
+1. All systems operate through a PVE management framework.
 
-2. Installing PVE under FNOS, setting up a NAS, and configuring automatic mirroring (direct: `N100 CPU Core` `512GB SATA HDD`)
+2. Upon installation of PVE, configure a NAS and implement automatic mirroring (direct-to-router: `N100 CPU Core` `512GB SATA HDD`).
 
-3. Installing PVE on Debian, setting up a QQ Bot, blog, and AList.
+3. Here’s the translation:  “Installing PVE on Debian, setting up a QQ bot, creating a blog, and establishing an AList.”
 
-* Okay, please provide the text you would like me to translate. I’m ready when you are.
+* **
 
-# PVE
+# 1\. PVE
 
 ## Installation
 
 - Download the latest Ventoy executable file.
 
-https://www.ventoy.net/cn/download.html
+[https://www.ventoy.net/cn/download.html](https://www.ventoy.net/cn/download.html)
 
-Using GPT partition tables, NTFS format will write Ventoy to a USB drive.
+Here’s the translation:  “Utilizing a partition table, NTFS format is employed to write Ventoy onto a USB drive.”
 
-- Download the latest PVE version (using USTC mirror source)
+- Download the latest PVE version as an ISO file using USTC mirror sources.
 
-https://mirrors.ustc.edu.cn/help/proxmox.html
+[https://mirrors.ustc.edu.cn/help/proxmox.html](https://mirrors.ustc.edu.cn/help/proxmox.html)
 
-Please insert the PVE ISO files into the root directory of your U drive.
+Please insert the PVE ISO file into the root directory of your U drive.
 
-- Insert the USB drive into the N100, and start up from the USB drive. Enter the PVE installation interface, and install PVE. Network configuration is selected via the USB drive.
+- Insert a USB drive into the N100 and connect it to the system. Upon startup, the system will boot from the USB drive, initiating the PVE installation process. Network configuration options are selected via the USB device.
 
-- Restarted into PVE, connecting via IP+8006 port to enter the WebUI.
+- Restart the system, enter PVE mode via IP + 8006 port to access the Web UI and log in.
 
-## Okay, please provide the text you would like me to translate. I will adhere strictly to your instructions and deliver only the translated text without any extraneous information or formatting.
+## 配置
 
-### Install the PVE Quick Management Script
+### Installation of the PVE Quick Management Script.
 
 - 安装PVE快捷管理脚本：[pve\_source.tar.gz | AcoFork-AList](https://alist.onani.cn/pve_source.tar.gz) 或 [**https://wwp.lanzoul.com/ivHta1ngmo6d**](https://wwp.lanzoul.com/ivHta1ngmo6d) （密码:i1ws）（来自：在下莫老师）
   
@@ -75,15 +75,15 @@ Please insert the PVE ISO files into the root directory of your U drive.
   
   - 扩容local：`lvextend -rl +100%FREE /dev/pve/root`
 
-### Configuring Realtek R8168 Network Adapter To configure the Realtek R8168 network adapter, you can access the settings through the Windows Device Manager.  You can also use the Advanced Properties dialog box.  The primary settings to adjust include:  *   **Adapter Type:** Select "Intel Metropolitan Cable Adapter" or "Realtek R8168". *   **Speed:** Set the speed to 10 Mbps (Megabits per second). *   **Wireless Settings:** Configure the wireless connection type and security. *   **IP Address:** Assign an IP address within your network's range. *   **DNS Servers:** Specify DNS server addresses for reliable internet access.  For more detailed instructions, refer to the official Realtek support website: [https://www.realtek.com/en/](https://www.realtek.com/en/)
+### Configuration of Realtek R8168 Network Adapter
 
-Due to default Debian R8169 drivers, we need to manually install the R8168 drivers, otherwise we will not be able to use the built-in wired network port on the N100 small host.
+Due to the default installation of R8169 drivers on Debian, we must manually install the R8168 driver. Otherwise, we will be unable to connect to the network ports provided by the built-in wired Ethernet connection on the N100 small host.
 
 - 下载驱动：
   
   [https://www.realtek.com/Download/List?cate\_id=584](https://www.realtek.com/Download/List?cate_id=584)![](../../assets/images/0d8457c7fb0d497e12e2c8b544f07c3c37cf96cd.webp)
 
-- Install: `sh autorun.sh`
+- Release and installation: `sh autorun.sh`
 
 - Check for new network interfaces: `ip a`
 
@@ -132,7 +132,7 @@ Due to default Debian R8169 drivers, we need to manually install the R8168 drive
   source /etc/network/interfaces.d/*
   ```
 
-- restart networking
+- Restart network services: `systemctl restart networking`
 
 - 查看ip：`ip a`
   
@@ -152,33 +152,33 @@ Due to default Debian R8169 drivers, we need to manually install the R8168 drive
          valid_lft forever preferred_lft forever
   ```
 
-- Removed USB card.
+- Removal of USB card.
 
 ### Configuration STUN penetration testing.
 
-#### Router settings should be configured for a PVEIP host.
+#### Router configuration: Set the DMZ host to PVEIP.
 
 - ![](../../assets/images/dbeb7980e5fc699c696ffa6f2fda4a17c05ee821.webp)
 
-#### Install Lucky
+#### Installation of Lucky.
 
-- curl -o /tmp/install.sh http://6.666666.host:6/files/golucky.sh && sh /tmp/install.sh http://6.666666.host:6/files 2.13.4
+- Executed: `curl -o /tmp/install.sh http://6.666666.host:6/files/golucky.sh && sh /tmp/install.sh http://6.666666.host:6/files 2.13.4`
 
-- Enter Lucky mode, configure STUN penetration.
+- Please enter Lucky’s backend via `host:16601`. Configure STUN for penetration testing.
 
 - ![](../../assets/images/2175839424184aee880b91382bd1fbf3c578d258.webp)
 
-# Function Operating System
+# 2. fnOS
 
-## Installation
+## Installation.
 
-- Visit the website to download the latest version of ISO:
+- Please download the latest version of ISO from our website.
 
 [https://www.fnnas.com/](https://www.fnnas.com/)
 
 - 上传至PVE：![](../../assets/images/073808516d357e099a866c30b4a77954c5b9b458.webp)
 
-- Create a function OS virtual machine with host CPU type selection. The steps are…
+- Here’s a professional translation of the text:  “Develop a functional OS virtual machine, configuring the CPU type to ‘host’. The process involves several steps.”
 
 - 直通核显和硬盘：![](../../assets/images/08e4f7a3b87ae86334011e1d4c3a384a36ad9866.webp)
 
@@ -212,15 +212,15 @@ Due to default Debian R8169 drivers, we need to manually install the R8168 drive
 
 - Start a virtual machine and install fnOS.
 
-## Okay, please provide the text you would like me to translate. I will adhere strictly to your instructions and deliver only the translated text without any extraneous information or formatting.
+## 配置
 
 - 前往飞牛设置，创建储存空间，Linear模式，选择刚才直通的硬盘![](../../assets/images/581cf01462df545a8662acbb5e20e1676bd17744.webp)
 
 - 前往飞牛应用中心安装qBittorrent、影视，并且在设置给予目录读取权限![](../../assets/images/92a2e0bf25d630db4858775fdbb6c907f419c25d.webp)
 
-- To configure your QbitTorrent username and password:  1.  Open QbitTorrent. 2.  Go to Settings -> User & Password. 3.  Enter your username and password. 4.  Click "Save".
+- Configure the username and password for qBittorrent.
 
-- Open Flyfish Docker, initialize.
+- Open the Flyfish Docker, initialize.
 
 - 拉取并运行AutoBangumi Docker镜像：
   
@@ -260,27 +260,27 @@ Due to default Debian R8169 drivers, we need to manually install the R8168 drive
     
     - 四级目录：集和字幕，如`S01E01.mp4` `S01E01.chs.ass`
 
-# Debian is a free and open-source operating system based on the Linux distribution concept. It’s known for its stability, security, and extensive package repository. Debian is frequently used by developers, system administrators, and hobbyists alike. Its strong focus on software freedom and community support has made it a cornerstone of the open-source world.
+# Debian is a widely used, open-source operating system known for its stability and extensive package repository. It’s frequently employed in servers, workstations, and embedded systems due to its robust nature and commitment to free software principles.
 
 ## Installation
 
-- Download Debian 12 ISO (USTC mirror source) – Recommended to use DVD images for better package completeness and faster installation.
+- Download Debian 12 ISO (USTC Mirror Source) – Recommended: DVD Image, Larger Package, Faster Installation.
 
-https://mirrors.ustc.edu.cn/help/debian-cd.html
+[https://mirrors.ustc.edu.cn/help/debian-cd.html](https://mirrors.ustc.edu.cn/help/debian-cd.html) translates to “Debian CD” in English.
 
-- Upload to PVE, create a Debian virtual machine, select the host CPU type, and follow the steps.
+- Upload to PVE, create a Debian virtual machine, select the host CPU type and follow the steps.
 
-### Install 1Panel
+### Installation of [1Panel]
 
-https://1panel.cn/docs/installation/online\_installation/
+[https://1panel.cn/docs/installation/online\_installation/](https://1panel.cn/docs/installation/online_installation/)
 
-- Install OpenResty, MySQL, Halo, AList, and Cloudflared in the 1Panel dashboard.
+- Here’s the translation of the text:  “The installation process for `Openresty` involves configuring it with `MySQL`, `Halo`, `AList`, and `Cloudflared`.”
 
-### Here’s the translation:  Build a QQ bot.
+### Constructing a QQ Bot.
 
-#### Install the Lagrange.OneBot protocol implementation.
+#### Installation of the OneBotv11 protocol: Lagrange.OneBot
 
-- Docker Run：Runs a container with the following settings:  -   `-td`:  Tells Docker to use a temporary volume for the container. -   `-p 8081:8081`:  Maps port 8081 on the host machine to port 8081 inside the container. -   `-v /root/qqbot/lo:/app/data`:  Mounts a local directory `/root/qqbot/lo` to the `/app/data` directory inside the container. -   `-e UID=$UID -e GID=$(id -g)`: Sets the user ID and group ID of the container process to the current user's UID and GID. -   `ghcr.onani.cn/lagrangedev/lagrange.onebot:edge`:  Specifies the image to use for the container, which is a Docker image from ghcr.onani.cn/lagrangedev/lagrange.onebot:edge.
+- Docker Run: `docker run -td -p 8081:8081 -v /root/qqbot/lo:/app/data -e UID=$UID -e GID=$(id -g) ghcr.onani.cn/lagrangedev/lagrange.onebot:edge`
 
 - 修改配置文件：`appsettings.json`
   
@@ -324,23 +324,23 @@ https://1panel.cn/docs/installation/online\_installation/
   }
   ```
 
-- Restart the container, scan the barcode, and log in.
+- Restart the container, log in via QR code.
 
-#### Install NoneBot2
+#### Installation of NoneBot2.
 
 - Install pip: `apt install python3-pip`
 
-- Here’s the translation of the content:  Configure the global index URL for USTC sources as follows: `pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple`.
+- Configure the global index URL for USTC sources using the following command: `pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple`.
 
 - Install pipx: `apt install pipx`
 
-- Install the nb-cli: pipx install nb-cli
+- Install the nb-cli: `pipx install nb-cli`
 
-- ```text Ensure the pipx path is set to the desired location. This ensures that pipx can access and manage your Python packages effectively. ```
+- Set the pipx variable: `pipx ensurepath`
 
-- Install the nb bootstrap plugin: **nb self install nb-cli-plugin-bootstrap**
+- Install the NB Bootstrap plugin: `nb self install nb-cli-plugin-bootstrap`
 
-- Create a new NoneBot2 project: `nb bs`
+- Create a new project for the “New NoneBot2” initiative.
 
 - ```
   root@n100-debian:~# nb bs
@@ -381,12 +381,12 @@ https://1panel.cn/docs/installation/online\_installation/
   项目配置完毕，开始使用吧！
   ```
 
-# Okay, please provide the text you would like me to translate. I’m ready when you are.
+# Results Showcase (Domain Name Retired)
 
 ![](../../assets/images/4b4680cc548e0c59ec18cef537c9b1f5412fbbcd.webp)
 
 [https://blog.onani.cn](https://blog.onani.cn)
 
-Okay, here's the translation of the provided text:  [https://alist.onani.cn/](https://alist.onani.cn/)
+[https://alist.onani.cn](https://alist.onani.cn)
 
 ![](../../assets/images/7c24ff7d54b2e0ccaecce4b2ef79155c54124fa4.webp)

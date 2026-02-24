@@ -1,26 +1,24 @@
 ---
 title: "How to revise your article’s history? Like Wikipedia!"
-description: "Despite recent updates to the client-based article publishing system, unforeseen changes may have occurred before users had a chance to review them. Could we implement a full lifecycle diff for these articles?"
+description: "Despite the implementation of client-based article updates, unforeseen changes may occur before users have had a chance to review them. Could we implement a full lifecycle diff for these articles?"
 published: 2026-02-11
 image: ../../assets/images/posts-diff.png
 draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-Here’s a brief summary of the article:
 
-The author is exploring how to automatically generate and display Git commit history for articles on GitHub, specifically using pnpm and Cloudflare Workers. They propose a workaround by cloning a full repository with complete history, then generating a diff index, which is then uploaded to a local file system and used by pnpm build to create the final website content. This approach leverages Cloudflare Worker's Git clone capabilities to provide the necessary commit history without requiring manual intervention during the build process. The article highlights the simplicity of the logic involved and how it effectively automates the article change index generation, ultimately streamlining the workflow for publishing articles to GitHub.
 :::
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
-The blog has added a notification icon in the bottom right corner, which displays a prominent alert when comparing the last visit to the current page with the latest updates. It clearly indicates which articles and updates have been modified.
+Here’s the translation:  “Previously, we implemented a blog notification feature, which is represented by a small bell icon located in the bottom right corner of the blog. This provides a clear and immediate indication of recent updates to the blog, along with details about which articles have been modified or updated.”
 
 ![](../../assets/images/posts-diff-1.png)
 
-But we also want to go further and provide a more detailed breakdown of each update.
+We are also committed to further development and would appreciate it if you could provide a more detailed breakdown of each article update, so readers can see the progress.
 
-Certainly! Here’s the translation:  Of course, Git can naturally read through each article's revisions.
+Certainly! Here’s the translation:  “As we utilize Git for version control, it naturally retrieves commit history for each article.”
 
 ```sql
 (TraeAI-5) C:\Users\af\Documents\GitHub\fuwari [1:128] $ git log src/content/posts/pin.md
@@ -98,9 +96,9 @@ Date:   Thu Jan 15 16:04:10 2026 +0800
 :
 ```
 
-We can integrate a middleware into the website’s construction process to read Git commit history and generate an index file for each article change. This index file will then be inserted into the final website.
+We can integrate a staging intermediate into the website’s construction process, retrieving Git commit history and generating an index file for the change tracking. Subsequently, this index file can be inserted into the final website.
 
-So, theory proves, practice begins!
+The theory is validated, and action begins!
 
 ```sql
 (TraeAI-5) C:\Users\af\Documents\GitHub\fuwari [0:141] $ pnpm update-diff
@@ -115,23 +113,23 @@ Git history generated for 154 files.
 Output saved to src/json/git-history.json
 ```
 
-Okay, let’s proceed. Please provide the text.
+Okay, the index has been generated successfully. Let’s examine the actual content.
 
 ![](../../assets/images/posts-diff-2.png)
 
-Excellent. Here’s the translation:  “We are pleased to test this in a development environment.”
+Okay, let's proceed with testing in a development environment.
 
 ![](../../assets/images/posts-diff-3.png)
 
-Okay! Let’s begin.
+Okay, no problem. Let’s begin with automation.
 
-We need to implement a logic to inject the diff generation functionality into the build stage when using Cloudflare Workers to connect to our GitHub repository for CI/CD.
+Due to our use of Cloudflare Workers to connect to a GitHub repository for CI/CD, we require to integrate the generation diff logic into the build process.
 
-Initially, I wanted to switch from `pnpm build` to `pnpm update-diff && pnpm build`.
+Initially, I intended to transition the build commands from `pnpm build` to `pnpm update-diff && pnpm build`.
 
-Cloudflare Worker cloning a repository does not retain history, and therefore cannot provide a complete diff of the entire article.
+However, upon reflecting on it, Cloudflare Worker cloning repositories does not retain a history of previous changes, rendering it impossible to obtain a complete diff.
 
-Can we rescue it? It’s generally possible, and I’ve instructed ChatGPT to create a challenging prompt structure.
+Could we consider a curve to rescue the situation? It’s certainly possible, and I’ve tasked ChatGPT with creating a challenging prompt structure for this purpose.
 
 ```sql
 git clone https://github.com/afoim/fuwari temp \
@@ -146,18 +144,18 @@ git clone https://github.com/afoim/fuwari temp \
 
 ```
 
-Carefully analyzing this actually seems very simple.
+Carefully analyze the logic is surprisingly straightforward.
 
-Due to Cloudflare Worker’s default clone repository not having commit history, we will re-clone a complete repository with commit history and generate an index file for diff generation. This index file will be copied back into the original clone repository, and then the original clone repository will be cleared, followed by running the original build command.
+Due to Cloudflare Worker defaulting to a repository without commit history, we will recreate a complete repository with commit history and generate an index for diff generation. We will then copy this index file back into the original CF clone repository, subsequently clearing our own cloned repository, and finally executing the original build command.
 
-Despite feeling strained, the web console has been inserted into a lengthy segment of mysterious commands.
+Despite the difficulty in maintaining composure, the web interface has been populated with a substantial number of cryptic commands.
 
 ![](../../assets/images/posts-diff-4.png)
 
-It works well, that’s enough.
+Here’s the translation:  “It is indeed a very effective system, fulfilling its purpose adequately.”
 
 ![](../../assets/images/posts-diff-5.png)
 
-We need to focus on writing articles suitable for GitHub and Cloudflare, who will automatically generate the latest draft with diffs, making it visible in a production environment.
+Ultimately, we will focus on writing articles and deploying them to GitHub, with Cloudflare providing automated diff generation and showcasing the latest versions in a production environment.
 
 ![](../../assets/images/posts-diff-6.png)

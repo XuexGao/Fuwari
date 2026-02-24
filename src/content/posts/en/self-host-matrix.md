@@ -1,6 +1,6 @@
 ---
-title: "QQ微信不够私密？自建自己的聊天服务器！"
-description: "Using Synapse, users can directly communicate with each other through Element and other software on their servers."
+title: "Strictly Translated: “Is QQ WeChat not private enough? Build your own chat server!”"
+description: "Through Synapse, users can directly chat with them via Element and other software on their server."
 category: "Tutorial"
 published: 2025-08-02
 image: '../../assets/images/2025-08-02-17-20-32-image.webp'
@@ -9,54 +9,54 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+The Synapse system requires the installation of 1Panel panel, which is a tool for deploying and managing Synapse servers. The process involves installing and configuring `synapse` as a database user with the PostgreSQL database named `synapse`.  Users must create a database named `synapse` with the appropriate username (default: `synapse`) and password.  The configuration includes setting the server name, public URL, PID file, and enabling federation. The system then creates a storage volume named `synapse-data/_data`, where the `homeserver.yaml` file is edited to configure the server's settings.  The user must set the owner of the database to `synapse`.  The server is configured with PostgreSQL parameters such as user, password, database name, host, and cp_min/max. The log file is configured for logging.  Finally, email configuration is enabled, including SMTP verification, token generation, and registration requirements.
 :::
 
-# Please provide the text you would like me to translate.
+# Pre-setup environment preparation
 
-Due to the manual deployment of Synapse and Matrix, it can be quite challenging. Please install **1Panel面板**.
+Due to Synapse’s and Matrix’s hand-crafted deployment being cumbersome, please install **1Panel**.
 
 # Deployment PostgreSQL
 
 Install and create a database named `synapse` with the username `synapse`.
 
-Download and install PGAdmin4 from your app store.
+Download the PGAdmin4 app from your application store.
 
 ![](../../assets/images/2025-08-02-17-24-58-image.webp)
 
-Please provide the text you would like me to translate.
+Click to add a server.
 
 ![](../../assets/images/2025-08-02-17-27-10-image.webp)
 
-Okay, please provide the text. I’m ready when you are.
+Related information can be accessed through connecting information.
 
 ![](../../assets/images/2025-08-02-17-27-53-image.webp)
 
-Just created a synapse database.
+Just created synapse database.
 
 ![](../../assets/images/2025-08-02-17-28-49-image.webp)
 
-重新创建同名数据库
+Recreate the same database.
 
-Okay, please provide the text you would like me to translate. I will adhere strictly to your instructions and deliver only the translated text without any extraneous information.
+Set the owner (which is the username) to `synapse`.
 
 ![](../../assets/images/2025-08-02-17-29-36-image.webp)
 
-Please provide the text you would like me to translate.
+The sorting rules are `sorting rules` and the character type is `character type`.
 
 ![](../../assets/images/2025-08-02-17-30-34-image.webp)
 
 # Deployment Synapse
 
-Refer to the official tutorial to create a storage volume, otherwise Synapse installation will fail.
+First, refer to the official tutorial to create a storage volume, otherwise Synapse installation will fail.
 
 ![](../../assets/images/2025-08-02-17-32-00-image.webp)
 
-Install Synapse
+Installation: synapse
 
-Navigate to the file management folder: C:/var/lib/docker/volumes/synapse-data/_data
+Navigate to the file management folder: `/var/lib/docker/volumes/synapse-data/_data`
 
-You should see.
+Should you see...
 
 ![](../../assets/images/2025-08-02-17-33-50-image.webp)
 
@@ -179,9 +179,9 @@ auto_join_rooms:
   - "#XXX:你的家服务器URL" # 需要自动加入的房间
 ```
 
-Please configure the homeserver sample configuration file – Synapse.
+Based on the provided text, here’s the translation:  “As needed configuration, for more advanced configurations, please refer to: [[L:Homeserver Sample Config File - Synapse”
 
-# Create an administrator account.
+# Create a administrator account.
 
 Connect to the container’s terminal and enter this command to create a administrator account.
 
@@ -189,10 +189,10 @@ Connect to the container’s terminal and enter this command to create a adminis
 register_new_matrix_user  http://localhost:8008 -c /data/homeserver.yaml  -a -u 管理员用户名 -p 密码
 ```
 
-# Okay, let’s begin. Please provide the text you would like me to translate.
+# Start chatting
 
-Go to https://app.element.io and change your home server to HTTPS.
+Go to https://app.element.io to change your home server to HTTPS.
 
-Via the administrator account login.
+Through the newly created administrator account, log in.
 
 Individuals can register via email.

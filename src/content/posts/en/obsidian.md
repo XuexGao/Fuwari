@@ -1,6 +1,6 @@
 ---
 title: "Modern! Easy to learn! Efficient! And a community-supported top-tier Markdown editor!"
-description: "Here’s a professional English translation of the text:  “I recently utilized MarkText to create articles, and I've been impressed with Obsidian. It has proven to be exceptionally useful, and the community is thriving!”"
+description: "Previously, I utilized MarkText to draft articles, and today I received a recommendation from a friend, prompting me to explore Obsidian. I found it exceptionally useful and the community is remarkably robust!"
 published: 2025-09-17
 image: ../../assets/images/obsidian.webp
 tags:
@@ -10,14 +10,14 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-Obsidian, a Markdown editor, offers a streamlined workflow for managing and organizing your content with its unique folder structure based on "repositories."  It utilizes a system where each repository contains a folder named “vault” containing configuration files for individual projects. The core of Obsidian’s functionality revolves around the `.obsidian` file extension within each repository, which stores configuration information.  The editor also leverages image management through internal links, requiring careful consideration of image paths and potential issues with spaces in filenames.
+
 :::
 
-Video link: https://www.bilibili.com/video/BV1C7pDzpEHY
-# Please provide the text you would like me to translate! I need the content to be translated.
-Download the corresponding software for your system version from the Obsidian website. You can select the language as **简体中文**.
-# First time trying.
-The Obsidian folder system categorizes each directory containing multiple Markdown files as **仓库**.
+Video Link: https://www.bilibili.com/video/BV1C7pDzpEHY
+# Download
+To download the corresponding software for your system version, please navigate to the “Download” section and select the language as **Simplified Chinese**.
+# Initial experience.
+Obsidian, referred to as “Blackwood,” will categorize each folder containing multiple Markdown files into the **Warehouse**.
 
 首先，点击左下角的 **Obsidian  Vault** 
 ![](../../assets/images/obsidian-1.webp)

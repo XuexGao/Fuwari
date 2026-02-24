@@ -1,6 +1,6 @@
 ---
-title: "WeChat, Alipay, Savings Cards & Credit Cards – A Love-Hate Story"
-description: "In China, a WeChat Pay cannot be used for card payments due to the widespread adoption of QR codes. Consequently, many businesses are opting to utilize mobile payment methods like QR code payments instead of traditional card payments, which may present certain challenges…"
+title: "WeChat, Alipay, Savings Cards and Credit Cards – A Love-Hate Saga"
+description: "In China, Alipay cannot be used for card payments due to the widespread use of QR codes. As a result, many businesses are opting to utilize mobile payment methods like QR code payments instead of card payments, which may lead to some complications…"
 published: 2025-11-11
 image: ../../assets/images/wx-zfb-card.webp
 tags:
@@ -11,62 +11,64 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
+Here’s a summary of the article:
 
+The article discusses the challenges and complexities of using multiple payment methods – WeChat, Alipay, and traditional bank cards – in China. While these platforms offer convenient options for online shopping, they require users to switch between them frequently, leading to potential issues like transaction limitations and account freezes.  This creates a situation where individuals often need to utilize a combination of bank cards and digital wallets to manage their finances effectively. The article highlights the growing trend towards cross-platform payments, driven by the promotion of these technologies, but also acknowledges the difficulties associated with seamless transactions across different platforms. It points out that while major retailers are increasingly accepting WeChat and Alipay, many smaller businesses still lack this functionality.  Finally, the article touches upon the broader issue of digital payment security and regulatory concerns, particularly regarding the use of bank cards and the potential for fraud prevention measures to restrict access.
 :::
 
-# Here’s the translation:  “Introduction”
-Like the introduction stated, China is not like the West. A credit card swipe everywhere, commonly used for online shopping abroad, usually involves a POS machine payment, or NFC payment in China. Thanks to QR codes and WeChat Pay’s promotion, there are two ways to pay in China: one is a business displaying a QR code, you proactively pay the business, and the other is showing your payment code, the business will scan it and deduct the amount. Whether it's method one or method two isn't directly from **银联** payments, you need to use **支付宝**, or you’re using **微信**.
+# Introduction
+Similar to the description provided, China differs significantly from foreign countries in its payment methods. In China, a credit card is commonly used for all purchases, and most transactions are processed through POS terminals or NFC payments. However, this is largely due to QR codes and WeChat Pay/Alipay promotions. Two primary payment options exist: firstly, retailers often display QR codes that require the customer to initiate the payment; secondly, you present a payment code directly to the merchant for processing. Regardless of the method employed, these are not direct transactions from **** (UnionPay), but rather utilize **** (Alipay) or **** (WeChat).
 
-# The payment method involving mutual combat.
+# The payment method for mutual combat involves a reciprocal exchange.
 
-You cannot use WeChat to pay on Taobao (also known as Alibaba), and you cannot use Alipay to pay on Tencent’s platforms. If you want to make payments using these platforms, you need to use either WeChat or Alipay.
+The issues have gradually surfaced, as **** is owned by Ali. Similarly, **** is owned by Tencent. If you intend to make payments within **** (also known as the Alibaba system) or ****, you will not be able to use WeChat. Conversely, if you intend to spend your consumption within **** software, you also won't be able to use Alipay.
 
-So, how can we address this?
+How can this situation be resolved?
 
-The bank card is now in circulation. In foreign countries, the card is your tool for spending, and in China, it’s your means of payment on WeChat and Alipay. If your money is all present in WeChat and Alipay, and you need to make a payment at a merchant that only supports Alipay, then first, you must link your bank card to both WeChat and Alipay. Then, you can open Alipay and select “Charge.” Transfer the funds from your bank account’s balance to your Alipay balance (you can also use Alipay directly to top up your bank account).
+Certainly. The bank card has been activated. In foreign countries, a bank card is a tool for your transactions, and in China, it’s used for payments through WeChat and Alipay.  If all your funds are held within WeChat, and you need to make a payment at a merchant that only accepts Alipay, the first step should be to link your bank card to both WeChat and Alipay. Subsequently, you can open Alipay and select “Charge.” Transfer the funds from your bank account’s balance to your Alipay balance (you can also utilize Alipay to directly recharge your bank account).
 
-You are now eligible for a compatible platform, meaning your balance is not restricted to this one! However, sometimes you need to convert it during payments. Is that correct?
-# Bank neutrality, also strictly regulated.
-Because banks are not affiliated with **Tencent** or **Alipay**, so most bank cards can be easily linked to WeChat Pay and Alipay for transactions.
+The issue has been successfully resolved! With a compatible bank account, your balance is now associated with the unlinked platform. However, sometimes it requires a slight conversion during payments – is this correct?
+# Banking operations are conducted with strict adherence to regulations.
+Due to the fact that banks are not affiliated with **Tencent** or **Alibaba**, most bank cards can be easily linked to WeChat Pay and Alipay for transactions.
 
-Whether this consumption model is suitable and effective depends on your card type.
+However, the suitability of this consumption method depends on your card type. Whether it’s usable and effective will vary based on the type of card you use.
 
-The Alibaba has a bank called **Netbank**, but it’s not accepted by WeChat. Similarly, Tencent also has a bank called **MeiHongBank**, and neither of these cards is accepted on Alipay. Therefore, obtaining such a card without pain through Alipay and WeChat is impossible.
+Regarding a tangential point, it’s worth noting that Alibaba also operates a bank, called **Netbank**, although this card, **WeChat**, is not accepted. Conversely, Tencent also has a bank, called **MeiHongBank**, and similarly, the corresponding card, **Alipay**, is not accepted. Therefore, obtaining such a card through seamless transfer between Alipay and WeChat is not feasible.
 
-If the balance needs to flow between platforms, you must find a neutral bank such as **中立的** bank, such as **交通银行**, **农业银行**, or **广发银行**.
+If you wish for funds to circulate across various platforms, you must seek a neutral bank, such as **China Bank**, **Agricultural Bank**, or **Guangfa Bank**.
 
-世界上有很多银行，但并非所有银行都提供相同的服务。随着国家近几年对**反诈，反洗钱**的打击以及针对未成年人的重视，特别是对于**中国银行**和**工商银行**等大型银行进行大额快进快出时，很可能面临冻结，并且无法通过网银解除。这非常令人不快，因此，如果你要开卡，建议选择附近最近的银行，避免选择那些大型国有银行。
+The sheer number of banks worldwide is not uniformly treated, given the recent intensified efforts by the government to combat fraud and money laundering, particularly targeting minors. Utilizing Chinese banks like China Bank and Industrial Bank for large-scale transfers is likely to result in account closures, requiring a physical visit to the branch to unlock them. This process is highly inconvenient, so if you’re seeking a card, prioritize banks located nearby – and avoid selecting larger state-owned commercial banks.
 
-Nearby, there are **China Bank**, **Agricultural Bank**, and **工商银行**. Currently, all three banks have my cards, and I’ve opened a card for the II class card at a branch, an I class card for agriculture, a credit card, and an I class card for social security. There is also an I class card elsewhere.
+I have accounts with the following banks nearby: ****, ****, and ****. Currently, I have cards from all three banks, and I’ve opened a card for the II class card at a branch of **** (Bank of China), an I class card at **** (Agricultural Bank), and an I class card at **** ()]. Also, I have an I class card from **** (Social Security Card).
 
-If you’re unfamiliar with bank cards, you may not fully understand I-class, II-class, III-class, special cards, and credit cards. Here's a brief overview of them.
-- Savings cards require **offline opening** and have a daily limit of 1W-5W. Once you have sufficient financial resources, you can withdraw them later. If there is **social security card, medical insurance card**, it is also an I-class card and a special card. Generally, one person can register only one (excluding special cards) of this type.
-- Savings cards. Most issuing agencies require you to have a **He-type card**, and can be independently registered through **Online**. The daily limit is 1K-1W, and it’s not recommended to open.
-- III-Class Cards: Debit Cards. Commonly used as a **secondary card, friendship card**, with a daily limit of 1K and not recommended for personal use.
-- General savings cards are typically required by national regulations for **社保、医保账户** (social security and medical insurance accounts), excluding multi-use cards and those of the same type as one-card accounts.
-- Credit card: Offers savings features, but not particularly reliable. See the following for more details. Students without working status can apply, but they do not have a credit limit and are typically used for international payments (requires CVV/CVC verification, not accepted by banks that issue savings cards, and will be issued based on your employment status).
+If you have not researched bank cards, you may not fully understand the I-level, II-level, III-level, special cards, and credit cards. Here’s a brief overview of these types of cards.
+- Here’s the translation:  **Class I Savings Card:** Most issuing institutions require a physical opening of these cards, with daily limits ranging from 10,000 to 50,000. Once your financial resources are sufficient, you can increase the limit.  Specifically, **Social Security cards, health insurance cards**, and those with savings features, are also classified as I-class cards and designated as special cards. Generally, one individual can register only one (excluding special cards).
+- Here’s the translation:  **Class II: Savings Cards.** Most issuing institutions require only a basic **Heave-a-Card** card, followed by independent registration through **Online**. The daily limit is between 1,000 and 10,000, and it's generally not recommended to open one.**
+- III-Class Cards: Debit cards primarily utilized as a supplementary card, typically with a daily limit of 1,000. They are not recommended for personal use.
+- Special cards typically function as savings cards. Most are designated for national account requirements, including employer-provided and individual health insurance accounts. While versatile, they share similar features with standard debit cards.
+- Here’s the translation:  **Credit Card:** The card offers savings features, though its usability is limited. Details can be found in the accompanying documentation. Students without a valid credit history may apply, but they do not have an available credit limit and are typically used for international transactions (requiring CVV/CVC verification, and not accepted by banks handling savings accounts). Existing cardholders will receive a credit limit based on their employment status.**
 
-I used my工商银行 savings card for online purchases because I wanted to eat Alipay’s discount, so I transferred my WeChat money to the bank card first, then made a payment through Alipay, and it failed. I went to the branch and said I needed to eat the store clerk's Ma Li face after that, thankfully they gave me an ID and card and receipt, and it was solved in just a few seconds, and I never put money back into the bank again.
+I previously used a savings card from **** for online transactions in order to take advantage of Alipay’s offers. I would transfer my WeChat account funds to the bank card first, then use Alipay for withdrawals, and unfortunately, it failed. After arriving at a branch, I was told that I needed to eat a store employee's "horse face" (a gesture of apology), and thankfully, they provided me with an ID and card along with a receipt, which quickly resolved the issue. Since then, I have never again deposited money into a bank account.
 
-The customer attempted to purchase a 6000 CNY item using WeChat or Alipay, then changed their mind and initiated a refund. The retailer hadn’t shipped the item yet, so they promptly issued a refund. Upon reconfirming the product, the bank refused the transaction due to exceeding the daily limit of 10000 CNY.  The customer noticed that after their initial successful payment, their daily limit was only 4000 CNY. Even if the original purchase amount had been returned to their account, the limit remained unchanged upon the transaction.  Furthermore, when attempting to withdraw funds from their card to WeChat or Alipay, the withdrawal would also deduct the daily limit. Therefore, cross-platform transfers require caution, and a mistake could lead to being locked out of your account. Repeated refusals by the bank may result in temporary freezing of your card, necessitating identification verification for physical access.
+Here’s a professional translation of the text:  “Imagine a scenario where you possess an I-class card with a daily limit of 10,000 CNY. Your current balance is 8,000 CNY. You intend to purchase a 6,000 CNY item via WeChat or Alipay, and subsequently experience a refund due to a product mismatch. Fortunately, the merchant has not shipped the item. The refund is processed smoothly, and your card status returns to its initial state upon subsequent confirmation of the product. Subsequently, you reconfirm the product, and are denied authorization for the transaction. You’ve noted that upon your first successful payment, your daily limit is capped at 4,000 CNY. Even if the original purchase amount has been returned to your account, the transaction itself remains valid, but the limit is already deducted upon the initial transfer from your card to the merchant's side at that moment. Similarly, withdrawing funds from your card to WeChat or Alipay will also deduct your daily limit, necessitating caution when transferring between platforms. A careless action could result in a situation where your card becomes locked and inaccessible, requiring identification verification for offline access.”
 
 # Credit card and savings card
-The question is whether credit cards have a daily limit. The text mentions “Ⅰ类，Ⅱ类，Ⅲ类” but doesn’t explicitly state that credit cards also have a daily limit. Therefore, it's unclear if credit cards have a daily limit.
+I noticed something important – the previous discussion referenced **daily limit**(B: daily limit) for classes I, II, and III. However, credit cards were not mentioned in that context. Consequently, does credit card usage have a daily limit?
 
-Credit cards do not have daily limits. However, your WeChat and Alipay funds cannot be directly transferred to a credit card. You must first transfer them to a savings card, then input the card number through the **Transfer** function in the bank app.
+Certainly! Here’s the translation:  “Yes, a credit card does not have daily limits! However, your WeChat and Alipay funds cannot be directly transferred to the credit card. You must first transfer them to a savings account, then input the card number through the **Transfer** function within the bank's mobile app.”
 
-“You’ve discovered another thing, right? Even with a no-limit credit card, the money will still be deducted from your savings account when you transfer it to the credit card. You’ll only have that much money available for one day.”
+Are you noticing another issue, yes?” “Even with a no-limit credit card, the final transfer of funds to your savings account will still deduct your corresponding limit. How many days can you ultimately access those funds after the transfer?
 
-Credit cards, regardless of credit limit, are partnered with major issuing banks and WeChat Pay. Your daily spending using a credit card is likely to offer discounts and allow you to accumulate points (similar to **cashback**).
+Credit cards are widely accepted by major issuing banks and offer various benefits, including potential discounts on purchases. Users can accumulate points through everyday spending, similar to a cashback system.
 
-However, my school cafeteria only accepts Alipay for payment, and does not accept credit cards. I can only keep a small amount of balance in my savings card.
+However, I am currently enrolled in a school cafeteria that only accepts payment via Alipay, and it does not accept credit cards. I can only keep a small amount of funds in my savings card.
 
-The domestic payment landscape is currently challenging, with major institutions encouraging the use of credit cards, but some businesses do not accept them. For individuals without bank accounts who want to exchange WeChat and Alipay, it’s extremely difficult, leading to the emergence of **代付** business models, where intermediaries charge fees for assistance (e.g., you only have a limited balance in WeChat but want to buy something on Taobao).
+Here’s the translation:  This is a significant challenge for domestic payment systems, with major institutions encouraging consumers to utilize credit cards. However, some merchants are hesitant to accept them. For individuals without bank accounts who wish to exchange WeChat and Alipay, it presents considerable difficulties, leading to the emergence of **** services. Intermediaries typically charge fees for their assistance, then facilitate the payment process (e.g., when a user has limited funds but wants to purchase goods on Taobao).
 
-# For giants, we can only compromise.
+# For large corporations, we are limited in our flexibility.
 
-In recent years, Taobao has experienced several times of disappointment with WeChat QR code payments, but most users have repeatedly encountered them. It’s now often the case that you can pay today but won't be able to find a way to do it tomorrow. Meanwhile, JD does not support Alipay payment.
+Over the past few years, Taobao has experienced several instances of WeChat scanning and payment issues, with most users consistently encountering multiple scans before finding a viable method for payment. However, JD.com has consistently refused to accept Alipay payments.
 
-For a long period, **Blue Green Conquest** has not stopped; we still need to transfer money through bank cards across various platforms, and we are responsible for the risk of our card being frozen.
+For an extended period, **lue Green Clash** has continued unabated. We continue to require funds to be transferred between platforms via bank cards, and we bear the risk of card freezes ourselves.
 
-The fees charged by WeChat for cross-posting transactions are typically 0.01%, and small amounts can be obtained through promotional activities to waive service fees, while Alipay charges a 0.01% service fee for each natural person's lifetime free recharge limit, after which it will also charge a service fee. From your perspective, this may seem insignificant, but how many people are using WeChat and Alipay to cross-post balances? Even with a small transaction fee of one yuan per second, it can create high returns, and for large companies, we must compromise.
+When transferring via WeChat, typically a service fee of 0.01% is charged. Small amounts can be redeemed for free service credits through promotional activities, while Alipay charges a lifetime of 20,000 RMB per natural person for free replenishment, and then a 0.01% service fee upon subsequent transactions. Considering this may seem minor, however, you wonder how many users are utilizing WeChat and Alipay to facilitate mutual transfers of balances? Even with a small transaction fee of one-cent, a single action can generate substantial revenue, particularly for large enterprises, where compromise is often necessary.

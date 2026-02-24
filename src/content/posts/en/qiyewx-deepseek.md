@@ -1,6 +1,6 @@
 ---
-title: "说什么？企业微信能免费用Deepseek？！还能调成猫娘？！"
-description: "Today, I stumbled upon a business WeChat group and discovered that it’s possible to add an AI assistant. Subsequently, I introduced a cat girl avatar into the group."
+title: "What are you saying? Can WeChat Business be used for free with Deepseek?! Can it be turned into a cat girl?!"
+description: "Today, I stumbled upon a business WeChat group and discovered that I could add an AI avatar. Then, I brought out a cat girl."
 category: "Record"
 published: 2025-08-07
 image: '../../assets/images/2025-08-07-04-10-58-image.webp'
@@ -9,27 +9,27 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article explains how to create a chatbot using a simple enterprise microblogging platform, leveraging image prompts for character customization and voice interaction. It details the steps involved in setting up roles, utilizing prompt injection techniques for enhanced responses, and providing various methods for interacting with the chatbot.
+This article explains how to create a business micro-sign in the ‘Worktable’ section of a platform, utilizing voice prompts and character settings. It then demonstrates how to utilize these tools to generate text content. Several methods are available for generating this content through the interface.
 :::
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
-@company_name
+Simply, you need to establish a business micro-number.
 
-The work desk leads to the smart robot.
+Please proceed to the `Workstation`, and you will find the `Smart Robot`.
 
 ![](../../assets/images/2025-08-07-04-12-05-e290f1322ccb6a32082cad8d44017ba4.webp)
 
-Okay, please provide the text you would like me to translate. I’m ready when you are.
+Next steps have been finalized.
 
-Character setting prompts can be used to inject keywords into the character.
+In the context of character development, providing prompts can facilitate the introduction of evocative words and phrases to enhance roleplaying or storytelling.
 
 ![](../../assets/images/2025-08-07-04-13-32-13b847d4e4e01c1780dbf18828172ebe_720.webp)
 
-Okay, please provide the text. I’m ready when you are.
+Then you received…
 
 ![](../../assets/images/2025-08-07-04-13-46-b3720dc7d5946e995cbf6df189d02677.webp)
 
-Please provide the text you would like me to translate.
+Using various methods…
 
 ![](../../assets/images/2025-08-07-04-14-58-d5ad87ab42f14ccbc220bf91ba5ec5d6.webp)

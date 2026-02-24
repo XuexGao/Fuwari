@@ -1,6 +1,6 @@
 ---
-title: "Continental Direct TG Web? Reachable!"
-description: "Here’s the translation:  “The TG Web platform utilizes a decoupled architecture, with the frontend deployed on static hosting platforms and the backend utilizing various service-based solutions.”"
+title: "Land Directly Connected to TG Web? Reachable!"
+description: "The TG Web platform utilizes a decoupled architecture, with the frontend deployed on static hosting platforms and the backend utilizing various services for reverse engineering."
 category: "Record"
 published: 2025-08-02
 image: '../../assets/images/2025-08-02-18-10-18-image.webp'
@@ -12,11 +12,11 @@ lang: en
 
 :::
 
-# Please provide the text you would like me to translate.
+# Please note that directly linking this project to your domain may result in abuse.
 
-Recommend renaming the index.html file. This will allow users to access the root path without being able to access normal pages, but it does not guarantee that abuse will occur.
+Recommend renaming the `index.html` page. This will allow users to access the root path without being able to reach normal pages, but it does not guarantee that abuse will never occur.
 
-Please provide the text you want me to translate! I need the content to be translated into English.
+Then create a new `index.html` entry with the following content:
 
 ```html
 <html><head>
@@ -697,21 +697,21 @@ Please provide the text you want me to translate! I need the content to be trans
 
 ![](../../assets/images/2025-08-02-18-30-40-75bf069f14b199651db36b1bda015bc2_720.webp)
 
-# Okay, please provide the text. I’m ready when you are.
+# The core principle.
 
-The website uses a front-end and back-end separation.
+The website utilizes a modular approach, separating frontend and backend components.
 
-Front-end is static assets that can be deployed directly to Cloudflare Page.
+The frontend is a static asset, which can be deployed directly to Cloudflare Page.
 
-Backend has up to 10 APIs, reverse them.
+Here’s a professional translation of the text:  “The backend supports up to 10 APIs, allowing for reverse engineering.”
 
-Please provide the text you would like me to translate.
+Please replace the `.web.telegram.org` placeholder with your domain name.
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
-Using TG Web K as an example.
+Here’s the translation:  “As an example of TG Web K, consider the following:”
 
-The TG backend API has 10 endpoints, including:
+The backend API has 10 endpoints, including:
 
 ```bash
 pluto.web.telegram.org
@@ -726,14 +726,14 @@ vesta-1.web.telegram.org
 flora-1.web.telegram.org
 ```
 
-Pluto.web.072103.xyz
+If your domain name is `072103.xyz`, then it should be `pluto.web.072103.xyz`.  All other instances of this type are similarly defined.
 
 Warehouse Fork: [morethanwords/tweb: Telegram Web K, GPL v3](https://github.com/morethanwords/tweb)
 
-`.web.telegram.org` 替换为 `.web.072103.xyz`
+Replace the global search for `.web.telegram.org` with `.web.072103.xyz`.
 
-Deploy this repository to Cloudflare Page, configure the deployment command as `pnpm build`, and set the output directory as `public`.
+Deploy this warehouse to Cloudflare Page, utilizing the command `pnpm build`. Configure the output directory to `public`.
 
-# Okay, please provide the text. I’m ready when you are.
+# Success.
 
 ![](../../assets/images/2025-08-02-18-21-46-0c8fc3ac93604c65401132aaa59c803d_720.webp)

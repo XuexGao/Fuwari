@@ -1,65 +1,65 @@
 ---
-title: "完全免费！搭建一个自己的短链服务！"
-description: "Leveraging Cloudflare Worker and GitHub, create a pure static, immutable short-chain!"
+title: "Strictly Translated! Build your own short chain service!"
+description: "Utilize Cloudflare Worker+GitHub to build a pure static, non-wormish short chain!"
 published: 2026-01-14
 image: ../../assets/images/static-redirect-group.webp
 draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article outlines a project focused on creating a simple static redirect service using Cloudflare Workers and GitHub Actions, streamlining the process of generating short links. It details the core functionality – including handling 404 errors, leveraging CDN for static assets, and implementing a dynamic short chain logic via Worker proxy access.  The guide emphasizes utilizing a GitHub Action workflow for automated maintenance and security measures like token management and WAF rules.
+This project utilizes a simplified approach to creating static redirects, leveraging Cloudflare Workers for efficient handling of 404 errors and dynamic routing. It’s designed to be self-deployable using a GitHub repository README, offering a streamlined solution for managing redirects without requiring manual configuration or extensive scripting. The core functionality centers around a Worker proxy that directly serves the `/_url` endpoint, triggering Cloudflare Workers to rebuild the redirect chain and provide fullbacks to the 404 page.  The project’s architecture relies on a straightforward approach utilizing GitHub Actions to automatically trigger the rebuilding of shortchains, ensuring consistent routing updates.
 :::
 
-# Here’s the translation:  “Introduction”
-This is a simple self-deploy tutorial for the project, which should be placed in the README of the repository. Originally, it was intended to be handled by AI, but it has added considerable work. In fact, all that’s needed is a Cloudflare Worker; since we're required to write it ourselves, it’s reasonable to include this as part of the project.
+# Introduction
+The article segment is a simple self-deploy tutorial for this project, which should be placed in the README of the repository. It was originally intended to be outsourced by AI, but it has become overly focused on the bizarre and intricate interplay between the GitHub Page+Cloudflare Worker front-end and back-end separation, adding considerable work. In fact, a single Cloudflare Worker is sufficient for this project, so it’s reasonable to have me write it by hand.
 
-# Project principles
-The project and the previous short chain project are similar, but they have been simplified.
+# Project Principles
+The project and the previous short chain project are similar, but simplified some things.
 
-The project will integrate the front-end and back-end, with almost no validation performed on the front-end; all validation is handled in the backend. No two projects need to be combined for this process.
+First, this project integrates the front-end and back-end, with almost no validation happening on the front-end; all validation is handled in the backend, eliminating the need for two separate projects to implement rules.
 
-Due to the project’s frontend being simple, with two HTML pages (one for creating and one for redirecting), combining them doesn't add unnecessary bulk.
+Due to this project’s frontend being very simple, it’s just two HTML files (one for creating a page and one for redirecting pages), so combining them doesn’t make it bloated.
 
-The project no longer utilizes Cloudflare’s 301/302 redirects, effectively breaking the 2000 static redirect limit and potentially being infinite in scale. Instead, it directly uses a CDN to handle 404 errors for static assets, forwarding them to the 404.html file using JavaScript for short-chain queries and reloads (similar to Nginx's full-back).
+The project no longer utilizes Cloudflare service-side 301/302 redirects, which has exceeded the limit of 2000 static redirections, theoretically unlimited. Instead, it directly uses CDN to fullback to 404.html when a 404 error occurs for static assets. Then, JavaScript will perform short chain queries and redirect (similar to Nginx's fixed-content).
 
-The content is a discussion about the potential for a new, more efficient method of data storage and retrieval, leveraging a novel approach to address limitations in existing systems.
+Following up, if a pathname doesn’t match any rules, it will be caught by a default fallback origin, allowing compatibility with similar URLs: https://2x.nz/posts/pin/ --> https://blog.acofork.com/posts/pin/
 
-The goal is to create a short chain logic, similar to an existing project. This involves worker agents accessing GitHub, modifying their JavaScript code to add a new short chain rule, and then pushing this change. This will trigger Cloudflare Worker’s re-build, which will then automatically redirect based on the new pathname.
+Then, the logic for creating short chains is similar to a project, essentially involving worker proxies accessing GitHub, modifying JavaScript to add a new short chain rule, and then pushing it. This will automatically trigger Cloudflare Worker’s rebuild, after which you can access the new pathname correctly.
 
-The system has been approved for a valid expiration period, the principle is simple. When creating short chains in the frontend, send a field indicating when the expiration date should be updated to the backend. The backend will then write this information to a file, and Github Action’s scheduled monitoring will clear expired short chains.
+We have implemented a longer expiration period, and the principle is remarkably straightforward. When creating short chains on the frontend, we send a field indicating when the expiration date will expire to the backend; the backend then writes this information to a file, and finally, GitHub Action's scheduled monitoring clears expired short chains.
 
-# Where to find a short chain?
-My 2x.nz is purchased from porkbun.com for around one hundred dollars a year. Other suffixes are also good, such as `.im` and `.mk`.
+# Where to get a short chain?
+My 2x.nz is purchased from porkbun.com, and it costs around one hundred dollars a year. Other suffixes are also good, such as `.im` `.mk`.
 
-# Formalize your short chain service.
+# Formally build your short chain service.
 
-First, clone the repository.
+First, Fork Warehouse.
 
-github repository
+GitHub repository: afoim/Static_Redirect_Group
 
-Please provide the text you want me to translate.
+Next, I will modify some hardcoded elements due to Cloudflare Worker not being able to use environment variables. Some things are hardcoded in all HTML files; try `afoim` for these changes to be replaced with your (you can also add a layer and write a configuration, then inject content through building).
 
-Please provide the content of the short chain folder. I need the content to edit it.
+Then, edit the short chain folder in the js directory to your desired.
 
-Please provide the content you would like me to translate into English.
+Following up, create a GitHub token with only `repo` permission.
 
-Continue, bind secret variables, using `wrangler secret put XXX`.
+Further, bind secret variables using `wrangler secret put XXX`.
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-GitHub token
-Okay, please provide the text you would like me to translate. I’m ready when you are.
-GitHub Repository Name
-Okay, I understand. Please provide the text you would like me to translate.
+| Variable name | Value | The table cell content is:  “The company’s revenue increased by 15% year-over-year.” |
+| :--- | :--- | :--- |
+| GITHUB_TOKEN | C:ghp_xxxx... | Just applied token |
+| GitHub Owner | Your GitHub username | `afoim` |
+| GitHub Repository | Static Redirect Group | Your warehouse name |
+| C:BASE_DOMAIN | Your short chain domain name | Worker’s default domain `xxx.workers.dev` |
 
-Please create your short chain at `/_url`.
+At this time, you can create your short chain by accessing `/_url`.
 
-# Protection
-Protecting short chains from bots and rate limiting is crucial.
+# Protective measures.
+Recommended to protect short-chain networks from spam (or Cloudflare Turnstile, rate limiting…)
 
-Create a Cloudflare WAF rule for this.
+In Cloudflare, create a WAF rule.
 
-当传入请求匹配时...
+When the request matches…
 ```sql
 (http.host eq "你的域名" and (
   http.request.uri.path eq "/_url"
@@ -67,6 +67,6 @@ Create a Cloudflare WAF rule for this.
 ))
 ```
 
-Then take action...
+Then take action…
 
-Interactive inquiry
+Interactive inquiry **Interactive Inquiry**

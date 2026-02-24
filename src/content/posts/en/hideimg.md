@@ -1,6 +1,6 @@
 ---
 title: "A simple image that’s not remarkable, can be revealed with a high exposure?"
-description: "Here’s a professional translation of “教你制作自己的‘光棱坦克’！”:  **Learn how to create your own ‘light prism tank’!**"
+description: "Here’s a professional translation of the text:  **Learn how to create your own “Light Prism Tank”!**"
 category: "Tutorial"
 published: 2025-08-04
 image: '../../assets/images/2025-08-04-12-05-21-image.webp'
@@ -9,25 +9,25 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article describes a technique called "Experience Site" that creates a unique visual effect by subtly darkening and arranging hidden images within a video. The process involves lowering the brightness of the original image, embedding it in a grid pattern, and then revealing the hidden images as grayscale, effectively blurring the lines between the two.
+This article describes a technique called "Experience Site" that creates an image by subtly altering the brightness of hidden images within an original picture. The process involves embedding the original image and then reducing its luminance, arranging it in a grid pattern, and finally rendering it as a grayscale net.  Exposure increases the original image's brightness, while the hidden images are revealed as white, effectively obscuring the details of both layers.
 :::
 
-# Experience site
+# Experience site.
 
 https://imghide.2x.nz/
-Please provide the text you would like me to translate.
-Video tutorial: https://www.bilibili.com/video/BV1wdh3zYESe/
+> 
+Video tutorial: [https://www.bilibili.com/video/BV1wdh3zYESe/](https://www.bilibili.com/video/BV1wdh3zYESe/)
 
-# Okay, please provide the text. I’m ready when you are.
+# The core principle.
 
-First, embed the image and reduce its brightness to a very low level, arranging it in a chessboard pattern.
+First, embed the original image. Subsequently, reduce the brightness of the hidden image to a very low level and arrange it in a chessboard pattern.
 
-A grainy grid pattern.
+The final image exhibits a grainy, grid-like pattern.
 
-The content is extremely difficult to understand due to the poor quality of the image. It appears to be a blurry and indistinct representation of something, making detailed analysis impossible.
+The default view is limited to the original image, although the hidden information remains visible, but it’s too dark; human eyes will treat them as black pixels.
 
-As a result of enhancing visibility, the original image became overexposed, resulting in a predominantly white appearance and loss of detail.
+When enhancing visibility, the original image became overexposed, resulting in a predominantly white appearance and loss of detail.
 
-The hidden image is becoming clearer.
+The hidden image is now revealed, gradually becoming visible.
 
-The final image has disappeared, but the hidden image now fully appears.
+The final image has vanished, while the hidden image now fully reveals itself.

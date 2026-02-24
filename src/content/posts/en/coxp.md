@@ -1,6 +1,6 @@
 ---
-title: "Do you really understand cross-origin browser technologies? COOP, COEP, CORP, and CORS are what do you mean?"
-description: "Here’s the translation:  “Are you encountering error messages like ‘Due to Cross-Origin Request Restrictions, Loading Disabled’ or ‘200 Failed’ while browsing or developing websites in your browser? Today, we'll explain the browser’s cross-origin security model.”"
+title: "You really understand cross-domain browsers? COOP, COEP, CORP, CORS are what do they do?"
+description: "Do you encounter the message “Due to Cross-Origin Request (CORS) restrictions, the request was blocked” or “200 Failed” while browsing or developing websites in your browser’s developer console? Today, we will explain the browser's cross-origin security model."
 published: 2026-02-03
 image: ../../assets/images/coxp.webp
 draft: false
@@ -10,169 +10,169 @@ lang: en
 
 :::
 
-# Please provide the text you would like me to translate.
-You will know that a website, apart from providing its own content like `<p>hello world</p>` , can also embed external resources such as `<img src="https://othersite.com/hello.webp">` .
+# Formal commencement.
+If you have created a website (HTML), you’ll recognize that a webpage can provide content beyond its own, such as `hello world`, and also embed external resources like `image src="https://othersite.com/hello.webp"`.
 
-HTML allows us to freely cite resources, but this can also lead to some issues.
+Here’s the translation:  “On one hand, HTML allows for extensive resource citation, but this can also introduce complications.”
 
-We can consider building a site with high-resolution, full-sized images. If someone becomes envious and wants to create a similar site, it could be built using HTML as a shell, changing the brand name and referencing your images directly. This would require hosting only minimal text files (HTML shells) instead of actual image hosting.
+Here’s a professional translation:  “Let's consider the possibility of establishing a portfolio site featuring high-resolution images. With a significant volume of traffic, it’s conceivable that someone would be interested in creating a similar platform. This could be achieved by utilizing HTML as a shell to embed your brand and incorporate your own imagery directly into the website. The system would require minimal hosting – primarily text files – instead of managing actual image storage.”
 
-We cannot allow him to do that. Therefore, we need to ensure that our images return a **CORP 响应头** with the value **same-site** when they are pulled. This will prevent any browser blocking of loading.
+We cannot allow him to do this. Therefore, we need to implement a mechanism that returns a **CORP Response Header** for images when they are being pulled, and sets its value to **same-site**. This will ensure that the browser blocks loading if the image URL is not associated with our domain.
 
 ![](../../assets/images/coxp-1.webp)
 
-It’s a cross-origin resource policy (CORS) that regulates access to resources from different origins. It governs whether or not content can be accessed from outside of the current website.
+Here’s the translation:  This is a Cross-Origin Resource Policy (CROP), which governs the transfer of resources between different domains. It addresses the issue of whether or not certain resources can be accessed from outside the current origin.
 
-Okay, please provide the text. I’m ready when you are.
-Please provide the text you would like me to translate! I need the text to be able to fulfill your request.
-Same-origin. Only allowed to retrieve corresponding resources from `example.com`.
-Same-site content is allowed only `*.example.com` and `example.com`.
-Default value. Allows all origins, anyone can pull.
+|      Value       |                    Description: The table contains a list of items. Each item has a name and a description. The names are in bold, and the descriptions are in italics.                     |
+| :----------: | :---------------------------------------: |
+| Same origin  |        Source: Example.com Allow access only to this resource.        |
+|  Same-site   | Same website. Only allowed `*.example.com` `example.com`. Retrieve resources. |
+| Cross-origin |          Default value. Allows all sources, anyone can retrieve.           |
 
-The issue is now addressed concerning the misuse of images. A more challenging problem has emerged – another website that doesn’t provide media resources but accesses visitors via IP address.
+Okay, we have addressed the issue of inappropriate image usage. We now face a more complex challenge – another website that doesn’t offer media resources but relies on visitor IP addresses for access.
 
-The backend logs have recently revealed a significant number of unusual IP addresses. After investigation, it was determined that the bottom of the website displays visitor IP addresses via F12 inspection. This indicates that the website in question is the one being accessed.
+Here’s the translation:  “This website was originally intended for personal use. However, recent analysis revealed numerous unusual IP addresses in the backend logs. Through a thorough investigation, it was determined that the bottom of the site displays visitor IP addresses via F12. This indicates that the website you are accessing is your own.”
 
-The API response header includes a CORS (Cross-Origin Resource Sharing) attribute. This attribute allows any origin to access the API, regardless of where it is hosted.
+Upon reviewing the response headers received from the API, you discovered that you previously configured a `Access-Control-Allow-Origin: *` header to enable cross-origin requests and allow anyone to call your API and retrieve the response.
 
-The requested translation is:  “The content is available at [https://www.yourwebsite.com].”
+Subsequently, you will modify the value of that head to `yourwebsite.com` in this way, thereby restricting API calls to only your own website. Other users will still be blocked by the browser.
 
 ![](../../assets/images/coxp-4.webp)
 
-“We utilize a Content Delivery Network (CDN) to ensure optimal performance for users in various regions. This allows us to deliver content quickly and reliably, regardless of their location.”
+Following this, you created a website and configured different CDN images for visitors in various regions. The goal is to inform users that the website utilizes a specific CDN across these regions.
 
-The response headers from various CDN providers return different values, so I added JavaScript to read the response headers and re-write them on the page. However, the page did not display, and the network request was a 200 failure.
+Here’s the translation:  “Upon considering various response headers received from CDN providers, I observed a discrepancy in their values. Consequently, I implemented JavaScript to read these header values and subsequently re-write them on the page. However, the resulting page did not display, and the network request resulted in a 200 Failed status.”
 
-Due to different CDN platforms and the primary domain being `blog.yoursite.com`, and the image CDN domain being `img.yoursite.com`, this triggers a cross-domain issue.
+Upon reflection, I realized this is a cross-domain issue. The CDN servers are different, and the primary domain for the blog is `blog.yoursite.com`, while the image CDN is `img.yoursite.com`. This will trigger a cross-origin request.
 
-Although you have already implemented the correct access control headers **Access-Control-Allow-Origin** and printed some response headers to a browser, only allowing read access to the response body, JavaScript is unable to retrieve the Server header.
+Despite having successfully configured the **Access-Control-Allow-Origin** header previously, your server only permits access to the response body.  You subsequently printed all response headers received via JavaScript, discovering that only the `Content-Type` and a few other non-essential headers are accessible. The JavaScript is unable to retrieve the **Server** header.
 
-The code finally works!
+Finally, your code was successfully deployed across major CDN platforms, enabling the return of the following headers: `Access-Control-Expose-Headers: server`.  You persevered through considerable effort and achieved this milestone.
 
 ![](../../assets/images/coxp-2.webp)
 
-Umami is a service that tracks website traffic. It’s built on top of tracking JavaScript and provides access to publicly available data about website visits.
+As your website grows in size, you’re considering adding a traffic display module. However, due to the static nature of the site and your desire to avoid embedding backend code within a predominantly frontend project, you've come up with a solution: establishing Umami. Subsequently, you integrate tracking JavaScript into your website, and through client-side JavaScript, you retrieve data from Umami’s publicly accessible pages to determine website traffic.
 
-Despite the public pages of Umami being publicly available, it is not always possible to successfully request a visitor token first. You must then obtain this visitor token and access the access volume endpoint, before reaching the final access volume endpoint.
+Despite the public availability of Umami’s webpage, securing access is not a straightforward process. First, you must request an authorization token from the platform and then use that token to access the access volume endpoint. Finally, you will obtain the final access data.
 
-Please provide the text you would like me to translate.
+However, this is not a significant challenge for you; it simply requires writing the complete logic in JavaScript and then encapsulating it as a function.
 
-However, the actual request is failing when attempting to access the second endpoint, due to the fact that it’s a request to a blog with the URL `blog.yoursite.com`. Because you correctly configured the `Access-Control-Allow-Origin` header for the first request, JS successfully received the visitor token as well.
+However, the application encountered issues during runtime. This is due to two different requests: one originating from `blog.yoursite.com`, and another from `umami.yoursite.com`. Because you correctly configured the `Access-Control-Allow-Origin` header, the first request was successfully sent and the JavaScript received the visitor token as expected.
 
-The request is being blocked by the browser due to a security measure.
+The request is being blocked by the browser due to an issue with the “x-umami-share-token” header. This indicates a potential security measure preventing unauthorized sharing of the request.
 
-You considered it carefully, oh! Despite the configuration of **Access-Control-Allow-Origin 响应头**, it only allows access to the response body, and browsers need to configure a **Access-Control-Allow-Headers 响应头** on Umami.
+Upon considering the matter, I’m pleased to say that we have implemented a policy allowing only access to the response body. However, the browser still requires an additional header, specifically an Access-Control-Allow-Headers directive, to be configured.
 
-The content is ready for access.
+Following the configuration of the response header, you directly added `Access-Control-Allow-Headers: *`, and finally, your code functioned successfully and received the correct access rate.
 
 ![](../../assets/images/coxp-3.webp)
 
-Cross-origin resource sharing (CORS) is a mechanism that allows an application to control whether the server can access resources from another origin. It primarily addresses issues related to API requests, ensuring that only authorized clients can request data from specific origins. Specifically, it’s designed to prevent unauthorized access and potential security vulnerabilities.
+This refers to Cross-Origin Resource Sharing (CORS), which controls the ability of an application to request resources from a different domain. Specifically, it pertains to requests made by APIs that are not directly accessible from the origin server, and only allow for requests from specific authorized origins.
 
-- Access-Control-Allow-Origin (Who can access resources from this origin?)
+- Access-Control-Allow-Origin (Who can access resources across origins?) **Default, no one can**}]
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-Allowed any source to access resources (⚠️ Cannot be used simultaneously with `Allow-Credentials: true`)
-Only authorized access is permitted via the specified URL.
-Allow (such as `file://`, `sandbox` or `iframe`)
-- Access-Control-Allow-Methods(default deny)
+|Value|Description: The table contains a list of items with their respective prices.|
+|:-:|:-:|
+|C:|Allowed resources (⚠️ Cannot be used simultaneously with Allow-Credentials: true)|
+|C:https://example.com|Only authorized users can access resources.|
+|C: null|Allowing origin: null (as `file://`, sandbox iframe)|
+- Access-Control-Allow-Methods(Cross-Origin Request Policy (CORS) is disabled).
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-Allow GET requests.
-Allow POST requests.
-Allow PUT requests.
-Allow deletion requests.
-Allow patch requests.
-Allow pre-inspection requests
-GET, POST, and OPTIONS are multiple methods.
+|Value|Description: The table contains a list of items with their corresponding prices.|
+|:-:|:-:|
+|Get request|Allowed GET requests|
+|C:POST|Allow POST requests|
+|C:PUT|Allow PUT requests|
+|Delete|Allow deletion requests.|
+|PATCH|Allow PATCH requests|
+|C:OPTIONS|Allow pre-inspection requests|
+|Request handling|Multiple methods, separated by commas.|
 
-- Cross-Origin Resource Sharing (CORS) is a mechanism that allows web applications to request resources from a different domain than the one hosting the application. It’s used to enable communication between web pages and APIs, ensuring that only authorized domains can access sensitive data or functionality. The specific implementation of CORS varies depending on the browser and server configuration.
+- Cross-Origin Resource Sharing (CORS) allows requests with headers that are allowed by the client. Specifically, it permits requests to be made from a different domain than the origin of the request. The MDN Web Documentation defines CORS as a mechanism for controlling which domains can access resources on behalf of a user’s browser.
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-Allows carrying request headers with content type.
-Allow carrying authentication tokens.
-Allow specified custom request headers.
-Allow all request headers (modern browsers support, primarily for non-sensitive requests)
-- Cross-domain access does not allow the transmission of credentials.
+|Value|Description: The table contains a list of items. Each item has a name and a description. The names are in bold, and the descriptions are in italics.|
+|:-:|:-:|
+|Content type|Allow carrying request headers.|
+|Authorization|Permit carry valid identification.|
+|C:Custom-Header|Allowed custom request headers|
+|``|Allowing all request headers (supported in modern browsers, primarily for non-credential requests)|
+- Access-Control-Allow-Credentials(Cross-Origin Request Restrictions (CORS)) – Does the Cross-Origin Request Policy (CORS) allow for the transmission of credentials? **Default Deny**
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-Allow carrying identification documents (Cookies, Authorization, or TLS client certificates).
-Never allow carrying identification documents.
+|Value|Description: The table contains a list of items with their corresponding prices.|
+|:-:|:-:|
+|True|Allow carrying identification documents (Cookies / Authorization / TLS client certificate)|
+|(Not available)|The password cannot be carried.|
 
-- Cross-origin request headers (response headers that can be accessed during cross-origin requests) are limited to the list of response headers included in the CORS (Cross-Origin Resource Sharing) whitelist.
+- Cross-Origin Resource Sharing (CORS) allows the server to access resources from a different domain. When accessing content from a different origin, the browser will typically only allow requests that are explicitly authorized by the server.  Specifically, the response headers containing CORS information can be accessed by the client. This is often used for security purposes to prevent malicious scripts from accessing sensitive data or functionality.
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-Allow JavaScript to read the response headers.
-The content allows JavaScript to read the length of the content.
-Revealed multiple response headers (separated by commas).
-- Access-Control-Max-Age (how long to cache response results for cross-origin requests?) 300 seconds.
+|        Value         |      Description: The table contains a list of items with their corresponding prices.       |
+| :--------------: | :-----------: |
+|  C:X-Request-Id  | Allow JavaScript to read the response header.  |
+| C:Content-Length | Allow JavaScript to read content length.  |
+|    C:X-A, X-B    | Multiple response headers (separated by commas) |
+- Access-Control-Max-Age (preflight request result caching duration in seconds (seconds)?” **Default does not cache**
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-Do not cache pre-scheduled requests.
-Cache pre-analysis results after 10 minutes.
-Cache for 24 hours (browser may have a limit)
+|    Value    |         Description: The table contains a list of items. Each item has a name and a quantity. The quantities are in thousands.         |
+| :-----: | :----------------: |
+|   C:0   |      No caching pre-scheduled requests.       |
+|  C:600  |    Cache test results 10 minutes    |
+| C:86400 | Cache 24 hours (browser limit) |
 
-For COOP and COEP, they are placed on the HTML page that the user is currently accessing.
+For **COOP** and **COEP**, they are utilized on the HTML page where **user is currently accessing**. These elements serve distinct purposes within that context.
 
 -  Cross-Origin-Opener-Policy (COOP)
 
-Cross-Origin Opener Policy (COOP) is a browser security mechanism designed to control whether different pages can share the same browser window context (browsing context). It primarily affects the relationship between a page and other pages opened through `window.open()`, and whether those pages can access each other.
+**COOP (Cross-Origin Opener Policy)** is a browser security mechanism designed to control the sharing of a single browser window context between different pages. It primarily affects the relationship between pages that open through `window.open()` and influences whether those pages can access each other.
 
-When COOP is enabled, the browser will isolate cross-origin pages to different browser processes, preventing them from sharing execution environments. This can effectively reduce the risk of side-channel attacks (such as Spectre), while also preventing cross-site page hijacking or information disclosure via `window.opener`.
+Upon enabling COOP, the browser will isolate cross-origin pages based on a defined strategy, effectively preventing them from sharing execution environments. This isolation mitigates the risk of side-channel attacks such as Spectre, while also safeguarding against cross-site page hijacking or information disclosure via `window.opener`.
 
-Coop focuses on the isolation between pages, and does not participate in the loading or validation of resources such as images, scripts, or videos.
+Coop focuses on the relationship between pages and their isolation from resources, such as images, scripts, or videos. It does not engage in the loading or validation of these resources.
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text you would like me to translate. I’m ready when you are.
-✅ Yes | Not to disable any isolation | Cross-origin pages can share browsing context with `window.opener`
-The content is not available.
-The same-origin allow popups are used to isolate content and allow popups when necessary, particularly in OAuth/payment scenarios.
+| Value                          | Default | Behavior description           | Main impact                                       |
+| -------------------------- | ---- | -------------- | ------------------------------------------ |
+| unsafe-none              | Yes  | Disable isolation.        | Cross-origin page can share window context with `window.opener` |
+| C:same-origin              | ❌ No support    | Only allowed within a single-source page sharing window with a process. | Cross-source window.opener was set to null, forcing process isolation.       |
+| C:same-origin-allow-popups | ❌ No way.    | Self-isolation, but allows pop-up windows.   | Commonly used in OAuth/payment pop-up scenarios                         |
 
 -  Cross-Origin-Embedder-Policy (COEP)
 
-Cross-Origin Embedder Policy (COEP) is a security policy designed to limit the loading and usage of cross-origin resources. When a page enables COEP, all embedded cross-origin resources must explicitly state "allow use," otherwise the browser will block these resources from being consumed by the page.
+**Cross-Origin Embedder Policy (COEP)** is a security policy designed to restrict the loading and usage of cross-origin resources. When a page utilizes COEP, all embedded cross-origin resources must explicitly state "allow use," or the browser will block these resources from being consumed by the page.
 
-The primary goal of COEP is to prevent the page from loading untrusted cross-origin resources without knowledge, thereby mitigating attacks leveraging shared processes or shared memory. It typically works in conjunction with resource declarations (such as CORS or Cross-Origin-Resource-Policy).
+The primary objective of COEP is to prevent page loading of untrusted cross-origin resources without user awareness, thereby mitigating attacks leveraging shared processes or memory. It commonly works in conjunction with resource declarations (such as CORS or Cross-Origin Resource Policies).
 
-The request may proceed even if the browser initiates network requests, but will determine whether the resource can be used on the page after it returns.
+The Copie Protocol (CoP) does not prevent the browser from initiating network requests, but it will determine whether the resource can be used after its return.
 
-|Value|Default Value|Behavior Description|Main Impact|
-Okay, please provide the text. I’m ready when you are.
-Safe and unrestricted access to any cross-origin resources on the page.
-Require corporate authorization for cross-origin resources.
+|Value|Default|Behavior description|Main impact|
+|---|---|---|---|
+|unsafe-none|Yes|Disable embedding restrictions|Page can load any cross-origin resources.|
+|C:require-corp|❌ No support|Authorized cross-source resources only.|Cross-origin resource sharing requirements must meet CORP or CORS.|
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-### When browsers check COOP and COEP?
+### When will the browser check COOP and COEP?
 
-These tags are typically included when a webpage is loaded as a document (document).
+These headers, **Only checked when the page is loaded as a "document" (document)**, typically include:
 
-- Directly open the page from the address bar.
+- The top-level navigation menu can be accessed directly from the address bar.
 
-- The document loaded from the iframe is currently loading.
+- The document page loaded via iframe is displayed within the iframe itself.
 
-- The window opened.
+- The window opened (`window.open()` opens a page).
 
-For images, audio, video, scripts, and other non-document resources, browsers will not check their COOP or COEP headers, which these resources may return 200 OK responses even if they do not automatically obtain cross-origin usage permissions.
+For images, audio, video, scripts, and other non-document resources, the browser will not check their response headers for COOP or COEP tags. These resources, even returning a 200 OK status code, will not automatically grant cross-origin usage permissions.
 
-Okay, please provide the text. I’m ready when you are.
+Please note that…
 
-- COOP is effective when creating or connecting pages during browse contexts to determine whether windows and processes can be shared between them.
+- **COOP** is applied when creating or connecting a browsing context, determining whether windows and processes can be shared between pages.
 
-- Embedded resources are enabled on the page to verify whether cross-origin resources meet security requirements.
+- The embedding resource check is triggered when attempting to utilize embedded resources on the page. This functionality verifies whether the embedded resource meets the security requirements.
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-### Coop and Coep’s synergistic effects are significant.
+### The combined effect of COOP and COEP is significant.
 
-When a page is enabled with COOP and COEP, and all embedded resources meet the corresponding requirements, the browser will treat that page as a**cross-origin isolated** state. In this state, the page can safely use some high-permission Web APIs, such as `SharedArrayBuffer` and high-precision timers.
+When a page utilizes both COOP and COEP, and all embedded resources meet the corresponding requirements, the browser will treat that page as in a **Cross-Origin Isolated (COOP)** state.  During this state, the page can safely utilize high-permission Web APIs such as `SharedArrayBuffer` and high-precision timers.
 
-# Here’s a comprehensive overview of browser security models:  **1. Browser Security Model Overview**  The browser security model is a layered approach designed to protect users from malicious websites and attacks. It’s built on several key components working together to verify user identity, control access to resources, and mitigate risks.  **2. Core Components & Layers**  *   **Client-Side Security (Browser Level):**     *   **Content Security Policy (CSP):**  A crucial mechanism that restricts the sources from which a browser can load resources, preventing cross-site scripting (XSS) attacks.     *   **HTTP Strict Transport Security (HSTS):**  Forces browsers to only connect to secure websites, reducing the risk of man-in-the-middle attacks.     *   **SameSite Cookies:** Controls how cookies are sent across different domains, mitigating Cross-Site Request Forgery (CSRF) vulnerabilities.     *   **XSS Protection:**  Techniques like Content Security Policy and input validation to mitigate XSS attacks.  *   **Server-Side Security (Web Server Level):**     *   **Input Validation:**  Ensuring that all user inputs are properly validated before being processed, preventing injection attacks.     *   **Output Encoding:**  Encoding data to prevent cross-site scripting vulnerabilities.     *   **HTTP Authentication & Authorization:**  Verifying the identity of users and controlling access to resources based on their roles.  *   **Network Security (DNS, TLS/SSL):**     *   **DNSSEC:** Provides a secure way to verify DNS responses, preventing DNS spoofing attacks.     *   **TLS/SSL Encryption:** Secures communication between the browser and the server, protecting sensitive data from eavesdropping.  *   **Browser Security Features (Built-in):**     *   **Sandbox Environments:** Isolating web pages and scripts to prevent malicious code from affecting the entire system.     *   **JavaScript Sandboxing:**  Restricting JavaScript execution to a limited environment, reducing the potential impact of compromised scripts.     *   **Browser Fingerprinting:**  Identifying the browser and operating system used by a user, aiding in targeted security measures.  **3.  Evolution & Modern Approaches**  Modern browsers are increasingly incorporating advanced security features:  *   **WebAssembly (WASM):** Enables secure execution of code within the browser, reducing the attack surface. *   **Sandboxing Enhancements:** More sophisticated sandboxing techniques to isolate and protect sensitive data. *   **Threat Intelligence Feeds:**  Leveraging external threat intelligence to detect and respond to emerging threats.  **4. Key Considerations & Ongoing Challenges**  *   **Zero-Day Exploits:**  New vulnerabilities are constantly being discovered, requiring continuous monitoring and patching. *   **Supply Chain Attacks:**  Malicious code injected into web applications through compromised third-party libraries. *   **User Education:**  Users need to be educated about security best practices to avoid falling victim to attacks.  This model provides a robust defense against various online threats, but it's not foolproof. Continuous vigilance and adaptation are essential for maintaining a secure browsing experience.
+# Here’s the translation:  Browser security models complete workflow diagram.
 
 ![](../../assets/images/coxp.svg)

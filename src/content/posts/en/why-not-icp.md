@@ -1,6 +1,6 @@
 ---
-title: "About why the website doesn’t have an ICP registration."
-description: "Due to various reasons, this platform has not obtained an ICP (Internet Content Provider) registration. This record details the circumstances surrounding this decision."
+title: "About why the website does not have an ICP registration."
+description: "Due to various reasons, this platform has not obtained an ICP registration, and this document details the associated causes."
 category: "Record"
 published: 2025-07-29
 image: '../../assets/images/d24c6c12-a8c9-4577-a4bc-0de768c23337.webp'
@@ -9,47 +9,47 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+This article details a situation where the website has been temporarily blocked by DDOS attacks and is currently undergoing a re-registration process due to non-compliance with regulations. The site utilizes Netlify CDN, which offers fast speeds but limited accessibility in China.  The article highlights the complexities of the process, including the need for specific operational information and the potential disruption caused by an IP station upgrade.  Furthermore, it clarifies that while GFW hasn't blocked the site, some non- domains are still being restricted through firewall measures. The future of the website’s status remains uncertain, with a focus on improving accessibility rather than primary business operations.
 :::
 
-Currently registered, this article has been archived.
-# Please provide the text you would like me to translate.
+The article has been archived due to a DDoS attack.
+# Violation content.
 
-Early articles were published on this website [https://www.example.com](/posts/bypass-gfw/).
-This article does not comply with regulatory requirements. Attempts to submit it for review have resulted in a re-approval ban.
+Early content was published on this platform [view here](/posts/bypass-gfw/).
+The article does not comply with the regulatory requirements for submission. Attempts to submit it under a submitted form were unsuccessful.
 
-# Domain does not comply with备案 regulations.
+# Domain registration is not permitted to be registered.
 
-The ICP备案 is for a domain name that belongs to me, and my domain name 2x.nz is not within the ICP备案 supported by any domain suffix.
+The ICP is specifically for domain names. My domain name, 2x.nz, is not supported by the ICP registry.
 
-All support domains have a .com suffix. See https://domain.miit.gov.cn/
+Please consult the following link for information on approved domain suffixes: [https://domain.miit.gov.cn/](https://domain.miit.gov.cn/)
 
-# The effects of the nodes are diminishing rapidly.
+# The efficacy of the Chinese nodes is diminishing rapidly.
 
-Currently, the platform utilizes Netlify CDN, which leverages AWS’s IP address and offers extremely fast speeds in mainland China. The latency is shown in the following image:
+Currently, the platform utilizes Netlify CDN, leveraging AWS’s IP address for fast speeds. Availability in mainland China is exceptionally high, as indicated by the latency visualization below.
 
 ![](../../assets/images/96375c6a-f807-42b7-b1f0-33c0c7231037.webp)
 
-Due to the fact that this platform is a static site, using EdgeOne Page’s China大陆 node will result in lower latency compared to using the current speed. However, the effectiveness of this delay is minimal.
+Due to the fact that this platform is a static site, utilizing EdgeOne Page’s China Mainland Node directly offers lower latency. However, the speed benefits are minimal compared to current performance.
 
-# The registration process can be quite involved.
+# The process of registering can be quite involved.
 
-If you register, you will need to provide your actual operating person information and purchase a registration code (this is the most cost-effective way to register).
+If you are required to register, you will need to provide details about your actual operating personnel and purchase a registration code (this is the most cost-effective registration method).
 
 # GFW has disabled SNI blocking for this platform.
 
-The platform is currently not blocked by GFW. While some provinces’ firewalls may have non-compliant blocking, all access is possible normally.
+The platform is currently not blocked by GFW. While some provincial firewalls have been disabled for non-compliant domains, normal access is possible across all provinces.
 
-# Zhezhou and other regions users only support access via registered domain names?
+# Users in Quanzhou and surrounding areas are limited to accessing websites using registered domain names.
 
-The previous platform had an IP address that was disrupted during the upgrade to V2, causing a disruption of our CI/CD workflow. The service is currently unavailable.
+The previous platform featured an IP address-based site, which was disrupted by the upgrade to V2 of the business server 1Panel V1. Consequently, the existing CI/CD workflow has been temporarily suspended.
 
-The following steps are being taken to restore the website’s operations:
+Following repairs and a restoration of the website’s IP address, the ongoing efforts will continue.
 
-See the interface [about](/about/).
+The system has been restored. See the [About](/about/) interface.
 
-# Following up on this matter.
+# What is the process for seeking regulatory approval to continue operations?
 
-Possible, but not primarily used for business purposes; it primarily aims to improve accessibility and is currently unapproved for public use.
+Possible, but not primarily utilized for core business operations. It serves primarily to enhance accessibility and is currently unapproved for web hosting.
 
-I may abandon managing two content branches, namely those with no violation content and the original branch.
+Upon approval of the, I may discontinue managing two content branches – namely, those without prohibited content and the original branch.

@@ -1,6 +1,6 @@
 ---
 title: "Domestic Object Storage: Does it Offer Free Traffic? Cloudflare Bandwidth Alliance What Is It?"
-description: "Here’s the translation:  Cloudflare’s bandwidth alliance is a comprehensive service offering built by multiple cloud providers. When traffic flows through Cloudflare, it does not incur charges for that traffic. Users are only responsible for paying storage fees."
+description: "Here’s the translation:  Cloudflare’s bandwidth alliance is a comprehensive service offering built by multiple cloud providers. When traffic flows through Cloudflare, it does not charge fees for that bandwidth; users are only responsible for paying storage costs."
 category: "Record"
 published: 2025-07-22
 image: '../../assets/images/bf447f03-220b-494b-9f32-da71caa8b43d.webp'
@@ -12,34 +12,34 @@ lang: en
 
 :::
 
-# This is what.
+# What is this?
 
-Cloudflare Bandwidth Alliance is formed by a group of companies with forward-thinking perspectives in the cloud services and network industries, dedicated to reducing or eliminating data transmission costs for shared customers.
+Here’s the translation:  The Cloudflare Bandwidth Alliance is a consortium of leading cloud service providers and network companies focused on reducing or eliminating data transmission costs for shared clients.
 
-You can enjoy free data transfer charges with the Alibaba OSS and Tencent Cloud COS bundles.
+You can enjoy free data charges with the Tencent Cloud COS and Alibaba Cloud OSS bundles.
 
-# Here are some services that offer free or low-cost data usage:  *   Mobile carriers often provide unlimited data plans for certain devices. *   Streaming services like Netflix, Hulu, and Disney+ typically don’t charge extra for video streaming. *   Social media platforms like Facebook and Instagram generally don't charge for data usage. *   Some apps offer free tiers with limited data allowances.
+# What services offer free or reduced data usage?
 
-Can you visit [https://cloudflare.com/china/](https://cloudflare.com/china/) to view the Cloudflare China data transfer services.
+Please visit `loudflare Cloud Service Data Transfer, High-Speed Cloud Data Transfer Services | Cloudflare China Official Website | Cloudflare` to learn more.
 
-As of the publication date of the article, these services support.
+As of the publication date of this article, these services support…
 
 ![](../../assets/images/e04c6bee-efc2-4998-83aa-aeacc80e6908.webp)
 
-Here, you can save a significant amount of US dollars each month if you need to transfer 1 TB of traffic every month.
+Here, you can see that if you need to transfer 1TB of data each month, Cloudflare will save you a significant amount of US dollars.
 
 ![](../../assets/images/3ac81964-bb93-4528-921f-d801a66cb72d.webp)
 
-# Please provide the text you would like me to translate.
+# How do you use it?
 
-If you have an Alibaba OSS instance, it’s typically handled by creating a CNAME record to your Cloudflare endpoint. If you are using Cloudflare DNS servers to host your domain, you can simply open the Cloudflare dashboard.
+Here’s the translation:  “If you have an Azure Cloud Service (AWS) instance, a standard approach involves creating a CNAME record to point your domain name to an endpoint hosted by Alibaba Cloud.  However, if you are utilizing Cloudflare's DNS service for hosting your domain, simply opening up the Cloudflare dashboard is sufficient.”
 
-Cloudflare will collect and manage your Azure Open Source (OSS) traffic from Cloudflare’s edge locations, and will not charge you for this traffic.
+Here’s the translation:  Cloudflare will manage and charge for your Azure Open Source (OSS) traffic originating from Cloudflare’s global network, eliminating charges associated with this traffic.
 
-Based on the free policy of the 5G internal storage, you can reap 5G-related storage fees.
+Based on the free storage policy offered by AliCloud for 5G, you can reap savings on data storage.
 
-# Okay, please provide the text. I’m ready when you are.
+# 注意事项
 
-Never disclose your source, which is Cloudflare OSS Endpoint. If anyone discovers your source, this traffic will not leave Cloudflare. You will be charged accordingly.
+Never disclose your origin server, which is the Cloudflare OSS Endpoint mentioned previously. If anyone discovers your origin server, this traffic will not be routed through Cloudflare to the public internet, and you will incur charges.
 
-Private access is typically supported by most storage service providers. Detailed configuration and usage guidelines are available through your respective customer support channels.
+Here’s the translation:  “Most storage service providers offer private access configuration, and detailed rules and usage guidelines can be found through your respective customer support channels.”

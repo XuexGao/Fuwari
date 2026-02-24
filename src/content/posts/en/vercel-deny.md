@@ -1,6 +1,6 @@
 ---
 title: "Configuration Vercel for ITDog testing all 403!"
-description: "Here’s a professional translation of the text:  “I strongly dislike having websites tested by ITDog or similar services, particularly for aggressive testing.”"
+description: "I strongly dislike having websites tested by ITDog or similar services for random probe attempts. I will not tolerate this behavior."
 category: "Tutorial"
 published: 2025-07-10
 image: ../../assets/images/d81562f3-8efb-45f3-8dd1-72cb9c032bc2.webp
@@ -9,38 +9,38 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-The article discusses a method for updating Vercel firewall rules using Python scripting and a dedicated API token. It outlines the process of creating a rule, capturing firewall interface creation/updates via `firewall` project, and then utilizing a script to automatically generate IP denial rules based on a specified TXT file.  This is done to handle Vercel’s limitations with IPv6 support by utilizing a Cloudflare Tunnel for IP filtering. The process involves reading IPs from a TXT file, validating them using `validate_ip_or_cidr`, and then creating a Python script to generate a large number of IP denial rules based on the input file.  Finally, it demonstrates how to use this script to create a rule that automatically blocks specific IP addresses or CIDR ranges.
+VercelTXTIPCIDR，。Python，，，。 TXT，IPCIDR，。  IP，。
 :::
 
-# 配套视频
+# Video packages.
 
-The video is about a young man who is trying to build a small business and share his passion with others. He’s using social media to promote his products and services, and he’s learning valuable lessons about entrepreneurship and marketing. The content focuses on building a sustainable brand and connecting with an audience through authentic engagement.
+Here’s the translation of the text from the provided link:  “The video explores the evolving relationship between humans and AI, examining both the potential benefits and ethical concerns surrounding artificial intelligence development. It delves into topics such as job displacement, algorithmic bias, and the future of work in an increasingly automated world.”
 
-# ``` Get ITDog and other tracking services’ IP addresses. ```
+# Retrieve IP addresses associated with ITDog’s verification services.
 
-Because Vercel does not support IPv6, we only need to obtain v4 IP addresses.
+Because Vercel does not support IPv6, we are limited to obtaining v4 IP addresses.
 
-- ```python import http.server import socketserver  PORT = 8000  # You can change this to any available port  class MyHandler(http.server.SimpleHTTPRequestHandler):     def do_GET(self):         # This is a simple example of IP-based filtering.         ip_address = self.client_address         if ip_address == '127.0.0.1':             self.send_response(200)             self.send_header('Content-type', 'text/html')             self.end_headers()             self.wfile.write("<html><body><h1>IP Filtered</h1><p>This page is only accessible from localhost.</p>")         else:             self.send_response(200)             self.send_header('Content-type', 'text/html')             self.end_headers()             self.wfile.write("<html><body><h1>IP Filtered</h1><p>This page is accessible from any IP address.</p>")  if __name__ == '__main__':     # Create a simple TCP server on port 8000     with socketserver.TCPServer(("", PORT), MyHandler) as httpd:         httpd.serve_forever() ```
+- If you have a VPS, you can create a Python script to generate an HTTP record with IP address deduplication.
 
-- You can use Cloudflare Tunnel to connect to your home cloud, and then obtain `CF-Connecting-IP` to mitigate issues.
+- If you have cloud storage at home, you can utilize Cloudflare Tunnel to mitigate network issues and obtain `CF-Connecting-IP` for recovery.
 
-123.456.789.012
+Conclusion: You have successfully blocked the IP address of the monitoring website you’ve specified.
 
 ![](../../assets/images/91daff1e-b248-4f90-9b97-31bff7fa2c14.webp)
 
 # Create a Vercel API token.
 
-Go to https://vercel.com/account/settings/tokens to create a token.
+Please create a token in the settings for your account at [https://vercel.com/account/settings/tokens](https://vercel.com/account/settings/tokens).
 
 # Firewall creation and update interface retrieval.
 
-https://vercel.com/your-projects/fuwari/firewall
+Please visit [https://vercel.com/your-projects/fuwari/firewall](https://vercel.com/your-projects/fuwari/firewall) for more information.
 
-Okay, please provide the text. I’m ready when you are.
+新增规则
 
 ![](../../assets/images/84645ada-92bd-42f7-827f-96a93bd54997.webp)
 
-Just write something and grab it.
+随便写点东西然后抓包
 
 ![](../../assets/images/0f60d87a-df45-42d3-a692-c172982899cc.webp)
 
@@ -48,21 +48,21 @@ Just write something and grab it.
 PATCH https://vercel.com/api/v1/security/firewall/config/draft?projectId=prj_UfvbpIvawjL2eAETAiZT7hPLR8W2&teamId=team_lemndzHQNJAcTipIF6elB5Md
 ```
 
-The request header `Authorization` is now `Authorization`.
+Please update the hostname `vercel.com` to `api.vercel.com`. Also, include the request header `Authorization` with the token obtained just now.
 
-Please provide the text you would like me to translate.
+复制刚才的响应并且稍作修改进行测试，看是否能更新成功
 
-Okay, I understand. Please provide the text.
+The system is currently operating within acceptable parameters.
 
 ![](../../assets/images/b87a06b5-e33c-4d1d-aede-18ecba95d8cc.webp)
 
-# ```python import re  def create_ip_blocking_rule(ip_address):     """     Creates a rule to block IP addresses based on a pattern.      Args:         ip_address (str): The IP address to check.      Returns:         str: A string containing the blocked IP address, or None if no rule is found.     """     pattern = r"([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})"     if re.match(pattern, ip_address):         return f"Blocked IP: {ip_address}"     else:         return None  # Example usage: ip = "192.168.1.100" blocked_ip = create_ip_blocking_rule(ip) print(blocked_ip)  ip = "127.0.0.1" blocked_ip = create_ip_blocking_rule(ip) print(blocked_ip) ```
+# Here’s a professional translation of the text:  “Develop a Python script to create a bulk IP address denial rule.”
 
-Here’s a Python script to batch plan Vercel rules, adhering to the limitations you've outlined.  ```python import json  def create_vercel_rules(vercel_url):     """     Creates Vercel rules in batches using a Python script.      Args:         vercel_url: The URL of your Vercel account.     """     try:         # Get the current IP addresses from Vercel         ip_addresses = get_vercel_ip_addresses(vercel_url)          # Create a list to store the rules         rules = []          # Iterate through the IP addresses and create rules         for ip in ip_addresses:             rule = {                 "name": f"vercel-{ip}",                 "description": "Vercel rule for {ip}",                 "type": "static",  # Or 'edge', 'app' as needed                 "priority": 10, # Adjust priority as needed             }             rules.append(rule)          # Save the rules to a JSON file         with open("vercel_rules.json", "w") as f:             json.dump(rules, f, indent=4)          print("Vercel rules created successfully.")      except Exception as e:         print(f"An error occurred: {e}")   def get_vercel_ip_addresses(vercel_url):     """     Retrieves the current IP addresses from Vercel.     This function is a placeholder and needs to be implemented based on your Vercel account.     """     # Replace this with actual Vercel API call     print("Placeholder: Retrieving Vercel IP addresses.")     return ["127.0.0.1"]  # Example - replace with real data   if __name__ == "__main__":     vercel_url = "YOUR_VERCEL_URL" # Replace with your Vercel URL     create_vercel_rules(vercel_url) ```  **Explanation:**  1.  **`get_vercel_ip_addresses()`**: This function simulates the retrieval of IP addresses from Vercel.  It's crucial to replace this placeholder with your actual Vercel API call, which will likely involve authentication and querying the Vercel dashboard. 2.  **`create_vercel_rules()`**: This function takes the Vercel URL as input and uses a loop to create rules in batches. It iterates through each IP address, creates a rule object with its name, description, type (static or edge), and priority. The generated rules are saved to a JSON file named `vercel_rules.json`. 3.  **`if __name__ == "__main__":`**: This ensures that the code only runs when the script is executed directly (not imported as a module). 4.  **`vercel_url = "YOUR_VERCEL_URL"`**:  Replace `"YOUR_VERCEL_URL"` with your actual Vercel account URL. 5.  **Error Handling:** The `try...except` block handles potential errors during the process, providing informative error messages.  This script provides a basic framework for batching Vercel rules. You'll need to implement the `get_vercel_ip_addresses()` function and adapt it to your specific needs.  The provided example uses a placeholder IP address for demonstration purposes only.
+Based on my own testing, Vercel offers support for multiple IP addresses when creating rules, but there is a limit of only 75 allowed per rule. Therefore, we need a Python script to automate the planning process. The script has already been written.
 
-```text The following Python script will read the content of the file ip.txt and print it to the console. ```
+使用： `python app.py ip.txt`
 
-The content provided is not available. Please provide the content you want me to translate into English.
+Here’s the translation:  “Automatically extract and add all IP addresses from specified TXT files to a denial rule.”
 
 ```python
 #!/usr/bin/env python3
@@ -268,7 +268,7 @@ if __name__ == "__main__":
     main()
 ```
 
-Okay, I understand. Please provide the text.
+示例ip.txt
 
 ```bash
 223.26.78.6
@@ -1448,24 +1448,24 @@ Okay, I understand. Please provide the text.
 86.51.92.0/24
 ```
 
-# Okay, please provide the text you would like me to translate. I’m ready when you are.
+# Call script update rules.
 
 ![](../../assets/images/3b44fed2-5dda-4dec-a009-8618b18370ee.webp)
 
 ![](../../assets/images/c9fa44c0-c313-47b1-8b03-804b2b4324b9.webp)
 
-Please provide the text you would like me to translate.
+Finally, please submit your review and then publish it.
 
 ![](../../assets/images/aada66d2-b090-4959-b031-cbdb738def50.webp)
 
 ![](../../assets/images/831bf953-5895-4a62-894c-ab8b24dc8697.webp)
 
-# ITDog test
+# ITDog Test
 
-Most test nodes have failed.
+Most test nodes have reached a status of 403.
 
 ![](../../assets/images/127a5bc0-6504-4c98-a573-1e3da60b9c8e.webp)
 
-# What is the use?
+# What is the purpose?
 
-Want to join the group or leave a comment below?
+Here’s the translation:  “Just for fun, relaxing and idle. Feel free to add a message to [this](https://www.afo.im/posts/pin) to send a group or leave a comment below if you have time.”

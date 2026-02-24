@@ -7,25 +7,25 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+This article outlines various types of cookies used to track website traffic, including essential analytics tools like Cloudflare Analytics and Umami, as well as functionality cookies providing user engagement features. It also highlights popular advertising platforms like Google Adsense and Bing Ads, offering insights into audience targeting and advertising campaigns.
 :::
 
-# Cookies
+# All Cookies
 
-### Strictly necessary cookies (必要的cookies)
-- Cloudflare Analytics：Basic access data for website sites.
-- Umami：Basic access data for collection sites, and displaying browsing volume to external users.
-- Provide comment functionality.
+### Necessary cookies.
+- [Cloudflare Analytics](https://www.cloudflare.com/analytics/)：Provides basic access data for website locations.
+- [Umami](https://umami.acofork.com)：This document details the basic access data collected from collection sites, and provides external visibility of browsing statistics.
+- [Giscus](https://giscus.app) offers comment functionality.
 
-### Functionality cookies (functionality cookies)
-- Please provide the text you would like me to translate.
+### Functional cookies.
+- 无
 
-### Tracking cookies
-- 百度统计：Site access statistics
-- Google Analytics collects website traffic data.
-- Microsoft Clarity: Website traffic data collection.
+### Tracking cookies.
+- [](https://tongji.baidu.com/)：The collection of basic access data for sites.
+- Here’s the translation:  **Google Analytics:** Collects website traffic data.
+- Here’s a professional translation of the text:  “Monitoring website traffic patterns and access data.”
 
-### Targeting and advertising cookies
+### Targeting and advertising cookies (also known as behavioral targeting or remarketing cookies) are used to track user behavior across websites and apps, allowing advertisers to deliver tailored messages and offers based on their interests and past interactions. These cookies collect data about a user’s browsing history, demographics, and engagement with specific content, enabling precise audience segmentation for advertising campaigns.
 - Google Adsense provides advertising services.
 
-Latest Update: February 4, 2026
+*latest update: February 4, 2026*

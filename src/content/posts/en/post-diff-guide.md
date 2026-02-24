@@ -1,6 +1,6 @@
 ---
 title: "Food Guide: How to Use Meal Reminder Functionality"
-description: "The top-right corner’s incredibly impressive chime – how can it be utilized?"
+description: "The super impressive little bell at the bottom of the frame – how can it be used?"
 category: "Announcement"
 published: 2026-02-22
 image: ../../assets/images/post-diff-guide.png
@@ -8,59 +8,59 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-The article explains a new feature on the blog that automatically detects and notifies users of changes to their articles, utilizing client-side article updates. It describes how this function works – it tracks recent access, displays updated articles with visual cues (red/blue highlights), and provides a detailed diff view within the article itself.
+The article explains a new feature on the blog that automatically detects and notifies users when an article has been updated, using a small red and blue icon. It describes how this system works – it records past visits, compares server versions, and displays changes in a clear, contextual manner with diff highlighting. It also addresses common questions about why notifications aren't appearing and how to clear the visual indicators.
 :::
 
-Yes, that little bell at the bottom right corner isn’t particularly noticeable.
+Certainly, here’s the translation:  “Indeed, that small bell at the bottom right corner is not particularly noticeable.”
 
-The recent blog has added a small bell icon at the bottom right corner. This is not a subscription notification (though it looks like one), but rather a **client-based article update detection system**.
+You may have noticed a small bell icon appearing in the bottom right corner of your blog. This is not a subscription notification (though it resembles one), but rather a **Client-Based Article Update Detection System**.
 
-# Why are we doing this?
+# What is the reason for this?
 
-Many times, after writing an article, we may discover typos or need to add or remove content due to various reasons.
+Frequently, after completing an article, writers often discover errors in spelling or phrasing, and may need to revise content due to various reasons.
 
-The content has changed significantly. It’s as if the article has been rewritten, with new information added or existing information reorganized.
+For the reader, if you’ve previously viewed this article again, it might be challenging to discern what has changed. It could be a change in punctuation, or an addition of substantial content.
 
-To address the “find different” challenge, we’ve introduced a feature that records your last access to an article and automatically compares it to the latest version on the server upon your next visit. It will tell you: **This article has changed, where exactly.**
+To address the challenge of “finding different versions,” we’ve implemented this feature. It tracks your previous access to articles and automatically compares the latest version available on the server upon subsequent visits, informing you: **The article has been updated, where specifically?**
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# The method of consumption.
+# Please specify the method of consumption.
 
-It’s simple, and the entire process is fully automated; no manual action is required.
+The process is remarkably straightforward; it’s entirely automated, requiring no manual intervention whatsoever.
 
-## Discover update
+## Discovering updates.
 
-When browsing blogs, the system automatically retrieves the latest RSS subscription sources and compares them with your local cached articles.
+When browsing a blog, the system automatically retrieves the latest RSS subscription sources and compares them to your local cached articles.
 
-If there is a new article (whether content, title, or description), a red dot will appear in the corner of the small bell and an entrance animation will remind you “There’s something new.”
+If a new article is discovered (whether it’s content, title, or description), the small bell icon will appear in the bottom right corner, and an **dot-highlight** animation will remind you that there’s something new.
 
-## Please provide the text you would like me to translate.
+## 2. 查看列表
 
-Click the small bell, which will display a panel listing all articles that are changing.
+Click the small bell, which will display a panel listing all articles with changes.
 
-- A new article has been added with a green `NEW` tag, indicating that it is the latest published content.
-- Update: There is a blue tag indicating that this article may have been viewed previously, but now it has new changes.
+- **NEW**: This article is a new post, marked with the 'NEW' tag.
+- **Update**: A new tag has been added – a blue label indicating that this article may have previously been viewed or cached, but now it has undergone modifications.
 
-## 查看Diff
+## Review the diff.
 
-Click on articles with the `UPDATE` tag to directly jump to that article and automatically scroll to the first change point.
+This is the core functionality. Click on articles with the `UPDATE` tag to directly navigate to that article and automatically scroll to the first change point.
 
-In the article, you will see a similar diff effect as code editor tools.
+In the text, you will observe a similar “diff” effect as found in code editing tools.
 
-- Red lines indicate content that has been deleted or modified.
-- Green underlines indicate new or modified content.
+- The highlighted area indicates content that has been removed or modified.
+- The highlighted section indicates a new or revised content.
 
-!TIP
-If there are many changes to the content, we will only show the nearby lines of text surrounding the change points as context (context), and the remaining unchanged portion will remain unchanged, without interfering with your normal reading.
+[!TIP]
+If the content changes significantly, we will only display a few lines of text surrounding the affected areas as context. The remaining unchanged portions will remain unaltered and do not interfere with your normal reading.
 
-## Okay, please provide the text. I’m ready when you are.
+## Common issues
 
 Why haven’t I seen the small bell?
-If no new articles or updates are detected, the small bell will default to being hidden to avoid disturbing you while reading.
+If no new articles or updates are detected, the small bell will automatically hide to avoid disturbing your reading.
 
-Why does it sometimes seem like the same article doesn’t change, even though the update suggests it has?
-The system also detects body text and titles, as well as descriptions. Sometimes it’s just a minor formatting change, or a correction to the layout, which can trigger an update notification.
+Why does the system sometimes indicate a refresh when the content hasn’t changed, despite the absence of updates?
+The system also analyzes the body text and title, as well as the description. Occasionally, this may involve simply adjusting formatting or correcting typographical errors, which can trigger notification updates.
 
-I don't know what to do about these red and green wires.
-At the top right corner of the small bell panel, there is a **Clear** button (trash can icon). Clicking it will mark all current articles as "read/latest" and clear local comparison records. It will remind you again when there are new changes.
+I don’t want to look at these red, green, and yellow wires anymore.
+At the upper right corner of the small bell panel, there is a **Clear** button (trash can icon). Clicking this button will mark all current articles as "Read" or "Newest," and clear your local comparison records. This will only re-alert you when new changes occur in the future.

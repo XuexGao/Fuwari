@@ -1,186 +1,180 @@
 ---
-title: "What? 4 yuan monthly 200GB server? Or AliExpress? And is there a 9929 Silk Return from Union Telecom?"
-description: "Here’s a professional translation of the text:  “Leveraging our rapid instance creation and offering a free CDT bandwidth package each month, you can significantly reduce your hardware costs.”"
+title: "Wait, a 4 RMB/Month 200GB Server? From Alibaba? With China Unicom 9929 Premium Return Line??"
+description: "By creating a Spot Instance and utilizing the monthly 200GB free CDT traffic, your monthly costs are almost entirely just the minimal storage fees!"
 published: 2026-01-16
 image: ../../assets/images/aliyun-ecs-4rm.webp
 draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+This article provides a comprehensive guide to setting up a low-cost Alpine Linux server on Alibaba Cloud (China Region), specifically in the Hong Kong region. It details how to leverage Spot Instances and Cloud Data Transfer (CDT) to achieve a monthly cost of less than 5 RMB for 200GB of traffic. The guide covers downloading the Alpine image, uploading it to OSS, importing it as a custom image, configuring an ECS instance with a 1GB disk, and setting up an Elastic IP (EIP) bound to CDT. Additionally, it includes a step-by-step VNC configuration for Alpine Linux and a Cloudflare Worker script for monitoring traffic to prevent unexpected costs.
 :::
 
-# Please provide the text you would like me to translate.
-[!CAUTION]
-Retaining instances during peak periods can lead to recovery, so avoid disrupting production operations.
+# Let's Get Started
+> [!CAUTION]
+> Spot Instances may be reclaimed by Alibaba Cloud during peak demand. Do not use them for critical production workloads.
 
-Okay, I understand. Please provide the text.
-The content is presented as a demonstration from Alibaba’s domestic version, and be aware that in the domestic version, billing is based on usage. For international versions, there are no limitations, but you may need to provide a KYC verification for overseas phone numbers and cards.
-### Download Alpine Linux image.
-Due to our primary cost being on the hard drive, we need a very small Linux image for maximum space compression in order to install it using a 1GB ESSD cloud storage account. If you are also a hardcore gamer, and only have 1GB disk space, you will undoubtedly use my below-provided Alpine image.
-If you have a lot of money, don't care, or want to start with 10GB, and you’re using Debian or Ubuntu, then let’s begin with 10GB – no custom images are required.
+> [!NOTE]
+> This guide uses the **Alibaba Cloud (China Region)** version. Note that for pay-as-you-go services in the China region, your account balance must be >= 100 CNY. The International version has fewer restrictions but requires an overseas phone number and credit card, and may require KYC verification.
 
-Alpine 60M镜像链接
+### Download the Alpine Image
+> Since our primary cost is storage, we need an extremely compact Linux image to fit onto a 1GB ESSD cloud disk. If you are a hardcore user aiming for that 1GB setup, you should use the Alpine image provided below.
+>
+> If you have a larger budget or need to run standard applications on Debian or Ubuntu, you'll need at least a 10GB disk, and won't need a custom image.
+
+Alpine 60MB Mirror Link:
 ```bash
 https://dl-cdn.alpinelinux.org/alpine/v3.23/releases/x86_64/alpine-virt-3.23.2-x86_64.iso
 ```
 
-### Upload images to Alibaba OSS.
-Due to the need for custom images, but which must be provided through OSS, we need to temporarily create an OSS bucket instance to upload our ISO images. Once the instance is successfully created, we can delete it to avoid unnecessary fees.
+### Upload the Image to Alibaba Cloud OSS
+> We need to use a custom image, which must be provided via OSS. Therefore, we'll create a temporary OSS Bucket to upload our ISO. You can delete the bucket after the process is complete to avoid ongoing storage fees.
 
-First, go to [OSS Management Control Panel], create a Bucket, and set the region to China Hong Kong, and upload ISO files, and then copy the URL as a backup.
+First, go to the [OSS Management Console](https://oss.console.aliyun.com/bucket) and create a Bucket. **The region MUST be China (Hong Kong)**. Upload your ISO file and copy its URL for later use.
 
 ![](../../assets/images/aliyun-ecs-4rm-1.webp)
 
-### 导入镜像
-前往 [云服务器管理控制台](https://ecs.console.aliyun.com/image/region/cn-hongkong) ，选择右上角的 导入镜像
+### Import the Image
+Go to the [ECS Management Console](https://ecs.console.aliyun.com/image/region/cn-hongkong) and select "Import Image" in the top right corner.
+
 ![](../../assets/images/aliyun-ecs-4rm-2.webp)
 
-注意需要授权ECS访问OSS业务
+Note that you must authorize ECS to access your OSS resources.
+
 ![](../../assets/images/aliyun-ecs-4rm-3.webp)
 
-Please provide the text you would like me to translate.
+Fill in the details as required, and **uncheck "Check image after import"**. Do not proceed to the next step yet.
 
 ![](../../assets/images/aliyun-ecs-4rm-4.webp)
 
-接下来勾选配置云盘属性，并且将 **云盘容量设置为1GB** ，确认无误，导入
+Check the option to configure cloud disk attributes and **set the disk capacity to 1GB**. Confirm all details and click "Import".
+
 ![](../../assets/images/aliyun-ecs-4rm-5.webp)
 
-### Creating ECS instances
-Go to the Cloud Server Management Control Panel, create a China Hong Kong instance, and be mindful of the red-bordered areas.
+### Create an ECS Spot Instance
+Go to the [ECS Management Console](https://ecs.console.aliyun.com/server/) and create a **China (Hong Kong)** instance. Ensure the settings in the red-bordered areas match.
 
-另外，对于 **网络及可用区** ，香港一共有 **B、C、D** 三个区，D区比B、C区贵不少，可以都开开测个速，留下最好的
+For the **Network and Availability Zone**, Hong Kong has three zones: **B, C, and D**. Zone D is significantly more expensive than B and C. You can test each to find the best speed for your needs.
+
 ![](../../assets/images/ALIECSSNPSHOT.webp)
 
-### 开通CDT
-前往 [云数据传输](https://cdt.console.aliyun.com/overview) 将升级状态全部变为已升级即可
+### Enable CDT
+Go to [Cloud Data Transfer (CDT)](https://cdt.console.aliyun.com/overview) and ensure all upgrade statuses are set to "Upgraded".
+
 ![](../../assets/images/aliyun-ecs-4rm-6.webp)
 
-### Create and bind a flexible public IP address and attach to UTC.
-Because the elastic public IP address can bind 200GB of free bandwidth to CDT, and after binding, the elastic public IP will no longer be charged. If you don’t release the elastic public IP when deleting subsequent streams, it will continue to be charged.
+### Create & Bind an Elastic IP (EIP) with CDT
+> EIPs can be bound to the monthly 200GB free CDT traffic. Once bound to an instance, the EIP itself does not incur a holding fee. However, don't forget to release the EIP after deleting the instance, or it will start accruing charges.
 
-进入 [专有网络管理控制台](https://vpc.console.aliyun.com/eip/cn-hongkong/eips) 如图选择，然后购买即可（这里显示的费用是纯持有不绑定的费用，一旦绑定就不计费了）
+Go to the [VPC Management Console](https://vpc.console.aliyun.com/eip/cn-hongkong/eips) and purchase an EIP as shown (the displayed price is for an unbound EIP; once bound, it becomes free to hold).
+
 ![](../../assets/images/aliyun-ecs-4rm-7.webp)
 
-接下来绑定弹性公网IP（因为我绑定过了，所以是解绑）
+Next, bind the Elastic IP (in the screenshot, I've already bound it, so it shows "Unbind").
+
 ![](../../assets/images/aliyun-ecs-4rm-8.webp)
 
-接下来在这里绑定CDT，带宽最高可以拉到 2000Mbps，但是不推荐，一般300M够用了
+Finally, bind it to CDT. You can set the bandwidth as high as 2000Mbps, but 300Mbps is usually sufficient for most needs.
+
 ![](../../assets/images/aliyun-ecs-4rm-9.webp)
 
-### Okay, here’s the translation of the provided text:  Configuration Alpine
-If you have installed Alpine, it’s typically required to access a manual configuration via VNC. However, if you are using a public image, it is already functional, but remember to ensure the system remains clean.
+### Configure Alpine Linux
+> When installing Alpine, you typically need to use VNC for the initial system configuration. While public images are ready to use out of the box, manual setup ensures a cleaner system.
 
-Enter the Cloud Server Management Console. Select your newly purchased ECS, then click **Remote Connection**. Expand to select **Through VNC Remote Connection**.
+In the [ECS Management Console](https://ecs.console.aliyun.com/server/), select your newly purchased ECS. Click **Remote Connection**, expand the options, and choose **VNC Remote Connection**.
 
-Okay, I understand. Please provide the text.
+Now for the fun part! (Values in square brackets are defaults; you can type a new value and press Enter, or just press Enter to accept the default.)
 
-- Start Alpine installation software.
-
+- Start the Alpine Installer:
 ```sql
 localhost:~# setup-alpine
 ```
 
-- Keyboard layout
-
+- Select Keyboard Layout:
 ```sql
 Select keyboard layout: [none] us
 Select variant: [us]
 ```
 
-- Setting hostname
-
+- Set Hostname:
 ```sql
 Enter system hostname (fully qualified form, e.g. 'foo.example.org') [localhost] alpine-vps
 ```
 
-- Set network card
-
+- Configure Network Interface:
 ```sql
 Available interfaces are: eth0 lo
 Which one do you want to initialize? [eth0]
 ```
 
-- Set your IP address acquisition method.
-
+- Set IP Acquisition Method:
 ```sql
 Ip address for eth0? (or 'dhcp', 'none', 'manual') [dhcp]
 ```
 
-- Whether to perform manual network configuration.
-
+- Manual Network Configuration:
 ```sql
 Do you want to do any manual network configuration? [no]
 ```
 
-- Set root password (input will not be displayed)
-
+- Set Root Password (input will not be visible):
 ```sql
 New password:
 Retype password:
 ```
 
-- Setting time zone or (PRC)
-
+- Set Timezone:
 ```sql
 Which timezone are you in? ('?' for list) [UTC] Asia/Shanghai
 ```
 
-- Please provide the text you would like me to translate.
-
+- Set Proxy:
 ```sql
 HTTP/FTP proxy URL? [none]
 ```
 
-- 选择软件仓库镜像。这个地方建议先输入 `s` 列出所有镜像，然后上下翻找找到阿里云镜像源，然后输入对应镜像源编号，否则选错了你后续通过apk安装软件的时候不会免流
- 
+- Select Software Repository Mirror: It's recommended to type `s` to list all mirrors and find the Alibaba Cloud mirror. Enter its number to ensure that subsequent `apk` installations are zero-rated (no traffic charges).
+
 ```sql
 Which mirror do you want to use? (or '?' or 'done') [44] 
 ```
 
-- Okay, please provide the text you would like me to translate. I’m ready when you are.
-
+- Skip Creating a Standard User:
 ```sql
 Setup a user? (enter a username, or 'no') [no] no
 ```
 
-- Choose SSH services.
-
+- Select SSH Server:
 ```sql
 Which SSH server? ('openssh', 'dropbear', or 'none') [openssh]
 ```
 
-- Is it permitted for a root user to log in via SSH?
-
+- Allow Root Login via SSH:
 ```sql
 Allow root ssh login? ('?' for help) [prohibit-password] yes
 ```
 
-- 没有找到磁盘，是否安装至 vda 云盘，是
+- Disk Not Found? Install to `vda` Cloud Disk:
 ```sql
 No disk available, Try boot media /media/vda ? (y/n) [n] y
 ```
 
-- The disk to be installed should be selected.
-
+- Select Installation Disk:
 ```sql
 Which disk(s) would you like to use? (or '?' for help or 'none') [none] vda
 ```
 
-- Disk usage options
-
+- Select Disk Usage Mode:
 ```sql
 How would you like to use it? ('sys', 'data', 'crypt', 'lvm') [sys]
 ```
 
-- Confirm disk format.
-
+- Confirm Disk Formatting:
 ```sql
 WARNING: Erase the above disk(s) and continue? [y/N] y
 ```
 
-- Install system
-
+- Installing the System:
 ```sql
 Installing system on /dev/sda:
   Installing alpine-base...
@@ -189,74 +183,72 @@ Installing system on /dev/sda:
   Installing openrc...
 ```
 
-- Okay, please provide the text you would like me to translate.
-
+- Installation Complete:
 ```sql
 Installation is complete. Please reboot.
 ```
 
-- Restart system
-
+- Reboot System:
 ```sql
 localhost:~# reboot
 ```
 
-- Please provide the text you would like me to translate.
-
+- Log in After Reboot:
 ```sql
 alpine-vps login: root
 Password:
 ```
 
-- Set up Cloudflare and Google DNS.
-
+- Configure DNS (Cloudflare & Google DNS):
 ```sql
 alpine-vps:~# setup-dns
 DNS Domain name? (e.g. 'bar.com') nameserver
 DNS nameserver(s)? [223.5.5.5] 1.1.1.1 8.8.8.8
 ```
 
-Alpine的软件包管理器为 **APK** ，首先我们先更新软件源
+Alpine uses **APK** as its package manager. First, update the repositories:
 ```sql
 apk update
 ```
-接下来，安装一些基本的软件包
+Then, install some essential packages:
 ```sql
 apk add curl unzip jq openssl tar iproute2 bash
 ```
-### 设置保活&用量封顶策略
-虽然我们将弹性公网IP连接了CDT，默认流量会从CDT的免费流量份额里面扣
 
-However, exceeding this limit will result in a loss of our precious gold and silver.
+### Keep-Alive & Traffic Quota Strategy
+Although we've linked the EIP to CDT, and traffic will be deducted from the free monthly allowance...
 
-So, we need a service for scheduled monitoring that detects when CDT traffic is nearing exhaustion and immediately shuts down.
+Exceeding that limit will result in real charges to your account.
 
-Cloudflare Worker!
+To prevent this, we need a monitoring service that shuts down the instance if the CDT traffic quota is nearly exhausted.
 
-github repository: afoim/cf-worker-aliyun-cdt-tracker
+Enter... **Cloudflare Worker**!
 
-In Cloudflare Worker’s dashboard configuration, you can set five secret environment variables.
-Secrets: ``` API_KEY=your_api_key DATABASE_URL=your_database_url DEBUG=true ```
+::github{repo="afoim/cf-worker-aliyun-cdt-tracker"}
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-Access Key ID for your Alibaba account.
-Access Key Secret from Alibaba Cloud account.
-ECS instance location ID.
-| i-xxxxxxxxxxxx             | Required ECS Instance ID. Obtain from control panel.
-Traffic threshold (in GB), exceeding this value will stop instances.
+Configure five secret environment variables in your Cloudflare Worker dashboard:
 
-You will receive an ACCESS_KEY_ID and ACCESS_KEY_SECRET when you create a RAM user on https://ram.console.aliyun.com/profile/access-keys. This allows you to assign full access: `AliyunECSFullAccess`.
+| Variable Name | Description | Example / Note |
+| :--- | :--- | :--- |
+| `ACCESS_KEY_ID` | Alibaba Cloud AccessKey ID | `LTAIxxxxxxxxxxxx` |
+| `ACCESS_KEY_SECRET` | Alibaba Cloud AccessKey Secret | `xxxxxxxxxxxxxxxxxxxxxxxx` |
+| `REGION_ID` | ECS Instance Region ID | `cn-hongkong` |
+| `ECS_INSTANCE_ID` | The ID of the ECS instance to monitor | `i-xxxxxxxxxxxx` |
+| `TRAFFIC_THRESHOLD_GB` | Traffic threshold in GB (Default: 180) | `180` |
 
-部署成功后，Cloudflare Worker将在每分钟检查一次CDT，如果超出流量阈值，会将指定ID的ECS停止
+You'll need to create a RAM user at https://ram.console.aliyun.com/profile/access-keys to get your `ACCESS_KEY_ID` and `ACCESS_KEY_SECRET`, and assign the `AliyunECSFullAccess` and `AliyunCDTFullAccess` permissions.
+
+Once deployed, the Cloudflare Worker will check your CDT usage every minute and stop the specified ECS instance if the threshold is exceeded.
+
 ![](../../assets/images/aliyun-ecs-4rm-10.webp)
 
-# Here’s a breakdown of our payment process:  1.  **Payment Method Selection:** Choose your preferred method (e.g., credit card, debit card, online transfer). 2.  **Account Verification:** Verify your account details to ensure security. 3.  **Transaction Initiation:** Submit your payment request. 4.  **Confirmation & Receipt:** Receive a confirmation message and a receipt detailing the transaction.
-Bandwidth charges are billed based on a fixed bandwidth peak and billing duration.
+# Billing Flowchart
+Bandwidth Fee (Fixed Bandwidth Billing): Paid based on your specified peak bandwidth and billing duration, regardless of actual usage.
 
-Monthly data charges based on actual usage of public networks.
+Traffic Fee (Usage-Based Billing): Charged per hour based on actual public network traffic.
 
-The ECS instance incurs a fee of 0.005528 yuan per hour, totaling 31 days of monthly fees of 4.112832 yuan, and an additional 200G overseas data allowance free each month, without exceeding the allowance, and no traffic is recorded. The CDT offers free 200G international data flow per month, not exceeding the limit, and no traffic is recorded.
+In conclusion, the Spot ECS instance costs approximately **0.005528 RMB per hour**. For a 31-day month, that totals **4.112832 RMB**. The EIP is free once bound, CDT provides 200GB of free international traffic monthly, OSS provides 5GB of free storage, and inbound traffic is free. We have no outbound OSS traffic, or you can simply delete the OSS bucket for extra safety.
 
-**最终每月成本：不到5元！**
+**Final monthly cost: Less than 5 RMB!**
+
 ![](../../assets/images/4411ab2fe9dfe7df65472e5b426af5671.webp)

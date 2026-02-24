@@ -1,6 +1,6 @@
 ---
 title: "Certified as a creator of Follo."
-description: "Here’s a professional English translation of the text:  “Folo is an RSS aggregator platform that offers not only the ability to subscribe to a wide range of reputable sources, but also the option to claim and manage your own RSS feeds.”"
+description: "Folio is an RSS aggregator platform that offers not only the ability to subscribe to a wide range of premium RSS sources, but also the option to claim and manage your own RSS feeds."
 category: "Record"
 published: 2025-08-10
 image: '../../assets/images/2025-08-10-21-31-04-image.webp'
@@ -14,33 +14,33 @@ lang: en
 
 # What is this?
 
-This is a certification article for the RSS belonging to me.
+Here’s the translation:  This is a Folio certification document for the RSS feed belonging to me.
 
-Zola
+Zola:
 
-This message is used to verify that this feed (feedId:154118531036739584) belongs to me (userId:165740980096046080). Join me in enjoying the next generation information browser https://folo.is
+This message confirms that the feed associated with this ID (feedId: 154118531036739584) is intended for me (userId: 165740980096046080). I invite you to explore the next generation information browser at https://folo.is.
 
-Please provide the text you would like me to translate.
+Fuwari：
 
-This message is used to verify that this feed (feedId:180993728847509504) belongs to me (userId:165740980096046080). Join me in enjoying the next generation information browser https://folo.is
+This message confirms that the feed associated with this ID (feedId: 180993728847509504) is intended for me (userId: 165740980096046080). Please join me to experience the next generation information browser at https://folo.is/
 
 blog.acofork.com
 
-This message is used to verify that this feed (feedId:236818461447222272) belongs to me (userId:165740980096046080). Join me in enjoying the next generation information browser https://folo.is
+This message confirms that this feed is associated with my account (userId: 165740980096046080). Please join me to experience the next-generation information browser at https://folo.is.
 
 2x.nz
-This message is used to verify that this feed (feedId:245004133358075904) belongs to me (userId:165740980096046080). Join me in enjoying the next generation information browser https://folo.is
+This message confirms that this feed is associated with my account (userId: 165740980096046080), and I am invited to participate in exploring the next-generation information browser at [https://folo.is/].
 
-# How can I verify?
+# How do I authenticate?
 
-First, you need a blog or website with an RSS feed.
+First, you need to have a blog or website with an RSS feed.
 
-Okay, I understand. Please provide the text.
+比如 2x.nz/rss.xml
 
-Click on verification at https://folo.is
+Please click on the authentication link at [https://folo.is] in the Follo application.
 
-Please provide the content you want me to translate into English.
+The system will present you with a content item requiring you to embed it into an RSS feed.
 
-The simplest method is to create an article and paste the given text directly into it, then verify.
+The simplest method is to create a new article and paste the passage directly into it, then verify it.
 
 ![](../../assets/images/2025-08-10-21-31-04-image.webp)

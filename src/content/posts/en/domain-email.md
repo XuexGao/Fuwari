@@ -1,6 +1,6 @@
 ---
 title: "Self-built postal service? Two free domain email solutions await you!"
-description: "Here are a few professional translations of the text, keeping the [[X:content]] tags intact:  **Option 1 (Concise & Direct):**  “Looking for a domain email address? We offer two free options: NetEase Free Business Mail and Tencent Enterprise Email. Each has its own strengths and weaknesses – choose based on your needs.”  **Option 2 (Slightly more detailed):**  “Seeking a professional domain email?  We provide two complimentary options: NetEase Free Business Mail and Tencent Enterprise Email. Both offer distinct advantages, allowing you to select the best fit for your requirements.”  **Option 3 (Formal & Business-Oriented):**  \"Interested in establishing a business domain email address? We currently offer NetEase Free Business Mail and Tencent Enterprise Email – each with unique features and benefits.  Please consider your specific needs when selecting an option.\""
+description: "Looking for a domain email address? We offer two free options: NetEase Free Business Mail and Tencent Enterprise Email, each with its own strengths and weaknesses – choose the one that best suits your needs."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/2025-05-02-21-04-48-image.webp
@@ -15,122 +15,122 @@ tags:
 
 :::
 
-# Please provide the text you would like me to translate.
+# Introduction
 
-I started to realize that domain email addresses were because I saw an email address associated with a Microsoft account on a developer group within a friend’s development team, linking it to the domain com. he had set up at his website.
+I first became aware of domain names and email addresses through an accidental observation within a development group of a friend. Their Microsoft account was linked to an email address associated with the domain name ‘admin@hewebsite.com’.
 
-I was very curious and asked him if his email address is self-hosted.
+At the time, I was very curious and asked him if his email address is self-hosted.
 
-Because I knew that by purchasing a VPS and combining it with some open email frameworks, it was possible to set up a domain name, but this would require money and time costs, and I considered it unstable.
+Due to my understanding that purchasing a VPS and integrating it with open email frameworks could be a viable solution for building an email service, I initially considered it. However, the associated costs of money and time were considerable, and I questioned its stability. Consequently, I have not yet attempted such a setup.
 
-He uses Cloudflare’s email forwarding service, but because it’s forwarding, you need to incur some extra cost for sending emails with a domain email address. This is quite disruptive.
+He explained that he was utilizing Cloudflare’s email forwarding service, but the cost of sending emails via this method is considerable due to the need for domain-based email addresses. This creates a significant barrier to using email for certain purposes.
 
-Netlify Free Business Email and Tencent Enterprise Email can be free-linked your domain as a domain email, allowing you to receive and send emails.
+Here’s the translation:  “Upon discovering NetEase Free Business Mail and Tencent Enterprise Email, you can freely bind your domain name as a domain email address, allowing for both receiving and sending.”
 
-# Okay, please provide the text. I’m ready when you are.
+# Here’s the translation:  **Comparative Analysis**
 
-NetEase Free Enterprise Mail | Tencent Corporate Email
-Okay, please provide the text. I’m ready when you are.
-Enable SMTP/IMAP | ⭐⭐ Difficult, with issues | ⭐⭐⭐⭐⭐ Simple and straightforward
-Stability: ⭐⭐⭐⭐ Relatively old-established brands | ⭐⭐⭐⭐⭐ Large enterprise backing |
-Okay, please provide the text. I’m ready when you are.
+| | NetEase Free Business Mail | WeChat Enterprise Email |
+|---|---|---|
+| Enable SMTP/IMAP | Troublesome, with pitfalls. | Simple and direct |
+| Stability | Old-fashioned brand | Large back support |
+| Recommendation rating | Not recommended. | Recommendation |
 
-# Tencent Enterprise Email (Recommended)
+# Option one: Tencent Enterprise Email (Recommended)
 
-## Please provide the text you would like me to translate.
+## Formal commencement.
 
-First, enter [Tencent Enterprise Email](https://work.weixin.qq.com/mail/) to create a business and you will be bound to WeChat Business. Follow the steps to set it up correctly.
+First, create a business account through Tencent Enterprise Email. This will allow you to link it to WeChat Business and follow the instructions carefully.
 
-NextDNS
+Next, you will need to bind a domain and add a few MX records.
 
-## Enable SMTP/IMAP/POP3
+## Here’s the translation:  Enable SMTP, IMAP, or POP3 protocols.
 
-We need to go to [Tencent Enterprise Email Login Entrance].
+We need to access the Tencent enterprise email login entrance.
 
-Please provide the text you would like me to translate.
+Please note, `Other Login Methods`
 
 ![](../../assets/images/2025-05-02-20-57-24-image.webp)
 
-Please provide the content you want me to translate. I need the text to be translated.
+Please select your account and password to log in.
 
 ![](../../assets/images/2025-05-02-20-57-44-image.webp)
 
-Followed login procedures.
+Following member login (if you directly entered, skip this step).
 
 ![](../../assets/images/2025-05-02-20-59-22-image.webp)
 
-Okay, please provide the text. I’m ready when you are.
+Click on the top left corner to configure.
 
 ![](../../assets/images/2025-05-02-21-00-08-image.webp)
 
-Email settings
+Delivery settings
 
 ![](../../assets/images/2025-05-02-21-00-31-image.webp)
 
-SMTP and IMAP addresses and ports (including TLS support, which is also verified)
+This allows you to view SMTP and IMAP addresses and ports (including TLS support, which is also supported).
 
 ![](../../assets/images/2025-05-02-21-01-07-image.webp)
 
-## Generate client password
+## 生成客户端密码
 
-Next steps for account setup.
+Next, please link your email account.
 
 ![](../../assets/images/2025-05-02-21-01-36-image.webp)
 
-Here’s a new password:  password123!
+Generating new passwords is a critical security practice. It’s essential to employ strong, unique passwords that are resistant to brute-force attacks and dictionary guessing. Consider using a combination of uppercase and lowercase letters, numbers, and symbols for maximum complexity. Avoid easily guessable information like birthdays or names.  It's also advisable to utilize a password manager to securely store and generate these credentials.
 
 ![](../../assets/images/2025-05-02-21-01-57-image.webp)
 
-# NetEase Free Enterprise Mail
+# Option Two: NetEase Free Enterprise Mail
 
-Please note that NetEase Enterprise Mail has some issues with SMTP, IMAP, and POP3. You need to enable it by clicking the `管理员未开启当前登录权限` link, which results in a less reliable experience. A more recommended option is using Tencent Enterprise Email.
+Please note that NetEase Enterprise Mail has some limitations regarding SMTP, IMAP, and POP3. To enable these features, you will be prompted to log in with administrator privileges, resulting in a less-than-optimal experience. We recommend using Tencent Enterprise Email for a better experience.
 
 ## Create an account and configure administrator privileges.
 
-First, go to [https://www.163.com/](https://www.163.com/) and create an account. Register directly using your mobile phone number.
+First, create an account on [NetEase Free Business Email](https://ym.163.com/). Register directly using your mobile number.
 
-Your account has been successfully registered. You will receive a verification SMS message via **短信** and then you can log in at https://mail.qiye.163.com/.
+Upon registration, your account name and login credentials will be sent to you via **SMS**. Please then proceed to https://mail.qiye.163.com/ for login.
 
-If you don’t like random passwords, please first click "Forgot Password" and then fill in your account name, verify the registered mobile number, and then reset your password.
+If you prefer to bypass the system-generated passwords, please first click "Forgot Password." Then, after entering your account name and verifying your registered mobile number, you can reset your password.
 
-Entered the system and found…
+Upon entering, it appeared as though…
 
 ![](../../assets/images/65e5b400-96d7-44c6-b16e-a7a409104c3c.webp)
 
-If you like your account name, such as my account name, erchashush is changeable.
+If you do not wish to use your account name, such as my account is **erchashush** @acofork.freeqiye.com, this erchashush can be changed.
 
-In organizational management, click on Account Management, select a new account.
+In organizational management, navigate to the Account Management section and select to create a new account.
 
 ![](../../assets/images/a20e7931-c460-4134-b1b0-0fee82f8a7fc.webp)
 
-Here’s the translation:  “Please provide a unique and memorable name for your phone.”
+Here’s a professional translation of the text:  “Please provide a preferred nickname.  The system will require you to enter your phone number for registration, and if the information is incorrect, it will be automatically deleted.”
 
 ![](../../assets/images/b9ac287d-ff90-4f8c-88ba-0d7bb1588f1c.webp)
 
-Please log in to the backend using superadmin credentials.
+We need to request a premium account for this new account, if you wish to log in via superadmin from the backend.
 
 ![](../../assets/images/6f21feca-984d-444e-b80f-bf1a28e4cf79.webp)
 
-Proceed to the upper right corner to log out and then use a new administrator account to log in.
+Proceed to the upper right corner to log out and then use your new administrator account to log in.
 
-## Please provide the text you would like me to translate.
+## Please bind your domain.
 
-Organization Management – Domain Management – Add Domain
+Management and Organization – Domain Management – Add Domain
 
 ![](../../assets/images/2fa04b72-f0e7-43c0-9c2a-1daab62e67cb.webp)
 
-Please provide the text you would like me to translate.
+Based on your domain registrar (e.g., Cloudflare), you can configure TXT records and MX records.
 
 ## Please log in to your email account.
 
-Download the corresponding version from NetEase Email Master – a highly effective and comprehensive all-platform email client.
+Download the [NetEase Email Master - Efficient and Powerful All-Platform Email Client](https://dashi.163.com/) version.
 
-Use your email address and password to log in. You can also verify using a mobile phone. It’s recommended to download a mobile app like NetEase Email Master on your phone for any other platforms, ensuring greater security.
+Please log in using your email address and password. You may also be required to verify via SMS. A mobile version of NetEase Email Master is recommended for login on your phone; any other platform login will require mobile authentication, enhancing security.
 
-## Okay, please provide the text. I’m ready when you are.
+## 效果展示
 
 ![](../../assets/images/614794bd-d84d-4b66-b816-1d6d6ce73727.webp)
 
-Signature and sender photo can be set up via the NetEase email master setting on a smartphone.
+Signature and sender profile pictures can be set through the NetEase email master on mobile phones.
 
 ![](../../assets/images/57f759bc-46fb-4f99-b6bb-751464661240.webp)

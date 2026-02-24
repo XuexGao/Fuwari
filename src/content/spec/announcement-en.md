@@ -3,6 +3,6 @@ enable: true
 level: happy
 lang: en
 ---
-We have been reviewed by Google Adsense! Without an ad blocker enabled, you should be able to see ads without issue.
+We leverage our proprietary technology to achieve a truly internationalized experience, now encompassing website UI and articles – any content will be presented in Chinese or English.
 
-If you are not satisfied with the advertising placement (such as occupying a large area, obstructing main content, etc.), please contact us at [Top Article](/zh-cn/posts/pin/).
+Here’s the translation:  “Furthermore, this may result in numerous bugs appearing, should you encounter them. Please submit a report of this issue at [issue](https://github.com/afoim/fuwari/issues).”

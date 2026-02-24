@@ -1,6 +1,6 @@
 ---
 title: "GoEdge Self-Built CDN System Deployment Lessons Learned"
-description: "I inadvertently acquired three free VPS instances. However, I’m concerned about their potential re-activation and recovery. Perhaps they could contribute to a shared workload?"
+description: "I am incredibly sorry to inform you that I accidentally acquired three free VPS accounts. However, I’m concerned about their potential re-activation and how to address this situation effectively. Perhaps we could redirect them to a more stable environment or explore alternative solutions?"
 published: 2025-09-09
 image: '../../assets/images/2025-09-09-06-29-44-image.webp'
 tags: [CDN, GoEdge]
@@ -12,19 +12,19 @@ lang: en
 
 :::
 
-# Install GoEdge
+# Installation of GoEdge
 
-Using scripts quickly installs the GoEdge Management System – Documentation – GoEdge CDN | Self-Built CDN
+Here’s the translation:  “Quickly install the GoEdge Management System using a script – GoEdge CDN: Self-Hosted CDN.”
 
-Here’s a Python script to install:  ```python import subprocess import sys  def install_script():     try:         subprocess.run(['pip', 'install', 'your_script_name'])         print("Script installed successfully.")     except Exception as e:         print(f"Error installing script: {e}")  if __name__ == "__main__":     install_script() ```
+A script installation is being performed.
 
 ```bash
 curl -s https://goedge.cloud/install.sh | bash
 ```
 
-# Uninstall GoEdge
+# Deactivation of GoEdge device.
 
-``` Listen port PID is 7788 ```
+Check the process ID (PID) associated with port listening on channel **7788**.
 
 ```bash
 root@AcoFork-NAS:~/oci# apt install lsof && lsof -i :7788
@@ -40,7 +40,7 @@ edge-admi 1733510 root   10u  IPv6 8828980      0t0  TCP 10.147.17.1:7788->10.14
 root@AcoFork-NAS:~/oci#
 ```
 
-Using PID to find program paths
+Using PID (Proportional-Integral-Derivative) control, determine the program path.
 
 ```bash
 root@AcoFork-NAS:~/oci# readlink -f /proc/1733510/exe
@@ -48,21 +48,21 @@ root@AcoFork-NAS:~/oci# readlink -f /proc/1733510/exe
 root@AcoFork-NAS:~/oci#
 ```
 
-C:/usr/local/goedge/edge-admin/
+Here’s the translation:  “You have successfully located the Edge Admin installation directory: **EdgeAdmin_Installation_Directory**.”
 
-Uninstall the management platform using the documentation – GoEdge CDN | Self-Hosted CDN. Follow the instructions step by step to complete the process.
+Follow the instructions outlined in the documentation for the De-installation Management Platform – GoEdge CDN, and proceed with the process step-by-step.
 
-# API node configuration
+# Here’s a professional translation of “API node configuration” into English:  “API node configuration refers to the process and settings required to properly configure and manage an Application Programming Interface (API) endpoint.”
 
-Installation will require you to configure API nodes, and configure ports and public networks.
+The installation process will configure API nodes, and you’ll need to specify ports and public IP addresses.
 
-The port is not currently in use, defaulting to port 8001 (known to be reserved by Flyfish OS). If it is occupied, a different port will be used.
+Ensure that the port is not in use by another process, defaulting to port 8001 (as known to be reserved by Flyfish OS). If it is occupied, switch to a different port.
 
-The system requires that the IPv6 address of the next node to be added can be accessed by the following node. This is achieved by using an IPv6 public network and ensuring that all subsequent nodes have IPv6 addresses.
+You must ensure that **Public Network** can be added to by subsequent nodes **Proactive Access**.  We utilize IPv6 public networks and guarantee that all nodes added after this will have IPv6 addresses.
 
-# Add DNS service providers.
+# Adding a DNS service provider.
 
-First go.
+Please proceed to…
 
 ![](../../assets/images/2025-09-09-07-00-37-image.webp)
 
@@ -70,41 +70,41 @@ Add your DNS account. **hw** Used for CDN domain name autonomous resolution, **c
 
 ![](../../assets/images/2025-09-09-06-59-59-image.webp)
 
-Please enter the domain here.
+Please enter your details to verify domain availability.
 
 ![](../../assets/images/2025-09-09-06-44-54-image.webp)
 
-# Setting up CDN (Content Delivery Network) domains requires careful planning and execution. It involves configuring your DNS records to point to the CDN provider’s servers, ensuring proper caching and routing of content globally.  This process typically includes updating your domain registrar's settings and verifying that the CDN is properly integrated with your website’s infrastructure.  Thorough testing is crucial after implementation to ensure optimal performance and user experience.
+# Setting up a CDN (Content Delivery Network) domain is a crucial step in optimizing website performance and user experience. This involves configuring the DNS records to point your domain name to the CDN’s servers, ensuring that users are served content from geographically closer locations, resulting in faster loading times and reduced latency.  Proper CDN setup requires careful planning and execution to ensure optimal results.
 
-To travel.
+Please proceed.
 
 ![](../../assets/images/2025-09-09-06-45-52-image.webp)
 
-Set up DNS secondary domains.
+Configure DNS subdomain settings.
 
 ![](../../assets/images/2025-09-09-06-46-12-image.webp)
 
 # Adding nodes.
 
-To travel.
+Please proceed.
 
 ![](../../assets/images/2025-09-09-06-47-14-image.webp)
 
 ![](../../assets/images/2025-09-09-06-47-30-image.webp)
 
-Node IP + SSH authentication method (password/key), and goedge will proactively connect via SSH to install services on the node.
+Then enter the node IP and SSH authentication method (password/key), and after goedge will proactively connect via SSH to install services on the node.
 
-# Configuration node DNS IP
+# Configuration node DNS IP address.
 
-To travel.
+Please proceed.
 
 ![](../../assets/images/2025-09-09-06-49-35-image.webp)
 
-Please provide the DNS IP addresses for each node. You can specify the **公网IP** tag for each node.
+This will require you to enter the DNS IP address for each node, and you can specify the **Public IP**.
 
-# Please provide the text you would like me to translate.
+# Signature: SSL
 
-To travel.
+Please proceed.
 
 ![](../../assets/images/2025-09-09-06-50-43-image.webp)
 
@@ -114,28 +114,28 @@ To travel.
 
 ![](../../assets/images/2025-09-09-06-51-10-image.webp)
 
-email@example.com
+随便写个邮箱
 
 ![](../../assets/images/2025-09-09-06-51-23-image.webp)
 
-Domain Name (Supports Pan-domain)
+Write domain names (supporting both broad and narrow domains).
 
 ![](../../assets/images/2025-09-09-06-51-52-image.webp)
 
-Okay, please provide the text.
+Please wait for confirmation of successful signing.
 
 ![](../../assets/images/2025-09-09-06-52-20-image.webp)
 
-# Please provide the text you would like me to translate.
+# Here’s the translation:  “Prohibit access to unregistered domains and prohibit direct IP addresses.”
 
-Please provide the text you would like me to translate. I need the text itself to fulfill your request.
+字面意思，如图设置
 
 ![](../../assets/images/2025-09-09-06-53-52-image.webp)
 
-# Creating a website involves several key steps and considerations. First, you need to define your website’s purpose and target audience. Next, choose a domain name that reflects your brand and is memorable. After that, select a web hosting provider and set up your website on their platform. You'll likely need to design the layout of your site – this includes choosing a theme or template, selecting colors and fonts, and arranging content in a user-friendly manner.  Finally, you’ll need to develop the website’s functionality, which may involve adding features like contact forms, e-commerce capabilities, or blog sections.  Content creation is crucial; you'll need to write engaging text, create high-quality images and videos, and optimize your site for search engines (SEO).  Ongoing maintenance and updates are essential to keep the website secure, functional, and relevant.
+# Create a website.
 
-To travel.
+Please proceed.
 
 ![](../../assets/images/2025-09-09-06-54-16-image.webp)
 
-Next week I’ll be taking a break.
+Please conduct your own research. I’m going to sleep.

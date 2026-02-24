@@ -1,6 +1,6 @@
 ---
 title: "Oracle (Oracle's notes)"
-description: "“Leveraging my financial capabilities, I successfully acquired a Kakao Account through diligent experimentation and discovery of numerous pitfalls. Consequently, I have diligently documented these experiences.”"
+description: "Using the assistance of financial capabilities, I successfully acquired a WeChat account through skillful exploitation, uncovering numerous pitfalls and difficulties in its use. Consequently, I have diligently documented these experiences."
 published: 2025-09-08
 image: '../../assets/images/2025-09-08-00-02-59-image.webp'
 tags: [Oracle]
@@ -12,34 +12,34 @@ lang: en
 
 :::
 
-# Regional selection
+# Region Selection
 
-During registration, you will be asked to select an account region. After selecting it, **不可更改** , I chose Japan East (Tokyo). Due to the free arm of the ancient oracle machine, the probability of getting one is lower if your chosen region is more popular.
+Upon registering, you will be prompted to select an account region. Once selected, the region is immutable, and I have chosen Japan East (Tokyo). Due to the limited availability of Arm machines, selecting a more popular region increases your chances of securing one.
 
-# Safety measures are crucial for maintaining a secure environment. Robust protocols and continuous monitoring are essential for detecting and responding to potential threats effectively.  Effective risk assessment and mitigation strategies should be prioritized, alongside employee training and awareness programs.  Regular audits and security assessments help identify vulnerabilities and ensure compliance with relevant regulations.
+# Safety
 
-https://cloud.oracle.com/identity/domains/my-profile/security
+Here’s the translation of the provided text:  “My Profile Security” – a section within Oracle Identity Management that allows users to manage their security settings and access rights for their profiles. This includes options related to authentication, authorization, and data protection. It provides a centralized location for reviewing and adjusting these configurations.
 
-Recommended to enable two-step verification using a mobile device and scan a QR code to activate it.
+Recommended to enable **Two-Step Verification**(https://www.microsoft.com/en-us/security/products/two-step-verification) using a mobile device and scan the QR code to establish a secure TOTP.
 
 ![](../../assets/images/2025-09-08-00-07-32-image.webp)
 
-If you need to change your password, please contact support.
+If you need to change your password, please provide the new password here.
 
 ![](../../assets/images/2025-09-08-00-08-48-image.webp)
 
-# No Debian system?
+# Is there no Debian system?
 
-You can try to create instances on the Cloud Oracle Compute Instances page: https://cloud.oracle.com/compute/instances/create. You will find no Debian image available. We can upload our custom images using the bottom **my_images** section, and detailed instructions are below.
+Please attempt to create an instance on the Cloud Oracle Compute service at https://cloud.oracle.com/compute/instances/create. You will find that no Debian image is available. We can upload our custom images via the following **my_images** section, detailed instructions are provided below.
 
 ![](../../assets/images/2025-09-08-00-12-08-image.webp)
 
-Writing is required before uploading custom content to your **甲骨文账户下的对象存储**. Simply uploading a standard object storage is not sufficient.
+Here’s the translation:  “Please upload your custom video to the designated storage location within your **** before uploading it to the ****.  Uploading to a standard object storage service is not permitted.”
 
-First, download a Debian image suitable for cloud storage, enter [Download Debian](https://www.debian.org/distrib), and find **Using Debian Cloud Images** separately.
+First, download a Debian image optimized for cloud deployment, navigate to [Debian Downloads](https://www.debian.org/distrib), and locate **Using Debian Cloud Images**. Download separately.
 
-- 64-bit AMD/Intel QCOW2 raw data.
-- 64-bit ARM architecture ``` QCOW2 raw and QCOW2 compressed data ```
+- 64-bit AMD/Intel (QCOW2) and raw data.
+- 64-bit ARM architecture (QCOW2) and raw data.
 
 ![](../../assets/images/2025-09-08-00-17-19-image.webp)
 
@@ -47,198 +47,198 @@ Will you receive?
 
 ![](../../assets/images/2025-09-08-00-17-50-image.webp)
 
-Go to https://cloud.oracle.com/object-storage/buckets to create a new storage bucket, click on the visibility settings and change it to **public**.
+Go to https://cloud.oracle.com/object-storage/buckets and create a new storage bucket. Click on the "Edit Visibility" option, and set it to **Public**.
 
 ![](../../assets/images/2025-09-08-00-18-34-image.webp)
 
 ![](../../assets/images/2025-09-08-00-19-23-image.webp)
 
-Then upload the video.
+Then upload the recently downloaded footage.
 
 ![](../../assets/images/2025-09-08-00-19-51-image.webp)
 
-Go to https://cloud.oracle.com/compute/images and click **Import Video**. Fill as needed.
+Please visit [https://cloud.oracle.com/compute/images](https://cloud.oracle.com/compute/images) and click on **Import Video**. Fill in as needed.
 
 ![](../../assets/images/2025-09-08-00-21-06-image.webp)
 
-Video Type and Launch Mode (optimized for performance)
+Video type and launch mode are illustrated in the table below (optimized for performance).
 
 ![](../../assets/images/2025-09-08-00-21-30-image.webp)
 
-The content is ready for import. Please wait. It will take approximately 20 minutes to process. The status will change to available.
+Upon successful verification, click the right-hand bottom button labeled **Import Footage**. This process typically takes approximately **20 minutes**, and will transition to a state of availability **Available**.
 
 ![](../../assets/images/2025-09-08-00-22-25-image.webp)
 
-Click on the video to access the details page, specifically for **arm映像**. We need to manually adjust **compatible configuration**.  Tap the right-hand corner to access detailed information.
+Please click on the video to access the details page. Specifically, we need to manually adjust the **arm video**.  Upon reaching the upper right corner, click on **Operation - Detailed Information**.
 
 ![](../../assets/images/2025-09-08-00-24-48-image.webp)
 
-Okay, please provide the text you would like me to translate. I will only output the translated text and preserve all tags exactly as they are.
+全部打勾，保存更改
 
-Still, it’s important to note that when creating instances, please pay close attention to whether you are using an x86 or ARM instance. An x86 instance cannot utilize ARM video, and vice versa.
+It is crucial to pay close attention when creating instances, ensuring you are using an x86 instance instead of an ARM instance. An x86 instance cannot utilize ARM video streams; conversely, an ARM instance cannot utilize x86 video streams.
 
 ![](../../assets/images/2025-09-08-00-25-10-image.webp)
 
-Then click **Create Instance**, you can use custom instances to create an instance.
+Click on the right-hand corner **Create Instance** to utilize custom instances.
 
 ![](../../assets/images/2025-09-08-00-23-21-image.webp)
 
-# Virtual Command Network (VCN)
+# Create a Virtual Community Network (VCN).
 
-Go to https://cloud.oracle.com/networking/vcns Click on "Create VCN" and follow the steps afterward.
+Please visit [https://cloud.oracle.com/networking/vcns](https://cloud.oracle.com/networking/vcns). Click on **Create VCN** and proceed to the next step.
 
 ![](../../assets/images/2025-09-08-00-27-25-image.webp)
 
-Successfully created a network diagram as illustrated.
+Successfully establishing a network diagram as depicted in the image.
 
 ![](../../assets/images/2025-09-08-00-27-42-image.webp)
 
-# The VCN has an IPv6 prefix.
+# Adding a VCN IPv6 prefix to an existing network.
 
-https://cloud.oracle.com/networking/vcns
+Please visit https://cloud.oracle.com/networking/vcns.
 
 进入我们刚刚创建的VCN
 ![](../../assets/images/2025-09-09-06-18-57-image.webp)
 
-Navigation menu options: **Submenu** - **Public Submenu**
+Navigation menu options are displayed as **Subgrid**.  These subgrids represent public and private subnets.
 
 ![](../../assets/images/2025-09-09-06-19-57-image.webp)
 
-Navigation menu click **IP Management**
+Clicking on the navigation bar in the new page will take you to the IP Management section.
 
 ![](../../assets/images/2025-09-09-06-20-29-image.webp)
 
-Okay, please provide the text you would like me to translate. I’m ready when you are.
+往下滚动，添加 **IPv6前缀**
 
 ![](../../assets/images/2025-09-09-06-20-50-image.webp)
 
-# Please provide the text you would like me to translate! I need the content to be translated.
+# Create a sample.
 
-Go to https://cloud.oracle.com/compute/instances and click **Create Instance**.
+Please go to [https://cloud.oracle.com/compute/instances](https://cloud.oracle.com/compute/instances). Click on **Create Instance**.
 
-Here is the translation.
+Here, you can modify the video to custom footage, which is a Debian image we recently uploaded.
 
 ![](../../assets/images/2025-09-08-00-28-44-image.webp)
 
-The permanent free architecture and configuration package is available.
+Available now is a permanent free plan.
 
-- Two x86 instances, each with a 1c1g configuration, cannot be merged into a 2c2g configuration.
+- VM.Standard.E2.1.Micro: **two** 1c1g x86 instance, **not compatible for merging into 2c2g configuration**.
 
-- VM.Standard.A1.Flex：Four ARM64 instances, **can be freely partitioned**.
+- VM.Standard.A1.Flex: Supports a configuration of four ARM64 instances, allowing for flexible partitioning.
 
-Important matters
+**Critical Matters**
 
-Recycling of idle computing instances
+**Reclamation of Idle Compute Instances**
 
-Oracle may reclaim idle “permanent free” compute instances. If the following conditions are met simultaneously within a 7-day cycle, the virtual machine and bare metal compute instance will be considered idle:
+The Oracle platform may reclaim idle “permanent free” compute instances. If both conditions – a seven-day cycle and the presence of these instances – are met simultaneously, the virtual machine and bare metal compute instances will be classified as idle.
 
-- CPU utilization rate below 20%.
+- CPU utilization is currently below 20 percent.
 
-- Network usage rates below 20%.
+- Network usage rates are below 20 percent.
 
-- Memory usage below 20% (only for A1 specifications).
+- Memory usage below 20% is limited to the A1 specification.
 
 ![](../../assets/images/2025-09-08-00-31-25-image.webp)
 
-The IPv4 and IPv6 addresses are available.
+Here, you can choose whether to include IPv4 and IPv6 addresses.  The IPv6 address’s functionality depends on whether it is already included in a VCN with an IPv6 prefix.
 
 ![](../../assets/images/2025-09-09-06-23-50-image.webp)
 
-The system can be modified directly without limitations.
+Here, you can modify the IO configuration directly without further steps.
 
 ![](../../assets/images/2025-09-08-03-28-29-image.webp)
 
-Here’s the SSH configuration.
+Here’s the translation:  “In this section, you can modify SSH-related configuration settings.”
 
 ![](../../assets/images/2025-09-08-00-31-09-image.webp)
 
-Please proceed with verification after confirmation of successful completion. Click **Create**.
+Following the successful verification, proceed to click **Create**.
 
-# Revised firewall.
+# Firewall changes.
 
-I directly configured UFW on my Linux server to implement a firewall.
+I directly opted for full configuration, and I prefer to implement a firewall using UFW on Linux servers.
 
-Go to https://cloud.oracle.com/networking/vcns, enter the VCN you just created, and navigate to the **Security** section to find this.
+Please access the following link: https://cloud.oracle.com/networking/vcns, navigate to your newly created VCN, and click on **Security**.
 
 ![](../../assets/images/2025-09-08-00-37-58-image.webp)
 
-Navigation menu continues to find **safety rules**. I’m all clear.
+The navigation menu continues to lead me to **Safety Rules**. I’m proceeding directly without hesitation.
 
 ![](../../assets/images/2025-09-08-00-38-25-image.webp)
 
-# Using SSH connection
+# Using SSH to connect to an instance.
 
-Go to https://cloud.oracle.com/compute/instances to view **Public IP**. You can connect to the server via **22 port**.
+Please visit [https://cloud.oracle.com/compute/instances](https://cloud.oracle.com/compute/instances) to view the public IP address of instances **PublicIP**. You can connect to the server using your **SSH private key** via port 22.
 
 ![](../../assets/images/2025-09-08-00-39-59-image.webp)
 
-# Please log in.
+# Please log in as root.
 
-If you use root directly login, you will receive an error message.
+If you use root directly to log in, you will receive a warning.
 
 ![](../../assets/images/2025-09-08-00-41-53-image.webp)
 
-Please log in using the name “debian” instead of the root user.
+Please log in using the user named “debian” instead of the root user.
 
-We will listen to him, and we want to change the registration name to **debian**.
+We will listen to him, and we intend to change the login name to **debian**.
 
-再次登录了
+Again, I successfully logged in.
 
 ![](../../assets/images/2025-09-08-00-43-13-image.webp)
 
-First, rank the root as **root**.
+First, grant authority to **root**.
 
 ```bash
 sudo -i
 ```
 
-Followed the instructions.  The user can now directly log in as root using their SSH public key file.
+Following the instructions of the root user, edit the SSH public key file to enable direct root login.
 
 ```bash
 nano /root/.ssh/authorized_keys
 ```
 
-Delete the first line of warning and re-write your SSH key.
+**Ctrl+K** Delete the first line of warnings and re-write your SSH public key.
 
-Save and exit, then restart sshd.
+Save and exit, then restart **sshd**.
 
 ```bash
 systemctl restart sshd
 ```
 
-Re-login successfully.
+Re-login using **root** and successfully.
 
 ![](../../assets/images/2025-09-08-00-46-59-image.webp)
 
-# Automatic script arm machine
+# Automated script hijacking of arm machines.
 
-If you select arm during instance creation and then receive a prompt indicating that it has been created, this is a standard behavior within the framework.
+If you select arm during instance creation and are prompted to create a final instance, please consult the documentation for your specific platform or system.
 
-The capacity of the VM is insufficient for AD-1 in Standard.A1.Flex configuration. Please create instances in other availability domains, or retry later. If you specify a fault domain, try to create an instance without specifying a fault domain. If that doesn't work, retry later.
+**Availability Domain VM.Standard.A1.Flex configuration is insufficient for AD-1. Please create instances in other availability domains, or retry later. If a failover domain is specified, try to create an instance without specifying a failover domain. If this does not work, retry later.**
 
-The system can be relied upon through an automated script to run indefinitely.
+The text can be translated as follows:  “By utilizing an automated script, we can achieve infinite retries.”
 
-Go to https://cloud.oracle.com/identity/domains/my-profile/auth-tokens. Click **Add API Key** and **Download Private Keys (only one time)**, then you will see a **Configuration Preview**. Copy it, and then use it.
+Please visit https://cloud.oracle.com/identity/domains/my-profile/auth-tokens. Click on **Add API Key**, then click **Download Private Key (only for this instance)**, and after that, you will see a preview of your configuration. Copy this information and paste it into the following field.
 
 ![](../../assets/images/2025-09-08-01-00-00-image.webp)
 
 Clone Repository [chacuavip10/oci_auto](https://github.com/chacuavip10/oci_auto)
 
-Edit the content within the configuration section, delete it, and paste the contents of the previous **configuration preview** file. Ensure the final action is complete.
+Please clear the content within the `config` section and paste the contents of **configuration preview** into its place. Ensure the final action is preserved.
 
 ```bash
 key_file=oci_private_key.pem
 ```
 
-https://cloud.oracle.com/compute/instances/create 再次尝试创建一个ARM机子，并且F12抓包，查看该包的详情
+Please visit the following URL: [https://cloud.oracle.com/compute/instances/create](https://cloud.oracle.com/compute/instances/create) and repeat the process of creating an ARM instance, along with capturing F12 packets to examine the instance's details.
 
 ![](../../assets/images/2025-09-08-01-03-04-image.webp)
 
-Please fill in the content within the `oci_auto.py` section.
+Please enter your ticket number in the `oci_auto.py` section.
 
 ![](../../assets/images/2025-09-08-01-08-08-image.webp)
 
-Install dependencies
+Please install dependencies.
 
 ```bash
 apt install python3
@@ -246,12 +246,12 @@ apt install pip
 pip install oci requests
 ```
 
-Okay, please provide the text. I’m ready when you are.
+运行
 
 ```bash
 python3 oci_auto.py
 ```
 
-You are likely to be hacked, possibly multiple times within a few months. Your account will then be compromised.
+Here’s the translation:  “It is possible to automatically acquire machines, and your account may soon have multiple units installed (？).”
 
 ![](../../assets/images/2025-09-08-01-11-54-image.webp)

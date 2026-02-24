@@ -9,76 +9,76 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article explains how to create and use IPv6 reverse DNS (ARPANAME) records, specifically using the `ip6.arpa` format, for domain resolution within the Cloudflare network. It details the process of generating a unique IP address, then associating it with a TunnelBroker endpoint, and finally utilizing Cloudflare's SSL provider to facilitate secure communication.
+
 :::
 
-# This is what.
+# What is this?
 
 The following content originates from GPT-5.
 
-IPv6 reverse DNS (IRP) domain registration is governed by the *ip6.arpa* standard.
-It converts IPv6 addresses to reverse-ordered hexadecimal digits, prefixed with `.ip6.arpa`, and used for DNS reverse lookups to retrieve the original IPv6 address.
+This is a **IPv6 Reverse DNS** domain, adhering to the `ip6.arpa`(https://www.ip6.arpa).
+It sorts IPv6 addresses in reverse hexadecimal order, followed by the `.ip6.arpa` prefix, to facilitate DNS reverse lookups and retrieve the original IPv6 address.
 
-# The IP address x.x.x.x.x.x.x.x.x.ip6.arpa has been obtained.
+# 将 x.x.x.x.x.x.x.x.x.x.x.x.ip6.arpa 弄到手
 
-Video tutorial: https://www.bilibili.com/video/BV1q8tBzsEPi/
+Video tutorial: [https://www.bilibili.com/video/BV1q8tBzsEPi/](https://www.bilibili.com/video/BV1q8tBzsEPi/)
 
-Go to [Hurricane Electric Free IPv6 Tunnel Broker](https://tunnelbroker.net/)
+Go to [Hurricane Electric Free IPv6 Tunnel Broker](https://tunnelbroker.net/).
 
-Register an account (requires a domain email address)
+Register an account using a domain email address.
 
-Create a tunnel. It requires a VPS that has enabled ICMP echo requests.
+Create a tunnel. This requires a VPS that has enabled ICMP (Internet Control Message Protocol) traffic.
 
-The TunnelBroker will send a Ping request to its IP address.
+Upon providing an IP address, TunnelBroker will initiate a Ping request towards it.
 
-If TunnelBroker receives a response and the IP address is not bound by another tunnel, it will display a green indicator with the available flag.
+If TunnelBroker receives a response and the IP address is not already bound by another tunnel, it will display a green indicator with the associated logo.
 
-If the IP has been bound, verification may be required.
+If the IP address has been bound, verification via HTTP is required.
 
 ![](../../assets/images/2025-08-09-04-53-04-image.webp)
 
-Enter this page to view the IPv6 routing assignments provided by TunnelBroker.
+Here’s the translation of the text:  “Enter this page to view the IPv6 routing assignments provided by TunnelBroker.”
 
 ![](../../assets/images/2025-08-09-04-55-24-image.webp)
 
-`2001:470:24:386::/64` is a significant milestone in the development of artificial intelligence, marking a crucial step towards creating machines capable of complex reasoning and problem-solving.  The research team achieved this breakthrough by developing a novel neural network architecture that effectively mimics the human brain's ability to learn from experience and adapt to new situations. This approach leverages deep learning techniques, including convolutional neural networks and recurrent neural networks, to process vast amounts of data and identify patterns that would be difficult for traditional algorithms to detect.  The results demonstrate improved performance in tasks such as image recognition, natural language processing, and game playing, suggesting a promising path towards more intelligent and autonomous systems.  Further research is underway to explore the full potential of this technology and its implications for various industries.
+Based on the provided reference, the translation is:  “As an example of `2001:470:24:386::/64`,”
 
-First, add 0, each 4 digits, separated by `:`.  This is `2001047000240386`.
+First, add zero to each digit, divide by four, and format as `:` separated by brackets. This is `2001047000240386`.
 
-The provided text is not available. I need the text to translate. Please provide the text you want me to translate.
+Then reverse it, resulting in `6830420007401002`.
 
-Please provide the text you would like me to translate. I need the original text to begin with.
+Finally, add `.` and `.ip6.arpa` to represent the following IP address: `6.8.3.0.4.2.0.0.0.0.7.4.0.1.0.0.2.ip6.arpa`
 
-将内容添加到 Cloudflare。
+将其添加到Cloudflare
 
 ![](../../assets/images/2025-08-09-04-59-05-image.webp)
 
-Review Cloudflare’s requirements for your NS server.
+Please configure your NS server according to the Cloudflare requirements.
 
 ![](../../assets/images/2025-08-09-04-59-25-image.webp)
 
-Back to Tunnel Broker settings.
+Return to Tunnel Broker for configuration.
 
 ![](../../assets/images/2025-08-09-04-59-49-image.webp)
 
-Okay, please provide the text you would like me to translate. I’m ready when you are.
+The domain registration process is complete.
 
-# Please provide the text for me to translate.
+# Please issue an SSL certificate for us.
 
-Default IP addresses cannot be issued due to restrictions imposed by most SSL providers.
+Default IPRA is unable to issue SSL certificates due to widespread rejection by most SSL certificate providers.
 
-SSL.COM
+The Cloudflare SSL provider has been rebranded to SSL.com to resolve this issue.
 
-Request a change to SSL provider.
+Secure your website by requesting necessary information and initiating a change with your SSL provider.
 
 ```bash
 curl --location --request PATCH 'https://api.cloudflare.com/client/v4/zones/<zone_id>/ssl/universal/settings' --header 'X-Auth-Email: 你的CF注册邮箱' --header 'X-Auth-Key: 你的CF全局APIKey' --header 'Content-Type: application/json' --data-raw '{"enabled":true,"certificate_authority":"ssl_com"}'
 ```
 
-The SSL provider has automatically activated a new SSL certificate.
+Please wait a moment; the system will automatically provision new SSL certificates from a new provider.
 
 ![](../../assets/images/2025-08-09-05-07-40-image.webp)
 
-# Please provide the text.
+# Limitation(s)
 
-本人测试，如果您自己创建SSL.COM的账户尝试签发SSL会拒签。故该域名仅能在Cloudflare CDN下使用。
+Here’s the translation:  “I am conducting a personal SSL certificate test. Attempting to issue an SSL certificate for an account created at SSL.COM will likely result in rejection, as this domain is restricted to use with Cloudflare CDN.”

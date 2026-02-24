@@ -1,6 +1,6 @@
 ---
 title: "Master Rice AI, then reverse it!"
-description: "AnuNeko is a cat known for its playful and affectionate “hairy” behavior. In reality, it’s an AI model created by MiHoYo, capable of simulating the characteristic “hairy” expression. Consequently, it has been developed as a QQ bot to entertain its online friends."
+description: "AnuNeko is a cat known for its playful and affectionate “hairy” behavior. In reality, it’s an AI model created by MiHoYo, capable of simulating a “hairy” expression – essentially, it’s a QQ bot designed to entertain its online friends."
 published: 2025-12-02
 image: ../../assets/images/anuneko.webp
 tags:
@@ -14,10 +14,10 @@ lang: en
 
 :::
 
-# What
-The cat is emitting a hiss (as shown on the cover).
+# This is what.
+Here’s the translation:  This is a cat that emits a hiss (as depicted on the cover).
 
-You can go to AnuNeko, the cat.
+You can visit [AnuNeko](https://anuneko.com/#/chat) – the cat lady.
 
 # 逆！
 okok，注意到登陆后的请求头中有 `x-token` 字段
@@ -56,5 +56,5 @@ curl --location 'https://anuneko.com/api/v1/user/select_model' \
 --data '{"chat_id":"会话id","model":"Exotic Shorthair或Orange Cat"}'
 ```
 
-Here’s the translation:  A plugin designed for NoneBot2 is being developed.
-AnuNeko is a simple bot designed to remove unwanted comments from user input. It’s a lightweight tool that can be used to clean up chat logs and improve readability.
+Here’s a professional translation of the text:  “I’ve created a plugin suitable for NoneBot2, feel free to explore it.”
+[AnuNeko_NoneBot2_Plugins/anuneko.py](https://github.com/afoim/AnuNeko_NoneBot2_Plugins/blob/main/anuneko.py) at main · afoim/AnuNeko_NoneBot2_Plugins]]

@@ -1,6 +1,6 @@
 ---
-title: "Magic Girl’s Witch Trial: Package Solution (Unity General Solution)"
-description: "Here’s a professional translation of the text:  “This [Magic Girl] series is truly excellent, and you can find it on Steam. Download it now.”"
+title: "Magic Girl’s Witch Judge Case Solution (Unity General Solution)"
+description: "This work is truly excellent, and you can find it on Steam by searching for “Magic Girl: Witch Trial.”"
 published: 2025-10-05
 image: ../../assets/images/212792e5-8634-4121-984b-c3477f463897.webp
 tags:
@@ -13,10 +13,10 @@ lang: en
 
 :::
 
-# Please provide the text you would like me to translate.
-Go to https://github.com/AssetRipper/ and download **AssetRipper**. Open it.
+# Formal commencement.
+Please visit [https://github.com/AssetRipper/](https://github.com/AssetRipper/), download **AssetRipper** and open.
 
-This is a temporary placeholder URL. Please wait for the redirection to complete.
+This automatically redirects the browser to `http://127.0.0.1:64203`. Please hold off for now.
 
 接下来在Steam页面对游戏右键并选择 `管理 - 浏览本地文件`
 ![](../../assets/images/manosaba-unzip-1.webp)
@@ -39,4 +39,4 @@ This is a temporary placeholder URL. Please wait for the redirection to complete
 最终，寻找类似 `Assets` 文件夹，就有所有的资源文件了（如CG图，MV，角色语音等）
 ![](../../assets/images/manosaba-unzip-10.webp)
 
-The content is translated to English as follows:  “Certain resources are skeletal/model and action files, and the 2D images displayed in-game are not directly provided by static files but rather created through collaboration between skeletal/model and action files. For these elements, you will need to assemble the complete resource image yourself.”
+Here’s the translation:  “Certain resources, including skeletal models and action files, are rendered in 2D during gameplay. These assets are not directly provided as static files; instead, they are constructed through collaboration between skeletal models and action files. You will need to assemble the complete resource image yourself.”

@@ -1,30 +1,30 @@
 ---
 title: "Guide to Groups"
-description: "Regarding contact information for binary tree trees."
+description: "Regarding contacting a binary tree, please provide more context or details about your inquiry. I need to understand what you’re trying to achieve with this question."
 image: /random/h
 published: 2025-05-24
 pinned: true
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article discusses the advantages of using QQ groups compared to Telegram, highlighting that QQ offers a lower barrier to entry for joining and easier moderation due to its popularity within China. It also suggests that users can join non-QQ groups by sponsoring the group, with a minimum sponsorship fee of 10 CNY and requiring a note for further communication.
+
 :::
 
 # Official
 ## Telegram group.
 
-Telegram: Join Group Chat [2x.nz]
-## QQ 群
+Telegram: Join the chat group at [2x.nz].
+## QQ group.
 
-Here’s a professional translation:  “The need for sponsorship within QQ groups is driven by the platform's inherent risk of being targeted by internal whistleblowers, which can lead to group bans. However, compared to other platforms, QQ offers a significantly lower barrier to entry and facilitates more seamless communication. Furthermore, experienced users may benefit from joining non-QQ groups.”
+Here’s the translation:  “Why is it necessary to sponsor QQ groups? Because QQ, as a domestic platform, is susceptible to being reported and banned by internal informants, which can lead to group closures. However, the barrier to entry is significantly lower than that of traditional groups, facilitating more seamless communication. Furthermore, advanced users can join non-QQ groups.”
 
-Please contact us at least [赞助](/sponsors/) before adding a group. When requesting sponsorship, please provide a note with your contact information and any relevant transaction details.
-Click the link below to join the [2x.nz] group chat: [QQ群](https://qm.qq.com/q/I2Quch1uy6)
+Please provide a minimum of [sponsorship](/sponsors/) before adding a group. When requesting sponsorship, it’s recommended to include a note with your notes or transaction order number.
+Click the link below to join the group chat: [https://www.qq.com/group/2x.nz](https://www.qq.com/group/2x.nz)
 
 ![](../../assets/images/2025-08-15-03-24-11-image.webp)
 
-# Non-official.
+# Non-official
 
-Fan-built
+Fan-built.
 
-[Telegram: View @blog2x](https://t.me/blog2x)
+Telegram: View @blog2x

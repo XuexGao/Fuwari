@@ -1,6 +1,6 @@
 ---
-title: "Global Acceleration of Collapse Stars in Stellar Horizon 2"
-description: "Due to the sensitive nature of this topic, this document is intended for professional technical discussion only. I will not provide any pre-packaged solutions or one-click downloads; please refer to the tutorial for self-implementation."
+title: "Global Acceleration of Collapse Stars in Horizon Europe"
+description: "Due to the sensitive nature of this topic, this content is intended for professional technical discussion only. I will not provide any pre-packaged solutions or tutorials; please refer to the instructions provided in the accompanying documentation for self-implementation."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/36f34153-b96f-43ec-911e-8c3d65bc8aa0.webp
@@ -9,35 +9,35 @@ published: 2025-04-15
 tags: [崩坏星穹铁道, DLL注入]
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article details a method to bypass the ACE anti-cheat system in Honkai Star Rail using a DLL implementation and CE’s MinHook. It involves cloning the source code repository, extracting the `libMinHook.x64.lib` and `MinHook.h` files, and integrating them into the DLL. The process then utilizes Extreme Injector v3.exe to inject the compiled DLL, followed by utilizing CE's变速精灵 (speed boost) to further enhance gameplay.
+This article describes a method to bypass ACE anti-cheat in Honkai Star Rail using a DLL implementation and the CE tool. It involves cloning the source code from GitHub, extracting the `bin` and `lib` files, and placing them within the DLL's directory. The resulting DLL is then compiled and executed through Extreme Injector v3.exe, which enables the use of the injected DLL to bypass the anti-cheat system and increase game speed.
 :::
 
-# Please provide the text you would like me to translate.
+# Here’s the translation:  **Analysis of Principles**
 
-Injecting a DLL to bypass ACE anti-cheat and then using CE’s auto-tuning feature.
+Injecting a DLL to bypass ACE anti-cheat and then utilizing CE’s Speed Editor to manipulate game behavior.
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
-Ensure you have installed a workload in Virtual Studio 2022 using C++.
+Ensure you have installed the workload for your simulation in Virtual Studio 2022 using C++.
 
-Clone the GitHub repository: [https://github.com/gmh5225/Honkai-StarRail-ACE-B](https://github.com/gmh5225/Honkai-StarRail-ACE-B)
+Clone DLL Source Repository: [GitHub - gmh5225/Honkai-StarRail-ACE-B: This repository offers code and instructions for circumventing the anti-cheat system in Honkai Star Rail, enabling players to access previously restricted features and enhance their gameplay. This is provided solely for informational purposes; use with caution.](https://github.com/gmh5225/Honkai-StarRail-ACE-B)
 
-Download the bin and lib files separately, then search for the files located in the MinHook directory within the DLL source code repository root directory.
+Please download the releases for [Releases · TsudaKageyu/minhook](https://github.com/TsudaKageyu/minhook/releases), specifically the binaries `bin` and `lib`. Once you have extracted these files, locate the DLL source code in the root directory of the MinHook repository.  Place the MinHook.x64.lib and MinHook.h files within this directory.
 
-Okay, please provide the text. I’m ready when you are.
+代码需要小改，这里省略
 
-Please provide the text you would like me to translate! I need the content to be translated.
+编译：
 
 ```shell
 MSBuild star_rail.sln /p:Configuration=Release /p:Platform=x64 /property:GenerateFullPaths=true
 ```
 
-Product(s) are available at:
+产物在：
 
 C:\x64\Release\star_rail.dll
 
-Download and unpack Extreme Injector v3.exe from [https://github.com/master131/ExtremeInjector/master](https://github.com/master131/ExtremeInjector/master).
+Download and unpack the ExtremeInjector v3.exe from [Releases · master131/ExtremeInjector](https://github.com/master131/ExtremeInjector/releases).
 
-Normally open the game and run `Extreme Injector v3.exe`, select the game process, inject the newly compiled DLL.
+Normally launch the game, run `Extreme Injector v3.exe`, select the game process and inject the newly compiled DLL.
 
-Visit https://www.cheatengine.org/ to download CE, open CE, and if the game doesn’t glitch or pop up anti-cheat windows, that proves injection was successful. Next, select game process, enable "变速精灵" (变速精灵), and 2-5x speed will suffice. Enjoy!
+Please download CE from [https://www.cheatengine.org/](https://www.cheatengine.org/). Once you’ve opened CE, if the game is not freezing or displaying anti-cheat windows, this indicates successful injection. Next, select the game process and enable "" (). You can achieve a 2-5x speed boost with this feature. Enjoy!

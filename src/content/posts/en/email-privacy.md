@@ -1,6 +1,6 @@
 ---
 title: "Email obfuscation technology enhances blog privacy"
-description: "Here’s a professional English translation of the text:  “The rehype-email-protection plugin automatically obfuscates email addresses to mitigate the risk of being targeted by spam crawlers.”"
+description: "Using the rehype-email-protection plugin, a technology is implemented to automatically obfuscate email addresses, thereby protecting against spam email detection by web crawlers."
 published: 2025-08-12
 author: "hxsyzl"
 image: "https://fastr2.497995.xyz/fuwari/image/5fd0835b-93da-4edc-bde5-f0c8aaa24b93.webp"
@@ -8,32 +8,32 @@ tags: ["fuwari优化"]
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+The article explains how the `rehype-email-protection` plugin, introduced in the GitHub repository `fuwari`, addresses the privacy and security risk of exposing email addresses on websites via direct exposure. It details the configuration process, including importing the plugin module and specifying the `base64` method for encoding, ensuring that standard email addresses are converted to Base64 strings before being processed by clients, effectively protecting against automated email harvesting.
 :::
 
-This content is not original by the company, and was provided by https://github.com/afoim/fuwari.
+This text is original content created by the author of the GitHub repository at https://github.com/afoim/fuwari, and was submitted as a pull request under the number 31.
 
-## Please provide the text! I need the text to translate.
+## 背景
 
-Email addresses can be exposed directly on websites, making them susceptible to spam filtering by automated email collectors. To address this privacy and security concern, email address obfuscation techniques can be employed.
+Here’s the translation:  “Exposing email addresses directly on a webpage significantly increases their susceptibility to automated spam harvesting by malicious entities. To mitigate this privacy and security risk, techniques for email address obfuscation can be employed.”
 
-In the project, a rehype-email-protection plugin was introduced to address this issue.
+In response to the issue of rehype-email-protection, the project has integrated the `rehype-email-protection` plugin.
 
-## Here’s the translation:  Technical solutions are needed to protect email from spoofing and phishing attacks.
+## Technical Solution: [[Rehype-Email-Protection]]
 
 Rehype is a plugin that automatically identifies and obfuscates email addresses within website content processing workflows.
 
-### Okay, please provide the text you would like me to translate. I’m ready when you are.
+### 配置实现
 
-The feature can be enabled by configuring it in the `astro.config.mjs` file.
+The functionality is enabled through configuration within the `astro.config.mjs`(file).
 
-Please provide the text you would like me to translate.
+First, import the plugin module.
 
 ```javascript
 import rehypeEmailProtection from "./src/plugins/rehype-email-protection.mjs";
 ```
 
-``` `rehypePlugins` = "Plugin Name" ```
+Here’s the translation:  “Add the plugin ‘rehypePlugins’ to the ``rehypePlugins`` array within Astro, and specify ``base64`` as a obfuscation method.”
 
 ```javascript
 markdown: {
@@ -45,14 +45,14 @@ markdown: {
 },
 ```
 
-### Okay, please provide the text. I’m ready when you are.
+### Work processes.
 
-Configuration is applied after the content includes all standard email addresses (e.g., `user@example.com`) and is encoded as Base64 strings for use in the client-side JavaScript during website construction.
+Upon configuration, all standard email addresses within the content will be converted to Base64 encoded strings and subsequently decoded by the client-side JavaScript.
 
-For ordinary users, browsers will execute scripts to decompress the encoded content into interactive `mailto:` links, but the functionality remains unchanged. For network crawlers that cannot execute JavaScript, they can only retrieve meaningless strings, thereby achieving the purpose of protecting email addresses from easy collection.
+For standard users, a browser will execute scripts to revert the encoded data to an interactive `mailto:` link, while maintaining the functionality. For network crawlers that cannot execute JavaScript, they only retrieve meaningless strings resulting in the protection of email addresses from easy collection.
 
-## Please provide the text you would like me to translate.
+## Conclusion
 
-The rehype-email-protection plugin is a simple and effective privacy enhancement tool. It offers a low cost solution that significantly reduces security risks associated with exposing email addresses on public websites, making it a recommended practice for static website development.
+The integration of the `rehype-email-protection`(https://github.com/rehype/rehype-email-protection) plugin offers a straightforward and effective privacy enhancement solution. Its low initial cost substantially mitigates security risks associated with exposing email addresses on publicly accessible websites, making it a recommended practice for static website development.
 
-“I’m letting go of you, and I’m heartbroken.”
+“I’m letting go of you, please,” the message reads.

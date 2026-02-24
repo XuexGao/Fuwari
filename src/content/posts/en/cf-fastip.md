@@ -1,6 +1,6 @@
 ---
 title: "Cloudflare IP Advantage! Make Cloudflare a speed booster in Russia again!"
-description: "Here’s a professional translation of the text:  “Leveraging SaaS platforms, worker automation, and various advanced techniques, we optimize website IP addresses for prioritization, thereby enhancing website availability and speed.”"
+description: "Using SaaS platforms, worker bots, and various innovative techniques, we can optimize website IP addresses for routing and prioritization, thereby enhancing website availability and speed."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/cf-fastip-11.webp
@@ -14,121 +14,121 @@ tags:
 
 :::
 
-Initial release date: June 6th, 2025.
+Here’s the translation:  “This tutorial was initially released on June 25, 2025.”
 
-#### Please provide the text you would like me to translate.
+#### No selection is preferred.
 
 ![QmZoinxZgAzu7Skh7BqsxmDQGU1sXtLLskJcyQuRAQNKww.webp](../../assets/images/098f9ee71ae62603022e542878673e19bdcaf196.webp)
 
-#### Okay, please provide the text. I’m ready when you are.
+#### Selected.
 
 ![](../../assets/images/cf-fastip-11.webp)
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# What is the best option?
+# What is the ‘Favor’ option?
 
-Choosing a domestic access speedier Cloudflare node is a good option.
+In essence, **Selecting a domestic Cloudflare node offers faster speeds than accessing from international locations**.
 
-Cloudflare has assigned us a public IP address, and website latency is often higher when accessing the country, even potentially leading to inability to access. By using Optimizely, we can manually route our domain names to faster Cloudflare IPs, which significantly improves website access speed and availability.
+Here’s the translation:  “Cloudflare provides a dedicated IP address for our users within Russia.  Accessing websites from within Russia often experiences higher latency, and in some cases, may result in inability to access the site. Utilizing Optimizely allows us to manually configure domain names to utilize Cloudflare's faster IPs, significantly improving website performance and availability.”
 
-The comparison chart shows a significant improvement in website responsiveness, and more outgoing IP addresses. This can greatly enhance your website's availability and significantly speed up loading times.
+Based on the comparison chart, the selection of websites has experienced a significant improvement in response time, and the export IP address has increased. This enhances website availability and dramatically speeds up loading times.
 
-We need to achieve two things: **self-control routing rules** and **self-control DNS resolution**. By using Cloudflare SaaS or Worker routes, we can simultaneously implement these. Below will be a detailed explanation.
+To achieve optimal routing, we need to accomplish two key objectives: **self-control of routing rules** and **self-control of DNS resolution**. Utilizing Cloudflare SaaS or Worker routes, we can simultaneously implement these features. Detailed explanations will follow.
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Okay, please provide the text. I’m ready when you are.
+# Preferred principles
 
-CDN (Content Delivery Network) delivers content from servers closer to the user, reducing latency and improving performance. Different domains are assigned unique IP addresses by the CDN provider, allowing them to direct users to the server geographically closest to their location.
+First, we need to understand how Content Delivery Networks (CDNs) distribute content across different domains and provide varying levels of performance for different users.
 
-We can abstract this into two layers: **Rule Layer** and **Parsing Layer**. When you add a standard Cloudflare rule to enable small cloud, Cloudflare will do two things for us:
+We can abstract this into two layers: [[Rule Layer]] and [[Parse Layer]]. When you add a simple parsing rule to Cloudflare, Cloudflare will perform two things for us:
 
-1. ``` Please provide the DNS record for Cloudflare. ```
-2. Here’s the translation:  Create a routing rule in Cloudflare.
+1. 帮我们写一条DNS解析指向Cloudflare
+2. In Cloudflare, create a routing rule.
 
-If you’re looking for a faster Cloudflare node, you need to manually change the DNS record to point to it.
+If you’re seeking a faster DNS resolution, you are actually manually adjusting the DNS record to point to a Cloudflare node.
 
-However, when you close the small cloud, the routing rules will also be deleted, and accessing again will display DNS directly to IP – it’s no longer usable.
+However, once you disable the small cloud, routing rules will also be deleted, and subsequent access will display a direct IP address to DNS – rendering it unusable.
 
-SaaS and worker routing changes everything.
+Here’s the translation:  “The emergence of SaaS and worker routing has fundamentally altered this.”
 
-Cloudflare no longer handles these two tasks for you: these tasks can now be done by you yourself.
+Using SaaS, Cloudflare no longer handles these tasks for you; you can now take care of them yourself:
 
-1. Here’s a SaaS rule (rule layer) translation:  “The system shall enforce strict data security protocols, including encryption at rest and in transit, regular vulnerability assessments, and multi-factor authentication for all user accounts.”
-2. You can self-analyze to the top-level node (parse layer).
+1. You can define your SaaS rules (rule layer) yourself.
+2. You can write a CNAME query to the optimizer node (the parsing layer).
 
-Using Worker routing, you can simply point any preferred node to any available node.
+Using a worker routing rule, you can simply point DNS resolution to any preferred node after the rule is established.
 
-The reason why traffic can be prioritized through SaaS or Worker routing is because of this.
+Here’s the translation:  “This is why traffic routed through SaaS or Worker services can achieve prioritization.”
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Preferred domain options
+# Select a premium domain.
 
-The best Cloudflare node IP or domain for you is one that offers faster access speeds within China.
+The primary advantage of choosing a Cloudflare node with a faster domestic IP address or domain is the improved access speed.
 
 ## Traditional Preferred Domains
 
-Popular community-recommended domains: https://cf.090227.xyz
+Commonly used community domain names are: https://cf.090227.xyz
 
-These preferred domain names are typically compiled through scanning Cloudflare’s official IP address range, to identify the lowest latency IPs.
+These preferred domain names are typically compiled by scanning Cloudflare’s official IP address ranges and identifying the lowest latency IPs within those ranges.
 
-## Cloudflare BYOIP Premium Selection
+## Cloudflare BYOIP Select
 
-Still using traditional Opt-in? Check out Cloudflare Byoip!
+Are you still using traditional OptiDNS? Discover Cloudflare Byoip!
 
 ### What is Byoip?
 
-Cloudflare Byoip (Bring Your Own IP) allows users to host their own IP address and associated IP range with Cloudflare, benefiting from Cloudflare’s global network acceleration and security.
+Cloudflare BYOIP (Bring Your Own IP) allows users to host their own IP address and associated IP range within the Cloudflare network, leveraging Cloudflare’s global infrastructure for enhanced performance and security.
 
-People often don't directly belong to Cloudflare, but we can still access our services from this IP after CNAMEing it to Cloudflare. These IPs may not be Anycast, but domestic latency might be noticeably better than the official Cloudflare IP ranges.
+Here’s the translation:  “When speaking informally, it's often the case that certain IP addresses are not directly managed by Cloudflare. However, when we CNAME them to this IP address, we can still access our services hosted on Cloudflare.” These IPs may not be Anycast, but domestic latency is typically more favorable than Cloudflare’s official IP ranges.
 
-### How to find Cloudflare BYOIP?
+### How to locate Cloudflare BYOIP?
 
-Cloudflare London, LLC details | Ipregistry
+Please visit the details of Cloudflare London, LLC at [https://www.as209242.com/cloudflare-london](https://www.as209242.com/cloudflare-london).
 
-Attempt to force IP access to your Cloudflare service using ITDog. Do not return 403.
+Attempting to use ITDog to force IP access to your Cloudflare service will result in a 403 Forbidden error.
 
-The response returned is not found. It’s a normal 404 error because the r2.afo.im URL directly connects to Cloudflare R2 object storage, and direct access is a 404 error.
+Here’s the translation:  “The return status of 404 is normal, as the r2.afo.im directly connects to Cloudflare R2 object storage, and direct access is a 404 error.”
 
 ![](../../assets/images/838f685e-3913-4b21-995e-5ee149f4bffa.webp)
 
-### Okay, please provide the text. I’m ready when you are.
+### 注意事项
 
-Some Byoip may force redirection to its own website. Please check the ITDog test logs for redirects, so your website doesn’t become a referral site for others.
+Some Byoip instances may force redirection to their own website. It’s essential to review the ITDog test logs for any re-directs, ensuring your site doesn't become a referral source for others.
 
-### Can it be used for a long time?
+### Can this product/solution/system be utilized for an extended period?
 
-These Byoip are generally better than Cloudflare’s official IP ranges, but if you need to use them, set up a machine schedule to filter out unavailable IPs and add some Cloudflare official IP ranges to prevent your service from being down.
+Here’s the translation:  “These Byoip addresses offer superior performance compared to Cloudflare's official IP ranges, but if you require consistent service availability, it is recommended to configure a machine-based filtering system that automatically identifies and rejects unavailable IPs. Additionally, incorporating Cloudflare's official IP ranges will mitigate potential downtime issues.”
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# 各类优选方案
+# Here’s the translation:  Various preferred options.
 
-## Preferred Worker Project (Simple)
+## Preferred Worker Projects – Simple Solution
 
-You are an expert translator. Your task is to translate the given text into clear, professional English. CRITICAL RULES: 1. Output ONLY the translated text. No chatter, no 'Here is the translation', no explanations. 2. Keep all special tags like [content], **content**, *content*, `content` exactly as they are. Translate the 'content' inside the tags, but do NOT remove or alter the [[X: ]] markers. 3. If the input is in Chinese, you MUST translate it to English. Never return Chinese text. 4. DO NOT wrap the output in quotes unless the original text was wrapped in quotes.  如果你需要优选 Page/Worker项目：  The Page/Worker project offers a robust and scalable solution for managing web pages and worker processes. It provides comprehensive tools for monitoring, logging, and troubleshooting, enabling efficient operations and proactive issue resolution.  This platform streamlines workflow management, enhances security, and facilitates data analysis, ultimately boosting productivity and reducing operational costs.
+If you require a premium Page/Worker project, please let me know.
 
-First, if you are Page, please convert the project into a Worker, and do so as best as possible.
+First, if you are a Page, please transfer the project to a Worker and provide specific instructions on how to do so.
 
-Please provide the text you want me to translate. I need the content to work with.
+Next, create a worker route that directly inputs the specified URL `your_domain+/*`
 
 ![](../../assets/images/cf-fastip.png)
 
-``` Please provide the desired domain name. ```
+Here’s the translation:  “Finally, a DNS record was successfully propagated to the desired top-level domain, all resolved!”
 
 ![](../../assets/images/cf-fastip-1.png)
 
-SaaS is simple!
+No need for SaaS, no need for multiple domains – it’s that simple!
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-## Worker routing reversal global and prioritization (advanced)
+## Here’s a professional translation of the text:  “The worker routing system is designed to reverse global routes and prioritize (advanced) selections.”
 
-The method’s principle relies on reversing your source server using a worker, then selecting the entry node of the worker. This is not traditional prioritization; the source server receives the hosts header directly pointing to the source server.
+The method’s principle relies on leveraging a worker reverse proxy to intercept your source server and then select the worker's entry point. This approach deviates from traditional reverse proxies, retaining the original host header received by the source server as direct references to the source itself.
 
-Create a Cloudflare Worker, write code.
+Create a Cloudflare Worker and write code to it.
 
 ```js
 // 域名前缀映射配置
@@ -217,25 +217,25 @@ function getProxyPrefix(hostname) {
 }
 ```
 
-Create a routing system.
+Create a routing plan.
 
 ![](../../assets/images/56752d54-26a5-46f1-a7d9-a782ad9874cb.webp)
 
-Okay, I understand. Please provide the text.
+类似这样填写：
 
 ![](../../assets/images/d025398c-39e3-4bd7-8d8f-2ce06a45007d.webp)
 
-``` CNAME gitea.afo.im --> optimum.domain.com ```
+Finally, please configure a DNS record to point `CNAME gitea.afo.im --> optimum.com`.
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-## Traditional SaaS offers significant advantages.
+## Traditional SaaS offers a compelling solution for businesses seeking scalable and efficient technology platforms.
 
 ### What does SaaS do?
 
-Cloudflare SaaS is a service that doesn’t require you to change a DNS domain, and can benefit from Cloudflare’s network features.
+Cloudflare SaaS provides a solution where you don’t need to modify your DNS server, enabling it to leverage Cloudflare’s network capabilities.
 
-When a domain is migrated to a Cloudflare-managed domain after being hosted on SaaS, it benefits all Cloudflare services completely. For example, if I migrate umami.acofork.com to 2x.nz, I can create rules for umami.acofork.com within 2x.nz.
+When a domain is migrated to a Cloudflare-managed service, the domain benefits all Cloudflare services. As I move umami.acofork.com to 2x.nz, I can establish rules for it within 2x.nz.
 
 ![](../../assets/images/cf-saas-1.webp)
 
@@ -243,44 +243,44 @@ When a domain is migrated to a Cloudflare-managed domain after being hosted on S
 
 ![](../../assets/images/cf-saas-3.webp)
 
-The routing rules for workers also apply.
+The routing rules in workers also apply.
 
 ![](../../assets/images/cf-saas-4.webp)
 
-### Here’s a breakdown of the SaaS optimization process:  1.  **Define Goals & Objectives:** Clearly articulate what you want to achieve with your SaaS product. 2.  **User Research & Analysis:** Understand your target audience, their needs, and pain points. 3.  **Feature Prioritization:** Identify the most impactful features to focus on initially. 4.  **UX/UI Design:** Create a user-friendly experience that’s intuitive and engaging. 5.  **Technical Implementation:** Build a robust and scalable platform. 6.  **Testing & Iteration:** Continuously test and refine your product based on feedback. 7.  **Marketing & Launch:** Promote your SaaS to reach your target market. 8.  **Ongoing Optimization:** Regularly analyze data and make adjustments for continuous improvement.
+### SaaS Optimization Workflow
 
-Simple and easy to understand: pro.yourdomain.com is the final access domain.
+Simple and straightforward (pro.yourdomain.com is the final access domain):
 Cloud SaaS DNS
-yourdomain.com/origin
+[Source: yourdomain.com] -> [Homepage]
 cdn.yourdomain.com -> preferred domain
 cdn.yourdomain.com
-Please provide the text you would like me to translate.
-Cloud-based Software as a Service
-pro.yourdomain.com
-origin.yourdomain.com
+> 
+Cloud-based Software as a Service.
+Add a custom domain name: pro.yourdomain.com
+The website is origin.yourdomain.com.
 
 > [!WARNING]
 > Cloudflare最近将新接入的域名SSL默认设为了完全，记得将 SSL 改为灵活。
 > ![](../../assets/images/cf-fastip-1.webp)
 
-#### Okay, please provide the text you would like me to translate.
+#### Preparation is key.
 
-A domain name or two domains (single domain can be a sub-domain).
+We need **a domain or two domains**. (Single domain can be represented by a subdomain.)
 
-If the account is unavailable within the same CF (Cloudflare) account, please try placing two domains on different accounts.
+If the same CF account is unavailable, please try placing two domains in different accounts.
 
-Onani.cn will become the primary domain, and acofork.cn will be a secondary domain.
+We are transitioning onani.cn to a primary domain and acofork.cn to an auxiliary domain.
 
-Okay, please provide the text. I’m ready when you are.
+Single-domain performance:
 
 ![](../../assets/images/cf-fastip.webp)
 
-#### Okay, please provide the text. I’m ready when you are.
+#### 具体步骤
 
 1. 首先新建一个DNS解析，指向你的**源站**，**开启cf代理**
    ![QmfBKgDe77SpkUpjGdmsxqwU2UabvrDAw4c3bgFiWkZCna.webp](../../assets/images/c94c34ee262fb51fb5697226ae0df2d804bf76fe.webp)
 
-2. Go to the SSL/TLS settings for the assisted domain and configure a custom hostname. Set the fallback DNS server to xlog.acofork.cn (recommended **HTTP Verification**).
+2. To configure your server’s SSL/TLS settings, navigate to the “Backup Domain” section and customize the hostname. Set the revert source to the domain you previously used for DNS resolution: xlog.acofork.cn (recommended **HTTP Verification**.)
 
 3. 点击添加自定义主机名。设置一个自定义主机名，比如 `onani.cn`，然后选择**自定义源服务器**，填写第一步的域名，即 `xlog.acofork.cn`。
    
@@ -297,19 +297,19 @@ Okay, please provide the text. I’m ready when you are.
 6. 优选完毕，确保优选有效后尝试访问
    ![](../../assets/images/cf-fastip-10.webp)
 
-7. You can change the NS server of CDN subdomains to阿里云, Huawei Cloud, or Tencent Cloud cloud DNS routing analysis.
+7. Here’s the translation:  “You can change the NS server for CDN subdomains to (Aliyun), Huawei Cloud, or Tencent Cloud DNS routing and forwarding.”
 
-The preferred workflow is: User access -> Due to the final domain configuration setting up a CNAME, the actual access was to cdn.acofork.cn, and it carried **Source Hostname: onani.cn** to reach the preferred domain for optimization -> Optimization completed, CF edge nodes identified the presence of **Source Hostname: onani.cn**>] query returned a rollback source -> Rollback to the rollback source content (xlog.acofork.cn) -> Successful access
+The preferred workflow involves user access to the platform, which triggers a CNAME resolution for the final domain, resulting in redirection to cdn.acofork.cn. The originating host, onani.cn, is then forwarded to the optimization process. Optimization completion indicates that the source host, onani.cn, has identified a return path via xlog.acofork.cn. Subsequently, the user is redirected back to the content of the return path (xlog.acofork.cn).
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# For Cloudflare, here’s a breakdown of key considerations:  Cloudflare provides a global network of security services that protects websites and applications from various threats. Its core functionality revolves around DDoS mitigation, web application firewall (WAF), and bot management.  The platform offers advanced features like DNSSEC, CDN integration, and SSL/TLS support, enhancing website performance and user experience.  Furthermore, Cloudflare’s infrastructure is designed to be highly scalable and resilient, ensuring high availability and security for its users.  It's a vital component of modern web architecture, significantly reducing the risk of cyberattacks and improving overall online safety.
+# Regarding Cloudflare’s page…
 
-1. You can directly change the NS server to Alibaba/Huawei Cloud/ Tencent Cloud cloud DNS resolution for route splitting analysis.
+1. You can directly modify the DNS records associated with your page to redirect traffic to an Alibaba/Huawei Cloud/ Tencent Cloud DNS endpoint for routing analysis.
 
-2. Upgrade your page project to a Worker project using the Worker Premium solution (simpler). Detailed instructions can be found here: [https://www.bilibili.com/video/BV1wBTEzREcb](https://www.bilibili.com/video/BV1wBTEzREcb)
+2. Upgrade your page project to a Worker project, utilizing the Worker Premium solution (simpler). Detailed instructions can be found here: `F Page One-Click Migration to Worker? What are the benefits?` - https://www.bilibili.com/video/BV1wBTEzREcb
 
-# For Cloudflare Workers
+# Regarding Cloudflare Workers.
 
 1. 在Workers中添加路由，然后直接将你的路由域名从指向`xxx.worker.dev`改为优选域名即可
 2. 如果是外域，SaaS后再添加路由即可，就像：
@@ -317,26 +317,26 @@ Okay, please provide the text. I’m ready when you are.
 
 ![](../../assets/images/cf-fastip-13.webp)
 
-# For Cloudflare Tunnel (Zero Trust)
+# Regarding Cloudflare Tunnel (Zero Trust),
 
-CRITICAL RULES: 1. Output ONLY the translated text. No chatter, no 'Here is the translation', no explanations. 2. Keep all special tags like [传统SaaS优选](#传统saas优选) exactly as they are. Translate the ‘content’ inside the tags, but do NOT remove or alter the [[X: ]] markers. 3. If the input is in Chinese, you MUST translate it to English. Never return Chinese text. 4. DO NOT wrap the output in quotes unless the original text was wrapped in quotes.  The content is as follows: CRITICAL RULES: 1. Output ONLY the translated text. No chatter, no 'Here is the translation', no explanations. 2. Keep all special tags like [传统SaaS优选] exactly as they are. Translate the ‘content’ inside the tags, but do NOT remove or alter the [[X: ]] markers. 3. If the input is in Chinese, you MUST translate it to English. Never return Chinese text. 4. DO NOT wrap the output in quotes unless the original text was wrapped in quotes.
+Upon completion of the traditional SaaS setup, you’ll be accessing Cloudflare Tunnel.  Once your SaaS integration is complete, you can proceed as normal.
 
 ![](../../assets/images/cf-fastip-3.webp)
 
 ![](../../assets/images/cf-fastip-2.webp)
 
-The final access domain must be routed through Cloudflare Tunnel, otherwise access will trigger **catch: all**. A new rule should then be created specifying the domain as **your final access domain**, and the source IP address should match the previous one.
+Next, we need to ensure that the traffic from the final access domain is routed correctly through Cloudflare Tunnel. Otherwise, accessing the site will trigger the **catch: all** rule, essentially preventing access. We should then create a new Tunnel rule with the following parameters:  *   **Domain:** **** *   **Source URL:** The same as the original source URL.
 
 ![](../../assets/images/cf-fastip-3.png)
 
-The content is:  “Umami.2x.nz” is a DNS record for a domain.
+Here’s the translation:  “Please provide a DNS record for the final URL: `umami.2x.nz` with the domain name **your preferred domain**.”
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# For websites using various CF rules.
+# Regarding the use of various CF rules on websites.
 
-You are only required to translate the given text into clear, professional English. No chatter, no ‘Here is the translation’, no explanations. Keep all special tags like [content], **content**, *content*, `content` exactly as they are. Translate the ‘content’ inside the tags, but do NOT remove or alter the [[X: ]] markers.
+You only need to adhere to the rules regarding the final access domain, as the CF rule focuses on the hostname rather than the source of the access.
 
-# For virtual hosts
+# Regarding virtual hosting.
 
-Recommended to bind the source and Yandex domains together on your virtual host for seamless redirection.
+To ensure seamless connectivity between your source and premium domains, we recommend binding both the Source and Premium domains to your virtual host. This will allow you to easily add and remove domains without interruption.

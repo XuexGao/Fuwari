@@ -1,6 +1,6 @@
 ---
 title: "Use NoneBot2 to build your QQ Bot!"
-description: "Here’s a professional translation of the provided text:  “Utilizing NapCat, developers can integrate with NoneBot2 to create their own conversational AI.”"
+description: "Using NapCat to connect with NoneBot2, you can build your own chatbot."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/QmcMSSKysZmgUCUk9W7hQUvZCtVSFH6hGKHctg99yo1yDE.webp
@@ -13,41 +13,41 @@ tags:
 
 :::
 
-# Install NapCat (Windows)
+# Installation of NapCat (Windows)
 
-For login to QQ, implement message forwarding.
+Login to QQ to send and receive messages.
 
-1. Enter the `NapCat.Shell.zip` release from NapNeko, NapCatQQ. GitHub.
+1. Please download [Release NapCat V4.1.12 · NapNeko/NapCatQQ · GitHub](https://github.com/NapNeko/NapCatQQ/releases/latest)’s `NapCat.Shell.zip` file.
 
-2. ```cmd mkdir "解压文件夹" start "" "C:\Program Files\Nautilus\Launcher.exe" "<BOT QQ号>" ```
+2. Here’s the translation:  “Move the stress to a separate folder, then open the command line and run `\launcher.bat <BOT QQ ID>`”
 
-3. The content is: CRITICAL RULES: 1. Output ONLY the translated text. No chatter, no 'Here is the translation', no explanations. 2. Keep all special tags like [content], **content**, *content*, `content` exactly as they are. Translate the 'content' inside the tags, but do NOT remove or alter the [[X: ]] markers. 3. If the input is in Chinese, you MUST translate it to English. Never return Chinese text. 4. DO NOT wrap the output in quotes unless the original text was wrapped in quotes.
+3. Upon completion of the process, please scan your mobile device using the provided QR code to log in.
 
-4. `[NapCat` [WebUi] WebUi Local Panel Url: http://127.0.0.1:6099/webui?token=4xldg5fqb1]
+4. It will print the local console address information, such as `[NapCat` [WebUi] WebUi Local Panel Url: http://127.0.0.1:6099/webui?token=4xldg5fqb1]].
 
 5. 直接进入，如图配置即可（端口号可以自己修改，但是要和下部分NoneBot2监听的端口一致。这里是9090）![](../../assets/images/2024-11-20-19-21-21-2024-11-20-19-15-39-image.webp)
 
-# Installation of NoneBot2
+# Installation of NoneBot2.
 
-The following are the key features of the NapCat system:  *   **NapCat Protocol:** This is a secure, encrypted protocol designed for communication between NapCat servers. It utilizes a unique identifier (the “Nap”) to ensure message integrity and prevent replay attacks. *   **NapCat Server Roles:**  Servers operate within specific roles – “Sender,” “Receiver,” and “Listener.” Each role has defined responsibilities related to message handling, authentication, and data transmission. *   **Message Format:** Messages are structured using a standardized format, including metadata about the sender, receiver, and the content of the message itself. This ensures consistent processing across different NapCat servers. *   **Authentication & Authorization:**  Servers authenticate themselves to prevent unauthorized access and control access to specific messages based on user roles. *   **Data Encryption:** All messages are encrypted using a robust encryption algorithm to protect sensitive information during transmission. *   **Message Delivery:** The system employs a distributed delivery mechanism, ensuring that messages reach their intended recipients reliably. *   **Nap Identification:**  The “Nap” is a unique identifier assigned to each server, used for secure communication and message tracking.  ---  Please provide the text you would like me to translate.
+For implementing logic to control NapCat communication, this section will define the system’s communication protocols and management procedures.
 
-1. First, you need to install Python. Windows can be installed using https://scoop.sh/.
+1. First, you must install Python. Windows supports it at https://scoop.sh/.
 
-2. pypi 清华源：[https://pypi.tuna.tsinghua.edu.cn/simple]
+2. Pypi Cleanwater Source: `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`
 
-3. pipx: `pip install pipx`। You can also use `scoop install pipx`.
+3. To install pipx, please run: `pip install pipx`. You can also use `scoop install pipx`.
 
-4. Set the global pipx path: `pipx ensurepath`
+4. Set the global pipx variable: `pipx ensurepath`
 
-5. Install the nb-cli package using pipx.
+5. ``` Install the nb-cli package using pipx: `pipx install nb-cli` ```
 
-6. If you cannot find the 'nb' command, you can edit `/root/.bashrc` or `/root/.profile` (if using Bash): `nano /root/.bashrc` Add the following lines: `export PATH="$HOME/.local/bin:$PATH"` Save and reload the configuration: `source /root/.bashrc`
+6. **If you cannot find the 'nb' command:** For root users, you can edit `/root/.bashrc` or `/root/.profile` (if using Bash): Add the following lines to the file: `export PATH="$HOME/.local/bin:$PATH"` Save and reload the configuration: `source /root/.bashrc`
 
-7. Install the nb-cli-plugin-bootstrap package.
+7. `nb self install nb-cli-plugin-bootstrap`
 
-8. New project, select a folder you like, then: `nb bs` (I don't understand it, just keep going back).
+8. Develop a new project, selecting a folder you prefer. Then: `nb bs` (Unclear, proceed to the end).
 
-Okay, I understand. Please provide the text.
+示例：
 
 ```
 C:\afbot>nb bs
@@ -87,10 +87,10 @@ C:\afbot>nb bs
 项目配置完毕，开始使用吧！
 ```
 
-9. Project creation completed: `nb run`
+9. Upon completion of the project, initiate the launch process: `nb run`
 
-10. None of the connections were successful. Please try again.
+10. Connection to Lagrange has been established successfully. `INFO` nonebot | OneBot V11 | Bot XXXXXXXXXX connected]]
 
-11. Test, send to `/ping`, to check if there’s Pong~
+11. Please test the ping service and observe if it encounters the Pong error.
 
-12. If you’re debugging NoneBot2, please first use `nb` to enter a virtual environment. Then use `pip install <package_name>`.
+12. To debug NoneBot2, first enter the virtual environment using `nb`. Subsequently, install the necessary package using `pip install <package_name>`.

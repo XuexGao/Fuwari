@@ -1,6 +1,6 @@
 ---
-title: "Disable Astro and optimize static image building for weak intelligence."
-description: "After a considerable effort of the entire day, we have successfully resolved this issue with Astro’s static image optimization. This not only accelerates build times but also significantly reduces unnecessary CPU resource consumption, contributing to greater environmental sustainability and aligning with Unix philosophy principles."
+title: "Disable Astro and optimize weak-vision static image builds"
+description: "After a considerable period of effort, the issue has been resolved. The Astro system’s insistence on self-optimizing static image creation has been addressed, significantly accelerating build times while simultaneously reducing unnecessary CPU resource consumption and promoting environmental sustainability."
 published: 2025-09-10
 image: '../../assets/images/2025-09-10-06-19-15-image.webp'
 tags: [Astro]
@@ -12,57 +12,57 @@ lang: en
 
 :::
 
-Video: Astro's static image optimization for low-IQ building, Bilibili.
+Video: [Restriction on disabling Astro's static image optimization for weak intelligence](https://www.bilibili.com/video/BV12VH2z1EDb)
 
-# Why is image optimization disabled?
+# Why is image optimization being disabled?
 
-The image is a default Astro static build, representing the "Astro optimization" process. We can observe the issue:
+The image presents a default Astro static build, representing the output of Astro’s optimization process. It is evident that the issue lies in…
 
-The compression effect is minimal, even exhibiting reverse compression. Most images are compressed only a few KB, but this requires approximately **100-1000ms** processing time, and the first twelve lines show a reverse compression of `before: 26kb, after: 28kb`.
+The compression quality is extremely low, with significant reverse compression. Most images are compressed only to a few kilobytes, but this requires approximately **100-1000ms** processing time, and the first twelve lines show a compression rate of `before: 26kb, after: 28kb`.
 
-Why is it necessary to spend so much time compressing such a small image of ±10KB?
+Why is it necessary to spend so much time compressing images to a maximum of ±10KB?
 
 ![](../../assets/images/2025-09-10-06-21-20-26ca667ff5c7024c12d7a8254f483b27.webp)
 
-# How can we prevent Astro from “optimizing” images?
+# How can we ensure Astro doesn’t “optimize” images?
 
-Image
+*mage | Documents*
 
-Consult the Astro documentation.
+Consulting the Astro documentation reveals…
 
-Okay, please provide the text. I’m ready when you are.
+Potential optimizations will be considered.
 
-- Non-\`/public` directory contains images.
+- The image is located in the C:/public/directory.
 
-- Using Astro images.
+- Here’s a professional translation of the text:  “Using `Image`(image) Astro component sets.”
 
-- Any Markdown within the image tags must be converted to HTML.
+- Any Markdown-embedded images must be converted to HTML before they can be accessed within the Astro environment.
 
-The image should be placed in the /public directory.
+It appears we have identified a compromise solution: **Place images in the /public directory**.
 
-# Please provide the image content! I need the image data to translate it into English.
+# Please upload images to the /public directory (not perfect).
 
-This will be a classic problem, this is what I asked OpenAI ChatGPT.
+This is a classic question, as I’ve asked OpenAI ChatGPT directly.
 
-I encountered a difficult problem. I’m using Astro and my article is located at /src/content/posts/xxx.md. My images were previously optimized by Astro, but the build was too slow. So, I placed the images in /public/assets/images/xxx.webp. However, now I'm encountering a new problem – MarkText (a Markdown editor) is searching for /src/content/posts/public/assets/images/xxx.webp, and I can’t see any images anymore. Is there any good solution?
+Here’s a professional translation of the text:  “I encountered a dilemma where I was using Astro and my article resided in `/src/content/posts/xxx.md`. My images were initially optimized within the Astro system, but the process of building the article was proving to be too slow. Consequently, I moved the images to `/public/assets/images/xxx.webp`. However, a new issue has arisen – when I attempt to access the images within the MarkDown editor, `./src/content/posts/public/assets/images/xxx.webp` is not found. Are there any viable solutions to this?”
 
-If you go against the grain, using similar `../../../../assets/images/xxx.webp` can lead to components not being able to retrieve true images, resulting in an error message from `astro build` immediately exiting, such as the `image` field in the YAML metadata of each article.
+If you take the opposite approach, utilizing similar techniques can lead to components failing to retrieve genuine images, resulting in an immediate error within `astro build`, such as a direct exit with an error message related to the `image` field in the YAML metadata of each article.
 
-Conclusion: The proposed solution is not perfect. It’s impossible to write and read it at once, or it's likely to fail in construction.
+Here’s the translation:  “This approach is not perfect. It would be more effective to proceed with a rapid-fire, immediate assessment rather than a protracted, detailed analysis. Furthermore, the project's success hinges on a robust and demonstrable outcome.”
 
-# The official Astro configuration for disabling image optimization failed.
+# The Astro official configuration for image optimization failed.
 
-Regarding issues on Astro, the first step should be to consult official documentation to see if there are existing solutions. I found [image | Docs](https://docs.astro.build/zh-cn/guides/images/#%E9%85%8D%E7%BD%AE-no-op-%E9%80%8F%E4%BC%A0%E6%9C%8D%E5%8A%A1)’s **no-op transmission service** through the document, but it didn't work, whether locally running build or Cloudflare Worker cloud-based build still triggers **generating optimized images**.
+Upon encountering issues on Astro, the initial step should be to consult official documentation for existing solutions. By reviewing the documentation, I discovered [Image | Docs](https://docs.astro.build/zh-cn/guides/images/#%E9%85%8D%E7%BD%AE-no-op-%E9%80%8F%E4%BC%A0%E6%9C%8D%E5%8A%A1) containing **No-op Transmission Service**. I attempted to configure this service, but it proved ineffective, regardless of whether local build or Cloudflare Worker cloud-based build is executed.
 
-If you understand how to directly disable image optimization at the Astro level, please contact me! I'm happy to discuss it with you.
+Here’s the translation:  “Please contact me if you would like to learn how to directly disable image optimization settings on Astro.”
 
 ![](../../assets/images/2025-09-10-06-27-46-image.webp)
 
-# The Astro codebase has been successfully disabled to prevent image optimization.
+# Successfully disabled image optimization in the Astro codebase.
 
-I’ve spent a half day researching how to disable Astro image optimization, and it's not worth the effort anymore. Let’s just cut to the chase and directly modify the source code using **illegal operation**.
+After this research, it has been nearly a full day. I’ve ceased attempting to find ways to optimize Astro’s images; instead, I’ve opted for a direct approach – modifying the source code and utilizing **illegal operation** to achieve this.
 
-``` // Patch for Astro package  // Disable image optimization globally  // This patch will apply to all Astro packages.  // The goal is to provide a clean, functional base for the package.  // No changes were made to the core functionality of the package.  // The following steps are required:  // 1.  Extract the source code from Astro. // 2.  Run `pnpm patch` on the extracted source code. // 3.  Apply the changes to the package.  // This ensures a stable and reliable base for future development. ```
+Here’s the translation:  The process involves directly modifying the source code of Astro packages, followed by patching it with `pnpm patch`. A complete and usable patch is provided in `astro.patch`.  Global image optimization disabling is also included.
 
 ```diff
 diff --git a/dist/assets/utils/transformToPath.js b/dist/assets/utils/transformToPath.js
@@ -96,9 +96,9 @@ index 3144f4c058b161b9e6eb3c8d891b743b34783653..0ba275b320204e154307c6aff75452e9
      const cpuCount = os.cpus().length;
 ```
 
-The “astro.patch” is a critical fix that disables image optimization for images hosted on the platform. It’s designed to prevent users from leveraging image compression techniques, which could potentially compromise data privacy or security. The patch effectively blocks the use of tools and methods that would reduce image file sizes, thereby limiting the amount of data shared between the platform and its users.
+Here’s the translation of the text:  “The recent disabling of image optimization patches, specifically the `astro.patch` fix, addressed a critical issue related to image quality and rendering performance in OpenAI’s ChatGPT models. The patch implemented several key changes aimed at improving visual fidelity and reducing artifacts when processing images.”
 
-### ```text The transformation function is located at /dist/assets/utils/transformToPath.js. ```
+### `dist/assets/utils/transformToPath.js`
 
 ```diff
 -  return decodeURIComponent(`${prefixDirname}/${filename}_${hash}${outputExt}`);
@@ -107,7 +107,7 @@ The “astro.patch” is a critical fix that disables image optimization for ima
 +  return decodeURIComponent(`${prefixDirname}/${filename}${ext}`);
 ```
 
-#### Please provide the text! I need the original text to be translated.
+#### 原逻辑
 
 - 原本的返回路径是：
   
@@ -123,23 +123,23 @@ The “astro.patch” is a critical fix that disables image optimization for ima
   
   - `outputExt`：可能是 `webp`、`avif` 等格式。
 
-Astro will generate image files with hash-style paths, and may modify their format.
+Here’s the translation:  Astro will generate image files with hash-based paths, potentially modifying file formats.
 
-#### Please provide the text you would like me to translate.
+#### 修改后逻辑
 
-- Please provide the text you would like me to translate.
+- The return path has been modified to:
 
 ```bash
 {prefixDirname}/{filename}{ext}
 ```
 
-- Okay, please provide the text. I’m ready when you are.
+- Please provide the original text you would like me to translate. I need the text to perform the translation.
 
-Please provide the text you would like me to translate.
+Here’s the translation:  “This feature completely disables image optimization filename rules, preserving the original file paths.”
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-### ```text The core build process utilizes a distributed caching system for performance optimization. This system stores frequently accessed data in memory, reducing latency and improving responsiveness.  Data consistency is maintained through a combination of optimistic locking and conflict resolution strategies.  Monitoring and alerting are implemented to ensure system stability and identify potential issues proactively. ```
+### `dist/core/build/generate.js`
 
 ```diff
 -  if (staticImageList.size) {
@@ -147,45 +147,45 @@ Okay, please provide the text. I’m ready when you are.
 +  if (false) {
 ```
 
-#### Please provide the text! I need the original text to be translated.
+#### 原逻辑
 
-- Static images optimized for Astro builds are stored here.
+- Here’s the translation:  “The Astro build repository stores all optimized static images required for refinement.”
 
-- Astro will initiate optimization logic:
+- If images are available, Astro will initiate optimization logic.
 
-Generating optimized images
+Print log: generating optimized images
 
-Iterate through the staticImageList, and call the image service to generate images of different sizes and formats.
+Iterate through the `staticImageList` list, and invoke the image service to generate images of varying sizes and formats.
 
-#### Please provide the text you would like me to translate.
+#### 修改后逻辑
 
-- If (false)
+- The condition `if (staticImageList.size)` has been changed to `if (false)`.]
 
-- Astro will never enter optimization workflows.
+- The Astro project will not undergo optimization processes.
 
-✅ 作用：强制跳过所有图片优化步骤。
+Here’s a professional translation of the text:  “This feature forces the bypass of all image optimization steps.”
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-### Okay, please provide the text you would like me to translate. I will only output the translated text and adhere strictly to your instructions.
+### Summarize.
 
-Your patch has two things done:
+Your patch implemented two key changes.
 
-1. Ensure that the generated image path is identical to the original path.
+1. **Bypass filename hashes and format conversions** → Ensure that the generated image path is identical to the original file path.
 
-2. Astro build will not generate any derived image formats or multi-size images during build.
+2. Astro builds will no longer generate derivative image formats or multi-size images during the build process.
 
-completely disable the image optimization features for Astro.
+Equivalent to **Completely disabling Astro's image optimization features**, resulting in the original image.
 
-# Okay, please provide the text. I’m ready when you are.
+# Ultimately, the result is… [End of sentence]
 
-Any use of `astro build` will bypass image optimization, Cloudflare Worker build time has decreased from 3 minutes to 2 minutes.
+Here’s the translation:  “Using `astro build` will bypass image optimization, and Cloudflare Worker build time has decreased from approximately 3 minutes to 2 minutes.”
 
 ![](../../assets/images/2025-09-10-06-46-49-image.webp)
 
 ![](../../assets/images/2025-09-10-06-47-01-image.webp)
 
-The page is now not a global WebP file, preserving only the original filename and extension. However, it still retains the path `/_astro` and supports relative paths pasting images.
+The page now utilizes a local web server, bypassing the global WebP format and preserving the original filename and extension. However, it retains the path `/_astro` and continues to support relative paths for image pasting.
 
 ![](../../assets/images/d836b41fd85611972c2086a7064705bdb1b4ff7c.webp)
 

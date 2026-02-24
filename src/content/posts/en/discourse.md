@@ -1,6 +1,6 @@
 ---
-title: "Hand-on Guide: Deploy Discourse"
-description: "Here’s a professional translation of the text:  “Discourse is an open-source, robust forum system that enables users to quickly establish their own online community.”"
+title: "Hand-to-hand teaching you how to deploy Discourse"
+description: "Discourse is a powerful, open-source forum system that allows you to quickly establish your own Bulletin Board System (BBS) immediately."
 category: "Tutorial"
 published: 2025-05-02
 image: ../../assets/images/2025-05-02-22-03-04-image.webp
@@ -9,16 +9,18 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
+Here's a summary of the provided Docker Compose file:
 
+This configuration defines a multi-container application, including PostgreSQL, Redis, Discourse, and Sidekiq, all running within a Bitnami environment. It utilizes Docker Compose to orchestrate these services.  The `discourse` service is configured with an SMTP server for sending email notifications. The database connections are set up using PostgreSQL, Redis, and the sidekiq service.  The configuration specifies user/password for each service, including database connection details and SMTP settings.  It also utilizes volumes to persist data across container restarts.
 :::
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
-Ensure Docker and Docker Compose are installed.
+Ensure you have installed `Docker` and `Docker-Compose`.
 
-``` docker-compose.yml ```
+Create a directory structure using `docker-compose.yml`.
 
-Please provide the content you would like me to translate. I need the text itself to begin with.
+写入内容
 
 ```yaml
 version: '2'
@@ -116,52 +118,52 @@ volumes:
     driver: local
 ```
 
-The configuration files contain two sections that need to be modified.
+The configuration files contain two revisions.
 
-Please provide the text you would like me to translate.
-Okay, please provide the text you would like me to translate. I’m ready when you are.
-Database Administrator Password (Optional)
-Okay, I understand. Please provide the text.
-Database User Password (Optional)
-Okay, I understand. Please provide the text.
-Redis password (optional)
-| 127.0.0.1:880       | Optional port mapping |
-Website IP or domain (no HTTP) (critical revision)
-Site Administrator Username (**Mandatory Change**)
-Website Administrator Password (**Mandatory Change**)
-siteadmin@gmail.com | Website Administrator Email (**Mandatory Change**)
-smtp.mailgun.org | Email Host (Must Fix)
-Email port number. Can only be used on port 587 (**Must Change**).
-Email username
-Email password (or verification code)
-TLS protocol is required. It can only be used with TLS protocol (**must change**).
+| Replacement value                | The table contains information about the number of sales per month for each product category.                      |
+| ------------------- | ----------------------- |
+| admin12345          | Database administrator password (optional)            |
+| discourse        | Database username (optional)              |
+| User 12345           | Optional password             |
+| Example discourse   | Database name (optional)                |
+| Redis 12345          | Password (optional)            |
+| 127.0.0.1 :: 880       | Port Mapping (Optional)                |
+| example.com         | Website IP or domain (no HTTP) (**Fix**) |
+| siteadmin           | Website Administrator username (**Fix**)        |
+| siteadmin      | Website administrator password (**Mandatory change**)         |
+| siteadmin@gmail.com | Website administrator email (**Fix**)         |
+| smtp.mailgun.org    | Email Host (B: Fix)          |
+| 587                 | Email port. Can only be used on port 587 (**Must Change**).   |
+| Email username               | Email username (**Override**)           |
+| Email password                | Email password (or authorization code)     |
+| TLS                 | Email protocol. Can only use TLS protocol (**Must Change**).   |
 
-If you need an email service that supports SMTP over TLS, here’s a WeChat enterprise mail solution: [微信企业邮](/posts/exmail-qq/)
+If you require an email service that supports SMTP TLS, it can be implemented using [](/posts/exmail-qq/).
 
-Okay, please provide the text you would like me to translate. I’m ready when you are.
+Constructing…
 
 ```bash
 docker compose up -d
 ```
 
-If you encounter an error accessing docker.io, you can use a repository source.
+If you encounter an error accessing Docker Hub, try using a different image source.
 
-Deployment completed, check the `discourse-discourse-1` container logs.
+Upon completion of deployment, review the logs in the `discourse-discourse-1`(container) directory.
 
-Discourse is currently performing resource pre-compilation. Please wait a few minutes for it to be ready.
+If you encounter the following log, Discourse is currently performing pre-compiled resources. Please wait a few minutes for this to complete.
 
 ```
 INFO  ==> Precompiling assets, this may take some time...
 ```
 
-The Discourse service is currently running on port 3000 within a container.
+If the following log indicates that Discourse has been successfully launched in a container at port 3000, please proceed with further investigation.
 
 ```bash
 Accessible via: http://0.0.0.0:3000/
 ```
 
-Next steps: Access your designated domain (if applicable).
+Next, please access the domain you have configured (if no parsing or website is within an internal network).
 
-Access granted. The task is complete.
+Completion of the task is achieved.
 
 ![2025-05-02-22-20-51-image.webp](../../assets/images/2025-05-02-22-20-51-image.webp)

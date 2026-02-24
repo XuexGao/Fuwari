@@ -1,6 +1,6 @@
 ---
-title: "都5202年了，还有人不会自建自己的Cloudflare/EdgeOne等各种CDN的优选？"
-description: "Here’s a professional translation of the text:  “Choosing a preferred domain for self-managed CDNs offers a straightforward approach – initially, you establish the foundation, followed by subsequent configuration steps. However, numerous pitfalls and potential challenges exist.”"
+title: "5202，Cloudflare/EdgeOneCDN？"
+description: "The preferred domain names for building your own large CDN services are remarkably straightforward – simply select one, then another… but be aware of several pitfalls along the way."
 category: "Tutorial"
 published: 2025-07-22
 image: '../../assets/images/5df07ad0-01cd-4541-9321-b0ded148a90f.webp'
@@ -9,63 +9,63 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+This article describes a process for selecting and securing domain names to improve website accessibility, focusing on leveraging Cloudflare's CDN service. It outlines the steps involved: initial IP filtering, testing with various CDNs, creating DNS records, and utilizing Huawei Cloud’s features for managing multiple IP addresses. The strategy emphasizes careful planning, testing, and proactive monitoring of IP availability, alongside considerations for security and potential service disruptions.
 :::
 
-# Okay, please provide the text. I’m ready when you are.
+# Basic approach
 
-Looking for a premium domain name, we’ll start by selecting those with high quality.
+To select a premium domain name, we first need to identify and filter out those with high quality IP addresses.
 
-Screened quality IP addresses and updated DNS records for specified premium domain names through major DNS provider vendors.
+After screening for high-quality IP addresses, we update DNS records for designated premium domain names through partnerships with leading cloud DNS providers.
 
-Okay, please provide the text you would like me to translate.
+Finally, enter your domain name for testing and evaluation after the optimization process.
 
-# How to select high-quality IP addresses?
+# How to identify high-quality IP addresses?
 
-We absolutely need domestic aircraft to improve our country’s access quality. If we have a NAS, it's already quite good.
+To improve domestic access quality, we absolutely require domestic aircraft. If our facility has a NAS (Network Attached Storage), it’s already quite advantageous.
 
-If you want three-network coverage, you need a machine with all three telecom, mobile, and unified network capabilities. If you want more advanced regional selection, then bring each province’s three-network machines together.
+To achieve optimal network coverage across three networks – terrestrial, mobile, and fiber optic – you require a device that supports simultaneous connectivity to all three. For more advanced regional selection, it’s recommended to have each province’s three-network router installed.
 
-With a test machine, we now need to write a test script.
+With the test machine ready, we will now begin to develop test scripts.
 
-Here’s the IP address of a CDN provider: Cloudflare.
+First, we need to determine the IP address associated with a CDN provider. For example, consider Cloudflare.
 
-We can find Cloudflare IP address ranges using.
+We can locate Cloudflare IP addresses via searching for `Cloudflare IP segments`.
 
 ![](../../assets/images/9e79e4ab-ce0c-434a-84f7-3b8a9f3a0886.webp)
 
-For other CDNs, they may not directly publish their IP addresses on the website; you will need to contact customer service for assistance.
+For other CDNs, they may not directly expose their IP addresses on the webpage. You will need to contact customer service for assistance.
 
-After receiving IP segments, the next step is to write actual test logic.
+Following the acquisition of an IP address, the next step is to develop and execute practical testing procedures.
 
-I recommend using Curl and Resolve to enforce IP access to a business domain, and checking the return status code is not normal.
+I recommend using Curl+Resolve to enforce IP access to a business domain and verify the response status code.
 
-Please be careful with this approach, as it could lead to unexpected results. It’s a complex and potentially risky situation.
+Please note that this approach and its testing requirements represent a significant challenge. It demands careful evaluation of your test equipment, router configuration, ISP performance, and the server's capacity.
 
-The TCPing process is becoming increasingly unreliable, particularly with HTTPS connections.  It’s essential to ensure that the IP addresses identified during testing can successfully access your service, preventing downtime.
+Here’s the translation:  “This is the most reliable testing method, as the streamer has extensively tested TCP connections on 443. They have successfully accessed HTTPS (418) or pinged through CDNIP when TCP connections fail. To ensure your test methods accurately identify IP addresses that can successfully access your service, please verify that the IPs you’re filtering for can properly reach your endpoint, preventing service outages.”
 
-The traffic shouldn’t be too high, specifically for Cloudflare, which has a CDN with 150w IPs. We can only test the C section, which is to test after completing `104.18.91.0` and then test `104.18.92.0`(...). This will save time as we need to test 5000+ IPs.
+Here’s the translation:  “Scaling CDN performance shouldn't be excessively high. For a CDN with 150w IPs like Cloudflare, we can focus on testing the C-segment, which is just testing the connection to `104.18.91.0` and then immediately test `104.18.92.0`. This approach will save time as we only need to test 5000 IP addresses.”
 
-Finalized IP selection.
+Ultimately, we secured a selection of IP addresses.
 
-# Connecting Huawei Cloud DNS parsing.
+# Huawei Cloud DNS Resolution Translation
 
-Here’s a translation of the content:  “Why recommend Huawei Cloud?”
+Here’s a professional translation of “Why recommend Huawei Cloud?”:  “Several factors contribute to the growing popularity of Huawei Cloud. These include its robust security infrastructure, scalable and reliable services tailored for diverse business needs, competitive pricing, and a strong commitment to innovation.”
 
-Huawei Cloud supports single parsing of 50 IP addresses, multiple same-name resolutions, and only one DNS resolution at a time.
+Only Huawei Cloud supports **Single Record Value Support 50 IPs**, **Multiple Same Name Records Allowed**, and **Support Only 1 DNS Record (TTL=1) **
 
-Leveraging Huawei Cloud’s features, personal users can bind several thousand IP addresses below a domain name, even though more IPs are better.
+Leveraging the functionalities offered by Huawei Cloud, individual users can establish a domain with several thousand IP addresses (though more IPs are preferable).
 
-Recommended version, **no real ID required**.
+Recommend using the overseas version, **No KYC Required**.
 
-The content is:  “Please provide the full text of the document.”
+Following API documentation, you can perform DNS record resolution via API.
 
-# Okay, please provide the text. I’m ready when you are.
+# Post-maintenance updates.
 
-1. If you are performing three-way optimization, please add a default routing policy to ensure that users experiencing service outages on individual routes do not encounter service outages.
+1. To ensure a seamless user experience, consider implementing a default routing policy that automatically handles service outages on individual lines. This will prevent users from experiencing service disruptions when a particular line experiences technical difficulties.
 
-2. Each CDN provider’s IP address may change intermittently, so please monitor frequently and update when necessary.
+2. Here’s the translation:  “Each CDN provider’s IP address may change intermittently, so it is crucial to monitor and regularly update your IP addresses.”
 
-3. If service anomalies prevent the selection of a preferred IP, please do not implement dangerous logic such as deleting all parsing. This will cause widespread service outages.
+3. If encountering service anomalies and unable to obtain an optimized IP address, please avoid writing risky logic in the script, such as deleting all parsing. This could lead to widespread service outages.
 
-4. Choosing a CDN is not the preferred method; using custom CNAMEs or IP addresses can cause your CDN service provider to be unable to properly schedule IPs, resulting in high-quality IPs being continuously targeted. Your CDN provider may take action such as **discontinue your business**, `ban your account` to isolate the attacker. If you believe your site is under attack, please switch to a CNAME or IP provided by the official service.
+4. Here’s the translation:  Using a custom CNAME or IP address is not the preferred method. If your site is targeted by an attack, relying on CDN services can result in IP routing issues for your CDN provider, leading to persistent attacks and potentially triggering actions like **service shutdown** ]and `account suspension`.  Should you suspect your site is under attack, immediately switch to the designated CNAME or IP provided by your platform.

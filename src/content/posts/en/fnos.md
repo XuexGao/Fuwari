@@ -1,6 +1,6 @@
 ---
 title: "Flying Horse NAS Play Experience"
-description: "Here’s the translation:  “The Fly-Net NAS system is a modern, open-source network attached storage (NAS) solution.  Its popularity within China, as recognized by [X:影视刮削], and the rapidly expanding availability of Docker software with comprehensive functionality and ease of use have garnered significant interest among content creators.”"
+description: "The Fly-Cloud NAS system is a modern, open-source network attached storage (NAS) solution. In China, it’s considered a top-tier platform and recently, the demand for Docker software has become comprehensive and user-friendly, with the creator also utilizing it."
 category: "Experience"
 draft: false
 image: ../../assets/images/QmUBuX9qmsNP1NHeEeUmuPNdS5ctvk4LchcSsFARDC4vZJ.webp
@@ -10,12 +10,10 @@ tags:
 - 飞牛NAS
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-Here’s a brief summary of the article:
 
-The article discusses various aspects related to setting up and using a NAS (Network Attached Storage) device, primarily focusing on [AutoBangumi] and RaiDrive. It highlights the installation process – specifically, choosing the installation disk space and creating storage pools.  It also covers SSH configuration, including key-based authentication and considerations for network card testing. The article details different NAS storage modes, ranging from basic to RAID, and provides resources for further research on these configurations.
 :::
 
-### Attract my things.
+### Please translate “” to professional English.
 
 1. 影视刮削：飞快，薄纱Plex几条街。通过[AutoBangumi](/autobangumi)可以完美自动追番+刮削一条龙服务。偶尔会有不准，但可以手动匹配，数据源来自[TMDB](https://www.themoviedb.org/)和[IMDB](https://www.imdb.com/)
    ![QmbNXd4FJ8FM8mwkKxJNdBoNbvhawJ2HdSvW5tFUt3o4ub.webp](../../assets/images/f1bd7089efdf00097d5474ef967a62dcfca42e98.webp)
@@ -23,7 +21,7 @@ The article discusses various aspects related to setting up and using a NAS (Net
 2. 相册：可以通过手机APP自动备份，支持仅备份图片，可以多用户使用，存储互不干扰，也可以设置要共享的图片
    ![QmeLJ7in4xcokPWUgkkSobDLUTrFrXep2o38qUXQ1njQR9.webp](../../assets/images/2f9981f8397cc1278807ed28f8a2e15954868fec.webp)
 
-### Okay, please provide the text. I’m ready when you are.
+### 注意事项
 
 1. 飞牛NAS在安装的时候会叫你选择安装盘，然后会将安装盘的一部分空间（默认为64GB）作为系统分区，其余空间可用于创建存储空间（但是系统盘不能和别的盘组存储池，只能单独建存储池） 
    ![QmNfRbvHu1fuYoincACcP2MG4yV4pgRni3rb4Y9J7uw4FW.webp](../../assets/images/6403ef19d941abdc93d8c7da01364a8983c98109.webp)
@@ -37,21 +35,21 @@ The article discusses various aspects related to setting up and using a NAS (Net
 4. SSH需要自己开，账密为NAS管理员账密，建议登上之后改为仅密钥登录，参见：[设置 SSH 通过密钥登录](https://www.runoob.com/w3cnote/set-ssh-login-key.html)
    ![QmTk3va2NCbYTcVewVjuqjGx6MwMwiUnManrNwxvEq4SBR.webp](../../assets/images/9f92130465ab62e912b7404266febc7212e2125b.webp)
 
-5. Each network card test
+5. Network card testing
 
-Okay, please provide the text. I’m ready when you are.
-Please provide the text you would like me to translate! I need the text to be able to fulfill your request.
-Realtek GBE Family (r8168) | Wired | Realtek (瑞昱) | No, driver installation is required.
-Realtek 8852BE Wireless No wireless connection. Realtek (瑞昱)
-Intel AC3160 is wireless.
-USB wired network card
+   | Name                         | Type  | Brand          | Is it free of pest control?       |
+   |:--------------------------:|:---:|:-----------:|:----------:|
+   | Realtek GBE Family (r8168) | Cable  | Realtek | No, you need to install drivers yourself. |
+   | Realtek 8852BE             | Wireless  | Realtek | No, you need to install drivers yourself. |
+   | Intel AX3160               | Wireless  | Intel  | Yes.          |
+   | USB wired network card                    | Cable  | Realtek | Yes.          |
 
-6. Here’s the translation:  Data storage modes differ significantly.  Traditional methods like hard drives and magnetic tapes offer high capacity but are susceptible to physical damage. Solid-state drives (SSDs) provide faster access times and greater durability, but typically at a higher cost per gigabyte. Cloud storage solutions utilize remote servers, offering scalability and accessibility, but rely on internet connectivity. Block storage provides the highest performance for databases and applications requiring low latency, but is generally more expensive than other options.  Different approaches cater to specific needs, ranging from simple file systems to complex data management platforms.
+6. Here’s the translation:  Different storage modes differ significantly.
 
-Okay, please provide the text you would like me to translate. I will only output the translated text and adhere strictly to your instructions.
-Please provide the text you would like me to translate.
-The physical hard drive portion or the entire device can be used as a storage pool, and cannot be expanded. It only allows for single-disk creation of this configuration.
-A or more physical hard drive components or the entire unit can be used as a storage pool, enabling scalability.
-RAID Class | Self-service search engine for detailed information                   | Untested | Untested | Untested | Untested | Untested      |
+   | Pattern     | Effect                                   | Can be enlarged? | Can be changed? | Redundancy  | Can be heated? | Can storage mode be modified? |
+   |:------:|:------------------------------------:|:-----:|:-----:|:---:|:-----:|:---------:|
+   | Basic  | A portion or all of the physical hard drive can be used as a storage pool, it cannot be expanded, and only a single disk configuration can be created with this mode. | No.     | No.     | No   | No.     | Yes, it can be RAID. |
+   | Linear | A or more physical hard drive components or the entire unit as a storage pool        | Yes.     | No.     | No.   | No.     | No.         |
+   | RAID class  | Use search engines                       | Untested   | Untested   | Untested | Untested   | Untested       |
 
-7 NAS迅雷内测码：迅雷牛通
+7. Nas Thunder Internal Testing Code: ThunderBull Pass

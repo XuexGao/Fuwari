@@ -1,6 +1,6 @@
 ---
-title: "Let's see how large factories make anti-theft chains!"
-description: "Here’s a professional translation of the text:  “A sudden impulse led me to investigate the image sharing protocols of various factories – I was surprised to discover that many lacked security measures.”"
+title: "Let's see how the anti-theft chains made by large factories look!"
+description: "Today’s unexpected thought led me to consider attempting to access the image interfaces of various factories – a rather ambitious endeavor, as I was surprised to discover that many lacked security measures."
 published: 2026-02-01
 image: ../../assets/images/avatar.webp
 draft: false
@@ -11,51 +11,51 @@ lang: en
 :::
 
 # What is this?
-Some avatar interfaces were collected from my phone’s majority app services currently installed. There are no avatars marked with the **Web** tag, and if you can see them, it indicates that the service provider has not performed rigorous SSL verification, making reverse engineering extremely simple.  Defaulting to mobile apps for these resources is all. All resources are from my personal account.
+I have gathered a collection of avatar interfaces, all originating from the majority of applications installed on my mobile device. No avatars with the **Web** designation are included; however, their presence indicates that the service provider has not implemented rigorous SSL verification, facilitating simple reverse engineering. Defaulted to mobile apps in these resources. All content is sourced from my personal accounts.
 
-# Some discoveries were made.
-- Microsoft’s logo is strictly regulated and utilizes cookie verification, preventing direct access.
-- We do not utilize Web protocols such as WeChat, Alipay, TapTap, or DingTalk. Therefore, we cannot capture data through these platforms.
-- The small black box, NetEase Cloud Music, Kuang An, Homework Help, Bean Bags, and KFC all utilize strict SSL verification, preventing direct access.
-- The image bypasses TapTap verification and other referrer checks, so it can be accessed directly. However, even attempting to verify the Referer header is futile.
+# Some notable discoveries were made.
+- Microsoft has implemented a strict policy regarding its logo, utilizing cookie-based authentication to prevent direct access.
+- WeChat, Alipay, TapTap, and DingTalk do not utilize Web protocols, therefore they cannot capture data.
+- The platform, including NetEase Cloud Music, Kuang An, Homework Help, and Bean Bags, employs stringent SSL encryption protocols to ensure secure access. Specifically, it prevents direct internet browsing of these services.
+- The image, excluding TapTap verification headers and other Referer checks, can be accessed directly. However, even attempting to verify the Referer header is futile.
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text. I’m ready when you are.
-QQ
-OPPO (Web)
-Google (Web)
-Xiaomi (Web)
-“JD.com (Web)”
-Highmap (Web)
-Meituan
-淘宝
-Pinterest
-GitHub (Web)
-Telegram (Web)
-WPS (Web)
-闲鱼
-Great fun, it’s amazing!
-NetEase Cloud Music (Web)
-KOOK
-TapTap (Web)
-微信公众号助手
-百度网盘
-Steam (Web)
+|                                                                    Profile picture                                                                    | Description: The table contains a list of items with their corresponding prices.  |
+| :--: | :-: |
+|  image URL | QQ  |
+| Image URL |   OPPO website  |
+| Image |   Google (Web)  |
+| image URL |   Xiaomi (Web)  |
+| Image URL |   JD.com  |
+| image URL |   Highmap (Web)  |
+| avatar image |   Meituan  |
+| Logo image |   Taobao  |
+| Image width: 50 pixels, image height: 100 pixels. |   Bargain Dosto  |
+| image |   GitHub website  |
+| Image URL |   Telegram website  |
+| Image URL |   WPS  |
+| Image thumbnail |   Yixing  |
+| Image URL |   Fast and fun.  |
+| Image URL |   NetEase Cloud Music (Web)  |
+| Image URL |   Kook  |
+| image URL |   TapTap (Web)  |
+| Image source: OxUBpiaYgpHgv5ETJhoPFuS7H1d2vuYxvZwb5eia5G1jMAunabN4HLjREsrDUaolsxMX77UXpBzicQ/0 width: 50 height: 100 |     |
+| Image URL |     |
+| image |   Steam website  |
 
-# This indicates a significant shift in market dynamics and consumer behavior. The data reveals a growing preference for sustainable and ethically sourced products, driving increased demand for brands committed to responsible practices. Furthermore, consumers are increasingly prioritizing transparency and traceability throughout the supply chain, seeking assurance that their purchases align with their values.
-For static resources such as images, music, and videos, directly using `img` `audio` `video` tags is sufficient without CORS. This is a part of the W3C standard, for more details, please refer to [HTML5 嵌入内容](https://www.w3.org/TR/2014/REC-html5-20141028/embedded-content-0.html?utm_source=chatgpt.com).
+# This indicates a shift in market dynamics, suggesting a potential decline in demand for the current product or service offering.
+For static resources such as images, music, videos, and more, directly using `img` `audio` `video` tags is sufficient to display content remotely. This is a part of the W3C standard, for further details, please refer to [HTML5 Embedding Content](https://www.w3.org/TR/2014/REC-html5-20141028/embedded-content-0.html?utm_source=chatgpt.com).
 
-Here are some effective measures to protect your resources:  *   Implement strong authentication and authorization protocols. *   Regularly monitor and audit your website’s activity. *   Employ security best practices, such as regular software updates and vulnerability scanning. *   Consider using a Content Delivery Network (CDN) for improved performance and security.
+Here’s a professional translation:  “If you are a website maintainer, you may prefer to avoid having your resources displayed publicly without direct attribution. Furthermore, there is a risk of being flagged for unauthorized listing and potentially incurring charges. Here's a brief overview of effective measures and those that are ineffective.”
 
-First, we’ll differentiate between manual anti-theft chains and browser CORS differences.
+Here’s a professional translation of the text:  “We will now differentiate between manual anti-theft chain implementations on mobile devices and browser CORS (Cross-Origin Resource Sharing) differences.”
 
-Browser CORS is a client-side behavior. When an action is blocked by an upstream CORS strategy, the browser will block the response body. The backend anti-fraud chain is written on your server-side and serves to block unauthorized access. It will display a CORS error in the user's browser, such as 500, 401, 403, depending on your implementation.
+Here’s the translation:  “Browser CORS (Cross-Origin Resource Sharing) is a client-side mechanism that triggers a blocking response when an origin server rejects a request based on its CORS policy.  A Content Delivery Network (CDN) or anti-theft proxy, often implemented on the server-side, acts as a defense against unauthorized access. It will display a user's browser with a CORS error message, such as 401 (Unauthorized), 403 (Forbidden), or 500 (Internal Server Error).”
 
-Can implement a referrer whitelist to block unauthorized access. **No use** Because referrers can be forged or not sent, as detailed in [HTML 5 引用来源策略](https://www.w3.org/TR/referrer-policy/all/).
+Can we implement a Referer whitelist to block unauthorized access? **No use** As Referer can be forged or not sent, it’s detailed in [HTML 5 Source Tracking Strategy](https://www.w3.org/TR/referrer-policy/all/).
 
-You should handle API requests through cookies, including login and non-authorized access. As with Microsoft, the backend should manage cookie issuance and revocation.
+Here’s a professional translation of the text:  “You will need to implement a solution that integrates an API into cookies for both login and non-visitor permissions. Furthermore, the backend system must handle cookie issuance and revocation.”  As in Microsoft’s approach.
 
-The user can access the image browser automatically, while others (including the user) cannot include images in the website.  You can use the “Accept Request Headers” to filter out unwanted requests. This approach is direct access via the image browser, whereas the latter method involves sending the image request through the website’s system.
+Here’s the translation:  “Users can only access images through a browser alone, and cannot have anyone (including you) include images on the website. You can utilize the **Accept Request Header** to selectively allow images to be accessed via automatic image forwarding.  Comparing this with the **Accept Request Header** – the former is direct image browsing triggering automatic sending, while the latter is used when images are referenced – may provide useful insights.”
 
 ```
 text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
@@ -65,21 +65,21 @@ text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,imag
 image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
 ```
 
-The content is:  “The experience was remarkable, offering a unique blend of history and natural beauty.  We were particularly impressed by the intricate details of the architecture and the vibrant atmosphere within the ancient city center.”
+Finally, if you wish to ensure that images are exclusively for visitor use and not for unauthorized distribution, you can utilize CORP (Cross-Origin-Resource-Policy).
 
-```json {"corps": "Cross-Origin-Resource-Policy: same-origin"} ```
-Furthermore, CORP can protect everything, and here’s a simple diagram:
-Requesting resources, checking response headers, CORP (either to send or not to send, defaults to sending), CORS (either to allow or deny JS access, defaults to denying), returns.
+Returning a CORP response header when retrieving images from others, such as **Cross-Origin-Resource-Policy: same-origin**.
+Furthermore, CORP can protect not only images but also all other items. Below is a simplified illustration.
+The browser retrieves resources and then requests the response headers, indicating whether to provide or withhold access to the resource. The response is then passed to the CORSE protocol, which defaults to providing access. Finally, the result is returned.
 
-When a CORP response header returns resources that don’t match the expected source, the browser will block resource retrieval during page load but won't prevent the original request.
+When the CORP response header returns a strategy that includes resources not matching the requested resources, **rowser will block resource retrieval upon return of the strategy, but will not block the original request**.
 
-Okay, please provide the text. I’m ready when you are.
-Please provide the text you would like me to translate! I need the text to be able to fulfill your request.
-Same-origin. Only allowed to retrieve corresponding resources from `example.com`.
-Same-site content is allowed only `*.example.com` and `example.com`.
-Default value. Allows all origins, anyone can pull.
+|      Value       |                    Description: The table contains a list of items. Each item has a name and a description. The names are in bold, and the descriptions are in italics.                     |
+| :----------: | :---------------------------------------: |
+| Same origin  |        Source: Example.com Allow access only to this resource.        |
+|  Same-site   | Same website. Only allowed `*.example.com` `example.com`. Retrieve resources. |
+| Cross-origin |          Default value. Allows all sources, anyone can retrieve.           |
 
-Please provide the text you would like me to translate.
+Setting up cross-site referencing can result in browser blocking.
 
 - Chromium（Edge/Chrome）
 > 另外提一嘴，Chromium 最近推了一个更新，导致CORS/CORP错误默认不显示在控制台，需要勾选 **显示控制台中的CORS错误** [控制台功能参考  |  Chrome DevTools  |  Chrome for Developers](https://developer.chrome.com/docs/devtools/console/reference?utm_source=chatgpt.com&hl=zh-cn#cors-errors)

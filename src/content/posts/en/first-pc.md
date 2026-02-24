@@ -1,6 +1,6 @@
 ---
 title: "First Self-Built Desktop! Keyboard and Monitor Must Be On!"
-description: "Early on, I considered installing a desktop computer in my home. Fortunately, an opportunity arose through chance, and I’ve designated it as “an unexpected encounter.”  The reason for this designation is reflected in the VCR footage."
+description: "I began considering installing a desktop computer at home several years ago. However, by chance, I was fortunate enough to receive an opportunity this time around. As for why I’ve labeled it “shadowy” and “chance,” consider it a result of VCR viewing."
 published: 2025-10-11
 image: ../../assets/images/IMG20251010160613.webp
 tags:
@@ -12,10 +12,10 @@ lang: en
 
 :::
 
-# Please provide the text! I need the text to translate.
-I wanted to share my initial thoughts and feelings about assembling a desktop computer, but I’ll start by telling you about something that happened before. This will explain why I’m introducing this article with the title “阴差阳错的获得了一个机会” (literally "A fortunate opportunity gained through chance"). It's also a necessary step in my journey.
+# Here’s the translation:  Press release summary.
+I understand that many of you are interested in hearing about my first attempt at building a desktop computer. I’ve been reflecting on the process, and I want to share some of my thoughts and feelings regarding this experience. However, before I delve into the details, I would like to briefly explain the context behind this introduction – it's **a chance encounter that led to an opportunity**. Simultaneously, it also represents a significant part of what has been required for me.
 
-We started to move the timeline back to the time when I still held onto **Polar Aurora X Notebook** and then, although we had covered the basics in previous articles, I only stopped there. In reality, this was merely a mediocre beginning.
+Let’s revisit the timeline, specifically when I was holding onto the **Polaris X Notebook** – while we covered the initial sections of previous articles, I subsequently sold it for a Mac, but that's where the story ends. In reality, this represents merely a modest beginning.
 
 ![](../../assets/images/Screenshot_2025-10-11-05-45-03-97_e41039de8eaacf2.webp)
 
@@ -24,61 +24,61 @@ We started to move the timeline back to the time when I still held onto **Polar 
 ![](../../assets/images/IMG20250929204541.webp)
 那么首先，因为我和朋友打 **卡拉彼丘** 红温了，那天就觉得 **我从来没有觉得打游戏开心过** ，于是便决定将手上的Windows笔记本，也就是极光X卖掉，然后买一个MacBook专注生产力（难绷）
 
-He is very energetic and immediately sold a polar bear (a rare type of aurora) the first day, then immediately placed an order for a 25-year MacBook Air, which was mentioned in previous articles as his reason for buying one.
+I am highly productive, and I immediately sold a polar bear (a rare type of aurora) on my first day. Subsequently, I placed an order for a 25-year-old MacBook Air, which aligns with the points discussed in previous articles regarding my purchase of a Mac.
 
-Mac is truly Mac, and with you handling the work, the M4+ macOS will be a match for gods – boasting unparalleled processor performance and a unified workflow. Whether it’s video editing, photo retouching, graphic design, web development, or coding, it's effortless to handle.
+Here’s a professional translation:  “After several days of dedicated use, Mac truly lives up to its reputation – it is exceptionally powerful and efficient. The M4+ macOS configuration offers unparalleled performance for any task, from video editing and graphic design to web development and coding. Regardless of the specific application, Mac consistently demonstrates exceptional proficiency and ease of use.”
 
-However, the saying goes, “But it’s true that good things are fleeting.” People cannot work 24 hours a day without sleeping for 8 hours and 16 hours, which is unrealistic. So, I started researching how to play this thing on Mac as soon as I got my MacBook. As to why I didn't want to research how to play it, firstly, the red-hot state of the game was still ongoing, and secondly, I already knew that using Wine on macOS was the way to run Windows programs. Although Wine has been around for so long, it’s not able to compete with gaming games **反作弊**. So, I didn't think about playing on Mac, and furthermore, layer-by-layer translation consumes performance and adds power consumption. If I were to play a game, why wouldn’t I use Windows instead?
+However, the saying goes, “The old adage is that ****.” People cannot work 24 hours a day, removing sleep for 8 hours, 16 hours, without it being realistic. Therefore, I began researching how to play **GalGame** on my Mac within the first day of my purchase. As for why I didn’t delve into the intricacies of ****’s gameplay, it was because the red-hot state of Windows programs on macOS was still ongoing, and I already knew that Wine would be the standard solution for running Windows applications on macOS. However, despite its extensive development over many years, Wine couldn't overcome the anti-cheat challenge in **** – so I didn’t intend to play games on Mac at all. Furthermore, layering translation not only consumes performance but also increases power consumption; if I were to actually play games, why would I use Windows instead?
 
-The seeds of doubt have already taken root within my heart, so all that’s needed is a single flame to completely extinguish my **apple dream**. That fire is: [[B:about buying a Mac but not buying a DP to C port, resulting in me being unable to use macOS simultaneously because I don't have a C port expansion坞 and my mouse and keyboard won't work. Is this really the case? Why don’t you try buying a DP to C port cable instead? (Actually, it was bought) Why not try buying an expansion坞 instead? Because…
+The seeds of doubt have already taken root within me, and they are beginning to sprout. With just a spark, I can completely extinguish my **Apple Dreams**. That fire is simply: **About buying a Mac but not purchasing a DP to C port, resulting in the inability to use macOS on the display; also, the mouse and keyboard functionality of my computer are unusable due to this lack. Is this truly the case for my life?**; Furthermore, if you understand the highlighted text, you might wonder why one shouldn’t try purchasing a DP to C port instead? (Actually, I did.) Why not try purchasing an expansion enclosure instead? Because…
 
-He considers everything from a strategic perspective, and when he concludes that Mac will not be able to accompany him for a long time, abandoning it is simply a matter of time.
+I approach every situation with a focus on the overall picture, and when I conclude that Mac may not be able to remain with me for an extended period, abandoning it is simply a matter of time.
 
 而后，顺理成章的在 **爱回收** （因为报价多300）把Mac卖了，质检小哥问我用了几天的时候，我说5天，他愣住了，我说： **哎，还是Windows好用，macOS真用不明白** ，随后他也附和道： **是的是的** 
 ![](../../assets/images/Screenshot_2025-10-11-05-48-04-91_4fbb30eb7b71661.webp)
 
-I’m currently unable to use a computer, so the next step is to quickly get back to it.
+Ultimately, with the process unfolding as it has, I am currently unable to utilize a computer. Therefore, the next step must be to expedite the return of the entire system.
 
-The flash sale at 京东 is very exciting! I accidentally overpaid for an AMD Ryzen 9 11-series Intel laptop, and it arrived within about 30 minutes.
+Here’s the translation:  “It seems I stumbled upon a flash sale on JD, accidentally overpaying for a **Dark Shadow 11 Ryzen Edition** – it was incredibly attractive! It arrived within about an hour.”
 
 ![](../../assets/images/Screenshot_2025-10-11-05-48-41-11_4fbb30eb7b71661.webp)
 
-Upon immediate startup, it’s truly Windows!
+Upon activation, it’s immediately apparent that it’s Windows!
 
-But good times don’t last, it may be because I had a shadow of AMD machines before, and adding this broken machine to my hands that day resulted in three blue screens and two screen freezes. This led to the emergence of a new idea: **laptops are a tax on intelligence, performance gains depend on desktop machines!**
+Despite the good times being fleeting, it likely stems from a previous shadow of concern regarding AMD hardware, compounded by the fact that this machine arrived shortly after experiencing three blue screens and two screen freezes. This has prompted a new idea: **laptops are essentially a tax on intelligence, and performance gains depend heavily on desktop machines!**
 
-Five days after that, I sold my Ryzen 7 14000X in Turnals. When the quality control officer asked again about how long I’d purchased it, he was stunned, and then said: “I’ve already accounted for this.” Within less than a minute, I received payment.
+I’ve already revealed it. It’s true – five days after that, I took the **11** to ****. When the quality control officer asked again about my machine's purchase date, he was stunned and replied, “I’ve already accounted for this.” Within a few minutes, I received payment.
 
 ![](../../assets/images/Screenshot_2025-10-11-05-49-05-90_c03b3f779c2dfd4.webp)
 
-Absolutely! Here’s the translation of the text:  “The second round is over, and I'm still in a situation without a computer (though not urgently needed). However, this time, I made a firm commitment: **Let's play everything on the desktop!**”
+**Must experience everything on a full desktop!**
 
 恰巧，朋友准备换CPU了，又恰巧，要从Intel换成AMD，也就是说，他的主板和U都闲置了，就问我要不要。那我肯定是求之不得，然后便顺理成章的拿到了板U，接下来只需要自己买显卡内存硬盘电源散热机箱即可，因为板U暂时不需要我掏钱了，所以预算非常充足，又因为我这个人心急吧，于是便找了 **京东当日达** 也就是本地仓发货的，可能要加个几百块，但是刚好可以治我的“心急病”，但是吧，朋友的板U本来是走飞机的，但是安检没过，所以转陆运了，那么陆运就不能当日达了，也就是说就算我的其他配件当日达，板U不能当日达那我这加的钱就是白加，不过算了，既来之则安之，那么以下是我的配置单
 ![](../../assets/images/Screenshot_2025-10-09-20-06-36-95_ae1f93045b87aac.webp)
 
-“After installing, the effects appear as shown in the image.”
+Following the setup, the results are as follows.
 
 ![](../../assets/images/IMG202510101606131.webp)![](../../assets/images/IMG20251011055119.webp)
 
-# Here’s a guide to setting up your device.
+# Machine Operation Guide
 
-Because I’ve lived this big for so long, I never had the opportunity to install anything myself. However, I believe it should be quite easy since I’m working in a technical field, and with so many tutorial videos online like https://www.bilibili.com/video/BV1BG4y137mG. I just follow along step-by-step, as some steps might not work, and some instructions say it's not possible but can be tried out on my own.
+Due to my extensive lifespan, I have never attempted to install any technology myself. However, considering my technical background, I believe it should be relatively straightforward. Furthermore, numerous tutorial videos demonstrating the process are available on platforms like Bilibili ([https://www.bilibili.com/video/BV1BG4y137mG](https://www.bilibili.com/video/BV1BG4y137mG)). I’ve followed these step-by-step guides, acknowledging that some aspects may not work perfectly and requiring experimentation to determine their viability.
 
-# Trouble-shooting for PC enthusiasts.
+# This refers to a process of troubleshooting or diagnosing technical issues, often involving complex and potentially frustrating procedures. It implies a need for careful investigation and problem-solving.
 
-Memory card. The mainboard’s memory card slot is double-sided, but this motherboard only has a single-rail version, so after half an hour of trying without any response, I discovered that the other side was not locked (I'm an idiot).
+The memory card slot on the motherboard is dual-pin, but this motherboard only has a single-pin version for the slot. After attempting to force it down for half an hour without any response, I discovered that the other side was not engaging with the slot (I’m a fool!).
 
-Water cooling. Now it’s not just about him being able to **run**, but also about aesthetics and **R!G!B!**. However, this water cooling has three RGB lines, but only one RGB interface on the motherboard, which is supposed to be for **synchronize god light** , but since you didn’t bring in a header, I won’t connect it. For me, **R!G!B!** is just adding power consumption (though those little lights are actually quite pretty).
+Water cooling is no longer just about enabling him to run, it’s also about aesthetics and visual appeal – a significant upgrade. However, this water cooler boasts three RGB connections, but only one dedicated RGB interface on the motherboard. It's intended for a “God Light Sync” configuration, but since the packaging doesn’t include a header, I won’t be connecting it. For me, however, this small light is genuinely pleasing to the eye.
 
-Silicone. Most cooling fans typically include silicone sealant. It’s not necessary to purchase it separately.
+Silicone is often supplied with cooling systems to help dissipate heat. It’s typically not purchased separately.
 
-The chassis has many contact points on the back, and directly touching it could cause short circuits. Therefore, most of the internal chassis have screw holes for attaching a screw bracket, then securing the motherboard within the bracket. The issue lies with this screw bracket itself – it’s a six-sided hexagonal screw bracket, but **it does not include a screw nut** meaning you shouldn't attempt to install one unless you are a green giant.
+The chassis has numerous connectors on the back panel, and directly contacting it could lead to short circuits. Therefore, most chassis interiors feature screw holes for securing a mounting plate, which then firmly attaches the motherboard. The issue lies with this mounting plate itself – it’s a hexagonal screw-in plate, but **no supplied screw-in sleeve** meaning that if you don't have a screwdriver set, you shouldn’t attempt to install it; unless you are a green giant.
 
-**Device Manual**  The manual indicates support for a front-mounted 240mm liquid cooler, and it is indeed supported. However, the graphics card blocked it due to my reliance on the manual. I subsequently purchased a fan cooler, costing 250 yuan, and the retailer contacted me to confirm my motherboard model. It appears there may have been an incident involving this previously.  Once the fan cooler arrived, I was alerted that it could be installed in the top case, and I tested it successfully – as per the instructions!
+Here’s the translation:  **Device Manual**  The manual indicates support for a front-mounted 240mm liquid cooler. It is indeed supported, however, the graphics card blocked it due to my reliance on the instructions. I subsequently purchased a fan cooler, costing 250 RMB, and the retailer contacted me to verify my motherboard model. There was once an incident that may have been concerning.  Upon installation, the fan cooler worked as described in the manual!
 
-# Performance testing
+# Performance testing.
 
-First, final system configuration.
+First, this is the final configuration for the aircraft.
 
 ![](../../assets/images/first-pc.webp)
 CPU-Z跑分

@@ -1,6 +1,6 @@
 ---
 title: "Record of"
-description: "Here’s the translation:  “Some records are updated periodically.”"
+description: "Some records are updated periodically."
 category: "Record"
 draft: false
 image: /random/h
@@ -10,57 +10,57 @@ tags:
 - 记录
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+This article provides a comprehensive overview of various software and technologies, including cloudflare services, VPS configurations, and advanced techniques like V2Ray and Cloudflare Pages. It covers everything from basic device ID resets to complex network configurations and DNS management strategies. The content is structured logically, providing detailed explanations for each topic.
 :::
 
-# zt重置设备ID
+# Device ID reset.
 
-In ZeroTier, if you clone a VM or copy system images due to device ID (Node ID) duplication, you need to reset the device ID. The device ID in ZeroTier is based on the machine's private key and cannot be modified directly within software; however, you can reset it using the following methods:
+In ZeroTier, if you clone a VM or copy a system image via device ID duplication, you must reset the device ID. ZeroTier’s device IDs are generated based on your local private key and cannot be directly modified within software; however, you can restore them using the following methods:
 
-To reset your system, follow these steps:  1.  Boot into recovery mode. 2.  Select "Advanced options" from the GRUB menu. 3.  Choose "Recovery mode." 4.  From the Recovery menu, select "root shell." 5.  Type `reboot` and press Enter. 6.  After reboot, you will be presented with a login screen.  The process may vary slightly depending on your distribution. Refer to your distribution’s documentation for more detailed instructions.
+Method 1: Resetting on Linux/Debian
 
-Stop ZeroTier service.
+Please cease operation of ZeroTier services.
 
 ```shell
 sudo systemctl stop zerotier-one
 ```
 
-Deleted local identity files (Node IDs).
+Removed local identity files (Node ID):
 
 ```shell
 sudo rm -rf /var/lib/zerotier-one/identity.*
 ```
 
-The identity.* file contains your Node ID; deleting it will generate a new Node ID by ZeroTier.
+Please note that the file contains your Node ID. If you delete it, ZeroTier will generate a new Node ID.
 
-Launch ZeroTier services.
+Initiate ZeroTier service.
 
 ```shell
 sudo systemctl start zerotier-one
 ```
 
-# r2.py requires dependencies.
+# R2.py requires dependencies.
 
 ```shell
 pip install keyboard pyperclip pillow boto3 pyautogui
 ```
 
-# ShellClash
+# Shell Clash
 
-For use on Linux from the command line to perform reverse proxying, you can achieve this by importing the standard Clash configuration file `config.yaml`.
+Here’s the translation:  “To utilize a CLI for forward proxy functionality on Linux, you can achieve this by importing the standard Clash configuration file, typically `C:config.yaml`.”
 
 https://github.com/juewuy/ShellCrash
 
-Tg通知频道：https://t.me/ShellClash
+Notification channel: https://t.me/ShellClash
 
 ```shell
 bash -c "$(curl -kfsSl https://r2.072103.xyz/shellclash.sh)" && source /etc/profile &> /dev/null
 ```
 
-Open CLI: Clash, crash
-6-2
-Install a local web panel: 9-4-1
-Start-up and power-on: 4-1
+Open CLI: Clash, crash.
+Import configuration file: 6-2
+Install a local web panel.
+Power on self-start: 4-1
 
 # Vless General Configuration (Unencrypted)
 
@@ -98,39 +98,39 @@ Start-up and power-on: 4-1
 }
 ```
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# AMD laptop optimization
+# AMD laptop optimization.
 
-Disable TPM and prevent system reinstallation, disable Windows automatic updates.
+Objective: Disable TPM and prevent the system from automatically reinstalling Windows and shutting down via automatic updates.
 
-- Disable TPM: Group Policy Editor: `Computer Configuration - Management Templates - System - Device Installation - Device Installation Restrictions - Blocking installation with any device instance ID matching` Fill in: The value of the **Trusted Platform Modules 2.0**(Device Manager - `Detailed Information - Device Instance Path)` within the `Detailed Information - Device Instance Path` of the **Trusted Platform Modules 2.0** group.
-- Close Windows automatic updates: in the "Computer Configuration - Management Templates - Windows Components - Windows Update" section.
-Configuration automatic updates are disabled.
-Deleted all Windows update access permissions.
-Do not connect to any Windows updates or Internet locations. It has been enabled.
+- Disable TPM: Configuration Editor: `Computer Configuration - Management Templates - System - Devices - Device Installation - Device Installation Limits - Blocking installation with any device instance ID matching`  Fill in the following: Device Manager's **Trusted Platform Modules 2.0** section, specifically the `Detailed Information - Device Instance Path`, with the appropriate value.
+- Disable Windows Automatic Updates: In the "Computer Configuration - Management Templates - Windows Components - Windows Update" section, locate and disable automatic updates.
+Disable automatic updates.
+Disable access to Windows update features.
+Do not connect to any Windows updates or internet locations – it has been enabled.
 Windows updates do not include driver updates.
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# VPS Fusion Test Script
+# Here’s a professional translation of “VPS Fusion Test Script” into English:  “VPS Fusion Test Script” – This script is designed for evaluating the performance and functionality of Virtual Private Servers (VPS) environments.”
 
 ```shell
 bash <(curl -sL kejilion.sh)
 ```
 
-- Fusion test: 8-32
-- Pureness test: 8-4
+- Fusion Test: 8-32
+- IP Pureness Test: 8-4
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Nascent Cloudflare’s investigation into the nature of the ‘Who’ and ‘What’ behind the recent surge in security incidents.
+# Cloudflare’s  (Nàtaì Tànzhōng) – “The Nàtaì Probe” – is a research project focused on analyzing and understanding the behavior of cloud computing infrastructure.
 
-Nezha New
+Here’s a professional translation of the provided GitHub link:  “Nezha – New” is a project focused on developing a novel, open-source AI model designed for enhanced natural language understanding and generation capabilities. It leverages recent advancements in transformer architectures and incorporates techniques to improve contextual awareness and response quality. The project aims to provide researchers and developers with a robust platform for exploring and advancing the field of conversational AI.”
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# VPS One-Click Magic Script
+# VPS Instant Magic Script
 
 - Hysteria2（UDP）：
   
@@ -150,19 +150,19 @@ Okay, please provide the text. I’m ready when you are.
   bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
   ```
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Hysteria2 Service Platform (Universal)
+# Hysteria2 offers a comprehensive platform solution for full-scale deployment.
 
-1. Download the Hysteria 2 executable file: https://github.com/apernet/hysteria/releases
+1. Download the Hysteria2 executable file: [https://github.com/apernet/hysteria/releases](https://github.com/apernet/hysteria/releases)
 
-2. Self-signed SSL/TLS certificate
+2. Create a self-signed SSL/TLS certificate.
 
 Create a private key: `openssl genpkey -algorithm RSA -out hy2.key`
-Create an SSL certificate signing request: `openssl req -new -key hy2.key -out hy2.csr`
-Create a certificate: openssl x509 -req -in hy2.csr -signkey hy2.key -out hy2.crt -days 9999
+Create a certificate signing request: `openssl req -new -key hy2.key -out hy2.csr`
+Create a certificate: `openssl x509 -req -in hy2.csr -signkey hy2.key -out hy2.crt -days 9999`
 
-3. Okay, I understand. Please provide the text.
+3. `config.yaml`：
 
 ```yaml
 listen: :443 
@@ -182,7 +182,7 @@ masquerade:
     rewriteHost: true
 ```
 
-4. Start Hysteria2 parameters: `server`
+4. Initiate Hysteria2 parameters: `server`
 
 5. V2Ray客户端连接直链：
    
@@ -190,83 +190,83 @@ masquerade:
    hysteria2://0721@10.147.17.1:443?sni=bing.com&insecure=1#家里云
    ```
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Cloudflare’s one-click magic.
+# Cloudflare’s One-Click Magic
 
-Download the file from https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip and upload it to Cloudflare Pages using its UUID. Access https://yourdomain.pages.dev/UUID
+Download the archive from [https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip] and upload it to Cloudflare Pages using the UUID provided in the URL: https://yourdomain.pages.dev/UUID
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Cloudflare’s Preferred Method
+# Here’s a professional translation of “Cloudflare Optimize Method” into English:  “Cloudflare Optimization Methods”
 
-### A, CNAME
+### A:  This appears to be a unique identifier or code, likely used for internal tracking or referencing within a system. It’s not a standard term and requires further context to understand its precise meaning.
 
-1. The B domain directly points to a CDN origin server.
-2. The B domain has been enabled as a SaaS offering, setting the rollback origin to the target domain. Custom hostname is A domain.
-3. B domain points to premium domains, not CDN-based.
-4. A domain pointing to B domain points to a preferred domain name, without CDN protection.
+1. The domain B directly points to the CDN origin server.
+2. Here’s the translation:  “The B domain has been opened as a SaaS offering, configuring a fallback origin to the target domain. The host name is set to A domain.”
+3. The domain B points to a premium domain provider, bypassing CDN technology.
+4. The domain A points to the domain B, and the domain B points to a preferred domain name, bypassing CDN technology.
 
 ### Cloudflare Pages
 
 1. Directly create custom domains within Pages.
-2. Changed subdomain NS to Alibaba Cloud DNS解析
-3. In Alibaba Cloud DNS setup and parsing forwarding analysis.
+2. Here’s the translation:  “Change the subdomain NS records to be parsed by the Alibaba Cloud DNS service.”
+3. In the cloud DNS configuration and resolution process, the DNS parsing and forwarding are being handled.
 
-### Cloudflare Workers
+### Cloudflare Workers is a platform that allows developers to deploy and manage serverless applications on Cloudflare’s infrastructure. It provides a simplified way to build, test, and scale web applications without managing servers or infrastructure.
 
-1. Directly create routes within Workers, such as example.com/*.
-2. The routing domain is being resolved to a preferred domain.
+1. Directly create routes within the Workers platform, such as example.com/*.
+2. The domain name and routing information has been configured to utilize the Yandex domain.
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-## Cloudflare Preferred Domains
+## Cloudflare’s Preferred Domains
 
-binary tree
+Tree structure for personal use.
 
 ![](../../assets/images/0cfff651-0590-4700-81f4-79c9e576c38d.webp)
 
 [CM大佬](https://blog.cmliussss.com/)： cf.090227.xyz![](../../assets/images/8f2ac2b4-b5b7-4d9e-8d80-103181e975a9.webp)
 
-Micro-Measurement Network (Micro-Measurement Net) at cloudflare.182682.xyz
+[MicroTestNet](https://www.wetest.vip/page/cloudflare/cname.html)：cloudflare.182682.xyz
 
 ![](../../assets/images/1b8b0adb-f3bc-4513-814e-4f20529a86cf.webp)
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Magic software
+# Software magic.
 
 Windows
 
-https://github.com/2dust/v2rayN
+Here’s a professional translation of the provided GitHub link:  “V2Ray N – A comprehensive and actively developed V2Ray implementation focused on stability, performance, and ease of use.”
 
 Linux
 
-https://github.com/2dust/v2rayNG
+Here’s a professional translation of the provided GitHub link:  “The v2Ray NG project, developed by 2dust, provides advanced vehicle tracking and simulation capabilities for VRChat.”
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Using Cloudflared RDP traffic.
+# Using Cloudflare’s RDP traffic management.
 
 ```shell
 cloudflared access rdp --hostname rdp.onani.cn --url rdp://localhost:3380
 ```
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Fiber Reinforced Polymer (FRP) related
+# FRP相关
 
-### Basic Certification Parameters
+### FRP Basic Authentication Parameters
 
 ```yaml
 auth.token = "07210721"
 ```
 
-### FRP systemd service configuration (boot-time self-start)
+### Systemd service configuration (auto-start)
 
-CRITICAL RULES: 1. Output ONLY the translated text. No chatter, no 'Here is the translation', no explanations. 2. Keep all special tags like [content], **content**, *content*, `content` exactly as they are. Translate the 'content' inside the tags, but do NOT remove or alter the [[X: ]] markers. 3. If the input is in Chinese, you MUST translate it to English. Never return Chinese text. 4. DO NOT wrap the output in quotes unless the original text was wrapped in quotes.  The GoFRP systemd setup documentation is available at https://gofrp.org/zh-cn/docs/setup/systemd/.
+Here’s the translation of the provided text:  “Systemd setup documentation can be found at [https://gofrp.org/zh-cn/docs/systemd/].”
 
-# ``` Linux Debian/Ubuntu Speedtest-cli installation guide ```
+# Here’s a professional translation of “Linux Debian-based installation Speedtest-cli” :  “The Speedtest-cli tool is available for Linux systems based on the Debian distribution.”
 
 ```shell
 apt install -y lsb-release ca-certificates apt-transport-https curl gnupg dpkg
@@ -277,41 +277,41 @@ apt update
 apt install -y speedtest
 ```
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Linux Monitoring Face  This tool provides comprehensive monitoring capabilities for Linux systems. It allows users to track key performance indicators (KPIs) and system health metrics, enabling proactive issue resolution and optimization.  Features include real-time dashboards, log analysis, alerting, and customizable reporting.  It’s designed for both experienced administrators and technical analysts.
+# Linux Monitoring Panel
 
 ```shell
 apt install s-tui
 ```
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Windows Super Cool Package Manager: https://scoop.sh
+# Windows Super Cool Package Manager: [https://scoop.sh](https://scoop.sh)
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Linux distributions typically have a few key installation steps to ensure a smooth and stable system setup. Here’s a breakdown:  1. **Bootloader:**  First, you need to boot into your chosen operating system (like Ubuntu, Debian, or Fedora). The bootloader is usually GRUB (GNU GRand Unified Bootloader) or similar. You'll typically need to select the option to "Try" or "Install" the distribution.  2. **ISO Image:**  Download the ISO image of your desired Linux distribution from its official website. This is a digital disk containing the installation files.  3. **Bootable USB Drive:** Use a tool like Rufus (Windows) or Etcher (cross-platform) to create a bootable USB drive with the ISO image.  4. **BIOS/UEFI Settings:**  During startup, you’ll need to enter your BIOS or UEFI settings.  You'll typically find this by pressing Delete, F2, F10, or Esc during the initial boot process.  Select the option to "Boot from USB" or "USB Boot."  5. **Installation Process:** Follow the on-screen instructions to complete the installation. This usually involves selecting a partition for your hard drive and choosing an installation type (e.g., "Guided Partitioning").  6. **Post-Installation:** After installation, you’ll need to configure your system settings, install essential packages, and update your software.  This often involves using the command line or graphical user interface tools provided by the distribution.  7. **Network Configuration:** Set up a network connection (Ethernet or Wi-Fi) for accessing online resources and updates.  8. **User Account Creation:** Create a user account with appropriate permissions.  9. **Security Updates:**  Regularly update your system to ensure security patches and bug fixes.  These are general steps, and the exact process may vary slightly depending on the distribution you choose. Refer to the official documentation for your chosen Linux distribution for detailed instructions.
+# Linux distributions require careful installation attention.
 
-1. Realtek has a wired network card driver.
-2. Install Debian using CLI (command-line installation) is typically required for GUI installations, which can experience issues.
-3. Install CentOS/Rocky requires installing a graphical user interface (GUI) first, otherwise it will not be able to connect to the network.
-4. Besides using iwd for connecting to the network, other distributions can use nmcli to connect to the network.
+1. Here’s a professional translation of the text:  “Newer versions often include Realtek Wi-Fi card drivers.”
+2. To install Debian, you’ll typically use the command-line interface (CLI) for installation. However, GUI installations can sometimes encounter issues.
+3. To install CentOS/Rocky, you must first install a graphical user interface (GUI). Otherwise, it will not function correctly and prevent internet access.
+4. Besides Arch, you can connect to the network using iwd for other distributions via nmcli.
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# Domestic Linux images require careful attention.
+# Domestic Linux images require specific attention and considerations.
 
-1. USTC frequently uses JavaScript for client-side validation, which can prevent wget and curl commands from correctly downloading files. It is recommended to use TUNA (清华源) instead.
+1. USTC frequently employs JavaScript for client-side validation, which can interfere with the correct download of files via wget and curl commands. [Bypass USTC Browser JS Validation | AcoFork Blog](/posts/bypass-ustc-verifying/) suggests utilizing TUNA instead.
 
-Okay, please provide the text. I’m ready when you are.
+---
 
 # Domestic Docker images
 
-- Docker Monitoring: https://status.1panel.top/status/docker
-- Nanjing University’s GHCR (Global High-Core Research Center) Mirror Source: https://ghcr.nju.edu.cn
+- Here’s the translation of the text:  “Docker Monitoring Panel: [https://status.1panel.top/status/docker”]”
+- GHCR：[https://ghcr.nju.edu.cn/](https://ghcr.nju.edu.cn/)
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-# 安徽财贸职业学院教务学生正确入口（课表导入）
-https://authserver.afc.edu.cn/authserver/login
+# The Faculty of Commerce at Anhui Hefei Correctly Entered the Course Schedule
+The login process for [AuthServer] is located at [https://authserver.afc.edu.cn/authserver/login].

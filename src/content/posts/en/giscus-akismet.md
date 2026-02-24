@@ -1,6 +1,6 @@
 ---
-title: "Are you looking for a review system without wanting to self-host, and suffering from annoying spam comments?"
-description: "Here’s a professional English translation of the text:  “Giscus is an excellent comment section, built upon GitHub Discussions and requires no self-hosting or account management. It can be easily integrated with a single JavaScript file.”"
+title: "Are you looking for a review system without needing to self-host, and tired of being harassed by spam reviews?"
+description: "Giscus is a robust comment section built on the GitHub Discussion platform, offering a self-hosted solution without requiring manual setup or account management. It’s simply accessible with a single JavaScript integration."
 category: "Tutorial"
 published: 2025-08-04
 image: ../../assets/images/2025-08-04-12-14-21-image.webp
@@ -14,39 +14,39 @@ lang: en
 
 :::
 
-# Please provide the text you would like me to translate.
+# 配置Giscus
 
-GitHub uses the Github Discussion feature to store user comments, without requiring self-hosting.
+Giscus utilizes the GitHub Discussion feature to manage user comments, without requiring self-hosting.
 
-First, create a public warehouse (suggesting a clean, empty warehouse).
+First, you need to establish a **public warehouse** (it’s recommended to start with a clean, empty warehouse).
 
-Enable Discussion Functionality in Warehouse Settings
+In warehouse settings, enable the “Enable Discussion” functionality.
 
 ![](../../assets/images/2025-08-04-12-16-36-image.webp)
 
-Go to https://giscus.app/zh-CN
+Please visit [https://giscus.app/zh-CN](https://giscus.app/zh-CN).
 
-Please fill your warehouse.
+First, please populate your inventory through verification.
 
 ![](../../assets/images/2025-08-04-12-17-42-image.webp)
 
-The following mapping relationships are crucial!
+The following `mapping relationships` are critically important!
 
-- According to the provided path, comments and pages will always match if the path remains unchanged.
+- Here’s the translation:  “If your article path is **(Recommended)**, then any changes to that path will automatically match comments and pages.”
 
-- Only change the **domain** to match the URL, and comments and pages will not be matched.
+- Only change the domain name to match comments and pages.
 
-- As long as you change the **Title** on the comment and page, comments and pages will not match.
+- Any change to the title will prevent matching comments and pages.
 
 ![](../../assets/images/2025-08-04-12-18-21-image.webp)
 
-Please note that it is recommended to enable the following mappings: use strict title matching, avoid commenting on the same topic, and ensure a unique identifier for each discussion. This hash string will be inserted into every new discussion page comment section after you activate this feature. The mapping relationship between subsequent discussion pages and Github Discussions will depend on this hash string.
+**Please note the following guidelines:**:  It is recommended to `enable strict title matching` and **avoid commenting in parallel**. Once activated, Giscu will insert a unique identifier for each new discussion (comment section) based on your chosen mapping relationship. Subsequent discussion sections will then rely on this hash string, which is written as a comment within each discussion's main text.
 
 ![](../../assets/images/giscus-akismet-1.png)
 
-If you lose or make a mistake, I will create a new discussion with the same hash.
+If you lose it or make a mistake, we will create a new discussion with the same name and include a unique hash tag.
 
-If the previous discussion hasn’t been deleted, and you want Giscus to assign a different Discussion, you need to manually calculate a hash string based on the default page title (this depends on the mapping relationship you've selected, if pathname is selected, it will be `posts/pin` ) and manually write this hash string into the Discussion you want Giscus map.
+If the previous discussion hasn’t been deleted and you wish to have Giscus assign a different discussion, you need to calculate a hash string using the default page title assigned to Giscus (dependent on the mapping relationship you've selected – if pathname is selected, it will be `posts/pin`). Then, manually enter the hash string into the discussion you want Giscus to map.
 
 ```sql
 root@AcoFork-NAS:~# echo -n "posts/pin/" | sha1sum
@@ -54,62 +54,62 @@ root@AcoFork-NAS:~# echo -n "posts/pin/" | sha1sum
 root@AcoFork-NAS:~#
 ```
 
-Announcement(s)
+Recommended classification: **Announcements**
 
 ![](../../assets/images/2025-08-04-12-22-07-image.webp)
 
-Okay, please provide the text. I’m ready when you are.
+Specific options can be selected on demand.
 
 ![](../../assets/images/2025-08-04-12-22-25-image.webp)
 
-Okay, please provide the text. I’m ready when you are.
+Select your preferred theme based on your preferences. Changes to the theme will immediately reflect.
 
 ![](../../assets/images/2025-08-04-12-22-57-image.webp)
 
-Okay, please provide the text you would like me to translate. I will only output the translated text and adhere strictly to your instructions.
+Please provide the JavaScript code you would like me to translate into professional English. I need the text to be translated!
 
 ![](../../assets/images/2025-08-04-12-23-41-image.webp)
 
-# Here’s the translation:  “Configure Akismet”
+# Configuration for Akismet.
 
-Akismet (Automattic Kismet) is a widely used spam filtering system, developed by Matthew Mullenweg, the renowned founder of WordPress. It’s also a default plugin for WordPress and has been widely adopted, with its primary goal being to assist blog websites in filtering out unwanted spam comments.
+Akismet (Automattic Kismet) is a widely used spam filter system, developed by Matthew Mullenweg, the renowned founder of WordPress. It’s also a default plugin for WordPress and has become incredibly popular due to its function of assisting blog websites in filtering out unwanted comments.
 
-Register at [https://www.akismet.com](https://www.akismet.com)
+Registered at [akismet.com](https://akismet.com/)
 
-Select Akismet Personal Subscription, set the slider to 0$, record the received Akismet API Key
+Select the Akismet Personal subscription, and adjust the slider to zero $, record the resulting Akismet API key.
 
 ![](../../assets/images/2025-08-04-12-27-58-image.webp)
 
-https://github.com/afoim/giscus-fuwari/blob/main/.github/workflows/akismet-comment-check.yml
+Go to https://github.com/afoim/giscus-fuwari/blob/main/.github/workflows/akismet-comment-check.yml
 
-``` Deploy this GitHub Action to your GCloud project. ```
+Deploy this GitHub Action to your repository that has been configured with Ginkgo.
 
-Okay, please provide the text. I’m ready when you are.
+配置Secret：
 
 - AKISMET_API_KEY: Your Akismet API key
 
 - GH_TOKEN：前往 https://github.com/settings/tokens 创建一个具有 `repo` `write:discussion` `user` 权限的Github个人令牌![](../../assets/images/2025-08-04-12-29-06-image.webp)
 
-The test is effective. The comment is a spam review.
+“Testing the effectiveness of spam filtering,” the message contains the comment “`viagra-test-123`”. This comment is expected to be flagged as spam.
 
-Has GitHub Action implemented a review process?
+Here’s a professional translation of the text:  “Has the GitHub Action feature been implemented with automated review processes?”
 
 ![](../../assets/images/2025-08-04-12-30-37-image.webp)
 
-# Please provide the text you would like me to translate.
+# Blocking users.
 
-If someone is repeatedly posting but hasn’t been detected as spam, what steps should be taken?
+If someone consistently engages in screen scraping without detection, is it possible that the system isn’t recognizing it as such?
 
-You can contact the user’s personal information page to block them.
+You can manually block this user through their personal information page.
 
-See the documentation on how to prevent unauthorized access to your account on GitHub: [https://docs.github.com/en/account-protection/prevent-unauthorized-access](https://docs.github.com/en/account-protection/prevent-unauthorized-access)
+See the following document regarding preventing user access to your account: [GitHub Documentation: Preventing User Access].
 
-# Preventing new users from rating unfairly.
+# Preventing new users from artificially inflating ratings is a crucial aspect of maintaining platform integrity and fostering trust. Addressing this issue proactively can significantly improve the overall quality of user reviews and contribute to a more balanced and reliable assessment system.
 
-If someone keeps constantly posting low-quality reviews?
+If someone consistently engages in excessive online review or feedback solicitation, it may indicate a problematic behavior.
 
-Using the provided link, I will translate the content into English. Please provide the content you would like me to translate.
+使用 https://github.com/你的用户名/你的仓库/settings/interaction_limits
 
-Configure temporary interaction restrictions so new users cannot perform any operations on your storage library.
+Implement temporary interaction restrictions to prevent new users from accessing your storage repository.
 
 ![](../../assets/images/2025-08-04-20-43-06-image.webp)

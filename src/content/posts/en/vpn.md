@@ -1,6 +1,6 @@
 ---
 title: "Self-built reverse proxy server"
-description: "Don’t buy an airport – it doesn’t feel authentic?"
+description: "Don’t buy an airport – is that a worthwhile endeavor?"
 category: "Tutorial"
 draft: false
 image: ../../assets/images/2024-11-21-08-24-54-image.webp
@@ -9,14 +9,12 @@ published: 2024-11-22
 tags: []
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-Here’s a summary of the article:
-
-The article explains how to leverage Cloudflare as an edge router using Vless – EdgeTunnel, focusing on utilizing a custom domain name for improved performance and stability. It details the steps involved in setting up this configuration, including obtaining a UUID, creating a variable, and connecting to the Cloudflare Pages project via the `pages.dev` domain.  The article highlights recent issues with Cloudflare's new routing policies (1101 error) and recommends removing the original project and re-deploying it to avoid being flagged as blocked. It also encourages users to register for a simple, single-click account. Finally, it introduces Hysteria2 and V2Ray as alternative routing protocols, providing links to their respective GitHub repositories for installation instructions.
+This article provides instructions on utilizing Cloudflare as an edge router, specifically focusing on V2Ray and Hysteria2. It details the process of setting up these tools, including generating a unique UUID, connecting to the Cloudflare Pages project via Git, and configuring custom domains. The guide emphasizes the importance of removing existing projects and using temporary names for security purposes to avoid issues with CF.  It highlights recent technical challenges related to Cloudflare's new policies and offers guidance on how to mitigate these problems through project re-deployment and utilizing new project names. Finally, it encourages users to register for V2Ray and Hysteria2, providing links to their respective GitHub repositories.
 :::
 
-# Cloudflare as an edge router (Vless - EdgeTunnel)
+# Deploy Cloudflare as an edge proxy using Vless – EdgeTunnel.
 
-“CF VLESS from Beginner to Mastery: A must-read content on cmliu/edgetunnel. Free Nodes, Premium Subscriptions, and Worker & Pages – a comprehensive guide packed with valuable insights.”
+Here’s the translation:  “Following is a curated collection of content from CF VLESS, focusing on mastering cmliu/edgetunnel. Key takeaways include free nodes and premium subscriptions.  Workers & Pages – a comprehensive resource for valuable insights. CMLiussss Blog.”
 
 1. https://github.com/cmliu/edgetunnel/archive/refs/heads/main.zip 将它上传到你的Cloudflare Pages项目（没有Cloudflare账号？先去因特网上搜索教程注册一个！如果遇到卡慢可以试试看科学上网）
 2. 进入 https://it-tools.tech/uuid-generator 随机获取一个uuid
@@ -34,32 +32,32 @@ The article explains how to leverage Cloudflare as an edge router using Vless �
 14. 如图为博主半天的使用量：我只是上了上Telegram~
 15. ![](../../assets/images/2024-11-26-16-07-50-image.webp)
 
-# I am providing a translation of the provided text. Please provide the text you would like me to translate.
+# Please utilize your own foreign VPS as a proxy service.
 
-## Hysteria2
+## Using a new protocol: Hysteria2
 
-Can visit these two warehouses for a one-click installation.
+You can quickly install these two warehouses via a one-click process.
 
-https://github.com/0x0129/hysteria2
+[https://github.com/0x0129/hysteria2](https://github.com/0x0129/hysteria2)
 
-https://github.com/seagullz4/hysteria2
+[seagullz4/hysteria2](https://github.com/seagullz4/hysteria2)
 
-The installation process involves signing with a self-signed certificate, without using Acme and without port jumping.
+Here’s the translation:  The installation process involves self-signing, without utilizing Acme and without port hopping.
 
-Client (Hiddify)
+Client (Hiddify):
 
-https://github.com/hiddify/hiddify-app
+[[Hiddify App]]
 
-Other clients obtained the second GitHub repo through the second Github Repo.
+Other clients accessed the second GitHub repository to retrieve data.
 
-## Using V2Ray
+## Using V2Ray.
 
 [https://github.com/233boy/v2ray](https://github.com/233boy/v2ray)
 
-``` Install VPS Script: curl -s -L https://git.io/v2ray.sh ```
+Here’s the translation of the provided text:  “**VPS Installation Script:** `bash <(curl -s -L https://git.io/v2ray.sh))`”
 
-Install: After script execution completes, enter `v2ray` to change configuration settings.
+Detailed installation: After the script completes, enter `v2ray` to change configuration settings to Shadowsocks.
 
-Windows client: [https://github.com/2dust/v2rayN](https://github.com/2dust/v2rayN)
+Windows Client: [Releases · 2dust/v2rayN · GitHub](https://github.com/2dust/v2rayN/releases)
 
-Android client: [Releases · 2dust/v2rayNG · GitHub](https://github.com/2dust/v2rayNG/releases)
+Android Client: [Releases · 2dust/v2rayNG · GitHub](https://github.com/2dust/v2rayNG/releases)

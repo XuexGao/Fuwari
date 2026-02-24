@@ -1,6 +1,6 @@
 ---
-title: "EO VS ESA, Who is the king of domestic CDN?!"
-description: "EdgeOne and ESA are both excellent, free domestic CDN services. They operate very similarly in practice, and today we’ll settle this debate between them!"
+title: "EO VS ESA, Who is the King of Domestic CDN?"
+description: "EdgeOne and ESA are both excellent, free domestic CDN services – they operate very similarly in practice, and today we’ll settle this debate between them!"
 published: 2026-01-16
 image: ../../assets/images/eovsesa.webp
 draft: false
@@ -10,39 +10,39 @@ lang: en
 
 :::
 
-# Here’s the translation:  “Introduction”
+# Introduction
 
-EdgeOne began testing in July 25, 2025, while ESA opened in October 10, 2025.
+First, EdgeOne emerged as the earliest, debuting in July of 2025. ESA was established ten months later, opening in October 2025.
 
-EdgeOne initially required exchanging codes to obtain free packages, and the exchange codes evolved from early Twitter, followed by finding official codes, and then Discord communities at a fixed time, eventually leading to direct access through speed tests. The threshold gradually decreased, functionality increased.
+Here’s a professional translation of the text:  “EdgeOne initially required redemption codes to obtain free packages, which evolved from early Twitter promotions and then transitioned to official codes obtained through Discord communities.  The process has gradually lowered in complexity, with functionality expanding over time.”
 
-ESA initially offered a free ESA package to each cloud account, and if you require multiple sites to access, you can leverage pull-based services to obtain additional free packages.
+Here’s the translation:  “ESA, being a newer offering, immediately provided each cloud account with a complimentary ESA package. Furthermore, if you require multiple sites to be integrated, leveraging pull-based access can yield additional free ESA packages.”
 
-The experiences of both companies were markedly different, but there were distinct differences in their underlying logic.
+As of January 26th, 2026, the two firms exhibited significant differences in their experiences. However, the underlying logic within EdgeOne and ESA diverged somewhat.
 
-# The fundamental operational principles differ significantly between the two systems. The underlying architecture of the system A utilizes a distributed, modular design with a focus on scalability and fault tolerance. It employs microservices, each responsible for a specific function, promoting independent development and deployment.  Data is typically partitioned across multiple data stores – including a key-value store, a relational database, and a NoSQL database – to optimize performance and provide flexibility. The system A prioritizes asynchronous communication using message queues, enabling loose coupling between services.  Furthermore, the system leverages containerization technologies like Docker for consistent deployment and management of its components.  In contrast, the system B adopts a centralized, monolithic approach with a strong emphasis on operational simplicity and ease of maintenance. It’s built around a single server or cluster, simplifying development and debugging. Data is typically stored in a single database, which serves as the central repository for all information.  The system B relies heavily on synchronous communication through APIs, potentially leading to increased latency.  It utilizes a traditional server-based architecture with limited modularity.
+# Here’s the translation:  Fundamental logical comparison.
 
-EdgeOne, particularly Page, had already begun to take shape at 24 years ago and could function similarly to platforms like Cloudflare Page, GitHub Page, and Vercel, static hosting platforms. However, it was initially due to Tencent’s involvement, and the nodes were simply terrible – only a Singaporean node and didn't support domestic nodes.
+EdgeOne’s project, particularly Page, has already demonstrated a nascent stage and utilizes similar functionality to platforms like Cloudflare Page, GitHub Page, and Vercel. However, this initial implementation was hampered by the fact that it originated from Tencent, with limited node availability primarily focused on overseas Singaporean nodes and lacking support for domestic infrastructure.
 
-The ESA is likely derived from older DCDN and Cloud Function FC modifications, with the control panel already showing signs of degradation.
+The ESA likely originated from modifications to older DCDN and Cloud Function FC platforms, with the control panel already exhibiting signs of instability.
 
 ![](../../assets/images/eovsesa-1.webp)
 
-# Rules Engine with WAF
+# Here’s the translation of “Rules Engine with WAF” into professional English:  **Rules Engine with Web Application Firewall (WAF)**
 
-ESA’s many things are directly copied from Cloudflare, such as:
+Many aspects of ESA are directly derived from Cloudflare’s offerings, such as:
 
 ![](../../assets/images/eovsesa-3.webp)
 
 ![](../../assets/images/eovsesa-2.webp)
 
-The content is:  “CRITICAL RULES: Output only the translated text. No chatter, no explanations, Keep all special tags like [content], **content**, *content*, `content` exactly as they are. Translate the 'content' inside the tags, but do NOT remove or alter the [[X: ]] markers.”
+Furthermore, all rules (nested rules are considered one rule) have been completely pruned, and the free package only supports 5 rules.
 
 ![](../../assets/images/eovsesa-4.webp)
 
-## EdgeOne’s advantages include:  *   Advanced analytics platform *   Seamless integration with existing systems *   Scalable infrastructure *   Dedicated support team
+## Here’s a professional translation of “EdgeOne’s advantages”:  “EdgeOne offers several key strengths, including *nsert specific advantages here – e.g., enhanced security protocols, streamlined operations, superior performance metrics*.”
 
-EdgeOne has developed its own rule engine, instead of copying Cloudflare’s, and it’s configured in a single location for all types of rules. It can also interact with each other.
+Against EdgeOne, it doesn’t replicate Cloudflare; instead, it has developed a rule engine internally and allows all types of rules to be configured in a single location. Furthermore, these rules can interact with each other.
 
 ![](../../assets/images/eovsesa-5.webp)
 
@@ -57,74 +57,74 @@ EdgeOne has developed its own rule engine, instead of copying Cloudflare’s, an
 
 ### Priority Trap
 
-The content is not available.
+It’s crucial to note that while you can implement a WAF intercept within an EdgeOne rule engine, the initial traffic will first pass through the rule engine and then be inspected by the WAF. This means if you configure a non-CN (Content Delivery Network) intercept within the rule engine but set it to empty for a foreign IP address, the response will appear as a blank response, and no interception page will be displayed. The traffic will still be recorded.
 
 ![](../../assets/images/eovsesa-9.webp)
 
-## ESA’s strategy
+## ESA’s strategy.
 
-Here, ESA’s priority is always the highest, and traffic will first be reviewed by the WAF gateway, then applied rules. However, free plans do not support setting regional filtering in the WAF.
+Here’s the translation:  “From ESA, the prioritization of WAF is always the highest. Traffic initially undergoes review through the WAF gateway, and then applied rules. However, free plans do not support region-based filtering within the WAF.”
 
 ![](../../assets/images/eovsesa-10.webp)
 
-### The rescue plan based on curves.
+### Rescue Plan Curve
 
-A critical solution involves first establishing a rule to block all traffic, followed by a whitelist for trusted traffic.
+Here’s a professional translation:  “A solution involving a curve-of-recovery strategy is proposed, wherein initial traffic filtering is implemented, followed by the creation of a whitelist for trusted traffic. This whitelist will then bypass the filter applied to the traffic.”
 
 ![](../../assets/images/eovsesa-11.webp)
 
 ![](../../assets/images/eovsesa-12.webp)
 
-# 回源配置
+# Configuration Source Assignment
 
-Because ESA replicates Cloudflare, the default protocol for accelerating sites is HTTP (port 80) and HTTPS (port 443). If you need to change back to port 443, you must create a new rule.
+Following the ESA protocol, Cloudflare is utilized for acceleration, resulting in a default HTTP connection (port 80) when creating accelerated sites. Conversely, HTTPS traffic requires a connection through port 443, necessitating an additional routing rule to switch between these ports.
 
 ![](../../assets/images/eovsesa-13.webp)
 
-EdgeOne can directly configure origin port and origin host when creating a site.
+EdgeOne can configure the server’s back-end port and the back-end host directly during site creation.
 
 ![](../../assets/images/eovsesa-14.webp)
 
-# SSL certificate issuance
+# Here’s the translation of “SSL certificate issuance” into professional English:  “SSL certificate issuance” translates to “the process of issuing an SSL certificate.”
 
-SSL signing requires that both providers support default CNAME issuance. This means you can point your domain to me, and I will then generate an SSL certificate for each site. EdgeOne’s CNAME issuance is unique to each site.
+Regarding SSL issuance, both companies currently support default CNAME signing. This means you can configure your domain to point to me, and I will then generate an SSL certificate for you. However, EdgeOne’s CNAME signing is performed individually for each site.
 
 ![](../../assets/images/eovsesa-15.webp)
 
-ESA is unified management, give me a DCV, I’ll directly give you a global domain, and then you can use it.
+Here’s the translation:  “ESA is a unified management system. Please provide me with a DCV, and I will immediately issue you a general domain name. After that, you can use it.”
 
 ![](../../assets/images/eovsesa-16.webp)
 
-# Rules isolation and mutual understanding
+# Isolation and interconnection are key principles in modern network design.
 
-EdgeOne’s unique right-brain synergy moment.
+Here’s the translation:  “The EdgeOne exclusive moment of joint action between the left and right hemispheres is the most significant.”
 
-In EdgeOne CDN and EdgeOne Pages, the rules between them weren’t compatible; CDN operations followed CDN rules, Page operations followed Page rules, yes? He wants to separate wet and dry, and I have two sets of it.
+In the EdgeOne CDN and EdgeOne Pages, the two rules were not compatible – the CDN’s rules applied to CDN operations, while the Page’s rules applied to Page operations. It seems like he wants to implement a wet-dry separation, and I can easily handle that.
 
-## Function阉割
+## Function truncation.
 
-What does “阉割” mean, and why can CDNs perform regional targeting while pages only specify IP addresses?
+However, what does “” signify? Why can CDNs perform geographic targeting while Page only specifies IP addresses?
 
 ![](../../assets/images/eovsesa-17.webp)
 
 ![](../../assets/images/eovsesa-18.webp)
 
-There is no way to bypass CDN rules. There are some ways to mitigate the impact of CDN traffic on your page, such as using a full cache.
+There isn’t a method to bypass CDN rules for Page. However, there are options to mitigate the impact of double traffic:  *   **Implement a full cache:** For purely static pages, creating a complete cache can significantly reduce the load on the CDN and prevent excessive traffic spikes.
 
 ![](../../assets/images/eovsesa-19.webp)
 
-# Service comparison
+# Here’s a professional translation of “Page Service Comparison”:  **Service Comparison of Pages**  This document provides a detailed comparison of different page services, examining key features, pricing models, and performance characteristics.  We analyze the strengths and weaknesses of each offering to help users make informed decisions regarding their preferred page service solution.
 
-The following is a translation of the provided content:  “The following is a continuation of the page section.”
+Following the ‘Pages’ section.
 
-EdgeOne’s Page can be directly accessed as Cloudflare Page’s local translation, even bypassing core code. You can run Node.js services directly within the Page and discover that Cloudflare Page also has only one V8 environment (Umami can also! SSR functions are less than or equal to 128MB).
+EdgeOne’s Page provides a direct, localized equivalent to Cloudflare Page. It even bypasses core code and allows for the deployment of Node.js services directly within the Page itself. Notably, Cloudflare Page utilizes only one V8 environment (Umami can also be utilized!), with file sizes under 128MB being suitable for hosting vast amounts of data and files.
 
 ![](../../assets/images/eovsesa-20.webp)
 
-ESA page is very similar to the Cloud Function FC, although it supports functions. However, it lacks a complete Node.js environment and recently WebSocket has been shut down (unable to be opened after closing), and the file count and single-file size are subject to limitations.
+ESA Page mirrors the functionality of Cloud Functions FC, though it supports functions. However, it lacks a complete Node.js environment and recently shut down WebSocket support. Furthermore, the number of hosted files and single-file sizes are subject to limitations.
 
 ![](../../assets/images/eovsesa-21.webp)
 
-# Speed and limits
+# Speed and limits.
 
-The CDN rates gradually decrease to approximately 500 KB/s over a prolonged period of single-IP requests, but can reach up to 50 MB/s during normal business usage. However, short bursts of high rate are possible (up to 50 MB/s), but not for long durations. Therefore, Cloudflare and CF are not suitable for reverse proxy object storage or large file distribution due to this behavior. If similar needs exist, a traditional Cloudflare is more appropriate.
+Finally, performance is a key consideration. Utilizing data from multiple sources and self-tests, both CDNs exhibit a gradual rate reduction of approximately 500 KB/s over prolonged periods of single IP traffic. However, for typical business operations, short bursts of high bandwidth can reach up to 50 MB/s, but not consistently for extended durations. Therefore, these two CDNs are less suitable for reverse proxy object storage and large file distribution due to the limitations in speed. Cloudflare offers unlimited throughput for similar needs.

@@ -2,6 +2,6 @@
 enable: true
 level: happy
 ---
-我们已经通过 Google Adsense 审核！不出意外，在未开启广告拦截器的情况下，应该已经可以看到广告了
+我们使用我们引以为傲的高超技术实现了基于AI的国际化，现在网站的UI、文章...任何内容都将可以以中文或英文来展示
 
-如果您对广告位置不满意（如：占据面积大，挡住主要内容等情况），请前往 [置顶文章](/zh-cn/posts/pin/) 告知我们！
+但这也可能伴随着众多Bug的涌现，若您遇到，欢迎提交 [issue](https://github.com/afoim/fuwari/issues)

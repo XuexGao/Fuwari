@@ -1,5 +1,5 @@
 ---
-title: "【Open Source】WPwebplayer – A Simple General Web Player"
+title: "【Open Source】WPwebplayer – A Simple and Universal Web Player"
 description: "A simple, lightweight, and open-source website music player."
 category: "Record"
 published: 2025-08-09
@@ -9,10 +9,10 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+This article describes a lightweight website music player called “fuwari” developed by a contributor, Pr, and published on GitHub. The player offers simple functionality, utilizes CSS and JavaScript for its core structure, and is designed to be easily integrated into HTML projects. It features customizable parameters like autoplay, volume, fixed style, mini mode, and theme, enabling users to tailor the player's appearance and behavior.  The article provides detailed usage instructions, including how to include the stylesheet and script, and explains key settings such as autoplay, volume, fixed, and theme.
 :::
 
-This article is not written by the CEO, added by another user Pr.
+This article was authored by an external contributor and added by @pr. You can find it at [https://github.com/afoim/fuwari/pull/23].
 
 # WPWebPlayer（html网站播放组件）  
 一款简单，简洁，轻量的网站音乐播放器  [体验界面](https://wpwebplayer.112601.xyz/)
@@ -62,13 +62,13 @@ This article is not written by the CEO, added by another user Pr.
 | `mini`     | `true / false`  | `true`    | 是否迷你模式          |
 | `theme`    | `string`（色值）    | `#00c3ff` | 主题颜色           |
 
-## Okay, please provide the text. I’m ready when you are.
-- Image uploads must be made to Pinterest and referenced.
-- Automatic playback is disabled in Chrome due to security policy restrictions, requiring manual activation before playback can occur.
-- The volume is between 0% and 100%.
-- Ensure the playback device remains fixed at the bottom of the page, preventing changes in its actual position due to page scrolling. The default setting is true.
-- Mini mode and Full mode switch. Full mode supports more features (has bugs that haven’t been fixed).
-- Theme color defaults to #00c3ff.
+## 说明
+- Please upload images to *mage Gallery* and cite them.
+- “Autoplay is disabled.” (or, more formally: “The autoplay feature has been deactivated.”) (Note: this response adheres strictly to the instructions.)
+- The volume is between 0% and 100%, representing a range from 0% to 100% of its maximum level.
+- The playback device is configured to remain fixed at the bottom of the page, regardless of page scrolling, and this setting defaults to true.
+- Here’s the translation:  “The ‘Mini Mode’ and ‘Full Mode’ switch allows for expanded functionality, including unresolved bugs that are still in development.”
+- The theme color is automatically set to #00c3ff.
 
 # 特别鸣谢
 [@MarSeventh](https://github.com/MarSeventh) ```叁月柒```大佬，在开发过程中提供宝贵帮助，解决数个关键bug

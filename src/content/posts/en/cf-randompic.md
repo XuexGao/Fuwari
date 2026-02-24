@@ -1,6 +1,6 @@
 ---
 title: "Cloudflare R2+Workers! Build your own cloud-based dashboard now!"
-description: "Here’s a professional translation of the text:  “Utilizing R2 storage for images, leveraging Workers to facilitate retrieval and display, and embedding these assets via either an `<a>` or `<img>` tag on the web platform across the entire organization.”"
+description: "Using R2 storage, images are processed through Workers, and then displayed within a webpage using either an `<a>` tag or an `<img>` tag. The entire process is deployed across the entire network."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/QmVgqgoC7G8NLS21WvR8j9gf5amu33XvuV68ZrgM5B9iFf.webp
@@ -14,17 +14,17 @@ tags:
 
 :::
 
-### Okay, here's the translation of the provided text:  **结果图**  The results shown are a visual representation of the performance metrics and trends during the period under review.  These figures illustrate key areas of success and potential areas for improvement.  Detailed analysis is available in the accompanying report.
+### **Results Chart**
 
 ![QmVgqgoC7G8NLS21WvR8j9gf5amu33XvuV68ZrgM5B9iFf.webp](../../assets/images/408795f3ec1a5a9baf91b6cd7564d6f1d7dbc5bd.webp)
 
-### Here’s the translation:  The principle behind this technology is based on `neural networks`. It leverages deep learning techniques to learn complex patterns and relationships from data, enabling it to perform tasks such as **image recognition** and **natural language processing**.  *This approach allows for increased accuracy and efficiency compared to traditional methods.*
+### **Principle**
 
-The source image is hosted by Cloudflare R2, connected to R2 through two workers to showcase random horizontal and vertical images. Static pages reference the workers' URLs to achieve this interface.
+The source image is hosted by Cloudflare R2, connected via two workers to display random horizontal and vertical images. Static pages reference the URLs of the workers to achieve this interface.
 
-### Create a Cloudflare R2 Storage Bucket
+### **Create a Cloudflare R2 Storage Bucket**
 
-R2 is a cloud storage service. Cloudflare offers 10GB of free storage and 10 million free access monthly.
+Here’s the translation:  R2 is a cloud storage service. Cloudflare offers 10GB of free storage and 1 million free access points monthly.
 
 1. 进入[Cloudflare 仪表盘](https://dash.cloudflare.com/)，进入 R2 页面，如图
    
@@ -44,17 +44,17 @@ R2 is a cloud storage service. Cloudflare offers 10GB of free storage and 10 mil
 
 8. 创建 API 令牌后，新页面会展示令牌的详细信息，**仅会展示一次！！！** 保持这个页面，直到你将该页面的所有信息都已经妥善保存，不要关闭界面，否则，你需要轮转 API 令牌以禁用之前的旧密钥，如图![QmZTUwbycqbJhVP6PatD3psYy7ej9PDDoiXbmDWoakPhwx.webp](../../assets/images/f4214f6fdf67fa7bf694d0a1501ecc21aef45a90.webp)
 
-9. Ensure you have properly saved your R2 API token and proceed accordingly.
+9. Ensure you have properly saved your R2 API tokens and proceed to the next step.
 
-### Add files to your storage bucket.
+### **Add files to your storage bucket**
 
-Due to slow web interfaces and limitations on file transfer sizes exceeding 300 MB, local deployment of AList is used for fast uploads to your R2 storage bucket.
+Due to slow web interface transmission and limitations on file transfer sizes exceeding 300 MB, we are utilizing local deployment of AList. This allows for high-speed uploads via connection to your R2 storage bucket.
 
 1. 笔者使用 Windows。前往[AList - Github Release](https://github.com/alist-org/alist/releases)下载适用于 Windows 的最新可执行文件，如图![QmPDRDJGeGStreyZMXVYofbE9FCs1T1MyDek3KUbB3Kk5b.webp](../../assets/images/a2d1f289e464a9fb6367e2b7ff0b695916742698.webp)
 
-2. Unpack the compressed archive and place the `alist.exe` file into an empty folder.
+2. Unpack the downloaded archive and place the `alist.exe` file into an empty folder.
 
-3. Click the search bar, type `cmd` and press Enter.
+3. Click on the search bar, enter `cmd` and press Enter.
 
 4. ![QmSt8aFtaeEprJHASEiNPB67UHcHoSxsbhhHUPxW6QkWSo.webp](../../assets/images/3abdda195c58812866d49879c683a044e8acf7f8.webp)
    
@@ -85,11 +85,11 @@ Due to slow web interfaces and limitations on file transfer sizes exceeding 300 
 
 15. 可以看到，速度非常快![QmXfGK6aZjz741GrY8RfFfKMkUzDMB3xhx93PGZ9S1QycT.webp](../../assets/images/51d0a617cbda108ce6c12fb25f71fb5223a0cddb.webp)
 
-16. Create a directory structure to categorize horizontal and vertical images, so that Workers can be used to call them later. After this, I will use the R2 path `/ri/h` for the random horizontal image directory, and `/ri/v` for the random vertical image directory.
+16. Create a directory structure for your photo gallery, categorizing both horizontal and vertical images. This will facilitate the use of Workers to call R2 later. Subsequently, I will utilize the `/ri/h` path as the random horizontal image directory and the `/ri/v` path as the random vertical image directory.
 
 ![QmNdD8UU8fkVDBz5dXdJhCF2fZg8P1FwrcMaaTsG6a7ENy.webp](../../assets/images/3bde577194580e4d17aa457231360733175e2b0d.webp)
 
-### Create workers, connect to R2.
+### **Create Workers, Connect to R2**
 
 1. 进入[Cloudflare 仪表盘](https://dash.cloudflare.com/)，进入 Workers 和 Pages 页面，如图![QmW5UaUap8T2R37u5dzmKGLmUgk4qKnSMFwHBVHqvVbkVA.webp](../../assets/images/49ccd51771082fdc94eecb270caf987d257cd987.webp)
 
@@ -97,9 +97,9 @@ Due to slow web interfaces and limitations on file transfer sizes exceeding 300 
 
 3. 选择编辑代码![QmTbRifzXQ593DGyjFQMbA9exyNp2iAeAg4zbVrfFimQc4.webp](../../assets/images/fa78af856b3ff3798c77a55be15b2644dec944c1.webp)
 
-4. Paste code (create a random horizontal chart): ``` [X:  A dynamic, interactive dashboard visualizing key performance indicators (KPIs) across various business units. The charts are color-coded to highlight trends and areas of concern, enabling real-time monitoring and data-driven decision making.  The user interface is intuitive and responsive, allowing for easy navigation and exploration of the data.  Features include drill-down capabilities, custom report generation, and automated alerts based on predefined thresholds.] ```
+4. Please paste the code for creating a random horizontal image.
 
-Please provide the code you would like me to translate! I need the code to perform the translation.
+新代码：
 
 ```
 export default {
@@ -159,7 +159,7 @@ export default {
 };
 ```
 
-Please provide the code you would like me to translate. I need the code to perform the translation.
+Please provide the old code you would like me to translate. I need the text of the code to perform the translation.
 
 ```
 export default {
@@ -201,7 +201,7 @@ export default {
 
 5. 点击左侧的文件图标![QmQGQTiTXSESU2TSJ6tc3KrzWU4KABKqn6QZ1GdWqKnWmc.webp](../../assets/images/b02f29fbafb44ad36a0fa770d013069a374394a8.webp)
 
-6. Please provide the text you want me to translate.
+6. In the `wrangler.toml` document, specify the following:
 
 ```
 [[r2_buckets]]
@@ -219,7 +219,7 @@ bucket_name = "114514"
 
 10. 访问效果，每次刷新都不一样![QmQgEdjXxF9oph2jYKzFMJToX9WfG11jUmPiNJnjhYVN4N.webp](../../assets/images/0ba1efee8174e0d3db761bbd613a7b94b9738cee.webp)
 
-### Using HTML’s `<img>` tags to reference can achieve the beginning of the content.
+### Using the HTML `<img>` tag to reference the beginning of the content is an effective method to initiate the text.
 
-Please provide the text you would like me to translate.
-loading-ag-4760
+如：`<img src="你的域名" alt="">`
+Loading image.

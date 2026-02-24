@@ -1,6 +1,6 @@
 ---
 title: "Meme Generator Deployment Guide and Koishi Integration"
-description: "“I’ve always been curious about meme templates featuring user photos – it wasn't artificial at all! ”"
+description: "I’ve always been curious about expressions created using group friends' photos – it wasn’t artificial at all!"
 category: "Tutorial"
 published: 2025-06-30
 image: ../../assets/images/ee29b679-3355-453e-917b-2b85ae9106a0.webp
@@ -12,15 +12,15 @@ lang: en
 
 :::
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
-Video tutorial: https://www.bilibili.com/video/BV1i53PzUEzE/
+Video tutorial: [https://www.bilibili.com/video/BV1i53PzUEzE/](https://www.bilibili.com/video/BV1i53PzUEzE/)
 
-## Backend deployment
+## Backend deployment.
 
-https://github.com/MemeCrafters/meme-generator
+GitHub: [https://github.com/MemeCrafters/meme-generator]
 
-Install dependencies
+Please install dependencies.
 
 ```bash
 pip install -U "meme_generator<0.2.0"
@@ -32,14 +32,14 @@ Clone Repository
 git clone https://github.com/MemeCrafters/meme-generator
 ```
 
-Clone extra expression repository
+Clone Extra Expression Repository
 
 ```bash
 git clone https://github.com/MemeCrafters/meme-generator-contrib
 git clone https://github.com/anyliew/meme_emoji
 ```
 
-Go to the configuration directory at `~/.config/meme_generator/config.toml`(config.toml) and add the additional meme directories: `meme_dirs`.
+Please update the configuration file located at `~/.config/meme_generator/config.toml`(https://github.com/meme-generator/meme_generator/blob/main/config.toml) by including the additional meme repository: `meme_dirs`.
 
 ```toml
 [meme]
@@ -73,13 +73,13 @@ port = 2233  # web server 端口
 log_level = "INFO"  # 日志等级
 ```
 
-Okay, please provide the text. I’m ready when you are.
+运行
 
 ```bash
 python -m meme_generator.app
 ```
 
-Successfully ran.
+Upon viewing the log, the process will proceed.
 
 ```bash
 root@AcoFork-NAS:~/meme-api/meme-generator# python3 -m meme_generator.app
@@ -93,22 +93,22 @@ Fontconfig warning: "/usr/share/fontconfig/conf.avail/05-reset-dirs-sample.conf"
 
 ## Front-end integration.
 
-Koishi Plugin Market installation of version 1.0.3 is available.
+Install Koishi Plugin Marketplace version 1.0.3
 
 ![](../../assets/images/47f3db05-48bf-4382-817b-7a2b733dcd72.webp)
 
 ![](../../assets/images/3ffb0585-eb36-46fe-b32a-0162514e6e63.webp)
 
-Plugin initialization complete, including 455 expressions.
+Enable the plugin. You can see `Plugin initialization complete, loading 455 expressions`.
 
 ![](../../assets/images/50da2a0d-7e49-491a-bad3-d9fde22a9df6.webp)
 
-## Okay, please provide the text you would like me to translate. I’m ready when you are.
+## 使用
 
-Please provide the text you would like me to translate.
+Send the expression list to Bot.
 
 ![](../../assets/images/ed053d82-535e-47af-ac17-b27025d25dab.webp)
 
-Please provide the text you would like me to translate! I need the content to be translated.
+生成表情
 
 ![](../../assets/images/572c88c4-301b-4048-81bf-fcbb70d4064e.webp)

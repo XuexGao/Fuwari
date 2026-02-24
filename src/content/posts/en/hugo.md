@@ -1,6 +1,6 @@
 ---
 title: "Hugo Blog Setup and Configuration Tuning"
-description: "Hugo is a static blog platform built on Go, offering a 600% improvement in build efficiency compared to Hexo. It also supports low-JavaScript features and enhances SEO optimization, making it easier for search engines to index content."
+description: "Hugo is a static blog platform built on Go, achieving a 600% increase in build efficiency compared to Hexo. It also supports low-JavaScript features and offers enhanced SEO optimization, making it easier for search engine crawlers to access content."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/3d1b097d-7e31-4312-b3e5-d213e2903f4d.webp
@@ -13,27 +13,27 @@ tags:
 
 :::
 
-# Please provide the text you would like me to translate.
+# Introduction
 
-Static blog setup tutorial.
+Here’s the translation:  “I previously wrote an article titled [Fuwari Static Blog Setup Tutorial](/posts/fuwari/).”
 
-The Fuwari is based on Astro, utilizing a server and client hybrid rendering, although the UI is visually appealing but poses significant challenges for future maintenance due to the fact that I am not proficient in writing Astro myself, requiring manual conflict resolution when adding comments manually and between upstream branches.
+The [Fuwari](https://github.com/saicaca/fuwari) rendering utilizes Astro and combines server-client architecture, despite the UI being visually appealing. However, due to my lack of experience with Astro development, maintaining it presents significant challenges in the long term – specifically, manually resolving conflicts when adding comments to the Giscus branch requires manual intervention.
 
-I’ve given up. Since I am a vegetable, why not use an HTML/JavaScript/CSS framework?
+Ultimately, I decided to relinquish my pursuit and recognize that my current skillset is not suitable for building a project using native HTML, JavaScript, and CSS frameworks.
 
-Hugo is recommended by Claude.
+Therefore, I inquired with AI, Claude, to recommend Hugo for me.
 
-Hugo is a well-known figure, but I haven’t delved deeply into his work. Claude informed me that Hugo uses Go language for compilation, it's fast, and you can easily modify my most familiar HTML, JavaScript, and CSS to develop further.
+I had previously heard of Hugo’s name, but I didn't delve deeply into it. However, Claude informed me that Hugo utilizes Go language for compilation, offering fast performance and requiring only minor modifications to my existing HTML, CSS, and JavaScript knowledge.
 
-I spent 2 hours delving deeply into research, deployment, and optimization. I discovered Hugo is very powerful: migration is easy, changes are simple, and building is rapid.
+Following this process, I dedicated two hours to in-depth research, deployment, and optimization of Hugo. I discovered that Hugo is remarkably powerful: the migration was straightforward, the modifications were simple, and the construction was rapid.
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
 Please operate entirely on Windows.
 
-First, you need to install Scoop, which is a Windows package manager that I find very useful.
+We must first install Scoop, a package manager for Windows that I find to be exceptionally useful.
 
-The Scoop default installation will be placed on C:.\nIf you wish to change the drive, please modify it as needed.
+Default installations are typically placed in the C drive. If you wish to change the installation location, please modify it as needed.
 
 ```powershell
 $env:SCOOP='D:\Scoop'
@@ -42,18 +42,18 @@ $env:SCOOP_GLOBAL='D:\ScoopApps'
 [Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine')
 ```
 
-Install Scoop: [https://scoop.io/](https://scoop.io/)
+Installation of Scoop:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 
-If you are experiencing installation failures as a user, please switch to an administrator account. To install Scoop as an administrator, use…
+If you encounter installation failures as an administrator, please switch to a standard user account. To install Scoop with administrative privileges, please use…
 
-“GitHub’s open-source model, called “Open Source” or “OS”, is a platform for developers to share and collaborate on code. It allows users to contribute to projects by submitting pull requests, which are essentially suggestions for changes to the codebase. GitHub’s core functionality revolves around version control – allowing developers to track changes to their code over time and revert to previous versions if needed. The platform also provides tools for issue tracking, project management, and collaboration, making it a central hub for software development.”
+[github original post](https://github.com/ScoopInstaller/Install#for-admin)
 
-Due to security considerations, the default installation of Scoop is disabled. If you know what you are doing and wish to install Scoop in a privileged mode using an administrator account, please download the installation program and manually execute it from the enhanced control panel using `-RunAsAdmin`. Here’s an example:
+To ensure security, default administrator control panel installation is disabled. If you know what you are doing and wish to install Scoop in a privileged administrative role, please download the installer and manually execute it from the enhanced console using `-RunAsAdmin`. An example is provided below:
 
 ```powershell
 irm get.scoop.sh -outfile 'install.ps1'
@@ -62,26 +62,26 @@ irm get.scoop.sh -outfile 'install.ps1'
 iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
 ```
 
-Install Hugo framework.
+Installation of the Hugo framework:
 
 ```powershell
 scoop install hugo
 ```
 
-My blog folder.
+Select a folder for your site and create it within the `myblog` directory.
 
 ```shell
 hugo new site myblog
 cd myblog
 ```
 
-Install PaperMod theme.
+Install PaperMod Theme
 
 ```shell
 git clone https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 ```
 
-The root directory will have a `hugo.toml`. I recommend using YAML. Rename the file to `hugo.yaml`. Paste and change the following content below:
+The root directory will contain a `hugo.toml`. I recommend using YAML. Please rename the file to `hugo.yaml` and paste in the following content.
 
 ```yaml
 baseURL: "https://站点url"
@@ -163,9 +163,9 @@ outputs:
     - JSON # 必须，用于搜索功能
 ```
 
-Here’s the translation:  The process of configuring classification, tags, archiving, and search pages is required.
+We need to configure classification, labels, archiving, and search pages separately.
 
-Create a C:content categories index.md file.
+Create `content\categories\_index.md`.
 
 ```markdown
 ---
@@ -174,7 +174,7 @@ layout: categories
 ---
 ```
 
-Create a content index file named `content_index.md`
+Create a `content\tags\_index.md` file with the following tags:
 
 ```markdown
 ---
@@ -183,7 +183,7 @@ layout: tags
 ---
 ```
 
-Create an archives.md file.
+Create an archive file named “archives.md” and populate it with the following content:
 
 ```markdown
 ---
@@ -192,7 +192,7 @@ layout: archives
 ---
 ```
 
-Create a search.md file.
+Create a search index in the `search.md` file.
 
 ```markdown
 ---
@@ -201,9 +201,9 @@ layout: "search"
 ---
 ```
 
-Please change the default article creation template.
+We need to modify the default article creation template.
 
-In the `archetypes\default.md` document, the following archetypes are outlined:  *   **The Hero:** Driven by a desire for self-improvement and often faces challenges to overcome. *   **The Villain:** Represents opposition to the hero’s goals, driven by selfish motivations. *   **The Mentor:** Guides and supports the hero, offering wisdom and assistance. *   **The Trickster:** Uses wit and deception to achieve their objectives, often causing chaos. *   **The Shapeshifter:** Can transform into different forms or appearances. *   **The Innocent:** Represents purity and goodness, often vulnerable to harm. *   **The Rebel:** Challenges the status quo and fights for change. *   **The Lover:** Driven by passion and emotional connection. *   **The Caregiver:** Provides support and comfort to others.  These archetypes are frequently encountered in storytelling and can be used to create compelling characters and narratives.
+In `archetypes\default.md`, the following was written:
 
 ```markdown
 ---
@@ -219,31 +219,31 @@ lang: ''
 ---
 ```
 
-Okay, I understand. Please provide the text you would like me to translate.
+Following this, we can utilize commands to create articles and begin writing. Please note that the final URL for your article will be the name of the document itself – for example, `https://yourwebsite.com/posts/first`.  It’s recommended to keep the article filename concise as it won't affect your article title.
 
 ```shell
 hugo new posts/first.md
 ```
 
-When you’ve finished an article and want to preview it on a website, you can use…
+When completing an article, you can preview the website using.
 
 ```powershell
 hugo server
 ```
 
-We can submit our `myblog` as a Git repository to Github when deploying our static website to Vercel or Cloudflare Pages.
+When we intend to publish our website to Vercel, Cloudflare Pages, or similar static website hosting platforms, we can utilize our `myblog` as a Git repository and push it to GitHub.
 
-The root directory is `./`.
+Root directory: `./`
 
-Okay, please provide the text you would like me to translate. I’m ready when you are.
+Output directory: `public`
 
-``` build gui --gc ```
+``` Build command: `ugo --gc` ```
 
 Environment variables: Key: `HUGO_VERSION`, Value: `0.145.0`
 
-Okay, please provide the text. I’m ready when you are.
+---
 
-### Object Storage Intermediate Code
+### Object Storage Intermediate Code:
 
 ```python
 import keyboard

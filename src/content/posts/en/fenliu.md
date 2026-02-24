@@ -1,30 +1,32 @@
 ---
-title: "How to split websites? Global launch! A little trouble, but fun!"
-description: "The process of website redirection can be challenging, and it’s not straightforward at all. If you are interested in exploring this technology (particularly for the purpose of site relocation), we encourage you to give it a try – [8!]."
+title: "How to Redirect Websites? Global Instant Launch! A little trouble, but fun!"
+description: "The process of website redirection can be quite challenging, and frankly, it’s not straightforward at all. If you're also interested in exploring this further (and perhaps considering a temporary stay), then we recommend giving it a try – 8!"
 published: 2026-01-12
 image: ../../assets/images/fenliu.webp
 draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
+Here is the summary of the article:
 
+This article discusses a redirection strategy for a blog website, leveraging CDN and Cloudflare services to improve performance and security. It outlines several configuration options for different domains, including EdgeOne, ESA, and Cloudflare, and explains how to handle domain forwarding based on the origin server type (static vs. dynamic).  The key considerations include DNS management, SSL certificate validation, and proper HTTP verification for Cloudflare SaaS, with a focus on enabling global CDN routing and preventing DDoS attacks.
 :::
 
 # The website requires segmentation.
-Blog core, main site
-https://blog.acofork.com/
-Umami, used for embedding a JavaScript function on the website to track visitors and display visitor information.
-https://umami.acofork.com/share/CdkXbGgZr6ECKOyK
-Static image for top banner and entire website background.
-https://pic1.acofork.com/
+Blog Core, Main Page
+[https://blog.acofork.com](https://blog.acofork.com)
+Umami is utilized to embed a JavaScript snippet on a website for tracking visitors and displaying visitor information.
+[[Umami: Share]]
+Static image set for top articles and the entire website’s background.
+[https://pic1.acofork.com]
 
-Okay, please provide the text. I’m ready when you are.
-Okay, please provide the text you would like me to translate. I’m ready when you are.
-These are being redirected to https://blog.acofork.com, and we need to configure the routing for it.
+---
+Here’s the translation:  “Other sources include [https://acofork.com](https://acofork.com) and [https://www.acofork.com](https://www.acofork.com).”
+These are being redirected to the domain of blog.acofork.com, and we need to configure routing for it.
 
-# Here’s the translation:  Each CDN SSL application solution.
+# Here’s the translation:  “Each CDN SSL application solution.”
 
-### EdgeOne
+### EdgeOne.
 
 由于NS直接在EdgeOne，故直接申请
 ![](../../assets/images/fenliu-1.webp)
@@ -37,9 +39,9 @@ These are being redirected to https://blog.acofork.com, and we need to configure
 针对重定向的域名，由于默认所有请求都会被重定向到新域，ACME自然无法验证，所以我们需要写一条排除规则，让ACME验证路径直接返回200 OK，其余的路径再重定向
 ![](../../assets/images/fenliu-17.webp)
 
-# Please provide the text you would like me to translate.
+# 源站类型
 
-### Static type
+### Static.
 
 国内使用对应CDN的Page业务，海外使用Cloudflare Worker。至于为什么不将 `blog.acofork.com` 也放在EdgeOne Page，一是因为EdgeOne CDN和Page的WAF规则是分开的，而Page业务的WAF规则不是很好做海外封锁，二是因为EO在之前被打的时候将这个子域封了。而ESA Page可以很简单做到海外封禁
 ![](../../assets/images/fenliu-4.webp)
@@ -54,14 +56,14 @@ These are being redirected to https://blog.acofork.com, and we need to configure
 海外采用Cloudflare Tunnel（用户 - IPv4 - CF CDN - 内部连接 - 源站）
 ![](../../assets/images/fenliu-7.webp)
 
-# Browser client implementation of session monitoring.
+# The browser client implementation provides a session observer to track the current access node.
 
 利用浏览器JavaScript发送HEAD请求拿取对端响应头Server字段并回显（若跨域则需要设置 **Access-Control-Expose-Headers** 响应头，值为 **server**
 ![](../../assets/images/fenliu-12.webp)
 
 ![](../../assets/images/ae6f93ce318fa428e94256c2b4a501e1.webp)
 
-# Okay, please provide the text. I’m ready when you are.
+# 注意事项
 
 - ESA Page对超多资源和大文件支持很差。例如静态随机图项目无法部署到ESA Page（超出了2000个静态资产）
 - ESA CDN针对于回源非标端口和Cloudflare一样要通过写回源规则实现，很浪费规则，推荐使用EdgeOne CDN，可以随意指定回源端口
@@ -83,7 +85,7 @@ These are being redirected to https://blog.acofork.com, and we need to configure
 ![](../../assets/images/fenliu-15.webp)
 # 成果展示
 
-### Blog core
+### Blog content.
 
 ![](../../assets/images/https___blogacoforkcom__多地区多线路HTTP测速(1).webp)
 ### Umami

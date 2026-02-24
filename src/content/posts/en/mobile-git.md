@@ -1,6 +1,6 @@
 ---
-title: "How to write a blog on your Android phone elegantly."
-description: "Using VS Code with Obsidian on desktop, we can effectively write articles. However, how does this translate to mobile devices?"
+title: "How to Write Blog Posts Gracefully on Android Phones"
+description: "Using VS Code with Obsidian on desktop is a great way to write articles.  Similarly, you can leverage the same tools on your mobile device."
 category: "Writing"
 draft: false
 image: ../../assets/images/Screenshot_2025-11-11-14-04-23-56_a2e3670364a4153bdb03dad30c8d4108.webp
@@ -11,13 +11,13 @@ tags:
   - 博客
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article provides a step-by-step guide to creating a blog post using Git and Markdown, leveraging Obsidian and Pnpm for mobile editing. It highlights the use of a Git client like PuppyGit, token creation, repository linking, commit/pull/push functionality, and the use of Obsidian and Pnpm for streamlined content management on mobile devices.
+This article guides users on how to create a blog using Git and Obsidian, leveraging PuppyGit and Markdown editors for mobile access. It details the steps of cloning a repository, setting up a GitHub token, integrating these tools with Obsidian, and utilizing a workflow for creating new articles on the go.
 :::
 
-# Please provide the text you would like me to translate.
-To be able to write my blog articles through my phone while traveling, I researched this and found it is entirely possible.
+# Formal commencement.
+To allow me to write my blog posts while I’m traveling, I have researched and found that it is entirely possible.
 
-First, we need to select a Git client on a smartphone, here I am using https://github.com/catpuppyapp/PuppyGit.
+First, we need to select a Git client on a smartphone. I am currently using [https://github.com/catpuppyapp/PuppyGit].
 
 安装之后，点击右上角的加号，点击克隆，即可克隆仓库
 ![](../../assets/images/Screenshot_2025-11-11-14-11-13-56_a2e3670364a4153bdb03dad30c8d4108.webp)
@@ -45,4 +45,4 @@ First, we need to select a Git client on a smartphone, here I am using https://g
 在桌面端，我们想要新建文章一般会用Fuwari特有的 `pnpm new-post xxx` 命令，不过在手机上我们可以曲线救国，选择一个文章，**创建副本** 后再更改元数据即可！
 ![](../../assets/images/Screenshot_2025-11-11-14-17-32-08_51606159b24eff83e24a54116878fe3e.webp)
 
-The content is as follows:  “I’m really excited about this project! It’s a challenging but rewarding opportunity to learn new skills and make a real impact. I’m looking forward to collaborating with the team and contributing my best work.”
+Finally, this article was written on a mobile device.

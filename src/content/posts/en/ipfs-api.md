@@ -1,6 +1,6 @@
 ---
 title: "Sharing an IPFS image API"
-description: "“I used xLog quite some time ago, and now it’s released its image library API, allowing for temporary storage of images.”"
+description: "I used xLog quite a while ago, and now it’s released its image library API – which I can use to temporarily store images."
 category: "Record"
 published: 2025-07-04
 image: ../../assets/images/2a104c9e-195b-4f16-b080-ee76c763a80a.webp
@@ -9,27 +9,27 @@ draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article describes an API endpoint for accessing a graph database from the `xLog` service, specifically focusing on uploading images via the `from-data` parameter.  The API uses a C-URL command to upload files, with the `web2url` providing direct access to the image URL without CORS restrictions.  The response includes metadata about the uploaded file, such as its size and hash value.
+
 :::
 
-# Please provide the text you would like me to translate.
+# Formal commencement.
 
-The xLog API is a graph-based API for the image search service.
+This API is the Graph API for the XLog visualization tool.
 
-Okay, I understand. Please provide the text.
+POST https://ipfs-relay.crossbell.io/upload
 
-The head has no authority.
+The absence of a judgment authority.
 
-The body uses `file`. The key is `file` and the value is a selected image file, which should not be too large and may result in an error.
+The system utilizes the specified file (`file`) to select a picture file, with a maximum size of `from-data` and is designed to avoid errors.
 
-Okay, please provide the text you would like me to translate. I’m ready when you are.
+示例Curl
 
 ```bash
 curl --location 'https://ipfs-relay.crossbell.io/upload' \
 --form 'file=@"/C:/Users/AcoFork/Pictures/b_53bb4f7fa91d684e72b666504e3fcc1897.webp"'
 ```
 
-Okay, please provide the text. I’m ready when you are.
+Will return.
 
 ```json
 {
@@ -43,6 +43,6 @@ Okay, please provide the text. I’m ready when you are.
 }
 ```
 
-Web2url is a direct URL that can be accessed without CORS restrictions.
+`web2url` refers to a URL that can be directly accessed without CORS restrictions.
 
 ![](https://eo-r2.2x.nz/myblog/img/Qmb7hj9NHf9XdSZQ2dsqcSUpdrTuhjbpKJsTqG84X7rFqw.webp)

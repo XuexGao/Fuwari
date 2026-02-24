@@ -4,7 +4,7 @@ import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
 import Highlight from "./Highlight.svelte";
 import { Translation } from "@/i18n/translation";
-import { t } from "@/i18n/i18n-svelte";
+import { t, initLang, lang } from "@/i18n/i18n-svelte";
 
 interface SearchResult {
 	url: string;
@@ -110,10 +110,10 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 					if (linkMatches) matchCount += linkMatches.length;
 				});
 
-				const lang = getCurrentLang();
+				const langCode = getCurrentLang();
 
 				return {
-					url: url(`/posts/${post.link}/`, lang),
+					url: url(`/posts/${post.link}/`, langCode),
 					meta: { title: post.title },
 					excerpt,
 					urlPath: `/posts/${post.link}`,
@@ -134,9 +134,10 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 };
 
 onMount(async () => {
+	initLang();
 	try {
-		const lang = getCurrentLang();
-		const rssPath = `/${lang}/rss.xml`;
+		const langCode = getCurrentLang();
+		const rssPath = `/${langCode}/rss.xml`;
 		const response = await fetch(rssPath);
 		const text = await response.text();
 		const parser = new DOMParser();
@@ -226,7 +227,13 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
             </div>
             <div class="transition text-xs text-black/50 dark:text-white/50 mb-1 font-mono">
                 <Highlight text={item.urlPath} query={item.highlightQuery} />
-                <span class="ml-2 text-[var(--primary)]">{$t(Translation.KeywordsMatched)} {item.matchCount}</span>
+                <span class="ml-2 text-[var(--primary)]">
+                    {#if $lang === 'zh_CN'}
+                        {item.matchCount} {$t(Translation.KeywordsMatched)}
+                    {:else}
+                        {$t(Translation.KeywordsMatched)} {item.matchCount}
+                    {/if}
+                </span>
             </div>
             <div class="transition text-sm text-50">
                 <Highlight text={item.excerpt} query={item.highlightQuery} />
