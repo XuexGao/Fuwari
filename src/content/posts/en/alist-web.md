@@ -2,7 +2,6 @@
 title: "Teach you how to deploy your AList frontend to CF Pages! Make your AList load in seconds!"
 description: "Deploying an ALIST Web application to CF Pages significantly enhances the user experience by leveraging static resources located closer to the edge of the CF infrastructure.  The backend utilizes API interactions instead of routing all traffic from a single source, thereby reducing server load and optimizing performance for both ALIST and the CF platform."
 category: "Tutorial"
-  Pages的不回源优势，一箭双雕
 draft: false
 image: ../../assets/images/QmSmcktDEJaWdDvFQeuNTJ9ps8R3PcLWyhSrbxoLEq2b2x.webp
 lang: en
