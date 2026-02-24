@@ -6,6 +6,12 @@ image: ../assets/images/posts-diff.png
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+好的，以下是这篇文章的简短总结：
+
+这段文字描述了如何利用Git版本控制历史来自动生成文章更改索引文件，并在构建过程中嵌入到CI流程中，以确保开发者能够及时看到文章更新情况。主要步骤包括：1. Clone GitHub仓库，并使用 `pnpm update-diff` 命令生成索引；2.  在clone仓库后，使用 `corepack enable` 和 `pnpm update-diff` 命令进行更新和构建；3.  将生成的索引文件复制回 Cloudflare Worker 克隆的仓库，并清除本地仓库。 最终，通过自动化的CI流程，开发者可以轻松地集成文章更改索引信息，从而实现更高效的开发体验。
+:::
+
 # 正式开始
 
 在之前，我们给博客添加了一个文章更新提醒功能，也就是博客右下角的小铃铛图标，它可以通过比较上次与这次访问文章是否有更新给你一个醒目的提示，并直观地告诉你都更新了哪些文章和更新什么内容

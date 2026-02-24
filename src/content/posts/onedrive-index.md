@@ -9,6 +9,18 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文章主要介绍了如何利用Vercel部署OneDrive，并提供了一套简单的部署流程，包括：
+
+1.  **获取免费OneDrive存储空间和5G空间。**
+2.  **使用clientid 和 secret进行Vercel部署。**
+3.  **通过Upstash平台绑定Vercel项目，设置Redis实例名称。**
+4.  **完成部署后，可以重新部署并连接数据库。**
+5.  **修改OneDrive账号信息，方便后续管理。**
+
+总而言之，文章提供了一个快速且易于操作的部署方案，旨在帮助用户轻松获取和使用OneDrive存储空间。
+:::
+
 # 正式开始
 你可以根据[前文](/posts/ms-e3/)免费拿E3，得到至高免费5T的OneDrive存储空间，也可以用你个人永久免费的5G空间，都可以！
 

@@ -8,6 +8,11 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+本文介绍了如何构建一个三方API，该API能够支持传统Whois查询和RDAP查询两种方式。传统Whois查询通过TCP请求43端口获取信息，而RDAP查询则直接返回Web URL，用户自行阅览。为了实现RDAP查询，需要先通过IANA查询特定顶级域的RDAP服务器，例如 `freebird.day`。本文详细讲解了如何使用RDAP协议进行查询，并提供了示例代码，展示了如何在不同类型的域名上进行查询。
+:::
 
 # 前言
 

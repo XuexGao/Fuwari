@@ -10,8 +10,7 @@ interface Props {
 }
 
 const { lang } = Astro.params;
-
-let posts = await getSortedPosts();
+let posts = await getSortedPosts(lang);
 
 const groups: { year: number; posts: typeof posts }[] = (() => {
 	const groupedPosts = posts.reduce(

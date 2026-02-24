@@ -9,6 +9,10 @@ tags:
 - Replay
 title: 傻瓜式AI翻唱软件Replay！选歌！选模型！然后CREATE SONG！
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+使用Replay工具，只需两步即可创建AI翻唱歌曲。下载数据包并根据图片操作选择歌曲和模型，最终点击“CREATE SONG”完成创作。
+:::
+
 ### AI翻唱！仅需两步！
 
 1. 前往[Replay | Free AI Voice Cloning and Stemming using RVC Models (tryreplay.io)](https://www.tryreplay.io/)下载Replay

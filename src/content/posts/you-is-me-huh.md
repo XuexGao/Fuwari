@@ -9,6 +9,9 @@ draft: false
 lang: ''
 
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了开源框架 Fuwari 的使用方法，强调了Giscus 和 Umami 仅允许自己访问特定 API 端点，以及如何通过EO实现 CORS 规则，从而避免错误。作者鼓励用户将代码修改后上线，并提供了一个 Fork GitHub 的链接。
+:::
 
 # 前情提要
 

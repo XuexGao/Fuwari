@@ -9,6 +9,10 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文介绍了安装和使用“IndexTTS-2”工具，主要步骤包括：Git Lfs 安装、克隆仓库、拉取文件、安装UV包管理器、安装hf-cli、下载模型并运行WebUI。 此外，还强调了情感向量控制的用法，建议使用该方法进行更精准的文本朗读效果。
+:::
+
 # 正式开始
 
 > 视频教程： https://www.bilibili.com/video/BV1qv41zgEjE/

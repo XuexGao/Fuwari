@@ -6,6 +6,12 @@ image: ../assets/images/web-bomb.png
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是对这篇文章的简短总结：
+
+本文介绍了如何利用Web压缩炸弹（Web Bomb）来破坏Web服务器的压缩行为，从而释放出巨大的文件。它详细解释了压缩算法原理，以及如何通过修改响应头 (`Content-Encoding`) 来强制客户端解压压缩后的文件。文章还演示了如何使用Cloudflare Page/Worker静态托管等工具来实现这一过程，并提供了必要的配置步骤和注意事项。最终，作者强调了Web压缩炸弹的用途是用于测试Web服务器的安全性，但并非理想的WAF拦截方案。
+:::
+
 # 前言
 很早之前，我有一位朋友给我发了一个神秘的网站，打开以后就是一直转圈圈
 

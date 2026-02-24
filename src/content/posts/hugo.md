@@ -9,6 +9,10 @@ tags:
 - Hugo
 title: Hugo博客搭建教程以及配置调优
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Hugo框架的搭建和使用，以及如何将其与静态网站托管平台（如Vercel、Cloudflare Pages等）集成。主要步骤包括安装Scoop、安装Hugo框架、配置站点结构、编写文章、预览网站、发布到静态网站托管平台，以及处理Giscus评论问题。 强调了Hugo的强大特性和维护优势，并提供了详细的安装和配置指导。
+:::
+
 # 引言
 
 曾经我写过一篇文章叫做：[Fuwari静态博客搭建教程](/posts/fuwari/)。

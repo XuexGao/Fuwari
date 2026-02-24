@@ -8,6 +8,17 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了如何使用Lsky Pro破解软件，并提供了详细的安装步骤和注意事项。具体来说：
+
+*   **安装包体:**  通过下载`r2.072103.xyz/2xnzlskypro223.zpaq`进行解压。
+*   **授权密钥:** 随便填即可，无需额外设置。
+*   **破解授权:**  使用Cloudflare Worker自建授权方案。
+*   **安装过程:** 按照教程一步步安装。
+*   **进阶：自建授权服务器**  可以考虑使用Cloudflare Worker自建授权。
+
+希望以上总结对您有所帮助！
+:::
 
 > 仅供学习交流，请在下载后24h内删除。体验地址： https://lsky.2x.nz
 > 视频教程： https://www.bilibili.com/video/BV1UieUzQEvq/

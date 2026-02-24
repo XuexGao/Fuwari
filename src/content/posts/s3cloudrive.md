@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+使用Vercel Function登录S3，然后拼接URL显示文件列表，将OneDrive项目中的文件通过Vercel部署到天翼云盘。目前登录鉴权问题存在，可以尝试修改后端对接存储类型。
+:::
 
 > 视频教程（推荐）： https://www.bilibili.com/video/BV17b5gz5Ea4
 

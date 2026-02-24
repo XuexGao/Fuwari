@@ -10,11 +10,14 @@ import { Translation, i18n } from "@/i18n/translation";
 import I18n from "@components/I18n.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const allBlogPosts = await getSortedPosts();
 	const locales = ["zh-cn", "en"];
-	return locales.flatMap((lang) => {
-		return paginate(allBlogPosts, { params: { lang }, pageSize: PAGE_SIZE });
-	});
+	const results = await Promise.all(
+		locales.map(async (lang) => {
+			const posts = await getSortedPosts(lang);
+			return paginate(posts, { params: { lang }, pageSize: PAGE_SIZE });
+		}),
+	);
+	return results.flat();
 }) satisfies GetStaticPaths;
 // https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
 

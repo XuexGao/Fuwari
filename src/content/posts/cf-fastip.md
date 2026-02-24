@@ -10,6 +10,20 @@ tags:
   - Cloudflare Byoip
 title: 试试Cloudflare IP优选！让Cloudflare在国内再也不是减速器！
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+好的，以下是文章的简短总结：
+
+**本文介绍了优选域名策略，以及如何通过CloudflareByoip等方式实现国内访问速度更快、可用性更好的网站。**
+
+*   **什么是优选？** 简单来说，优选就是选择一个国内访问速度更快的Cloudflare节点。
+*   **如何实现？** 通过手动调整DNS解析，将域名指向更快的Cloudflare节点，从而提升访问速度和可用性。
+*   **Cloudflare Byoip：** Cloudflare Byoip 是一种利用自身IP段托管的云端服务，可以有效提高国内访问速度，并提供更好的安全防护。
+*   **Worker项目优选：** Worker项目是实现优选的简单方法，通过自动调整DNS解析来提升访问速度，无需复杂的配置。
+*   **其他方案：**  本文还介绍了更高级的优化方案，如反代全球和CORS设置等。
+
+希望这个总结对您有帮助！
+:::
+
 > 本教程初始发布时间为 25年6月
 
 #### 未优选

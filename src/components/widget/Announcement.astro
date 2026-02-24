@@ -1,7 +1,13 @@
 ---
 import { getEntry } from "astro:content";
 
-const announcement = await getEntry("spec", "announcement");
+const { lang } = Astro.params;
+const announcementId = `announcement-${lang}`;
+let announcement = await getEntry("spec", announcementId as any);
+
+if (!announcement) {
+	announcement = await getEntry("spec", "announcement-zh-cn");
+}
 let enable = false;
 let level = "info";
 let Content = null;

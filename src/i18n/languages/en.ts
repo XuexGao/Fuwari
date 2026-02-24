@@ -166,4 +166,5 @@ export const en: TranslationMap = {
     [Translation.ChromiumOnly]: 'Only supported on the latest Chromium-based browsers like Chrome or Edge',
     [Translation.FontAccessDenied]: 'Font access permission denied',
     [Translation.LoadFontFailed]: 'Failed to load local fonts',
+    [Translation.PostDiffGuideLink]: '/en/posts/post-diff-guide/#usage',
 };

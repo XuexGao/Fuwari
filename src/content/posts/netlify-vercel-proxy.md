@@ -10,6 +10,9 @@ tags:
   - Vercel
 title: Netlify、Vercel反代网站
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Netlify和Vercel都提供了一种反代IPv6的方法，利用公网 IPv6 访问到网站。虽然目前Vercel不支持IPv6，但两者都可以通过DDNS实现，并支持将v6网站映射到v4域名。请注意，在Vercel中需要使用JSON文件来配置反代域名，并且当前版本不支持IPv6。
+:::
 
 # 原理思路
 

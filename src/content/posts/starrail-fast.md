@@ -8,6 +8,10 @@ published: 2025-04-15
 tags: [崩坏星穹铁道, DLL注入]
 title: 崩坏星穹铁道全局加速
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文章描述了一种绕过ACE反作弊的策略：利用一个DLL实现，并通过CE的变速精灵进行加速，从而获得游戏体验提升。该方法需要下载并解压 DLL 源码，然后编译成 DLL 文件，最后通过 Extreme Injector v3.exe 进行注入和加速。
+:::
+
 # 原理剖析
 
 注入一个DLL实现绕过ACE反作弊，然后用CE的变速精灵

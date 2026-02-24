@@ -165,5 +165,6 @@ export const zh_CN: TranslationMap = {
     [Translation.Rss]: 'RSS',
     [Translation.ChromiumOnly]: '仅支持 PC端新版Chrome/Edge等Chromium内核的浏览器',
     [Translation.FontAccessDenied]: '您拒绝了字体访问权限',
-    [Translation.LoadFontFailed]: '加载本地字体失败',
+    [Translation.LoadFontFailed]: '本地字体加载失败',
+    [Translation.PostDiffGuideLink]: '/zh-cn/posts/post-diff-guide/#食用方法',
 };

@@ -8,6 +8,16 @@ tags: [哪吒监控]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文介绍了安装和配置哪吒探针的步骤，主要包括：
+
+1.  **安装:** 使用 `nezha.sh` 脚本安装哪吒探针。
+2.  **连接:** 通过WebSocket连接面板端（Dashboard）和后端，并使用gRPC通信。
+3.  **端口设置:** 根据实际情况指定安装命令中预设的端口号，例如：`example.com:443` 或 `CDN域名:443`。
+4.  **TLS连接:** 建议通过 TLS 连接 Agent，尤其是在部署到中国大陆服务器时。
+5.  **服务监控:** 支持HTTP Ping TCP等服务监测功能。
+6.  **通知配置:** 可以配置通知方式，及时收到服务宕机等情况的通知。
+:::
 
 > 官方教程： https://nezha.wiki/
 

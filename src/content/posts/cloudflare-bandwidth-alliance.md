@@ -8,6 +8,13 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Cloudflare带宽联盟旨在降低或免除数据传输成本，通过云服务和网络公司共同合作，为客户提供流量优惠。阿里云OSS、腾讯云COS等套件的CF方案可以实现免流量费用的支持，具体包括云服务、域名绑定以及5G内存储等。
+
+该方案主要依赖Cloudflare的CDN基础设施，无需额外配置或自定义，只需将阿里云OSS实例关联到Cloudflare NS服务器即可。用户需要注意保护源站信息，避免被收取费用。
+
+总而言之，Cloudflare带宽联盟通过合作和技术支持，为客户提供流量优惠和便捷的服务。
+:::
 
 # 这是什么
 

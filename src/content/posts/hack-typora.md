@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Typora 已经激活，可以通过全局搜索修改 `e.hasActivated` 的值。该代码片段将“true”转换为“true”，从而激活 Typora 应用。
+:::
 
 进入 [Typora 官方中文站](https://typoraio.cn/)
 

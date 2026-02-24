@@ -8,6 +8,11 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结，3句话以内：
+
+这篇文章介绍了如何使用 Docker 和 Docker Compose 创建 PostgreSQL、Redis 和 Discourse 数据库服务。它详细配置了这些服务的环境参数，包括数据库连接、用户和站点信息以及 SMTP 服务器设置。  该文档包含了SMTP服务器配置，允许通过邮件发送消息。
+:::
 
 # 正式开始
 

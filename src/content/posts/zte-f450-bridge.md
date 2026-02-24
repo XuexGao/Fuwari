@@ -8,6 +8,10 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+光猫F450超密可以通过USB外接文件管理注入路径 `../..` 来查看根目录，并将记录的超密文件复制到U盘并进行解密读取以知晓超密。首先准备一个U盘，必须带有 FAT32 格式的分区，然后插入光猫的USB口，等待识别，进入光猫的文件管理，选择其中一个文件夹，将HTML代码改为`<a href="javascript:;" style="color:#535353;" onclick="openfile('../..', false)" title="System Volume Information">System Volume Information</a>`。然后点击该文件夹，等待几秒后进入 `/` 目录，复制`/userconfig/cfg/db_user_cfg.xml` 到U盘，拔出USB，插入电脑，将`db_user_cfg.xml` 拿出，前往[RouterPassView - 从 Windows 上的路由器备份文件中恢复丢失的密码](https://www.nirsoft.net/utils/router_password_recovery.html) 下载并使用`RouterPassView`打开 `db_user_cfg.xml`。搜索`tele` ，寻找超密。
+:::
+
 > 参考：
 > 
 > [ZTE光猫F450不拆机获取超密_zxhnf450光猫超级密码-CSDN博客](https://blog.csdn.net/z47913/article/details/140727685)

@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Folo认证流程：首先需要拥有一个博客或有RSS的网站，并访问2x.nz/rss.xml。点击认证链接后，需要在Folo页面放置RSS内容，并完成认证即可。
+:::
 
 # 这是啥？
 

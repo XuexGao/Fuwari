@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+通过 Telegram Sticker 插件，可以添加静态表情贴纸到 Telegram。用户需要上传 PNG或WEBP图片，并使用 `/newemojipack` 命令进行设置和发布。最后，可以使用自定义的 `pathname` 和昵称来命名帖子。
+:::
 
 # 正式开始
 

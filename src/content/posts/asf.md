@@ -9,6 +9,10 @@ tags:
 - Steam
 title: 使用ArchiSteamFarm进行Steam自动挂卡
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+ArchiSteamFarm是一个基于Github源码编译的Linux平台，用于管理和维护 Steam 机器人。它支持多种操作系统（Windows, Linux, OS X），通过添加机器人进行简单的配置即可启动。当账号被占用时，ASF会自动暂停挂卡，无需手动干涉，并具备更多功能。
+:::
+
 # 可用的目标作业系统
 
 Windows x86/Arm64

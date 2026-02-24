@@ -8,6 +8,21 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+视频教程： https://www.bilibili.com/video/BV1i53PzUEzE/
+
+后端部署：
+*   GitHub: [https://github.com/MemeCrafters/meme-generator](https://github.com/MemeCrafters/meme-generator)
+*   克隆仓库: `git clone https://github.com/MemeCrafters/meme-generator`
+*   额外表情仓库：`git clone https://github.com/MemeCrafters/meme_emoji`
+*   配置配置文件：在 `~/.config/meme_generator/config.toml` 中填写 `meme_dirs` 路径，并添加 `meme_disabled_list`。
+*   下载内置表情包图片时的资源链接：通过 `resource_urls` 列表下载最快的站点。
+*   gif 格式限制：设置 `gif_max_size` 和 `gif_max_frames`。
+*   翻译 API 设置：添加 `baidu_trans_appid`, `baidu_trans_apikey` 以及 `translate` 标签。
+
+运行：
+*   使用 `python -m meme_generator.app` 命令运行服务器。
+:::
 
 # 正式开始
 

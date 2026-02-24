@@ -7,6 +7,17 @@ published: 2025-02-25
 tags: [AutoBangumi]
 title: 教你搭建自己的番剧库，实现自动追番！
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章介绍了如何安装和使用AutoBangumi，以及如何下载和观看番剧。主要步骤包括：
+
+*   **安装qbittorrent:**  提供不同系统安装方法（Windows, Linux, Docker），并详细说明了如何配置网络和设置。
+*   **安装AutoBangumi:** 解释了如何安装Docker，并使用“Episode-ReName”脚本进行番剧重命名。
+*   **下载旧集/已完结番剧:**  推荐一些资源网（如ACG.RIP, 末日动漫资源网, 蜜柑计划等），以及如何使用RSS镜像站获取番剧。
+*   **规范重命名:** 说明了番剧名称的规范，并提供了一些方法来自动重命名。
+*   **Plex Media Server:**  介绍了如何安装和配置Plex Media Server，用于观看番剧。
+
+总而言之，这篇文章是一份详细的指南，帮助用户快速掌握AutoBangumi以及下载和观看番剧的相关知识。
+:::
 
 # 实现流程：
 

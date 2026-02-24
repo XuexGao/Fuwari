@@ -10,6 +10,10 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文主要介绍了如何将Mac上的游戏从Windows x64架构转换为ARM架构，并利用虚拟机来简化这个过程。它强调了使用CrossOver自动化工具、VMware Fusion进行虚拟机搭建和安装，以及针对特定游戏（如Gal）的运行库优化。同时，也指出了需要安装VM Tools才能保证游戏兼容性，并提供DX修复工具进行游戏配置的解决方案。
+:::
+
 # 思路
 首先，新版的Mac用的是Arm架构的Apple自研芯片并且搭载基于Unix的MacOS系统。而大部分游戏则是专为Windows x64打造的。也就是说，我们需要翻译两层，首先将Unix转Win，再将Arm架构专为x64架构
 

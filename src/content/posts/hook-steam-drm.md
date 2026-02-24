@@ -8,6 +8,10 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文章介绍了如何使用 Steam 客户端 loader 远程拉起游戏，通过修改 `ColdClientLoader.ini` 和 `force_steamid.txt` 文件来获得游戏启动权限。需要先解压文件、剔除无关数据并编辑相关配置文件，最后将所有文件复制到游戏文件夹中即可。
+:::
+
 # 正式开始
 
 首先我们需要有一个完整的Steam版的游戏包体

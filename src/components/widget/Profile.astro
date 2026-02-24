@@ -7,7 +7,7 @@ import { Translation } from "../../i18n/translation";
 
 const config = profileConfig;
 const { lang } = Astro.params;
-const posts = await getSortedPosts();
+const posts = await getSortedPosts(lang);
 const totalPosts = posts.length;
 let totalWords = 0;
 for (const post of posts) {

@@ -9,6 +9,12 @@ tags:
 - Phira
 title: Phira多人联机服务器搭建/使用教程
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是这篇文章的简短总结：
+
+该文章介绍了如何使用GitHub Action自动构建服务端文件，以便轻松访问Phira MP。 详细说明了如何下载文件、配置端口、以及如何通过命令行运行Phira。 此外，还提供了关于本地Rust环境搭建和构建过程的指导，包括使用`rustup`进行安装以及针对Linux平台的具体步骤。
+:::
+
 # 直接下载服务端文件并运行
 
 [https://github.com/afoim/phira-mp-autobuild](https://github.com/afoim/phira-mp-autobuild)

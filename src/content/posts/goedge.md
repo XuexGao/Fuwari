@@ -8,6 +8,19 @@ tags: [CDN, GoEdge]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+1.  **安装GoEdge:** 使用脚本（curl）快速安装 GoEdge 管理系统。
+2.  **卸载GoEdge:** 通过 `apt install lsof` 和 `lsof -i :7788` 找到并移除 GoEdge 的进程，确认已卸载。
+3.  **配置API节点:** 在 GoEdge CDN 中配置 API 节点，包括端口和公网地址。
+4.  **添加DNS服务商:** 添加 DNS 服务商（hw 和 cf），确保域名可访问。
+5.  **添加CDN域名:** 设置 CDN 域名，并进行 DNS 解析。
+6.  **添加节点:** 配置节点 IP 地址和 SSH 认证方式，完成节点安装。
+7.  **签发 SSL:** 在 GoEdge 中签发 SSL 证书。
+8.  **禁止未绑定域名访问/禁止IP直接访问:** 设置网络安全策略。
+9.  **创建网站:** 创建 GoEdge CDN 站点。
+:::
 
 # 安装GoEdge
 

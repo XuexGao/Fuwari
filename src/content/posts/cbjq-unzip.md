@@ -8,6 +8,26 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+尘白禁区下载和安装的步骤如下：
+
+1.  **下载并安装尘白禁区:** 确保启动器内已直接下载到电脑中。
+2.  **确认虚幻引擎版本:** 导航到游戏本体的 EXE 文件目录，例如 `C:\SeasunCBJQos\Game\cbjq\game\Game\Binaries\Win64`。右键 `Game.exe`，单击属性，转到详细信息栏。可以看到是 `UE4 4.26` 。
+3.  **分离 CG 文件:** 将有关 CG 的 .PAK 文件分离出来，并将其放入单独的文件夹中。
+4.  **解包:** 下载解包脚本 `Snowbreak.bms` 并使用 `QuickBMS` 工具进行解包。
+5.  **打开 QuickBMS:** 打开 `QuickBMS` 启动器。
+6.  **选择解包脚本:** 选择解包脚本所在的文件夹，并选中该文件夹即可。
+7.  **选择原始 PAK 文件:** 选择原始PAK文件所在的文件夹，并选中该文件夹即可。
+8.  **选择输出目录:** 选择解包后输出的目录。
+9.  **等待解包:** 等待解包完成。
+10. **查看解包后的文件:** 解包后，你会得到 `.uasset` 文件。使用 `UE Viewer` 导出为一般格式的文件。
+11. **导出 .uasset:** 使用 `UE Viewer` 导出 `.uasset` 文件。
+12. **Export folder content:** 在 `UE Viewer` 中，选择 `Win32 Version`，勾选 `Override game detection` 并选择 UE4 4.26，也就是最开始我们获取的虚幻引擎版本。
+13. **查看 .uasset 文件:**  在 `UE Viewer` 中查看 `.uasset` 文件。
+14. **导出 CG 图:** 使用 BandiView 导出 CG 图。
+
+希望这个总结对您有所帮助！
+:::
 
 > 参考了 [虚幻4游戏解包导出及Mod制作指南 - 知乎](https://zhuanlan.zhihu.com/p/7144045084)
 

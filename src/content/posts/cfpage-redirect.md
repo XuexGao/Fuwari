@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文档介绍了如何使用GitHub仓库将网站重定向到Cloudflare部署Worker或Page，并通过更改`_redirects`文件来实现。该方法能够永久重定向用户，同时避免了重定向规则的限制和Worker请求消耗。
+:::
 
 # 快速上手！
 

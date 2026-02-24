@@ -11,6 +11,17 @@ tags:
 - Cloudflare Pages
 title: 教你把AList的前端部署到CF Pages！让你的AList秒加载！
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本教程介绍了如何使用 Cloudflare Pages 将前端页面部署到 Cloudflare Pages，并详细讲解了从 AList 的无服务器部署到 Cloudflare Pages 的流程。主要步骤包括：
+
+1.  **后端服务器支持 v4v6 双栈访问:** 确保后端服务器能够正确处理 HTTP/HTTPS 协议，并且具有双栈访问能力。
+2.  **将 AList 前端部署到 Cloudflare Pages:** 通过 Fork 仓库，更改项目根目录的 `env.production` 文件为你的后端服务器地址，并下载汉化包。
+3.  **使用 Nodejs 生成中文文件:** 使用 cnpm 安装依赖，然后生成中文需要的文件 (`node .\scripts\i18n.mjs`)。
+4.  **构建命令输入:** 按照教程步骤构建 Cloudflare Pages 的 Pages，选择连接 Git 存储库并设置自定义域。
+
+总而言之，该教程旨在帮助用户将 AList 前端内容成功部署到 Cloudflare Pages，实现无服务器的静态页面部署。
+:::
+
 ## 前情提要[#](https://afo.im/shen-me-Cloudflare-dai-li-AList-tai-man--jiao-ni-bu-shu-qian-duan-dao-Pages-ju-jue-hui-yuan-#user-content-%E5%89%8D%E6%83%85%E6%8F%90%E8%A6%81)
 
 本教程**不是 AList 的无服务器部署**，仅将前端页面部署到 Cloudflare Pages，这样用户就能很快从 cf 的边缘节点拉取前端文件，而不用 cf 回源，提高浏览体验，后端仍然需要一台开放到公网的服务器部署 AList（无公网服务器可使用 Cloudflare Tunnels）

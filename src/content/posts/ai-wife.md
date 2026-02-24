@@ -8,6 +8,19 @@ category: '教程'
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文总结了AI绘图工具ComfyUI的使用方法，主要包括：
+
+1.  **下载与安装:** 使用Stable Diffusion Forge或ComfyUI进行安装。推荐使用ComfyUI，因为它更易于上手。
+2.  **基础模型选择:** 挑选合适的基底模型（NoobAI-XL V-Pred），并配合LoRA模型进行绘制。
+3.  **LoRA模型下载:** 下载NoobAI-XL V-Pred10Version.safetensors、WAI-illustrious-SDXL v16.0等LoRA模型。
+4.  **模型放置:** 将LoRA模型和基底模型放入`checkpoints`文件夹，并将其加载到`models`文件夹中。
+5.  **提示词填写:** 在ComfyUI界面中填写正向和反向提示词，确保提示词清晰准确。
+6.  **启动与绘制:** 启动ComfyUI，点击左上角的图标打开工作流，开始绘图。
+
+总之，本文介绍了如何使用ComfyUI进行AI绘图，并提供了下载LoRA模型的指导。
+:::
+
 # 引言
 
 曾经我写过一篇文章，记录了从零开始研究AI绘图的经历——当时把Stable Diffusion WebUI、Stable Diffusion Forge WebUI、ComfyUI全装了一遍，各种找教程、实操、试错。好在凭借着仅剩的记忆也是顺着这些蛛丝马迹把丢掉的知识找回来了。

@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Halo动态博客框架的实现，通过分享URL和Umami Cloud API，可以轻松获取文章访问量。该框架允许用户在每次访问时提供浏览量信息，并利用Umami Cloud提供的分析工具，实时展现网站数据。 关键参数包括 `startAt` (统计开始时间)、`endAt` (统计结束时间) 和 `path` (查询路径)。  通过调整这些参数，可以精确地获取所需的数据。
+:::
 
 # 引言
 

@@ -6,6 +6,10 @@ image: ../assets/images/auto-pr-link-12.png
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要探讨了Github Action用于自动化友链Pr处理的问题和解决方案。它强调了自动化的优势，以及如何通过GitHub Action将Pr的处理流程标准化，并利用标签进行进度跟踪和所有权验证，从而避免重复性问题。文章还指出了潜在的挑战，例如复杂的逻辑和需要手动调试的错误处理。
+:::
+
 # 起因
 
 如同des所说，我们做过网站的都知道，如果你利用Pr来处理友链，特别是没有自动化的那种，那大概率你会得到

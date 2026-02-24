@@ -8,6 +8,11 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+为了方便理解和应用，以下是文章的简短总结：
+
+这篇文章讨论了静态博客网站托管方式，以及如何利用 Web Hook 自动通知订阅者。它强调了使用 **两者结合** 的方法（Github WebHook 通知Bot + Netlify WebHook构建完成通知）来提高效率和准确性。  此外，还介绍了配置 Github 和 Netlify WebHook的步骤，并建议使用双监听 Web Hook 服务器以确保所有信息都能及时传递。
+:::
 
 # 原理解析
 

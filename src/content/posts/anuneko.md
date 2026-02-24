@@ -10,6 +10,14 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了橘猫聊天机器人（AnuNeko）的API接口，以及如何使用它来选择回复编号和切换橘猫会话模型。 核心内容包括：
+
+1.  **如何发送请求选择回复编号:** 使用 `select-choice` API 来指定要选择的回复编号。
+2.  **如何使用 `x-token` 身份验证:**  通过 `x-token` 参数进行身份验证，并使用 Cookie 进行自动拿取。
+3.  **橘猫和黑猫切换模型:** 针对橘猫和黑猫两种用户，分别使用 `user/select_model` API 来切换一个会话的猫咪模型。
+:::
+
 # 这是What
 这是橘猫，会哈气（见封面
 

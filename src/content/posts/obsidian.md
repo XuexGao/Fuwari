@@ -9,6 +9,10 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+黑曜石主要用于创建Markdown文件仓库，每个仓库存放的是工作区的配置信息。图片链接默认是内部链接，需要将博客文章的图片放在 `src/content/assets/images` 目录下，并根据实际情况调整路径。此外，黑曜石本身不支持变量控制图片名，需要借助第三方插件实现。它还支持布尔字段，可以直接填写曾经写过的内容。
+:::
+
 > 视频链接： https://www.bilibili.com/video/BV1C7pDzpEHY
 # 下载
 前往 [Download - Obsidian](https://obsidian.md/download) 下载对应你系统版本的软件。安装界面就可以选择语言为 **简体中文**

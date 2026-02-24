@@ -8,6 +8,10 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本站目前已备案，但由于域名不支持ICP备案，CDN使用Netlify CDN，速度快但在中国大陆可用性不高。备案步骤繁琐，需要填写运营信息并购买备案码。虽然GFW未阻断，但部分省市防火墙进行非备案域阻断。
+:::
+
 > ~~目前已备案，该文章存档~~  被DDOS大肘子打回CF了
 # 违规内容
 

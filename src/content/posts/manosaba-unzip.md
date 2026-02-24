@@ -9,6 +9,10 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+使用 AssetRipper 下载并打开游戏本地文件，进入 `*_Data` 文件夹，选择 `manosaba_Data`，然后导出主要内容。该程序会导入各种资源文件，包括骨骼、模型和动作等，需要自行拼接完成。
+:::
+
 # 正式开始
 前往 https://github.com/AssetRipper/ ，下载 **AssetRipper** 并打开
 

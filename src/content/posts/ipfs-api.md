@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+该API提供了一个图床接口，允许通过指定图片文件上传数据。上传成功后，返回了URL和文件大小，并提供了GNFD ID 和 TXN 等信息。
+:::
 
 # 正式开始
 

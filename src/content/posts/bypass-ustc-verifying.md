@@ -9,6 +9,10 @@ tags:
 - USTC
 title: 绕过USTC的浏览器JS验证
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+要通过JS验证，浏览器会读取你的Cookie，并将其写入你的Cookie存储。如果你的浏览器不支持JavaScript，网站就会拒绝访问。这是一种常见的绕过403 Forbidden的手段。
+:::
+
 # 前言
 
 当我们去下载类似于 https://mirrors.ustc.edu.cn/debian-cd/12.10.0/amd64/iso-dvd/debian-12.10.0-amd64-DVD-1.iso 这样的大文件时，USTC大概率会给你一个这样的：正在验证你的浏览器 的页面

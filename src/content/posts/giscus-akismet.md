@@ -10,6 +10,11 @@ category: 教程
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+Giscus使用Github Discussion实现存储用户评论，无需自托管。首先创建一个公开仓库并启用`Discussion`功能。关键在于通过 `pathname`、`url`和`title`映射关系来匹配评论和页面。  建议勾选`使用严格的标题匹配`并避免评论串台。开启后，Giscus会根据映射关系为每个新的Discussion（新的页面的评论区）插入一个 *sha1 指纹*。 此外，需要手动创建同名的Discussion 并写入正确的哈希字符串，以确保一致性。  如果旧Discussion未删除，可以手动输入哈希字符串并更新。  发布公告和主题进行分类，然后将JS代码复制到评论区区块即可。Github Akismet是垃圾留言过滤系统，可以通过注册Akismet Personal订阅获取API Key。
+:::
 
 # 配置Giscus
 

@@ -10,6 +10,12 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是这篇文章的简短总结：
+
+该文章探讨了如何构建一个基于Web页面的文件上传服务，应用于非家庭环境，且需要传输大量非敏感文件。文章对比了两个方案：基于对象存储的 EdgeOne Pages 和 Python 的本地文件上载器。 评估了每个方案的稳定性、复杂度、成本和适用场景，最终推荐了利用 EdgeOne Pages + 对象存储的方案，因为它具有稳定的运行环境，无需依赖家庭设备在线状态。  文章还提供了安装步骤和相关软件说明，并展示了如何使用该项目，包括 IPv4 和 IPv6端口配置以及公网回源方法。
+:::
+
 # 视频
 https://www.bilibili.com/video/BV1Hz1DBZEov/
 

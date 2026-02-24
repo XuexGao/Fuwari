@@ -8,6 +8,21 @@ published: 2024-11-22
 tags: []
 title: 自建正向代理服务器
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是对文章的简短总结：
+
+1.  **Cloudflare Pages 项目:** 通过 Cloudflare Pages 项目，可以创建 EdgeTunnel代理。需要先注册一个因特网账号并获取 Cloudflare 账号，然后使用 `UUID` 生成随机 UUID 并绑定到 `UUID`变量。
+2.  **V2Ray Client 下载:** 下载 V2Ray 客户端地址在文章最后，用于导入和测试。
+3.  **配置 & 测试:** 在 Pages 项目中，通过自定义域名（推荐：nic.us.kg、www.cloudns.net）绑定自定义域名。
+4.  **仪表盘:** 通过 `https://你的自定义域名/uuid` 查看 V2Ray 仪表盘，了解速度和性能数据。
+5.  **测试速度:** 移动宽带测试速度为 500Mbps，通过 EdgeTunnel测速显示为：[https://fast.com](https://fast.com)。
+6.  **最低延迟:** 可以使用 cfnat 测试最低延迟，该链接在YouTube上展示了 Windows 的示例。
+7.  **CF风控:**  recent Cloudflare 正在加强对新号的监控和风控，因此需要谨慎操作，避免被gank，并及时删除项目重新部署。
+8.  **使用新协议：Hysteria2:** 可以使用 Hysteria2 协议进行一键安装。
+9.  **V2Ray 使用:**  可以使用 V2Ray 客户端进行测试，但需注意使用 Shadowsocks 配置。
+10. **VPS 代理:** 如果有国外 VPS 作为代理，可以通过使用 Hysteria2 和 V2Ray 进行配置。
+:::
+
 # 将Cloudflare作为代理使用（Vless - EdgeTunnel）
 
 下面内容参考自：[CF VLESS 从入门到精通 cmliu/edgetunnel 必看内容 免费节点 优选订阅 Workers & Pages CM喂饭干货满满24 | CMLiussss Blog](https://vercel.blog.cmliussss.com/p/CM24/) 请支持原创作者！

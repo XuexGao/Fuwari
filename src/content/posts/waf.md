@@ -6,6 +6,12 @@ image: ../assets/images/waf.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是对文章内容的简短总结：
+
+这篇文章探讨了静态网站面临“被打死”风险的挑战，并提供了应对策略。对于托管在Cloudflare Page或EdgeOne/ESA等计费平台上的静态网站，需要采取额外的防护措施，例如拦截海外访问和所有请求JS质询，以防止大规模流量刷取。 此外，设置速率限制和关闭HTTP2.0是提高站耐刷性的关键步骤。  文章还强调了针对EdgeOne/ESA的特殊情况，通过曲线救国方式进行CDN WAF防护。
+:::
+
 # 静态网站能不能被打死？
 首先，先给结论：
 

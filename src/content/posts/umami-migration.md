@@ -9,6 +9,12 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的总结：
+
+为了迁移 Umami Cloud 数据，需要先导出数据并下载 ZIP 压缩包。通过 `website_event.csv` 表，可以获取 3 个 CSV 文件，其中只有 `website_event.csv` 有数据，其他两个仅有表头，无实际数据。  然后，使用 PostgreSQL 数据库和 pgAdmin 等工具进行部署，安装 SmoothCSV 编辑器，并创建本地 Umami WebUI 环境。 导入数据时需要按照表头顺序配对，删除不必要的列，并通过 Ctrl+S 保存 CSV 文件。 最后，根据 `session_id` 进行数据处理，确保数据无异常，并删除重复的 `session_id` 记录。
+:::
+
 # 正式开始
 首先，我们想要迁移，首先肯定是要拿到原来的Umami Cloud存放的数据
 

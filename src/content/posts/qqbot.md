@@ -9,6 +9,26 @@ tags:
 - QQBot
 title: 使用NoneBot2搭建你的QQBot！
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+NapCat (Win) 用于登录 QQ 实现收发消息，通过手机扫码登录。它会打印本地控制台的地址信息，如：`[NapCat] [WebUi] WebUi Local Panel Url: http://127.0.0.1:6099/webui?token=4xldg5fqb1`。可以直接进入，如图配置即可（端口号可以自己修改，但是要和下部分NoneBot2监听的端口一致。这里是9090）。
+
+NoneBot2 用于实现逻辑，控制 NapCat 收发消息。首先，你需要安装 Python 才能运行 NoneBot2。然后，你需要在你的系统环境变量中设置 `pipx` 全局变量，并确保 `pipx ensurepath` 命令成功执行。  安装 `pipx` 后，可以根据自己的需求进行配置，例如：`pipx install nb-cli`。
+
+安装 `nb-cli` 之后，如果找不到 `nb` 命令，你可以编辑 `/root/.bashrc` 或 `/root/.profile`（如果你使用的是 Bash）添加以下行：  `export PATH="$HOME/.local/bin:$PATH"` 保存并重新加载配置： `source /root/.bashrc`。
+
+安装 `nb-cli` 后，新建项目，选择一个你喜欢的文件夹，然后：`nb bs` (看不懂的就一路回车)。 示例：`nb bs`  会加载适配器列表中，提示输入项目名称。
+
+`nb bs` 命令会显示本地控制台的地址信息，如：`[NapCat] [WebUi] WebUi Local Panel Url: http://127.0.0.1:6099/webui?token=4xldg5fqb1`。
+
+成功新建项目 onanibot 后，启动项目： `nb run`。
+
+出现 `[INFO] nonebot | OneBot V11 | Bot XXXXXXXXXX connected` 提示你成功连接了 Lagrange 了。
+
+测试，发个 `/ping`，看是否出现Pong~。
+
+如果你要调试 NoneBot2，请先使用 `nb` 进入虚拟环境。然后使用 `pip install <包名>` 安装该包。
+:::
+
 # 安装 NapCat(Win)
 
 > 用于登录 QQ 实现收发消息

@@ -5,7 +5,9 @@ published: 2025-05-24
 pinned: true
 description: 关于如何联系二叉树树~
 ---
-
+:::ai-summary{model="google/gemma-3-1b"}
+Telegram群组和QQ群都存在赞助机制，QQ群门槛较低，更容易被内部举报，而非QQ群则需要先赞助才能加入。粉丝自建的模式更注重用户互动和社区建设。
+:::
 
 # 官方
 ## Telegram群组

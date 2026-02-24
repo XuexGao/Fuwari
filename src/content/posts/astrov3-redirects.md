@@ -8,6 +8,9 @@ tags: [重定向, Astro]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Astro v3 支持了原生的重定向，通过在 `astro.config.mjs` 中添加代码实现 `/tit` 请求的 302 重定向到 `/posts/pin`。  Astro默认使用兼容模式，但可以通过适配器支持服务器级别的重定向，并建议使用构建服务商提供的重定向配置。
+:::
 
 # 正式开始
 

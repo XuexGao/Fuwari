@@ -8,6 +8,17 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文介绍了 IPv6 反向解析 (Reverse DNS) 域名，以及如何通过 Cloudflare CDN 实现 SSL证书的生成。主要内容包括：
+
+1.  **IPv6 反向解析域名：** 这是一个遵循 `ip6.arpa` 格式的域名，用于将 IPv6 地址转换为原始域名。
+2.  **创建隧道：** 需要使用 VPS 创建隧道，并使用 Ping 请求验证是否绑定。
+3.  **路由IPv6：** 通过查看 TunnelBroker 的路由信息来了解 IPv6 地址的路由。
+4.  **Cloudflare SSL配置：** 由于默认 Cloudflare SSL 提供商无法签发 SSL，需要更改为 SSL.COM。
+5.  **SSL证书生成：** 使用 `curl` 命令更改 Cloudflare SSL提供商，并使用 Cloudflare CDN 自动签发 SSL证书。
+
+总而言之，本文阐述了 IPv6 反向解析域名以及如何利用 Cloudflare CDN 实现 SSL证书的生成，并说明了相关的限制。
+:::
 
 # 这是什么
 

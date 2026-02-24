@@ -6,6 +6,12 @@ image: ../assets/images/aliyun-ecs-4rm.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+本文介绍如何使用阿里云国内版搭建 Alpine Linux 镜像，并提供详细的步骤和配置。首先，你需要下载 Alpine 60M 镜像，上传至阿里云OSS，然后导入镜像，创建 ECS抢占型实例，并配置网络及可用区，最终通过 VNC 远程连接进行操作。  文章还包含了关于 DNS 配置、磁盘格式化、系统安装以及重启等关键步骤，并提供了相关命令和注意事项。
+:::
+
 # 正式开始
 > [!CAUTION]
 > 抢占型实例在高峰期可能会进行回收，不要跑生产业务

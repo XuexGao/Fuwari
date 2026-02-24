@@ -8,6 +8,9 @@ tags: [k3s, Zeabur]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Zeabur提供了一种无需手动SSH连接的 VPS 部署方案，可以直接在 Zeabur 的网页上配置服务。该方案允许您轻松部署各种应用和服务，并无需额外成本。
+:::
 
 # 这是个啥？
 

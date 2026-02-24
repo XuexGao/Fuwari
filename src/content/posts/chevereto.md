@@ -8,6 +8,11 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+1. 教程使用 PHP 8.1 和 MySQL 8.0，需要安装文件信息、exif扩展和禁用PHP函数。
+2.  如果使用Apache或Nginx，需要根据配置文件进行调整。
+3.  虚拟主机用户需要设置ispmanager，并开启调试模式才能解决问题。
+:::
 
 # 视频教程
 

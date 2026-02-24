@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+EdgeOne CDN 正在迅速发展，提供免费的CDN服务，并逐渐推出“加速区域全球可用区”（不含中国大陆）。它通过创建 `加速区域全球可用区（不含中国大陆）` 来分配CNAME地址，这些地址需要进行CNAME解析。IP地址通常是新加坡的，但现在也支持新加坡Anycast和日本的IP，延迟有所提升。EdgeOne Pages 默认延时50ms以下（中国大陆），优选则不能将IP指向CDN节点，会报418错误。
+:::
 
 # 这是个啥？
 

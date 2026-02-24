@@ -276,7 +276,7 @@ const bannerOffset =
 		<slot name="head"></slot>
 
 
-		<link rel="alternate" type="application/rss+xml" title={authorName} href={`${Astro.site}rss.xml`}/>
+		<link rel="alternate" type="application/rss+xml" title={authorName} href={new URL(url('rss.xml', lang === 'zh_CN' ? 'zh-cn' : 'en'), Astro.site)}/>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -534,7 +534,6 @@ var _hmt = _hmt || [];
 		</noscript>
 		<div id="bg-box"></div>
 		<ConfigCarrier></ConfigCarrier>
-        <NewPostNotification></NewPostNotification>
 		<slot />
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->

@@ -11,6 +11,17 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文章主要介绍了使用RVC进行语音克隆和AI翻唱，以及利用Replay进行伴奏和人声分离。核心步骤包括：
+
+1.  **准备音源：** 至少10分钟，推荐1小时，音频内仅允许一种音色，可以有停顿，如果想要更高质量，可以自己裁剪停顿处。
+2.  **利用RVC训练模型：** 使用RVC项目下载并运行WebUI，根据系统和显卡进行下载或使用提供的包。
+3.  **Replay做AI翻唱：** 下载Replay，选择原歌曲，选择模型，然后点击“Convert Audio”生成AI人声。
+4.  **伴奏和人声分离：** 使用UVR和Anjok07/ultimatevocalremovergui进行音频分离，分别下载5_HP-Karaoke-UVR模型并根据需求进行设置。
+
+总而言之，文章提供了一个完整的流程，涵盖了从准备音源到最终生成AI翻唱的整个过程。
+:::
+
 # 视频教程
 
 https://www.bilibili.com/video/BV19F41zPEnM/

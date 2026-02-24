@@ -6,6 +6,10 @@ image: ../assets/images/deepwiki.png
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+DeepWiki是一个AI驱动的Github仓库分析工具，它可以自动创建专属于你的仓库的Wiki，并提供用户自助服务。你可以将它添加到网站或App中，让用户直接向DeepWiki提问，无需手动搭建知识库。
+:::
+
 # 这是什么？
 
 在AI大道当行的时代，DeepWiki提供免费的AI用以分析全球的Github仓库，只要你的仓库有一些Star，稍微流行一些，就有可能被DeepWiki收录，并且自动通过AI大模型创建专属于你的Github仓库的强大Wiki！

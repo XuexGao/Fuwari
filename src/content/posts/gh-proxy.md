@@ -8,6 +8,13 @@ published: 2025-04-15
 tags: [Github, 反向代理, Cloudflare Worker, EdgeOne, Vercel]
 title: Github全站反向代理搭建指南
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文的总结如下：
+
+这个文章介绍了如何搭建一个属于自己的Github全站反向代理，并详细阐述了为什么不能只使用透明代理，以及解决方案。核心思路是实现两个关键功能：透明代理将请求转发到 Github 服务器，HTML覆写重写Github返回的 HTML，以便屏蔽外域依赖和钓鱼风险。
+
+文章还介绍了四种部署方案：Vercel Function、Cloudflare Worker、EdgeOne Pages 和 VPS + Go。每个方案都有其优点和缺点，适合不同用户群体。 建议读者根据自身情况选择合适的方案进行部署。
+:::
 
 # 引言
 

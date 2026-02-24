@@ -9,6 +9,22 @@ tags:
 - 记录
 title: 记录
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+这篇文章涵盖了多个网络安全和技术方面的工具和方法，旨在帮助用户更好地管理和优化他们的网络环境。主要内容包括：
+
+* **ZeroTier 设备 ID 重置:**  通过克隆 VM 或复制镜像导致设备ID重复的问题，需要重置设备ID。
+* **Linux / Debian 重置Node ID:**  在 Linux/Debian上删除本地身份文件以生成新的 Node ID。
+* **ShellClash:** 用于在 Linux 上使用 CLI 进行正向代理的工具。
+* **Vless通用配置:** 提供了 VLESS 协议和路由规则，用于构建网络基础设施。
+* **VPS融合怪测试脚本:**  提供了一个脚本来测试 VPS 的安全性和功能。
+* **Hysteria2 服务端搭建:** 提供一个关于如何使用 Hysteria2 进行网络安全测试的详细指南。
+* **Cloudflare 优选方法:**  介绍 Cloudflare 如何优化域名和 DNS 配置，提升网站性能和安全性。
+* **Cloudflare Pages:**  展示了 Cloudflare Pages 的各种配置选项，包括自定义域名、DNS 解析等。
+
+总而言之，文章旨在提供一个全面的指南，帮助用户理解和使用这些网络工具和技术。
+:::
 
 # zt重置设备ID
 

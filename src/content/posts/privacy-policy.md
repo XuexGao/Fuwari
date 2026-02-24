@@ -6,6 +6,9 @@ image: ""
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了网站的各种Cookie类型，包括必要的、功能性、追蹤以及定位和广告型。这些Cookie用于收集网站数据，以便进行分析、展示用户行为和投放广告。
+:::
 
 # All Cookies
 

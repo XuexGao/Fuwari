@@ -9,6 +9,12 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+Vaultwarden 是一个Rust 代码编写的 Bitwarden 兼容服务器，用于在 Cloudflare Worker 上运行。它通过 Rust WASM 构建，并使用 SQL 数据库来存储加密数据。部署过程包括安装 Rust、克隆仓库、创建 D1 数据库，编译 Rust WASM，部署 Worker，设置白名单邮箱和 JWT 等安全措施，以及启用 2FA 加密。最后，用户可以通过网页端或移动端 Bitwarden 创建账号并登录，再进行 TOTP 验证。
+:::
+
 # 原理
 项目参考开源的 [dani-garcia/vaultwarden: Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs](https://github.com/dani-garcia/vaultwarden) 将Rust源码编译为WASM以支持在Cloudflare Worker上运行。其中Worker负责REST API，D1负责存储加密后的数据
 

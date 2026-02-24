@@ -5,7 +5,6 @@ import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import swup from "@swup/astro";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
-import { defineConfig } from "astro/config";
 import { defineConfig, passthroughImageService } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
@@ -21,6 +20,7 @@ import { expressiveCodeConfig } from "./src/config.ts";
 // import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
+import { AISummaryComponent } from "./src/plugins/rehype-component-ai-summary.mjs";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { UrlCardComponent } from "./src/plugins/rehype-component-url-card.mjs";
 import rehypeImageFallback from "./src/plugins/rehype-image-fallback.mjs";
@@ -99,7 +99,7 @@ export default defineConfig({
 	},
 	site: "https://2x.nz",
 	base: "/",
-	trailingSlash: "always",
+	trailingSlash: "ignore",
 	output: "static",
 	i18n: {
 		defaultLocale: "zh-cn",
@@ -285,6 +285,7 @@ export default defineConfig({
 					components: {
 						github: GithubCardComponent,
 						url: UrlCardComponent,
+						"ai-summary": AISummaryComponent,
 						note: (x, y) => AdmonitionComponent(x, y, "note"),
 						tip: (x, y) => AdmonitionComponent(x, y, "tip"),
 						important: (x, y) => AdmonitionComponent(x, y, "important"),

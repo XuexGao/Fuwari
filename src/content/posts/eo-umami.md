@@ -6,6 +6,19 @@ image: ../assets/images/eo-umami-1.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Umami项目旨在通过SSR技术，提供一个隐私驱动的、开源的分析平台，替代Google Analytics等竞争对手。该项目删除了不必要的代码片段（如像素统计、链接统计等），并最终在EdgeOne Pages上部署了一个残血版，保留了核心功能。 数据库使用Supabase，需要注意连接方式是`Direct Connection`。
+
+主要步骤包括：
+1.  Fork 该仓库
+2.  连接到 EdgeOne Pages，先别点部署
+3.  填写 `DATABASE_URL` 从 Supabase 中获取
+4.  绑定域名并访问/登录
+5.  修改POST请求为GET请求，以保证普通用户可用。
+
+需要注意的是，内部重定向问题已解决，但存在新的问题：POST请求被全吞没，因此代码现在只允许使用 GET 请求。 建议在 `master` 分支中进行试验，避免暴露敏感信息。
+:::
+
 # 原理探寻
 由于 **Umami** 使用的是 **SSR** ，我原以为EdgeOne Pages不支持该模式，尝试部署后发现最大的问题在于
 ```

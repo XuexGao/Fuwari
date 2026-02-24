@@ -6,6 +6,10 @@ image: ../assets/images/shorter-url.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文章主要介绍了短链服务，重点在于利用Cloudflare Page/Worker进行短链的重定向和前端生成功能。它推荐了域名购买建议（`.nz`、`.mk`、`.im`），并说明了重定向文件限制及防范措施，旨在构建一个安全可靠的短链平台。
+:::
+
 # 视频
 https://www.bilibili.com/video/BV1BCi1B7E1q/
 

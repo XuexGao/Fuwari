@@ -6,6 +6,9 @@ author: "hxsyzl"
 image: "https://fastr2.497995.xyz/fuwari/image/5fd0835b-93da-4edc-bde5-f0c8aaa24b93.webp"
 tags: ["fuwari优化"]
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+`rehype-email-protection` 插件通过自动混淆邮件地址，降低了网站暴露隐私泄露的风险，是一种有效的隐私增强手段。它在 Astro 配置中配置，当启用后，所有标准电子邮件地址都会转换为 Base64编码的字符串，并通过客户端 JavaScript 进行解码，从而保护用户电子邮件地址不被轻易收集。
+:::
 
 > 本文非站长原创，由 https://github.com/afoim/fuwari/pull/31 提供
 

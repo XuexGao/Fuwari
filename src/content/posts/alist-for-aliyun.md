@@ -10,6 +10,12 @@ tags:
 - AList
 title: 利用阿里云云函数 FC 搭建AList后端，每月仅需5毛！
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是对文章的简短总结：
+
+使用阿里云FC函数计算进行AList前端部署，需要先部署前端，然后配置后端，并使用NAS文件系统来持久化数据。通过FC函数创建Web函数，并在函数中指定NAS文件路径，实现数据持久化。本文详细介绍了如何搭建和运行AList服务器，包括代码上传、配置参数设置以及如何访问AList的HTTP接口。
+:::
+
 # 还是建议购买一个便宜的云服务器来部署或者用家里云，这种方法很灵车
 
 推荐Akile：https://akile.io/register?aff_code=503fe5ea-e7c5-4d68-ae05-6de99513680e

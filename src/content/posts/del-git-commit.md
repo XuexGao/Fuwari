@@ -6,6 +6,18 @@ image: ../assets/images/del-git-commit-1.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这个文章总结了使用 `git-filter-repo` 移除 Git 提交历史的步骤。它主要介绍了：
+
+1.  **`git-filter-repo` 的作用:**  该工具可以帮助清理 Git 提交历史，特别是那些已经被抹掉或合并过的提交。
+2.  **基本用法:** 使用 `--path` 参数指定文件路径，以及 `--force` 和 `--invert-paths` 参数来忽略安全性条件和剔除特定文件。
+3.  **具体步骤:**  例如，使用 `git rebase` 将提交作为基点，并进行冲突解决。
+4.  **处理冲突:**  由于 Git 无法自动解决冲突，需要使用 `git checkout --theirs .` 来以当前提交为准，然后进行修改和重置。
+5.  **远程仓库更新:**  完成操作后，还需要将本地仓库覆写到远程仓库。
+
+总而言之，文章展示了一种通过 `git-filter-repo` 轻松清理 Git 提交历史的方法，并说明了需要注意的步骤和潜在问题。
+:::
+
 # 引言
 接简介
 

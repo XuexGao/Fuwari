@@ -135,7 +135,9 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 
 onMount(async () => {
 	try {
-		const response = await fetch("/rss.xml");
+		const lang = getCurrentLang();
+		const rssPath = `/${lang}/rss.xml`;
+		const response = await fetch(rssPath);
 		const text = await response.text();
 		const parser = new DOMParser();
 		const xml = parser.parseFromString(text, "text/xml");

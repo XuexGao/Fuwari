@@ -6,6 +6,19 @@ image: ../assets/images/fenliu.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了ACOFORK的域名分流策略，以及CDN SSL配置和浏览器客户端实现监看情况。核心内容包括：
+
+1.  **域名分流策略:** 针对不同域名的重定向方案，EdgeOne、ESA、Cloudflare三种 CDN 方式分别进行阐述。
+2.  **DNS解析与HTTPS验证:**  强调了DNS解析的必要性，以及HTTP验证的重要性，以及 Cloudflare SaaS 的SSL证书管理方式。
+3.  **浏览器客户端监视:** 通过 JavaScript 发送 HEAD 请求来获取对端响应头信息并回显，对于跨域请求需要设置 Access-Control-Expose-Headers 响应头。
+4.  **分流原理:** 解释了域名分流的逻辑：国内访问返回国内节点，海外访问返回海外节点。
+5.  **注意事项:** 强调了域名NS托管在国内的DNS解析服务商的重要性，以及避免使用TXT验证等方法。
+6.  **成果展示:** 展示了博客本体、Umami、随机图等静态资源，并附带了一些HTTP测速数据。
+
+总而言之，这篇文章提供了一个详细的ACOFORK域名分流方案指南，包含了DNS解析、HTTPS验证、浏览器客户端监视以及相关注意事项。
+:::
+
 # 需分流的网站
 博客本体，主站
 ::url{href="https://blog.acofork.com"}

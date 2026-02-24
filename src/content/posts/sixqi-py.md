@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文章介绍了作者利用Python Flask框架、简单的内存数据库，并尝试训练AI模型进行JSON数据存储和输出的实验。最终，AI生成的数据仍然是内存存储，展示了AI在处理数据的局限性。该项目已开源并在六qi平台发布。
+:::
 
 # 前情提要
 

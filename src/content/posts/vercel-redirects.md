@@ -8,6 +8,9 @@ tags: [Vercel, 重定向]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+官方文档说明，在仓库根目录创建 `vercel.json` 写入重定向规则。该文件定义了仓库中的重定向策略，允许你控制用户访问的URL路径。重定向规则由“source”和“destination”两部分组成，`permanent`标志决定是否使用永久重定向（308）或临时重定向（307）。
+:::
 
 # 正式开始
 

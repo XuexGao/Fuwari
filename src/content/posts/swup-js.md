@@ -9,6 +9,14 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章总结如下：
+
+1.  **博客架构:** 该博客采用静态博客模式，文章是独立的 MarkDown 文件，并由一个中间件负责获取全局分享Token。
+2.  **访问量显示问题:** 早期博客没有考虑动态功能，导致访问量显示出现重复请求和冗余请求，特别是针对 Umami 的页面。
+3.  **解决方案:** 通过使用用户浏览器提供的共享Token，将请求一次性发送到用户的浏览器，避免了多次网络请求。  Swup 的问题被解决，现在可以无需 Swup 管理这类 JS 了。
+:::
+
 # 正式开始
 就如封面所说，我的博客是 **魔改** 而来的，而母版为 [saicaca/fuwari: ✨A static blog template built with Astro.](https://github.com/saicaca/fuwari) 
 

@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+使用浏览器插件拦截下载请求，然后将原请求发送给Motrix实现三方下载。需要安装Aria2 Explorer扩展，并配置Motrix的RPC设置，最后右键扩展“下载拦截”即可进行下载。
+:::
 
 # 原理
 

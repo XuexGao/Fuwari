@@ -6,6 +6,10 @@ image: ../assets/images/uptimeflare.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+UptimeFlare监控服务基于Cloudflare Worker+D1，它通过Cron定时性检查站点状态并将其持久化到D1。前端展示zhandianzhuangt，后端Worker负责定期检查站点状态并将状态持久化到D1。由于原项目未知为何不注入环境变量，建议使用Fork进行部署。通过Cloudflare API Token绑定Github仓库，然后手动创建`Deploy to Cloudflare`工作流，完成部署后，可以在Cloudflare仪表板上看到新的Page和Worker，以及D1的监控数据。 故障通知可以通过发送POST请求给Resend服务。
+:::
+
 # 从KV迁移
 由于原项目于26/1/3将数据存储从KV迁移到了D1，并且配备了完备的i18n，如果你仍在运营旧版的UptimeFlare，建议升级，下面是迁移教程
 

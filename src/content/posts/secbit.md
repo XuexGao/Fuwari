@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Secbit为大陆直连云flare R2提供更佳体验，延迟更低、带宽更大。虽然价格较高，但通过多笔博客写作和积极联系相关机构，有望获得置顶文章加群联系，从而提升网站曝光率。
+:::
 
 # 官网
 

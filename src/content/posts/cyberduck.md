@@ -8,6 +8,9 @@ tags: [Cyberduck, 对象存储]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Cyberduck 是一个便捷的云存储浏览器，无需部署，只需连接本地对象存储，大幅简化文件传输流程，降低了S3 API的使用门槛。它通过直接连接本地SFTP，可以方便地进行临时文件传输和共享，提高了工作效率。
+:::
 
 # 前情提要
 

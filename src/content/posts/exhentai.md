@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+用户通过购买欧美家宽IP，并注册邮箱，成功进入E-Hentai Forums。随后使用无痕模式和英语界面登录，并通过浏览器的控制台保存Ck，最终成功进入平台。
+:::
 
 # 前期准备
 

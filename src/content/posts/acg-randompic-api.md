@@ -8,6 +8,9 @@ tags: [随机图API]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这张文章主要介绍了 EdgeOne Pages Functions (eopf) 服务的介绍，以及如何使用 API 端点进行图片处理。它强调了 eopf 是一个免费的 EdgeOne 功能，并详细说明了其工作原理和 API 端点的具体用法。
+:::
 
 # API端点
 

@@ -6,6 +6,11 @@ image: ../assets/images/avatar.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章总结如下：
+
+该文章指出，许多头像接口，尤其是来自手机APP的服务，都使用了Web协议。这些服务商没有严格SSL校验，导致逆向访问非常容易。 只有TapTap校验Referer，其他认证方式（如微信、支付宝等）无法被抓取。  一些图片和视频资源，例如GitHub、Telegram等，可以直接访问，而其他资源则需要进行额外的验证，如CORS (Cross-Origin Resource Sharing)。这表明了Web协议的限制，以及对Web安全性的重视。
+:::
 
 # 这是什么？
 只是随便搜集的一些头像接口，全部来自于我手机里目前安装的大部分APP服务。其中无 **Web** 标识的头像，如果你能看得见，那么证明该服务商并没有做严格的SSL校验，导致逆向极其简单。无该标识的默认为移动APP。以下所有资源均来自我个人使用的账号

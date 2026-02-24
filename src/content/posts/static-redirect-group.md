@@ -6,6 +6,18 @@ image: ../assets/images/static-redirect-group.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+该文章主要介绍了“afoim/Static_Redirect_Group”项目，旨在搭建一个简单的短链服务。核心在于利用Cloudflare Worker来处理静态资产的重定向和短链查询，并结合GitHub Action进行自动化维护。主要内容包括：
+
+1.  **项目原理简化:** 该项目采用前端几乎不校验、后端所有校验都在后端的方式，以及使用CDN进行静态资产404重定向，从而实现更高效的短链服务。
+2.  **Cloudflare Worker 核心:**  该项目依赖于Cloudflare Worker来处理静态资产的重定向和短链查询，并通过GitHub Action自动维护短链。
+3.  **Short Chain Logic:** 通过Worker代理访问Github，修改js进行短链查询和重定向逻辑，以及支持有效期等特性。
+4.  **GitHub Token & Secret Management:** 使用GitHub Token、GITHUB Owner 和 Repository 权限来管理短链服务，并使用 wrangler secret put 方法获取秘密。
+5.  **WAF & Rate Limiting:**  建议在Cloudflare创建一个WAF规则保护短链，防止刷（或Cloudflare Turnstile、速率限制等）。
+
+总而言之，文章通过详细讲解项目架构和技术细节，旨在帮助读者理解并搭建一个高效的短链服务。
+:::
+
 # 前言
 本来不应该有这篇文章的，因为这篇文章就是一个该项目的简单自部署教程，应该写到仓库的README中，本来应该是让AI代工的，但是我发现它非常执着于那个b Github Page+Cloudflare Worker的神奇前后端分离，而且徒增了不少工作。其实该项目仅需一个Cloudflare Worker就行了，所以既然都要我手写了，我氵篇文章也是合情合理的吧
 

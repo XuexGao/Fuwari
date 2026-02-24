@@ -6,6 +6,12 @@ image: ../assets/images/watermark.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是这篇文章的简短总结：
+
+作者通过GitHub提交的“关于我折腾了一晚上 EdgeOne - AcoFork Blog”文章被盗，导致他拿到的原始图片被盗用。作者认为，由于文章发布日期和图片发布日期存在差异，并利用Github的提交记录，尝试加水印，但结果却未能成功。作者最终采取了传统水印的方式，将域名作为水印覆盖到每一张图上，以防止他人获取。
+:::
+
 > [!CAUTION]
 > 2月4号的2xss你好呀
 > 

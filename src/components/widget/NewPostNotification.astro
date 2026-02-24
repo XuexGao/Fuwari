@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { Translation, i18n } from "../../i18n/translation";
 import I18n from "@components/I18n.astro";
+const { lang } = Astro.props;
+const rssPath = `/${lang === 'en' ? 'en' : 'zh-cn'}/rss.xml`;
 ---
 
 <style>
@@ -49,7 +51,7 @@ import I18n from "@components/I18n.astro";
     }
 </style>
 
-<div id="new-post-notification" class="fixed bottom-4 right-4 z-50 pointer-events-none">
+<div id="new-post-notification" class="fixed bottom-4 right-4 z-50 pointer-events-none" data-rss-path={rssPath}>
     <div id="notification-panel" class="pointer-events-auto bg-[var(--card-bg)] border-2 border-[var(--primary)] text-[var(--primary)] shadow-lg transform translate-y-20 opacity-0">
         <button id="notification-minimized" aria-label="New post notification" class="flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
@@ -59,16 +61,16 @@ import I18n from "@components/I18n.astro";
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2 text-[var(--primary)]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-                    <h3 class="font-bold text-black dark:text-white"><I18n key={Translation.NewPostFound} /></h3>
-                    <a href="/posts/post-diff-guide/#食用方法" class="ml-1 text-xs text-[var(--primary)] hover:underline opacity-80" title={i18n(Translation.HowToUse, undefined)}>
+                    <h3 class="font-bold text-black dark:text-white"><I18n key={Translation.NewPostFound} lang={lang} /></h3>
+                    <a href={i18n(Translation.PostDiffGuideLink, lang)} class="ml-1 text-xs text-[var(--primary)] hover:underline opacity-80" title={i18n(Translation.HowToUse, lang)}>
                         <Icon name="material-symbols:help-outline-rounded" size={16} />
                     </a>
                 </div>
                 <div class="flex items-center gap-1">
-                    <button id="clear-notification" class="text-black/50 dark:text-white/50 hover:text-red-500 transition-colors p-1 rounded-md hover:bg-red-500/10" title={i18n(Translation.ClearNotification, undefined)}>
+                    <button id="clear-notification" class="text-black/50 dark:text-white/50 hover:text-red-500 transition-colors p-1 rounded-md hover:bg-red-500/10" title={i18n(Translation.ClearNotification, lang)}>
                         <Icon name="material-symbols:delete-rounded" size={18} class="mx-auto" />
                     </button>
-                    <button id="minimize-notification" class="text-black/50 dark:text-white/50 hover:text-[var(--primary)] transition-colors p-1 rounded-md hover:bg-[var(--primary)]/10" title={i18n(Translation.Minimize, undefined)}>
+                    <button id="minimize-notification" class="text-black/50 dark:text-white/50 hover:text-[var(--primary)] transition-colors p-1 rounded-md hover:bg-[var(--primary)]/10" title={i18n(Translation.Minimize, lang)}>
                         <Icon name="material-symbols:close-rounded" size={18} class="mx-auto" />
                     </button>
                 </div>
@@ -208,7 +210,8 @@ import I18n from "@components/I18n.astro";
     // Helper to get current RSS items
     async function fetchRSS() {
         try {
-            const response = await fetch('/rss.xml', { cache: 'no-store' });
+            const rssPath = document.getElementById('new-post-notification')?.dataset.rssPath || '/rss.xml';
+            const response = await fetch(rssPath, { cache: 'no-store' });
             const text = await response.text();
             const parser = new DOMParser();
             const xml = parser.parseFromString(text, 'text/xml');

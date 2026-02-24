@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+该文章介绍了WPWebPlayer（HTML网站播放组件）的简要介绍，强调其简约、易用和可集成性。它说明了如何使用CSS与JavaScript实现基本功能，并提供了详细的使用方法，包括参数设置和音频控制等。文章还提及了其主要特性，如支持自定义参数、主题定制以及易于与其他HTML项目中集成。最后，感谢该项目的贡献者MarSeventh。
+:::
 
 > 本文章非站长本人撰写，由他人Pr添加： https://github.com/afoim/fuwari/pull/23
 

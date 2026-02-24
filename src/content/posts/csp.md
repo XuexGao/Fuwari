@@ -8,6 +8,11 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+好的，以下是这篇文章的简短总结：
+
+该文章讲解了如何避免 Web 页面中出现的 XSS (Cross-Site Scripting) 攻击，并提供了相应的 CSP (Content Security Policy) 设置方法。 核心在于明确规定只允许使用本域脚本（`'self'`），并添加了 `script-src` 指令，明确限制了脚本的来源和执行方式。  此外，还强调了用户应警惕未经授权链接和二维码的访问，以及建议采用无痕模式等安全措施来保护个人数据。
+:::
 
 # 举个例子吧！
 

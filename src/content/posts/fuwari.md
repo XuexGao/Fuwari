@@ -9,6 +9,19 @@ tags:
   - Fuwari
 title: Fuwari静态博客搭建教程
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+根据文章，本地部署Fuwari的步骤如下：
+
+1.  **Fork仓库：** 将Fuwari的仓库从GitHub上fork。
+2.  **避免小废物：** 建议避免将仓库fork到小废物，推荐使用SSH克隆。
+3.  **克隆到本地：** 使用`git clone <你的仓库URL>`克隆到本地。推荐使用SSH进行推送更改。
+4.  **全局安装pnpm：** 在项目根目录安装pnpm。
+5.  **在项目根目录安装依赖：** 运行`pnpm install`和`pnpm add sharp`。
+6.  **在项目根目录安装配置：** 将`src`文件夹中的`config.ts`文件修改为你的博客的主题配置文件。
+7.  **设置导航栏：** 修改`NavBarConfig`，设置导航栏的链接。
+
+需要注意的是，由于SSH克隆默认被阻断，可以使用CNPM进行推送更改。
+:::
 
 ### 你需要准备的东西
 

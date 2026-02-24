@@ -8,6 +8,11 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+该文章介绍了使用 Umami 部署 PostgreSQL 的步骤，包括备份数据库、创建新项目、还原数据库和部署 Web Services。它强调了Supabase 项目管理中的子数据库概念以及需要注意的环境变量配置。最后，还讨论了EdgeOne CDN的CORS配置问题，并提供了回源 HOST 头的方式来解决。
+:::
 
 > 回滚了
 

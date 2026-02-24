@@ -8,6 +8,21 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这段文字总结了 Lucky 如何通过 Cloudflare API 来设置 DDNS、签发 SSL/TLS，并配置了 Lucky 的 Web 服务。主要步骤包括：
+
+1. **创建 Cloudflare API 令牌:** 为 Lucky 提供必要的访问权限。
+2. **创建基底 Cloudflare 动态重定向规则:**  使用 wildcard replacement 替换域名，实现DDNS的设置。
+3. **配置 Lucky STUN:** 使用 `dash.cloudflare.com/api` 修改为 `api.cloudflare.com/client`，并添加 `rules` 后面，明确指定了规则的地址和端口。
+4. **配置 Lucky Web 服务:**  通过配置 Lucky 的 Web 服务，使其能够接收来自 Cloudflare 的请求。
+5. **配置 Lucky DDNS:**  使用路由器的端口转发将 Lucky 的 16666 端口转发到路由器的 17777 端口。
+6. **配置 Lucky SSL/TLS证书:**  通过 Cloudflare 证书，确保了安全通信。
+7. **配置Lucky Web服务:** 通过配置 Lucky 的 Web 服务，使其能够接收来自 Cloudflare 的请求。
+8. **配置Lucky STUN:**  使用 `dash.cloudflare.com/api` 修改为 `api.cloudflare.com/client`，并添加 `rules` 后面，明确指定了规则的地址和端口。
+9. **配置WebHook:** 通过配置 Web Hook，将 Lucky 的 16666 端口转发到路由器的 17777 端口。
+
+总而言之，这篇文章详细介绍了 Lucky 如何利用 Cloudflare API 实现 DDNS、SSL/TLS 和 Web 服务配置，并提供了具体的步骤和参数。
+:::
 
 # 配套视频
 

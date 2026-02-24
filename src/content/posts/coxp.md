@@ -6,6 +6,24 @@ image: ../assets/images/coxp.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了跨域资源共享（CORS）机制，以及它在Web开发中的重要性。核心内容如下：
+
+**CORS 概述:** CORS 是一个Web安全机制，用于控制不同域名之间的资源访问权限。简单来说，它规定了哪些来源（例如浏览器）可以访问特定资源的请求头。
+
+**CORS 的工作原理:**  当浏览器尝试访问一个位于不同的域名下的资源时，浏览器会检查请求头的“Access-Control-Allow-Origin” 字段。如果该字段设置为“*”，则允许任何来源访问该资源。如果设置为“https://example.com”，则仅允许来自 `example.com` 的用户访问该资源。
+
+**CORP (Cross-Origin Resource Policy) 的重要性:**  CORP 是 CORS 的一个核心部分，它定义了资源给不给用的规则。  默认情况下，浏览器会阻止任何未经授权的请求，即使请求头中包含“Access-Control-Allow-Origin” 字段。
+
+**CORS 的关键配置项:**
+*   `Access-Control-Allow-Origin`: 允许哪些来源访问资源。
+*   `Access-Control-Allow-Methods`:  允许哪些 HTTP 方法 (GET, POST, PUT, DELETE 等) 被使用。
+*   `Access-Control-Allow-Headers`:  允许哪些请求头被发送。
+*   `Access-Control-Max-Age`:  规定了跨域资源缓存的有效时间（秒）。
+
+**案例分析:** 示例中展示了图片被滥用的场景，以及如何通过配置CORP来解决问题。  关键在于正确设置 `Access-Control-Allow-Origin` 和 `Access-Control-Allow-Headers` 字段，确保只有授权的源才能访问资源。
+:::
+
 # 正式开始
 如果你做过网站（HTML），你就会知道，一个网页除了自身提供内容，如 `<p>hello world</p>` ，还可以 **内嵌外链资源** ，如 `<img src="https://othersite.com/hello.webp">`
 

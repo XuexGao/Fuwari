@@ -8,6 +8,17 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+GitHub Education 认证教程，主要步骤包括：
+
+1.  **身份验证:** 通过学生证、录取通知书等方式进行身份验证。
+2.  **获取 .tech 和 .me 域名:**  通过 GitHub Student Developer Pack 下载 .tech 和 .me 域名。
+3.  **GitHub授权:**  登录 Github账户，并验证你的学生身份。
+4.  **NS转到 Cloudflare:**  将 NS 传播到 Cloudflare。
+5.  **完成支付和激活:**  完成支付流程，并获得激活码。
+
+总而言之，认证过程需要耐心等待，并确保所有信息准确无误。
+:::
 
 # Github学生认证教程
 

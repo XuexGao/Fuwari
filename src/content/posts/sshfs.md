@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+使用SSHFS-Win可以方便地管理Windows共享文件夹，通过安装GUI工具并添加连接即可在文件资源管理器中查看共享。安装完成后，就可以在文件资源管理器中看到共享盘信息。
+:::
 
 # 正式开始
 

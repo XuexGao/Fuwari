@@ -10,6 +10,10 @@ tags:
 - Cloudflare Workers
 title: Cloudflare R2+Workers！马上搭建自己的云上图床！
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了Cloudflare R2存储桶的创建和使用，重点在于如何通过本地部署AList来实现高效的文件传输。文章详细阐述了R2的搭建流程、API令牌获取以及文件上传的优化方法。总之，它提供了一个从R2开始，利用本地部署AList进行高速上传的完整指南。
+:::
+
 ### **结果图**
 
 ![QmVgqgoC7G8NLS21WvR8j9gf5amu33XvuV68ZrgM5B9iFf.webp](../assets/images/408795f3ec1a5a9baf91b6cd7564d6f1d7dbc5bd.webp)

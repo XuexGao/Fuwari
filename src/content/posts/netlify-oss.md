@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Netlify OSS计划不再接受个人博客，只需确保项目已托管在 Netlify 上并提供 GitHub 链接。如果未通过，可以直接回复邮件询问相关信息，并自动升级到 Open Source 计划。
+:::
 
 # 正式开始
 

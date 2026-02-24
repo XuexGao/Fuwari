@@ -14,6 +14,11 @@ tags:
 - Render
 title: N款CDN/静态托管服务商的优缺点比较
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+这篇文章介绍了几个流行的CDN和托管服务，并对它们的一些特点进行了比较。**Netlify** 提供了快速且免费的 CDN，并且限制较少。**Vercel** 则强调了其零成本使用，延迟良好，且默认域名可以绑定自己的域名。**EdgeOne CDN** 提供无流量和请求数限制，但需要实名认证和域名备案。**Cloudflare** 则拥有强大的安全保障，并能应对各种攻击，但有严格的用量限制。**Render** 方便了使用 GitHub Action发布，但中国大陆地区可能会出现间歇性阻断。
+:::
 
 # [Netlify](https://www.netlify.com)
 

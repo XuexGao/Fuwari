@@ -6,6 +6,12 @@ image: ../assets/images/google-adsense1.png
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是文章的简短总结：
+
+Google Adsense 是一种通过审核网站通过广告展示来获取收入的服务。申请时需要确保网站符合 AdSense 的标准，包括不要移除 JS 代码、避免频繁更换域名、积极更新网站内容、优化 SEO 以及提供隐私政策和 Cookie 同意组件等。持续申请并不断改进网站是成功获得 Adsense 认证的关键。通过积极的运营策略，例如推广、社群互动、以及提升用户体验，可以提高网站的合法流量和活跃度，最终实现收入增长。
+:::
+
 # Google Adsense 是什么
 
 它是Google提供的一个广告服务。当您的网站通过Adsense审核后，Google将会开始在你的网站中插入广告展示给访客，从而让你赚取收入

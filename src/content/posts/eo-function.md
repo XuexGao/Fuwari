@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文介绍了EdgeOne边缘函数随机图API的部署和配置。该API允许用户将横屏随机图存储在 `ri/h` 和 `ri/v` 路径下，并提供访问 `/h`、`/v` 和 `/` 的方式。API限制了边缘函数每月请求数，需要注意。
+:::
 
 # 正式开始
 

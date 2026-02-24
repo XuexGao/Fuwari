@@ -9,6 +9,7 @@ import MarkdownIt from "markdown-it";
 import { parse as htmlParser } from "node-html-parser";
 import sanitizeHtml from "sanitize-html";
 import { Translation, i18n } from "@/i18n/translation";
+import { getPostUrlBySlug } from "@/utils/url-utils";
 
 export async function getStaticPaths() {
 	return [
@@ -31,7 +32,7 @@ export async function GET(context: APIContext) {
 	}
 
 	// Use the same ordering as site listing (pinned first, then by published desc)
-	const posts = await getSortedPosts();
+	const posts = await getSortedPosts(lang);
 	const feed: RSSFeedItem[] = [];
 
 	for (const post of posts) {
@@ -77,7 +78,7 @@ export async function GET(context: APIContext) {
 			title: post.data.title,
 			description: post.data.description,
 			pubDate: post.data.published,
-			link: new URL(`${lang}/posts/${post.slug}/`, context.site).href,
+			link: new URL(getPostUrlBySlug(post.slug, lang), context.site).href,
 			// sanitize the new html string with corrected image paths
 			content: sanitizeHtml(html.toString(), {
 				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),

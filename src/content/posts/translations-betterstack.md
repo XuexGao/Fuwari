@@ -8,6 +8,9 @@ tags: [BetterStack]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+BetterStack汉化过程中，由于语言和时区问题，翻译使用了不同格式的日期，例如“日”和“年”使用“CST”，并对UTC+8的时区缩写进行了硬编码处理。
+:::
 
 # 速览
 

@@ -8,6 +8,9 @@ tags: [UptimeRobot]
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+通过 Uptimerobot 的仪表盘，你可以免费创建 50 个监控，支持 `HEAD` 请求，且不支持 IPv6。  自动添加功能可以简化监控管理流程，并实时更新展示页面。  监控状态可以在 Public Status Page 上查看。
+:::
 
 # 正式开始
 

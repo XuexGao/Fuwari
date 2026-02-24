@@ -163,4 +163,5 @@ export enum Translation {
     ChromiumOnly,
     FontAccessDenied,
     LoadFontFailed,
+    PostDiffGuideLink,
 }

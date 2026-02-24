@@ -9,6 +9,10 @@ tags:
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+这篇文章主要介绍了微软Office365 E3订阅的恢复方法，并提供了详细的操作步骤。它指出了E3 Symphony的风险，建议用户谨慎对待。文章强调了如何通过支付宝购买E3许可证，并提供了一个注册全局管理员的步骤，确保能够顺利登录到Microsoft 365管理中心。最后提醒用户及时绑定更多安全信息，以保障账号安全性。
+:::
+
 # 参考文献
 [微软Office365 E3订阅回归？25个E3 Dev免费开通指南 - 极圈 奶昔论坛](https://forum.naixi.net/thread-6702-1-1.html)
 

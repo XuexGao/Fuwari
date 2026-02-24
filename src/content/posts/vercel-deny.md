@@ -8,6 +8,11 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+Vercel防火墙规则更新脚本自动获取并批量添加IP拒绝规则，该脚本使用Python脚本和`requests`库进行处理。 脚本首先从Vercel的API接口中读取IP地址和CIDR网段，然后将其添加到拒绝规则中。  脚本还支持使用Python脚本创建大批量IP拒绝规则，以满足Vercel API的限制要求。 脚本还包含一个验证IP地址或CIDR格式的函数，该函数用于确保IP地址或CIDR网段是有效的。
+
+总而言之，该脚本允许用户通过Python脚本自动生成和更新Vercel防火墙规则，从而简化了IP拒绝配置过程。
+:::
 
 # 配套视频
 

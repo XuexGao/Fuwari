@@ -9,6 +9,10 @@ tags:
 - Rewrite
 title: 关于Rewrite MV无法播放\没有画面的解决方法
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文介绍了一种安装和使用游戏的方法，包括通过Microsoft Store安装并改为Windows Media Player，以及使用汉化组提供的K-Lite Basic解码器进行游戏调整。
+:::
+
 # 我使用的解决方法（Windows 10及以上带有Microsoft Store的系统）
 
 安装这个即可

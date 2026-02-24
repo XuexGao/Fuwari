@@ -6,6 +6,12 @@ image: ../assets/images/cookie-consent.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+以下是这篇文章的简短总结：
+
+Cookie管理器是一个工具，可以帮助用户控制网站上追踪器的权限，从而提高用户隐私保护意识。该方法通过在网站中设置允许和拒绝 Cookie 的选项，并提供清晰的隐私政策信息，让用户能够自主选择自己的数据使用方式。文章详细介绍了如何使用 Cookie Consent Banner 来实现这一功能，包括步骤图、JavaScript代码示例以及隐私政策的配置。
+:::
+
 # 前言
 你的网站是否有很多的跟踪器？如 **Google Analytics、Google Adsense、Microsoft Clarity、百度统计** 等等？
 

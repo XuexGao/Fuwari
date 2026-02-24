@@ -10,7 +10,11 @@ function joinUrl(...parts: string[]): string {
 }
 
 export function getPostUrlBySlug(slug: string, lang?: string): string {
-	return url(`/posts/${slug}/`, lang);
+	let cleanSlug = slug;
+	if (lang === 'en' && cleanSlug.startsWith('en/')) {
+		cleanSlug = cleanSlug.substring(3);
+	}
+	return url(`/posts/${cleanSlug}/`, lang);
 }
 
 export function getDir(path: string): string {

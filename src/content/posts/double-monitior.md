@@ -6,6 +6,9 @@ image: ../assets/images/double-monitior.webp
 draft: false
 lang: ""
 ---
+:::ai-summary{model="google/gemma-3-1b"}
+本文主要介绍了国内自托管Uptime Kuma服务，以及利用CDN的HTTPS请求头机制进行单节点分流监控。它强调了Cloudflare Tunnel作为一种有效策略，用于防止被DDoS攻击，并详细说明了如何通过自定义HTTP请求头实现单节点分流监控。此外，还提供了常用的CDN节点和配置方法，包括使用Uptime Kuma服务以及利用HTTP协议监测CDN节点。
+:::
 
 > [!warning]
 > 由于被DDOS，已经不再做分流监控，故本文诸多链接失效

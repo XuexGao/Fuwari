@@ -8,6 +8,7 @@ import { Icon } from "astro-icon/components";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
 import Announcement from "../components/widget/Announcement.astro";
 import TOC from "../components/widget/TOC.astro";
+import NewPostNotification from "@components/widget/NewPostNotification.astro";
 import { siteConfig } from "../config";
 import {
 	BANNER_HEIGHT,
@@ -82,6 +83,7 @@ const mainPanelTop = siteConfig.banner.enable
             <SideBar class="mb-4 row-start-2 col-span-1 lg:row-start-1 lg:col-span-1 md:row-start-1 md:col-span-1 lg:max-w-[17.5rem] md:max-w-[17.5rem] onload-animation" headings={headings}></SideBar>
 
             <main id="swup-container" class="transition-swup-fade row-start-1 col-span-1 lg:row-start-1 lg:col-span-1 md:row-start-1 md:col-span-1 overflow-visible min-w-0">
+                <NewPostNotification lang={lang}></NewPostNotification>
                 <div id="content-wrapper" class="onload-animation">
                     <!-- the overflow-hidden here prevent long text break the layout-->
                     <!-- make id different from windows.swup global property -->
