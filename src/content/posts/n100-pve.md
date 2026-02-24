@@ -135,7 +135,7 @@ title: N100 - PVE（fnOS+Debian）基建记录
 - 上传至PVE：![](../assets/images/073808516d357e099a866c30b4a77954c5b9b458.webp)
 - 创建fnOS虚拟机，CPU类型选择host，步骤略
 
-- 直通核显和硬盘：![](../assets/images/08e4f7a3b87ae863340.webp)
+- 直通核显和硬盘：![](../assets/images/08e4f7a3b87ae86334011e1d4c3a384a36ad9866.webp)
 
 ### 配置QQBot、博客、AList
 
