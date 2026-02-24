@@ -17,7 +17,7 @@ for (const heading of headings) {
 
 const className = Astro.props.class;
 
-const isPostsRoute = Astro.url.pathname.startsWith("/posts/");
+const isPostsRoute = Astro.url.pathname.includes("/posts/");
 
 const removeTailingHash = (text: string) => {
 	let lastIndexOfHash = text.lastIndexOf("#");
@@ -111,6 +111,7 @@ class TableOfContents extends HTMLElement {
     };
 
     toggleActiveHeading = () => {
+        if (this.active.length === 0) return;
         let i = this.active.length - 1;
         let min = this.active.length - 1, max = 0;
         while (i >= 0 && !this.active[i]) {
@@ -128,9 +129,11 @@ class TableOfContents extends HTMLElement {
             i--;
         }
         
-        let top = this.tocEntries[min].offsetTop;
-        let bottom = this.tocEntries[max].offsetTop + this.tocEntries[max].offsetHeight;
-        this.activeIndicator?.setAttribute("style", `display: block; top: ${top}px; height: ${bottom - top}px`);
+        if (this.tocEntries[min]) {
+            let top = this.tocEntries[min].offsetTop;
+            let bottom = this.tocEntries[max].offsetTop + this.tocEntries[max].offsetHeight;
+            this.activeIndicator?.setAttribute("style", `display: block; top: ${top}px; height: ${bottom - top}px`);
+        }
     };
 
     scrollToActiveHeading = () => {
@@ -214,11 +217,16 @@ class TableOfContents extends HTMLElement {
         // wait for the onload animation to finish, which makes the `getBoundingClientRect` return correct values
         const element = document.querySelector('.prose');
         if (element) {
-            element.addEventListener('animationend', () => {
+            if (element.classList.contains('onload-animation')) {
+                element.addEventListener('animationend', () => {
+                    this.init();
+                }, { once: true });
+            } else {
                 this.init();
-            }, { once: true });
+            }
         } else {
-            console.debug('Animation element not found');
+            // If .prose is not found immediately, wait a bit or try anyway
+            setTimeout(() => this.init(), 500);
         }
     };
 
@@ -255,18 +263,18 @@ class TableOfContents extends HTMLElement {
         }
         this.active = new Array(this.tocEntries.length).fill(false);
 
-        this.sections.forEach((section) =>
-            this.observer.observe(section)
-        );
+        this.sections.forEach((section) => {
+            if (section) this.observer.observe(section);
+        });
 
         this.fallback();
         this.update();
     };
 
     disconnectedCallback() {
-        this.sections.forEach((section) =>
-            this.observer.unobserve(section)
-        );
+        this.sections.forEach((section) => {
+            if (section) this.observer.unobserve(section);
+        });
         this.observer.disconnect();
         this.tocEl?.removeEventListener("click", this.handleAnchorClick);
     };

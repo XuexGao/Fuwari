@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('posts');
+    const slugs = new Set();
+    posts.forEach(post => {
+        let slug = post.slug;
+        if (slug.startsWith('en/')) {
+            slug = slug.substring(3);
+        }
+        slugs.add(slug);
+    });
+    
+    return Array.from(slugs).map(slug => ({
+        params: { slug },
+        props: { slug }
+    }));
+}
+
+const { slug } = Astro.params;
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <noscript>
+        <meta http-equiv="refresh" content={`0;url=/zh-cn/posts/${slug}/`} />
+    </noscript>
+    <script is:inline define:vars={{ slug }}>
+        const lang = navigator.language.toLowerCase();
+        if (lang.startsWith('en')) {
+            window.location.href = `/en/posts/${slug}/`;
+        } else {
+            window.location.href = `/zh-cn/posts/${slug}/`;
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to <a href={`/zh-cn/posts/${slug}/`}>{slug}</a>...</p>
+</body>
+</html>

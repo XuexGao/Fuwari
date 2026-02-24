@@ -453,7 +453,7 @@
 		if (sp.get(DEBUG_PARAM_KEY) !== "1") return;
 
 		const path = normalizePathname(window.location.pathname);
-		if (!path.startsWith("/posts/")) return;
+		if (!path.includes("/posts/")) return;
 
 		clearNonDebugState();
 
