@@ -1,6 +1,6 @@
 ---
-title: "How to Set Up a Naughty Monitor"
-description: "Would you like to monitor your server from a divine perspective? Also, please take care of Uptime Kuma!"
+title: "Nezha Monitoring Setup Tutorial"
+description: "Want to monitor your server from a god's-eye view? And by the way, also handle the duties of Uptime Kuma!"
 published: 2025-09-03
 image: '../../assets/images/2025-09-03-05-00-43-image.webp'
 tags: [哪吒监控]
@@ -8,23 +8,23 @@ tags: [哪吒监控]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide explains how to install and configure Nezha, a server monitoring tool, by setting up its dashboard (WebUI) and agent (backend). The dashboard is installed via a script, defaulting to port 8008, and requires specifying the agent connection address (e.g., VPS IP:8008). After installation, users can manage servers, set up monitoring services, configure notifications, and troubleshoot common issues like CDN compatibility or IP display problems.
 :::
 
-Official Tutorial: [https://nezha.wiki/](https://nezha.wiki/)
+> Official Tutorial: https://nezha.wiki/
 
-# Installation Panel (Dashboard)
+# Install the dashboard end (Dashboard)
 
-The panel endpoint is the Web UI, and it also accepts backend connections. Users and panel connections utilize WebSocket communication with the backend and the panel endpoint using gRPC.
+> The panel end, i.e., WebUI, also accepts backend connections. Users connect to the panel via WebSocket, while the backend communicates with the panel end using gRPC.
 
 ```bash
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
 ```
 
-Default port is 8008.
+Default port is 8008
 
-Please specify the installation command address for the nezha-agent connection (e.g., example.com:443).  You can also configure a CDN, and if you do so, please provide the CDN domain name (e.g., 443) – ensure your CDN supports gRPC communication. I do not recommend using CDN for backend or panel communication.
+Fill in your `VPS IP:8008` in the `nezha-agent  （ example.com:443）`. Of course, you can also use a CDN; if you use a CDN, fill in `CDN:443`. Please ensure your CDN supports gRPC communication. I do not recommend using a CDN for backend and panel communication.
 
 ```bash
 请输入站点标题: Nezha - AcoFork
@@ -38,42 +38,42 @@ Please specify the installation command address for the nezha-agent connection (
 请输入选项 [1-3]1
 ```
 
-Please enter the WebUI of the Navitas 8008 probe in port 8008.
+Next, you should be able to access the Nezha probe's WebUI via port 8008.
 
-Please log in, and the default administrator password is `admin`.
+Click to log in; default username and password are both `admin`
 
 ![](../../assets/images/2025-09-03-05-07-55-image.webp)
 
-First, we will change the administrator account password, and the mouse cursor will move to the upper right corner of the avatar's image, clicking `Personal Information`.
+First, let's change the administrator's account password. Move the mouse to the avatar in the top right corner and click `Personal Information`
 
 ![](../../assets/images/2025-09-03-05-08-40-image.webp)
 
-Please click `Update Profile` to change your administrator password.
+Then click `Update Profile` to change the administrator account credentials
 
 ![](../../assets/images/2025-09-03-05-09-06-image.webp)
 
-# Installation of the backend (agent)
+# Install the backend (Agent)
 
-To access the WebUI for "Natha Tangping," navigate to the server section and locate the installation command. Select the appropriate system, then execute it from the terminal. A new random server will be launched shortly.
+Open the Nezha Probe's WebUI; under the "Server" section, you can find the installation command, select the one corresponding to your system, and then execute it in the terminal. Shortly afterward, you will see a newly server with a random name.
 
-If your server is located in mainland China, it may not be able to connect to the raw GitHub repository. A recommended alternative is to use a mirror, such as `raw.githubusercontent.com`.
+*f your server is located in mainland China, you may not be able to connect to `raw.githubusercontent.com*. It is recommended to use the mirror [[C:raw.gitmirror.com` instead]]
 
 ![](../../assets/images/2025-09-03-05-10-14-image.webp)
 
-# Configuration Services
+# Configuration Service
 
-“Nàtaì Tànzhēn” also supports similar services for monitoring uptime, including HTTP Ping TCP. Details can be found in the navigation menu’s service offerings.
+Nezha Probe also supports service monitoring similar to UptimeKuma, supporting HTTP Ping and TCP. For details, please refer to the Services section in the navigation bar.
 
-Here’s the translation:  “All services available can be accessed and monitored from the server currently hosted in the Nighthawk Probe.”
+[[All services added here can be monitored using the servers already added to the Nezha probe]]
 
 ![](../../assets/images/2025-09-03-05-15-22-image.webp)
 
-# Configuration notification.
+# Configure notifications
 
-Zhang Da’s Probe supports configuration notifications, enabling you to receive timely alerts regarding service outages and downtime. Refer to [Notification Settings | Zhang Da Server Monitoring](https://nezha.wiki/guide/notifications.html).
+The Nezha probe supports configuring notifications to alert you promptly in cases such as service outages. See [Notification Settings | Nezha Server Monitoring](https://nezha.wiki/guide/notifications.html)
 
-# Difficult questions.
+# Troubleshooting
 
 - 我套了CDN，服务器可以成功上线，但是获取到的IP为内网IP：请在系统设置中配置真实IP请求头![](../../assets/images/2025-09-03-05-19-32-image.webp)
 
-- I am experiencing issues with deploying the project, and the server consistently fails to go live. The cause is currently unknown, but a solution can be implemented through deployment of this project. [yumusb/nezha-new](https://github.com/yumusb/nezha-new)
+- I use Cloudflare CDN, and my server is always unable to come online. The cause is unclear, but deploying this project can resolve it [yumusb/nezha-new](https://github.com/yumusb/nezha-new)

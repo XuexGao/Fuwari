@@ -1,6 +1,6 @@
 ---
-title: "Hand-on teaching you AI karaoke!"
-description: "Leverage RVC to train audio models and utilize Replay AI for voice synthesis and karaoke!"
+title: "Step-by-step Guide to AI Cover Singing!"
+description: "Use RVC to train a voice model, then use Replay to directly output AI covers!"
 published: 2025-10-13
 image: ../../assets/images/rvc-19.webp
 tags:
@@ -11,123 +11,123 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article details a workflow for creating AI voiceovers, specifically using RVC and Replay to train a voice conversion model. The process involves downloading necessary tools (RVC, Replay, UVR & MSST), preparing audio data with a minimum of 10 minutes of audio, utilizing the RVC-Project web UI, and then training the model through a one-click process.  It also explains how to leverage Replay for AI voice cloning and separate vocal and instrumental tracks.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide explains how to train a voice conversion model using RVC, use it to generate AI vocals with Replay, and separate vocals from accompaniment using UVR or MSST. It covers preparing audio, training the model, converting songs, and separating audio components with detailed steps and model recommendations.
 :::
 
-# Video tutorials.
+# Video tutorial
 
-Here’s the translation of the text from the provided link:  “The video explores the evolving relationship between humans and AI, examining both the potential benefits and ethical concerns surrounding artificial intelligence development. It delves into various applications of AI, including automation, healthcare, and creative industries, while also addressing issues such as job displacement and algorithmic bias.”
-# 流程
+[[X:content]]
+# Process
 
-RVC: Training voice model training.
+RVC: Training Role Voice Color Models
 
-Utilizing a voice model and the original composition to create an AI rendition.
+Replay: Use vocal tone models + original song for AI cover singing
 
-UVR&MSST: Vocal accompaniment separation analysis.
+UVR&MSST: Perform vocal accompaniment separation
 
-# Preparation of audio sources.
+# Prepare audio source
 
-At least 10 minutes, with a recommended duration of one hour. The audio only allows one sound profile; pauses are permitted, and higher quality can be achieved through individual trimming of pauses.
+At least 10 minutes, recommended 1 hour. Only one voice tone is allowed in the audio, and pauses are permitted. For higher quality, you can trim the pauses yourself.
 
-# Leveraging RVC for model training.
+# Utilize RVC to train a model
 
-Here’s the translation:  “Easily train a high-quality Voice Conversion Model (VC) using voice data within <= 10 minutes.  Download via your system and GPU, or download via this link (domestic high-speed). [Voice Cloning & Vario-Voice Integration Package Download](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) Please ensure you download correctly.”
+Enter [RVC-Project/Retrieval-based-Voice-Conversion-WebUI: Easily train a good VC model with voice data <= 10 mins!](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI) to download based on your system and graphics card, or use this link to download (high-speed domestic) [Voice Cloning & Voice Changer Integrated Package Download](https://www.yuque.com/flowercry/hxf0ds). Be sure not to download the wrong one.
 
 ![](../../assets/images/rvc-1.webp)
 
-Run `go-web.bat` directly.
+Run `go-web.bat` directly
 
 ![](../../assets/images/rvc-2.webp)
 
-Enter the Training tab.
+Enter the WebUI and switch to the training section
 
 ![](../../assets/images/rvc-3.webp)
 
-首先写模型名称
+First write the model name
 
 ![](../../assets/images/rvc-4.webp)
 
-Please transfer your audio files to a blank folder.
+Then place your audio source into an empty folder
 
 ![](../../assets/images/rvc-5.webp)
 
-然后填进去
+Then fill it in
 
 ![](../../assets/images/rvc-6.webp)
 
-Recommended training rounds vary depending on the specific model and dataset. A general guideline is to start with 50-200 rounds for optimal performance.
+Total training epochs recommended: 50 ~ 200
 
 ![](../../assets/images/rvc-7.webp)
 
-Click on the one-click training (requires a significant time investment, and is recommended to train before bedtime).
+Then click one-click training (it will take a long time; it is recommended to train before going to bed).
 
 ![](../../assets/images/rvc-8.webp)
 
-After training, you can locate the model files in `assets/weights`. The file ending with `.pth` is located at that location.
+After training, you can find the model files in `assets/weights`, ending with `.pth`.
 
 ![](../../assets/images/rvc-9.webp)
 
-# Utilizing Replay for AI-driven reimagining.
+# Use Replay to create AI covers
 
 Download [Replay](https://www.weights.com/replay)
 
-First, select your original audio.
+First **Select Audio** choose your original song
 
-**Model** Selects the newly trained model.
+**Model** Select the model that has just been trained
 
-Clicking on **Convert Audio**
+Then click **Convert Audio**
 
 ![](../../assets/images/rvc-10.webp)
 
-In the **View in Folder** file, you can find **Clean AI voices**.
+You can find **Clean AI Voice** in the **View in Folder** of the output file.
 
 ![](../../assets/images/rvc-11.webp)
 
-# The duet and vocal separation.
+# Separate accompaniment from vocals
 
 ### UVR
 
-If you are a 50-series GPU, please visit [GPU Acceleration Hangs on RTX 5070Ti (Driver 576.80, CUDA 12.9) · Issue #1889 · Anjok07/ultimatevocalremovergui](https://github.com/Anjok07/ultimatevocalremovergui/issues/1889) using [UVR_Patch_4_24_25_20_11_BETA_full_cuda_12.8](https://www.mediafire.com/file_premium/4jg10r9wa3tujav/UVR_Patch_4_24_25_20_11_BETA_full_cuda_12.8.zip/file).
+> If you are using a 50-series GPU, please go to [GPU Acceleration Hangs on RTX 5070Ti (Driver 576.80, CUDA 12.9) · Issue #1889 · Anjok07/ultimatevocalremovergui](https://github.com/Anjok07/ultimatevocalremovergui/issues/1889) and download the UVR patch suitable for 50-series GPUs via [UVR_Patch_4_24_25_20_11_BETA_full_cuda_12.8](https://www.mediafire.com/file_premium/4jg10r9wa3tujav/UVR_Patch_4_24_25_20_11_BETA_full_cuda_12.8.zip/file)
 
 Download [Anjok07/ultimatevocalremovergui: GUI for a Vocal Remover that uses Deep Neural Networks.](https://github.com/Anjok07/ultimatevocalremovergui)
 
-First, download the model and select the settings.
+First, download the model and select settings
 
 ![](../../assets/images/rvc-12.webp)
-选择 **Download Center** 下载 **VR  Arch** 的 **5_HP-Karaoke-UVR** 模型。然后回到首页
+Select **Download Center** to download the **VR Arch** model **5_HP-Karaoke-UVR**. Then return to the homepage
 ![](../../assets/images/rvc-13.webp)
 
-First, select the original audio from the input selection menu.
+First, select the original audio via **Select Input**
 
-Here’s the translation:  “Select the output folder via **Select Output**.”
+Then select the output folder via **Select Output**
 
-**VR Architecture** – Choose the Virtual Reality (VR) architecture.
+**CHOOSE PROCESS METHOD** Choose **VR Architecture**
 
-**CHOOSE VR MODEL** Select our recently downloaded **5_HP-Karaoke-UVR** model.
+**CHOOSE VR MODEL** Choose the **5_HP-Karaoke-UVR** model we just downloaded
 
-Select **GPU Conversion**
+Check **GPU Conversion**
 
-Clicking on **Start Processing**
+Then click **Start Processing**
 
 ![](../../assets/images/rvc-14.webp)
 
-The instrumental track is included as background music, and the vocal tracks are the primary focus.
+In the output folder, **Instrumental** is for instrumental accompaniment, **Vocals** is for vocals
 
 ![](../../assets/images/rvc-15.webp)
 
 ### MSST
 
-Download the [SUC-DriverOld/MSST-WebUI: A WebUI app for Music-Source-Separation-Training](https://github.com/SUC-DriverOld/MSST-WebUI) package. This application provides a web interface specifically designed for training music source separation models, and it integrates with UVR data.
+Download [SUC-DriverOld/MSST-WebUI: A WebUI app for Music-Source-Separation-Training and we packed UVR together!](https://github.com/SUC-DriverOld/MSST-WebUI)
 
-Double-click `go-webui.bat` to launch.
+Double-click `go-webui.bat` to run
 
 ![](../../assets/images/rvc-16.webp)
 
-First, install the model. The final output files for each model may vary.
+First, install the model. The final output file for each model may differ.
 
 ![](../../assets/images/rvc-17.webp)
 
-Then, the text is simply a translation of the meaning – it’s essentially about separating audio files into individual tracks. Following this, you will click **Input Audio Separation**. This process begins the conversion of audio.
+Then it's literal, click **Input Audio Separation** to start the conversion
 
 ![](../../assets/images/rvc-18.webp)

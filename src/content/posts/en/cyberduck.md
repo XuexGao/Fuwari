@@ -1,6 +1,6 @@
 ---
-title: "Cyberduck – A Simple and User-Friendly S3 File Browser"
-description: "Object storage is a highly versatile tool, however, how can it efficiently handle file uploads?"
+title: "Cyberduck - A Simple and Easy-to-Use S3 File Browser"
+description: "Object storage is a very useful thing, but how can we conveniently upload files?"
 published: 2025-08-31
 image: '../../assets/images/2025-08-31-03-39-46-image.webp'
 tags: [Cyberduck, 对象存储]
@@ -8,29 +8,29 @@ tags: [Cyberduck, 对象存储]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The author replaced their previous AList setup with Cyberduck, a cross-platform cloud browser that directly connects to Cloudflare R2 without needing local deployment. This change eliminated the need for file transfers through AList, reducing latency and improving efficiency by enabling direct S3 access. Cyberduck also supports SFTP for easy file transfers to home servers, bypassing complex panel setups.
 :::
 
-# Here’s the translation:  Press release summary.
+# Previous Context
 
-You may be aware of or unaware of my operation of a **API**, such as [AcoFork - RandomPic](https://pic.072103.xyz/).
+You may know or not know that I operate a **API**, such as [AcoFork - RandomPic](https://pic.072103.xyz/)
 
-The image data is stored in **Cloudflare R2**, which utilizes Cloudflare’s object storage service.
+Its images are stored in **Cloudflare R2**, which is Cloudflare's object storage service.
 
-The inventory of random images frequently requires expansion, and previously, I utilized [AList](https://alistgo.com/zh/). However, currently, I rely on [Cyberduck](https://cyberduck.io/).
+Random image libraries always need to be expanded; in the past, I would use [AList](https://alistgo.com/zh/), but now I use [Cyberduck](https://cyberduck.io/).
 
 # What is this?
 
-Cyberduck is a dual-platform (Windows & Mac) cloud storage browser that eliminates the need for deployment and avoids data transfer, acting as a front-end to connect your own object storage. It’s designed to be simple and user-friendly, with a visual interface similar to the one shown.
+[Cyberduck](https://cyberduck.io/) is a cloud storage browser compatible with both Windows and Mac. Compared to AList, it requires no deployment, and file transfers do not require relaying; it simply acts as a frontend to connect to your own object storage, offering a simple and user-friendly interface, as shown in the figure.
 
 ![](../../assets/images/2025-08-31-03-45-24-image.webp)
 
-You can map cloud storage to a local disk using sister software [Mountain Duck](https://mountainduck.io/).
+If you want to map cloud storage as a local disk, you can use the sister software [Mountain Duck](https://mountainduck.io/)
 
-# Here’s the translation:  What are the advantages?
+# Advantages?
 
-The API provides image statistics, eliminating the need for manual S3 API interaction to obtain the number of images.
+The API's image statistics allow me to no longer manually craft S3 API calls to retrieve the number of images—it comes built-in.
 
 ![](../../assets/images/2025-08-31-03-47-41-image.webp)
 
@@ -38,16 +38,16 @@ The API provides image statistics, eliminating the need for manual S3 API intera
 
 ---
 
-The file has been uploaded to AList without going through the family cloud.
+Uploading files no longer requires routing through AList on your home cloud.
 
 Previous link: I - AList - S3
 
-Current link: I – S3
+Current link: I - S3
 
-Here’s a professional translation of the text:  “This significantly reduces transmission time and enhances operational efficiency.”
+This significantly reduces transmission time and improves work efficiency.
 
 ---
 
-Beyond S3, direct SFTP transfer of files can now be utilized without requiring login to 1Panel and other panels.
+Not limited to S3, you can directly transfer files to a home server via SFTP without needing to log in to panels like 1Panel.
 
 ![](../../assets/images/2025-08-31-03-52-04-image.webp)

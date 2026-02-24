@@ -1,6 +1,6 @@
 ---
-title: "Bedroom Layout Remediation Record"
-description: "The impetus came from a sudden flash of insight, followed by…"
+title: "Bedroom Layout Renovation Record"
+description: "The cause was merely a sudden idea when I woke up in the middle of the night, and then..."
 category: "Record"
 draft: false
 image: ../../assets/images/37fc1d0b-533f-4905-a7ff-ab906fcb1860.webp
@@ -9,20 +9,20 @@ published: 2025-04-04
 tags:
 - 生活
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-The article recounts a previously messy and disorganized bedroom that the author decided to clean, initiating a transformation into a more organized space. The change was prompted by a spontaneous idea to tidy up, resulting in a visually striking image of the room’s state before and after the rearrangement.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The author’s messy bedroom was transformed into a neat and organized space after a spontaneous decision to tidy up in the morning. The before-and-after contrast highlights the dramatic improvement, showcasing a quick but effective home makeover. The post-remodel space now looks clean and orderly, with tidy wiring and a fresh appearance.
 :::
 
-# Introduction
+# Preface
 
-My bedroom used to be quite chaotic, with wires and cables strewn everywhere.
+My bedroom used to be like this, as you can see, very messy and with a chaotic wiring setup.
 
 ![](../../assets/images/0c47e9a6-1544-4410-94d4-d319ea12ca70.webp)
 
-# 契机
+# Opportunity
 
-This morning, I had a sudden idea to tidy up – and it turned into…
+This morning, I had a sudden idea upon waking up, thinking about whether or not I should organize things, and thus it became
 
 ![](../../assets/images/a4db38f0-5a54-4e6c-8392-2375d775f7c6.webp)
 
-It’s over!
+It's over~

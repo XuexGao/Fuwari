@@ -1,6 +1,6 @@
 ---
-title: "Master Rice AI, then reverse it!"
-description: "AnuNeko is a cat known for its playful and affectionate “hairy” behavior. In reality, it’s an AI model created by MiHoYo, capable of simulating a “hairy” expression – essentially, it’s a QQ bot designed to entertain its online friends."
+title: "Get to Know MiHoYo's AI, Then Reverse It!"
+description: "AnuNeko is an orange cat that lets out a \"huff\"... actually, AnuNeko is an AI large model created by the founder of miHoYo, which \"huffs.\" So, I made a QQBot for my group friends to play with."
 published: 2025-12-02
 image: ../../assets/images/anuneko.webp
 tags:
@@ -10,20 +10,20 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article demonstrates how to interact with the AnuNeko chatbot API using cURL commands, including sending messages, handling choice selections, and switching between cat models (e.g., Orange Cat or Exotic Shorthair). It also provides a NoneBot2 plugin for easier integration into chatbot systems. The author encourages users to play with the API and plugin for automated interactions with the cat-themed bot.
 :::
 
-# This is what.
-Here’s the translation:  This is a cat that emits a hiss (as depicted on the cover).
+# This is What
+This is an orange cat, and it will sneeze (see cover).
 
-You can visit [AnuNeko](https://anuneko.com/#/chat) – the cat lady.
+You can go to [AnuNeko](https://anuneko.com/#/chat) to play with cats.
 
-# 逆！
-okok，注意到登陆后的请求头中有 `x-token` 字段
+# No!
+OKOK, noticed that the request header after login contains `x-token` field
 ![](../../assets/images/anuneko-1.webp)
 
-手搓个请求发发，`data` 携带内容 
+Manually craft a request and send it, `data` carrying the content
 ```json
 curl --location 'https://anuneko.com/api/v1/msg/会话id/stream' \
 --header 'x-token: 账号Token' \
@@ -32,13 +32,13 @@ curl --location 'https://anuneko.com/api/v1/msg/会话id/stream' \
 --data '{"contents":["test"]}'
 ```
 
-通了
+Connected
 ![](../../assets/images/anuneko-2.webp)
 
-然后还有一种情况，在遇到Pick的时候，我们要发送要选择的回复编号
+Then there is another scenario: when encountering a Pick, we need to send the reply number of the selection we want to make.
 ![](../../assets/images/anuneko-3.webp)
 
-发个如图请求帮橘猫选择
+Send a request like the picture to help choose for the orange cat.
 ```
 curl --location 'https://anuneko.com/api/v1/msg/select-choice' \
 --header 'x-token: 你的Token' \
@@ -47,7 +47,7 @@ curl --location 'https://anuneko.com/api/v1/msg/select-choice' \
 --data '{"msg_id":"会话id","choice_idx":0或1}'
 ```
 
-还有还有，这有个橘猫和黑猫，如何切换一个会话的猫？
+Also, also, there's an orange cat and a black cat—how do you switch between cats in a session?
 ```
 curl --location 'https://anuneko.com/api/v1/user/select_model' \
 --header 'x-token: 你的Token' \
@@ -56,5 +56,5 @@ curl --location 'https://anuneko.com/api/v1/user/select_model' \
 --data '{"chat_id":"会话id","model":"Exotic Shorthair或Orange Cat"}'
 ```
 
-Here’s a professional translation of the text:  “I’ve created a plugin suitable for NoneBot2, feel free to explore it.”
-[AnuNeko_NoneBot2_Plugins/anuneko.py](https://github.com/afoim/AnuNeko_NoneBot2_Plugins/blob/main/anuneko.py) at main · afoim/AnuNeko_NoneBot2_Plugins]]
+Just wrote a plugin suitable for NoneBot2, have fun with it.
+[AnuNeko_NoneBot2_Plugins/anuneko.py at main · afoim/AnuNeko_NoneBot2_Plugins](https://github.com/afoim/AnuNeko_NoneBot2_Plugins/blob/main/anuneko.py)

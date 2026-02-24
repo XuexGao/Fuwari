@@ -1,6 +1,6 @@
 ---
-title: "Around the USTC browser JS verification bypass"
-description: "When downloading resources, USTC utilizes JavaScript to validate them. Are there methods to bypass the browser’s headless mode without using a headless browser?"
+title: "Bypassing USTC's Browser JS Verification"
+description: "USTC uses JS verification when downloading certain resources. Is there a way to bypass it without using headless browsers..."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/58e8e41a-0755-4e6a-ab1e-a9dbaa1042d5.webp
@@ -9,19 +9,19 @@ published: 2025-04-04
 tags:
 - USTC
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+USTC's mirror site blocks non-JS clients like wget by requiring a JavaScript-triggered cookie containing the user’s IP. This cookie can be manually set and sent with wget, but additional headers (like User-Agent) may be needed to bypass detection. The site’s security is based on client-side JS execution, not server-side checks, making it possible to bypass with proper headers and cookies.
 :::
 
-# Introduction
+# Preface
 
-When downloading files similar to the one provided at [https://mirrors.ustc.edu.cn/debian-cd/12.10.0/amd64/iso-dvd/debian-12.10.0-amd64-DVD-1.iso], USTC is likely to present you with a similar error message: "Your browser's page is being verified."
+When we go to download large files such as https://mirrors.ustc.edu.cn/debian-cd/12.10.0/amd64/iso-dvd/debian-12.10.0-amd64-DVD-1.iso, USTC will most likely show you a page like: Verifying your browser.
 
 ![](../../assets/images/58e8e41a-0755-4e6a-ab1e-a9dbaa1042d5.webp)
 
-If you are using a web browser, such as Chrome or Firefox, you will typically see the file download progress within a few seconds.
+If you are using a browser, such as Chrome, FireFox, etc., you will be able to see the file starting to download in a few seconds.
 
-However, if you are using tools like wget that do not support JavaScript, you may be blocked by the website server. **ERROR 403: Forbidden.**
+However, if you are downloading such files using tools without JS capabilities, like wget, you will be rejected by the website server: **ERROR 403: Forbidden.**
 
 ```shell
 ~# wget https://mirrors.ustc.edu.cn/debian-cd/12.10.0/amd64/iso-dvd/debian-12.10.0-amd64-DVD-1.iso
@@ -32,13 +32,13 @@ HTTP request sent, awaiting response... 403 Forbidden
 2025-04-04 14:44:14 ERROR 403: Forbidden.
 ```
 
-In the past, whenever I needed to download these files, I would use a browser to download them. However, today when I was complaining to a friend about this, he told me he circumvented it.
+Previously, if I wanted to download such files, I would use my browser to download them, but today, when I complained to my friend about this, he told me he bypassed it.
 
-I began to investigate further, and I discovered that it was actually nothing like JavaScript validation.
+So I decided to dig deeper, and then I found out it wasn't actually any JS validation at all!!!
 
-# 分析
+# Analysis
 
-Please first open these links and then query the webpage source code.
+Let's first open this type of link, then query the webpage source code
 
 ```html
 		<h1>Verifying your browser</h1>
@@ -55,19 +55,19 @@ Please first open these links and then query the webpage source code.
 		</script>
 ```
 
-You will discover that the code is remarkably concise and elegant. If your browser supports JavaScript, the browser will write the string `addr=2409:8a30:320:6480:1c6e:aab8:b415:c4fa` to your cookie, waiting for two seconds before reloading the page. Subsequently, the website will detect this cookie and allow you to successfully download it. Conversely, if your browser does not support JavaScript, it will trigger a 403 error, preventing the download.
+You will find that the code is actually very concise. If your browser supports JavaScript, the browser will write `addr=2409:8a30:320:6480:1c6e:aab8:b415:c4fa` into your cookie, then reload the page after two seconds. The website will then detect that you are carrying this cookie and allow you to download successfully. Conversely, if your browser does not support JavaScript, it will trigger a 403 error, preventing you from downloading.
 
-What is this?
+So what exactly is this `addr=2409:8a30:320:6480:1c6e:aab8:b415:c4fa`?
 
-We noted that a message was displayed on the webpage indicating an IP address of 2409:8a30:320:6480:1c6e:aab8:b415:c4fa. This suggests that the website is verifying your browser's identity through JavaScript by sending your IP address to cookies.
+We noticed that the webpage also displays the line: `Your IP address is 2409:8a30:320:6480:1c6e:aab8:b415:c4fa`. Clearly, the website is verifying your browser by checking whether you can use JavaScript to write your IP address into your cookie.
 
-Here’s a professional translation:  “If you consistently carry this cookie, you may bypass JavaScript validation.”
+Then, thinking about it differently, if I just carry this cookie, can I bypass the JS verification?
 
-Let’s try it.
+Let's give it a try.
 
-# Real-world experience.
+# Practical Combat
 
-First, we utilize the default wget command. The response indicates a 403 error.
+First, we use the default wget. 403
 
 ```shell
 root@AcoFork-NAS:~# wget https://mirrors.ustc.edu.cn/debian-cd/12.10.0/amd64/iso-dvd/debian-12.10.0-amd64-DVD-1.iso
@@ -78,9 +78,9 @@ HTTP request sent, awaiting response... 403 Forbidden
 2025-04-04 14:55:00 ERROR 403: Forbidden.
 ```
 
-Let’s bring cookies on board, but first we need to obtain the IP address received from our website.
+Then let's carry the Cookie, but first we need to obtain the access IP that the website has acquired.
 
-Here’s the translation:  “This is straightforward. We will obtain the webpage source code using curl and observe the IP address associated with our access, which is `2409:8a30:320:6480::458`”.
+This is simple; we first use curl to obtain the webpage source code. We can see that the IP address we accessed is: `2409:8a30:320:6480::458`
 
 ```html
 root@AcoFork-NAS:~# curl https://mirrors.ustc.edu.cn/dbian-cd/12.10.0/amd64/iso-dvd/debian-12.10.0-amd64-DVD-1.iso                                                                 <!DOCTYPE html>
@@ -106,7 +106,7 @@ root@AcoFork-NAS:~# curl https://mirrors.ustc.edu.cn/dbian-cd/12.10.0/amd64/iso-
 </html>
 ```
 
-Let’s retrieve the cookies: `addr=2409:8a30:320:6480::458` again, and attempt a wget. However, we still encounter an error, and we are considering a possible workaround involving spoofing the UA.
+Next, let's carry the cookie: `addr=2409:8a30:320:6480::458` and try wget again. Unfortunately, it still fails. After some thought, we might need to spoof the UA.
 
 ```shell
 root@AcoFork-NAS:~# wget --header="Cookie: addr=2409:8a30:320:6480::458" \
@@ -118,7 +118,7 @@ HTTP request sent, awaiting response... 403 Forbidden
 2025-04-04 14:57:58 ERROR 403: Forbidden.
 ```
 
-Following this, we’ve gathered the necessary cookies and are attempting to fabricate a Chrome browser’s UA profile. It appears that the process has been successful.
+Then, we carry the necessary cookies and forge a Chrome browser's UA. As can be seen, the download has been successfully completed.
 
 ```shell
 root@AcoFork-NAS:~# wget --header="Cookie: addr=2409:8a30:320:6480::458" \

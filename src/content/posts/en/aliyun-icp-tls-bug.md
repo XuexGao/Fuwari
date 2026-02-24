@@ -1,81 +1,81 @@
 ---
-title: "Alibaba Cloud Gateway DPI Bypass Vulnerability: TLS Client Hello Fragmentation Escape"
-description: "Analysis of DPI blocking bypass vulnerabilities via TLS Client Hello fragmentation escape."
+title: "AliCloud Gateway DPI Bypass Vulnerability Analysis Report: TLS Client Hello Fragmentation Evasion"
+description: ""
 published: 2026-02-11
 image: ""
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This report reveals a critical DPI bypass flaw in Alibaba Cloud gateways: when TLS Client Hello packets exceed MTU and are fragmented, the DPI engine fails to parse them and defaults to "fail-open," allowing traffic through. Modern browsers and tools using post-quantum crypto (like Kyber768) generate oversized Client Hellos that trigger fragmentation, thus evading SNI-based blocking. The vulnerability renders current regulatory blocking ineffective against modern HTTPS traffic, requiring DPI upgrades to support TCP stream reassembly.
 :::
 
 > [!caution]
-Here’s the translation:  “The bug was reported, but no one addressed it. It was publicly disclosed, and a rollback was initiated.”
+> [[X:content]]I reported the bug, but nobody cares. I'm posting it publicly; delete this if it's inappropriate.
 
-# Here’s the translation of the text:  “Analysis Report: DPI Blocking and Bypass Vulnerabilities in TLS Client Hello Fragmentation Escape”
+# Analysis Report on the DPI Bypass Vulnerability in Alibaba Cloud Gateway: TLS Client Hello Fragmentation Evasion
 
-**Target Assets**: `0721for.me` (Unregistered Domain)
-**IP Analysis**: `39.107.95.178` (Alibaba)
-**Vulnerability Type**: DPI Depth Packet Inspection Leak Detection / Fail-Open (Failure to Allow)
-Here’s the translation:  **Core Issue:** The core issue is that the DPI Engine fails to correctly process TCP Split-Timed packets within TLS Client Hello packages.**
+**Target Asset**: `0721for.me` (Unregistered domain)
+**Parse IP**: `39.107.95.178` (Alibaba Cloud)
+**Type of Vulnerability**: DPI Deep Packet Inspection Evasion / Fail-Open (Fail Open)
+**Core Cause**: The firewall's DPI engine is unable to correctly process TCP fragmented TLS Client Hello packets
 
-## Here’s the translation:  **Conclusion Summary**
+## 1. Conclusion Summary
 
-Analysis of deep packet inspection reveals significant flaws in the underlying implementation of SNI blocking strategies for unregistered domain names. **TLS** `Client Hello` **Data Packet Size Exceeding MTU (1500 bytes) triggers TCP fragmentation, leading to DPI engine choosing direct "pass-through" when unable to reassemble the packet or timeout during parsing.**
+After deep packet analysis, it was found that Alibaba Cloud Gateway's SNI blocking policy for unregistered domains has a serious underlying implementation flaw. **When TLS** `Client Hello` **packets exceed the Ethernet MTU (1500 bytes) and trigger TCP fragmentation, the DPI engine will choose to directly "allow" the traffic** due to its inability to reassemble packets or timeout during parsing.
 
-With the widespread adoption of modern web browsers (Chrome/Firefox) and new tools (Curl), the Client Hello package size has significantly increased, reaching up to 1800+ bytes. This phenomenon allows for natural bypass of regulatory restrictions, while older clients or requests with manual downgrades are often intercepted.
+With modern browsers (Chrome/Firefox) and new tools (Curl) defaulting to **Post-Quantum Cryptography (PQC, X25519Kyber768)**, the size of Client Hello packets has generally ballooned to over 1800 bytes. This causes normal modern HTTPS traffic to naturally bypass regulatory blocking, while older clients or manually downgraded requests are instead intercepted.
 
-## Here’s the translation:  “Comparative analysis and evidence chain comparison.”
+## 2. Phenomenon Comparison and Evidence Chain
 
-We analyzed a range of client configurations and found that the resulting data captures a perfect binary opposition: **All split files were bypassed, all non-split files were intercepted**.
+We compared packet capture data under various client configurations, and the results exhibited a perfect binary opposition: **All fragmented packets are bypassed, and all non-fragmented packets are intercepted**.
 
-| Client environment                 | Key characteristics of TLS                   | Package size (approximate) | TCP Segmentation  | Result              | Analysis of causes                     |
+| Client environment                 | TLS Key Features                   | Package size (approx) | TCP fragmentation  | Result              | Cause Analysis                     |
 | --------------------- | -------------------------- | ------------ | ------- | --------------- | ------------------------ |
-| Chrome / Firefox  | Default enabled PQC (Kyber768)        | 1900 bytes  | ✅ Yes | bypass (200 OK) | Trigger split failed, DPI parsing failure resulted in release.     |
-| Curl (Linux New Version)   | Default enabled PQC (Kyber768)        | 1800 bytes  | ✅ Yes | bypass (200 OK) | Same as before.                       |
-| Curl (TLS 1.2) | Covering 1.2 with PQC Key Share    | 2400 bytes  | ✅ Yes | bypass (200 OK) | With PQC backing, the version number can be disguised.     |
-| Manual Curl       | C: curves X25519 (Disable PQC) | 300 bytes   | ❌ No     | Blocking (RST)    | Complete package, successful extraction of SNI and interception.    |
-| Curl (Windows)    | Old/Schannel (no PQC)        | 450 bytes   | ❌ No     | Blocking (RST)    | Same as before.                       |
-| Firefox (Mandatory 1.2)  | Pure TLS 1.2 (no KeyShare)     | 180 bytes   | ❌ No     | Blocking (RST)    | Small TLS 1.2 package, easy DPI parsing interception. |
+| **rowser: Chrome / Firefox**  | Default enable PQC (Kyber768)        | ~1900 bytes  | ✅ **Yes** | Bypass (200 OK) | Packet too large triggers fragmentation, DPI parsing failure leads to allow     |
+| Curl (Linux New Version)   | Default enable PQC (Kyber768)        | ~1800 bytes  | ✅ **Yes** | Bypass (200 OK) | Same as above                       |
+| Curl (TLS 1.2 spoofing) | Spoofing 1.2 but with PQC Key Share    | ~2400 bytes  | ✅ **Yes** | Bypass (200 OK) | As long as PQC supports large packages, even version number spoofing can get through     |
+| `url (Manually Specified)`       | `--curves X25519` (Disable PQC) | ~300 bytes   | ❌ No     | Intercept (RST)    | Packet is complete, DPI successfully extracted SNI and intercepted    |
+| Curl (Windows)    | Legacy/Schannel (without PQC)        | ~450 bytes   | ❌ No     | Intercept (RST)    | Same as above                       |
+| Firefox (Required 1.2)  | Pure TLS 1.2 (without KeyShare)     | ~180 bytes   | ❌ No     | Intercept (RST)    | Pure TLS 1.2 packets are extremely small, easily parsed and intercepted by DPI |
 
-## Technical detail analysis.
+## 3. Technical Details Analysis
 
-### Here’s the translation of “Core Mechanism: PQC is causing a meltdown with MTU” into professional English:  “The PQC protocol is triggering a critical failure, resulting in a massive MTU (Maximum Transmission Unit) mismatch.”
+### 3.1 Core Mechanism: PQC Overflows MTU
 
-- **PQC **：The TLS 1.3 protocol introduced support for post-quantum cryptography algorithms. The widely used `X25519MLKEM768` (Kyber768) key exchange relies on the `Client Hello` extension and requires approximately **1200**(bytes) of public key data to be carried within this context.
-- **Significant increase in package sizes** : The addition of standard extensions such as SNI, ALPN, and signature algorithms typically results in a length of approximately 1800 to 2500 bytes for the entire `Client Hello`.
-- **TCP Segmentation** : Standard Ethernet MTU (Maximum Transmission Unit Size) is set to 1500 bytes. Any TLS handshake packet exceeding this size must be split into multiple TCP segments and transmitted across the network protocol stack.
+- **Introduction of PQC**: TLS 1.3 introduced support for post-quantum cryptographic algorithms. Mainstream `X25519MLKEM768` (Kyber768) key exchange requires carrying approximately **1200 bytes** of public key data in the `key_share` extension within the `Client Hello`.
+- **Packet size explosion**: With other common extensions (SNI, ALPN, Signature Algorithms, etc.), the entire `Client Hello` typically ranges in length from **1800 - 2500 bytes**.
+- **TCP fragmentation**: The standard Ethernet MTU is 1500 bytes. TLS handshake packets exceeding this size must be split into multiple TCP segments by the network protocol stack for transmission.
 
-### DPI defect: Failure to Open
+### 3.2 DPI Defect: Fail-Open
 
-- Here’s the translation:  “Analysis of the DPI engine on the Alibaba Cloud gateway appears to be only monitoring the first TCP data packet containing a TLS handshake.”
-- **Truncated Failure**：For Client Hello segments of a split, the SNI extension typically resides in the first packet. However, due to the length specified in the TLS Record Layer's `Length` field (such as 1800), this length exceeds the actual length received for the first split segment (e.g., 1400). DPI engines will interpret this as an incomplete or unparseable message.
-- **Strategy Selection** is implemented to mitigate the cost of high-throughput TCP stream reassembly and false positive detections. DPI utilizes a “Fail-Open” strategy, defined as **“Don’t bother”**.
+- **Analysis Logic**: The DPI engine of Alibaba Cloud Gateway appears to **only detect the first TCP packet of the TLS handshake**.
+- **Truncation Failure**: For fragmented Client Hello messages, although the SNI extension is typically present in the first packet, because the TLS Record Layer's `Length` field indicates a length (e.g., 1800) much greater than the actual received first fragment length (e.g., 1400), the DPI engine will determine the message as incomplete or unparsable.
+- **Strategy Selection**: To avoid expensive TCP stream reassembly under high concurrency, or to avoid false positives, DPI adopts the **Fail-Open** strategy, i.e., **"Don't care if you can't understand it"**.
 
-### Here’s the translation of “3.3 Key Capture Evidence” into professional English:  “Key capture evidence from Wireshark frames.”
+### 3.3 Key Packet Capture Evidence (Wireshark Frames)
 
-1. **Frame 4251 (Firefox - Bypass)**:
+1. **Frame 4251 (Firefox - Bypass)**
 
-- `Length: 1890` The provided text is a length measurement, indicating the total number of characters in the input. It’s a simple numerical value and doesn't require translation.
-- `Reassembled TCP Segments`
+- `Length: 1890`
+- `[2 Reassembled TCP Segments`
 - `Extension: key_share ... X25519MLKEM768`
 
-1. **Frame 964 (Firefox  TLS 1.2 - )**: This refers to a security issue where Firefox is blocking TLS 1.2, which is a secure encryption protocol. It’s being implemented as a mandatory measure to protect against potential vulnerabilities and attacks.
+1. **Frame 964 (Firefox Enforces TLS 1.2 - Intercept)**
 
 - `Length: 186`
-- No PQC is available.
-- Immediate single-package delivery, please.
+- No `key_share`, no PQC.
+- Send single packet, immediate RST.
 
-1. **Frame 568 (Pseudo-TLS 1.2 - Bypass)**:
+1. **Frame 568 (TLS 1.2 Spoofing - Bypass)**:
 
-- TLS 1.2 includes the PQC Key Share functionality.
-- The process of segmentation is being circumvented.
+- `Version: TLS 1.2` but includes PQC Key Share.
+- `Length: 2441`，chunking -> bypassed.
 
-## Harm and recommendations
+## 4. Hazards and Recommendations
 
-- **Detrimental Effects**：Current regulatory countermeasures have rendered almost all modern traffic analysis and blocking strategies ineffective, primarily focusing on intercepting older devices or configurations designed for specific bots. This represents a largely illusory solution.
-- **Recommendations**
+- **Harm**: Current regulatory blocking strategies are almost entirely ineffective against modern traffic (mainstream browsers, new tools), capable of blocking only outdated devices or specific configurations of crawlers, rendering them virtually useless.
+- **Recommendation**:
 
-1. **Upgrade DPI Engine** : It is essential that the engine supports TCP stream reassembly, enabling the reconstruction and parsing of TLS client hello packets across multiple connections.
-2. **Refine Parsing Logic** : Even without re-segmentation, attempting to extract SNI (SNI typically appears at the front) may be susceptible to padding obfuscation. The most reliable approach remains stream reassembly.
+1. **Upgrade DPI Engine**: Must support TCP stream reassembly to ensure the ability to reconstruct and parse TLS Client Hello across packets.
+2. **Optimize parsing logic**: Even without reassembly, one may attempt to extract SNI (SNI is typically early in the packet) within the first fragment, but this may be easily bypassed by padding confusion. The most reliable approach remains packet reassembly.

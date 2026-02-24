@@ -1,6 +1,6 @@
 ---
-title: "Flying Horse NAS Play Experience"
-description: "The Fly-Cloud NAS system is a modern, open-source network attached storage (NAS) solution. In China, it’s considered a top-tier platform and recently, the demand for Docker software has become comprehensive and user-friendly, with the creator also utilizing it."
+title: "Flying Bull NAS Experience"
+description: "The Feinu NAS system is a modern open-source NAS system. Movie scraping ranks among the top in China, and its Docker software, which is essential, is also feature-rich and easy to use. The blogger personally uses it."
 category: "Experience"
 draft: false
 image: ../../assets/images/QmUBuX9qmsNP1NHeEeUmuPNdS5ctvk4LchcSsFARDC4vZJ.webp
@@ -9,47 +9,47 @@ published: 2024-10-14
 tags:
 - 飞牛NAS
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The article highlights key features of a FlyNas NAS, including fast media scraping via AutoBangumi using TMDB/IMDB, photo backup via mobile apps with multi-user support, and detailed setup notes. Important setup tips cover disk partitioning, app permissions, Debian 12 OS, SSH key login, and network card compatibility. Storage modes like Basic and Linear are explained with their pros and cons for expansion, redundancy, and flexibility.
 :::
 
-### Please translate “” to professional English.
+### The things that attract me
 
-1. 影视刮削：飞快，薄纱Plex几条街。通过[AutoBangumi](/autobangumi)可以完美自动追番+刮削一条龙服务。偶尔会有不准，但可以手动匹配，数据源来自[TMDB](https://www.themoviedb.org/)和[IMDB](https://www.imdb.com/)
+1. Media scraping: Fast, lightweight Plex, just a few blocks away. Through [AutoBangumi](/autobangumi), you can enjoy a one-stop automatic anime tracking and scraping service. Occasionally, it may be inaccurate, but manual matching is available. The data sources come from [TMDB](https://www.themoviedb.org/) and [IMDB](https://www.imdb.com/).
    ![QmbNXd4FJ8FM8mwkKxJNdBoNbvhawJ2HdSvW5tFUt3o4ub.webp](../../assets/images/f1bd7089efdf00097d5474ef967a62dcfca42e98.webp)
 
-2. 相册：可以通过手机APP自动备份，支持仅备份图片，可以多用户使用，存储互不干扰，也可以设置要共享的图片
+2. Album: Can be automatically backed up via the mobile app, supports backing up only images, allows multi-user usage with independent storage, and also allows setting which images to share.
    ![QmeLJ7in4xcokPWUgkkSobDLUTrFrXep2o38qUXQ1njQR9.webp](../../assets/images/2f9981f8397cc1278807ed28f8a2e15954868fec.webp)
 
-### 注意事项
+### [[X:content]]
 
-1. 飞牛NAS在安装的时候会叫你选择安装盘，然后会将安装盘的一部分空间（默认为64GB）作为系统分区，其余空间可用于创建存储空间（但是系统盘不能和别的盘组存储池，只能单独建存储池） 
+1. When installing Feinu NAS, you will be prompted to select an installation disk, and a portion of the installation disk's space (defaulting to 64GB) will be designated as the system partition, while the remaining space can be used to create storage space (however, the system disk cannot be combined with other disks to form a storage pool and must be used to create a storage pool independently).
    ![QmNfRbvHu1fuYoincACcP2MG4yV4pgRni3rb4Y9J7uw4FW.webp](../../assets/images/6403ef19d941abdc93d8c7da01364a8983c98109.webp)
 
-2. 应用商店安装的软件需要先授予目录访问权限应用才能读取目录（无论是原生还是Docker应用）
+2. Apps installed from the app store require directory access permissions before they can read directories (whether native or Docker apps).
    ![QmP4unAVra1zy7gkjEzSCYEDAJMMe1BVWPKoVyjYv8b9Ho.webp](../../assets/images/79af3b25d8b677b2718c953c0d431ead2f137e1d.webp)
 
-3. 发行版为Debian 12。根目录为系统分区的空间，/vol1 为存储空间1的空间 /vol2 为存储空间2的空间。推荐使用[RaiDrive](https://onani.cn/RaiDrive)或[SSHFS](/SSHFS)挂载Linux目录到Windows
+3. The distribution is Debian 12. The root directory corresponds to the space of the system partition, /vol1 corresponds to the space of storage volume 1, and /vol2 corresponds to the space of storage volume 2. It is recommended to mount Linux directories to Windows using [RaiDrive](https://onani.cn/RaiDrive) or [SSHFS](/SSHFS).
    ![QmWMQHNpJUUPg9B1Hdw2zmwLx9q6bcS52nUFiB3P9iYvU9.webp](../../assets/images/d4ec6f87893f4af5d7eedb2e2a19a784fd6c6f92.webp)
 
-4. SSH需要自己开，账密为NAS管理员账密，建议登上之后改为仅密钥登录，参见：[设置 SSH 通过密钥登录](https://www.runoob.com/w3cnote/set-ssh-login-key.html)
+4. SSH needs to be enabled manually, using the NAS administrator's credentials. It is recommended to switch to key-based login after logging in, see: [SSH](https://www.runoob.com/w3cnote/set-ssh-login-key.html)
    ![QmTk3va2NCbYTcVewVjuqjGx6MwMwiUnManrNwxvEq4SBR.webp](../../assets/images/9f92130465ab62e912b7404266febc7212e2125b.webp)
 
-5. Network card testing
+5. Each network card test
 
-   | Name                         | Type  | Brand          | Is it free of pest control?       |
+   | Name                         | Type  | Brand          | Plug and Play       |
    |:--------------------------:|:---:|:-----------:|:----------:|
-   | Realtek GBE Family (r8168) | Cable  | Realtek | No, you need to install drivers yourself. |
-   | Realtek 8852BE             | Wireless  | Realtek | No, you need to install drivers yourself. |
-   | Intel AX3160               | Wireless  | Intel  | Yes.          |
-   | USB wired network card                    | Cable  | Realtek | Yes.          |
+   | Realtek GBE Family (r8168) | Cable  | Realtek (Ruiyu) | No, you need to install the driver yourself |
+   | Realtek 8852BE             | Wireless  | Realtek (Ruiyu) | No, you need to install the driver yourself |
+   | Intel AC3160               | Wireless  | Intel (Intel)  | Yes          |
+   | USB Wired Network Card                    | Cable  | Realtek (Ruiyu) | Yes          |
 
-6. Here’s the translation:  Different storage modes differ significantly.
+6. Differences among various storage modes
 
-   | Pattern     | Effect                                   | Can be enlarged? | Can be changed? | Redundancy  | Can be heated? | Can storage mode be modified? |
+   | Mode     | Function                                   | Can it be expanded? | Can the disk be replaced? | Disaster Recovery  | Can it be hot standby | Can the storage mode be modified? |
    |:------:|:------------------------------------:|:-----:|:-----:|:---:|:-----:|:---------:|
-   | Basic  | A portion or all of the physical hard drive can be used as a storage pool, it cannot be expanded, and only a single disk configuration can be created with this mode. | No.     | No.     | No   | No.     | Yes, it can be RAID. |
-   | Linear | A or more physical hard drive components or the entire unit as a storage pool        | Yes.     | No.     | No.   | No.     | No.         |
-   | RAID class  | Use search engines                       | Untested   | Untested   | Untested | Untested   | Untested       |
+   | Basic  | Use a portion or the entire physical hard drive as a storage pool; not expandable, and can only be created with a single disk. | No     | No     | None   | No     | Yes, convertible to RAID |
+   | Linear | Partition one or more physical hard drives into a storage pool that is scalable        | Yes     | No     | None   | No     | No         |
+   | RAID type  | Search using your own search engine for more details                       | Not tested   | Not tested   | Not tested | Not tested   | Not tested       |
 
-7. Nas Thunder Internal Testing Code: ThunderBull Pass
+7. NAS Thunder Internal Test Code: Xunlei Niutong

@@ -1,7 +1,7 @@
 ---
-title: "Netlify vs Vercel: The Comparison"
-description: "Using Netlify for website building is no longer a fantasy!"
-category: "Writing"
+title: "Netlify, Vercel Reverse Proxy Websites"
+description: "Use Netlify, and building a website with home broadband is no longer a dream!"
+category: "Reflections"
 draft: false
 image: ../../assets/images/nvp.webp
 lang: en
@@ -10,19 +10,19 @@ tags:
   - Netlify
   - Vercel
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article explains how to use Netlify to proxy IPv6-only home broadband sites to IPv4 via a reverse proxy, enabling public access. It also covers a similar method using Vercel, though Vercel currently doesn't support IPv6 proxying. Both setups require domain binding and can be used for general reverse proxying, with Netlify being the preferred choice for IPv6 scenarios.
 :::
 
-# The core principles.
+# Principle and Approach
 
-Currently, most residential addresses are unavailable via IPv4. However, we can obtain IPv6 through Netlify, enabling all users to access our site. This also serves as a general reverse DNS tutorial. The article further details the general reverse DNS tutorial for Vercel, but this technology is currently not supported for IPv6 in 2025, only allowing for reverse DNS protection for small-scale websites like ToT
-# Formal commencement.
+At this stage, most home broadband connections do not receive public IPv4 addresses, but they can obtain public IPv6 addresses. By using Netlify to set up a reverse proxy from IPv6 to IPv4, everyone can access your site. This is also a general reverse proxy tutorial for Netlify. This article also teaches a general reverse proxy tutorial for Vercel, but as of 2025, Vercel still does not support IPv6, so it can only be used to proxy sites like "Little Yellow Station" (ToT).
+# Formally begin
 
-## Netlify is a platform for hosting static websites and web applications. It offers features like continuous deployment, serverless functions, and domain management, simplifying the process of deploying and managing online content.
+## Netlify Section
 
-Please go to [https://app.netlify.com/](https://app.netlify.com/) and register an account. (Note: It's recommended to use Google accounts for registration, as other methods may require verification and activation, which can be cumbersome.)
-Next, create a new repository on GitHub and establish a new directory structure with a `netlify.toml`(https://github.com/settings/toml). Within this directory, configure the Netlify settings using the `netlify.toml`(https://github.com/settings/toml) file.
+First, go to https://app.netlify.com/ to register an account. (Note! It's best to register using a Google email, as registering with other methods may result in your account needing verification or activation, which can be very troublesome.)
+Next, create a new repository on GitHub and create a `netlify.toml` file in the root directory. Write the following content in it:
 
 ```toml
 [[redirects]]
@@ -32,28 +32,28 @@ Next, create a new repository on GitHub and establish a new directory structure 
   force = true
 ```
 
-Please note that a trailing hyphen after the port number is mandatory.
-Here’s a professional translation of the text:  “The [Home] v6 website recommends pairing DDNS (Dynamic DNS) with the service.”
-Next, return to [https://app.netlify.com/create a new project, import your newly created GitHub project, and deploy it].
-Please finalize your domain registration.
+Note: Do not omit the slash after the port!
+Home broadband v6 website is recommended to be used with DDNS.
+Next, go back to https://app.netlify.com/ to create a new project, import the GitHub project you just created, and deploy it.
+Finally, bind your domain to complete!
 
-## Vercel’s platform provides a robust and scalable infrastructure for hosting web applications, offering features like CI/CD pipelines, serverless functions, and automated deployments. It streamlines the development process by enabling rapid iteration and efficient scaling of applications.
+## Vercel article
 
-Please visit [https://vercel.com/](https://vercel.com/) to register and log in to your account.
-To install Node.js, we require npm.
+First, go to https://vercel.com/ to register and log in to your account.
+When installing Node.js on a computer, we need to use npm.
 Install Vercel CLI
 
 ```
 npm i -g vercel
 ```
 
-Log into Vercel CLI.
+Log in to Vercel CLI
 
 ```
 vercel login
 ```
 
-Create a folder on your desktop and name it randomly. Then, within that folder, create a JSON file with a randomly assigned name. The file should contain the data you wish to store. **Note: Currently, Vercel does not support IPv6 reversal!**
+Find a location (such as your desktop) to create a folder with any name you choose, then create a .json file within it with any name you prefer, and write into it. **Note that Vercel currently does NOT support reverse proxying IPv6!!!**
 
 ```json
 {
@@ -64,10 +64,10 @@ Create a folder on your desktop and name it randomly. Then, within that folder, 
 }
 ```
 
-Then deploy.
+Then deploy
 
 ```
 verceL -A 你随意命名的.json --prod
 ```
 
-Please finalize your domain registration.
+Finally, bind your domain to complete!

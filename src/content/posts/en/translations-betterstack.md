@@ -1,6 +1,6 @@
 ---
-title: "BetterStack’s state page translation."
-description: "I find myself with idle time and discover BetterStack’s status page, encountering both Chinese and English translations. I'm tired of it all and want to fully translate it into Mandarin."
+title: "I have localized the BetterStack status page"
+description: "[[X:content]]When I had nothing better to do, I opened the status page of BetterStack and found it switching between Chinese and English—it was unbearable! I’ve fully localized it!"
 published: 2025-08-28
 image: '../../assets/images/2025-08-28-18-49-56-image.webp'
 tags: [BetterStack]
@@ -8,31 +8,31 @@ tags: [BetterStack]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article discusses BetterStack’s localization efforts, highlighting the challenges of translating dates and times in Chinese due to the platform's lack of consideration for local user preferences. It details specific translations issues – using “” and “” without suffixes, and directly writing “” – and explains how BetterStack uses a misleading time zone abbreviation (CST) and employs hardcoded solutions for these inconsistencies.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+You can access the Chinese version of BetterStack’s status page via [https://ss.2x.nz](https://ss.2x.nz) or through the “Status” link in the top navigation. To translate, navigate to your status page’s “Translations” section in BetterStack’s dashboard. Due to BetterStack’s lack of support for Chinese users, some terms like “day,” “year,” and “UTC+8” require hardcoded fixes to avoid ambiguity.
 :::
 
-# Rapid overview.
+# At a glance
 
-Please click on [](https://ss.2x.nz) or the status bar at the top to view the Chinese BetterStack status panel.
+Now click [here](https://ss.2x.nz) or the `Status` in the top navigation bar to view the Chinese BetterStack status panel.
 
-# The localization process.
+# Localization process
 
-The navigation bar for the Left Sidebar, which leads to Status Pages, will take you to your Status Panel domain and then to Translations.
+Go to `Translations` in your status panel domain under the `Status pages` section in the left navigation bar of [BetterStack](https://uptime.betterstack.com/) to start translating.
 
 ![](../../assets/images/2025-08-28-18-52-03-image.webp)
 
-# A few little tunes.
+# Some minor incidents
 
-Because BetterStack has not considered Chinese users at all, the translations for `` and `` are absent with no suffixes. However, we can hardcode this information.
+Because BetterStack completely disregards Chinese users, the translations for `` and `` lack suffixes, but we can hardcode them.
 
 ![](../../assets/images/2025-08-28-18-57-52-image.webp)
 
-Here’s the translation:  “Regarding `Moon`, it is simply written that way.”
+But for `moon`, write it directly like this
 
 ![](../../assets/images/2025-08-28-18-58-30-image.webp)
 
-BetterStack’s approach utilizes UTC+8, but it incorrectly applies `UTC+8`. We can also leverage pre-defined time zones for a more robust solution.
+BetterStack will naively use `CST` for `UTC+8`. This is an ambiguous timezone abbreviation, and we can also resolve it with hardcoding.
 
 ![](../../assets/images/2025-08-28-18-56-39-image.webp)
 

@@ -1,6 +1,6 @@
 ---
-title: "Strictly Translated: “Is QQ WeChat not private enough? Build your own chat server!”"
-description: "Through Synapse, users can directly chat with them via Element and other software on their server."
+title: "Not satisfied with the privacy of QQ and WeChat? Build your own chat server!"
+description: "By setting up your own Synapse, users can chat directly on your server via software like Element."
 category: "Tutorial"
 published: 2025-08-02
 image: '../../assets/images/2025-08-02-17-20-32-image.webp'
@@ -8,59 +8,59 @@ tags: [Matrix, Synapse]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-The Synapse system requires the installation of 1Panel panel, which is a tool for deploying and managing Synapse servers. The process involves installing and configuring `synapse` as a database user with the PostgreSQL database named `synapse`.  Users must create a database named `synapse` with the appropriate username (default: `synapse`) and password.  The configuration includes setting the server name, public URL, PID file, and enabling federation. The system then creates a storage volume named `synapse-data/_data`, where the `homeserver.yaml` file is edited to configure the server's settings.  The user must set the owner of the database to `synapse`.  The server is configured with PostgreSQL parameters such as user, password, database name, host, and cp_min/max. The log file is configured for logging.  Finally, email configuration is enabled, including SMTP verification, token generation, and registration requirements.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide walks through deploying Synapse (Matrix homeserver) using 1Panel, including PostgreSQL setup, Synapse configuration via `homeserver.yaml`, and admin account creation. It also covers enabling features like email verification, OAuth (GitHub), and rate limiting. After setup, users can join via https://app.element.io by setting their homeserver URL.
 :::
 
-# Pre-setup environment preparation
+# Prerequisite Environment Preparation
 
-Due to Synapse’s and Matrix’s hand-crafted deployment being cumbersome, please install **1Panel**.
+Since deploying Synapse and Matrix (hereinafter referred to as "Matrix") manually is very troublesome, please install **1Panel**
 
-# Deployment PostgreSQL
+# Deploy PostgreSQL
 
-Install and create a database named `synapse` with the username `synapse`.
+Install and create a database named `synapse` with the username also set to `synapse`
 
-Download the PGAdmin4 app from your application store.
+Go to the app store to install `PGAdmin4`
 
 ![](../../assets/images/2025-08-02-17-24-58-image.webp)
 
-Click to add a server.
+Then click Add Server
 
 ![](../../assets/images/2025-08-02-17-27-10-image.webp)
 
-Related information can be accessed through connecting information.
+The relevant information can be seen in the connection information.
 
 ![](../../assets/images/2025-08-02-17-27-53-image.webp)
 
-Just created synapse database.
+**Delete** the `synapse` database that was just created
 
 ![](../../assets/images/2025-08-02-17-28-49-image.webp)
 
-Recreate the same database.
+Recreate the database with the same name
 
-Set the owner (which is the username) to `synapse`.
+Set the owner (i.e., username) to `synapse`
 
 ![](../../assets/images/2025-08-02-17-29-36-image.webp)
 
-The sorting rules are `sorting rules` and the character type is `character type`.
+Change both `Collation Rules` and `Character Type` to `C`
 
 ![](../../assets/images/2025-08-02-17-30-34-image.webp)
 
-# Deployment Synapse
+# Deploy Synapse
 
-First, refer to the official tutorial to create a storage volume, otherwise Synapse installation will fail.
+First, refer to the official 1Panel tutorial to create a storage volume; otherwise, installing `synapse` will fail
 
 ![](../../assets/images/2025-08-02-17-32-00-image.webp)
 
-Installation: synapse
+Install `synapse`
 
-Navigate to the file management folder: `/var/lib/docker/volumes/synapse-data/_data`
+Navigate to the file manager: `/var/lib/docker/volumes/synapse-data/_data`
 
-Should you see...
+You should be able to see
 
 ![](../../assets/images/2025-08-02-17-33-50-image.webp)
 
-Edit the homeserver.yaml file and configure as needed.
+Edit `homeserver.yaml` and configure as needed
 
 ```yaml
 server_name: "家服务器名称，比如：m.2x.nz"
@@ -179,11 +179,11 @@ auto_join_rooms:
   - "#XXX:你的家服务器URL" # 需要自动加入的房间
 ```
 
-Based on the provided text, here’s the translation:  “As needed configuration, for more advanced configurations, please refer to: [[L:Homeserver Sample Config File - Synapse”
+Configure as needed; for more advanced configurations, refer to: [Homeserver Sample Config File - Synapse](https://element-hq.github.io/synapse/latest/usage/configuration/homeserver_sample_config.html)
 
-# Create a administrator account.
+# Create an administrator account
 
-Connect to the container’s terminal and enter this command to create a administrator account.
+Connect to the terminal of the container and enter this command to create an administrator account.
 
 ```bash
 register_new_matrix_user  http://localhost:8008 -c /data/homeserver.yaml  -a -u 管理员用户名 -p 密码
@@ -191,8 +191,8 @@ register_new_matrix_user  http://localhost:8008 -c /data/homeserver.yaml  -a -u 
 
 # Start chatting
 
-Go to https://app.element.io to change your home server to HTTPS.
+Go to https://app.element.io to set your home server to yours (must be HTTPS)
 
-Through the newly created administrator account, log in.
+Log in using the just-created administrator account
 
-Individuals can register via email.
+Others can register via email.

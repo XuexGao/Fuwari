@@ -1,6 +1,6 @@
 ---
-title: "About me tinkering with EdgeOne"
-description: "Originally, EdgeOne was not interested in the service, but later, they were persuaded to use domestic nodes, despite the fact that it seems like a playful offer. However, the node speed is genuinely impressive."
+title: "About how I messed around with EdgeOne all night"
+description: "I was originally not interested in EdgeOne, but I was tempted by the claim that it allows using domestic nodes without needing to register. Although it seems the person making this claim was joking, the node speed is genuinely impressive."
 category: "Record"
 published: 2025-06-22
 image: ../../assets/images/3a9096b2-cee8-448b-952a-d9f68cb01be6.webp
@@ -8,29 +8,29 @@ tags: [EdgeOne, 优选]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+EdgeOne recently launched a free CDN service, improving on its earlier Page-only offering with worse Singapore IPs. Users can set up global CDN acceleration via CNAME or A records, with options to optimize for speed using preferred IPs like `eo.072103.xyz`. EdgeOne Pages now offers free static hosting but requires domain binding to avoid 401 errors, with regional performance improvements over previous Singapore nodes.
 :::
 
 # What is this?
 
-In my early writings, I mentioned EdgeOne. At the time, it was only a Page business, and Singapore was a very underdeveloped and unreliable IP address. Furthermore, it was being used for submitting data – a rather poor choice at the time. Therefore, I initially provided a less favorable assessment of EdgeOne compared to Cloudflare Page.
+I mentioned EdgeOne in my [early articles](/posts/static-web), when it only had Page services, and its IP was a very poor Singapore one that would also swallow submissions. At that time, I gave it a rating worse than Cloudflare Page.
 
-However, this technology has recently emerged with CDN services and is still free. I’ve been re-engaging with it again.
+But this service recently launched a CDN business, and it's even free. So I've picked it up again.
 
-# How do I utilize it?
+# How do I use it?
 
-Please register your account at [https://edgeone.ai](https://edgeone.ai).
+Visit browser: https://edgeone.ai to register an account
 
-Please watch the video: [https://www.bilibili.com/video/BV1KmNUzVEEL]
+Or watch the video: https://www.bilibili.com/video/BV1KmNUzVEEL
 
-# Regarding EdgeOne CDN, website security acceleration.
+# Regarding EdgeOne CDN - Website Security Acceleration
 
-The following statements are only applicable to **Unregistered** users.
+> The following statements apply only to **unregistered** users
 
-Please seek a free version exchange code or purchase the individual edition and use it with a foreign currency card.
+Need a free version redemption code. Or you can directly purchase the personal version for use, which requires a foreign currency card.
 
-By establishing `Accelerated Regional Global Availability Zone (excluding Mainland China)`, we will assign you a similar CNAME address, requiring you to perform a CNAME resolution. The IP addresses are poor. **It’s easy to opt-in.** The method of obtaining it is straightforward – simply ping `edgeone.ai` and find the fastest IP directly by writing A for it (it seems like it could be domestic as well 🤔). As illustrated. **My EdgeOne preference:** `eo.072103.xyz`
+By creating `Accelerated Regions Available Globally (excluding Mainland China) `, you will be assigned a CNAME address similar to `eo3-blog.afo.im.eo.dnse4.com`, which requires you to perform a CNAME DNS record. The IP is poor. **You can directly choose the optimal one. ** The method is simple: just use ITDOG PING `edgeone.ai` to find the fastest IP and directly set an A record (it seems domestic IPs can also be used 🤔). As shown in the image. **My personal EdgeOne optimal selection: ** `eo.072103.xyz`
 
 ![](../../assets/images/42ff5956-d1db-4005-8d96-05fcf7eb76f0.webp)
 
@@ -38,32 +38,32 @@ By establishing `Accelerated Regional Global Availability Zone (excluding Mainla
 
 ![](../../assets/images/45abf772-9757-4172-984f-d9b5a01ae1de.webp)
 
-Due to the nature of this service, it’s a CDN (Content Delivery Network). You'll need a source server. If you’re deploying a static website, you can use Cloudflare Page deployment and configure a redirect as follows: (Note that the `Host` header in the redirect must include the domain name of the source server.)
+Because this is a CDN, it requires a source server. If you're running a static site, you can deploy it using Cloudflare Pages, then configure the origin as follows (note that the Host header in the origin request must be filled with the source server domain; otherwise, Cloudflare may return a 423 Locked *It's way better than Tencent Cloud's 418 I'm a teapot specification 😅*
 
 ![](../../assets/images/2bb58f42-4d8d-4429-a412-ff256b41087d.webp)
 
-Finally, SSL was enabled, and you can now enjoy it.
+Finally enable SSL, done, enjoy it!
 
 ![](../../assets/images/3063dcd0-857d-4280-8ed2-21f4beddb69a.webp)
 
-# 关于EdgeOne Pages（新）
+# About EdgeOne Pages (New)
 
-You can use the service without paying, once you register.
+No need to spend money; you can use it after registering an account.
 
-Regardless of the acceleration region you are operating within, it is recommended to bind your own domain name; otherwise, you may encounter a 401 Unauthorized error.  For regions within China, a registration is required.
+No matter where your acceleration region is, it is recommended to bind your own domain; otherwise, you may encounter a 401 access error. Regions including mainland China require domain registration compliance.
 
-The following statements are only applicable to **Unregistered** users.
+> The following statements apply only to **unregistered** users
 
-Through the implementation of `Accelerated Regional Global Availability Zone (excluding Mainland China)`, we have transitioned from a single IP address (based on domestic usage) to two IPs.  The IP address has now been changed from Singapore Anycast to two IPs, depending on the level of regional availability.  This change resulted in a significant reduction in latency compared to previous Singaporean IP addresses, with a reduced latency of 300ms for mobile connections and 100ms for cellular connections.  Compared to the previous Singaporean average of 300ms, the new IP address offers significantly improved performance.
+By creating `Accelerated Regions Available in Global Availability Zones (excluding Mainland China)`, the IP has now switched from the Singapore Anycast to two IPs (if counted as available within China): 43.175.44.57 (Hong Kong, non-mobile latency 250ms+, mobile latency 100ms-), and 43.132.85.153 (Tokyo, Japan, around 200ms across all networks). Compared to the previous Singapore IP with an average latency of 300ms, this is significantly improved.
 
-“EdgeOne Pages cannot be selected.” When a domain pointing to an EdgeOne Pages hosted on an IP address not reachable via `edgeone.app`, it will return a 418 response, typically indicating an EdgeOne CDN node’s IP address.
+**EdgeOne Pages cannot be prioritized**. If the domain hosted by EdgeOne Pages is pointed to an IP address that is not resolved by `edgeone.app`, it will return a 418 (for example, an EdgeOne CDN node IP).
 
-Default delay times are as follows:
+Default latency scenario, as shown in the figure [[X:content]]
 
 ![](../../assets/images/fcf64bcf-7121-4952-b7e1-1aac7b7fe33d.webp)
 
-The following statements are intended for **** users.
+> The following statement applies only to **** users
 
-Default latency below 50ms in mainland China.
+Default latency below 50ms (Mainland China)
 
-Blocking IP addresses to EdgeOne CDN nodes is not permitted; this will result in a 418 response.
+The preferred option cannot point the IP to EdgeOne CDN node IPs; otherwise, it will return a 418 error.

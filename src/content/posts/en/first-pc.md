@@ -1,6 +1,6 @@
 ---
-title: "First Self-Built Desktop! Keyboard and Monitor Must Be On!"
-description: "I began considering installing a desktop computer at home several years ago. However, by chance, I was fortunate enough to receive an opportunity this time around. As for why I’ve labeled it “shadowy” and “chance,” consider it a result of VCR viewing."
+title: "My First Self-Assembled Desktop Computer! Keyboard Lights Up, Monitor Lights Up!"
+description: "I've long wanted to install a desktop computer at home, and this time I happened to get an opportunity through some fortunate coincidence. As for why I call it \"fortunate coincidence,\" please watch the VCR."
 published: 2025-10-11
 image: ../../assets/images/IMG20251010160613.webp
 tags:
@@ -8,86 +8,86 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The author recounts their journey from selling a Windows laptop and Mac to eventually building their first DIY desktop PC using a friend’s AMD motherboard and self-purchased components. Despite early setbacks with laptops and a brief, ill-fated purchase of a gaming notebook, they ultimately embraced the challenge of building their own PC, learning through tutorials and troubleshooting common pitfalls like motherboard memory clips, RGB lighting, and case mounting hardware. Performance tests confirmed solid component performance, validating their decision to go the DIY route.
 :::
 
-# Here’s the translation:  Press release summary.
-I understand that many of you are interested in hearing about my first attempt at building a desktop computer. I’ve been reflecting on the process, and I want to share some of my thoughts and feelings regarding this experience. However, before I delve into the details, I would like to briefly explain the context behind this introduction – it's **a chance encounter that led to an opportunity**. Simultaneously, it also represents a significant part of what has been required for me.
+# Previous Context
+I know everyone is here to listen to my experience and thoughts about my first manual assembly of a desktop computer, but please allow me to first recount what happened before this, which will explain why I mentioned in the article's introduction that **I happened to get an opportunity by chance** and also why it was **an unavoidable part of the experience**.
 
-Let’s revisit the timeline, specifically when I was holding onto the **Polaris X Notebook** – while we covered the initial sections of previous articles, I subsequently sold it for a Mac, but that's where the story ends. In reality, this represents merely a modest beginning.
+Let us rewind the timeline to when I still owned the **X**. Although earlier articles roughly covered this, I sold the Aurora X to buy a Mac—but that’s all there was to it. In reality, this was merely a mediocre beginning.
 
 ![](../../assets/images/Screenshot_2025-10-11-05-45-03-97_e41039de8eaacf2.webp)
 
 ![](../../assets/images/Screenshot_2025-10-11-05-47-07-88_c03b3f779c2dfd4.webp)
 
 ![](../../assets/images/IMG20250929204541.webp)
-那么首先，因为我和朋友打 **卡拉彼丘** 红温了，那天就觉得 **我从来没有觉得打游戏开心过** ，于是便决定将手上的Windows笔记本，也就是极光X卖掉，然后买一个MacBook专注生产力（难绷）
+So first, because I got heated up playing **Karabaq** with my friends, I felt **I have never felt this happy while playing games before** that day, and thus decided to sell my Windows laptop, the Aurora X, and buy a MacBook to focus on productivity (hard to handle).
 
-I am highly productive, and I immediately sold a polar bear (a rare type of aurora) on my first day. Subsequently, I placed an order for a 25-year-old MacBook Air, which aligns with the points discussed in previous articles regarding my purchase of a Mac.
+I have very strong, and on the first day I went to **** to sell my Aurora X, then immediately ordered a MacBook Air from 2025, which is the one mentioned in the previous few articles **Mac**
 
-Here’s a professional translation:  “After several days of dedicated use, Mac truly lives up to its reputation – it is exceptionally powerful and efficient. The M4+ macOS configuration offers unparalleled performance for any task, from video editing and graphic design to web development and coding. Regardless of the specific application, Mac consistently demonstrates exceptional proficiency and ease of use.”
+Next, after using it for a few days, the Mac truly lives up to its reputation. As long as you're using it for work, the M4 + macOS becomes a seamless powerhouse—superb processor performance combined with a highly unified workflow. Whether you're editing videos, retouching photos, designing posters, coding websites, or modifying code, as long as it's productivity-related, the Mac handles it effortlessly.
 
-However, the saying goes, “The old adage is that ****.” People cannot work 24 hours a day, removing sleep for 8 hours, 16 hours, without it being realistic. Therefore, I began researching how to play **GalGame** on my Mac within the first day of my purchase. As for why I didn’t delve into the intricacies of ****’s gameplay, it was because the red-hot state of Windows programs on macOS was still ongoing, and I already knew that Wine would be the standard solution for running Windows applications on macOS. However, despite its extensive development over many years, Wine couldn't overcome the anti-cheat challenge in **** – so I didn’t intend to play games on Mac at all. Furthermore, layering translation not only consumes performance but also increases power consumption; if I were to actually play games, why would I use Windows instead?
+But as the old saying goes, ****. It's unrealistic and too oppressive for a person to spend 16 hours a day working, excluding 8 hours of sleep. So on the second day after I got my Mac, I started researching how to play **GalGame**. As for why I didn't research how to play ****, it's because the red-hot state was still ongoing at the time, and secondly, I already knew that running Windows programs on macOS still relies on Wine. Although Wine has developed for many years, it still can't get past the **** hurdle for competitive games. So I didn't bother trying to play on Mac, and besides, layered emulation not only consumes performance but also increases power consumption. If I really wanted to play games, why wouldn't I just use Windows?
 
-The seeds of doubt have already taken root within me, and they are beginning to sprout. With just a spark, I can completely extinguish my **Apple Dreams**. That fire is simply: **About buying a Mac but not purchasing a DP to C port, resulting in the inability to use macOS on the display; also, the mouse and keyboard functionality of my computer are unusable due to this lack. Is this truly the case for my life?**; Furthermore, if you understand the highlighted text, you might wonder why one shouldn’t try purchasing a DP to C port instead? (Actually, I did.) Why not try purchasing an expansion enclosure instead? Because…
+The seed of doubt has already taken root and grown in my heart; all that’s needed is one spark to completely burn away my **apple dream**. That spark is: **about how I bought a Mac but didn’t buy a DP-to-C cable, leaving me unable to use macOS on my monitor, and since I also didn’t buy a C-port hub, my mouse and keyboard are unusable—so am I doomed to use only the trackpad and butterfly keyboard for the rest of my life? Adadad, how can this be?**. If you’ve understood the bolded text above, you might wonder, hey, why not just try buying a DP-to-C cable? (Actually, I did buy one later.) Why not try buying a hub? That’s because
 
-I approach every situation with a focus on the overall picture, and when I conclude that Mac may not be able to remain with me for an extended period, abandoning it is simply a matter of time.
+I always consider things with the bigger picture in mind. When I reached the conclusion that the Mac would not be able to accompany me for a long time, abandoning the Mac was simply a matter of time.
 
-而后，顺理成章的在 **爱回收** （因为报价多300）把Mac卖了，质检小哥问我用了几天的时候，我说5天，他愣住了，我说： **哎，还是Windows好用，macOS真用不明白** ，随后他也附和道： **是的是的** 
+Then, logically, I sold the Mac on **Love Recycling** (because the quote was 300 more). When the quality inspector asked me how many days I had used it, I said five days, and he was stunned. I said: **Oh, Windows is still better; I really can't figure out macOS**, and he immediately agreed: **Yes, yes, that's right**.
 ![](../../assets/images/Screenshot_2025-10-11-05-48-04-91_4fbb30eb7b71661.webp)
 
-Ultimately, with the process unfolding as it has, I am currently unable to utilize a computer. Therefore, the next step must be to expedite the return of the entire system.
+In short, regardless of the process, I no longer have a computer that works now, so the next step is definitely to rush and get another computer.
 
-Here’s the translation:  “It seems I stumbled upon a flash sale on JD, accidentally overpaying for a **Dark Shadow 11 Ryzen Edition** – it was incredibly attractive! It arrived within about an hour.”
+Maybe I was in a hurry and accidentally discovered JD's flash sale feature, then accidentally paid a thousand yuan more for a **Alienware 11 Ryzen Edition**. Flash sales really are flash—delivered within less than half an hour.
 
 ![](../../assets/images/Screenshot_2025-10-11-05-48-41-11_4fbb30eb7b71661.webp)
 
-Upon activation, it’s immediately apparent that it’s Windows!
+Turned it on immediately, wow! Still has that authentic Windows feel!
 
-Despite the good times being fleeting, it likely stems from a previous shadow of concern regarding AMD hardware, compounded by the fact that this machine arrived shortly after experiencing three blue screens and two screen freezes. This has prompted a new idea: **laptops are essentially a tax on intelligence, and performance gains depend heavily on desktop machines!**
+But good times didn’t last long. Perhaps because I had some lingering doubts about AMD machines, plus this junk machine blue-screened three times and showed screen distortion twice on the very day I received it, and its gaming frame rate wasn’t very stable (though I later manually adjusted it to be more stable). This led me to have a new idea: **Laptops are a waste of money; at the same price, desktops still offer better performance!**
 
-I’ve already revealed it. It’s true – five days after that, I took the **11** to ****. When the quality control officer asked again about my machine's purchase date, he was stunned and replied, “I’ve already accounted for this.” Within a few minutes, I received payment.
+You don’t need me to say it—you’ve probably already guessed it. Right! Another 5 days later, I sold the **Shadow Elf 11 Ryzen Edition** on **ZhuanZhuan**. When the quality inspection guy asked me again how many days I’d had the device, I said 5 days, and he froze, then said: **This is still within my testing period**. Less than ten minutes later, I received the payment.
 
 ![](../../assets/images/Screenshot_2025-10-11-05-49-05-90_c03b3f779c2dfd4.webp)
 
-**Must experience everything on a full desktop!**
+Alright, then the second cycle has ended, and I’m still in a situation where I can’t use a computer (though it’s not exactly a necessity). However, this time, I’ve made up my mind: **I absolutely have to try playing with a desktop computer!**
 
-恰巧，朋友准备换CPU了，又恰巧，要从Intel换成AMD，也就是说，他的主板和U都闲置了，就问我要不要。那我肯定是求之不得，然后便顺理成章的拿到了板U，接下来只需要自己买显卡内存硬盘电源散热机箱即可，因为板U暂时不需要我掏钱了，所以预算非常充足，又因为我这个人心急吧，于是便找了 **京东当日达** 也就是本地仓发货的，可能要加个几百块，但是刚好可以治我的“心急病”，但是吧，朋友的板U本来是走飞机的，但是安检没过，所以转陆运了，那么陆运就不能当日达了，也就是说就算我的其他配件当日达，板U不能当日达那我这加的钱就是白加，不过算了，既来之则安之，那么以下是我的配置单
+Fortunately, my friend was about to upgrade his CPU and, coincidentally, was switching from Intel to AMD, meaning his motherboard and CPU were going to be idle. He asked me if I wanted them, and of course, I jumped at the chance. I smoothly acquired the board and CPU. From there, I only needed to purchase a graphics card, RAM, hard drive, power supply, cooling system, and case — since the board and CPU wouldn’t cost me anything, my budget was extremely generous. Also, because I’m impatient, I opted for **JD Same-Day Delivery**, which means items shipped from local warehouses — possibly adding a few hundred yuan, but it was worth it to cure my “impatience.” However, the board and CPU originally were supposed to be shipped by air, but customs inspection failed, so they switched to land transport. Unfortunately, land transport doesn’t support same-day delivery — meaning even if my other components arrive the same day, the board and CPU won’t, and the extra money I paid for same-day delivery would be wasted. But hey, it’s already done — so I’ll just roll with it. Below is my configuration list.
 ![](../../assets/images/Screenshot_2025-10-09-20-06-36-95_ae1f93045b87aac.webp)
 
-Following the setup, the results are as follows.
+Then the effect after installation is shown in the figure.
 
 ![](../../assets/images/IMG202510101606131.webp)![](../../assets/images/IMG20251011055119.webp)
 
-# Machine Operation Guide
+# PC Assembly Tutorial
 
-Due to my extensive lifespan, I have never attempted to install any technology myself. However, considering my technical background, I believe it should be relatively straightforward. Furthermore, numerous tutorial videos demonstrating the process are available on platforms like Bilibili ([https://www.bilibili.com/video/BV1BG4y137mG](https://www.bilibili.com/video/BV1BG4y137mG)). I’ve followed these step-by-step guides, acknowledging that some aspects may not work perfectly and requiring experimentation to determine their viability.
+Because I’ve never assembled a computer myself in my life, but since I’m a tech person, I figured this shouldn’t be too difficult. Plus, there are many assembly tutorial videos available today, such as https://www.bilibili.com/video/BV1BG4y137mG — I followed it step by step. Since the components are all DIY, some steps might not match perfectly, and sometimes the manuals say something won’t work, but in reality, it might still work. You’ll have to try it yourself to see what actually works.
 
-# This refers to a process of troubleshooting or diagnosing technical issues, often involving complex and potentially frustrating procedures. It implies a need for careful investigation and problem-solving.
+# PC building pitfalls
 
-The memory card slot on the motherboard is dual-pin, but this motherboard only has a single-pin version for the slot. After attempting to force it down for half an hour without any response, I discovered that the other side was not engaging with the slot (I’m a fool!).
+RAM module. The motherboard shown in the video has dual-side retention clips, but my motherboard only has clips on one side, so I fiddled with the other side for a while without any result until I realized there were no clips there (I'm such a dumbass).
 
-Water cooling is no longer just about enabling him to run, it’s also about aesthetics and visual appeal – a significant upgrade. However, this water cooler boasts three RGB connections, but only one dedicated RGB interface on the motherboard. It's intended for a “God Light Sync” configuration, but since the packaging doesn’t include a header, I won’t be connecting it. For me, however, this small light is genuinely pleasing to the eye.
+Water cooling. Nowadays, building a PC isn't just about getting it to **run**—it's also about aesthetics and **R！G！B！**. However, this water cooler comes with three RGB wires, but the motherboard only has one RGB header. I heard it's meant for **God Light Sync**, but since the package doesn't include a hub, I won't connect it. After all, for me, **R！G！B！** just adds unnecessary power consumption (though these little lights do look pretty cool).
 
-Silicone is often supplied with cooling systems to help dissipate heat. It’s typically not purchased separately.
+Thermal paste. Most heatsinks come with some thermal paste included, so you don't need to buy it separately.
 
-The chassis has numerous connectors on the back panel, and directly contacting it could lead to short circuits. Therefore, most chassis interiors feature screw holes for securing a mounting plate, which then firmly attaches the motherboard. The issue lies with this mounting plate itself – it’s a hexagonal screw-in plate, but **no supplied screw-in sleeve** meaning that if you don't have a screwdriver set, you shouldn’t attempt to install it; unless you are a green giant.
+Case. Since there are many contact points on the back of the motherboard, direct contact with the case might cause a short circuit. Therefore, most cases have screw holes inside where you can install screw posts to clamp and secure the motherboard. The problem lies with these screw posts—they are hexagonal posts, but **do not come with hex wrenches or socket adapters**. That means, unless you have a pair of pliers at home, you won’t be able to install these posts, unless you’re the Hulk.
 
-Here’s the translation:  **Device Manual**  The manual indicates support for a front-mounted 240mm liquid cooler. It is indeed supported, however, the graphics card blocked it due to my reliance on the instructions. I subsequently purchased a fan cooler, costing 250 RMB, and the retailer contacted me to verify my motherboard model. There was once an incident that may have been concerning.  Upon installation, the fan cooler worked as described in the manual!
+The case manual states that it supports a 240mm front-mounted radiator. It does support it, but the graphics card blocks it. Because I trusted the manual too much, I went ahead and ordered a air cooler on **JD Flash Sale**, for **250** yuan. The seller even called me to confirm my motherboard model—maybe something unspeakable happened in the past * In any case, right after the air cooler arrived, a group friend reminded me that I could mount the radiator on top. I tried it out, and it works perfectly—this is the manual that came with the case!
 
-# Performance testing.
+# Performance Testing
 
-First, this is the final configuration for the aircraft.
+First, this is the final in-flight configuration.
 
 ![](../../assets/images/first-pc.webp)
-CPU-Z跑分
+CPU-Z score
 ![](../../assets/images/first-pc-1.webp)
-甜甜圈一键烤鸡（1280x720）帧数
+Donut One-Click Roast Chicken (1280x720) FPS
 ![](../../assets/images/d1122f2dcca5ea532c7aa45483120e3d.webp)
-AIDA64内存和三缓测试
+AIDA64 Memory and L3 Cache Test
 ![](../../assets/images/first-pc-2.webp)
-单烤FPU最高功耗及温度
+Maximum power consumption and temperature of the FPU under single baking
 ![](../../assets/images/first-pc-3.webp)
-AS SSD Benchmark（硬盘测速）
+AS SSD Benchmark (Hard Drive Speed Test)
 ![](../../assets/images/first-pc-4.webp)

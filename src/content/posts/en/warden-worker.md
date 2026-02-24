@@ -1,6 +1,6 @@
 ---
-title: "Could you have ever thought about deploying Warden directly to Cloudflare Workers?"
-description: "The Warden-Worker project streamlines Rust compilation into WebAssembly (WASM) and deploys it to Cloudflare Workers, eliminating the need for a VPS or on-premises cloud infrastructure. Deployment is seamless via a simple point-and-click interface, offering free access to your own credentials for secure hosting."
+title: "Have you ever considered deploying BitWarden directly to a Cloudflare Worker?"
+description: "warden-worker is such a project that compiles Rust to WASM and deploys it to Cloudflare Workers, requiring no VPS, no home cloud, just a few clicks to freely use your own password hosting for free!"
 published: 2026-01-26
 image: ../../assets/images/warden-worker.webp
 tags:
@@ -9,31 +9,31 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This project utilizes Rust code to create a Bitwarden compatible server, running on Cloudflare Workers. The server handles REST API requests through the Worker and stores encrypted data within the D1 database using SQL. Deployment involves installing Rust, cloning the repository, creating the D1 database with `wrangler`, initializing the database with `wrangler`, compiling the Rust WASM code using Cargo, deploying the worker using `wrangler deploy`, setting up email whitelisting via secret keys, JWT/2FA authentication through secrets, and finally, enabling two-factor authentication by generating a Base64 encoded text key. The project also includes instructions for creating a Bitwarden account on a mobile device, including importing existing passwords from a JSON file, and utilizing TOTP for login verification.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This project deploys a Bitwarden-compatible password manager on Cloudflare Workers using Rust compiled to WASM, with D1 serving as the encrypted data store. Deployment involves installing Rust, cloning the repo, setting up a D1 database, compiling the WASM binary, and configuring secrets like JWT keys and 2FA encryption keys via Wrangler. After deployment, users can register via mobile Bitwarden, enable 2FA on the web interface, and import/export password vaults as needed.
 :::
 
-# The core principle.
-The project, based on open-source code for [dani-garcia/vaultwarden: Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs](https://github.com/dani-garcia/vaultwarden), has been compiled into WebAssembly (WASM) to enable execution within Cloudflare Workers. Worker handles the REST API, and D1 is responsible for storing encrypted data.
+# Principle
+The project references the open-source [dani-garcia/vaultwarden: Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs](https://github.com/dani-garcia/vaultwarden) and compiles its Rust source code into WASM to support running on Cloudflare Workers. In this setup, the Worker handles the REST API, while D1 manages the storage of encrypted data.
 
 # Deployment
 
-Ensure you have installed Rust. If installation is not possible, please refer to [Install Rust - Rust Programming Language](https://rust-lang.org/zh-CN/tools/install/).
+First, ensure that you have installed Rust; if not, go to: [Install Rust - The Rust Programming Language](https://rust-lang.org/zh-CN/tools/install/)
 
-Clone Repository: [afoim/warden-worker: A Bitwarden-compatible server for Cloudflare Workers](https://github.com/afoim/warden-worker)
+Clone repository: [afoim/warden-worker: A Bitwarden-compatible server for Cloudflare Workers](https://github.com/afoim/warden-worker)
 
-创建D1数据库
+Create a D1 database
 ```sql
 wrangler d1 create warden-sql
 ```
 
 ![](../../assets/images/warden-worker-25.webp)
 
-Please provide the content of the database ID file, **wrangler.jsonc**. I need the content to translate it into professional English.
+Replace the database ID in **wrangler.jsonc**
 
 ![](../../assets/images/warden-worker-26.webp)
 
-Initialize the database.
+Initialize the database
 
 ```sql
 wrangler d1 execute warden-sql --remote --file=sql/schema_full.sql
@@ -41,18 +41,18 @@ wrangler d1 execute warden-sql --remote --file=sql/schema_full.sql
 
 ![](../../assets/images/warden-worker-27.webp)
 
-Compilation of Rust WebAssembly.
+Compile Rust WASM
 
 ```bash
 cargo build --release
 ```
-部署 Worker
+Deploy Worker
 
 ```bash
 wrangler deploy
 ```
 
-Set up a whitelist for email addresses.
+Set whitelist email addresses
 
 ```bash
 wrangler secret put ALLOWED_EMAILS
@@ -60,7 +60,7 @@ wrangler secret put ALLOWED_EMAILS
 
 ![](../../assets/images/warden-worker-29.webp)
 
-Setting up JWT (Face Recognition Keyboard) is straightforward.
+Set JWT (just roll your keyboard)
 
 ```bash
 wrangler secret put JWT_SECRET
@@ -69,13 +69,13 @@ wrangler secret put JWT_REFRESH_SECRET
 
 ![](../../assets/images/warden-worker-30.webp)
 
-Set up 2FA encryption key (32-byte Base64 encoded text).
+Set the 2FA encryption key (32-byte Base64 encoded text)
 
 ```bash
 wrangler secret put TWO_FACTOR_ENC_KEY
 ```
 
-Here’s a professional translation of “Poweshell can be generated” into English:  “Poweshell can be generated.”
+PowerShell can be generated like this
 
 ```powershell
 [Convert]::ToBase64String((1..32 | ForEach-Object {Get-Random -Minimum 0 -Maximum 256}))
@@ -83,24 +83,24 @@ Here’s a professional translation of “Poweshell can be generated” into Eng
 
 ![](../../assets/images/warden-worker-31.webp)
 
-Please bind the domain to the control panel (if a wildcard route requires manual configuration).
+Go to the dashboard to bind the domain (if routing requires manually adding a record pointing to Cloudflare)
 
 ![](../../assets/images/warden-worker-28.webp)
 
-Here’s the translation:  “Create a Bitwarden account using a white-list email address from your mobile device.”
+Create an account using the Bitwarden mobile app (using a whitelisted email)
 
-Next, please proceed to the web interface (`/demo.html` defaults to the Vaultwarden frontend, which may experience some bugs). Enable 2FA: [https://cfbw.2x.nz](https://cfbw.2x.nz) using a different TOTP verification method.
+Next, go to the web interface ( `/demo.html` , which by default uses the Vaultwarden frontend and may have some bugs), enable 2FA: https://cfbw.2x.nz (store it with another TOTP authenticator)
 
-Please note that you can modify your email or primary password directly on the website.
+**y the way, you can also modify your email or master password on the web interface.**
 
 ![](../../assets/images/warden-worker-32.webp)
 
-Upon logging out of all previously logged-in devices, you will be prompted to enter the TOTP (Time-Based One-Password) code.
+After logging out and then logging back in on all previously logged-in devices, you will be prompted for TOTP.
 
-# 导入密码库
+# Import password library
 
-If you have an old password vault, please proceed to **Set - Password Vault Options - Export - .json**.
+If you have an old password library, please first go to **Settings - Password Library Options - Export - .json**
 
-Log in to the current password library, and proceed to **Set - Password Library Options - Import - .json**.
+Log in to the current password vault, then go to **Settings - Password Vault Options - Import - .json**
 
 ![](../../assets/images/warden-worker-33.webp)

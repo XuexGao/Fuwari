@@ -1,6 +1,6 @@
 ---
-title: "Mapping your Linux hard drive to Windows?"
-description: "How to manage Linux files like Windows? SSHFS provides the solution!"
+title: "Map your Linux hard drive to Windows?"
+description: "How to manage Linux files like Windows? SSHFS is here to help!"
 category: "Tutorial"
 published: 2025-08-03
 image: '../../assets/images/2025-08-03-19-15-42-image.webp'
@@ -8,36 +8,36 @@ tags: [SSHFS]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article provides instructions on how to install and configure SSHFS for Windows, utilizing the `sshfs-win` package. It guides users through downloading, installing, and connecting to the software via a GUI tool called `sshfs-win`.  The process involves adding connections, saving configurations, and eventually accessing files through the file explorer.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+Install SSHFS for Windows and its GUI manager, then configure a new connection by specifying the server details and mounting point. After saving the settings and connecting, your remote server will appear as a drive in File Explorer. This setup enables seamless file access over SSH on Windows.
 :::
 
-# Formal commencement.
+# Formally begin
 
-Go to [winfsp/sshfs-win: SSHFS for Windows](https://github.com/winfsp/sshfs-win).
+Go to [winfsp/sshfs-win: SSHFS For Windows](https://github.com/winfsp/sshfs-win)
 
-Download and install.
+Download and install
 
-Please visit [evsar3/sshfs-win: A GUI for SSHFS-Win (https://github.com/billziss-gh/sshfs-win)](https://github.com/evsar3/sshfs-win-manager).
+Go to [evsar3/sshfs-win-manager: A GUI for SSHFS-Win (https://github.com/billziss-gh/sshfs-win)](https://github.com/evsar3/sshfs-win-manager)
 
-Download and install.
+Download and install
 
 Open
 
 ![](../../assets/images/2025-08-03-19-19-07-image.webp)
 
-If SSHFS is not installed in the default location, you must specify the path manually through the settings menu. Navigate to `Settings`.
+If sshfs-win is not installed in the default location, you need to manually specify it; enter `Settings`
 
 ![](../../assets/images/2025-08-03-19-20-01-image.webp)
 
-Clicking on `Add Connection` is understood by those who understand it.
+Next, click `Add Connection` — everyone knows what this means.
 
 ![](../../assets/images/2025-08-03-19-20-24-image.webp)
 
-Save after clicking the connection button.
+After saving, click the Connect button.
 
 ![](../../assets/images/2025-08-04-11-58-52-image.webp)
 
-Here’s the translation:  You can access your files through File Explorer, viewing your drive.
+Then you will be able to see your drive in File Explorer.
 
 ![](../../assets/images/2025-08-04-11-59-20-image.webp)

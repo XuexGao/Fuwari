@@ -1,6 +1,6 @@
 ---
-title: "Configuration Vercel for ITDog testing all 403!"
-description: "I strongly dislike having websites tested by ITDog or similar services for random probe attempts. I will not tolerate this behavior."
+title: "Configure Vercel to let ITDog test all 403s!"
+description: "Hate it when others use ITDog and similar probing services to aggressively test your site? Reject them!"
 category: "Tutorial"
 published: 2025-07-10
 image: ../../assets/images/d81562f3-8efb-45f3-8dd1-72cb9c032bc2.webp
@@ -8,39 +8,39 @@ tags: [Vercel]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-VercelTXTIPCIDR，。Python，，，。 TXT，IPCIDR，。  IP，。
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article details how to block ITDog and similar testing services by identifying their IPv4 addresses and using Vercel’s firewall API to create bulk IP deny rules. It explains methods to obtain target IPs (via VPS or Cloudflare Tunnel), generate a Vercel API token, and use a Python script to automate adding multiple IPs to firewall rules in batches of 75, due to Vercel’s per-rule limit. The script reads IPs from a text file and sends PATCH requests to update the firewall configuration.
 :::
 
-# Video packages.
+# Complementary video
 
-Here’s the translation of the text from the provided link:  “The video explores the evolving relationship between humans and AI, examining both the potential benefits and ethical concerns surrounding artificial intelligence development. It delves into topics such as job displacement, algorithmic bias, and the future of work in an increasingly automated world.”
+[[X:content]]
 
-# Retrieve IP addresses associated with ITDog’s verification services.
+# Get IP addresses for monitoring services like ITDog
 
-Because Vercel does not support IPv6, we are limited to obtaining v4 IP addresses.
+> Since Vercel does not support IPv6, we only need to obtain the v4 IP.
 
-- If you have a VPS, you can create a Python script to generate an HTTP record with IP address deduplication.
+- If you have a VPS, simply write a Python script to create an HTTP server that records and deduplicates IPs.
 
-- If you have cloud storage at home, you can utilize Cloudflare Tunnel to mitigate network issues and obtain `CF-Connecting-IP` for recovery.
+- If you only have home cloud, you can use Cloudflare Tunnel and obtain `CF-Connecting-IP` to achieve a workaround.
 
-Conclusion: You have successfully blocked the IP address of the monitoring website you’ve specified.
+Conclusion: You have obtained the IP address of the test website you want to block.
 
 ![](../../assets/images/91daff1e-b248-4f90-9b97-31bff7fa2c14.webp)
 
-# Create a Vercel API token.
+# Create Vercel API Token
 
-Please create a token in the settings for your account at [https://vercel.com/account/settings/tokens](https://vercel.com/account/settings/tokens).
+Go to https://vercel.com/account/settings/tokens to create a Token
 
-# Firewall creation and update interface retrieval.
+# Capture firewall interface creation/update
 
-Please visit [https://vercel.com/your-projects/fuwari/firewall](https://vercel.com/your-projects/fuwari/firewall) for more information.
+Go to https://vercel.com/your-projects/fuwari/firewall
 
-新增规则
+New rules
 
 ![](../../assets/images/84645ada-92bd-42f7-827f-96a93bd54997.webp)
 
-随便写点东西然后抓包
+Just write something and then capture packets.
 
 ![](../../assets/images/0f60d87a-df45-42d3-a692-c172982899cc.webp)
 
@@ -48,21 +48,21 @@ Please visit [https://vercel.com/your-projects/fuwari/firewall](https://vercel.c
 PATCH https://vercel.com/api/v1/security/firewall/config/draft?projectId=prj_UfvbpIvawjL2eAETAiZT7hPLR8W2&teamId=team_lemndzHQNJAcTipIF6elB5Md
 ```
 
-Please update the hostname `vercel.com` to `api.vercel.com`. Also, include the request header `Authorization` with the token obtained just now.
+Change the hostname from `vercel.com` to `api.vercel.com`. Include the request header `Authorization` with the value being the token obtained earlier.
 
-复制刚才的响应并且稍作修改进行测试，看是否能更新成功
+Copy the previous response and make slight modifications for testing to see if the update succeeds.
 
-The system is currently operating within acceptable parameters.
+It can be seen that 200 OK has been received.
 
 ![](../../assets/images/b87a06b5-e33c-4d1d-aede-18ecba95d8cc.webp)
 
-# Here’s a professional translation of the text:  “Develop a Python script to create a bulk IP address denial rule.”
+# CreateIP rejection rules using a Python script
 
-Based on my own testing, Vercel offers support for multiple IP addresses when creating rules, but there is a limit of only 75 allowed per rule. Therefore, we need a Python script to automate the planning process. The script has already been written.
+According to my testing, Vercel, although supports entering multiple IPs in the `is any of` rule creation, allows a maximum of only **75** IPs per rule, so we need a Python script to batch plan for us. The script has already been written.
 
-使用： `python app.py ip.txt`
+Use: `python app.py ip.txt`
 
-Here’s the translation:  “Automatically extract and add all IP addresses from specified TXT files to a denial rule.”
+Function: Automatically retrieve content from a specified TXT file and add all IPs within it to the deny rule.
 
 ```python
 #!/usr/bin/env python3
@@ -268,7 +268,7 @@ if __name__ == "__main__":
     main()
 ```
 
-示例ip.txt
+example ip.txt
 
 ```bash
 223.26.78.6
@@ -1448,13 +1448,13 @@ if __name__ == "__main__":
 86.51.92.0/24
 ```
 
-# Call script update rules.
+# Call the script to update rules
 
 ![](../../assets/images/3b44fed2-5dda-4dec-a009-8618b18370ee.webp)
 
 ![](../../assets/images/c9fa44c0-c313-47b1-8b03-804b2b4324b9.webp)
 
-Finally, please submit your review and then publish it.
+Finally `Review Changes` and `Publish`
 
 ![](../../assets/images/aada66d2-b090-4959-b031-cbdb738def50.webp)
 
@@ -1462,10 +1462,10 @@ Finally, please submit your review and then publish it.
 
 # ITDog Test
 
-Most test nodes have reached a status of 403.
+Most test nodes have returned a 403.
 
 ![](../../assets/images/127a5bc0-6504-4c98-a573-1e3da60b9c8e.webp)
 
-# What is the purpose?
+# What is its use?
 
-Here’s the translation:  “Just for fun, relaxing and idle. Feel free to add a message to [this](https://www.afo.im/posts/pin) to send a group or leave a comment below if you have time.”
+Just for fun, purely because I'm bored. XiXi, if you have time, please click [This](https://www.afo.im/posts/pin) to join the group or leave a comment below!

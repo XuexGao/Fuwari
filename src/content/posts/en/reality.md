@@ -1,6 +1,6 @@
 ---
-title: "Reality Protocol Server Setup Tutorial"
-description: "The Reality protocol is currently recognized as the most resistant to detection."
+title: "Tutorial for Setting Up the Proxy Server of Reality Protocol"
+description: "The Reality protocol is currently the most anti-detection proxy protocol available."
 category: "Tutorial"
 published: 2025-09-09
 image: ../../assets/images/709453e8-3a6a-4e2c-8618-fcf542ee0d37.webp
@@ -8,12 +8,12 @@ tags: [Reality]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article describes a project called “one-times-reality” developed by AFOIM, focusing on creating a simplified and automated way to deploy code. It’s designed to streamline the process of deploying applications using command-line instructions.  The README provides instructions for setting up and running the project.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This GitHub repository offers a one-command solution to install and configure Reality, a popular VPN client for macOS and iOS. The setup is designed to be simple, requiring users to follow the README for detailed deployment steps. It’s aimed at users seeking a streamlined, automated installation process.
 :::
 
-# Formal commencement.
+# Formally begin
 
-The code snippet describes a feature where a command assists in creating or configuring a simulated reality. It’s essentially a system that automates the process of building and managing a virtual environment, allowing for rapid and efficient creation of complex realities.
+> Source code: [afoim/one-times-reality: One command to help you install reality](https://github.com/afoim/one-times-reality)
 
-Self-assessment of README deployment.
+Check the README for deployment instructions.

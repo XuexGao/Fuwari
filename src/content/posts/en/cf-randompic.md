@@ -1,6 +1,6 @@
 ---
-title: "Cloudflare R2+Workers! Build your own cloud-based dashboard now!"
-description: "Using R2 storage, images are processed through Workers, and then displayed within a webpage using either an `<a>` tag or an `<img>` tag. The entire process is deployed across the entire network."
+title: "Cloudflare R2+Workers！马上搭建自己的云上图床！"
+description: "Store images using R2, connect via Workers, and embed them on web pages using the <a> tag or <img> tag, fully cloud-based across the entire chain."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/QmVgqgoC7G8NLS21WvR8j9gf5amu33XvuV68ZrgM5B9iFf.webp
@@ -10,24 +10,24 @@ tags:
 - Cloudflare R2
 - Cloudflare Workers
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
 
 :::
 
-### **Results Chart**
+### **Result Chart**
 
 ![QmVgqgoC7G8NLS21WvR8j9gf5amu33XvuV68ZrgM5B9iFf.webp](../../assets/images/408795f3ec1a5a9baf91b6cd7564d6f1d7dbc5bd.webp)
 
 ### **Principle**
 
-The source image is hosted by Cloudflare R2, connected via two workers to display random horizontal and vertical images. Static pages reference the URLs of the workers to achieve this interface.
+Image source hosted by Cloudflare R2, connected to R2 via two Workers to display random landscape/portrait images; static pages reference the Workers' URLs to achieve the above interface.
 
-### **Create a Cloudflare R2 Storage Bucket**
+### **Create a Cloudflare R2 Bucket**
 
-Here’s the translation:  R2 is a cloud storage service. Cloudflare offers 10GB of free storage and 1 million free access points monthly.
+R2 is actually an object storage. Cloudflare provides 10GB of free storage and 10 million free requests per month.
 
-1. 进入[Cloudflare 仪表盘](https://dash.cloudflare.com/)，进入 R2 页面，如图
-   
+1. Enter the [Cloudflare dashboard](https://dash.cloudflare.com/), navigate to the R2 page, as shown in the figure
+
    ![QmU7u2JHUcevyHnwsCdAZfs7X7Fcdh3KJhn6eoy24Q5dGC.webp](../../assets/images/0ffb86d36ab0f3fcc24ef7b3d64c4bc72b6b53e7.webp)
 
 2. 选择创建存储桶![QmX3eCaCVEgE8AN29D9t2VpQ5t5SrZGKb8EcZv9oKpCqf2.webp](../../assets/images/26d3b3e26b9e2f641a2eea98c2ddb8891a0b7f6a.webp)
@@ -44,29 +44,29 @@ Here’s the translation:  R2 is a cloud storage service. Cloudflare offers 10GB
 
 8. 创建 API 令牌后，新页面会展示令牌的详细信息，**仅会展示一次！！！** 保持这个页面，直到你将该页面的所有信息都已经妥善保存，不要关闭界面，否则，你需要轮转 API 令牌以禁用之前的旧密钥，如图![QmZTUwbycqbJhVP6PatD3psYy7ej9PDDoiXbmDWoakPhwx.webp](../../assets/images/f4214f6fdf67fa7bf694d0a1501ecc21aef45a90.webp)
 
-9. Ensure you have properly saved your R2 API tokens and proceed to the next step.
+9. Make sure you have securely saved your R2 API token, then proceed to the next step.
 
-### **Add files to your storage bucket**
+### **Add files to your bucket**
 
-Due to slow web interface transmission and limitations on file transfer sizes exceeding 300 MB, we are utilizing local deployment of AList. This allows for high-speed uploads via connection to your R2 storage bucket.
+Because the web interface is slow for file transfers and does not support uploading files larger than 300MB, here we use locally deployed AList to connect your R2 storage bucket for high-speed uploads.
 
 1. 笔者使用 Windows。前往[AList - Github Release](https://github.com/alist-org/alist/releases)下载适用于 Windows 的最新可执行文件，如图![QmPDRDJGeGStreyZMXVYofbE9FCs1T1MyDek3KUbB3Kk5b.webp](../../assets/images/a2d1f289e464a9fb6367e2b7ff0b695916742698.webp)
 
-2. Unpack the downloaded archive and place the `alist.exe` file into an empty folder.
+2. Unzip the downloaded archive and place `alist.exe` into an empty folder
 
-3. Click on the search bar, enter `cmd` and press Enter.
+3. Click the search box, type cmd, and press Enter, as shown in the figure.
 
 4. ![QmSt8aFtaeEprJHASEiNPB67UHcHoSxsbhhHUPxW6QkWSo.webp](../../assets/images/3abdda195c58812866d49879c683a044e8acf7f8.webp)
-   
+
    ![QmNkMhDhpPLkYCpVhE1ov7Q6A34uWDvraCqNvuTqaCkujT.webp](../../assets/images/f90fccfe1db62aff7a0a722cd3c5c319da563ae2.webp)
-   
+
    在 cmd 中输入`alist.exe server`并且不要关闭窗口，运行成功后如图![QmdzyY8xbic8jdnZEXegefoZPeizqHa4ZkdMnRKoguBMkf.webp](../../assets/images/2c0ec8fb4de7f2a9a1b8107e3506cb5a8d7d7eff.webp)
 
 5. 打开浏览器，输入`localhost:5244`即可进入 AList 控制台，如图![QmUBFKu7mCiRneCrsTNPxTH6S4gxwtXf9cwLzf4dKW9LLR.webp](../../assets/images/867fe02a124c886777d4ba64f6d1e4498c686709.webp)
 
 6. 用户名：`admin`密码：`在cmd窗口中，如图`。你可以使用鼠标左键在终端中框选内容然后单击鼠标右键进行复制操作![QmVH3qZYo3QE6anNHymwkikq5MSeJphrZNR7RCH5jpP3wn.webp](../../assets/images/8cedc3475cd8358507587de8a6b2a91980fe9af4.webp)
 
-7. 注意，在 cmd 中，鼠标左键点击或拖动 cmd 的终端界面会导致进入选择状态，程序将会被系统阻塞，**需要在终端界面点按鼠标右键解除**。若进程被阻塞，cmd 的进程名会多一个**选择**，请注意。如图是程序被阻塞的例子，**在终端界面点按鼠标右键即可解除**
+7. Note: In cmd, clicking or dragging the cmd terminal window with the left mouse button will cause it to enter selection mode, and the program will be blocked by the system. **You need to click the right mouse button in the terminal window to release it.** If the process is blocked, the cmd process name will have an additional **Selection**. Please be aware. The following image shows an example of a blocked program. **Clicking the right mouse button in the terminal window will release it.**
    ![QmapESiqSEvbYq3AJs15yYvhemRxSHrJaccjTFr99muX6Z.webp](../../assets/images/afb945ff610c0463ee0db97f52bc42a865b00603.webp)
 
 8. 现在，你已经成功以管理员身份登入了 AList单击最下面的**管理**![QmfNE53GThdjVrh4q64MJcZqwcGPD7UtcYTNw9bVBaSEaF.webp](../../assets/images/eb0c3753205f42133445dfcee5f1291debd6c649.webp)
@@ -85,7 +85,7 @@ Due to slow web interface transmission and limitations on file transfer sizes ex
 
 15. 可以看到，速度非常快![QmXfGK6aZjz741GrY8RfFfKMkUzDMB3xhx93PGZ9S1QycT.webp](../../assets/images/51d0a617cbda108ce6c12fb25f71fb5223a0cddb.webp)
 
-16. Create a directory structure for your photo gallery, categorizing both horizontal and vertical images. This will facilitate the use of Workers to call R2 later. Subsequently, I will utilize the `/ri/h` path as the random horizontal image directory and the `/ri/v` path as the random vertical image directory.
+16. Create directories for your image hosting service to categorize landscape and portrait images, for use later when connecting Workers to R2 for calls. In the following text, I will use the `/ri/h` path in R2 as the directory for random landscape images and the `/ri/v` path as the directory for random portrait images.
 
 ![QmNdD8UU8fkVDBz5dXdJhCF2fZg8P1FwrcMaaTsG6a7ENy.webp](../../assets/images/3bde577194580e4d17aa457231360733175e2b0d.webp)
 
@@ -97,9 +97,9 @@ Due to slow web interface transmission and limitations on file transfer sizes ex
 
 3. 选择编辑代码![QmTbRifzXQ593DGyjFQMbA9exyNp2iAeAg4zbVrfFimQc4.webp](../../assets/images/fa78af856b3ff3798c77a55be15b2644dec944c1.webp)
 
-4. Please paste the code for creating a random horizontal image.
+4. Paste the code (to create a random landscape image):
 
-新代码：
+New code:
 
 ```
 export default {
@@ -159,7 +159,7 @@ export default {
 };
 ```
 
-Please provide the old code you would like me to translate. I need the text of the code to perform the translation.
+Old code:
 
 ```
 export default {
@@ -201,7 +201,7 @@ export default {
 
 5. 点击左侧的文件图标![QmQGQTiTXSESU2TSJ6tc3KrzWU4KABKqn6QZ1GdWqKnWmc.webp](../../assets/images/b02f29fbafb44ad36a0fa770d013069a374394a8.webp)
 
-6. In the `wrangler.toml` document, specify the following:
+6. Fill in `wrangler.toml`:
 
 ```
 [[r2_buckets]]
@@ -214,12 +214,12 @@ bucket_name = "114514"
 8. 在设置 - 变量找到 R2 存储桶绑定，添加你的存储桶，变量名即上文的`MY_BUCKET`![QmStitSyATnA8sY9tTgZaXXqmqkGPUtZmMxn9KjbFQzgTc.webp](../../assets/images/572f1c9946b5b6de5350c708e579d9887949b6e9.webp)
 
 9. 在设置 - 触发器添加你的自定义域名以便访问![QmUMxtkCiKsgFw8afRUGREFztXE9D5W6FmCbAUB7DaVH5o.webp](../../assets/images/706b3acbb372307713e38c96fc867f4e96234fd7.webp)
-   
+
    ![QmPF9iCoq6n8Jj2Z6kPkdJSCm45VJystZoYcir55yceCQo.webp](../../assets/images/1a6fa505881591a294f0b4ef4a1940e40fe57ab9.webp)
 
 10. 访问效果，每次刷新都不一样![QmQgEdjXxF9oph2jYKzFMJToX9WfG11jUmPiNJnjhYVN4N.webp](../../assets/images/0ba1efee8174e0d3db761bbd613a7b94b9738cee.webp)
 
-### Using the HTML `<img>` tag to reference the beginning of the content is an effective method to initiate the text.
+### **The desired effect at the beginning can be achieved by referencing it using the `<img>** tag in HTML`
 
-如：`<img src="你的域名" alt="">`
-Loading image.
+For example: `<img src="your domain" alt="">`
+<img title="" src="https://hpic.072103.xyz" alt="loading-ag-4760">

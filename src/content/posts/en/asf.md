@@ -1,6 +1,6 @@
 ---
-title: "Using ArchiSteamFarm for Steam Auto-Cards"
-description: "ArchSteamFarm is a Steam auto-card tool that automatically identifies games without cards and automatically adds them to your Steam collection, enabling efficient card acquisition."
+title: "Using ArchiSteamFarm for Automatic Steam Card Farming"
+description: "ArchiSteamFarm is a Steam auto-card farm tool that can automatically identify which games do not have cards and automatically farm them, efficiently obtaining Steam collectible cards."
 category: "Tutorial"
 draft: false
 image: https://eo-r2.2x.nz/myblog/img/QmPEHve8DdVZdwxAZ26BPgbc6cDCBaKC76VVijqVoMBY2k.webp
@@ -9,43 +9,43 @@ published: 2024-12-18
 tags:
 - Steam
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+ArchiSteamFarm (ASF)  Windows、Linux  macOS ， GitHub  Release 。，， Steam。ASF ，，， Wiki。
 :::
 
-# Available target workload systems
+# Available target operating systems
 
-Windows x86/ARM64
+Windows x86/Arm64
 Linux x86/Arm64/Arm32
-Operating System X86/Arm64
-Working with the codebase and associated resources in a collaborative environment.
+OS X x86/Arm64
+(Works with any other location where you can obtain a valid .NET Core runtime. Compile manually from the source code of the GitHub repository.)
 
-# Here’s a professional translation of “Install & Use ArchiSteamFarm”:  “Install and configure ArchiSteamFarm.”
+# Installing & Using ArchiSteamFarm
 
-Here’s the translation of the text from the provided GitHub link:  “ArchiSteamFarm” is a platform designed to automate and optimize the creation and management of Steam servers, focusing on ease of use and scalability.”
+https://github.com/JustArchiNET/ArchiSteamFarm
 
-Visit Release: https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest
+Or go to Release: https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest
 
-Download the compressed archive file suitable for your system’s application system.
+Download the compressed package containing the executable file compatible with your operating system for your assignment.
 
-Launch ArchiSteamFarm
-Waiting for the WebUI address, enter…
+Start ArchiSteamFarm
+Wait for the terminal to output the WebUI address, then enter
 
-Add a robot, with simple configuration.
+Add bots; simple configuration is sufficient.
 
 ![image](https://eo-r2.2x.nz/myblog/img/QmcoF7K5sTkd4CRGTZPmnLwheAHpSf68RkZTd4ZST41uXc.webp)
 
-If you have enabled Steam Mobile Verification, you will likely receive a login request. Allow it to proceed. Then, enter **Y** on the terminal interface and press Enter.
-**Successfully logged in with the credentials of XXXXXXXXXX.**
+If you have configured the Steam mobile authenticator, a login request should now appear; allow it. Then, go to the terminal interface and input **Y** and press Enter.
+At this point, the terminal should output: **Successfully logged in as XXXXXXXXXX.**
 
 ![image](https://eo-r2.2x.nz/myblog/img/QmcuktSJjWFmufsLmrYRsbLa9ns7pvRXKWZ5EUyirasKt6.webp)
 
-If the login account is available, it will automatically initiate a hang-up.
+If the logged-in account is not currently in use, it will automatically start card hanging.
 
 ---
 
-ASF does not interfere with your normal Steam usage. When an account is flagged, ASF will temporarily suspend the lock, until the account is no longer flagged. This process is fully automated and requires no manual intervention.
+ASF will not interfere with your normal use of Steam. When your account is occupied, ASF will automatically pause the card hanging until the account is no longer occupied—no manual intervention is required.
 
 ---
 
-ASF can be considered a headless Steam client, offering enhanced functionality beyond basic streaming and capable of performing various tasks as detailed in the following link: https://github.com/JustArchiNET/ArchiSteamFarm
+ASF can be regarded as a headless Steam client; it not only can farm cards but also do more things. See details at: https://github.com/JustArchiNET/ArchiSteamFarm/wiki

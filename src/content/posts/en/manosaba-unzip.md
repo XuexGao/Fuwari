@@ -1,6 +1,6 @@
 ---
-title: "Magic Girl’s Witch Judge Case Solution (Unity General Solution)"
-description: "This work is truly excellent, and you can find it on Steam by searching for “Magic Girl: Witch Trial.”"
+title: "Magic Girl's Witch Trial Unpacking (Universal Unity Unpacking Solution)"
+description: "The game \"MagiJudge\" is really great; everyone can search for \"Magic Girl's Witch Trial\" on Steam and download it to play."
 published: 2025-10-05
 image: ../../assets/images/212792e5-8634-4121-984b-c3477f463897.webp
 tags:
@@ -9,34 +9,34 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+Download and launch AssetRipper from GitHub, then navigate to the game’s local folder via Steam. Paste the game’s folder path into AssetRipper, select the *_Data folder, wait for processing, and export all assets to a chosen directory. The resulting Assets folder contains extracted resources like CGs, MVs, and voice files, though animated content requires additional work to render.
 :::
 
-# Formal commencement.
-Please visit [https://github.com/AssetRipper/](https://github.com/AssetRipper/), download **AssetRipper** and open.
+# Formally begin
+Go to https://github.com/AssetRipper/ and download **AssetRipper** and open it
 
-This automatically redirects the browser to `http://127.0.0.1:64203`. Please hold off for now.
+This will automatically launch the browser and navigate to `http://127.0.0.1:64203` for now, set it aside.
 
-接下来在Steam页面对游戏右键并选择 `管理 - 浏览本地文件`
+Right-click on the game in the Steam page and select `Manage - Browse Local Files`
 ![](../../assets/images/manosaba-unzip-1.webp)
 会打开你的文件资源管理器并导向该游戏位于系统中的实际路径 ![](../../assets/images/manosaba-unzip-2.webp)
-点击 `地址栏` 然后复制
+Click `address bar` and then copy
 ![](../../assets/images/manosaba-unzip-3.webp)
-此时在 **AssetRipper** 中我们选择 `文件 - 打开文件夹` 并粘贴路径，并进入 `*_Data` 文件夹，这里为 **manosaba_Data** 
+At this point, in **AssetRipper**, we select `File - Open Folder` and paste the path, then enter the `*_Data` folder, which is **manosaba_Data**
 ![](../../assets/images/manosaba-unzip.webp)
 
 ![](../../assets/images/manosaba-unzip-5.webp)
-接下来会进入漫长的等待时间。网页会卡在加载，我们可以查看一并打开的命令窗口确认资源载入进度
-当你发现 **查看已导入文件** 可被点击后，方可继续
+The following will involve a long waiting period. The webpage will freeze during loading; we can check the command window opened simultaneously to confirm the resource loading progress.
+When you find that **View Imported Files** can be clicked, you may proceed.
 ![](../../assets/images/manosaba-unzip-6.webp)
-选择右上角的 `导出 - 导出所有文件`
+Select `Export - Export All Files` in the top right corner
 ![](../../assets/images/manosaba-unzip-7.webp)
-点击选择文件夹，随便选个位置放解包后的文件
+Click to select a folder, and choose any location to place the unpacked files.
 ![](../../assets/images/manosaba-unzip-8.webp)
-然后点击 **导出主要内容**
+Then click **Export Main Content**
 ![](../../assets/images/manosaba-unzip-9.webp)
-最终，寻找类似 `Assets` 文件夹，就有所有的资源文件了（如CG图，MV，角色语音等）
+Finally, look for the `Assets` folder, which contains all the resource files (such as CG images, MVs, character voices, etc.)
 ![](../../assets/images/manosaba-unzip-10.webp)
 
-Here’s the translation:  “Certain resources, including skeletal models and action files, are rendered in 2D during gameplay. These assets are not directly provided as static files; instead, they are constructed through collaboration between skeletal models and action files. You will need to assemble the complete resource image yourself.”
+Note: Some resources are skeleton/model and animation files. The 2D graphics displayed during gameplay are not directly provided by static files, but are generated through the collaboration of skeleton/model and animation files. For these contents, you need to assemble the complete resource visuals yourself; this is not discussed here.

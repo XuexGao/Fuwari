@@ -3,6 +3,6 @@ enable: true
 level: happy
 lang: en
 ---
-We leverage our proprietary technology to achieve a truly internationalized experience, now encompassing website UI and articles – any content will be presented in Chinese or English.
+We have achieved AI-driven internationalization using our highly acclaimed advanced technology, allowing the website's UI, articles... any content to be displayed in either Chinese or English.
 
-Here’s the translation:  “Furthermore, this may result in numerous bugs appearing, should you encounter them. Please submit a report of this issue at [issue](https://github.com/afoim/fuwari/issues).”
+But this may also come with a host of bugs; if you encounter any, please submit [issue](https://github.com/afoim/fuwari/issues)

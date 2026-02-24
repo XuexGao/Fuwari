@@ -1,91 +1,92 @@
 ---
-title: "Magic Marriage! Free Use of a Complete Bitwarden!"
-description: "Are you looking for a password library? And don’t want to self-host it?"
+title: "Magic Grafting! Use the Full Version of Bitwarden for Free!"
+description: "Are you looking for a password manager? And you don't want to self-host?"
 published: 2026-02-23
 image: ../../assets/images/bitwarden.png
 draft: false
 lang: en
 ---
 :::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+This article explores how to bypass the TOTP auto-fill limitations of Bitwarden.com's free version. Since Bitwarden.com only restricts auto-fill at the frontend level while allowing free users to store TOTP data, users can utilize third-party clients or patched plugins to unlock full functionality. The guide recommends KeyGuard for Android and Sunsetvault for PC browsers, highlighting the advantages of using the official Bitwarden servers over self-hosting, while providing essential security precautions regarding master passwords and backup strategies.
 :::
 
-# Bitwarden and Bitwarden.com are a secure, open-source file synchronization and collaboration platform. It offers features such as encrypted file sharing, version history, and remote access for both personal and professional use.
+# What are Bitwarden and Bitwarden.com?
 
-Bitwarden is an open-source password management tool – available as a cloud service or self-hosted. Users can securely store all website login credentials (including: passwords, TOTP, and transit keys) within it. It automatically fills in these credentials when needed, eliminating the need to remember individual account passwords across multiple websites.
+Bitwarden is an open-source password manager tool (available as a cloud service or self-hosted) that allows users to store all website login credentials—including passwords, TOTP, and passkeys—with **end-to-end encryption**. It can automatically fill in credentials to help you log into websites, meaning you no longer need to remember passwords for every site. As long as you can access Bitwarden, it handles everything for you.
 
-Bitwarden.com is a service offering a secure password management solution, enabling users to utilize Bitwarden without needing their own server infrastructure.
-# Bitwarden.com offers a free version with limitations on the “default” settings.
+Bitwarden.com is the official service that provides servers for storing password vaults, allowing users **without their own servers** to use Bitwarden easily.
 
-Here’s the translation:  “Bitwarden is widely considered the best password manager for businesses, enterprises, and personal use. The free version lacks TOTP support, necessitating a paid upgrade to enable two-factor authentication.”
+# Default limitations of the Bitwarden.com free version
+
+The free version of [Bitwarden](https://bitwarden.com/) does not support TOTP auto-fill; you are normally required to upgrade to a paid plan to enable this feature.
 
 ![](../../assets/images/Screenshot_2026-02-23-16-24-34-42_edf9c6c5202cf0a.jpg)
 
-We can certainly opt out of using TOTP on any website, but doing so would be problematic. All websites rely on passwords to secure your account; in the long term, this approach is not a robust security measure.
+While you could choose not to use TOTP at all, relying solely on passwords for account protection is not secure in the long run.
 
-# Bitwarden.com offers a free version, but it does have limitations.
+# What the Bitwarden.com free version actually limits
 
-Here’s the translation:  “If you have previously utilized a password vault and stored TOTP data within Bitwarden.com, it is possible to import it successfully. However, it cannot be automatically populated.”
+Interestingly, if you have used other password managers to store TOTP and then import them into Bitwarden.com, you will find that they are imported successfully—you just can't "auto-fill" them.
 
 ![](../../assets/images/bitwarden-com.png)
 
-Bitwarden.com does not currently grant free users the ability to store TOTP (Time-Based One-Time Password) keys.
+This means that Bitwarden.com does not actually ban free users from storing TOTP data.
 
-Here’s the translation:  “It is restricting free users from accessing the ‘Auto-Fill’ TOTP authentication process on the front end.”
+**It simply blocks the "auto-fill" permission for TOTP at the frontend level for free users.**
 
-# Circumventing Bitwarden.com’s free version to bypass TOTP limitations.
+# Bypassing the TOTP auto-fill limitation on Bitwarden.com
 
-Here’s a professional translation of the text:  “Given its position at the front-end, there is a viable workaround.”
+Since the restriction is only at the frontend, there are ways to bypass it.
 
-The primary objective is to develop a third-party client or browser extension that dynamically determines VIP status based on a specific field within the application. The system should consistently return the value `true` whenever this field indicates VIP membership.
+Essentially, by using a third-party client or browser extension and modifying the VIP check field to always return `true`, you can unlock the feature.
 
-We are certainly capable of developing this independently, and we can also leverage existing solutions available in the market.
+While we could implement this from scratch, there are already excellent solutions available on the market.
 
-### Regarding Android.
+### For Android
 
-We can utilize the [AChep/keyguard-app: Alternative client for the Bitwarden® platform & KeePass (KDBX), created to provide the best user experience possible](https://github.com/AChep/keyguard-app). This open-source third-party Bitwarden client.
+You can use [KeyGuard](https://github.com/AChep/keyguard-app), an open-source third-party Bitwarden client designed to provide an optimized user experience.
 
-Please do not download from Google Play. Only the GitHub version offers all features.
+**Note: Do not download this from Google Play. Only the GitHub version includes all features.**
 
-Here’s the translation:  “To bypass the free version limitations, log in to your Bitwarden account and use TOTP for automatic password entry.”
+Simply log in to your Bitwarden account through KeyGuard to bypass the free version's limitations and use TOTP auto-fill.
 
 ![](../../assets/images/Screenshot_2026-02-23-16-28-57-77_f2500aab0c419d0.jpg)
 
-#### Regarding compatibility issues with KeyGuard’s transit keys, please see the following details:
+#### Regarding KeyGuard's compatibility with passkeys
 
-KeyGuard may not automatically populate your access keys, which can be caused by various circumstances. However, this is typically the case: [*nsect* access keys are unavailable on Cloudflare – Issue #635, AChep/keyguard-app](https://github.com/AChep/keyguard-app/issues/635).
+KeyGuard may struggle to auto-fill your passkeys in certain situations. A known issue is: [Passkeys not working on Cloudflare · Issue #635 · AChep/keyguard-app](https://github.com/AChep/keyguard-app/issues/635).
 
-Please re-generate a standard key, uploading it to Bitwarden.com via KeyGuard.
+You can try regenerating a passkey and uploading it to Bitwarden.com via KeyGuard.
 
-However, it’s also recommended to consider using a broader TOTP two-step verification method instead of relying solely on the standard key.
+However, it is generally recommended to **stick with the more widely adopted TOTP two-factor authentication method instead of passkeys** for now.
 
-### PC browser extensions
+### For PC Browsers
 
-[SunsetMkt/Sunsetvault: Builder for Sunsetvault extension.](https://github.com/SunsetMkt/Sunsetvault)
+You can use [Sunsetvault](https://github.com/SunsetMkt/Sunsetvault).
 
-It only performs one thing: when the official Bitwarden browser plugin source code is released, it retrieves and fixes a piece of code.
+This tool performs a simple task: when the official Bitwarden browser extension source code is released, it pulls and patches a specific segment of code:
 
-Here’s a professional translation of the text:  “Ensure that all accounts are automatically recognized as VIP status.”
+**It forces any account to be identified as a VIP account.**
 
-Here’s the translation:  “The TOTP system is now available.”
+Once patched, TOTP becomes fully usable.
 
 ![](../../assets/images/bitwarden-com-1.png)
 
-# Here’s the translation:  Compared to self-built solutions, the benefits of a managed service provider are significant.
+# Advantages over self-hosting
 
-Using Bitwarden directly eliminates the need for a server to deploy [Vaultwarden](https://github.com/dani-garcia/vaultwarden) or run complex Rust/TS code on Cloudflare Workers [warden-worker](https://github.com/afoim/warden-worker) or Node Warden.
+By using Bitwarden.com directly, you avoid the need for a dedicated server to deploy [Vaultwarden](https://github.com/dani-garcia/vaultwarden) or the need to study complex Rust/TS code to deploy [warden-worker](https://github.com/afoim/warden-worker) or [NodeWarden](https://github.com/shuaiplus/NodeWarden) on Cloudflare Workers.
 
-Furthermore, it can provide benefits through official login email notifications.
+You also benefit from official features like login notification emails.
 
 ![](../../assets/images/bitwarden-com-2.png)
 
-# 注意事项
+# Important Notes
 
-1. This method is a non-official workaround designed for testing and learning purposes only.
-2. Please do not use Bitwarden.com to manage your Bitwarden account credentials. If you lose access to your Bitwarden account, you will be unable to recover any passwords stored on it. Remember your Bitwarden login credentials; if you have two-factor authentication (2FA) keys, store them elsewhere (e.g., Google/Microsoft recovery codes, or write them down and keep them in a secure location). *This is the only thing you need to remember*
-3. Don’t worry about Bitwarden experiencing downtime. Once a successful login to Bitwarden device is established, that device can be used to export the password library’s entire collection of passwords. **As long as Bitwarden.com / your device are both connected, the passwords will remain secure**
-4. Setting a primary password for Bitwarden requires extreme caution. **The master password cannot be changed via forgotten password recovery.** It is only valid when you are already logged into Bitwarden. To change it, you must verify the original master password. Refer to: https://bitwarden.com/help/article/forgot-master-password/
+1. This method is an **unofficial workaround**. Future availability is not guaranteed, and it is intended solely for testing and educational purposes.
+2. **Do not use Bitwarden.com to manage the credentials used to log into Bitwarden.com itself** (e.g., its own TOTP, master password, etc.). If you lose access to Bitwarden.com, you will be unable to recover anything stored there. Always keep your master password safe and store your Bitwarden 2FA recovery codes or TOTP keys in a separate, secure location (like a physical notebook or an offline authenticator app).
+3. Don't worry about Bitwarden.com going down. As long as a device has successfully logged in and synced, that device can be used to export the entire vault. **Your passwords are safe as long as either Bitwarden.com or a logged-in device is accessible.**
+4. Be extremely careful when setting your Bitwarden master password. **This password cannot be reset via a "forgot password" email.** It can only be changed while you are logged in, and it requires verification of the current master password. See: [Bitwarden Help: Forgot Master Password](https://bitwarden.com/help/article/forgot-master-password/).
 
-# References · Acknowledgements
+# References & Acknowledgments
 
-Here’s the translation:  “The foundation of this document was laid through a series of incidents involving Microsoft backdoors and the development of KeyGuard. It’s quite a fragrant experience.”
+This article was inspired by: [Password Manager Odyssey: From Microsoft's Betrayal to KeyGuard's True Charm](https://blog.weijx.vip/p/%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8%E6%8A%98%E8%85%BE%E8%AE%B0%E4%BB%8E%E5%BE%AE%E8%BD%AF%E8%83%8C%E5%88%BA%E5%88%B0-keyguard-%E7%9C%9F%E9%A6%99)

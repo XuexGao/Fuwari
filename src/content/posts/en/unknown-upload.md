@@ -1,6 +1,6 @@
 ---
-title: "Self-built anonymous file upload endpoint"
-description: "Do you ever encounter a situation where you need to transport a file from your school or company computer, but don’t want to install remote software? Today, I will teach you how to bring files back to your home without the use of a USB drive!"
+title: "Build an Anonymous File Upload Endpoint"
+description: "Have you ever encountered a scenario where you need to take a file with you from a school/company computer, but you don’t want to install remote software? Today, I’ll teach you how to bring your desired file home without needing a USB drive!"
 published: 2025-11-08
 image: ../../assets/images/unknown-upload.webp
 tags:
@@ -10,96 +10,96 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article provides a detailed guide on creating a simple file upload service using EdgeOne Pages and Object Storage, offering two distinct approaches: a cloud-based solution with object storage and a local server option utilizing Python's `uploadserver`. It highlights the benefits of each method based on user needs – stability, complexity, cost, and ease of setup. The article also provides installation instructions, including Python version requirements and DNS configuration for IPv6.  It concludes by outlining methods for deploying the service to a public network using EdgeOne's IPv6 return-to-origin functionality or NAT1-based STUN.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article outlines two practical solutions for uploading files from public internet devices to a home network: one using EdgeOne Pages + object storage for stability and cloud-based reliability, and another using a local Python server (uploadserver) for simplicity and low cost if the home computer remains online. The former requires cloud configuration but offers consistent access, while the latter is easy to set up locally but depends on home device availability. Both methods support anonymous file uploads via web interfaces.
 :::
 
 # Video
-Here’s the translation of the text from the provided link:  “The video explores the evolving relationship between human creativity and artificial intelligence, examining how AI tools are increasingly being used to generate artistic content and pushing the boundaries of creative expression. It delves into the ethical considerations surrounding this technology, including questions of authorship, originality, and the potential impact on human artists.”
+[[X:content]]
 
-# 明确需求
+# Clarify requirements
 
-During the execution of a project, regardless of its size or scope, it’s crucial to first determine what is essential versus non-essential and ultimately, what is truly superfluous.
+When doing a project, regardless of its size, we first need to understand what we require, which are the essential needs, which are secondary, and which are completely unnecessary.
 
-Considering the project’s use case, I believe it should primarily be deployed in non-home environments where a wired internet connection is unavailable but can still connect to the internet. Specifically, it would be suitable for transferring sensitive files – such as documents, screenshots, and small software applications – when these files are not excessively large.
+Think deeply about it, I believe the use case for this project should be: when I am in a non-home environment, and I have a device that is not directly connected to my home network but can connect to the internet, and I need to transfer some non-sensitive files that are not large (such as documents, screenshots, small software).
 
-那么大致的需求即为：
-1. Based on a web page, create a frontend application that requires an `input file`. Upload complete and print completed.
-2. The backend will store files in a shared storage space. This storage location must be easily accessible within the family network.
+The general requirements are as follows:
+1. Based on a web page, create a frontend page that must include a `input file`. Print "Upload completed" after upload is finished.
+2. The backend places the file in a storage space. This storage space must be conveniently accessible within the home network.
 
-# Here’s the translation:  **Comparative Analysis**
+# Scheme Comparison
 
-Here are two options for translating the text:  “Here are two approaches, each with its own advantages and disadvantages.”
+Here are two options, each with its own advantages and disadvantages:
 
-| | Storage solution 1 | Option two: Local server |
+| | Option One: Object Storage | Option Two: Local Server |
 |---|---|---|
-| Stability | Dependence on local devices not required. | Need a home computer online |
-| Complexity | Need to configure cloud functions. | Execute command. |
-| Cost | Storage fees | No bandwidth for family. |
-| Use case scenarios | Requires stable operation | Home computer always online |
+| Stability | ⭐⭐⭐⭐⭐ No dependence on local devices | ⭐⭐ Requires home computer online |
+| Complexity | ⭐⭐⭐ Requires cloud function configuration | ⭐⭐⭐⭐⭐ Start with one command |
+| Cost | Object Storage Fees | None (Family Bandwidth) |
+| Applicable scenarios | Requires stable operation | Home computers are often online |
 
-# Here’s the translation:  Option One: EdgeOne Pages + Object Storage
+# Option One: EdgeOne Pages + Object Storage
 
-To ensure stable and reliable service, relying on household devices for online status is not ideal. A more suitable object storage solution is recommended.
+If you wish for the service to operate stably without relying on the online status of home devices, object storage is more suitable for you.
 
-## Clarify and analyze the situation.
+## Clarify your thoughts
 
-Using object storage, I only need to establish a connection with a cloud function that integrates with my object storage and then provide an upload endpoint.
+With object storage, I only need to find one cloud function connected to my object storage, and then provide an upload endpoint.
 
 ![](../../assets/images/unknown-upload-1.webp)
 
-## Formal commencement.
+## Formally begin
 
-Here’s the translation:  “I found EdgeOne Pages and its functionalities are particularly well-suited for this task. It also supports native Node runtime, which allows direct integration with `node-functions`. I then created a simple frontend upload page using the NPM package `AWS-S3`, streamlining the process.”
+So I found EdgeOne Pages, whose Functions are perfectly suited for this task and support native Node runtime, meaning `node-functions` can directly use the `AWS-S3` npm package to create the simplest frontend upload page—done!
 
 ![](../../assets/images/unknown-upload-2.webp)
 
-To prevent duplicate file uploads, each uploaded file will be renamed to `original filename_timestamp_ip`.
+To prevent uploading files with duplicate names, each uploaded file will be renamed to `__IP`
 
-The project has been released as open source [afoim/EdgeOnePageFunctionUnknownUploader-S3-](https://github.com/afoim/EdgeOnePageFunctionUnknownUploader-S3-).
+This project has been open-sourced [afoim/EdgeOnePageFunctionUnknownUploader-S3-](https://github.com/afoim/EdgeOnePageFunctionUnknownUploader-S3-)
 
-# Option Two: Upload Server Implementation
+# Option Two: Python uploadserver
 
-Recommended: [https://github.com/svenstaro/miniserve]
+> Recommended: https://github.com/svenstaro/miniserve
 
-If your home computer typically maintains an online connection and prioritizes ease of use, a dedicated file-uploading tool for your desktop is a viable option.
+If your home computer is typically left online and you prioritize simplicity and ease of use, launching an anonymous file uploader on your own computer is also a good option.
 
-## Installation
+## Install
 
-Ensure that you have installed **Python**.
+Make sure you have installed **Python**
 
-安装 **uploadserver**
+Install **uploadserver**
 ```bash
 pip install --user uploadserver
 ```
 
-接下来，创建并进入一个新文件夹，作为 **上传目录**
+Next, create and enter a new folder to serve as **upload directory**
 ```bash
 mkdir upload
 cd upload
 ```
 
-运行，并监听 **IPv4** 的 **8000端口**
+Run and listen on **IPv4** port **8000**
 ```bash
 python -m uploadserver 8000
 ```
 
-又或者，监听 **IPv6** 的 **8000端口** 
+Or, monitor port **8000** on **IPv6**
 ```bash
 python -m uploadserver --bind :: 8000
 ```
 
-接下来，你就可以在内网环境使用这个 **文件上载器** 了
+Next, you can use this **file uploader** in your internal network environment.
 ![](../../assets/images/py-uploadserver.webp)
 
-## Going live” or “Streaming
+## Reach the public network
 
-### Method One: Utilizing EdgeOne for IPv6 Backpopping
+### Method One: Use EdgeOne for IPv6 backsource
 
-将你的IPv6做 **DDNS** ，然后使用EdgeOne回源
+Make your IPv6 **DDNS**, then use EdgeOne as the origin server
 ![](../../assets/images/py-uploadserver-1.webp)
 
-### Method Two: STUN (Limited to NAT1 availability)
+### Method Two: STUN (Only available for NAT1)
 
-当你的家庭网络为 **NAT1** ，则可以使用类似这样的软件将你的 **内网端口** 直接打到 **公网端口** （貌似该程序对TCP分片敏感，会导致RST） [MikeWang000000/Natter: Expose your TCP/UDP port behind full-cone NAT to the Internet.](https://github.com/MikeWang000000/Natter) 
+When your home network is **NAT1**, you can use software similar to this to directly map your **internal port** to your **public port** (it seems this program is sensitive to TCP fragmentation, which may cause RST) [MikeWang000000/Natter: Expose your TCP/UDP port behind full-cone NAT to the Internet.](https://github.com/MikeWang000000/Natter)
 ![](../../assets/images/py-uploadserver-2.webp)

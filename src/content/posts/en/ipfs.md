@@ -1,7 +1,7 @@
 ---
-title: "Using IPFS-based Fleek deployment for static websites, hosting a graph database, and deploying services"
-description: "IPFS is a decentralized file hosting system that allows you to share files, publish websites, and automate this process with Fleek, which also facilitates linking your Git repositories."
-category: "Writing"
+title: "Deploy Static Websites, Host Image Storage, and Deploy Services Using Fleek on IPFS"
+description: "IPFS is a multi-node file hosting system where you can share files and publish websites. Fleek automates this process and can link to your Git repository."
+category: "Reflections"
 draft: false
 image: ../../assets/images/2024-10-17-09-55-55-image.webp
 lang: en
@@ -11,86 +11,86 @@ tags:
   - IPFS
 
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
 
 :::
 
-This document is outdated and may no longer be accessible.
+> This article is outdated, and some resources may no longer be available.
 
 ### What is IPFS?
 
-IPFS is a decentralized media protocol that accelerates network speeds, enhances security, and promotes openness. In essence, it’s a decentralized internet. Technically, it's a content addressing system based on a distributed hash table (DHT) managed using a Git model, leveraging Merkle object associations, utilizing point-to-point technology, and employing IPNS as a foundation. It integrates various technologies, including distributed file systems.
+> IPFS is a peer-to-peer hypermedia protocol that makes the network faster, safer, and more open. In simple terms, it's a decentralized internet. Technically speaking, it is a distributed file system based on content addressing via Distributed Hash Tables (DHT), version control modeled after Git, Merkle object linking, peer-to-peer technology, and a global naming system called IPNS, built upon various technologies.
 
 用人话说，你可以把它看成一个共享网盘，你可以尝试下载[IPFS - Desktop（适用于有图形界面的系统）](https://github.com/ipfs/ipfs-desktop)或[kubo - ipfs（适用于CLI）](https://github.com/ipfs/kubo)。然后启动IPFS，你的设备将成为IPFS网络中的一个节点，如图![](../../assets/images/2024-10-17-10-47-08-image.webp)
 
-### Here’s the translation:  “Using IPFS offers a variety of capabilities, including decentralized storage, content distribution, and data integrity.”
+### What can IPFS be used for?
 
-Upon connecting to an IPFS network, your device is automatically designated as a local IPFS node and begins searching for other IPFS nodes. You can then assist other users in establishing connections, providing files, and facilitating file sharing. Furthermore, you can upload your files to your IPFS node, awaiting distribution, allowing other users on the network to access them. Within an IPFS network, accessing files through an IPFS gateway, such as `https://ipfs.io/ipfs/`, enables access. For example: https://ipfs.crossbell.io/ipfs/bafybeifbn36zmdb37ov6id3toy6bve47264hjk2yob6rm4bhw7ooawncf4
+Once you connect to the IPFS network, IPFS will automatically turn your device into a local IPFS node and search for other IPFS nodes. You will be able to help other users establish connections and provide files. You can also upload your files to your IPFS node for distribution, allowing other users on the network to access your files. In the IPFS network, accessing files is done through an IPFS gateway, such as: `https://ipfs.io/ipfs/` + `CID（file hash）`. For example: https://ipfs.crossbell.io/ipfs/bafybeifbn36zmdb37ov6id3toy6bve47264hjk2yob6rm4bhw7ooawncf4
 
-Here’s the translation:  “To bypass firewall restrictions, I am utilizing the CrossBell IPFS network gateway.”
+(Here, the IPFS gateway hosted by CrossBell, `ipfs.crossbell.io`, is used to bypass GFW blocking.)
 
-### Does this technology truly offer such an ideal solution?
+### Is this technology really that ideal?
 
-Here’s the translation:  “This technology is genuinely promising, however, practical implementation will encounter the following challenges.”
+This technology is indeed ideal, but practical application will encounter the following issues.
 
-1. Local IPFS node uploads are currently experiencing delays in accessing the content via IPFS gateway and CID.
+1. Files uploaded via a local IPFS node remain inaccessible through the IPFS gateway + CID.
 
-2. The dataset contains a limited number of nodes.
+2. Too few discovered nodes
 
-3. The usage of this application may significantly impact your internet bandwidth.
+3. May consume a large amount of your bandwidth
 
-Here’s the translation:  Many of these issues stem from the network being excessively large, with individual IPFS node weights being low. Despite IPFS distribution typically completing within a few hours, it's crucial for individuals to seek assistance from service providers who often possess greater weight within the IPFS network. These services frequently offer higher efficiency in file updates and provide features such as automated Git deployment. The article utilizes **Fleek** as its source.
+Most of these issues stem from the fact that the network is too large, and individual IPFS nodes have very low weight, even though IPFS distribution typically completes within a few hours. For individuals, we should look for service providers to fulfill these needs; they often have greater weight within the IPFS network, higher efficiency in updating files, and also offer additional services such as automated Git deployment. The service used in this article is **Fleek**
 
-### Regarding “fleek,” it generally refers to a state of being attractive or stylish, often implying confidence and self-assuredness. It’s frequently used in online contexts, particularly within social media and fashion communities, to describe someone looking good or feeling confident.
+### About Fleek
 
-It resembles…
+> It seems like it
 
-Here’s the translation:  “This file can be rapidly distributed across a large number of IPFS nodes, uploaded via Fleek, and broadcast to the IPFS network within seconds. It also supports deployment of projects using Git storage and binding to your domain.”
+You can simply understand it as having significant weight, with many IPFS nodes. Files uploaded to the IPFS network via Fleek can be broadcast within seconds, and it supports deploying projects by connecting to Git repositories and binding your domain.
 
-### Is it reliable to trust?
+### Is Fleek trustworthy?
 
-I have only been interacting with this service for two days. I’ve observed that Fleek provided three access methods following successful deployment of the website.
+I have only used this service for two days. I observed that Fleek provides three types of access methods after successfully deploying a website.
 
-1. `xxx-xxx.fleek.app`：This domain utilizes Cloudflare Content, and a verification test reveals that the IP address count is 2, advising against its use.
+1. `xxx-xxx.fleek.app`: This domain uses Cloudflare CDN, and actual testing shows that the number of resolved IPs is 2, which is not recommended for use.
 
 2. ![](../../assets/images/2024-10-17-11-01-49-image.webp)：这种方法是原生的IPFS访问方式。通过IPFS网关+CID来访问。但由于CID为哈希值，当你的网站改动后你的CID会发生变化
 
-3. 绑定自定义域名来访问，这将会使用亚马逊的CDN并且自动映射CID，实测解析IP数量超过30，并且速度很快
-   
+3. Bind a custom domain to access, which will use Amazon's CDN and automatically map the CID. In actual testing, the number of resolved IPs exceeds 30, and the speed is very fast.
+
    > [!WARNING]
-   > 注意，任何使用HTTP协议的类ipfs技术都需要一个中心化服务器代理访问IPFS网络。只有当访问者连接上IPFS网络后才会使用去中心化的连接方式）
+   > Note: Any class of IPFS technology using the HTTP protocol requires a centralized server proxy to access the IPFS network. Only after the visitor connects to the IPFS network will decentralized connection methods be used.
 - ![](../../assets/images/2024-10-17-11-07-40-image.webp)
 
-- Despite displaying an IPFS file browsing interface, the page itself is implemented using HTTP requests to Amazon CDN reverse IPFS networks. It remains a centralized network architecture.
+- Although it displays the file browsing interface of IPFS, in reality, this page is proxied through an HTTP request to Amazon's CDN, relaying the IPFS network, which remains a centralized network.
 
 - ![](../../assets/images/2024-10-17-11-08-44-image.webp)
 
-- Upon connecting your device to the IPFS network, all traffic will utilize P2P (peer-to-peer) protocols, resulting in the actual access addresses being your local device.
+- Once your device is connected to the IPFS network, all traffic will use P2P (decentralized), so the access address you see is actually your local address.
 
-### Refine your approach, what can Fleek achieve?
+### Let’s clarify our thinking: what can we achieve with Fleek?
 
-Enable Fleek to connect your Git repository, building static websites and deploying them to IPFS while maintaining HTTP access compatibility.
+Connect Fleek to your Git repository, build static websites via build commands, and publish to IPFS while remaining compatible with HTTP access.
 
-#### Formal commencement.
+#### Formally begin
 
-1. Please log in to fleek.xyz using MetaMask.
+1. Go to fleek.xyz and log in with MetaMask
 
-2. Connect your Git repository and provide information related to build commands and other relevant details.
+2. Connect your Git repository, enter build commands and other relevant information
 
-3. Deploy website.
+3. Deploy the website
 
-4. Here’s the translation:  **Domain Binding**
+4. Bind domain name
 
-5. Final Access
+5. Final visit
 
-效果图：
+Rendered effect:
 
 ![](../../assets/images/2024-10-17-11-31-33-image.webp)
 
-#### Expand our options beyond traditional IP addresses. We can leverage IPFS technology for various applications.
+#### Expand on this: What else can we do with IPFS technology? (Domain has been deprecated)
 
 1. 创建一个巨大的图床，已经投入使用，参见： https://pic.onani.cn （原理：请求 https://ipfs-pic.onani.cn ，获取图片列表，随机选择使用JS展示）![](../../assets/images/2024-10-17-11-34-44-image.webp)
 
-2. Please discontinue the use of self-hosting images; they are now in use and all blog images are stored on IPFS.
+2. No longer need to self-host any images; already in use, all images on this blog are stored on IPFS.
 
-3. Here’s the translation:  “It is theoretically possible to upload any storage-intensive services to IPFS, enabling data partitioning and separation.”
+3. Theoretically, you can upload any storage-consuming service to IPFS to achieve separation of storage and computation.

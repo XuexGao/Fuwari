@@ -1,65 +1,65 @@
 ---
-title: "Strictly Translated! Build your own short chain service!"
-description: "Utilize Cloudflare Worker+GitHub to build a pure static, non-wormish short chain!"
+title: "Completely Free! Build Your Own Short Link Service!"
+description: "Build a pure static, unkillable short link using Cloudflare Worker + GitHub!"
 published: 2026-01-14
 image: ../../assets/images/static-redirect-group.webp
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This project utilizes a simplified approach to creating static redirects, leveraging Cloudflare Workers for efficient handling of 404 errors and dynamic routing. It’s designed to be self-deployable using a GitHub repository README, offering a streamlined solution for managing redirects without requiring manual configuration or extensive scripting. The core functionality centers around a Worker proxy that directly serves the `/_url` endpoint, triggering Cloudflare Workers to rebuild the redirect chain and provide fullbacks to the 404 page.  The project’s architecture relies on a straightforward approach utilizing GitHub Actions to automatically trigger the rebuilding of shortchains, ensuring consistent routing updates.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article explains a simplified self-hosted short-link service using only a Cloudflare Worker, avoiding the complexity of GitHub Pages + Cloudflare Workers separation. It integrates frontend and backend logic, uses JavaScript for redirection via 404 fallbacks, and supports expiration via GitHub Actions. Setup involves forking the repo, editing hardcoded values, setting up a GitHub token, and configuring Cloudflare WAF for protection.
 :::
 
-# Introduction
-The article segment is a simple self-deploy tutorial for this project, which should be placed in the README of the repository. It was originally intended to be outsourced by AI, but it has become overly focused on the bizarre and intricate interplay between the GitHub Page+Cloudflare Worker front-end and back-end separation, adding considerable work. In fact, a single Cloudflare Worker is sufficient for this project, so it’s reasonable to have me write it by hand.
+# Preface
+This article shouldn't exist, as it's simply a basic self-deployment guide for the project, which should have been included in the repository's README. It was originally meant to be written by AI, but I found it overly fixated on that bizarre frontend-backend separation using GitHub Pages + Cloudflare Workers, which actually adds unnecessary work. In reality, the project only needs a single Cloudflare Worker. So since I'm writing it anyway, it's quite reasonable for me to publish this article.
 
-# Project Principles
-The project and the previous short chain project are similar, but simplified some things.
+# Project Principle
+This project is similar to the previous short-link project, but it has simplified some aspects.
 
-First, this project integrates the front-end and back-end, with almost no validation happening on the front-end; all validation is handled in the backend, eliminating the need for two separate projects to implement rules.
+Firstly, this project integrates the front-end and back-end together. The front-end almost does no validation, with all validation handled on the back-end, eliminating the need to add rules back and forth between two separate projects.
 
-Due to this project’s frontend being very simple, it’s just two HTML files (one for creating a page and one for redirecting pages), so combining them doesn’t make it bloated.
+Since the frontend of this project is very simple, with just two HTML files (one for the creation page and one for the redirect page), combining them does not result in bloat.
 
-The project no longer utilizes Cloudflare service-side 301/302 redirects, which has exceeded the limit of 2000 static redirections, theoretically unlimited. Instead, it directly uses CDN to fullback to 404.html when a 404 error occurs for static assets. Then, JavaScript will perform short chain queries and redirect (similar to Nginx's fixed-content).
+Moreover, this project no longer uses Cloudflare's server-side 301/302 redirects, thus breaking the 2000 static redirect limit (theoretically unlimited), instead directly using CDN: when a static asset returns a 404, it falls back to 404.html, where JavaScript performs short-link lookup and redirection (similar to Nginx's pseudo-static functionality).
 
-Following up, if a pathname doesn’t match any rules, it will be caught by a default fallback origin, allowing compatibility with similar URLs: https://2x.nz/posts/pin/ --> https://blog.acofork.com/posts/pin/
+Furthermore, if a pathname does not match any rule, it will be caught by a default fallback source, which can be compatible with similar cases such as https://2x.nz/posts/pin/ --> https://blog.acofork.com/posts/pin/
 
-Then, the logic for creating short chains is similar to a project, essentially involving worker proxies accessing GitHub, modifying JavaScript to add a new short chain rule, and then pushing it. This will automatically trigger Cloudflare Worker’s rebuild, after which you can access the new pathname correctly.
+Then comes the logic for creating short links, which is actually similar to the previous project: the Worker proxies access to GitHub, modify the JS, add a new short link rule, and push it. This will automatically trigger a rebuild of the Cloudflare Worker. Wait a moment, then accessing the new pathname will result in the correct redirect.
 
-We have implemented a longer expiration period, and the principle is remarkably straightforward. When creating short chains on the frontend, we send a field indicating when the expiration date will expire to the backend; the backend then writes this information to a file, and finally, GitHub Action's scheduled monitoring clears expired short chains.
+Finally, we support expiration periods, and the principle is very simple: when the frontend creates a short link, it passes a field indicating when the link should expire to the backend. The backend then writes this information into a file, and finally, it uses a scheduled GitHub Action to clean up expired short links.
 
-# Where to get a short chain?
-My 2x.nz is purchased from porkbun.com, and it costs around one hundred dollars a year. Other suffixes are also good, such as `.im` `.mk`.
+# Where to get a short link
+My 2x.nz was purchased at https://porkbun.com for around $100 per year. Other extensions are also good, such as `.im` `.mk`
 
-# Formally build your short chain service.
+# Officially set up your short-link service
 
-First, Fork Warehouse.
+First, fork the repository
 
-GitHub repository: afoim/Static_Redirect_Group
+::github{repo="afoim/Static_Redirect_Group"}
 
-Next, I will modify some hardcoded elements due to Cloudflare Worker not being able to use environment variables. Some things are hardcoded in all HTML files; try `afoim` for these changes to be replaced with your (you can also add a layer and write a configuration, then inject content through building).
+Next, let's change some hardcoded elements. Since Cloudflare Worker cannot use environment variables for static assets, some things are hardcoded. Try searching for `afoim` in all HTML files and replace it with your own (you can also add an extra layer by creating a configuration and injecting the content via build, whichever you prefer).
 
-Then, edit the short chain folder in the js directory to your desired.
+Then, please edit the short links in the js folder to change them to what you want.
 
-Following up, create a GitHub token with only `repo` permission.
+Next, create a GitHub Token that only has `repo` permissions.
 
-Further, bind secret variables using `wrangler secret put XXX`.
+Continue, bind secret environment variables, using `wrangler secret put XXX`
 
-| Variable name | Value | The table cell content is:  “The company’s revenue increased by 15% year-over-year.” |
+| Variable name | Value | Description |
 | :--- | :--- | :--- |
-| GITHUB_TOKEN | C:ghp_xxxx... | Just applied token |
-| GitHub Owner | Your GitHub username | `afoim` |
-| GitHub Repository | Static Redirect Group | Your warehouse name |
-| C:BASE_DOMAIN | Your short chain domain name | Worker’s default domain `xxx.workers.dev` |
+| `GITHUB_TOKEN` | `ghp_xxxx...` | The token applied for just now |
+| `GITHUB_OWNER` | Your GitHub username | For example `afoim` |
+| `GITHUB_REPO` | `Static_Redirect_Group` | Your repository name |
+| `BASE_DOMAIN` | Your short domain name | For example `u.2x.nz` or the default domain for Workers `xxx.workers.dev` |
 
-At this time, you can create your short chain by accessing `/_url`.
+At this point, accessing `/_url` will create your short link.
 
-# Protective measures.
-Recommended to protect short-chain networks from spam (or Cloudflare Turnstile, rate limiting…)
+# Protection
+Suggest protecting the short links used to create short links against bots (or Cloudflare Turnstile, rate limiting... your choice)
 
-In Cloudflare, create a WAF rule.
+Create a WAF rule in Cloudflare
 
-When the request matches…
+When the incoming request matches...
 ```sql
 (http.host eq "你的域名" and (
   http.request.uri.path eq "/_url"
@@ -67,6 +67,6 @@ When the request matches…
 ))
 ```
 
-Then take action…
+Then take measures…
 
-Interactive inquiry **Interactive Inquiry**
+**Interactive Inquiry**

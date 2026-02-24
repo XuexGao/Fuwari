@@ -1,94 +1,92 @@
 ---
-title: "How to Redirect Websites? Global Instant Launch! A little trouble, but fun!"
-description: "The process of website redirection can be quite challenging, and frankly, it’s not straightforward at all. If you're also interested in exploring this further (and perhaps considering a temporary stay), then we recommend giving it a try – 8!"
+title: "How to Set Up Website Traffic Distribution? Global Instant Access! A Bit Like Being in Prison, But Fun!"
+description: "Website traffic splitting looks difficult, but in reality, it's not simple at all. If you're also interested (and want to go to jail), come try it out, 8!"
 published: 2026-01-12
 image: ../../assets/images/fenliu.webp
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-Here is the summary of the article:
-
-This article discusses a redirection strategy for a blog website, leveraging CDN and Cloudflare services to improve performance and security. It outlines several configuration options for different domains, including EdgeOne, ESA, and Cloudflare, and explains how to handle domain forwarding based on the origin server type (static vs. dynamic).  The key considerations include DNS management, SSL certificate validation, and proper HTTP verification for Cloudflare SaaS, with a focus on enabling global CDN routing and preventing DDoS attacks.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article details a comprehensive website traffic splitting setup for blog.acofork.com and its associated domains, using CDNs like EdgeOne, ESA, and Cloudflare. It covers SSL certificate acquisition methods, source server configurations (static vs. dynamic), browser-based server detection, and critical operational notes including CDN limitations, DNS routing, and security best practices like enabling overseas blocking for domestic nodes. The setup ensures optimal performance and security across regions while maintaining automated SSL management and flexible routing.
 :::
 
-# The website requires segmentation.
-Blog Core, Main Page
-[https://blog.acofork.com](https://blog.acofork.com)
-Umami is utilized to embed a JavaScript snippet on a website for tracking visitors and displaying visitor information.
-[[Umami: Share]]
-Static image set for top articles and the entire website’s background.
-[https://pic1.acofork.com]
+# Websites requiring traffic diversion
+Blog itself, main site
+::url{href="https://blog.acofork.com"}
+Umami, used to insert a JS on a website for visitor statistics and displaying visitor information
+::url{href="https://umami.acofork.com/share/CdkXbGgZr6ECKOyK"}
+Static random image, used as the cover for pinned articles and as the background image for the entire website.
+::url{href="https://pic1.acofork.com"}
 
 ---
-Here’s the translation:  “Other sources include [https://acofork.com](https://acofork.com) and [https://www.acofork.com](https://www.acofork.com).”
-These are being redirected to the domain of blog.acofork.com, and we need to configure routing for it.
+Others: https://acofork.com, https://www.acofork.com
+These are all domains that need to be redirected to https://blog.acofork.com via a **301** redirect, and we also need to configure load balancing for them.
 
-# Here’s the translation:  “Each CDN SSL application solution.”
+# Various CDN SSL application solutions
 
-### EdgeOne.
+### EdgeOne
 
-由于NS直接在EdgeOne，故直接申请
+Since NS is directly on EdgeOne, apply directly.
 ![](../../assets/images/fenliu-1.webp)
 ### ESA
-使用DCV委派
+Use DCV delegation
 ![](../../assets/images/fenliu-2.webp)
 ### Cloudflare
-使用HTTP验证，由于ACME验证节点在国外，所以它只会看到CNAME到Cloudflare的记录，从而签发SSL
+Using HTTP validation, since the ACME validation server is located overseas, it will only see the CNAME record pointing to Cloudflare, thereby issuing the SSL certificate.
 ![](../../assets/images/fenliu-3.webp)
-针对重定向的域名，由于默认所有请求都会被重定向到新域，ACME自然无法验证，所以我们需要写一条排除规则，让ACME验证路径直接返回200 OK，其余的路径再重定向
+For domains with redirects, since all requests are by default redirected to the new domain, ACME cannot verify. Therefore, we need to write an exclusion rule that allows ACME verification paths to directly return a 200 OK, while other paths are redirected.
 ![](../../assets/images/fenliu-17.webp)
 
-# 源站类型
+# Source type
 
-### Static.
+### Static type
 
-国内使用对应CDN的Page业务，海外使用Cloudflare Worker。至于为什么不将 `blog.acofork.com` 也放在EdgeOne Page，一是因为EdgeOne CDN和Page的WAF规则是分开的，而Page业务的WAF规则不是很好做海外封锁，二是因为EO在之前被打的时候将这个子域封了。而ESA Page可以很简单做到海外封禁
+For domestic use, the Page service utilizes the corresponding CDN; for overseas use, Cloudflare Worker is employed. As for why `blog.acofork.com` is not also placed on EdgeOne Page, one reason is that the WAF rules for EdgeOne CDN and Page are separate, and the WAF rules for Page services are not well-suited for overseas blocking. Another reason is that EO previously blocked this subdomain when it was under attack. In contrast, ESA Page can easily implement overseas blocking.
 ![](../../assets/images/fenliu-4.webp)
 
 ![](../../assets/images/fenliu-5.webp)
 
 ![](../../assets/images/fenliu-16.webp)
-### 动态型
+### Dynamic type
 
-国内使用IPv6回源（用户 - IPv4 - EO/ESA CDN - IPv6 - 源站）。至于为什么不用ESA，是因为ESA CDN回源非标端口需要像Cloudflare一样写一条回源规则，占用免费规则集5条中的其中之一
+Domestic use of IPv6 for backsource (user - IPv4 - EO/ESA CDN - IPv6 - origin server). As for why ESA is not used, it is because ESA CDN requires non-standard ports for backsource, which necessitates writing a backsource rule similar to Cloudflare, consuming one of the five free rule slots.
 ![](../../assets/images/fenliu-6.webp)
-海外采用Cloudflare Tunnel（用户 - IPv4 - CF CDN - 内部连接 - 源站）
+Overseas adoption of Cloudflare Tunnel (User - IPv4 - CF CDN - Internal Connection - Origin Server)
 ![](../../assets/images/fenliu-7.webp)
 
-# The browser client implementation provides a session observer to track the current access node.
+# Browser client implements monitoring of the currently visited node
 
-利用浏览器JavaScript发送HEAD请求拿取对端响应头Server字段并回显（若跨域则需要设置 **Access-Control-Expose-Headers** 响应头，值为 **server**
+Use browser JavaScript to send a HEAD request to retrieve the Server field from the remote response headers and display it (if cross-domain, set the **Access-Control-Expose-Headers** response header with the value **server**
 ![](../../assets/images/fenliu-12.webp)
 
 ![](../../assets/images/ae6f93ce318fa428e94256c2b4a501e1.webp)
 
-# 注意事项
+# [[X:content]]
 
-- ESA Page对超多资源和大文件支持很差。例如静态随机图项目无法部署到ESA Page（超出了2000个静态资产）
-- ESA CDN针对于回源非标端口和Cloudflare一样要通过写回源规则实现，很浪费规则，推荐使用EdgeOne CDN，可以随意指定回源端口
+- ESA Page has poor support for excessive resources and large files. For example, the Static Random Graph project cannot be deployed to ESA Page (exceeds 2000 static assets).
+- ESA CDN requires configuring back-source rules for non-standard ports, similar to Cloudflare, which is inefficient and wastes rules. It is recommended to use EdgeOne CDN, which allows you to specify the back-source port freely.
 ![](../../assets/images/fenliu-8.webp)
-- 如果你要做分流业务，必须将域名NS托管在国内的DNS解析服务商，因为Cloudflare不支持域名分流解析，并且请将默认解析给CF，将境内解析给国内节点，不要反着来
+- If you want to do traffic splitting, you must host the domain's NS records with a domestic DNS resolution service provider, because Cloudflare does not support domain traffic splitting resolution, and please set the default resolution to CF and the domestic resolution to domestic nodes; do not reverse this.
 ![](../../assets/images/fenliu-9.webp)
-- 分流的原理是DNS看查询的源IP，如果是国内则返回国内节点，海外则返回海外。也就是说你的出口IP决定访问的节点，若你开梯子（如美国），就算你在国内，访问到的也是海外节点
-- DCV委派只能写一条，如果你的NS在EO，可以写DCV给ESA，而Cloudflare使用HTTP验证，这一切都将是一劳永逸，全自动化的
-- Cloudflare SaaS 在接入外部域名时，非常建议选择 HTTP验证来签发SSL，下文会详细说明该验证模式的好处。我们都知道，Cloudflare SaaS 在创建的时候，对于申请SSL默认选项是 TXT验证，但是该方式并不好，我们都知道，使用TXT验证的确可以签发证书，但在3月后（上一个SSL证书过期后），我们需要及时更新TXT记录来重新申领新的SSL证书，但是HTTP验证就不是这样了，Cloudflare CDN会自动在边缘节点放上HTTP验证的文件，并且Cloudflare可以随时更改，这样，你就不需要在申领新SSL的时候做任何事情了，一切都由Cloudflare自动实现
-- Cloudflare SaaS接入外部域名后，对于该外部域名是可以享有所有Cloudflare单域名下服务（也包括Cloudflare Worker，参见： [Cloudflare Worker 优选](/posts/cf-fastip/#%E9%92%88%E5%AF%B9%E4%BA%8Ecloudflare-workers/)）。也可以配置规则等业务，你最终访问的是哪个域名就写哪个主机名，不要写回退源的主机名，除非你想让该规则仅在直接访问回退源时生效
+- The principle of is that DNS checks the source IP of the query; if it's domestic, it returns a domestic node, and if it's overseas, it returns an overseas node. In other words, your exit IP determines which node you access. If you use a VPN (e.g., in the United States), even if you are physically located in China, you will still access an overseas node.
+- Only one DCV delegation is allowed. If your NS is in EO, you can set the DCV to ESA, and since Cloudflare uses HTTP verification, everything will be one-time and fully automated.
+- When integrating external domains with Cloudflare SaaS, it is highly recommended to choose HTTP validation for issuing SSL certificates. The following section will detail the advantages of this validation method. We all know that, when Cloudflare SaaS is initially created, the default SSL application option is TXT validation, but this method is not ideal. While TXT validation can indeed issue certificates, after three months (following the expiration of the previous SSL certificate), we must promptly update the TXT records to reapply for a new SSL certificate. However, with HTTP validation, Cloudflare CDN automatically places the HTTP validation file on edge nodes, and Cloudflare can modify it at any time. Thus, you do not need to take any action when applying for a new SSL certificate—everything is automatically handled by Cloudflare.
+- After Cloudflare SaaS integrates an external domain, all services available under a single Cloudflare domain (including Cloudflare Workers, see: [Cloudflare Worker](/posts/cf-fastip/#%E9%92%88%E5%AF%B9%E4%BA%8Ecloudflare-workers/)) can be enjoyed for that external domain. You can also configure rules and other business settings; when you ultimately access a domain, write the corresponding hostname, do not write the fallback source's hostname, unless you want the rule to only take effect when directly accessing the fallback source.
 ![](../../assets/images/fenliu-11.webp)
 
 ![](../../assets/images/fenliu-10.webp)
-- Cloudflare Tunnel实际上是可以自定义生效的域名的，并非仅局限于账户内域名（虽然你在控制台看着是这样），我们可以通过抓包更改请求体来实现各种各样的域名，它没有验证，详见：[Cloudflare Tunnel 优选](/posts/cf-fastip/#%E9%92%88%E5%AF%B9%E4%BA%8Ecloudflare-tunnelzerotrust/)
+- Cloudflare Tunnel can actually be customized to work with specific domains, not limited to domains within the account (although it may appear that way in the console). We can achieve various domains by modifying the request body through packet capture; it does not undergo verification. See: [Cloudflare Tunnel](/posts/cf-fastip/#%E9%92%88%E5%AF%B9%E4%BA%8Ecloudflare-tunnelzerotrust/)
 ![](../../assets/images/fenliu-13.webp)
-- 分流做完后，一定要针对国内节点启用封锁海外模式，这能大大降低被DDoS致使CDN商给你域名取消接入的概率。Cloudflare随你，因为打不死，如果你的源站Hold不住，也请配置点策略。因为刷子（DDoS发起者可以通过强行绑定域名和IP来通过便宜量大的海外IP来攻击你脆弱的国内节点，如果什么防护都不做，很可能被刷几个TB的异常流量然后被CDN取消接入）
+- After completing the traffic diversion, you must enable the "block overseas" mode for domestic nodes. This greatly reduces the probability that your CDN provider will revoke your domain's access due to a DDoS attack. Cloudflare is fine, as it's nearly indestructible; if your origin server can't handle it, please configure some protection strategies. Because attackers (DDoS initiators) can forcibly bind your domain and IP to use cheap, high-capacity overseas IPs to attack your vulnerable domestic nodes. If you don't implement any protection, you may be hit with several TB of abnormal traffic and subsequently have your CDN access revoked.
 ![](../../assets/images/fenliu-14.webp)
 
 ![](../../assets/images/fenliu-15.webp)
-# 成果展示
+# Exhibition of Achievements
 
-### Blog content.
+### Blog ontology
 
 ![](../../assets/images/https___blogacoforkcom__多地区多线路HTTP测速(1).webp)
 ### Umami
 ![](../../assets/images/https___umamiacoforkcom__多地区多线路HTTP测速.webp)
-### 随机图
+### Random graph
 ![](../../assets/images/https___picacoforkcom__多地区多线路HTTP测速.webp)

@@ -1,6 +1,6 @@
 ---
-title: "Umami Cloud Migration to Local Pitfalls Recording"
-description: "Early on, I possessed a keen foresight regarding Umami. Initially, I developed it independently, but shortly after utilizing Umami Cloud for full-scale deployment, I encountered increased access requests and subsequently migrated to local infrastructure…"
+title: "Pitfalls Encountered During the Migration of Umami Cloud to On-Premises"
+description: "Early on, I had good foresight by self-hosting Umami, but soon afterward, due to wanting to fully migrate to the cloud, I switched back to Umami Cloud. However, now that access logs have surged, I’m forced to migrate back to a local setup..."
 published: 2025-12-05
 image: ../../assets/images/umami-migration.webp
 tags:
@@ -9,79 +9,79 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article details the process of migrating Umami Cloud data to a local PostgreSQL database, utilizing a ZIP archive and various tools for data processing and management. It outlines the steps involved in accessing the data, creating CSV files, installing software, and finally initiating the import process.  The migration involves several crucial actions including setting up the new PostgreSQL version, installing a CSV editor, and configuring Umami’s web UI.  Data synchronization is handled through UUIDs, ensuring unique identifiers for each record.  A significant step is the removal of session IDs, followed by a careful data pairing process, with explicit control over the order of records before saving the CSV file. The article also includes SQL commands to manage the database schema and ensure data integrity.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+To migrate Umami data from the cloud to a local PostgreSQL instance, export the data via the cloud settings, unzip the downloaded ZIP to access the `website_event.csv` file, and import it into the local database after aligning column orders and removing duplicate `session_id` entries. Use tools like SmoothCSV and pgAdmin to manage the CSV import and database schema, ensuring data integrity before re-enabling constraints. Finally, verify data accuracy in the Umami UI and clean up duplicate session records to restore data integrity for future operations.
 :::
 
-# Formal commencement.
-First, we need to migrate data from the original Umami Cloud repository.
+# Formally begin
+First, to migrate, we must first obtain the data stored in the original Umami Cloud.
 
-在 [Umami Cloud Data | Settings](https://cloud.umami.is/settings/data) 中，我们可以选择，导出数据（Export）
+In [Umami Cloud Data | Settings](https://cloud.umami.is/settings/data), we can choose to export data (Export)
 ![](../../assets/images/umami-migration-1.webp)
 
-当数据准备好后（几分钟左右），你的邮箱会收到一封Umami Cloud发来的邮件
+Once the data is ready (in about a few minutes), you will receive an email from Umami Cloud.
 ![](../../assets/images/umami-migration-2.webp)
 
-下载下来的文件是一个以UUID命名的ZIP压缩包，将其解压可以得到3个CSV文件
+The downloaded file is a ZIP archive named with a UUID. Extracting it will yield three CSV files.
 ![](../../assets/images/umami-migration-3.webp)
 
-Here’s the translation:  “The provided data is limited to the file named ‘website_event.csv’. The other two files contain only headers and do not include any data.”
+Among them, only `website_event.csv` is useful; the other two files contain only headers and no data.
 
-We successfully obtained the old Umami data.
+Thus, we successfully obtained the old Umami data.
 
-Next, we need to deploy Umami PostgreSQL version **latest** (currently version 3.x) (the deployment tutorial is slightly detailed).
+Next, we need to deploy the local Umami PostgreSQL version **latest version** (currently version 3.x) (deployment tutorial omitted)
 
-We also need to install a CSV editing software: [SmoothCSV - The ultimate CSV editor for macOS & Windows](https://smoothcsv.com/)
+Then we also need to install a CSV editing software: [SmoothCSV - The ultimate CSV editor for macOS & Windows](https://smoothcsv.com/)
 
-In the local Umami platform, a new website will be created randomly for you, generating a UUID.
+When creating a new site in local Umami, Umami will randomly generate a UUID for you.
 
-We need to install a graphical management tool for PostgreSQL on your terminal: [pgAdmin - PostgreSQL Tools](https://www.pgadmin.org/)
+Next, we need to install a graphical management tool for PostgreSQL on your terminal: [pgAdmin - PostgreSQL Tools](https://www.pgadmin.org/)
 
-然后连上数据库，你将可以看到这些表
+Then connect to the database, and you will see these tables.
 ![](../../assets/images/umami-migration-4.webp)
 
-接下来我们查看 `website` 这张表，将 `website_event.csv` 打开，查看旧的 `website_id` 将新的ID改为旧的，这样才能数据匹配
+Next, we will examine the `website` table. Open `website_event.csv` and change the new IDs to the old `website_id` so that the data can match.
 ![](../../assets/images/umami-migration-5.webp)
 
 ![](../../assets/images/umami-migration-6.webp)
 
-Next, we will formally initiate data import. Due to the data being imported, both fields have the `session_id` identifier, and this `session_id` is a unique constraint within the Umami self-management process. We must first remove this constraint before proceeding with the official launch, and then re-add it after the launch is complete (which will be explained later).
+Next, we will officially begin the data import. Since the imported data contains two `session_id` fields, and during Umami's self-management process, this `session_id` field is **uniquely constrained**, we need to first remove this restriction. We will need to reapply this restriction before going live (this will be explained later).
 
-Please remove the primary key constraints and indexes.
+Let's drop the primary key constraint and index.
 
 ```sql
 ALTER TABLE session DROP CONSTRAINT session_pkey;
 DROP INDEX session_session_id_key;
 ```
 
-Next, we need to pair the data. We will begin by examining the CSV file named `website_event.csv`. It should only contain the header row and no data – as I have already imported it successfully, the tutorial is located after this point.
+Next, we need to pair the data. Let's first examine the `website_event.csv` table. This should only contain headers with no actual data (I have it because I've already imported it; the tutorial was written afterward).
 
-**注意顺序** 如： `event_id` `website_id` `session_id` ...
+**Note the order** For example: `event_id` `website_id` `session_id` ...
 
 ![](../../assets/images/umami-migration-7.webp)
 
-编辑CSV文件，你需要将顺序配对，并且删除表中没有的列，如： `browser` `os` ...
+Edit the CSV file; you need to pair the columns in order and delete any columns not present in the table, such as: `browser` `os` ...
 ![](../../assets/images/umami-migration-8.webp)
 
-Ensure that the table headers in the database and the header row of the CSV file are aligned, with a consistent order. After this alignment, save the CSV file using Ctrl+S. Proceed with importing and enable the option for "**Title**" in the settings.
+Ensure that the column header order in the database matches exactly with the header order in the CSV file, with no extra or missing items. **Ctrl + S Save** the CSV file, then begin importing and check the **Headers** option.
 
 ![](../../assets/images/umami-migration-9.webp)
 
 ![](../../assets/images/umami-migration-10.webp)
 
 ![](../../assets/images/umami-migration-11.webp)
-导入成功后如图
+After successful import, as shown in the figure [[X:content]]
 ![](../../assets/images/umami-migration-12.webp)
 
 ![](../../assets/images/umami-migration-13.webp)
 
-再编辑 `session` 这张表，手法同上，导入成功后如图
+Edit the `session` table again, using the same method; after successful import, it will look as shown in the figure.
 ![](../../assets/images/umami-migration-14.webp)
 
-接下来打开本地Umami的WebUI，查看数据是否有异常
+Next, open the local Umami WebUI to check if there are any anomalies in the data.
 ![](../../assets/images/umami-migration-15.webp)
 
-确保导入后数据无异常后，我们开始删除另一条 `session_id` 记录并回锁主键。否则上线后Umami将无法再向表中插入数据
+After ensuring that the imported data has no abnormalities, we begin deleting another `session_id` record and re-locking the primary key. Otherwise, after going live, Umami will no longer be able to insert data into the table.
 ```sql
 SELECT session_id, COUNT(*) 
 FROM public.session
@@ -100,4 +100,4 @@ ALTER TABLE public.session
 ADD CONSTRAINT session_id_unique UNIQUE (session_id);
 ```
 
-Here’s the translation:  “With this, the migration work is concluded.”
+By now, the migration work is complete.

@@ -1,66 +1,66 @@
 ---
-title: "Food Guide: How to Use Meal Reminder Functionality"
-description: "The super impressive little bell at the bottom of the frame – how can it be used?"
+title: "Article Update Notification Feature User Guide - Super Awesome!"
+description: "That super cool little bell in the bottom right corner—how exactly do I use it?"
 category: "Announcement"
 published: 2026-02-22
 image: ../../assets/images/post-diff-guide.png
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-The article explains a new feature on the blog that automatically detects and notifies users when an article has been updated, using a small red and blue icon. It describes how this system works – it records past visits, compares server versions, and displays changes in a clear, contextual manner with diff highlighting. It also addresses common questions about why notifications aren't appearing and how to clear the visual indicators.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+A small bell icon at the bottom-right of the blog now alerts users to article updates. It automatically detects changes in content, titles, or descriptions since the last visit and highlights modifications with color-coded diffs. Users can view updated articles, clear notifications, or ignore them without manual intervention.
 :::
 
-Certainly, here’s the translation:  “Indeed, that small bell at the bottom right corner is not particularly noticeable.”
+> Yes, that's the small bell in the bottom-right corner that you're currently seeing.
 
-You may have noticed a small bell icon appearing in the bottom right corner of your blog. This is not a subscription notification (though it resembles one), but rather a **Client-Based Article Update Detection System**.
+You may have noticed that a small bell icon has appeared in the bottom right corner of the blog recently. This is not a subscription notification (although it looks similar), but rather a **client-side article update detection system**.
 
-# What is the reason for this?
+# Why are we doing this?
 
-Frequently, after completing an article, writers often discover errors in spelling or phrasing, and may need to revise content due to various reasons.
+Often, after we finish writing an article, we may discover misspellings, or certain viewpoints need to be supplemented, or even content needs to be deleted or revised for certain reasons.
 
-For the reader, if you’ve previously viewed this article again, it might be challenging to discern what has changed. It could be a change in punctuation, or an addition of substantial content.
+For readers (that is, you), if you’ve seen this article before and come back again, it might be hard to tell exactly what has changed. Did you just tweak a punctuation mark? Or did you add a whole chunk of valuable content?
 
-To address the challenge of “finding different versions,” we’ve implemented this feature. It tracks your previous access to articles and automatically compares the latest version available on the server upon subsequent visits, informing you: **The article has been updated, where specifically?**
+To solve this "spot the difference" puzzle, we've introduced this feature. It will record the version of the article from your last visit and, when you next visit, automatically compare it with the latest version on the server, telling you: **This article has changed—specifically, where it changed.**
 
 ---
 
-# Please specify the method of consumption.
+# Method of consumption
 
-The process is remarkably straightforward; it’s entirely automated, requiring no manual intervention whatsoever.
+It's actually very simple; the entire process is fully automated and requires no manual intervention from you.
 
-## Discovering updates.
+## 1. Discover Updates
 
-When browsing a blog, the system automatically retrieves the latest RSS subscription sources and compares them to your local cached articles.
+When you browse the blog, the system automatically retrieves the latest RSS feed in the background and compares it with your locally cached article records.
 
-If a new article is discovered (whether it’s content, title, or description), the small bell icon will appear in the bottom right corner, and an **dot-highlight** animation will remind you that there’s something new.
+If an article is updated (whether in content, title, or description), a **red dot** will appear on the small bell icon in the bottom right corner, accompanied by an entrance animation to remind you that "there's something new."
 
-## 2. 查看列表
+## 2. View the list
 
-Click the small bell, which will display a panel listing all articles with changes.
+Clicking the small bell will pop up a panel listing all articles that have been updated.
 
-- **NEW**: This article is a new post, marked with the 'NEW' tag.
-- **Update**: A new tag has been added – a blue label indicating that this article may have previously been viewed or cached, but now it has undergone modifications.
+- **New Article**: Features a green `NEW` tag, indicating this article was published since your last visit.
+- **Update**: Features a blue `UPDATE` tag, indicating that you may have seen this article before (or it exists in your cache), but it now has new changes.
 
-## Review the diff.
+## 3. View DIFF
 
-This is the core functionality. Click on articles with the `UPDATE` tag to directly navigate to that article and automatically scroll to the first change point.
+This is the core feature. Clicking on the article title tagged with `UPDATE` will directly take you to that article and automatically scroll to **first change point**.
 
-In the text, you will observe a similar “diff” effect as found in code editing tools.
+In the main body of the article, you will see a DIFF effect similar to that of a code editor:
 
-- The highlighted area indicates content that has been removed or modified.
-- The highlighted section indicates a new or revised content.
+- [[The strikethrough red text]]: indicates content that has been deleted or modified previously.
+- [[Green underlined part]]: indicates newly added or modified content.
 
-[!TIP]
-If the content changes significantly, we will only display a few lines of text surrounding the affected areas as context. The remaining unchanged portions will remain unaltered and do not interfere with your normal reading.
+> [!TIP]
+> If there are many changes, we will only display a few lines of text around the change points as context (Context), while the unchanged parts will remain unchanged and will not interfere with your normal reading.
 
-## Common issues
+## Common Questions
 
-Why haven’t I seen the small bell?
-If no new articles or updates are detected, the small bell will automatically hide to avoid disturbing your reading.
+**Q: Why didn't I see the little bell?**
+A: If no new articles or updates are detected, the little bell will default to hiding to avoid interrupting your reading.
 
-Why does the system sometimes indicate a refresh when the content hasn’t changed, despite the absence of updates?
-The system also analyzes the body text and title, as well as the description. Occasionally, this may involve simply adjusting formatting or correcting typographical errors, which can trigger notification updates.
+**Q: Why is it sometimes indicated that an update has occurred, even though the article hasn't changed?**
+A: The system not only detects the main text but also checks titles and descriptions. Sometimes, I might only adjust a punctuation mark or fix the formatting, and it will still trigger an update notification.
 
-I don’t want to look at these red, green, and yellow wires anymore.
-At the upper right corner of the small bell panel, there is a **Clear** button (trash can icon). Clicking this button will mark all current articles as "Read" or "Newest," and clear your local comparison records. This will only re-alert you when new changes occur in the future.
+**Q: I don't want to see these red and green lines anymore. What should I do?**
+A: In the top-right corner of the Little Bell panel, there is a **Clear** button (trash bin icon). Clicking it will mark all current articles as "Read/Newest" and clear the local comparison records. You will only be reminded again when there are new changes.

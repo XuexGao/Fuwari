@@ -1,6 +1,6 @@
 ---
-title: "Ultimate Feeding Tutorial, Step-by-Step Guide to Penetrate Inner Networks"
-description: "Using Zerotier, Tailscale, and Cloudflare Tunnel, various internal network routing options can be established, including those suitable for personal access and those designed for public access."
+title: "Ultimate Feeding Tutorial: Step-by-Step Guide to Internal Network Penetration"
+description: "Using Zerotier, Tailscale, and Cloudflare Tunnel, various methods of internal network penetration can be achieved, including those suitable for personal access and those suitable for public access."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/2024-10-28-17-00-25-image.webp
@@ -12,43 +12,43 @@ tags:
 - Cloudflare Tunnel
 - STUN
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
 
 :::
 
-# Based on testing, Zerotier’s penetration capabilities are demonstrably superior to Tailscale, therefore, it is recommended that we leverage Zerotier for internal network routing.
+# After actual testing, Zerotier's NAT traversal capability is significantly better than Tailscale, so it is recommended to use Zerotier to achieve internal network penetration.
 
-Detailed Report  This report provides a comprehensive analysis of [briefly describe the subject matter]. It includes key findings, data visualizations, and insights derived from [mention methodology or source]. The objective is to [state the purpose of the report – e.g., inform stakeholders, identify trends, etc.].  Further details are available upon request.
-| | Zero-tier | Tailscale |
+Detailed Report:
+| | Zerotier | Tailscale |
 | ----------- | ----------- | ----------- |
-| Single-end DMZ (Single-end NAT1) | Stun |Stun |
-| Single-end UPnP (Single-end NAT 3) | UDP Peer-to-Peer | Mystical penetration |
-| Dual UPnP (Dual NAT 3) | UDP Peer-to-Peer | Mystical penetration |
-| Dual-end without UPnP/DMZ (dual NAT3/NAT4) | UDP Peer-to-Peer | Inability to penetrate|
+| Single-ended DMZ (Single-ended NAT1) | STUN |STUN |
+| Single-end UPnP (Single-end NAT3) | UDP P2P | Metaphysical penetration |
+| Dual-end UPnP (Dual-end NAT3) | UDP P2P | Occult Penetration |
+| Dual-end without UPnP/DMZ (Dual-end NAT3/NAT4) | UDP P2P | Cannot penetrate|
 | Self-built relay/handshake node | √ | √|
 
-The actual situation will be considerably more complex, but with either of the following elements included – a public IPv6 network, UPnP configuration, or a DMZ – Zerotier achieves near 100% success rate.
+In reality, the situation is somewhat more complex, but as long as you have any one of **IPv6、UPnP、DMZ**, Zerotier will have nearly 100% success rate for hole punching
 
-How to determine if you are operating in a P2P network or as a relay?
-Please investigate your endpoint’s latency exceeding 200ms, or experiencing frequent packet loss. This suggests a relay node is likely the cause – it could also be due to excessive load on your device hindering timely reception and return of ping packets.
+How do I know if I am a P2P or relay?
+Ping your remote device; if the latency exceeds 200ms or if packet loss occurs frequently, it is most likely due to a relay node (there is also a small probability that it is caused by your device being overloaded and unable to promptly receive and respond to ping packets).
 
-# What is internal network penetration?
+# What is internal network tunneling?
 
-Here’s the translation:  “To access services within a local network (NAS) from school or company networks, we utilize Network Address Translation (NAT) to route external traffic through the internal network. This typically involves P2P tunneling and server-side redirection of traffic.”
+When we have a NAS at home and want to access it from the school/company network, we need to use NAT traversal to enable external access to internal services. The principle is generally peer-to-peer hole punching and traffic relay through a server.
 
-# Preliminary preparations are underway.
+# Preparations in advance
 
 路由器开启UPnP![](../../assets/images/2024-10-28-17-08-00-image.webp)
 
 关闭路由器的IPv4，IPv6防火墙 **（可选）**![](../../assets/images/2024-10-28-17-09-19-image.webp)
 
-# *Utilizing Zerotier or Tailscale for internal network penetration*
+# *Use Zerotier/Tailscale for internal network tunneling*
 
-Here’s the translation:  “Both of them utilize a similar principle – establishing peer-to-peer (P2P) connections. They require the server to install software and maintain it continuously.”
+> Both of their principles attempt to establish a P2P connection with the other end, requiring the other party to install software and keep it running long-term.
 
-# Here’s a professional translation of the text:  “This guide details a comprehensive tutorial on using Zerotier for internal network penetration testing.”
+# A detailed tutorial on using Zerotier for internal network penetration
 
-## Create a Zerotier account.
+## Create a Zerotier account
 
 前往：[ZeroTier | Global Networking Solution for IoT, SD-WAN, and VPN](https://www.zerotier.com/)。如果你进不去，请尝试挂梯子。如果看不懂英文可以开启浏览器的翻译功能![](../../assets/images/2024-10-28-17-12-51-image.webp)
 
@@ -60,15 +60,15 @@ Here’s the translation:  “Both of them utilize a similar principle – estab
 
 账号创建完毕后，登录即可![](../../assets/images/2024-10-28-17-17-47-image.webp)
 
-## Create a new Zerotier network group.
+## Create a new Zerotier network group
 
-Upon successful login, you will automatically be redirected to this page. Click `Create A Network`. If this is not the case, please visit [ZeroTier Central](https://my.zerotier.com/).
+After successfully logging into your account, you will be automatically redirected to this page. Click `Create A Network`. If not, visit [ZeroTier Central](https://my.zerotier.com/)
 
 ![](../../assets/images/2024-10-28-17-20-24-image.webp)
 
 下面的列表会增加一个新的网络组，点击它![](../../assets/images/2024-10-28-17-21-31-image.webp)
 
-The Zerotier default network group mode is `Private`. This designates a private network group, and even if others are aware of your `Network ID`, you will need to verify your membership within that group.
+Zerotier's default network group mode is `Private`. That is, private mode. Even if others know your `Network ID` and attempt to join your network group, they will still need your verification.
 
 ![](../../assets/images/2024-10-28-17-22-38-image.webp)
 
@@ -76,9 +76,9 @@ The Zerotier default network group mode is `Private`. This designates a private 
 
 ---
 
-# Please install the Zerotier application on your device.
+# Install the Zerotier app on the device
 
-## Windows
+## Windows:
 
 前往[Download - ZeroTier](https://www.zerotier.com/download/)，下载exe安装文件![](../../assets/images/2024-10-28-17-25-52-image.webp)
 
@@ -86,45 +86,45 @@ The Zerotier default network group mode is `Private`. This designates a private 
 
 查看右下角托盘，按照图片操作加入网络组![](../../assets/images/2024-10-28-17-28-20-image.webp)![](../../assets/images/2024-10-28-17-29-12-image.webp)![](../../assets/images/2024-10-28-17-30-26-image.webp)
 
-You can query your device ID and your IP address within this network group.
+Here you can query your device ID and your IP address within this network group.
 
 ![](../../assets/images/2024-10-28-18-03-19-image.webp)
 
-**Following the instructions, refer to: [[L: Zerotier authorization device**
+**Then refer to: [[L:Zerotier Authorization Device**
 
-## Linux (Fly-by-Wire OS)
+## Linux (Feinu OS):
 
-Connect via SSH to your Linux device.
+Connect to your Linux device via SSH
 
 查看安装命令：[Download - ZeroTier](https://www.zerotier.com/download/)![](../../assets/images/2024-10-28-17-38-19-image.webp)
 
-The terminal command executed is: `curl -s https://install.zerotier.com | sudo bash`
+Terminal execution: `curl -s https://install.zerotier.com | sudo bash`
 
 看到这一行即安装完毕，后面那一串即你的设备ID：![](../../assets/images/2024-10-28-17-39-23-image.webp)
 
 加入网络：`sudo zerotier-cli join 你的Network ID`![](../../assets/images/2024-10-28-17-42-01-image.webp)
 
-**Following the instructions: [[L: Zerotier authorized device**
+**Then refer to: [[L:Zerotier Authorized Devices**
 
-## Android.
+## Android (Android)
 
-Download Client
+Download the client
 
-1. ZeroTier One: [Download ZeroTier One APK for Android - Latest Version]
+1. Zerotier One: [ZeroTier One APK Download for Android - Latest Version](https://apkpure.net/zerotier-one/com.zerotier.one)
 
-2. ZerotierFix: Releases · kaaass/ZerotierFix
+2. ZerotierFix: [Releases · kaaass/ZerotierFix](https://github.com/kaaass/ZerotierFix/releases)
 
-As shown in the image, it is being operated upon.
+As shown in the figure
 
 ![](../../assets/images/2024-10-28-17-59-06-image.webp)![](../../assets/images/2024-10-28-17-59-46-image.webp)
 
-Here’s the translation:  “Following the instructions, refer to [Zerotier authorization device](#zerotier%E6%8E%88%E6%9D%83%E8%AE%BE%E5%A4%87).”
+**Then refer to: [[L:Zerotier Authorization Device**
 
 ---
 
-# Here’s a professional translation of “Zerotier authorization device”:  “Zerotier authorization device”
+# Zerotier authorized device
 
-Please visit the ZeroTier website’s control panel: [ZeroTier Central]([https://my.zerotier.com/](https://my.zerotier.com/)
+Go to the ZeroTier web console: [ZeroTier Central]([https://my.zerotier.com/](https://my.zerotier.com/)
 
 授权刚才加入的设备![](../../assets/images/2024-10-28-17-31-51-image.webp)
 
@@ -132,9 +132,9 @@ Please visit the ZeroTier website’s control panel: [ZeroTier Central]([https:/
 
 ---
 
-# ZeroTier Access Test
+# Zerotier access test
 
-If you already have two or more devices within the same network, you can attempt a ping test to verify connectivity. Please ensure that both devices are not located in the same local area network (e.g., mobile data being used, NAS device utilizing your home Wi-Fi).
+If there are already two or more devices in the same network group, you can try pinging to test connectivity. First, ensure that the two devices are not on the same local network (for example, the phone uses mobile data while the NAS connects to your home Wi-Fi).
 
 IP可以在这里查看![](../../assets/images/2024-10-28-18-02-00-image.webp)
 
@@ -142,47 +142,47 @@ ping测试：![](../../assets/images/2024-10-28-18-07-13-image.webp)
 
 ---
 
-# Here’s a professional translation of the text:  “Detailed tutorial on using Tailscale for internal network penetration testing.”
+# A detailed tutorial on using Tailscale for internal network tunneling
 
-## Create a Tailscale account.
+## Create a Tailscale account
 
-Please proceed to [Tailscale](https://login.tailscale.com/start). If you are unable to access, try using a ladder. If the text is not understood in English, please enable your browser’s translation feature.
+Go to: [Tailscale](https://login.tailscale.com/start). If you can't access it, try using a proxy. If you don't understand English, you can enable the translation feature in your browser.
 
 选择任意一个登录方式![](../../assets/images/2024-10-28-18-24-32-image.webp)
 
-Upon completion of account creation, you may proceed to log in.
+After account creation, log in to proceed.
 
 ---
 
-# Please install the Tailscale application on your device.
+# Install the Tailscale app on the device
 
-## Windows
+## Windows:
 
-Please visit [Download · Tailscale](https://tailscale.com/download) to download the executable installer.
+Go to [Download · Tailscale](https://tailscale.com/download), download the exe installation file
 
 官方教程：![](../../assets/images/2024-10-28-18-31-48-image.webp)
 
-## Linux (Fly-by-Wire OS)
+## Linux (FeinuOS):
 
-Connect via SSH to your Linux device.
+Connect to your Linux device via SSH
 
 查看安装命令：[Download · Tailscale](https://tailscale.com/download/linux)![](../../assets/images/2024-10-28-18-32-58-image.webp)
 
-``` Execute the following command: curl -fsSL https://tailscale.com/install.sh | sh ```
+Terminal execution: `curl -fsSL https://tailscale.com/install.sh | sh`
 
-Once installation is complete, enter: `tailscale login`
+Wait until installation is complete, then enter: `tailscale login`
 
-Open the browser window that appears, and log in with your account.
+Open the pop-up browser window and log in with your account.
 
-## Android.
+## Android (Android)
 
-Download Client (Google Play): [Download · Tailscale](https://tailscale.com/download/android)
+Download the client (Google Play): [Download · Tailscale](https://tailscale.com/download/android)
 
-Please log in to your account.
+Log in to your account to proceed.
 
 ---
 
-## Here’s a professional translation of “Tailscale Access Test”:  “The Tailscale access test evaluates the security and performance of the Tailscale network.”
+## Tailscale access test
 
 前往Tailscale的网页控制台：[Machines - Tailscale](https://login.tailscale.com/admin/machines)。可以查看到每个设备Tailscale分配的IP![](../../assets/images/2024-10-28-18-26-58-image.webp)
 
@@ -190,21 +190,21 @@ ping测试![](../../assets/images/2024-10-28-18-41-45-image.webp)
 
 ---
 
-# Using Cloudflare Tunnel for internal network penetration.
+# Using Cloudflare Tunnel for internal network penetration
 
-This method can be accessed directly on a public network without requiring any configuration, but is restricted to web services. It is not suitable for penetrating game servers or other internal networks. You must first host your domain name with Cloudflare before utilizing this approach.
+> This method can be accessed directly on the public internet without any configuration, but it is limited to web services. It cannot be used to penetrate game servers or similar services. You need to first host your domain with Cloudflare.
 
-Create a Cloudflare account [Homepage | Cloudflare](https://dash.cloudflare.com/).
+Create a Cloudflare account [Homepage | Cloudflare](https://dash.cloudflare.com/)
 
-Enter [Cloudflare One](https://one.dash.cloudflare.com/) (requires PayPal integration).
+Enter [Cloudflare One](https://one.dash.cloudflare.com/) (requires PayPal binding)
 
 如图操作，创建一个Tunnel![](../../assets/images/2024-10-28-18-45-41-image.webp)![](../../assets/images/2024-10-28-18-45-54-image.webp)![](../../assets/images/2024-10-28-18-46-22-image.webp)
 
-## Docker is a containerization platform that packages applications and their dependencies into isolated environments called containers. These containers can then be run consistently across different environments – on-premises, in the cloud, or between servers – ensuring application consistency and reducing deployment complexity.
+## Docker method
 
-**Utilize a single panel**
+**Use 1Panel**
 
-Please provide the image you would like me to translate. I need the image content to fulfill your request.
+Copy the command as shown in the figure.
 
 ![](../../assets/images/48e9c43eb5c0fb49cc5517687698e3d9d1e60220.webp)
 
@@ -214,19 +214,19 @@ Please provide the image you would like me to translate. I need the image conten
 
 填入令牌![](../../assets/images/6f661ffa778b2be2e108912d3d44d8b3301df6d6.webp)
 
-Please proceed to [IP](#查看cloudflared的ip).
+Then go to [View IP](#查看cloudflared的ip)
 
-**Command-line execution**
+**Run using command**
 
-Please copy the following command and SSH into Linux (FlyOS) via a terminal, entering it as follows:
+Copy the command below and SSH into the Linux (Feinu OS) system, then enter it in the terminal.
 
 ![](../../assets/images/2024-10-28-18-46-49-image.webp)
 
-Please proceed to [IP](#%E6%9F%A5%E7%9C%8Bcloudflared%E7%9A%84ip).
+Then go to [View IP](#%E6%9F%A5%E7%9C%8Bcloudflared%E7%9A%84ip)
 
-### Please check the IP address associated with cloudflared.
+### View the IP of cloudflared
 
-Due to our Docker architecture, the IP address needs to be accessed via SSH from the terminal at `192.168.124.34`.
+Since we are in Docker mode, the IP address needs to be checked via the SSH terminal using `ip a`. Here, it is `192.168.124.34`.
 
 ```
 root@n100-debian:~# ip a
@@ -247,36 +247,36 @@ root@n100-debian:~# ip a
        valid_lft forever preferred_lft foreverti
 ```
 
-Following this, proceed to configure and access the tunnel.
+**Then proceed to [[L:Configure and Access Tunnel**
 
-## Here’s the translation:  “The original mode (using Debian as an example)”
+## Native mode (taking Debian as an example)
 
-Select Debian, then execute the following command directly from the terminal.
+Choose Debian, then copy the command below and execute it directly in the terminal.
 
 ![](../../assets/images/2024-10-28-20-00-49-image.webp)
 
-If your environment cannot connect to GitHub, please consult the following resources for assistance: [https://docs.github.com/en-us/blog/how-to-connect-github](https://docs.github.com/en-us/blog/how-to-connect-github)
+If your environment cannot connect to GitHub
 
-Download the CloudFlared package for Linux (AMD64) version 1.0 from [https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb).
+Try downloading manually: [https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb)
 
 然后将其通过SSH等方式传到Linux上，如图终端为MobaXterm![](../../assets/images/2024-10-29-10-18-29-image.webp)
 
-To install the cloudflared-linux-amd64 package, please use the following command:  `dpkg -i cloudflared-linux-amd64.deb`
+Then use: `dpkg -i cloudflared-linux-amd64.deb` to install this package
 
 然后直接复制右边的命令到SSH终端执行![](../../assets/images/2024-10-29-10-19-27-3dcfad6977bdecf80fc0366f257788e6.webp)
 
-Following this, proceed to configure and access the tunnel.
+**Then proceed to [[L:Configure and Access Tunnel**
 
-## Termux is a terminal emulator for Android devices. It provides a command-line interface for interacting with the Linux environment on these phones.
+## Android (Termux)
 
-To install Termux on Android, you can find the official site and helpful documentation here: [Termux](https://termux.dev).
+Install [Termux | The main Termux site and help pages.](https://termux.dev) on Android
 
-To install CloudFired, please execute the following command in your terminal: `pkg install cloudflared`
+Run the following command at the terminal: `pkg install cloudflared`
 
 选择`Debian`然后复制最右边的命令到终端执行![](../../assets/images/2024-10-29-08-42-38-image.webp)
-如果你无法使用Termux自带的cloudflared，请尝试安装proot容器实现
+If you cannot use the cloudflared that comes with Termux, try installing a proot container to achieve it.
 
-Input commands sequentially.
+Enter the commands in sequence:
 
 ```shell
 pkg update && pkg upgrade
@@ -290,46 +290,46 @@ wget https://github.com/cloudflare/cloudflared/releases/download/2024.10.1/cloud
 dpkg -i cloudflared-linux-amd64.deb
 ```
 
-```bash execute right side command ```
+Then directly copy the command on the right to the SSH terminal and execute it.
 
 ![](../../assets/images/2024-10-29-08-42-38-image.webp)
 
-If you are unable to configure Cloudflare using a token, please refer to [Local Configuration Method](#本地方式).
+If you cannot configure cloudflared via token, see [cloudflared](#本地方式)
 
-Following this, proceed to configure and access the tunnel.
+**Then proceed to [[L:Configure and Access Tunnel**
 
 ---
 
-# Configure and access the tunnel.
+# Configure and Access Tunnel
 
-## Through web configuration.
+## Configure through web page
 
-This method requires execution through a token on a device already running CloudFlared.
+> This method requires running it directly on the device where cloudflared is installed, using a token.
 
-Here’s the translation:  “Create an HTTP tunnel as depicted in the diagram.”
+As shown in the figure, enter and create an HTTP tunnel.
 
 ![](../../assets/images/2024-10-28-18-49-21-image.webp)![](../../assets/images/2024-10-28-18-49-44-image.webp)
 
 填写你的IP和端口，非Docker模式可以直接填写localhost![](../../assets/images/2024-10-28-18-53-37-image.webp)
 
-## Here’s the translation:  Local methods.
+## Local method
 
-Here’s the translation:  “This method requires entering a series of commands on a device that has already been installed with CloudFlared, followed by authorization through a web interface. Subsequent configuration changes must be made locally.”
+> This method only requires entering some commands on a device with cloudflared installed and then authorizing via a web page; subsequent configuration changes also need to be performed locally.
 
 Log in and authorize: `cloudflared tunnel login`
 
-Create a tunnel and configure it with HTTP mode, targeting the address `127.0.0.1`(https://test.onani.cn), port 8080, external domain: `test.onani.cn`.  The command is: `cloudflared tunnel --name test --url http://127.0.0.1:8080 --http2 --hostname test.onani.cn`
+Create a tunnel and configure the tunnel (HTTP mode penetration, target address `127.0.0.1`, port: `8080`, external domain: `test.onani.cn`): `cloudflared tunnel --name test --url http://127.0.0.1:8080 --http2 --hostname test.onani.cn`
 
 ## Access Test
 
 成功访问![](../../assets/images/2024-10-28-18-54-42-image.webp)
 
-# Using STUN to create a hole.
+# Use STUN to punch through
 
-This method allows access to be made publicly without any configuration, and all types of services can function normally. However, internal network penetration testing is not fixed or configurable, and the IP address and port will change within 3-7 days.
+> This method allows direct access over the public internet without any configuration, and all types of services can function normally. However, the internal network tunneling achieved this way cannot be fixed or specified in terms of IP and port, and it will change after 3 to 7 days.
 
-## Installation of Lucky.
+## Install Lucky
 
-Execute the following steps:  1.  Download and run `golucky.sh` from the URL `http://6.666666.host:6/files` using curl. 2.  Then, execute `install.sh` from the URL `http://6.666666.host:6/files` using sh. 3.  Finally, run `golucky.sh` again from the URL `http://6.666666.host:6/files` to complete the installation process.
+Execute: `curl -o /tmp/install.sh http://6.666666.host:6/files/golucky.sh && sh /tmp/install.sh http://6.666666.host:6/files 2.13.4`
 
 通过`host:16601` 进入Lucky后台，设置STUN穿透。如果DMZ主机不设为Lucky主机可能会失败。打码的地方即公网访问的IP和端口![](../../assets/images/2024-10-28-18-56-16-image.webp)

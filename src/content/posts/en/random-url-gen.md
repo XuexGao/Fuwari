@@ -1,119 +1,119 @@
 ---
-title: "Complete Free! From architecture, development to deployment, a One-Dragon provides you with a comprehensive guide on how to do best practices for one-word/random URL."
-description: "I recently launched my first random graph website in 2024, and I’ve been deepening my research into similar projects. I've observed that these projects often contain pitfalls but also reveal numerous hidden shortcuts, and some architectures can achieve a degree of “persistence.”"
+title: "Completely Free! A Hands-On Guide from Architecture, Development to Deployment for Best Practices in Creating Random URLs like One-Liner or Random Image"
+description: "I built the first random graph website in 2024. In the past few weeks, I have deeply researched similar projects and found that there are many pitfalls as well as some mysterious shortcuts in this field, and certain architectures can even achieve \"immortality\"..."
 published: 2025-12-29
 image: ../../assets/images/random-url-gen.webp
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article explores three architectural approaches to building a random image API: the traditional server-based method, leveraging Cloudflare Origin Rules for cost-free edge-side randomization, and client-side JavaScript solutions that eliminate backend dependencies entirely. Each approach addresses scalability, cost, and performance differently, with edge functions and rule-based routing offering high concurrency without server maintenance, while client-side JS reduces server load but requires frontend logic. The author concludes by highlighting these as “traditional,” “geeky,” and “eco-friendly” paradigms respectively.
 :::
 
-# Exploring architecture.
-Let’s begin with a practical example.
+# Exploring Architecture
+We won't discuss an abstract concept first; instead, let's start with a small project.
 
-Here’s the translation:  “A random image API returns different images each time a request is made.”
+**A random image API that returns a different image with each request**
 
-How will you proceed?
+What would you do?
 
-There are numerous solutions, and I’ll start with the simplest approach: establishing a server. We can then populate it with images, and finally, create a script to generate a web server that receives client requests. Each request will retrieve an image from a library of images and return it to the client.
+There are many solutions; let's take the simplest one. We can first get a server, put images into it, and then write a script to create a web server that receives client requests, pulling a random image from the image library for each request.
 
 Can it be achieved?
 
-当然可以！这是你的流程图！
+Of course! Here is your flowchart!
 ![](../../assets/images/random-url-gen-5.webp)
-但也会带来一些问题，比如，图片存在本地，给客户端响应图片的时候走的是你机子的流量，那么你就需要一个 **高带宽** 的服务器，这无疑是一个 **高昂** 的成本
+But it also brings some issues, for example, if images are stored locally, when the client requests images, it uses your machine's bandwidth. In that case, you need a **high-bandwidth** server, which inevitably incurs a **high** cost.
 
-那可能你会有新的方案： **前后端分离** （逻辑与资产分离），只将返回这个图片的逻辑存放在服务器上，而图片存到其他地方，如对象存储（Cloudflare R2）、IPFS等等
+That might lead you to a new approach: **frontend-backend separation** (separation of logic and assets), where only the logic for returning this image is stored on the server, while the image itself is stored elsewhere, such as object storage (Cloudflare R2), IPFS, etc.
 ![](../../assets/images/random-url-gen-6.webp)
-那么问题又来了，假如说你的项目太多人用了，那你的服务器性能可能不够，在后期，你仍然需要一个 **高昂** 的 **维护成本**
+Then the problem arises again: if too many people use your project, your server performance may be insufficient, and in the later stage, you will still need a **high** **maintenance cost**
 
-那么那么那么，现在是 **2025** 年，传统的架构已经无法满足我们了，我们不妨可以试试 **云函数** 
-仍然是前后端分离，我们现在将逻辑放到一个函数上面，如Cloudflare Worker、EdgeOne Function、Vercel Function等等
+So so so, it is now **2025** year, traditional architectures can no longer meet our needs, perhaps we can try **cloud functions**
+It is still a front-end and back-end separation. Now we place the logic on a function, such as Cloudflare Worker, EdgeOne Function, Vercel Function, etc.
 ![](../../assets/images/random-url-gen-8.webp)
-那么现在是不是无敌了？
+So are you invincible now?
 
-Here’s the translation:  “While frontend performance has improved due to direct CDN integration, high concurrency is no longer a concern. However, because assets are not directly hosted within the **Cloud Function**, the **Cloud Function** still requires a long-lived connection from your backend – such as retrieving images from object storage. This process can potentially introduce latency and impact service speed.”
+Not necessarily; although the frontend uses **cloud functions**, which directly connects to CDN, high concurrency is no longer an issue. However, since assets are not directly hosted within **cloud functions**, **cloud functions** still need to establish a long connection to your backend, such as object storage, to fetch images. This additional overhead may mean your service isn't as fast as it could be.
 
-Here’s a professional translation of the text:  “There have been discussions regarding this, and given that I've lost my server now, it would be more efficient to store the front-end assets directly within the back-end infrastructure. The cloud-based architecture allows for seamless data synchronization.”
+Someone might say, since I’ve already lost my server now, with the frontend in the cloud and the backend also in the cloud, why not let the frontend’s cloud directly store the backend’s assets?
 
-Absolutely! You’re well on your way to best practices.
+Of course! You are already very close to best practices!
 
-Most **Cloud Functions** support dynamic scripting, allowing you to provision and manage dynamic scripts within their cloud storage. This enables the deployment of static assets alongside these dynamic components.
+Most **cloud functions** support hybrid static and dynamic capabilities, meaning you can store dynamic scripts in their cloud storage, and also **store static assets** alongside them.
 
-Here’s the translation:  “So, you’re saying there’s a random image available – a completely unhosted graphic – that could cause a catastrophic price surge due to storage issues?”
+Then, you’ve got a completely random image that doesn’t require you to buy server hosting or worry about storage overflow leading to exorbitant bills... right?
 
 ![](../../assets/images/random-url-gen-4.webp)
-# 探索随机图（随机URL）的本质
-我们刚刚只是在抽象的说明某种架构 **好像** 可行，**好像** 又有什么问题，然后又有一种什么新思路 **好像** 可以解决这个问题
+# Exploring the essence of random graphs (random URLs)
+We were just abstractly discussing whether a certain architecture **seems** feasible, **seems** to have some issues, and then another new idea **seems** to solve this problem.
 
-Here’s the translation:  “We are only at the beginning of our journey, and we should consider how to approach this. We could explore random URLs or images, or even random requests from the server – what data was transmitted to the client, and what action did the client initiate upon receiving the response from the server?”
+But the road we are about to take has just begun. Let us consider: what exactly does a server (if any) send to the client in projects like random graphs or random URLs, and what actions does the client perform on the responses sent back by the server?
 
-You are undoubtedly aware that if you require a client to return different content for each request, it’s highly likely the server is returning distinct responses for each. This could be internal, such as embedding images directly within the response body, or it could be [[Redirect]].
+You certainly know that if you want the client to receive different responses for each request to the same URL, the server must return different responses for each request. This can be internal, such as directly embedding an image in the response body, or it can also be **redirect**.
 
-The direct upload of images directly to the response body is straightforward. This functionality is client-side and invisible within the application itself. When a client initiates an API request, the server immediately transmits the selected image as the response body, seemingly as if it were a request for an image. However, the refresh behavior of the client varies each time.
+It's very simple to embed an image directly in the response body; it remains invisible to the client. When the client requests the API, the server sends the selected image directly as the response body. To the client, it appears as if they are requesting an image, but each refresh results in a different one.
 
-Responding to a redirect is significantly simpler. The server simply needs to send an HTTP status code, such as 302, indicating the redirection.
+But responding to **redirect** is even simpler; the server just needs to send a **temporary redirect** status code, such as **302**
 
-There’s a recurring question about the necessity of re-routing or redirection.
+Some people might ask, why is **temporary redirect** necessary?
 
-Due to the fact that you are undoubtedly intending for the client to return different images every time, once you utilize **Permanent Redirect** such as **301**, the browser will record a message indicating that the client will be redirected to the same URL again upon receiving **301**. This will effectively transform your random image API into a static image.
+Because you definitely want the client to return a different image every time it refreshes. Once you use **permanent redirect** such as **301**, the client will, at the moment it receives **301**, write a record in the browser: **next time you access this URL, directly redirect without requesting the server again**, which will cause your random image API to actually become just one image.
 
-Here’s the translation:  “So, which of these two methods is better?”
+Then, which of these two methods is better?
 
-Here’s the translation:  “Each option has its advantages and disadvantages. A concise statement explains that direct return to MIME type yields seamless reuse, requiring only one request; conversely, redirecting with a 302 status code requires at least two client requests.”
+Each has its pros and cons: **Returning the MIME type directly enables request reuse, allowing the image to be obtained with just one request. In contrast, returning a 302 redirect requires at least two client requests.**
 
-Considering your specific architecture, if you're employing a three-tier separation – logic and assets residing separately – then 302 Redirect is the appropriate solution.  Directly sending image data to the response body (the server) effectively positions your server as a proxy, routing all traffic to your infrastructure.
+This depends on your actual architecture. If you have a front-end and back-end separation, meaning logic and assets are not located in the same place, a 302 redirect is definitely better, because if you directly embed images in the response body, it's equivalent to your server acting as **proxy** for the client to access your assets, with all traffic passing through your server.
 
-If both the front-end and back-end are involved in a single request, a standard one-time reuse is typically faster than two separate requests. However, for management and tracking purposes, I utilize **302 Redirect**(https://example.com/redirects) for most of my APIs.
+If your front-end and back-end are integrated, under normal circumstances, a single request reuse is definitely faster than two separate connections. However, for convenience in management and statistics, most of my APIs still use **302 redirect**.
 
-GitHub repository: afoim/EdgeOne_Function_PicAPI
+::github{repo="afoim/EdgeOne_Function_PicAPI"}
 
-上线的API： https://eopfapi.acofork.com/pic?img=ua
-# 奇技淫巧1：利用Cloudflare Origin Rules实现无计费的随机URL
+Online API: https://eopfapi.acofork.com/pic?img=ua
+# Trick 1: Use Cloudflare Origin Rules to achieve free, randomized URLs
 > Video: https://www.bilibili.com/video/BV19ZBzB8EDQ/
-起因于有一天一位粉丝在我视频下留言
+It started on a day when a fan left a comment under my video.
 ![](../../assets/images/random-url-gen-9.webp)
 
-He mentioned a warehouse previously mentioned.
+The warehouse he mentioned is
 
-GitHub repository: Mabbs/cf-hitokoto
+::github{repo="Mabbs/cf-hitokoto"}
 
-Here’s a professional translation:  “Cloudflare provides a method to generate a UUID (Universally Unique Identifier) at the rule level. Each generated UUID is random, allowing for deterministic URL generation within the rule framework.”
+Generally, Cloudflare provides a method within rules to generate a UUID at the rule level, which is random each time; we can use this to generate random URLs at the rule level.
 
-The theory is viable, and practical implementation begins.
+Theoretically feasible, practice has begun.
 
-First, we understand that UUIDs are strings of random numbers with leading separators, and each digit has 16 possible values. We can only extract the first four digits, which is 16<sup>4</sup>, equivalent to 65536 images. Each image can be assigned a unique UUID, and then the CF edge will generate the UUID upon receiving a request, followed by directly concatenating the URL request for static assets, such as `/img/0000.webp` , and returning it to the client.
+First, we need to understand that a UUID is a random number with hyphens, and each digit has 16 possible values. We can simply take the first four digits, which gives us 16^4, or 65,536 possible combinations. Each image can be assigned a unique UUID. Next, when the CF edge receives a request, it generates a UUID and directly appends it to the URL request for static assets, such as `/img/0000.webp`, and returns it to the client.
 
-If you’re asking if you need more of this, adding one will suffice. 16<sup>5</sup> equals 1048576, which is sufficient.
-If we were to reduce the image count, we could utilize image interpolation techniques. For example, consider a scenario where you have only two images and each image can generate 32,768 copies. This progression continues indefinitely.
+What if my diagram has more than this? Add one more, 16^5 = 1048576, should be enough, right?
+What if my image count is less than this? We can let the images fill the space; for an extreme example, if you only have 2 images, you can create 32,768 copies of each, and so on.
 
 ![](../../assets/images/random-url-gen-10.webp)
 
-GitHub repository: afoim/cf-rule-random-url
+::github{repo="afoim/cf-rule-random-url"}
 
-The API is now live at: [https://img.072103.xyz/h](https://img.072103.xyz/h) and [https://img.072103.xyz/v](https://img.072103.xyz/v).
+Online API: https://img.072103.xyz/h | https://img.072103.xyz/v
 
-# Here’s the translation:  “Tech and artistry 2: Abandon backend, let frontend JS handle URL construction.”
-Video: [https://www.bilibili.com/video/BV1tNB4BEEaE/](https://www.bilibili.com/video/BV1tNB4BEEaE/)
-Video2: [https://www.bilibili.com/video/BV1mMBKBREKB](https://www.bilibili.com/video/BV1mMBKBREKB)
+# Trick #2: Throw away the backend, let frontend JS assemble URLs itself.
+> Video: https://www.bilibili.com/video/BV1tNB4BEEaE/
+> Video2: https://www.bilibili.com/video/BV1mMBKBREkB/
 
-Let’s clarify our approach and determine if we require a solution that returns a random content endpoint.
+Open your mind—do we really need something that **requests an endpoint to return random content**?
 
-If you’d like to utilize random images on our website, could it be that the client-side JavaScript would handle this functionality?
+If you just want to use a random image on our website, could client-side JavaScript handle that?
 
-The core principle involves developing a client-side JavaScript application to generate a random number and then construct a URL to retrieve the final image. This image is then used to replace an existing image container or background image within the page, dynamically updating the content.
+The basic principle is to write a client-side JS that generates a random number, then concatenates it into the URL to obtain the final random image, and then locate the img container or background image container that needs to be replaced with the random image, and replace its content.
 
 ![](../../assets/images/random-url-gen-11.webp)
 
-GitHub repository: afoim/Static_RandomPicAPI
+::github{repo="afoim/Static_RandomPicAPI"}
 
-The API is now live at: [https://pic1.acofork.com]
+Online API: https://pic1.acofork.com
 
-# Summarize.
-We have explored three distinct schools of thought.
+# Summary
+We jointly explored three schools of thought.
 
-- Traditional approaches often prioritize established norms and guidelines, focusing on finding suitable patterns within the edge function. This involves selecting images that fit within defined parameters or constraints.
-- Here’s the translation:  “Edge-finding algorithms, as defined by CF rules, are implemented to identify and extract data points from edge maps. However, fees are not applied.”
-- Here’s the translation:  “Environmentalists are leveraging client-side JavaScript to enable direct image search, cropping, and editing within the browser.”
+- Traditional School: Stick to the rules, search for images at the edge functions, extract images
+- GeekPie: Through the rules of CF, implement image searching and retrieval at the edge without charging.
+- Environmentalists: Implement image search, retrieval, and modification directly in the browser via client-side JavaScript.

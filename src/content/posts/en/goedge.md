@@ -1,6 +1,6 @@
 ---
-title: "GoEdge Self-Built CDN System Deployment Lessons Learned"
-description: "I am incredibly sorry to inform you that I accidentally acquired three free VPS accounts. However, I’m concerned about their potential re-activation and how to address this situation effectively. Perhaps we could redirect them to a more stable environment or explore alternative solutions?"
+title: "GoEdge Self-built CDN System Pitfall Record"
+description: "Holy crap, I accidentally got three free VPS instances, but if I don't use them, they might get reclaimed. What should I do? Hey, maybe I should make them all do some work!"
 published: 2025-09-09
 image: '../../assets/images/2025-09-09-06-29-44-image.webp'
 tags: [CDN, GoEdge]
@@ -8,23 +8,23 @@ tags: [CDN, GoEdge]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide outlines how to install, uninstall, and configure GoEdge CDN, including setting up API nodes, DNS providers, CDN domains, node additions, SSL certificate issuance, access restrictions, and website creation. Installation is quick via a script, and uninstallation requires locating the process PID and removing the installed files. Configuration steps emphasize port availability, public network accessibility, DNS setup, node SSH integration, SSL signing, and restricting access to domain-bound traffic only.
 :::
 
-# Installation of GoEdge
+# Install GoEdge
 
-Here’s the translation:  “Quickly install the GoEdge Management System using a script – GoEdge CDN: Self-Hosted CDN.”
+> [Quickly Install GoEdge Management System Using Script - Documentation - GoEdge CDN | Self-hosted CDN](https://goedge.cloud/docs/Admin/install-script.md)
 
-A script installation is being performed.
+One-line script installation
 
 ```bash
 curl -s https://goedge.cloud/install.sh | bash
 ```
 
-# Deactivation of GoEdge device.
+# Uninstall GoEdge
 
-Check the process ID (PID) associated with port listening on channel **7788**.
+Check the PID of the program listening on port **7788**
 
 ```bash
 root@AcoFork-NAS:~/oci# apt install lsof && lsof -i :7788
@@ -40,7 +40,7 @@ edge-admi 1733510 root   10u  IPv6 8828980      0t0  TCP 10.147.17.1:7788->10.14
 root@AcoFork-NAS:~/oci#
 ```
 
-Using PID (Proportional-Integral-Derivative) control, determine the program path.
+Use PID to find program path
 
 ```bash
 root@AcoFork-NAS:~/oci# readlink -f /proc/1733510/exe
@@ -48,63 +48,63 @@ root@AcoFork-NAS:~/oci# readlink -f /proc/1733510/exe
 root@AcoFork-NAS:~/oci#
 ```
 
-Here’s the translation:  “You have successfully located the Edge Admin installation directory: **EdgeAdmin_Installation_Directory**.”
+You have successfully located the **EdgeAdmin installation directory**: `/usr/local/goedge/edge-admin/`
 
-Follow the instructions outlined in the documentation for the De-installation Management Platform – GoEdge CDN, and proceed with the process step-by-step.
+Then go to [-  - GoEdge CDN | CDN](https://goedge.cloud/docs/Admin/Uninstall.md) and uninstall following the tutorial step by step
 
-# Here’s a professional translation of “API node configuration” into English:  “API node configuration refers to the process and settings required to properly configure and manage an Application Programming Interface (API) endpoint.”
+# Configuration of API Nodes
 
-The installation process will configure API nodes, and you’ll need to specify ports and public IP addresses.
+The installation phase will allow you to configure API nodes, configure ports, and set up public access.
 
-Ensure that the port is not in use by another process, defaulting to port 8001 (as known to be reserved by Flyfish OS). If it is occupied, switch to a different port.
+You need to ensure the port is not in use; the default port **8001** (known to be occupied by FeinuOS). If it is occupied, choose another port.
 
-You must ensure that **Public Network** can be added to by subsequent nodes **Proactive Access**.  We utilize IPv6 public networks and guarantee that all nodes added after this will have IPv6 addresses.
+You need to ensure that **public internet** can be actively accessed by any nodes you add afterward (my approach is to use IPv6 public network and ensure all subsequently added nodes have IPv6 addresses).
 
-# Adding a DNS service provider.
+# Add DNS provider
 
-Please proceed to…
+First, go to
 
 ![](../../assets/images/2025-09-09-07-00-37-image.webp)
 
-Add your DNS account. **hw** Used for CDN domain name autonomous resolution, **cf** Used for subsequent SSL certificate issuance.
+Add your DNS account. **hw** is used for autonomous resolution of CDN domain names, **cf** is used for subsequent SSL certificate issuance.
 
 ![](../../assets/images/2025-09-09-06-59-59-image.webp)
 
-Please enter your details to verify domain availability.
+Click in to ensure you can obtain the domain name
 
 ![](../../assets/images/2025-09-09-06-44-54-image.webp)
 
-# Setting up a CDN (Content Delivery Network) domain is a crucial step in optimizing website performance and user experience. This involves configuring the DNS records to point your domain name to the CDN’s servers, ensuring that users are served content from geographically closer locations, resulting in faster loading times and reduced latency.  Proper CDN setup requires careful planning and execution to ensure optimal results.
+# Set CDN domain name
 
-Please proceed.
+Go to
 
 ![](../../assets/images/2025-09-09-06-45-52-image.webp)
 
-Configure DNS subdomain settings.
+Set up DNS subdomain
 
 ![](../../assets/images/2025-09-09-06-46-12-image.webp)
 
-# Adding nodes.
+# Add node
 
-Please proceed.
+Go to
 
 ![](../../assets/images/2025-09-09-06-47-14-image.webp)
 
 ![](../../assets/images/2025-09-09-06-47-30-image.webp)
 
-Then enter the node IP and SSH authentication method (password/key), and after goedge will proactively connect via SSH to install services on the node.
+Then fill in the node IP and SSH authentication method (password/key); afterward, goedge will proactively connect to the node via SSH to install the service.
 
-# Configuration node DNS IP address.
+# Configure the DNS IP for the node
 
-Please proceed.
+Go to
 
 ![](../../assets/images/2025-09-09-06-49-35-image.webp)
 
-This will require you to enter the DNS IP address for each node, and you can specify the **Public IP**.
+You will be asked to fill in the DNS IP for each node; simply enter the **public IP** of the node.
 
-# Signature: SSL
+# Issue SSL
 
-Please proceed.
+Go to
 
 ![](../../assets/images/2025-09-09-06-50-43-image.webp)
 
@@ -114,28 +114,28 @@ Please proceed.
 
 ![](../../assets/images/2025-09-09-06-51-10-image.webp)
 
-随便写个邮箱
+Just write any email address.
 
 ![](../../assets/images/2025-09-09-06-51-23-image.webp)
 
-Write domain names (supporting both broad and narrow domains).
+Write domain name (supports wildcard domains)
 
 ![](../../assets/images/2025-09-09-06-51-52-image.webp)
 
-Please wait for confirmation of successful signing.
+Wait a moment, and it will be successfully issued.
 
 ![](../../assets/images/2025-09-09-06-52-20-image.webp)
 
-# Here’s the translation:  “Prohibit access to unregistered domains and prohibit direct IP addresses.”
+# Prohibit access without bound domain / Prohibit direct IP access
 
-字面意思，如图设置
+Literal meaning, as shown in the figure setting
 
 ![](../../assets/images/2025-09-09-06-53-52-image.webp)
 
-# Create a website.
+# Create a website
 
-Please proceed.
+Go to
 
 ![](../../assets/images/2025-09-09-06-54-16-image.webp)
 
-Please conduct your own research. I’m going to sleep.
+You can figure it out yourselves; I'm going to sleep now.

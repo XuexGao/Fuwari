@@ -1,6 +1,6 @@
 ---
-title: "Recommendations for buying microphones"
-description: "Over the past few years, a significant number of smartphones have been tested and reviewed, including numerous models like the 1,000-dollar Shure, RODE, and Flash Audio, as well as smaller, budget-friendly options such as the 100-dollar, half-ear with microphone, and various other devices. Today, we’ll summarize some common pitfalls and issues encountered in this market."
+title: "Some Suggestions for Friends Who Want to Buy a Microphone"
+description: "Over the past few years, I've tried various microphones, big and small. Whether it's thousands of dollars worth of Shure or RODE, hundreds of dollars worth of Shure, Green Alliance, or even 100-dollar budget models with half-in-ear mics, today I'm summarizing the pitfalls."
 published: 2025-09-02
 image: '../../assets/images/2025-09-02-10-39-10-5f50a607bf666647544c19515aaa15f3.webp'
 tags: [麦克风]
@@ -8,70 +8,70 @@ tags: [麦克风]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article guides readers on choosing the right microphone based on their needs—whether for casual voice calls, singing, video recording, or podcasting. It recommends dynamic microphones like the Shure MV6 or Sennheiser Q2U for noisy environments, while cautioning against expensive condenser mics unless you have a controlled recording space. The author also shares personal gear, warns against complicated setups, and emphasizes that a good microphone won’t magically improve your vocal skills.
 :::
 
-# Please clearly state your requirements.
+# Clarify your requirements
 
-Here’s the translation:  “Why are you purchasing a microphone? To achieve clearer voice communication with friends? To record audio, including singing and music, or create podcasts?”
+Why are you buying a microphone? Do you want clearer voice chats with friends? Do you want to record songs, karaoke, videos, or create podcasts?
 
-# If you simply want to chat with a friend over voice, please.
+# If you just want to voice call with friends
 
-If you’re utilizing headphones with a headphone control system, you don’t need to purchase a new microphone. Instead, simply use the [NVIDIA Broadcast App - With AI Assistance for Voice and Video | NVIDIA](https://www.nvidia.cn/geforce/broadcasting/broadcast-app/) or other noise reduction software or services.
+If you are using a headset with a line-controlled microphone, you do not need to purchase a new microphone—simply use [NVIDIA Broadcast App - AI-powered voice and video | NVIDIA](https://www.nvidia.cn/geforce/broadcasting/broadcast-app/) or other noise-cancellation software/services instead.
 
-# Looking for recording opportunities?
+# Want to record songs/Karaoke/video/make podcasts
 
-This also pertains to your recording environment – is it quiet? Are there any air conditioning noises? Any background noise? A variety of extraneous noises?
+This also involves your recording environment: is it quiet? Are there air conditioner noises? Construction noises? All sorts of miscellaneous noises?
 
-If your recording environment cannot achieve absolute silence, then a **dynamic mixer** is an excellent choice.
+If your recording environment cannot achieve absolute silence, then **dynamic microphone** is definitely the first choice.
 
-Here’s the translation:  “The differences between electrostatic capacitors (EMC) and rotary induction coils (RCI) are significant.”
+> What is the difference between **condenser microphone** and **dynamic microphone**?
 
-- Here’s the translation:  **Electrode Capacitors: Designed for Comprehensive Audio Capture, Suitable for Advanced Processing and Those Seeking a More Immersive Experience.**  This device is ideal for applications requiring extensive audio recording and processing, particularly when incorporating post-production enhancements. It's well-suited for users who prioritize quality and detail, and offers ample space for significant audio manipulation – making it an excellent choice for ASMR-style content that amplifies subtle movements and sounds.
+- Condenser Microphone: Captures everything, including ambient noise, suitable for those who need post-production, not ideal for lazy users. Almost every audio source requires post-production, but conversely, there is ample room for post-production, making it also very suitable for ASMR content that amplifies subtle sounds.
 
-- Here’s the translation:  “Dynamic Mixing – Primarily focused on low-frequency audio, with minimal sensitivity to high frequencies.  The recording is exceptionally rich and full without any post-processing.  A key characteristic is its exclusive focus on vocal recordings; however, if the distance between the microphone and the subject is too great, a slight adjustment of 5-30cm may be necessary to improve sound quality.”
+- Dynamic microphone: primarily captures mid-range vocals, has low sensitivity, and almost does not pick up ambient noise. Vocals sound rich even without any post-processing. Advantage: only captures vocals. Disadvantage: if too far away, audio quality suffers; recommended distance for recording: 5~30cm.
 
-Recommended: The Q2U dynamic microphone from Shan Su is currently priced at 279 CNY, but the market price has risen to approximately 400 CNY.
+Recommendation: Shure Q2U dynamic microphone, I bought it for 279 CNY, now the market price is around 400 CNY.
 
-The drawbacks of this microphone centerpiece are its use of an ancient Mini USB connector and the lack of a stand or tripod. It requires users to supplement it with their own desktop stand and suspension support.
+The downside of this wheat is that it uses the ancient Mini USB, and the bare unit does not come with a stand, requiring users to purchase a desktop stand and an arm stand separately.
 
 ![](../../assets/images/2025-09-02-10-54-48-IMG20250902105434.webp)
 
-I have money! I need to add more money!
+I have money! I want to add more money!
 
-Here’s the translation:  “I recommend the Shur MV6 microphone. It comes with a companion app that supports automatic equalization (anti-shock sound). Sometimes it's useful, sometimes not so much, and it’s functionally similar to the previous Shanuz Q2U. The price is 1349 CNY.”
+Okay, then I recommend the Shure MV6. This mic comes with a companion app that supports automatic gain (to prevent clipping, though it sometimes works and sometimes doesn't). Otherwise, it's basically the same as the above-mentioned Sennheiser Q2U, priced at 1349 CNY.
 
-Here’s the translation:  **Opening Box Experience Video: [Simple Opening Soft MV6 Microphone - Bilibili](https://www.bilibili.com/video/BV1JoJqzBEyA)**
+Unboxing Experience Video: [Simple Unboxing of Shure MV6 Microphone_bilibili](https://www.bilibili.com/video/BV1JoJqzBEyA)
 
 ![](../../assets/images/2025-09-02-11-00-14-Screenshot_2025-09-02-10-59-56-76_4fbb30eb7b71661.webp)
 
-# What microphone are you using?
+# What microphone am I currently using?
 
-There are three Macs available to handle all my tasks comprehensively.
+No microphone is capable of handling all tasks perfectly, so I have three mics on hand.
 
-- Here’s a professional translation of the text:  “Mountain Sound Q2U: It was my primary microphone, and I recorded quite a few videos using him. However, due to the need for a suspender mount and a narrow recording range, I attempted to replicate a tongue-kissing effect – a technique that proved challenging with my lack of enthusiasm and the difficulty in utilizing the device.  I often used it during both singing and video recording.”
+- Shure Q2U: It was once my only main microphone, and I used it to record many videos. However, because it requires a boom stand and has a very narrow pickup range, recording sound with it feels like kissing someone on the lips, and since I’m too lazy to use it, I sometimes use it when singing or recording videos.
 
-- The GreenLink USB Microphone - CM727 offers generally acceptable audio quality, with a price point under 200 CNY. The electret microphone boasts a wide dynamic range, making it suitable for everyday use where sound quality is less of a priority.
+- Green Union USB MIC-CM727: Average sound quality, but priced at less than 200 CNY. Condenser microphone, wide pickup range, suitable for everyday use (at this point, I hardly care about sound quality anymore).
 
 - ![](../../assets/images/2025-09-02-11-07-46-IMG20250902110659.webp)
 
-- The “K-Pop K-Pods SE” is a standard half-ear headphone with a capacitive earbud cover and a magnetic clasp. However, the product managers were incredibly clever – they’ve designed it to be hung discreetly below the lower lip, providing clear audio while allowing for easy movement. The only drawback is that I'm often lazy, and hanging the device on my lower lip creates a feeling of discomfort and can cause ear pain after prolonged use. It’s primarily used during singing sessions, with a price of 109 CNY (National Health Insurance reimbursement).
+- KaraOK KPods SE: Strictly speaking, this is a standard semi-in-ear design with a condenser lavalier mic, but thanks to the product manager’s genius, you can hang the mic under your lower lip, which ensures clear audio while allowing you to move freely. The only downside is that I’m too lazy to wear it—there’s a foreign-body sensation when something hangs under my lower lip, and if it’s too tight, my ears will hurt by the end of the day. So I usually only use it while singing. Price: 109 CNY (with national subsidy).
 
 - ![](../../assets/images/2025-09-02-11-07-54-IMG20250902110730.webp)
 
-# The term “” in Chinese typically refers to a situation or problem that is difficult or problematic, often involving risk or potential disappointment. It suggests an unfavorable outcome or a challenging circumstance.
+# Pitfall
 
-- Do not purchase microphones with a pop filter unless you have substantial financial resources and enjoy tinkering. If you buy a microphone with a port for a card, you’ll need to add several thousand in voice cards to it before you can fully monitor the audio. A basic unit costs around $1000, and once connected, you'll need to bring out a large-diaphragm condenser microphone and connect it to your computer, then adjust the audio levels using the equalizer, all of which takes time. If you have a capacitor microphone in a noisy environment, that’s a fortunate situation – recording for several hours can yield results, and after several hours of recording, you don't have the energy to continue. A standalone microphone with a USB microphone is sufficient.
+- Don't buy microphones that require an audio interface unless you're rich and enjoy tinkering. If you purchase a XLR microphone, you'll need to buy a thousand-yuan audio interface separately. By this point, wouldn't you also need a monitoring headphone? Altogether, that's over ten thousand yuan. Then, when you want to use it, you have to first plug in the expensive audio interface into your computer, connect the microphone and monitoring headphones, and finally open your computer's equalizer to adjust various settings before you can start recording. And if you happen to buy a condenser mic in a noisy environment, you're in for a treat—spend several hours recording, then another several hours on post-production. Honestly, I don't have the energy for that. Just buy a USB microphone for an independent microphone.
 
-- I consistently advise against purchasing an independent capacitor microphone; the more premium models demand a significantly enhanced recording environment, and investing one thousand dollars in a robust triangular capacitor microphone for environmental noise capture is a considerable undertaking.
+- I never recommend buying an isolated condenser microphone; the more expensive it is, the more it demands a pristine recording environment. If you buy a high-end Audio-Technica condenser mic for ten thousand yuan and it records environmental noise with crystal clarity, can you handle it?
 
-- If you require a microphone for recording audio such as singing or video, ensure that the microphone you purchase supports hardware-level latency (that is, low latency).
+- If you need to record songs/videos or any scenario requiring monitoring, please ensure the microphone you buy supports hardware-level monitoring (with zero latency).
 
-- Do not purchase a 3.5mm microphone before buying a 3.5mm headphone, and then purchasing a pair of dual 3.5mm neural earbud adapters. It’s preferable to buy a single pair of earpads instead.
+- Don't buy a 3.5mm microphone first, then a 3.5mm headphone, and then a dual 3.5mm neural audio adapter to connect them. It's better to just buy a single pair of Earpods.
 
-- Do not expect the microphone quality of gaming headphones to be exceptional, and I do not recommend purchasing them. A dynamic headphone with earpads typically costs under $500, and some gaming headphones start at over $1000.
+- Don't expect the microphone quality of gaming headsets to be very good, and I also don't recommend purchasing gaming headsets. A dynamic mic plus Earpods costs less than 500 yuan, while some gaming headsets start at over a thousand yuan.
 
-- Don’t get carried away! Don’t create demand without a need. **Buying a thousand dollars worth of a microphone won't improve your vocal skills!**
+- Don't get carried away! Don't get carried away! Don't get carried away! Don't create demand where there is none! **Buying a thousand-yuan microphone will not improve your singing skills!**
 
-- Don’t aim to consume every scenario. A cheap USB desktop microphone with noise cancellation is perfectly suitable for situations where you need to move around and chat with teammates during intense gameplay. Conversely, high-end dynamic microphones like the Shure MV6 are ideal for podcasts or singing – scenarios where you're not actively engaged for several hours. If you require full immersion, earpods can provide connectivity, but the microphone’s reception depends entirely on its placement; you wouldn’t want to constantly hold it in your mouth, just like with K-pop/KPods SE? It’s becoming increasingly monotonous.
+- Don’t expect one mic to handle all scenarios. A cheap USB desktop mic (with noise reduction) is suitable for gaming situations where you’re moving around and chatting with teammates. Meanwhile, high-end dynamic mics like the Shure MV6 are better suited for podcasting or singing scenarios where you stay still for hours. If you insist on something that works universally, Earpods can technically do that—but the microphone quality of wired earphones entirely depends on where you place them; you can’t always keep them right on your mouth, like the KPods SE from Quanmin Karaoke, right? It’s also possible, I guess—I’m just getting lazier.

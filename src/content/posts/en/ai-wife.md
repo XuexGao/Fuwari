@@ -1,6 +1,6 @@
 ---
-title: "Hand-to-hand teaching you how to run a 2D anime wife!"
-description: "Absolutely! Here’s the translation:  “Let's dive right in! This tutorial will guide you step-by-step from software installation to model configuration and finally, to stunning images. 100% guaranteed!”"
+title: "Step-by-step Guide to Running a 2D AI Girlfriend!"
+description: "Extremely simple! Even a fool can do it! In this episode, I'll show you step by step—from software installation, model configuration, to generating images—how to create stunning pictures with 100% success!"
 category: "Tutorial"
 published: 2026-02-12
 image: ../../assets/images/ai-wife-15.png
@@ -8,248 +8,248 @@ tags: [AI绘图, NoobAI]
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article provides a comprehensive guide to using ComfyUI, a powerful AI art tool for generating images with Stable Diffusion. It begins by explaining the basics of ComfyUI and its importance, then walks users through downloading base models (including LoRA), setting up prompts, and utilizing various techniques for creating unique artwork.  The guide covers both the official and autumn-integration versions of ComfyUI, offering clear instructions on how to download models and launch the application. It also provides helpful tips for working with NoobAI-XL, a specialized model that simplifies LoRA creation through Danbooru character tags. Finally, it offers a step-by-step process for initializing the application and uploading your desired prompts.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide teaches beginners how to use ComfyUI for AI image generation, focusing on simplicity and accessibility. It walks through downloading ComfyUI, installing base models like NoobAI-XL and WAI-illustrious-SDXL, adding LoRA models for specific characters, and using prompt-based workflows to generate images—even for new or unlisted characters. The tutorial emphasizes practical setup, avoiding complex configurations, and includes downloadable workflow files to streamline the process.
 :::
 
 # Introduction
 
-Once, I wrote an article documenting my experience of researching AI art – I installed Stable Diffusion WebUI, Stable Diffusion Forge WebUI, and ComfyUI on all three simultaneously. Thankfully, by following these faint threads of knowledge, I was able to recover lost information.
+I once wrote an article documenting my journey of researching AI image generation from scratch—back then, I installed Stable Diffusion WebUI, Stable Diffusion Forge WebUI, and ComfyUI, searching for tutorials, experimenting hands-on, and making mistakes. Fortunately, relying on my remaining memory, I was able to recover the knowledge I had previously forgotten, following these faint traces.
 
-But the article now seems complicated to configure, and there are many deep things that haven’t been explained clearly. It only teaches how to draw characters from Danbooru. So if I want to draw a new character or one not in Danbooru, what will this episode cover? Let's delve into AI illustration!
+But looking back at that article now, the setup is still too complicated, and many deeper aspects remain unclear—it only teaches how to draw characters already included in Danbooru. So what if I want to draw a brand-new character or one not yet included? This episode will thoroughly break down AI drawing!
 
-In a completely beginner’s situation, you can run like this! (It won't work!)
+With zero prior knowledge, you can achieve something like the figure below! (If you can't, I'll kill you!)
 
 ![2025-05-13-11-59-50-ComfyUI_00016_.webp](../../assets/images/2025-05-13-11-59-50-ComfyUI_00016_.webp)
 
 ![2025-05-13-12-00-37-ComfyUI_00011_.webp](../../assets/images/2025-05-13-12-00-37-ComfyUI_00011_.webp)
 
-# Simple Thoughtstorm
+# Simple brainstorming
 
-In formal preparation, we will use the following terms:
+Before we begin, we will use the following terms; here is a brief introduction to what each one does:
 
-- **ComfyUI**：A software that’s an AI illustration control panel, you just need to point and it will generate a picture.
-- **checkpoint**：A foundational model, serving as a base for drawing. It can be used directly to begin sketching or combined with a lower-level LoRA model for drawing.
-- **LoRA**：A model that controls characters or styles. It can be loaded with different LoRAs to create different characters or styles.
-- **prompt**：Provide an image of a [describe the desired image]
+- **ComfyUI**: A software that serves as an AI image generation console; you just need to click a few times here to generate images.
+- **checkpoint**: A base model serving as the foundational layer. You can use it directly to start drawing, or combine it with the Lora models listed below for drawing.
+- **LoRA**: A model for controlling character/style. Different LoRAs can be loaded to draw different characters or styles.
+- **prompt**：Prompt, used to inform the AI of what kind of thing you want to draw
 
-Simply put, it’s not complicated at all. We just need to select a base model first – if you don’t pick one or your character is already in that model, you can use the model's prompt to create art. If you want to create an image of a character not in the model, you only need to add another LoRA model.
+In short, this is not complicated at all. We just need to first select a base model; if you don’t pick one or the character you want to draw is already included, you can directly use the prompt for that character to generate the image. If you want to draw a character not included, you just need to load an additional LoRA model.
 
-# Formal start
+# Formally begin
 
 ## Download ComfyUI
 
 > [!tip]
-> More recommended is [Stable Diffusion Forge](https://www.bilibili.com/video/BV1rc6nYNEYo/), if you don’t need complex node distribution, sdf can be more convenient for writing prompts.
+> It is more recommended to use [Stable Diffusion Forge](https://www.bilibili.com/video/BV1rc6nYNEYo/), as it is more convenient to write prompts if you do not need complex node configurations.
 > ![](../../assets/images/ai-wife-17.png)
 
-> Despite ComfyUI supporting AMD graphics and pure CPU rendering, it’s recommended to use **NVIDIA Cuda** for rendering, as it is faster and offers better compatibility.
+> Although ComfyUI supports AMD graphics cards and CPU-only rendering, it is still recommended to use **NVIDIA Cuda** for rendering, as it is faster and has better compatibility!
 
-### The article focuses on [X:content] and explores [X:content]. It delves into [X:content] and provides insights into [X:content].
+### Method One: Official Version (Recommended)
 
-Go to [ComfyUI | Use AI to generate videos, images, audio](https://www.comfy.org/zh-cn/). Download and install, remember to open the magic or change the source mirror settings.
+Go to [ComfyUI | Generate videos, images, and audio with AI](https://www.comfy.org/zh-cn/) to download and install, remember to enable Magic or change the mirror source in settings
 
 ![](../../assets/images/ai-wife.png)
 
-### Autumn Leaf Integration Package
+### Method Two: Autumn Leaves Integration Pack
 
-Go to the ComfyUI integration package discussion area to download and extract it: https://www.bilibili.com/video/BV1Ew411776J
+Go to the comment section of the video "Autumn Leaves" to download the ComfyUI integration package, download and extract it: https://www.bilibili.com/video/BV1Ew411776J
 
-After de-stressing, open the folder, and open `A`.
+After extraction, open the folder and open `A`
 
 ![2025-05-13-12-05-17-image.webp](../../assets/images/2025-05-13-12-05-17-image.webp)
 
-Click the right-hand corner to start the initialization, then let him configure it and automatically open your browser and allow you to enter the ComfyUI interface.
+Click the "Start" button at the bottom right to initiate the process, allowing it to complete its initialization until it automatically opens your browser and successfully accesses the ComfyUI interface.
 
 ![2025-05-13-12-06-57-image.webp](../../assets/images/2025-05-13-12-06-57-image.webp)
 
-## Download a base model.
+## Download the base model
 
-Most LoRA models typically require these two base models. NoobAI supports directly creating artwork using characters from the Danbooru database without needing other LoRAs.
+Most LoRA models generally require these two base models. Among them, NoobAI supports direct painting using characters already existing in Danbooru, without needing other LoRA:
 
-- NoobAI-XL (NAI-XL) – V-Pred-1.0-Version | NoobAI Checkpoint | Civitai
+- [NoobAI-XL (NAI-XL) - V-Pred-1.0-Version | NoobAI Checkpoint | Civitai](https://civitai.com/models/833294?modelVersionId=1190596)（Requires Magic）
 
 - [WAI-illustrious-SDXL - v16.0 | Illustrious Checkpoint | Civitai](https://civitai.com/models/827184/wai-illustrious-sdxl)
 
-Click download now.
+Click to download
 
 ![2025-05-13-12-08-17-image.webp](../../assets/images/2025-05-13-12-08-17-image.webp)
 
 > [!warning]
-> Due to the V prediction model (NoobAI-VPred) being relatively new, it can only run on SDForge and ComfyUI, and the original SD cannot run, resulting in crashes!
+> Since the V-prediction model (NoobAI-VPred) is relatively new, it can only run on SDForge and ComfyUI; the original SD cannot run it, and it will cause image corruption!
 
-### If you need to download LoRA, please see the link below: [https://www.lunarlancer.com/lora/](https://www.lunarlancer.com/lora/)
+### If you need to download LoRA
 
-First, tell me the English name you want to give your character. For example, **Cartethyia** (Kai-teh-sia).
+First, you need to know the English name of the character you want to draw, such as **Cartethyia** (Ming Chao - Cartethyia)
 
-Then go to https://civitai.com and search for LoRAs you like.
+Then go to https://civitai.com/ to search and select your preferred LoRA.
 
 ![](../../assets/images/ai-wife-1.png)
 
-In the details page, you can see the base model that LoRA requires. Sometimes the model’s description will also include.
+On the detail page, you can see the base model required for this LoRA. Sometimes, the model's description will also write
 
-The **Trigger Words** are recommended **Positive Prompting**. Generally, only importing LoRA will yield some effect.
+The following **Trigger Words** are recommended **Positive Prompts**. Generally, importing only LoRA without writing specific prompts will still have some effect.
 
 ![](../../assets/images/ai-wife-2.png)
 
-## Placement model
+## Place the model
 
 > [!warning]
-> There's a bug with desktop installation of ComfyUI. Please place your models in the folder you selected when you initially installed them, such as `C:\Users\af\Documents\ComfyUI`. Do not use the format `C:\Users\af\AppData\Local\Programs\ComfyUI\resources\ComfyUI` instead, for more information, please refer to the official documentation: [Important Note: Please do not modify resource/ComfyUI folder - Windows Desktop version - ComfyUI](https://docs.comfy.org/zh-CN/installation/desktop/windows#%E9%87%8D%E8%A6%81%E6%8F%90%E7%A4%BA%EF%BC%9A%E8%AF%B7%E5%8B%BF%E4%BF%AE%E6%94%B9-resource/comfyui-%E6%96%87%E4%BB%B6%E5%A4%B9).
+> for the desktop version of ComfyUI, please place your models in the folder you selected during installation, such as `C:\Users\af\Documents\ComfyUI`, rather than in locations like `C:\Users\af\AppData\Local\Programs\ComfyUI\resources\ComfyUI`. For more details, please refer to the official documentation: [Important Note: Do Not Modify the resource/ComfyUI Folder - Windows Desktop Version - ComfyUI](https://docs.comfy.org/zh-CN/installation/desktop/windows#%E9%87%8D%E8%A6%81%E6%8F%90%E7%A4%BA%EF%BC%9A%E8%AF%B7%E5%8B%BF%E4%BF%AE%E6%94%B9-resource/comfyui-%E6%96%87%E4%BB%B6%E5%A4%B9)
 
 Open the `models` directory:
-- Place the base model (similar to `noobaiXLNAIXL_vPred10Version.safetensors`) into the `checkpoints` folder.
-- Place LoRA models in the `loras` folder.
+- Place the base model (similar to `noobaiXLNAIXL_vPred10Version.safetensors`) into the `checkpoints` folder
+- Place the LoRA model into the `loras` folder
 
 ![2025-05-13-12-10-06-image.webp](../../assets/images/2025-05-13-12-10-06-image.webp)
 
-## Start! Begin painting!
+## Start! Begin drawing!
 
 Launch ComfyUI
 
-Default settings are empty, here’s a workflow for LoRA training:  [oRA Training Workflow]
+By default, it should be empty. Here is a workflow with a starting pose + LoRA that you can import directly:
 
-Download - Basic Start Guide.json
+[Click to download - Basic Starting.json](https://2x.nz/files/基础起手.json)
 
-Download - Basic Start + Lora.json
+[Click to download - Base Start + Lora.json](https://2x.nz/files/基础起手+Lora.json)
 
-Downloaded after that, click the top-left corner ComfyUI icon to open this workflow.
+After downloading, click the ComfyUI icon in the top left corner to open this workflow.
 
 ![](../../assets/images/ai-wife-3.png)
 
-Next, you have these nodes.
+Next, you should already have these nodes.
 
 ![](../../assets/images/ai-wife-4.png)
 
 ### Loading model
 
-The base model is loaded, and after refreshing ComfyUI, you should see all the models you have placed in the `CheckpointLoader(Simplified)` section. This includes V prediction models with `vPred...`.
+Here, load the base model. After refreshing ComfyUI, you should be able to see all the models you placed at `Checkpoint Loader (Simple)`. Select the one with `vPred...` as the V-prediction model.
 
 ![2025-05-13-12-11-55-image.webp](../../assets/images/2025-05-13-12-11-55-image.webp)
 
 ![](../../assets/images/ai-wife-5.png)
 
-Here loaded LoRA (if applicable).
+Load LoRA (if any) here
 
 ![](../../assets/images/ai-wife-6.png)
 
-### Please provide the Chinese text you would like me to translate. I need the text to be able to fulfill your request.
+### Fill in the prompt
 
-Fill in the positive/negative prompt, represented as **English**. If you are unable to write, please describe what you want to draw, and I will return it to you.
+Here, fill in the positive and negative prompt words, both in **English**. If you don't know how to write them, find another AI to describe what you want to draw, and have it return a prompt suitable for AI image generation.
 
 ![](../../assets/images/ai-wife-7.png)
 
-#### How to find character prompts?
+#### How to find the prompt for the character?
 
-**Method One: Using Danbooru Character Tags (NoobAI Exclusive)**
+**Method One: Using Danbooru Character Tags (Exclusive to NoobAI)**
 
-NoobAI model’s biggest feature is supporting directly drawing characters from Danbooru without needing to create them from scratch! What would you like to draw? For example, how about Flowling?
+One major feature of the NoobAI model is its support for directly drawing through existing characters from Danbooru! What would you like to draw? For example, Liyue from Honkai: Star Rail?
 
-Entering [Danbooru characters in NoobAI-XL (NAI-XL)](https://www.downloadmost.com/NoobAI-XL/danbooru-character/)
+Enter [Danbooru characters in NoobAI-XL (NAI-XL)](https://www.downloadmost.com/NoobAI-XL/danbooru-character/)
 
-Search for Firefly’s English name or search for Star Rail characters.
+Search for the English name `firefly` or search `star rail` to find all characters from Honkai: Star Rail.
 
 ![2025-05-13-12-15-16-image.webp](../../assets/images/2025-05-13-12-15-16-image.webp)
 
-Copy the `Prompt tags` and paste them into the linked CLIP text encoding.
+Copy `Prompt tags` and paste it into the CLIP text encoder linked to the positive condition
 
 ![2025-05-13-12-16-35-image.webp](../../assets/images/2025-05-13-12-16-35-image.webp)
 
-The character setup is already complete!
+The character preset is now ready!
 
-Using LoRA triggers, a method for enhancing image generation.
+**Method Two: Using LoRA's Trigger Words**
 
-If you use LoRA, simply copy the trigger words from the details page.
+If you use LoRA, simply copy the Trigger Words from the product detail page.
 
-#### Starting prompts are a great way to get started with learning or using a new AI model. Here are some popular options:  *   **"What's your favorite thing to learn?"** – This prompt encourages the AI to share its knowledge and interests. *   **“Tell me about [topic]”** – Useful for getting information on specific subjects. *   **“Explain [concept] in simple terms”** – Helps clarify complex ideas. *   **“Give me a creative story idea”** – Sparks imaginative responses. *   **“Write a poem about…”** – Allows for artistic expression.  [[1:starting_prompts]]
+#### Recommended starting prompt tips
 
-Here are some starting phrases:
+I also provide some starting prompts here:
 
-- **Positive Conditions**：
+- **Positive Conditions**:
   ```
   masterpiece, best quality, newest, absurdres, highres
   ```
 
-- **Negative Condition**：
+- **Negative Conditions**:
   ```
   text, watermark, worst quality, old, early, low quality, lowres, signature, username, logo, bad hands, mutated hands, mammal, anthro, furry, ambiguous form, feral, semi-anthro
   ```
 
-We added this to ComfyUI as shown below:
+We add it to ComfyUI, as shown in the figure below:
 
 ![2025-05-13-12-19-32-image.webp](../../assets/images/2025-05-13-12-19-32-image.webp)
 
 > [!tip]
-> If you want the image to look different, please add (**English prompt! Don’t know how to do it, use translation or ask AI!**) to the front and back prompts. For example, to have the foot placed in the foreground and barefoot, add **foreground, bare feet**.
+> If you want the image to look different, please add (**must be in English! If unsure, use translation or ask AI!**) to both the positive and negative prompts. For example, if you want the feet to be in focus and barefoot, add **positive prompt**: `barefoot, feet in foreground`
 
-### Set image dimensions
+### Set image size
 
-Setting up image generation resolution, different models have different recommended resolutions.
+Here, set the resolution for generating images; different models have different recommended resolutions:
 
-**NoobAI recommends resolution** (approximately 1024x1024)
+**Recommended Resolution by NoobAI** (Total area approximately 1024x1024):
 - **Recommended: 832x1216**
-- 768x1344 [[The article discusses the benefits of mindfulness meditation]] *t’s a practice that can reduce stress and improve focus* [[Many people find it incredibly helpful for managing anxiety and improving their overall well-being]] [[Regular practice can lead to increased self-awareness and emotional regulation]]
+- Others: 768x1344, 896x1152, 1024x1024, 1152x896, 1216x832, 1344x768, 1024x1536, 1536x1024
 
 ![2025-05-13-12-22-06-image.webp](../../assets/images/2025-05-13-12-22-06-image.webp)
 
 ![](../../assets/images/ai-wife-8.png)
 
-> Recommended to check the model release page for related resolution recommendations.
+> It is recommended to visit the model release page to view the recommended resolution information.
 
-### Configuring a K-sampler.
+### Configure K Sampler
 
-Here are the parameters to control generation (default one is a good choice, if you don’t know, don’t do it).
+Here, control the generation parameters (the default one provided to you is already a good choice; if you don't understand, do not change it).
 
 ![](../../assets/images/ai-wife-9.png)
 
-- **Seed**：Each time it’s a random value, if it's fixed and other content remains unchanged, it will always produce the same image.
-- Step count: The number of iterations required to generate a ghost image, too low will result in distorted images, and too high may lead to excessive elements and over-saturation.
-NoobAI recommends: 28-35
-- **CFG**：The AI’s adherence to your input prompts is higher the more obedient it is, lower the more it’s rendered in a fantastical manner (ignoring some prompts).
-NoobAI recommends: 4-5
-Other model recommendations: 7-9
-- **Sampling Method**：Sampling method
-NoobAI: **only use euler** (❗Important! Cannot change! May cause a distorted image!)
-Other models can produce normal images.
-- **Noise Reduction**：The principle behind AI-generated images is to repeatedly apply noise reduction to an image that appears as a single color, resulting in the final output. The setting of this value determines how blurry and mixed the image becomes – lower values produce clearer, more detailed images, while higher values lead to over-sharpness or over-analysis.
+- **Seed**: Each time it is a random value; if fixed and no other content changes, it will always produce the same image.
+- **Steps**: This refers to how many times the AI needs to redraw. Too low may result in ghost images or distorted images, while too high may lead to excessive elements and overly saturated visuals.
+- NoobAI Recommendation: 28-35
+- **CFG**: The degree to which the AI complies with your input prompt; the higher the value, the more obedient the output, and the lower the value, the more imaginative and free-form the result (ignoring some prompts)
+- NoobAI Recommendation: 4-5
+- Other model recommendations: 7-9
+- **Sampler Name**: Sampling Method
+NoobAI: **Can only use euler** (❗Important! Cannot be changed! May cause image generation failure!)
+- Other models: Most can generate normal images.
+- **Noise Reduction**: The principle of AI-generated images is to iteratively denoise an image that initially appears as a solid color, gradually refining it into the final output. The lower this value is set, the blurrier and more chaotic the image becomes; the higher it is set, the clearer the image becomes, but it may also result in over-sharpening or excessive detail.
 
-### Previewing real-time functionality.
+### Enable real-time preview
 
-To ensure we don’t get bored during the live preview, we can set up and enable automatic real-time preview functionality by changing **** to **auto**.
+To ensure we are not bored while generating images, you can go to Settings and enable the real-time preview function, changing **** to ****.
 
 ![](../../assets/images/ai-wife-16.png)
 
-### Please provide the Chinese text you would like me to translate. I need the text to be able to fulfill your request.
+### Run generation
 
-Next, click on the right-hand corner to run, you’ve got it! You can also edit the number beside it to generate multiple images at once.
+Next, click the "Run" button in the top right corner. Oh, by the way, you can also edit the number next to it to generate multiple images at once.
 
 ![](../../assets/images/ai-wife-10.png)
 
-Due to the launch of real-time preview, you can see the model’s progress at each step.
+Since we have enabled real-time preview, you can see the model's painting progress at each step.
 
 ![](../../assets/images/ComfyUI_UkQQZG4KkW.gif)
 
-Click on the asset highlighted with the right-pointing arrow, and expand to view a larger image.
+Click the Assets in the top right corner to expand and view the large image.
 
 ![](../../assets/images/ai-wife-11.png)
 
-All images are available in the `output` folder.
+All generated images can be seen in the `output` folder.
 
 ![](../../assets/images/ai-wife-12.png)
 
-If you want to draw other characters, you only need: **find LoRA, write recommendation prompts, and start!**
+If you want to draw other characters, you only need: **Find LoRA, write recommended prompts, and start generating!**
 
 ![](../../assets/images/ai-wife-13.png)
 
 ![](../../assets/images/ai-wife-14.png)
 
-# Common Issues and Techniques
+# Common Questions and Tips
 
-- The generated images are highly variable, so try again!
+- **AI-generated images have randomness**: Each generated image is somewhat different, so try multiple times!
 
-- Avoid generating NSFW content and add `NSFW` to negative prompts, and add `safe` to positive prompts.
+- **Avoid generating NSFW images**: Add `NSFW` to the negative prompt and `safe` to the positive prompt.
 
-- **About V Prediction Model**：Due to the new V prediction model, it can only be run on SDForge and ComfyUI. The original SD cannot run, resulting in rendering issues.
+- **About the V Prediction Model**: Since the V prediction model is relatively new, it can only run on SDForge and ComfyUI; the original SD cannot run it, and it will cause image corruption.
 
-- **Reference Resources**：More tips for NoobAI models can be found on the Civitai Model page’s About section.
+- **Reference Resources**: For more tips on NoobAI models, check the "About" section on the Civitai model page.
   ![2025-05-13-12-30-55-image.webp](../../assets/images/2025-05-13-12-30-55-image.webp)

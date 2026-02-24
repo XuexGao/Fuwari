@@ -1,6 +1,6 @@
 ---
-title: "Teach you how to build Chevereto, a super powerful image gallery!"
-description: "The platform manager of Beibo Tower recommended Chevereto, which was just a free virtual host transaction. Let’s start tinkering!"
+title: "Teach You to Set Up Chevereto, This Super Powerful Image Hosting Service!"
+description: "Recommended by the station manager of BaoTa's Happy Edition is Chevereto, a picture hosting service. I just got a free virtual host, let's start tinkering!"
 category: "Tutorial"
 published: 2025-07-16
 image: ../../assets/images/f31ca517-8f5b-4e53-af08-c32aabc224ab.webp
@@ -8,27 +8,27 @@ tags: [Chevereto, 图床]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article provides instructions for setting up a website using PHP 8.1 and MySQL 8.0, leveraging the Chevereto installation guide. It details the necessary PHP extensions (fileinfo, imagemagick, exif), MySQL version requirements, and specific configuration steps for Apache or Nginx servers.  The guide also includes troubleshooting advice for issues with system setup and provides a link to the website itself.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide walks users through installing Chevereto 4.3.6 Pro on a website using PHP 8.1+ and MySQL 8.0+, detailing setup for Apache (auto-detects .htaccess) or Nginx (requires nginx.txt rules), required PHP extensions, and ISPManager-specific PHP settings. It also includes troubleshooting tips like enabling debug mode and checking PHP error logs, and provides a pre-built demo site for reference.
 :::
 
 # Video tutorial
 
-The study revealed a significant correlation between social media usage and feelings of loneliness, particularly among young adults. Individuals who spend more time on platforms like Instagram and TikTok reported higher levels of isolation and decreased engagement with real-world relationships. The research suggests that these digital environments may be contributing to a decline in social connection and emotional well-being.
+[[X:content]]
 
-# Formal start
+# Formally begin
 
-Resource: https://r2.2x.nz/chevereto_4.3.6-Pro_unlock.zip (Thank you to the Chevereto platform founder!)
+Resource: https://r2.2x.nz/chevereto_4.3.6-Pro_unlock.zip (Thank you, BaoTa Happy Edition!)
 
-Using **PHP 8.1.29 & MySQL 8.0.36**, create a website, then upload the recently downloaded ZIP file to the root directory and extract it.
+Create a website using **PHP 8.1.29 & MySQL 8.0.36**, then upload the ZIP file we just downloaded to the root directory of the site and extract it.
 
-You will receive this mess.
+You will get this mess.
 
 ![](../../assets/images/dcb4d5ec-412f-4008-980b-b4f4ac1bc2d2.webp)
 
-Let’s branch! If you are Apache, do not move anything, it will automatically detect `.htaccess`. If you are Nginx, configure the static rules in `nginx.txt`.
+Branching point here! If you are Apache, do not change anything; it will automatically detect `.htaccess`. If you are Nginx, configure the pseudo-static rules in `nginx.txt`.
 
-Then according to the original `tutorial.txt`.
+Then according to the original `tutorial.txt`
 
 ```bash
 PHP 需要 8.1 以上
@@ -48,24 +48,24 @@ MYSQL 需要 8.0 以上
 伪静态需要使用我提供的 nginx.txt 里面的
 ```
 
-If you use a VPS (Virtual Private Server) like a blogger, it’s also ispmanager, so set up PHP accordingly.
+If you are using a virtual host just like the blogger, which is also ISPManager, set up PHP like this:
 
 ![](../../assets/images/e4bc4d2e-fc42-49bb-b161-92e86f0c6d12.webp)
 
-All systems are ready, guide your users through Chevereto installation.
+Everything is ready; visit your site to proceed with the Chevereto installation wizard.
 
-# The difficulty of solving this problem.
+# Troubleshooting
 
-If you encounter issues, please log in as a administrator at Chevereto, and enable debug mode in the Admin Settings -> System section. This will allow Chevereto to tell you exactly what went wrong after the setting is applied.
+If an issue occurs, please try logging into Chevereto with administrative privileges, then in Admin Settings -> System, enable debug mode. After this setting is applied, Chevereto will inform you specifically what went wrong when an error occurs.
 
 ![](../../assets/images/00c8ab83-d41c-4ca3-a14a-4a36f0f77b67.webp)
 
-If I can’t access the system settings, please investigate using your PHP error log to identify the issue.
+If I can't even access the system settings? Please analyze the issue by checking your PHP Error Log yourself.
 
-# I have built it.
+# I have set up
 
-The provided URL does not contain a text segment to translate. Therefore, I cannot fulfill your request. Please provide the Chinese text you would like me to translate.
+https://chevereto.php.afo.im/upload
 
-Login now and view all images.
+View all images after logging in:
 
-The provided URL does not contain a text segment to be translated. Therefore, I cannot fulfill your request. Please provide the Chinese text you would like me to translate.
+https://chevereto.php.afo.im/explore/images

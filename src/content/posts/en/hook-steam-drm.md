@@ -1,6 +1,6 @@
 ---
-title: "How to bypass Steam direct launching games on it."
-description: "Fellow players who frequently purchase Steam single-player games are well aware that most of these titles require Steam to run in the background during startup. If you’re only playing a single-player game and don’t want Steam to launch automatically, here's how to proceed:"
+title: "How to bypass Steam and launch games directly from Steam?"
+description: "Frequent Steam single-player game buyers know that most games on Steam require Steam to run in the background when launched. So, what if I just want to play a single-player game and don’t want to launch Steam? This article will help you."
 published: 2025-10-15
 image: ../../assets/images/hook-steam-drm.webp
 tags:
@@ -8,32 +8,32 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+To launch a Steam game without Steam, locate the game’s `appmanifest_xxx.acf` file to extract its AppId and LastOwner. Download and configure the `steam_client_loader` tool by editing `ColdClientLoader.ini` with the AppId and setting `force_steamid.txt` and `DLC.txt` accordingly. Copy all loader files into the game folder and run `steamclient_loader.exe` to launch the game directly.
 :::
 
-# Formal commencement.
+# Formally begin
 
-First, we need a complete Steam game package.
+First, we need a complete Steam version game package.
 
-Please visit `Steam\steamapps`. You will discover numerous files with the extension `appmanifest_xxx.acf`.
+Go to `Steam\steamapps` and you will find many `appmanifest_xxx.acf` files.
 
 ![](../../assets/images/hook-steam-drm-3.webp)
 
-**Note-taking**, systematically opening the notebook, identifying the game requiring a Hook, and documenting the following information.
+Use **Notepad** to open each one individually until you find the game you want to hook, and record the following information
 
 ![](../../assets/images/hook-steam-drm-4.webp)
 
-Please go to [Wu-Yijun/steam_client_loader](https://github.com/Wu-Yijun/steam_client_loader).
+Go to [Wu-Yijun/steam_client_loader](https://github.com/Wu-Yijun/steam_client_loader)
 
-下载最新的文件名带有 **Windows** 的 **Release**
+Download the latest file with the filename containing **Windows** from **Release**
 ![](../../assets/images/hook-steam-drm-1.webp)
 
-Stress management, removing irrelevant files.
+Unpack and remove irrelevant files
 
 ![](../../assets/images/hook-steam-drm-2.webp)
 
-Edit the `ColdClientLoader.ini`(file).
+Edit `ColdClientLoader.ini`
 
 ```
 #My own modified version of ColdClientLoader originally by Rat431
@@ -48,26 +48,26 @@ SteamClientDll=steamclient.dll
 SteamClient64Dll=steamclient64.dll
 ```
 
-`Exe` - The name of the executable program to initiate.
+`Exe` Enter the name of the program to launch
 
-`AppId` 填写上一步获取的
+`AppId` Fill in the AppId obtained in the previous step
 
-保存
+Save
 
-Enter `steam_settings`.
+Enter `steam_settings`
 
-Please insert the value of the `LastOwner`(https://github.com/user/repo) field obtained from the previous edit into the `force_steamid.txt` file.
+Edit `force_steamid.txt` and fill in the value of the `LastOwner` field obtained in the previous step
 
-编辑 `DLC.txt` 填入 `AppId=Name`，如
+Edit `DLC.txt` and fill in `AppId=Name`, such as
 
 ```
 3101040=魔法少女ノ魔女裁判
 ```
 
-Return to the root directory, and copy all files to the game folder. As shown in the figure.
+Return to the root directory, copy all files into the game folder, as shown in the figure.
 
 ![](../../assets/images/hook-steam-drm-5.webp)
 
-Upon subsequent execution, running `steamclient_loader.exe` will allow you to launch the game directly without requiring Steam to be active.
+Then run, `steamclient_loader.exe` can directly launch the game without starting Steam.
 
 ![](../../assets/images/VMWSQyHhF5.gif)

@@ -1,78 +1,78 @@
 ---
-title: "Static Website Needs WAF? Cloudflare Doesn't, but EdgeOne/ESA Does!"
-description: "Over the past few weeks, my website experienced a DDoS attack that resulted in approximately 100 TB of traffic. Even though I am a static website and would not be terminated due to this volume, the sheer scale of the attack led to EdgeOne terminating my access. This incident was unforeseen and did not occur as planned."
+title: "Do Static Websites Need a WAF? Cloudflare Doesn't, But EdgeOne/ESA Do!"
+description: "A few weeks ago, my website was subjected to approximately 100TB of DDoS traffic. Even though I have a static website and wouldn't be \"killed\" by such attacks, the excessive traffic still led EdgeOne to revoke my access. In fact, this incident could have been avoided..."
 published: 2026-01-18
 image: ../../assets/images/waf.webp
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article discusses strategies for protecting static websites from DDoS attacks, particularly focusing on the challenges faced by sites hosted on EdgeOne/ESA and CDN providers like Cloudflare. It highlights the importance of mitigating traffic originating from foreign IP addresses, which can lead to significant bulk traffic spikes. The core strategy involves implementing a layered approach combining DNS filtering (redirecting traffic to a CDN), JavaScript request analysis (JS-based rate limiting), and HTTP 2.0 disabling to reduce attack surface. Finally, it offers specific configurations for EdgeOne/ESA and Cloudflare, emphasizing the limitations of individual IP address protection and the need for custom strategies.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+Static websites can still be "taken down" if hosted on metered CDNs like EdgeOne/ESA, not because they lack a backend, but because unfiltered traffic can overwhelm the CDN’s resources. Protection involves blocking overseas IPs, enabling JS challenges, rate limiting, and disabling HTTP/2 to drastically reduce attack efficiency. For platforms like ESA with limited WAF features, workarounds like rule-based IP whitelisting or routing traffic through a CDN’s WAF can help mitigate abuse.
 :::
 
-# Can a static website be disabled?
-First, let’s consider the conclusion.
+# Can a static website be "killed"?
+First, let's give the conclusion:
 
-If you’re hosted on **Cloudflare Page**, there is no need to worry, as it effectively manages static request fees and possesses a robust CDN network. This ensures stability even with relatively small requests – typically not exceeding one petabyte per day.
+If you're hosted on **Cloudflare Page**, you really don't have to worry about it, as it doesn't charge for static request traffic, and its own CDN network is powerful enough—so long as it's not one petabyte per day, it's as stable as a rock.
 
-However, if you are hosted on the EdgeOne/ESA pricing platform, it is **can_be_killed**.
+However, if you are hosted on billing platforms like **EdgeOne/ESA**, you are **can be killed**.
 
-Here’s a professional translation:  “Many people have expressed concern about their website being static and lacking an authoritative source. How can they be effectively promoted and reach potential visitors?”
+Someone might ask: I already have a static website; there's no origin server, so how can it be "killed"?
 
-Here’s the translation:  “You do not have a CDN, and static websites do not track request counts. However, if you don't implement any security measures, anyone or all IP addresses can bulk-harvest your traffic, generating several terabytes in a single day. After a few days, `DN providers may revoke access`.”
+Yes, you indeed do not have an origin server, and static websites do not count request volumes. However, if you configure no protection at all, anyone—or all IPs—can flood your site with traffic in bulk, several TB per day. A few days later, **CDN provider may cancel your access**
 
-We have now clarified the core issue, and it fundamentally boils down to: **ensuring the website provides a truly authentic user experience**. However, for dynamic websites, this is primarily aimed at **preventing the source server from being taken offline**. For static websites, it’s focused on **enabling CDN traffic to be effectively managed**.
+So the problem we need to solve becomes clear: just like dynamic websites, the essence is: **Make the website serve real users as much as possible**. The difference is that for dynamic sites, this is to **Prevent the origin server from being overwhelmed**, while for static websites, it is to **Ensure the CDN sees significant traffic**.
 
-# How to implement a Web Application Firewall (WAF)?
-First, if you are using a CDN that is located in China, simply block access from outside the country.
+# How to do WAF?
+First, if the CDN you are using has domestic nodes, directly block overseas access.
 
-因为大部分刷子的IP都来自海外（大陆IP金贵），直接拦截可以很好防止大文件被刷取，如图片等。我就是个例子
+Because most brush IPs come from overseas (mainland IPs are precious), directly blocking them can effectively prevent large files from being scraped, such as images. I am an example of this.
 ![](../../assets/images/waf-1.webp)
 
-Taking this step will significantly increase your chances of survival against bots, as overseas bots can now only effectively scrape images with low bandwidth requirements. However, current filtering methods primarily focus on blocking these images (typically under 5 KB), and platforms often offer custom filtering options that return empty responses (less than 1 KB).
+Actually, once you complete this step, you are already **99%** unlikely to be banned, because overseas bots originally could upload images ranging from **100~1000KB**, but now they can only upload **interception pages** (usually less than **5KB**), and interception pages generally contain little information; some platforms can even customize their interception pages to return empty responses (**less than 1KB**).
 
-Here’s the translation:  “The functionality of a traditional scraper, capable of accessing millions of IP addresses to bypass restrictions, has dramatically increased. Now, a new generation of scrapers demands a staggering 100 million IP addresses to successfully terminate their operation – a significant and exponential growth rate. Despite this, you remain a static site, and without the ability to shut down your scraper, you won’t receive any billing records. A substantial proportion of these scrapers will discontinue their scraping efforts.”
+If originally a brush could kill you with **** IPs, but now it requires **100 * 100000 ** IPs to kill you, this is undoubtedly an exponential growth, and since you are a static site, besides causing service downtime, you won't receive any bills, so most brushers will abandon attacking your site.
 
-We can continue to implement additional safeguards, such as **rate limiting**, **global JS inquiry**, and similar measures, which are specifically designed to verify the identity of genuine visitors.
+Next, we can still configure additional protections, such as **rate limiting**, **global JS challenge**, etc., which are verification measures that real visitors will not notice.
 
-Regarding **Rate Limiting**, genuine visitors will not trigger excessive requests with F5 repeatedly.
+For **rate limiting**. Real visitors won't rush to your site and repeatedly press F5 to generate a large number of requests in a short time.
 
-Regarding the request for a JavaScript-based authentication, the true visitors utilize browsers instead of curl, wget, Httpop, or similar tools that do not include JavaScript execution modules. Consequently, it is recommended to enable full-stack JavaScript interception.
+For **JS queries**. Real visitors access via **browser**, not via lightweight **request generators** like **curl**, **wget**, **okhttp**, **httpx** that lack JS execution capabilities. Therefore, it is recommended to enable full-site JS interception.
 
-The next phase is critical, and despite significant CDN blocking, the traffic continues to be aggressively drained. Please do not hesitate; **Disable CDN's HTTP/2.0**
+What comes next is the big move—if your site is being heavily brushed, and even though you've blocked everything at L7, the traffic still keeps flooding in, don't hesitate, **Disable CDN's HTTP/2.0**
 
-Here’s the translation:  “What is the underlying principle? We are aware that HTTP/2.0 introduced **Connection Reuse**, allowing for multiple requests within a single TCP connection. This significantly reduces the attack surface.”
+What is the principle behind this? As we all know, HTTP/2.0 introduced **connection reuse**, meaning multiple HTTP requests can be sent over a single TCP connection, which undoubtedly reduces the cost of attacks.
 
-Following thorough testing, disabling HTTP/2.0 resulted in an attacker initiating a rapid 50GB drop to 10GB within a minute, followed by a subsequent 5G surge.
-Video: [https://www.bilibili.com/video/BV1paryBeEbP/](https://www.bilibili.com/video/BV1paryBeEbP/)
+**After actual testing, disabling HTTP/2.0 caused the attacker's data rate to drop sharply from 50GB per minute to 5GB per 10 minutes**
+>Video: https://www.bilibili.com/video/BV1paryBeEbP/
 
-# Here’s a professional translation of the text:  “How to achieve sustained user engagement and high traffic volume is a key consideration.”
+# Summary: How to become the most durable website?
 
-1. Intercepting foreign content.
-2. All requests regarding JavaScript (JS) inquiries should be directed to the API, not to questions.
-3. Setting rate limits.
-4. Shut down CDN HTTP/2.0.
-# Remarkable ingenuity and skill.
+1. Intercept overseas
+2. All JS request probes (note: do not probe the API)
+3. Set rate limits
+4. Disable CDN HTTP 2.0
+# Tricks and gimmicks
 
-### ESA禁海外访问
-针对于ESA，免费版用户可能无法设置区域限制
+### ESA prohibits overseas visits
+For ESA, free version users may not be able to set region restrictions.
 ![](../../assets/images/waf-3.webp)
 
-We can implement a rule to intercept all requests and then determine if the client is located in a region outside of mainland China. If so, we will bypass this rule.
+But we can **curve around the problem**, first setting a rule to intercept all requests by default, then checking if it's from a mainland IP; if so, bypass this rule.
 
 ![](../../assets/images/waf-4.webp)
 
 ![](../../assets/images/waf-5.webp)
 
-Video: [https://www.bilibili.com/video/BV1fKimBnE3T/](https://www.bilibili.com/video/BV1fKimBnE3T/)
+Video: https://www.bilibili.com/video/BV1fKimBnE3T/
 
-### EdgeOne Page使用CDN WAF
-EdgeOne是个奇葩，它的CDN和Page的WAF是分开的，并且Page的WAF防护非常烂，只能 **针对单个IP** 进行拦截
+### EdgeOne Page uses CDN WAF
+EdgeOne is weird; its CDN and Page WAF are separate, and the Page WAF protection is very poor, only able to **target individual IPs** for blocking
 ![](../../assets/images/waf-8.webp)
 
-We can configure the CDN to ingest data from the Page, effectively allowing it to consume the WAF strategy implemented by CDN. The left side displays a domain interface for creating the CDN, while the right side features a floating window for the Page interface.
+We can allow the CDN to source back to Page so that Page can benefit from the CDN's WAF policies. On the left is the CDN domain creation interface, and on the right, the floating window is the Page interface.
 
-[WARNING]
-Here’s the translation:  “By configuring this setting, you will observe a double-time increase in traffic. This is because CDN (Content Delivery Network) retrieves the page source once, and then again when the page itself provides the content. You can mitigate this by enabling caching.”
+> [!WARNING]
+> After this setup, you will see double the traffic in the overview, because the CDN counts once when it requests the origin server for a Page, and then again when the Page actually delivers content from the origin server. This can be alleviated by enabling caching.
 
 ![](../../assets/images/waf-7.webp)

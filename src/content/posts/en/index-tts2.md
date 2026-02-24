@@ -1,6 +1,6 @@
 ---
-title: "Hand-to-hand teaching you sound clones!"
-description: "With just a few seconds of voice, you can clone audio tones – no complex configuration required! Start instantly and easily create blue-screen content for your videos anywhere."
+title: "Step-by-step Guide to Clone Vocal Tones!"
+description: "Just a few seconds of voice can clone your tone, no complicated setup required—start with one click! Create blue-background celebrity-style short videos anytime, anywhere!"
 published: 2025-10-13
 image: ../../assets/images/index-tts2-4.webp
 tags:
@@ -9,47 +9,47 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide walks you through installing and running IndexTTS, an industrial-grade text-to-speech system, using Git LFS, UV, and Hugging Face tools. After cloning the repo and downloading the model, launch the web UI on port 7860 to input text and reference audio for speech generation. For advanced control, use emotion vectors to fine-tune the output tone.
 :::
 
-# Formal commencement.
+# Formally begin
 
-Video tutorial: [https://www.bilibili.com/video/BV1qv41zgEjE/](https://www.bilibili.com/video/BV1qv41zgEjE/)
+> Video tutorial: https://www.bilibili.com/video/BV1qv41zgEjE/
 
-Please provide the full text you would like me to translate. I need the original text to fulfill your request.
+> Please cast magic throughout the entire process.
 
 Install Git LFS: `git lfs install`
 
-Warehouse Cloning: [index-tts/index-tts: A Highly Customizable and Efficient Zero-Shot Text-to-Speech System for Industrial Applications](https://github.com/index-tts/index-tts)
+Clone repository: [index-tts/index-tts: An Industrial-Level Controllable and Efficient Zero-Shot Text-To-Speech System](https://github.com/index-tts/index-tts)
 
 Pull Git LFS files: `git lfs pull`
 
-Install the UV package using Python's pip manager: `pip install -U uv`
+Install UV (a Python package manager, similar to pip): `pip install -U uv`
 
 Install dependencies: `uv sync --extra webui`
 
-Install the hf-cli: `uv tool install "huggingface-hub[cli,hf_xet`"]]]
+Install hf-cli: `uv tool install "huggingface-hub[cli,hf_xet`"]]
 
-From the HF repository, download the Model Index Team/IndexTTS-2 model: `hf download IndexTeam/IndexTTS-2 --local-dir=checkpoints`.
+Download the model from hf: `hf download IndexTeam/IndexTTS-2 --local-dir=checkpoints`
 
 Run the web UI: `uv run webui.py`
 
-The browser is configured to open port `7860`.
+Browser opens port `7860`
 
-# Simple usage.
+# Simple to use
 
-WebUI页面长这样
+The WebUI page looks like this
 ![](../../assets/images/index-tts2-1.webp)
 
-First, input audio with a reference tone (approximately 2-3 seconds).
+First, input the reference audio for tone (a few seconds is sufficient).
 
-然后输入要朗读的文本
+Then enter the text to be read aloud
 
-Final click generation.
+Final click to generate
 
 # Training
 
-Recommend utilizing sentiment vector control techniques.
+It is recommended to use **Use emotional vector control**
 
 ![](../../assets/images/index-tts2-2.webp)

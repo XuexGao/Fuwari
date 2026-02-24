@@ -1,6 +1,6 @@
 ---
-title: "Use WebHook to notify your subscribers of new articles."
-description: "For static blogs, bloggers typically need to manually notify subscribers of new articles after each update. This article utilizes Webhooks to automate the publication of new content."
+title: "Use WebHooks to push article update notifications to your subscribers"
+description: "For static blogs, after an article is updated, the blogger usually needs to manually notify subscribers to read the new article. This article implements an automatic article update notification using WebHook."
 category: "Tutorial"
 published: 2025-05-19
 image: ../../assets/images/69389a6f-da33-4f53-be34-408b9f88d9e1.webp
@@ -8,60 +8,60 @@ tags: [Github, Netlify, QQBot]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article explains how to build a notification system for static blog updates using GitHub and Netlify WebHooks in tandem. GitHub WebHooks detect file changes, while Netlify WebHooks confirm successful builds; combining both ensures timely, accurate notifications. The setup involves configuring both platforms to trigger a custom bot (built with Koishi) that broadcasts article updates to a group after a short delay.
 :::
 
-# 原理解析
+# Principle Analysis
 
-Static blogs are typically hosted on GitHub to facilitate automated website construction and deployment services offered by static site builders.
+Static blogs are generally hosted on GitHub to facilitate automatic building and publishing of the site by static website hosting service providers.
 
-We can automatically notify subscribers via webhooks after an article is updated. However, a single webhook has its own limitations.
+We can automatically notify subscribers after an article is updated via WebHook. However, individual WebHooks each have their own drawbacks:
 
-| Webhook type | Advantages | Weaknesses |
+| Webhook Type | Advantages | Drawbacks |
 |---|---|---|
-| GitHub Webhook | Can detect file changes, knowing which articles have been updated. | Build time, need to set conservative delay. |
-| Netlify Webhook | Completed construction notification, timing precise | Unable to detect file changes. |
+| Github WebHook | Can detect file changes and know which articles have been updated | Unknown build duration; conservative delay needed |
+| Netlify WebHook | Notify upon completion of build, with precise timing | Cannot detect file changes |
 
-The optimal approach is to combine both elements, utilizing a workflow that involves integrating the two aspects.
+The best solution is **using both together**, with the workflow being:
 
-**Github WebHook Notification Bot (Record Article Changes)**→ **Netlify Webhook Notification Build Complete**→ **Bot Immediately Push Article Update Notifications**
+**Push** → **Github WebHook notification Bot (records changed articles)** → **Netlify WebHook notification upon build completion** → **Bot immediately pushes article update notifications**
 
-# Formal commencement.
+# Formally begin
 
-## Configure your self-hosted Webhook receiver.
+## Set up your self-hosted WebHook receiver
 
-Here’s the translation:  “I developed a plugin using Koishi to create an HTTP server that accepts Webhooks. Upon receiving a specified webhook containing a submission, the server will broadcast update messages to my group within two minutes of receipt.”
+I used Koishi to write a plugin that creates an HTTP server to receive WebHooks, and upon receiving a WebHook with a specified commit message, it will broadcast an article update message in my group two minutes later.
 
 ![](../../assets/images/53b434e4-cf0e-4cfc-a688-054d13f1c01a.webp)
 
-If your service is running in a private network, you can utilize Cloudflared to expose the Webhook receiver server to the public internet. Otherwise, GitHub will not be able to send Webhook information to your service.
+If your service is on the internal network, you can use Cloudflared to expose your WebHook receiving server to the public internet. Otherwise, GitHub will not be able to send WebHook information to your service.
 
-## GitHub Repository Webhook Configuration
+## Configure GitHub Repo Webhook
 
-Please open your blog repository and navigate to the Webhooks settings within the repository configuration.
+Open your blog repository, go to Repository Settings to find WebHooks
 
 ![](../../assets/images/e899ddd6-9b3e-4d0a-848b-7f9b43d2004e.webp)
 
-Please add a new Webhook, as described.
+Add a new WebHook, as shown in the figure.
 
 ![](../../assets/images/7fa35782-2d3c-4d18-afca-cb7db8ee36fc.webp)
 
-## Configure Netlify Webhooks.
+## Configure Netlify WebHook
 
 If your site is deployed on Netlify, you can further configure build completion notifications.
 
-Adding an HTTP POST hook.
+Add HTTP POST hook
 
 ![](../../assets/images/2025-08-09-23-15-10-image.webp)
 
-Create a deployment success hook.
+Create a deployment success hook
 
 ![](../../assets/images/2025-08-09-23-15-40-image.webp)
 
-## Bot configuration.
+## Bot-side configuration
 
-Implement a dual-listen Webhook server to simultaneously receive GitHub and Netlify Webhooks.
+Set up a dual-listening WebHook server to accept WebHooks from both Github and Netlify.
 
 ![](../../assets/images/2025-08-09-23-36-50-5ec10aad91b98d8d36699c7956c705f0.webp)
 
@@ -69,6 +69,6 @@ Implement a dual-listen Webhook server to simultaneously receive GitHub and Netl
 
 ![](../../assets/images/2025-08-09-23-57-02-image.webp)
 
-## Development and testing.
+## Development Testing
 
-Please perform a Push operation on your blog repository, verifying receipt of Webhooks and analyzing the information configuration for your webhook receiver to initiate subsequent actions.
+Perform a Push operation in your blog repository, check whether you have received WebHook information, and analyze the information to configure your WebHook receiver for subsequent actions.

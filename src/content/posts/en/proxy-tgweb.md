@@ -1,6 +1,6 @@
 ---
-title: "Land Directly Connected to TG Web? Reachable!"
-description: "The TG Web platform utilizes a decoupled architecture, with the frontend deployed on static hosting platforms and the backend utilizing various services for reverse engineering."
+title: "Direct Access to TG Web from Mainland? Within Reach!"
+description: "TG Web adopts a front-end and back-end separation architecture, allowing the front-end to be deployed on a static hosting platform, while the back-end can be reverse-proxied through various services."
 category: "Record"
 published: 2025-08-02
 image: '../../assets/images/2025-08-02-18-10-18-image.webp'
@@ -8,15 +8,15 @@ tags: [Telegram Web, 反向代理]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article warns that directly binding a project to a domain may trigger abuse reports. It recommends renaming the `index.html` file to prevent access to the default page, though this doesn't guarantee protection from abuse. The article then provides a modified `index.html` template with embedded CSS for a loading or translation interface, likely intended to deter automated scrapers or bots.
 :::
 
-# Please note that directly linking this project to your domain may result in abuse.
+# Note: Directly binding this project to your domain will result in abuse.
 
-Recommend renaming the `index.html` page. This will allow users to access the root path without being able to reach normal pages, but it does not guarantee that abuse will never occur.
+It is recommended to rename `index.html`. This will prevent others from accessing the normal page via the root path, although it does not guarantee that abuse will never occur.
 
-Then create a new `index.html` entry with the following content:
+Then create a new `index.html` and write:
 
 ```html
 <html><head>
@@ -697,21 +697,21 @@ Then create a new `index.html` entry with the following content:
 
 ![](../../assets/images/2025-08-02-18-30-40-75bf069f14b199651db36b1bda015bc2_720.webp)
 
-# The core principle.
+# Principle
 
-The website utilizes a modular approach, separating frontend and backend components.
+TG Web adopts a front-end and back-end separation architecture.
 
-The frontend is a static asset, which can be deployed directly to Cloudflare Page.
+The frontend consists of static assets and can be directly deployed to Cloudflare Pages.
 
-Here’s a professional translation of the text:  “The backend supports up to 10 APIs, allowing for reverse engineering.”
+There are up to 10 APIs on the backend; proxying them is sufficient.
 
-Please replace the `.web.telegram.org` placeholder with your domain name.
+Then change the frontend request `.web.telegram.org` to your domain.
 
-# Formal commencement.
+# Formally begin
 
-Here’s the translation:  “As an example of TG Web K, consider the following:”
+> Take TG Web K as an example
 
-The backend API has 10 endpoints, including:
+There are 10 backend APIs for TG, which are respectively
 
 ```bash
 pluto.web.telegram.org
@@ -726,14 +726,14 @@ vesta-1.web.telegram.org
 flora-1.web.telegram.org
 ```
 
-If your domain name is `072103.xyz`, then it should be `pluto.web.072103.xyz`.  All other instances of this type are similarly defined.
+If my domain is `072103.xyz`, it would be `pluto.web.072103.xyz`. The rest follow the same pattern.
 
-Warehouse Fork: [morethanwords/tweb: Telegram Web K, GPL v3](https://github.com/morethanwords/tweb)
+Fork repository: [morethanwords/tweb: Telegram Web K, GPL v3](https://github.com/morethanwords/tweb)
 
-Replace the global search for `.web.telegram.org` with `.web.072103.xyz`.
+Global search `.web.telegram.org` replaced with `.web.072103.xyz`
 
-Deploy this warehouse to Cloudflare Page, utilizing the command `pnpm build`. Configure the output directory to `public`.
+Deploy this repository to Cloudflare Pages, with the build command `pnpm build` and build output directory `public`
 
-# Success.
+# Success
 
 ![](../../assets/images/2025-08-02-18-21-46-0c8fc3ac93604c65401132aaa59c803d_720.webp)

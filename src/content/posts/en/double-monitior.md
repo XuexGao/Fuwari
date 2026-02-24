@@ -1,64 +1,64 @@
 ---
-title: "Do you have a global website? How do you monitor it?"
-description: "Here’s the translation:  “If your global website spans multiple regions, it's crucial to implement a robust downtime notification system. This ensures users are promptly informed of potential service interruptions.”"
+title: "Do you have a global website? How to do monitoring well?"
+description: "If you are just operating a global website that may have different nodes in various regions, how should we properly handle downtime alerts?"
 published: 2026-01-09
 image: ../../assets/images/double-monitior.webp
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The article outlines a monitoring strategy for globally distributed websites using a hybrid approach: self-hosted Uptime Kuma in China and third-party services like BetterStack or UptimeRobot abroad, with mutual monitoring. It recommends using Cloudflare Tunnel to protect self-hosted monitors from DDoS attacks. Additionally, it explains how to monitor CDN nodes via custom HTTP requests with the Host header to simulate user access without needing separate monitoring sources for each region.
 :::
 
 > [!warning]
-Due to a Distributed Denial of Service (DDoS) attack, the website’s traffic monitoring and filtering have been temporarily disabled. Consequently, many links within this article are currently unavailable.
+> Due to being subjected to a DDoS attack, monitoring has been discontinued, hence many links in this article are no longer functional.
 
-# Formal commencement.
-Video: [https://www.bilibili.com/video/BV14dqwBVEa5/](https://www.bilibili.com/video/BV14dqwBVEa5/)
+# Formally begin
+> Video: https://www.bilibili.com/video/BV14dqwBVEa5/
 
-For example, my blog.
-**log URL**
+For example, my blog
+::url{href=https://blog.acofork.com}
 
-It resides on foreign nodes as **Cloudflare Page**, and within domestic nodes it is located at **ESA Pages/EdgeOne Pages**.
+Its overseas nodes are **Cloudflare Page**, while its domestic nodes are **Aliyun ESA Pages/EdgeOne Pages**.
 
-I utilize a self-hosted solution for Uptime Kuma within China, and leverage cloud monitoring services from several large enterprises abroad, including BetterStack and UptimeRobot. These providers are integrated to provide mutual monitoring.
+The solution I use is to self-host a **Uptime Kuma** service domestically, while using cloud monitoring services from major overseas providers, such as **BetterStack** **UptimeRobot**, etc., and have them monitor each other.
 
-For large enterprises, surveillance is not a priority; however, for self-hosted monitoring solutions, we recommend using **Cloudflare Tunnel**, which will mitigate DDoS attacks.
+For monitoring hosted by large companies, we do not need to set up protection, but for your self-hosted monitoring, we recommend using **Cloudflare Tunnel** to prevent DDoS attacks.
 
 Domestic surveillance:
-[[Kuma URL]]
+::url{href=https://kuma.2x.nz}
 
-Overseas surveillance:
-[[VPS - Virtual Private Server]]
+Overseas Surveillance:
+::url{href=https://vps.2x.nz}
 
-# Here’s the translation:  **Advanced: Utilizing custom HTTP request headers to monitor single-region subdomain monitoring.**
+# Advanced: Monitoring subdomain traffic on a single node using a custom HTTP request header Host field
 
-If you have a split domain, it’s generally considered necessary to have two monitoring sources simulating domestic and international user traffic – however, is this truly required?
+> If you have a subdomain, normally we would need two monitoring sources to simulate access from domestic and overseas users, but is it really necessary to be this complicated...
 
-## Here’s the translation:  “The principle”
-The CDN provider has hosted an enormous number of websites, how does it identify which websites each user requires access to?
+## Principle
+How does CDN identify which website each user needs to access, since so many websites are hosted on it?
 
-Regarding HTTPS, the CDN will verify the SSL handshake message within the `Server_Name` field. Similarly, for HTTP requests, the CDN will check the request headers, specifically the `Host`, for the specified server name.
+For HTTPS, the CDN checks the `Server_Name` field in the SSL handshake message. For HTTP, the CDN checks the `Host` field in the request header.
 
-Here’s the translation:  “To determine the viability of a CDN (Content Delivery Network) in international deployments, we can directly access CDN nodes such as `http://blog.acofork.com.a1.initww.com` by including the ‘Host’ header with the value `blog.acofork.com`. This allows us to force a specific node to access the business website, bypassing traffic routing.”
+That is to say, to check whether an overseas CDN is alive, we can directly access a CDN node, such as: `http://blog.acofork.com.a1.initww.com` and carry the `Host` header specified as `blog.acofork.com` to forcibly direct the node to access the business website, bypassing the traffic diversion.
 
-If a CDN is enabled with mandatory HTTPS, it’s recommended to disable it.
+So, if the CDN has enabled forced HTTPS, then turn it off.
 
 ![](../../assets/images/http-header-host-3.webp)
 
-## Common CDN nodes
+## Common CDN Nodes
 
-- Cloudflare offers you the option to use your own preferred domain name, such as **http://cdn.2x.nz**.
-- GitHub: [https://pages.github.com]
+- Cloudflare: Your own preferred domain, such as **http://cdn.2x.nz**
+- Github: **http://pages.github.com**
 
 ## Configuration Method
-Deploy an Uptime Kuma (or other service monitoring the source must be within Russia due to EO, ESA – we will implement a cross-border strategy).
+Deploy Uptime Kuma (or other services; monitoring sources must be within the country, as per EO, ESA, we need to implement interception policies for overseas traffic)
 
-Here’s the translation:  “The monitoring project utilizes HTTP protocol to directly monitor CDN nodes. It includes the Host header, redirecting the response to 0 and surviving only upon a successful 200 status code.”
+As shown in the figure, write the monitoring project to directly use the HTTP protocol to monitor CDN nodes, carrying the Host header, setting redirects to 0, and considering the node alive if it returns a 200 status (to reduce site pressure, it is recommended to use HEAD requests)
 
 ![](../../assets/images/http-header-host-1.webp)
 
 ![](../../assets/images/http-header-host-2.webp)
 
 # Demo
-[[URL_translation]]
+::url{href="https://status.acofork.com"}

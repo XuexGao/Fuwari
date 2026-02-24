@@ -1,6 +1,6 @@
 ---
-title: "In Mac, GalGame was surprisingly easy to play!"
-description: "While using Mac signifies a detachment from gaming, occasional relaxation is desired – there’s a simple method to embrace it while lying in bed. There are indeed ways!"
+title: "Playing GalGame on Mac is this simple!"
+description: "Although using a Mac supposedly means staying away from all games, sometimes one still wants to play a visual novel to unwind. Is there a foolproof way to let us cuddle up with our Mac in bed and indulge in some moaning and groaning? Yes, there is!"
 published: 2025-09-30
 image: ../../assets/images/d5441bcd48dca4226efe40ba6d522551.webp
 tags:
@@ -10,41 +10,41 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+To run Windows games on Apple’s new ARM-based Macs, users can use VMware Fusion to install Windows 11 on ARM, which automatically translates x64 apps. While performance may suffer, compatibility is high, especially for less demanding games like Gal. After installing VMware Fusion and the Windows 11 ARM ISO, users install VMware Tools and DirectX/VC++ runtime to ensure smooth gameplay.
 :::
 
-# 思路
-First, the new Mac utilizes Apple-developed chips based on the ARM architecture and runs macOS with a Unix-based system. Most games are specifically designed for Windows x64 platforms. Therefore, we need to translate two layers: first, convert Unix to Windows, and then translate Arm architecture specifically for x64 architecture.
+# Thought process
+First, the new Macs use Apple's self-developed chips based on the Arm architecture and run on the macOS system, which is based on Unix. However, most games are specifically designed for Windows x64. This means we need to translate at two levels: first, convert Unix to Windows, and then adapt the Arm architecture to x64 architecture.
 
-Certainly, here’s the translation:  “Indeed, you can automate this process using **[[L:CrossOver** or manually execute it within the Apple Developer Tools. However, both options incur costs; one is a fee, and the other represents a significant investment of time and mental effort.”
+Indeed, you can use **[[L:CrossOver** to automate this process, or manually download and execute the operation via GPTK in Apple's developer tools. However, one costs money, and the other costs time and brainpower (referring to time and mental effort).
 
-Here’s the translation:  We utilize a virtual machine to streamline these operations. As a virtual machine, we only require an Arm image to run a fully functional Win11 system on macOS, and due to Microsoft's generous initiative, the ARM version of Windows 11 automatically translates to x64 applications, so we must ensure that necessary runtime libraries are installed. Yes, this may result in performance compromises, but compatibility is prioritized, and for games like Gal, performance differences are less noticeable.
-# Formal commencement.
-First, we download a virtual machine software **[[L:VMware Fusion** (requires registering with a Bitnami account).
+We use **virtual machine** here to simplify these operations. Since it's a virtual machine, we only need to prepare one Arm image to run an Arm-based Windows 11 system perfectly on Mac. Additionally, due to Microsoft's generous support, the Arm version of Windows 11 automatically translates x64 programs, so we only need to ensure that necessary runtime libraries are installed. Yes, this may significantly impact performance, but compatibility is the highest. Moreover, if you only play games like Gal (a type of PPT-style game), the performance difference is hardly noticeable.
+# Formally begin
+First, we download the virtual machine software **[[L:VMware Fusion** (requires registering a Broadcom account)
 
-登录后你可能会被重定向到 Dashboard，再次访问一次链接即可进入下载软件界面
+After logging in, you may be redirected to the Dashboard; simply access the link again to enter the software download interface.
 ![](../../assets/images/mac-gal.webp)
-⚠️注意：你可能会发现下载按钮被禁用，这并不是你没有权限，而是你没有阅读用户许可协议，你可能又会发现，用户许可协议的勾打不上。请先点击用户协议超链接，不管你看没看，再回退到之前到页面，你就会发现用户许可协议的勾可以被选中了
+⚠️ Note: You may find that the download button is disabled. This is not due to lack of permissions, but because you have not read the user license agreement. You may also find that the checkbox for the user license agreement cannot be selected. Please first click the hyperlink for the user agreement, regardless of whether you have read it or not, then go back to the previous page. You will then find that the checkbox for the user license agreement can be selected.
 
-Let’s omit the installation process…
+Let's skip the installation process...
 
-假设你已经成功安装了 **VMware Fusion**
+Assume you have successfully installed **VMware Fusion**
 ![](../../assets/images/mac-gal-1.webp)
-接下来我们去下载 **Windows 11 On Arm** 的ISO镜像： https://www.microsoft.com/zh-cn/software-download/windows11arm64
+Next, we will download the ISO image for **Windows 11 On Arm**: https://www.microsoft.com/zh-cn/software-download/windows11arm64
 
-你会得到
+You will receive
 ![](../../assets/images/mac-gal-2.webp)
-再次打开 **VMware Fusion** ，新建一个虚拟机，并导入ISO文件，按需调整虚拟机配置即可
+Reopen **VMware Fusion**, create a new virtual machine, import the ISO file, and adjust the virtual machine settings as needed.
 ![](../../assets/images/mac-gal-3.webp)
-最终，我们启动虚拟机，完成Windows11安装向导，进入Windows桌面。此时你的Windows可能看起来糊糊的，那是因为没有安装 **VM Tools** ，安装一下即可
+Finally, we start the virtual machine, complete the Windows 11 installation wizard, and enter the Windows desktop. At this point, your Windows may appear blurry, which is because **VM Tools** have not been installed. Install them to fix this.
 ![](../../assets/images/mac-gal-5.webp)
-此时你已经完成90%的步骤了，你已经可以把你的Mac当Windows用啦！但是为了让后续的游戏能顺利运行，我们还是要装一下必要的运行库
+At this point, you have completed 90% of the steps—you can already use your Mac like a Windows machine! However, to ensure that subsequent games run smoothly, we still need to install the necessary runtime libraries.
 
-Download and unpack the DX Repair Enhanced tool from https://zhangyue667.lanzouh.com/DirectXRepairEnhanced. Once installed, the program will automatically install DX9 and the VC++ runtime library, ensuring smooth operation for most games.
+Go to https://zhangyue667.lanzouh.com/DirectXRepairEnhanced to download, extract, and run the DX Repair Tool. After launching, the program will automatically install DirectX 9 and the VC++ runtime libraries, which are sufficient to ensure most games run smoothly!
 
-If the game fails to launch or the initial setup is unavailable, please configure it manually.
+If you encounter issues with the game not opening or if it opens initially but fails to open subsequently, please configure Microsoft emulation as needed.
 
 ![](../../assets/images/mac-gal-6.webp)
 
-Enjoy!
+Now, enjoy!

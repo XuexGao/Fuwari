@@ -1,6 +1,6 @@
 ---
-title: "Modern! Easy to learn! Efficient! And a community-supported top-tier Markdown editor!"
-description: "Previously, I utilized MarkText to draft articles, and today I received a recommendation from a friend, prompting me to explore Obsidian. I found it exceptionally useful and the community is remarkably robust!"
+title: "Modern! Easy to Use! Efficient! And Community-Supported Super High School-Level Markdown Editor!"
+description: "I used to write articles with MarkText, but today, after receiving a recommendation from a friend, I tried Obsidian and found it really useful, with a well-developed community!"
 published: 2025-09-17
 image: ../../assets/images/obsidian.webp
 tags:
@@ -9,50 +9,50 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide explains how to set up and use Obsidian () for managing Markdown-based content, particularly for a project named Fuwari. It covers installing the app, configuring repositories, handling image links with proper paths and renaming via plugins like "Pasts image rename," and leveraging built-in features such as auto-fill for fields like `published`, `tags`, and boolean values. The tutorial emphasizes best practices to avoid common pitfalls, such as image path issues and configuration loss.
 :::
 
-Video Link: https://www.bilibili.com/video/BV1C7pDzpEHY
+> Video link: https://www.bilibili.com/video/BV1C7pDzpEHY
 # Download
-To download the corresponding software for your system version, please navigate to the “Download” section and select the language as **Simplified Chinese**.
-# Initial experience.
-Obsidian, referred to as “Blackwood,” will categorize each folder containing multiple Markdown files into the **Warehouse**.
+Go to [Download - Obsidian](https://obsidian.md/download) to download the software corresponding to your system version. During the installation interface, you can select the language as ****.
+# First-time use
+Obsidian (hereinafter referred to as "Blackstone") calls each folder containing multiple Markdown files a **Repository**
 
-首先，点击左下角的 **Obsidian  Vault** 
+First, click on **Obsidian Vault** in the bottom left corner
 ![](../../assets/images/obsidian-1.webp)
-然后点击 **管理仓库** ，然后根据你所需要的情况进行选择
+Then click **Manage Repository**, and then select according to your needs.
 ![](../../assets/images/obsidian-2.webp)
-黑曜石会在每个仓库下创建 `.obsidian` ，存放了工作区的配置信息
-**注意：** 黑曜石的配置都是针对于单个仓库的，若该配置文件丢失你需要重新配置黑曜石。所以，请确保写文章时不要频繁更改仓库
-# 针对于Fuwari的图片配置
-首先我们要知道几个坑点
-1. 黑曜石对图片默认是 **内部链接** ，该链接的路径配置在私有配置文件实现，仅在黑曜石内可见
-2. 黑曜石对图片默认是 **带空格的链接** ，部分框架不支持转义空格导致找不到图片
-首先，确保你将 `src/content` 作为仓库根目录，因为 `src/content/posts` 存放博客文章，而 `src/content/spec` 存放关于等特殊MarkDown页面，他们都可能需要依赖图片，所以建议将仓库设置在他们的上一级文件夹。我们的图片将存放在 `src/content/assets/images` 在 `posts` 或 `spec` 的相对路径引用格式则为 `../../assets/images/xxx.webp` （不用担心，黑曜石会自动管理，你无需手打）
-点击 **设置** 
+Obsidian will create `.obsidian` under each repository, storing the workspace configuration information.
+**Note:** Blackstone configurations are designed for individual repositories. If the configuration file is lost, you will need to reconfigure Blackstone. Therefore, please ensure you do not frequently change repositories while writing articles.
+# Regarding the image configuration for Fuwari
+First, we need to be aware of several pitfalls.
+1. By default, Obsidian links to images as **internal links**, and the path configuration for these links is implemented in the private configuration file, visible only within Obsidian.
+2. Obsidian defaults to **links with spaces** for images; some frameworks do not support escaping spaces, causing images to be unavailable.
+First, ensure that `src/content` is set as the repository root directory, since `src/content/posts` stores blog articles and `src/content/spec` stores special Markdown pages; both may require images, so it is recommended to set the repository at the parent folder of these directories. Our images will be stored in `src/content/assets/images`, and relative path references from `posts` or `spec` will be formatted as `../../assets/images/xxx.webp` (don’t worry, Obsidian will automatically manage this—you don’t need to manually input it).
+Click **Settings**
 ![](../../assets/images/obsidian-3.webp)
-如图配置，这样我们就解决了第一个问题
+As shown in the configuration, this resolves the first issue.
 ![](../../assets/images/obsidian-4.webp)
-关于第二个问题，黑曜石本身并不支持通过变量来控制图片名，我们需要借助第三方插件来实现
-首先，我们需要关闭 **安全模式**
-依次 `设置 - 第三方插件 - 安全模式（关闭）`
-然后依次 `设置 - 第三方插件 - 社区插件市场（浏览）`
-安装 `Pasts image rename` 并 **启用**
-再次前往 **设置** ，在最底下就会有一个专门配置第三方插件的配置项目
-第一个 `Image name pattern` 不用动，如果你要更改，请确保你知道自己在做什么，该配置描述已经非常详细了
-第二个 `Auto rename` ，将它打开，如果你不想每粘贴一个图片就弹出一个对话框让你输入图片名称的话
+Regarding the second question, Obsidian itself does not support controlling image names through variables; we need to rely on third-party plugins to achieve this.
+First, we need to turn off **Safe Mode**
+In sequence `Setup - Third-party Plugins - Security Mode (Off)`
+Then, sequentially `Settings - Third-party Plugins - Community Plugin Market (Browse)`
+Install `Pasts image rename` and **enable**
+Go back to **Settings**, and at the very bottom, there will be a specific configuration item for configuring third-party plugins.
+The first `Image name pattern` does not need to be changed; if you wish to modify it, make sure you know what you're doing, as this configuration description is already very detailed.
+The second `Auto rename`, enable it if you don't want a dialog box to prompt you to enter the picture name every time you paste an image.
 ![](../../assets/images/obsidian-5.webp)
-接下来，尝试使用任一截图工具，如 **QQ截图** ，截图后使用 **Ctrl+V** 粘贴进文章，你应当能看到类似这样的图片链接了
+Next, try using any screenshot tool, such as **QQ Screenshot**, take a screenshot, then paste it into the article using **Ctrl+V**. You should then see a similar image link.
 ```bash
 ![](../../assets/images/obsidian.webp)
 ```
-# 黑曜石如何强大？
-`published` 字段可以通过点点点实现
+# How powerful is obsidian?
+`published` field can be achieved through dots
 ![](../../assets/images/obsidian-6.webp)
-通用字段可以直接填充曾经写过的
+Generic fields can be directly filled with content previously written.
 ![](../../assets/images/obsidian-7.webp)
-`tags` 字段只需要你专注于标签，无需再手动管理格式
+`tags` field requires you to focus only on tags, without needing to manually manage formatting.
 ![](../../assets/images/obsidian-8.webp)
-布尔字段通过勾选来处理 `true` 和 `false`
+Boolean fields are handled by checking `true` and `false`
 ![](../../assets/images/obsidian-9.webp)

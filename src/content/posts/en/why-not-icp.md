@@ -1,6 +1,6 @@
 ---
-title: "About why the website does not have an ICP registration."
-description: "Due to various reasons, this platform has not obtained an ICP registration, and this document details the associated causes."
+title: "Why This Site Does Not Conduct ICP Registration"
+description: "Due to various reasons, this site has not undergone ICP registration. Here are some of the reasons recorded."
 category: "Record"
 published: 2025-07-29
 image: '../../assets/images/d24c6c12-a8c9-4577-a4bc-0de768c23337.webp'
@@ -8,48 +8,48 @@ tags: [ICP]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article details a situation where the website has been temporarily blocked by DDOS attacks and is currently undergoing a re-registration process due to non-compliance with regulations. The site utilizes Netlify CDN, which offers fast speeds but limited accessibility in China.  The article highlights the complexities of the process, including the need for specific operational information and the potential disruption caused by an IP station upgrade.  Furthermore, it clarifies that while GFW hasn't blocked the site, some non- domains are still being restricted through firewall measures. The future of the website’s status remains uncertain, with a focus on improving accessibility rather than primary business operations.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The site’s ICP attempt was rejected due to its domain (2x.nz) not being eligible for Chinese registration. While CDN speeds are good, using China-specific nodes wouldn’t significantly improve performance. The author may consider in the future for better accessibility but won’t make it the main site, potentially abandoning it if managing dual content branches becomes too complex.
 :::
 
-The article has been archived due to a DDoS attack.
-# Violation content.
+> [[X:content]]The article has been archived; it was kicked back to CF by a DDoS attack.
+# Violation content
 
-Early content was published on this platform [view here](/posts/bypass-gfw/).
-The article does not comply with the regulatory requirements for submission. Attempts to submit it under a submitted form were unsuccessful.
+We previously published an article on this site [click here to view](/posts/bypass-gfw/)
+This article does not comply with the filing regulations. Attempts to file it were rejected.
 
-# Domain registration is not permitted to be registered.
+# Domain name does not support filing a record.
 
-The ICP is specifically for domain names. My domain name, 2x.nz, is not supported by the ICP registry.
+ICP filing is for domains, and the domain 2x.nz under my name is not within the supported domain extensions for ICP filing.
 
-Please consult the following link for information on approved domain suffixes: [https://domain.miit.gov.cn/](https://domain.miit.gov.cn/)
+All domain suffixes that support registration can be viewed at https://domain.miit.gov.cn/
 
-# The efficacy of the Chinese nodes is diminishing rapidly.
+# China's node acceleration has yielded minimal results.
 
-Currently, the platform utilizes Netlify CDN, leveraging AWS’s IP address for fast speeds. Availability in mainland China is exceptionally high, as indicated by the latency visualization below.
+The CDN currently used by this site is Netlify CDN. Netlify utilizes AWS IPs, offering extremely fast speeds with high availability in mainland China. The latency is shown in the figure below.
 
 ![](../../assets/images/96375c6a-f807-42b7-b1f0-33c0c7231037.webp)
 
-Due to the fact that this platform is a static site, utilizing EdgeOne Page’s China Mainland Node directly offers lower latency. However, the speed benefits are minimal compared to current performance.
+Since this is a static site, if you proceed with the filing, you can directly use the China Mainland nodes in EdgeOne Page, which will naturally result in lower latency; however, compared to the current speed, the improvement would be negligible.
 
-# The process of registering can be quite involved.
+# The filing process is cumbersome.
 
-If you are required to register, you will need to provide details about your actual operating personnel and purchase a registration code (this is the most cost-effective registration method).
+If you choose to register, you need to fill in the information of the actual operator and purchase a registration code (this is the least costly registration method).
 
-# GFW has disabled SNI blocking for this platform.
+# GFW has not blocked SNI for this site.
 
-The platform is currently not blocked by GFW. While some provincial firewalls have been disabled for non-compliant domains, normal access is possible across all provinces.
+This site is currently not blocked by GFW. It can be accessed normally except in certain provinces and cities where non-registered domains are blocked by firewalls.
 
-# Users in Quanzhou and surrounding areas are limited to accessing websites using registered domain names.
+# Users in regions such as Quanzhou only support accessing registered domains?
 
-The previous platform featured an IP address-based site, which was disrupted by the upgrade to V2 of the business server 1Panel V1. Consequently, the existing CI/CD workflow has been temporarily suspended.
+Previously, this site had an IP-based site, which was temporarily disabled because upgrading the business server's 1Panel from V1 to V2 disrupted the original CI/CD workflow.
 
-Following repairs and a restoration of the website’s IP address, the ongoing efforts will continue.
+The issue will be fixed, and the IP site will be restored to operation.
 
-The system has been restored. See the [About](/about/) interface.
+Restored. See the [About](/about/) interface.
 
-# What is the process for seeking regulatory approval to continue operations?
+# Will there be subsequent filing?
 
-Possible, but not primarily utilized for core business operations. It serves primarily to enhance accessibility and is currently unapproved for web hosting.
+Possible. However, it will not be used as the primary business; rather, it is more for improving accessibility. The main site remains an unregistered one.
 
-Upon approval of the, I may discontinue managing two content branches – namely, those without prohibited content and the original branch.
+And if, after filing, I need to manage two content branches (i.e., the non-violating content branch and the original branch), I might choose not to do so.

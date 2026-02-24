@@ -1,6 +1,6 @@
 ---
 title: "Fuwari Static Blog Setup Tutorial"
-description: "Fuwari is a static blog framework, and Cloudflare Pages provides a managed static website service that can be combined to deliver a rapid, secure, and efficient blogging solution without requiring hosting."
+description: "Fuwari is a static blog framework, and Cloudflare Pages is a service for hosting static websites; combining the two yields a fast, secure, host-free, and highly efficient blog."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/f286ef4d-326c-4c7c-8a1e-ed150937a12b.webp
@@ -9,90 +9,90 @@ published: 2025-09-17
 tags:
   - Fuwari
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+To set up Fuwari, you need a capable brain, Git, Node.js, a GitHub account, Cloudflare Pages, and a Markdown editor like Obsidian. The process involves forking the repo, cloning it locally, installing dependencies, customizing config files, and deploying via GitHub + Cloudflare. Once configured, changes are automatically built and published when pushed.
 :::
 
-### You need to prepare…
+### What you need to prepare
 
-1. A brilliant mind, supporting parallel processing with at least two units of events. When encountering difficulties, first consider the problem and attempt to solve it; if unsuccessful, engage with AI for assistance; do not immediately ask questions.
+1. A brilliant mind supports parallel processing of at least two or more events simultaneously. When encountering a problem, think first; if you can't figure it out, search for answers; if that fails, go flirt with AI—don’t just ask questions blindly.
 
-2. [Git - Downloads (git-scm.com)](https://git-scm.com/downloads)：The most powerful version controller for GitHub, used for managing repositories and operations. It’s also a great option for using [GitHub Desktop | Simple collaboration from your desktop](https://github.com/apps/desktop) – though it can be more challenging to use when SSH cloning is disabled, it becomes significantly more useful in these situations.
+2. [Git - Downloads (git-scm.com)](https://git-scm.com/downloads): The most powerful version control system, used here to operate on GitHub. Of course, you can also try using [GitHub Desktop | Simple collaboration from your desktop](https://github.com/apps/desktop) ~~but for me, this thing is harder to use~~. With SSH cloning now being blocked by default, it has become more usable.
 
-3. [Node.js — Run JavaScript Everywhere (nodejs.org)](https://nodejs.org/en): Fuwari is a Node.js-based solution that allows you to run JavaScript code everywhere. It’s designed to facilitate the creation of blogs and other web applications.
+3. [Node.js — Run JavaScript Everywhere (nodejs.org)](https://nodejs.org/en): Fuwari is based on Node.js; you need to install this to set up your blog
 
-4. Here’s the translation:  “A GitHub account is used to create a code repository inventory file.”
+4. A [Github](https://github.com) account: used to create a repository to store Fuwari files
 
-5. Here’s the translation:  “A Cloudflare account is used to create Pages and enable access via domain support.”
+5. A [Cloudflare](https://cloudflare.com) account: used to create a Pages site and bind a domain to enable access
 
-6.  [Obsidian](/posts/obsidian/) is a visual Markdown editor designed to efficiently handle the formatting of individual articles and pages within Fuwari. Because each article/page utilizes MarkDown, a robust editor is crucial for its usability.
+6.  [Obsidian](/posts/obsidian/): This is a visual Markdown editor. Since every article/page on Fuwari is written in Markdown, a good editor is needed.
 
-7. You must use Markdown syntax to format your articles. For more information, refer to [Markdown Basic Syntax | Markdown Official Tutorial](https://markdown.com.cn/basic-syntax/).
+7. You need to know how to write articles using Markdown syntax; if you don't know, please refer to: [Markdown  | Markdown](https://markdown.com.cn/basic-syntax/)
 
-### Process flow diagram.
+### Flowchart
 
-Local deployment of Fuwari, write article -> Send changes to remote GitHub repository -> Cloudflare Pages detects website updates and automatically builds new static files -> Website successfully updated.
+Deploying Fuwari locally, writing the article -> Pushing changes to the remote GitHub repository -> Cloudflare Pages detects the repository update and automatically builds new static website files -> Website successfully updated
 
 ### Let’s get started!
 
-#### First, we will deploy Fuwari locally.
+#### First, let's deploy Fuwari locally.
 
-1. Warehouse Fork:
+1. Fork repository:
 
 [https://github.com/saicaca/fuwari](https://github.com/saicaca/fuwari)
 
-2. Avoid having a “small waste” user disrupt the warehouse, as detailed in this image tutorial.
+2. Avoid having small waste that won't fork the repository; here is a picture tutorial.
 
 3. ![](../../assets/images/2024-10-14-12-15-44-image.webp)![](../../assets/images/2024-10-14-12-17-03-image.webp)
 
-4. Here’s the translation:  “Clone the repository to your local machine: `git clone <your repository URL>`. (Using SSH is recommended, and you can avoid using magic to push changes.)”
+4. Then clone the repository locally: `git clone <your repository URL>` (recommended to use SSH, so you don't need magic to push changes)
 
-5. First, globally install pnpm: `npm install -g pnpm`. (If npm is slow to pull locally, try cnpm: [npmmirror](https://npmmirror.com/).)
+5. First, globally install pnpm: `npm install -g pnpm` (if npm is slow to pull from domestic sources, try cnpm: [npmmirror mirror site](https://npmmirror.com/))
 
-6. In the project root directory, install dependencies by running `pnpm install` and `pnpm add sharp`.
+6. Then install dependencies in the project root directory: `pnpm install` and `pnpm add sharp`
 
-7. Here’s the translation:  “With this, you have successfully deployed Fuwari locally.”
+7. By now, you have successfully deployed Fuwari locally.
 
-[!TIP]
+> [!TIP]
 > 
-You can create a new empty warehouse and manually upload files, and set the warehouse visibility to Private.
+> You can also create a new empty repository and manually upload files, and you can set the repository's visibility to: Private
 
-#### Revised basic information and cleanup of excess files.
+#### Rewrite the basic information of Fuwari and clean up unnecessary files
 
-Here’s the translation:  “The initial posts for Fuwari may contain examples of blog authors, ICON, URLs, introductions, and sample articles. To ensure users are aware this is your blog, we need to revise each one individually.”
+> The newly created Fuwari may come with sample blogger names, icons, URLs, introductions, and sample articles to let users know this is your blog; we need to revise each of these one by one.
 
-1. 在根目录下的 `src` 文件夹中，你可以找到 `config.ts` 我们来开始改写
-   
-   - title：你的博客主标题
-   
-   - subtitle：你的博客副标题。可选，在首页会显示为“主标题 - 副标题”
-   
-   - lang：博客显示语言。注释已经列出了一些常用的值，如：en, zh_CN, zh_TW, ja, ko
-   
+1. In the `src` folder at the root directory, you can find `config.ts`; let's start rewriting it.
+
+- title: Your blog's main title
+
+- subtitle: Your blog's subtitle. Optional; on the homepage, it will display as "Main Title - Subtitle"
+
+- lang: Blog display language. Comments have listed some common values, such as: en, zh_CN, zh_TW, ja, ko
+
    - themeColor：hue值则是你的博客主题色，可以在你的博客右上角的画板图标确定喜欢的颜色再填写![](../../assets/images/2024-10-15-09-16-30-image.webp)
-   
-   - banner：src：即banner图片，支持http/https URL
-   
-   - favicon：src：即网站图标，支持http/https URL
-   
-   - links：即友情链接，这些链接在导航栏上
-   
-   - avatar：即你的头像
-   
-   - name：即你的名字
-   
-   - bio：即个性签名，会显示在头像和名字下面
-   
+
+- banner: src: the banner image, supports HTTP/HTTPS URLs
+
+- favicon: src: the website icon, supports http/https URLs
+
+- links: These are friendship links, displayed in the navigation bar.
+
+- avatar: That is your profile picture.
+
+- name: That is your name
+
+- bio: This is your personal signature, which will appear below your avatar and name.
+
    - `NavBarConfig` 为导航栏设置的超链接。`ProfileConfig` 为你的用户的超链接，分别如图![](../../assets/images/2024-10-15-17-49-30-image.webp)
-   
-   - icon：你需要前往[icones.js](https://icones.js.org/)去搜索你想要的图标，比如QQ，则填写 `fa6-brands:qq` ，如图。Fuwari默认支持这几种类型：`fa6-brands`, `fa6-regular`, `fa6-solid`, `material-symbols`。可以在 `astro.config.mjs` 中搜索关键字进行配置
-   
+
+- icon: You need to go to [icones.js](https://icones.js.org/) to search for the icon you want, such as QQ, then fill in `fa6-brands:qq`, as shown in the figure. Fuwari defaults to supporting these types: `fa6-brands`, `fa6-regular`, `fa6-solid`, `material-symbols`. You can search for keywords in `astro.config.mjs` to configure it.
+
    - ![](../../assets/images/1ef05530-10fd-4301-af4e-21ddadf18605.webp)
-   
+
    - ![](../../assets/images/da94494b-cc4b-4f07-ae95-8bf3b2f95d3c.webp)
-   
-   - 这里我附上我的 `config.ts` 
-   
+
+- Here, I attach my `config.ts`
+
    - ```ts
      import type {
        LicenseConfig,
@@ -189,18 +189,18 @@ Here’s the translation:  “The initial posts for Fuwari may contain examples 
      }
      ```
 
-2. Clean up excess files in the root directory, specifically within the `src/content/posts` ] folder. This folder contains example articles introducing MarkDown syntax and techniques, which can accelerate your learning of Fuwari and fuwari, allowing you to save them elsewhere.
+2. Clean up unnecessary files. In the `src/content/posts` folder at the root directory, there are some sample articles that introduce some Markdown syntax and tips to help you get started faster with Fuwari and fuwari. We can move them elsewhere.
 
-3. Here’s the translation:  “Therefore, you are now prepared to begin writing articles.”
+3. By now, you are ready to begin writing your article.
 
-#### Let’s begin writing!
-Recommended use of [Obsidian](/posts/obsidian/)
+#### Let’s start writing!
+>It is recommended to use [Obsidian](/posts/obsidian/)
 
-1. First, execute the following command in the project root directory: `pnpm new-post <your article title here>`
+1. First, execute the following in the project root directory: `pnpm new-post <fill in your article title here>`
 
-2. Within the root directory, there will be a file named `src/content/posts`.
+2. Then, an additional `xxx.md` file will appear in the `src/content/posts` folder under the root directory.
 
-3. We utilize MarkText to open this file, allowing you to observe some key details. We will primarily focus on a few critical aspects.
+3. We open this file with MarkText, and you can see some basic information. We only need to focus on a few key pieces of information.
 
 4. ```markdown
    title: xxx
@@ -212,52 +212,52 @@ Recommended use of [Obsidian](/posts/obsidian/)
    draft: false 
    lang: ''
    ```
-   
-   - title：文章标题
-   
-   - published：文章创建时间
-   
-   - description：文章描述，正常会显示在文章标题下面
-   
-   - image：文章封面图（同目录需要写 `./` 如：`./https://eo-r2.2x.nz/myblog/img/2024-10-14-11-33-28-image.webp`）
-   
-   - tag：文章标签
-   
-   - categories：文章分类
 
-5. We need to modify the root directory’s `astro.config.mjs` file. Specifically, change the `stie:` section to your site URL, such as `site: "https://onani.cn"`.
+- title: Article Title
 
-6. Hey, I’ve noticed a lot of people asking about image embedding. While Markdown is excellent, I need to figure out the best way to handle these images.
+- published: article creation time
 
-7. 这也很简单，多亏了MarkText这款软件，我们也可以像编辑Typecho一样直接使用Ctrl+CV来在MarkDown语法中置入图片，但是我们需要一些小设置：
-   
-   - 依次点击：MarkText软件的左上角的三条杠 -> File -> Perferences -> 左侧的Image分类 -> 如图设置 -> 注意更改第一个选项为Copy开头的选项，将Perfer开关打开，然后上下两个文本框一个填写绝对路径一个填写相对路径
-   
+- description: Article description, normally displayed below the article title
+
+- image: Article cover image (if in the same directory, write `./` as in: `./https://eo-r2.2x.nz/myblog/img/2024-10-14-11-33-28-image.webp`)
+
+- tag: article tags
+
+- categories: article classification
+
+5. We also need to modify the `astro.config.mjs` file in the root directory. On line 34, change `stie:` to your site's URL, for example: `site: "https://onani.cn",`
+
+6. Hey? Some people might ask, Markdown is great, but how do I insert images?
+
+7. This is also very simple, thanks to the MarkText software, we can also paste images directly into Markdown syntax using Ctrl+V, just like editing in Typecho. However, we need a few small settings:
+
+- Click sequentially: the three horizontal lines in the top-left corner of MarkText -> File -> Preferences -> Image classification on the left side -> set as shown in the figure -> Note: change the first option to the one starting with "Copy", enable the "Perfer" switch, and fill one text box with an absolute path and the other with a relative path.
+
    - ![](../../assets/images/2024-10-14-12-54-21-image.webp)
-   
+
    - 这样，当置入图片时，会往 `https://eo-r2.2x.nz/myblog/img` 文件夹复制一份，然后通过`![1](https://eo-r2.2x.nz/myblog/img/1.webp)`写入MarkDown文件。这样网站就能成功读取到图片啦。而你只需要Ctrl+CV，其他操作MarkText都会自动处理
 
-8. Here’s the translation:  “As you know, you are proficient in using MarkText’s Markdown syntax.”
+8. By now, you have learned how to write blog posts using Markdown syntax in MarkText.
 
-#### Local preview, followed by publishing to GitHub.
+#### Local preview, then publish to GitHub
 
 1. 当你认为你的文章已经写得差不多时，想要看看效果？请到项目根目录执行：`pnpm dev`，稍等片刻，你就可以本地预览你的博客啦![](../../assets/images/2024-10-14-13-03-44-image.webp)
 
-2. Let's proceed to use Git to publish our changes to GitHub.
+2. Great! Next, we need to use Git to publish our changes to GitHub.
 
-First, you need to inform Git that you are the author of this repository: `git config --global user.name "Your GitHub Username"`. And `git config --global user.email "Your GitHub Email @example.com"`.
+- First, you need to let Git know who you are: `git config --global user.name "your GitHub username"` and `git config --global user.email "your GitHub email@example.com"`
 
-Then, change the remote repository to ssh://[username]@[github.com]:[repository_name]. If cloning via SSH, do not modify this setting.
+- Then, change the remote repository to SSH* (no need to change if cloned via SSH): `git remote set-url origin git@github.com:xxx/xxx`
 
-Subsequently, we will submit all files: `git add .`
+- Then, let's commit all the files: `git add .`
 
-Following this, let’s submit a local commit: `git commit -m "Project Initialization"`
+Then, let's make a local commit: `git commit -m "project initialized"`
 
-Finally, please submit local changes to the remote repository: `git push`.
+- Finally, let's push our local changes to the remote repository: `git push`
 
 3. 此时，你的Github仓库应该已经有了新的提交![](../../assets/images/2024-10-14-13-10-12-image.webp)
 
-#### Here’s the translation:  “Connect Cloudflare to GitHub using Pages service to showcase your blog (FREE!)”
+#### Connect Cloudflare to GitHub and use the Pages service to showcase your blog (FREE!)
 
 1. 前往Cloudflare的 Workers 和 Pages 页面，创建一个新Pages![](../../assets/images/2024-10-14-13-14-28-image.webp)
 
@@ -265,4 +265,4 @@ Finally, please submit local changes to the remote repository: `git push`.
 
 3. 绑定自定义域，访问自定义域即可访问你的博客！![](../../assets/images/2024-10-14-13-17-00-image.webp)
 
-4. Following this, you will need to write the content locally and then [use Git to push changes to a remote repository](#本地预览然后发布到github). Cloudflare will automatically deploy your blog.
+4. Then, you just need to write your article locally and [use Git to push changes to the remote repository](#本地预览然后发布到github), and Cloudflare will automatically deploy and update your blog!

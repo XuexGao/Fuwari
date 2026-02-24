@@ -1,6 +1,6 @@
 ---
-title: "AI Doesn't Write Quality Code? It’s Actually You Leading the Way!"
-description: "Now, large language models are flourishing, with OpenAI’s ChatGPT series and Anthropic’s code-focused Claude series leading the way. However, even the most advanced models are rendered ineffective if utilized improperly by those who employ unsuitable methods."
+title: "Can AI write high-quality code? It's probably because you're guiding it wrong!"
+description: "Today, large language models abound, including OpenAI's ChatGPT series, the pioneering force, and Anthropic's code-focused Claude series. However, no matter how advanced or intelligent the model may be, if the user employs it inappropriately, even the best model will feel clumsy in use."
 category: "Tutorial"
 published: 2025-06-17
 image: ../../assets/images/65f8862e-2a66-4acc-8fef-c8b3dc7f5c29.webp
@@ -8,62 +8,62 @@ tags: [AI, Prompt]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
 
 :::
 
-Video Link: https://www.bilibili.com/video/BV1jw38z9EEn/
-# Correct guiding methods.
+> Video link: https://www.bilibili.com/video/BV1jw38z9EEn/
+# The correct guiding method
 
-Please clarify your specific requirements. This includes the programming language you’d prefer, the technology stack you’re interested in, and the precise functionality you need to implement. Furthermore, please specify the application's context – is it a frontend, backend, or full-stack solution?
+First, clarify your specific requirements. For example, what programming language will the code be written in? What technology stack will be used? What specific functionalities need to be implemented? What is the application scenario? Is it frontend, backend, or full-stack, etc.?
 
-The clarity and conciseness of your requirements are well expressed.
+State your needs clearly and concisely.
 
 比如： `编写一个Python脚本，在代码中硬编码S3_Endpoint、S3_Area、S3_key、S3_Secret、S3_Url（暂时全部留空）。运行后监听Ctrl+Alt+A，一旦被按下，立即检查剪贴板内是否有图片（支持文件格式和纯图格式），将其转换为Webp格式并上传到S3 API的S3_Url路径下，最后模拟键入![](图片链接)`
 
-If you’re unsure whether the AI understands your needs, please contact us to confirm and ensure it accurately reflects your requirements. For example, the previous statement could be revised as: “If you’re uncertain about the AI’s understanding of your needs, please reach out for confirmation.”
+If you're unsure whether the AI understands your requirements, you can call back to verify, avoiding situations where the AI pretends to understand your needs and then generates irrelevant content. For example, the above statement could be revised as:
 
 `编写一个Python脚本，在代码中硬编码S3_Endpoint、S3_Area、S3_key、S3_Secret、S3_Url（暂时全部留空）。运行后监听Ctrl+Alt+A，一旦被按下，立即检查剪贴板内是否有图片（支持文件格式和纯图格式），将其转换为Webp格式并上传到S3 API的S3_Url路径下，最后模拟键入![](图片链接)。你明白了吗，请告诉我你将要如何完成这个任务，在我批准前请不要编写代码`
 
-Sometimes, expressing ambiguity can actually be beneficial.
+Sometimes, ambiguity in expression can actually be a good thing.
 
-Because you begin describing the creation of a variable and assigning it a value, you are not using AI to write code; rather, you are instructing the AI to translate your natural language code into programming language code. This is not a creative requirement, but rather a translation-focused need – the quality of the resulting code is entirely dependent on your technical expertise and logical reasoning skills.
+Once you start describing creating a variable with a certain name and assigning it a specific value, you are not actually using AI to write code—you are asking AI to translate your natural language code into programming language code. This is not a creative requirement but a translation-type requirement. The quality of the final code generation entirely depends on your technical knowledge and the strength of your logical thinking.
 
-Therefore, when addressing most needs, we can initially outline a framework to determine the appropriate direction for AI and then gradually develop the project.
+So, when facing most requirements, we can first roughly outline a framework, confirm the AI's direction is correct, and then gradually develop the project.
 
-AI systems are prone to errors and frequently make incorrect assumptions. It’s crucial to verify information obtained from AI sources with reliable resources such as [Wikipedia](https://wikipedia.org).
+AI can also make mistakes and is extremely prone to guessing incorrectly. Do not fully trust the content provided by AI; when encountering knowledge you do not understand, you can verify it through authoritative knowledge websites such as [](https://wikipedia.org).
 
-Here’s the translation:  “Modern AI development environments increasingly employ an agent model, wherein AI systems are designed to autonomously handle user requests and then iteratively refine their solutions, debug potential errors, and ultimately deliver the final project.”
+Don't let AI keep self-checking. In modern AI IDEs, most have already implemented the Agent mode, which is: `User proposes a requirement -> AI analyzes and implements the requirement -> AI automatically debugs -> Final delivery of the project to the user`.
 
-After six months of experience with AI development environments, if code exhibits bugs, it’s best to avoid phrasing like “`this code doesn't run, let me know`” instead. Instead, I recommend providing the complete error message and requesting a thorough analysis and resolution, such as:
+However, in my half-year experience using an AI IDE, if your code has a bug, please do not say something like: `This code won't run, help me check it` — I still recommend that you copy and paste the complete error message to the AI and ask it to analyze and resolve the issue, for example:
 
-Here’s the translation:  “The error message indicates a problem and requires a detailed analysis based on the error details to determine the root cause. Please provide a solution.”
+`[Error message` It reported an error. Please conduct a deep analysis of the root cause of the problem based on the error message, and provide me with a solution]] instead of letting the AI debug itself.
 
-Due to occasional program errors, they may simply be a result of an improperly configured environment variable or a lack of utilizing a widely adopted solution. Simply prompting the AI to self-reproach will likely lead it to focus on its perceived source of failure.
+Because sometimes a program's error may simply be due to an unconfigured environment variable, or because you haven't used a mainstream approach; merely asking AI to self-reflect will cause it to choose the part it believes is most likely to be at fault.
 
-Here’s a professional translation of the text:  “It’s important to consider alternative perspectives. The client consistently expresses concerns about the proposed solution, yet fails to provide specific feedback on its shortcomings. However, AI operates based on its own internal logic and will inevitably pursue a path that aligns with its assessment of optimal outcomes, even if it requires multiple iterations and bug fixes before reaching a satisfactory resolution.  Furthermore, the cost associated with requests, including the number of attempts to reach the iteration limit, is often wasted.”
+*Put yourself in their shoes—what if you have a client who keeps telling you that this plan won’t work but never tells you why? Would that drive you crazy? But AI isn’t human; it will only keep moving forward along the path it believes is correct. If you’re lucky, a few iterations will fix the bugs. If not, it might hit the iteration limit set in the IDE and generate a whole new mess of code, and then your paid request quota is wasted like that.*
 
-Finally, utilize AI to your advantage; you may ask it: `What is the best way to utilize AI?` Of course, she might deceive you.
+Finally, please make good use of AI. You can also ask AI: `Your best way of being called`. ~~Of course, she might also deceive you~~.
 
-# AI Recommendation
+# AI Recommendations
 
-[ChatGPT](https://chatgpt.com)：快速，不限额。适合解决你的疑问
+[ChatGPT](https://chatgpt.com)：Fast, no limit. Suitable for resolving your questions
 ![](../../assets/images/c2e37057-78c9-403f-b3af-e84bdad98f1e.webp)
 
-Here’s the translation:  “Compared to GPT, Claude offers greater power and excels in code generation, particularly for front-end development.  Many AI coding environments now support models like Claude 3.5 Sonnet and beyond, making it highly suitable for creating modular, maintainable scripts.”
+[Claude](https://claude.ai): More powerful than GPT, better at writing code—especially front-end code. Currently, most AI IDEs have integrated Claude 3.5 Sonnet and higher models, making them very suitable for writing small, decomposable, and maintainable scripts.
 
 ![](../../assets/images/f9adcc5e-64bc-48f0-8845-893242abec33.webp)
 
-Here’s the translation:  **[VS Code (Github Copilot)](https://code.visualstudio.com/): An AI-powered IDE developed by Microsoft. Users can leverage Claude 3.5 Sonnet model, but with limited access. The Pro plan costs $10 USD per month, and is only available via PayPal and international payment methods.**
+[VS Code（Github Copilot）](https://code.visualstudio.com/)：AI IDE。Developed by Microsoft, free users can use the Claude 3.5 Sonnet model, but with limited quota. The Pro plan costs $10/month, supporting only PayPal and international cards.
 
 ![](../../assets/images/70b6f916-ba70-45a6-b572-3b32214f0c1f.webp)
 
-Here’s the translation:  **AI IDE developed by Anysphere. Free users can only utilize the Auto model, typically not assigned to Claude models. Pro plans cost $10 USD per month, and are available for payment via PayPal and international credit cards.**
+[Cursor](https://www.cursor.com)：AI IDE。Developed by Anysphere, free users can only use the Auto model (typically not assigned the Claude model). Pro plan at $10/month, supports payment only via PayPal and international cards.
 
 ![](../../assets/images/4287002f-eb0e-43b0-87b7-1fa43c37a497.webp)
 
-[Trae (International Version)](https://www.trae.ai): An AI development platform developed by ByteDance. It requires international IP addresses. New users on the Pro plan can activate their first month for only $3 USD per month (after which it is $10 USD per month). Support for Alipay and overseas cards is available. I am currently utilizing it.
+[Trae（International Version）](https://www.trae.ai): AI IDE. Developed by ByteDance, requires foreign IP. New users can activate the Pro plan for the first month at only $3/month (after that, $10/month), supporting Alipay and international card payments. I am currently using it.
 
 ![](../../assets/images/40b76f69-2c50-49d0-b861-05f8879accab.webp)
 
-Do not recommend using web-based large language models for any project. Please utilize AI development environments instead.
+> It is strongly not recommended to use any large model on the web version for writing any project! Please use AI IDE!

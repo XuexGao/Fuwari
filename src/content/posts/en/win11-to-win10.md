@@ -1,6 +1,6 @@
 ---
-title: "Win11 retains data without loss!"
-description: "I’m completely fed up with the persistent ‘stickiness’ of Windows 11. What can be done to downgrade it? Or is there a more official solution that preserves my data? Can I still retain my files?"
+title: "Downgrade from Win11 to Win10 Without Losing Data!"
+description: "I'm really sick of the sticky feeling of Win11. What? Can I downgrade? Is it an official method? Can I keep my data??"
 published: 2025-11-23
 image: ../../assets/images/win11-to-win10.webp
 tags:
@@ -9,110 +9,98 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-To return to Windows 10, you need to follow these steps:
-
-1.  **Download the ISO:** Download the Windows 10 ISO file from Microsoft's website ([https://www.microsoft.com/zh-cn/software-download/windows10](https://www.microsoft.com/zh-cn/software-download/windows10)).
-2.  **Prepare your device:** Ensure you have a USB drive (U disk) with sufficient storage space and support for Windows 8 installation.
-3.  **Install the ISO:** Install the ISO file onto your USB drive.
-4.  **Update to Windows 11:**  The process involves updating your current operating system to Windows 11, which is now supported by Windows 10 versions 2016 and later.
-5.  **Restore Data:** After upgrading, you will lose some data, such as applications and documents. It's recommended to perform a "restore data" operation within the Windows settings.
-6. **Disable/Remove Appx Files:**  The upgrade process removes "appxmanifest" files, which are necessary for certain apps. These files can be located in the `sources` folder of your ISO. 
-7. **Repair System and Applications:** Run DISM to repair system files and scan for malware.
-8. **Clean Up:** After the installation, you may encounter a black screen during startup.  This is a temporary glitch that resolves itself with a warning message.
-9. **PowerShell Access:** To access the Windows 10 installation process, open PowerShell as an administrator (right-click on the Start button and select "Windows PowerShell").
-
-It’s crucial to understand that the “upgrade” process involves replacing your current operating system version with Windows 11, so you should have a backup of your important data before proceeding.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide details a non-official method to downgrade from Windows 11 to Windows 10 while preserving user data and applications. It involves downloading a modified Windows 10 ISO, replacing key files to force a "keep-data" upgrade, and performing post-installation system repairs. While effective, the process requires technical knowledge and carries risks, including potential system instability if not executed correctly.
 :::
 
-# Introduction
+# Preface
 
-### Why return to Windows 10?
-There are numerous reasons why…
-- Win11 has primarily focused on UI enhancements, with some optimizations remaining incomplete. This has resulted in a noticeable feeling of sluggishness and friction across various areas, as detailed in the video: [Win11！_](https://www.bilibili.com/video/BV11MVoznE4L/?spm_id_from=333.1387.search.video_card.click&vd_source=6b94c66d8e200ba092130f674228bbff)
-- Windows 10 and Windows 11 both utilize NT 10.x kernels, and programs designed to run on Windows 11 are expected to function correctly on Windows 10. Microsoft’s documentation typically specifies a minimum version number for these programs, which is generally `Windows 10 2016 and later` – encompassing versions supporting Windows 10 2016 and beyond, as well as subsequent releases. However, we often utilize programs with higher versions, such as `21h2` and `22h2`, which do not require compatibility concerns.
+### Why return to Windows 10
+There are too many reasons.
+- Win11 has almost only upgraded its UI, and the new UI optimization is incomplete, leading to sluggishness in many areas. See: [Win11！__bilibili](https://www.bilibili.com/video/BV11MVoznE4L/?spm_id_from=333.1387.search.video_card.click&vd_source=6b94c66d8e200ba092130f674228bbff)
+- Windows 10 and Windows 11 both run on the NT 10.x kernel, so any program that can run on Windows 11 can certainly run on Windows 10. Microsoft's documentation for most of its programs typically specifies a minimum version of `Windows 10 1607 and later`, which means **supports Windows 10 from the 2016 version onward, and all subsequent versions**. The versions we generally use are newer than this, such as `21h2` `22h2`, so there's no need to worry about compatibility issues.
 
-### Here’s a professional translation of the text:  “What are the potential impacts of this unconventional approach to ‘upgrading’?”
-Despite minimal impact, while addressing the necessary post-event remediation efforts, the inherent nature of Windows 10 and 11 – being fundamentally objects – does not pose any irreversible damage.
+### What impacts does the "upgrade" of such abnormal means have?
+Hardly any impact; although we need to do some cleanup work, thanks to the fact that Windows 10 and 11 are essentially the same thing, there won't be any irreversible damage.
 
-### Upon upgrading, what will I lose?
-Windows 11 retains features not present in Windows 10, while the combination of both offers a seamless experience.
+### What will I lose after the "upgrade"?
+Things that exist in Win11 but not in Win10 will disappear, while those common to both will be retained. Apps specifically designed for Win11 will become unavailable or disappear outright after the "upgrade."
 
-### Is the “upgrade” process retaining data?
-Yes, theoretically, it will only replace the Windows version and will not erase your data, including applications, documents, or personal information.
+### Is it an "upgrade" for retaining data?
+Yes. Theoretically, it will only replace the Windows version and will not clear all your data, such as applications, documents, and personal information.
 
-### Here’s a professional translation of the text:  “Microsoft has not publicly announced a phased reduction in its official channels, citing concerns about maintaining user trust and preventing potential disruptions to existing services.”
-Here’s the translation:  “You are entitled to a thirty-day grace period following the initial installation of Windows 10 and subsequent upgrade to Windows 11. During this timeframe, you can revert back to Windows 10 within the settings menu.” “This thirty-day period is not a defined event, but rather a conservative date implemented by Microsoft to minimize potential disruption during the upgrade process.”
+### Why doesn't Microsoft provide an official channel for downgrading?
+Actually, there is one: when you first install Windows 10 and then upgrade to Windows 11 via Windows Update, you have a 30-day grace period during which you can choose to revert back to Windows 10 in Settings. However, 30 days is not a special date—it’s just a conservative timeframe set by Microsoft to minimize complications.
 
-# Formal commencement.
+# Formally begin
 :::caution
-Data is invaluable; proceed with caution.
+Data is priceless; operate with caution.
 :::
 
 :::warning
-Ensure you have a PE USB drive; if you don’t understand what I’m saying, please discontinue operation.
+Make sure you have a PE USB drive; if you don't understand what I'm saying, do not proceed!
 :::
 
-Ensure you are running Windows 11 in the **Official Edition** version. If you have joined the **Windows Insider Preview**, please try to revert to the **Official Edition**.
+First, ensure you are running the **official version** of Windows 11. If you have joined the **Windows Insider Preview**, find a way to return to the **official version**
 
-接下来我们先去下载Win10的ISO，前往 https://www.microsoft.com/zh-cn/software-download/windows10 ，如果你发现你没有可以下载ISO文件的地方，如图
+Next, we will first download the Win10 ISO. Go to https://www.microsoft.com/zh-cn/software-download/windows10. If you find that you do not have a place to download the ISO file, as shown in the figure
 ![](../../assets/images/win11-to-win10-1.webp)
 
-点击F12，打开Devtools，切换为设备仿真
+Click F12 to open DevTools, then switch to device emulation.
 ![](../../assets/images/win11-to-win10-2.webp)
 
-按F5，刷新页面，此时网页就会认为你是手机，就会让你下载ISO了
+Press F5 to refresh the page; at this point, the website will recognize you as using a mobile device and prompt you to download the ISO.
 ![](../../assets/images/win11-to-win10-3.webp)
 
-选择版本 **Windows 10 （多版本ISO）**
+Choose version **Windows 10 (Multiple ISO versions)**
 ![](../../assets/images/win11-to-win10-5.webp)
 
-选择 **简体中文**
+Select **Simplified Chinese**
 ![](../../assets/images/win11-to-win10-6.webp)
 
-下载 **64位版本的ISO**
+Download **64-bit version ISO**
 ![](../../assets/images/win11-to-win10-7.webp)
 
-得到ISO文件
+Get the ISO file
 ![](../../assets/images/win11-to-win10-8.webp)
 
-确保你安装了 **支持解压缩ISO** 的软件，如 [Bandizip 官方网站 - 免费压缩软件下载 (Windows)](https://www.bandisoft.com/bandizip/) ，**解压ISO文件**
+Make sure you have installed software that supports decompressing ISO files, such as [Bandizip Official Website - Free Compression Software Download (Windows)](https://www.bandisoft.com/bandizip/), **Extract ISO files**
 ![](../../assets/images/explorer_xY0rowaOaU.gif)
 
-打开 **已解压的ISO** 文件夹，重命名 `setup.exe` 为 `setup1.exe`
+Open the **Unzipped ISO** folder and rename `setup.exe` to `setup1.exe`
 ![](../../assets/images/win11-to-win10-11.webp)
 
-更改文件属性 - 兼容性为 **Windows 8** 
+Change file properties - Compatibility for **Windows 8**
 ![](../../assets/images/explorer_6TrQ3aXWcR.gif)
 
-Download the disguised file: [Win11ToWin10.zip](https://acofork-my.sharepoint.com/:u:/g/personal/af_acofork_onmicrosoft_com/ESxJWKgjjHVEhlNoBG4oNWUB_-rGTlLRh1CkXdLoxJsGpw?e=8s79zt). The installation program includes a mandatory activation of the **Data Upgrade** feature.
+Download the spoofed file: [Win11ToWin10.zip](https://acofork-my.sharepoint.com/:u:/g/personal/af_acofork_onmicrosoft_com/ESxJWKgjjHVEhlNoBG4oNWUB_-rGTlLRh1CkXdLoxJsGpw?e=8s79zt) with the purpose of forcibly activating the "Preserve Data Upgrade" option in the installer.
 
-解压出 `ei.cfg` 和 `setupcompat.dll` 。将其复制到ISO文件夹下的 `sources` 文件夹并替换其中已有的文件
+Extract `ei.cfg` and `setupcompat.dll`. Copy them into the `sources` folder within the ISO folder and replace the existing files.
 ![](../../assets/images/win11-to-win10-13.webp)
 
 ![](../../assets/images/explorer_9vcYIunVJH.gif)
 
-打开 `setup1.exe` ，**更改 Windows 安装程序下载更新的方式**，选择 **不是现在**，然后一路下一步
+Open `setup1.exe`, **Change how Windows Installer downloads updates**, select **Not now**, then click Next through all steps
 ![](../../assets/images/SetupHost_dtT7QeMuhO.gif)
 
-等待变为 **准备就绪，可以安装** ，并确保 **保留个人文件和应用** ，选择 **安装** 
+Wait until it becomes **Ready to Install**, and make sure **Your Personal Files and Apps Are Backed Up**, then select **Install**
 ![](../../assets/images/win11-to-win10.webp)
 
-等待设备开机时从 **白条转圈** 变为 **白点转圈** ，即Windows10已被安装
+Wait until the device powers on and the **White spinning bar** changes to **White spinning dot**, indicating that Windows 10 has been installed
 ![](../../assets/images/win11-to-win10-15.webp)
 
-Upon the first startup, you may experience a black screen. This occurs when the user logs in and is accompanied by a warning message – the screen goes black immediately upon login, with the cursor moving freely on the area where it’s supposed to be clickable.
+The first time you power on your device, it may display a black screen. This manifests as a warning sound followed by a black screen after user login. At this point, moving the mouse will show the cursor moving, but you will be unable to click on any elements on the screen.
 
-进入其他系统（如U盘中的PE系统），删除所有 
+Enter other systems (such as PE systems on USB drives) and delete all
 ```
 C:\ProgramData\Microsoft\Windows\AppRepository\StateRepository-开头的文件
 ```
 
-Please restart the device successfully.
+Restarting the device should allow it to boot successfully.
 
-`Win+X` opens the PowerShell console as an administrator.
+Next, `Win+X` to open PowerShell as Administrator
 
-首先修复一下系统
+First, fix the system.
 ```
 Dism.exe /Online /Cleanup-Image /CheckHealth
 DISM.exe /Online /Cleanup-image /Scanhealth
@@ -120,7 +108,7 @@ DISM.exe /Online /Cleanup-image /Restorehealth
 sfc /scannow
 ```
 
-接下来修复系统应用
+Next, fix the system applications.
 ```
 恢复系统应用：add-appxpackage -register "C:\Windows\SystemApps\*\AppxManifest.xml" -disabledevelopmentmode
 
@@ -129,7 +117,7 @@ sfc /scannow
 恢复应用商店安装的应用：add-appxpackage -DisableDevelopmentMode -Register "C:\Program Files\WindowsApps\*\AppxManifest.xml" -verbose
 ```
 
-你还可能会遇到点击 Win 弹出开始菜单后打不开设置，我是这样解决的
+You may also encounter the issue where clicking the Win key to open the Start menu fails to launch Settings; here's how I resolved it.
 ![](../../assets/images/explorer_DqoWvdqpPS.gif)
 
-Here’s the translation:  “This has been fully upgraded to Windows 10.”
+By now, it has been perfectly "upgraded" to Windows 10.

@@ -1,6 +1,6 @@
 ---
 title: "EdgeOne + Cloudflare, we are invincible!"
-description: "Here’s the translation:  “EdgeOne offers low latency and Cloudflare’s robust cloud infrastructure – it's simply exhilarating!”"
+description: "EdgeOne's low latency combined with Cloudflare's powerful capabilities! I can't even imagine how amazing this would be!"
 category: "Record"
 published: 2025-06-27
 image: ../../assets/images/50839e45-bb5c-4fd5-8e88-3959295fb9bb.webp
@@ -8,79 +8,77 @@ tags: [EdgeOne, Cloudflare]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-Here’s a brief summary of the article:
-
-The author is discussing EdgeOne's free plan activation and related issues, including the use of custom CNAMEs and DNS redirection challenges. They recommend using a combination of Cloudflare and CDN for advanced redirect configurations, leveraging edge functions for more granular control.  The article highlights best practices for handling reverse redirects after activating the free plan and addresses potential problems like the reliance on default CNAMEs and the difficulty in accessing websites after EdgeOne's initial redirection setup.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The author successfully activated the free EdgeOne plan via Tencent Cloud’s redemption page and recommends using a faster Chinese Hong Kong IP (43.174.150.150) over the default CNAME for better performance. For SSL, they suggest manually obtaining certificates via tools like 1Panel or acme.sh and uploading them to Tencent Cloud’s SSL console instead of relying on EO’s automatic setup. They also detail how to set up redirects using Cloudflare as a reverse proxy, leveraging EO’s edge functions for more granular control, though noting Cloudflare’s rules are more efficient for request logging.
 :::
 
 # Introduction
 
-The streamer has obtained the EdgeOne free activation code, allowing for a significant expansion of their capabilities.
+The streamer also got the free activation code for EdgeOne, and can finally start making big moves 😋
 
-# How do I obtain the EdgeOne free version?
+# How do I switch to the EdgeOne free version?
 
-Visit the [Tencent Cloud EdgeOne Free Plan Redemption Code - Experience Now](https://edgeone.ai/zh/redemption)
+Go to [Tencent Cloud EdgeOne Free Plan Redemption Code - Experience Now](https://edgeone.ai/zh/redemption)
 
-Recommend direct messaging and submit requests according to your specifications.
+Recommended to post directly on Twitter, following the required guidelines.
 
-After the presentation, please send a private message to the EO official.
+After sending, simply send a private message to the EO official.
 
 ![](../../assets/images/9ccbf7c1-6006-45f6-a9f4-e1979df8b12b.webp)
 
-# Here’s a professional translation of the text:  “The EdgeOne Anycast CNAME is considered overly generic and lacks significant value.”
+# Is the Anycast CNAME provided by EdgeOne by default too poor?
 
-Upon adding a domain to your EO, you will receive a corresponding CNAME record. This record will point to the specified domain.
+By default, when adding a domain to EO, EO will send you a CNAME similar to `afo.im.eo.dnse4.com`
 
-`Your domain.eo.dnse4.com`
+That is `your domain.eo.dnse4.com`
 
-That thing, how fast is it?
+Well, you guys can check the speed for yourselves.
 
 ![](../../assets/images/33a0b34f-d36f-4214-bcf3-616f9b174630.webp)
 
-I recommend using `43.174.150.150` – a Chinese Hong Kong three-network optimization IP address. The speed is as follows: **My EdgeOne Preferred:** `eo.072103.xyz`
+I recommend everyone to use `43.174.150.150`. It is a tri-network optimized IP from Hong Kong, China. The speed is as follows. **My EdgeOne Preferred:** `eo.072103.xyz`
 
 ![](../../assets/images/ab4cfd6f-ef23-4670-8577-02850f372124.webp)
 
-# After a CNAME change, automatic SSL certificate requests are not possible.
+# After changing the CNAME, can't automatically apply for free SSL?
 
-If you host your domain with EOT and do not use EOT to provision a CNAME for your CN, this option is unavailable.
+If you host your domain with EO and do not use the CNAME provided by EO, this option is unavailable.
 
 ![](../../assets/images/d81050d7-5d58-4b80-92d9-bf1e07285544.webp)
 
-I recommend utilizing 1Panel, Baotao, and Acme.sh for manual certificate issuance via the Tencent Cloud SSL Control Panel. This process involves applying the certificates through these platforms, as shown below.
+I recommend using 1Panel, BT Panel, and acme.sh to manually apply for a wildcard certificate, then upload it to the Tencent Cloud SSL console, like this: [[X:content]]
 
 ![](../../assets/images/59cf2a66-2717-4291-b027-6cd2f270ece4.webp)
 
-# Here’s a professional translation of “EdgeOne how to redirect?”:  “How does EdgeOne handle redirects?”
+# How does EdgeOne perform redirection?
 
-Here.
+Here
 
 ![](../../assets/images/8f31d55f-4d0b-4209-935b-c2ec7924846c.webp)
 
 ![](../../assets/images/5ca74214-b4d0-4ac1-9fab-06d3096a5f7e.webp)
 
-The Edge Function also supports redirection, allowing for more granular redirection rules.
+The EO edge function also supports redirection, supporting more granular redirection rules.
 
-However, this tracking mechanism records request counts; it’s preferable to utilize Cloudflare's redirection rules.
+But this thing records request counts, it's better to use Cloudflare's redirect rules.
 
 ![](../../assets/images/2853531b-a57f-4b20-a8ec-98c0ca433604.webp)
 
-首先我们在CF写这样一个规则
+First, we write such a rule in CF:
 ![](../../assets/images/ac9afee9-a368-4e10-a2a9-045e8672d636.webp)
 
-Then, return the IP address to the CDN edge node. The simplest approach is to simply provide an IP address and route it to the CDN.
+Then have EO redirect back to the CF edge node. The simplest way is to just fill in any IP and wrap it with CDN.
 
 ![](../../assets/images/08445fb0-892a-4793-a359-6cfc3194dbce.webp)
 
-Following the configuration of E-Retry, please utilize accelerated domain names as the return host header.
+Then configure the origin settings for Eo. Here, you must use the acceleration domain name as the origin Host header.
 
 ![](../../assets/images/4911f0ca-86a0-42d3-90cf-ad2434f782ae.webp)
 
-The system analyzes user requests, identifies a host match, and then applies a redirect rule – a 301 redirect.
+Principle: User → EO → CF → CF detects host matches redirect rule → 301
 
-# Please translate to: EdgeOne’s reverse function?
+# Does EdgeOne proxy everything?
 
-> 大部分情况将 `回源HOST头` 改为源站就能解决反代后网站无法访问的问题
+> In most cases, changing the `HOST` to the origin server can resolve the issue of the website being inaccessible after reverse proxying.
 > 
 > ![](../../assets/images/2025-08-04-12-00-41-image.webp)

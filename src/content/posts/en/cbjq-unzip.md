@@ -1,6 +1,6 @@
 ---
-title: "Record of Package Dust White Ban Zone for Obtaining S-S-？CG"
-description: "Loading image CG for the area of Dust White Ban District, recorded the process, to facilitate future review."
+title: "Unpacking Dust White Forbidden Zone to Obtain \"Sessess\" (??) CG"
+description: "On behalf of others, I unpacked the loading screen CG of Dust White Restricted Zone, documenting the process for future reference."
 category: "Record"
 published: 2025-08-24
 image: '../../assets/images/2025-08-24-01-13-41-3824c5ece06cc56241688f4a4aacbcbd.webp'
@@ -8,49 +8,49 @@ tags: [尘白禁区, 解包]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article guides users through the process of downloading and installing "Dust White Forbidden Zone" (a mod for the game "Chronicle 4"), ensuring it’s fully functional from the start by directly downloading the game's executable files to their computer. It details specific steps for unpacking PAK files, extracting CG images, and utilizing a BMS tool for export and viewing. The process involves navigating to various folders within the game installation directory and using command-line tools like QuickBMS and UE Viewer.  The article provides instructions on how to export the resulting `.uasset` files to a general format for further analysis and viewing using Windows Resource Explorer.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide explains how to extract and view CG images from the game "" (Snowbreak) using Unreal Engine 4.26 tools. It involves downloading the game, locating and extracting specific PAK files, using QuickBMS to unpack them, and then using UModel to convert .uasset files into viewable formats like .TGA. The final step is searching for "PlotCG" to locate and view the CG images with a compatible viewer.
 :::
 
-> The guide on how to unpack and export the game “Void Echo” and create mods.
+> Referenced [Unreal 4 Game Decompile, Export, and Modding Guide - Zhihu](https://zhuanlan.zhihu.com/p/7144045084)
 
-# Download the White Forbidden Zone.
+# Download Dust White
 
-Go to https://www.cbjq.com/ download and install the Dust White Zone, ensuring that the launcher can start the game directly from within (meaning the complete game package is already downloaded to your computer).
+Go to https://www.cbjq.com/ to download and install Dust White, ensuring that the launcher allows you to start the game directly (i.e., the complete game package has been downloaded to your computer).
 
 ![](../../assets/images/2025-08-24-01-16-37-image.webp)
 
-# Confirmation of the Unreal Engine version.
+# Confirm Unreal Engine version
 
-Navigate to the directory within the EXE file that contains the main body of the Dust White Forbidden Zone game.
+Navigate to the directory containing the main EXE file for the game "Dust White Restricted Zone", such as
 
 ```bash
 C:\SeasunCBJQos\Game\cbjq\game\Game\Binaries\Win64
 ```
 
-Right-click `Game.exe` and select Properties, then navigate to the `Detailed Info` section. You can see it is `UE4 4.26`. Remember him; refer to the following sections for further details.
+Right-click `Game.exe`, click Properties, and go to the `Details` section. You can see it is `UE4 4.26`. Remember this, as it will be used later.
 
 ![](../../assets/images/2025-08-24-01-18-47-image.webp)
 
-# `G:PAK file separation`
+# Separate out the PAK files related to CG.
 
-Go
+Go to
 
 ```bash
 C:\SeasunCBJQos\Game\cbjq\game\Game\Content\Paks
 ```
 
-Here are all the PAK files, as we only need CG images, so we’ll also be unpacking similar `PAK_Game_UI_X-WindowsNoEditor.pak` files.
+PAK_Game_UI_X-WindowsNoEditor.pak]].
 
-Folder
+Separate it into a separate folder
 
 ![](../../assets/images/2025-08-24-01-22-23-image.webp)
 
-# **Solution:**  The solution is straightforward and involves a simple, efficient process. It’s a method that allows for rapid and reliable data transfer, minimizing latency and maximizing throughput. The core principle relies on a carefully orchestrated sequence of steps, optimized for speed and minimal disruption to existing systems. This approach effectively addresses the challenges associated with network congestion and ensures consistent performance under varying load conditions.
+# Unpack
 
-Download and unpack script: https://r2.072103.xyz/snowbreak.bms
+Download the unpacking script https://r2.072103.xyz/snowbreak.bms
 
-Go to [Luigi Auriemma](https://aluigi.altervista.org/quickbms.htm) download `QuickBMS`.
+Go to [Luigi Auriemma](https://aluigi.altervista.org/quickbms.htm) to download `QuickBMS`
 
 ![](../../assets/images/2025-08-24-01-22-37-image.webp)
 
@@ -58,54 +58,54 @@ Open
 
 ![](../../assets/images/2025-08-24-01-22-58-image.webp)
 
-First step: Choose a package script.
+Step 1: Select the unpacking script
 
 ![](../../assets/images/2025-08-24-01-25-15-image.webp)
 
-Select the folder containing the original PAK files. Once selected, you can enter `*` in the filename field.
+Step 2: Select the folder containing the original PAK file. After selecting the folder, enter `*` in the filename field.
 
 ![](../../assets/images/2025-08-24-01-25-58-image.webp)
 
-Third step: Select the index/directory.
+Step 3: Select the output directory after unpacking
 
 ![](../../assets/images/2025-08-24-01-26-32-image.webp)
 
-Waiting for package delivery.
+Waiting for unpacking
 
 ![](../../assets/images/2025-08-24-01-26-55-33683f308e84beb12f81c22c9702a4a4.webp)
 
-Package delivered.
+Unpacking completed
 
 ![](../../assets/images/2025-08-24-01-28-27-image.webp)
 
-# View uncompressed files.
+# View the unpacked files
 
-After unpacking, we received a general UE engine encapsulation `.uasset`.
+After unpacking, we obtain the general `.uasset` file packaged by the UE engine.
 
-We need to use another tool to export it as a general format file.
+We need to use another tool to export it as a general-format file.
 
-Go to [UE Viewer | Gildor's Homepage](https://www.gildor.org/en/projects/umodel#files). Click `Win32 Version` to download.
+Go to [UE Viewer | Gildor's Homepage](https://www.gildor.org/en/projects/umodel#files). Click `Win32 Version` to download
 
 ![](../../assets/images/2025-08-24-01-30-01-image.webp)
 
-Opened `umodel_64.exe`. Filled through `QuickBMS` the output folder after unboxing, check `Override game detection`, and select UE4 4.26, which is the initial version we obtained from Unreal Engine.
+Open `umodel_64.exe`. `Path to game files:` Fill in the output folder obtained after unpacking with `QuickBMS`, check `Override game detection` and select UE4 4.26, which is the Unreal Engine version we initially obtained.
 
 ![](../../assets/images/2025-08-24-01-32-43-image.webp)
 
-So you can now view the UAsset file in the UE viewer, but it’s difficult to use with this file browser. I recommend exporting the file and then using Windows Explorer to view it.
+This allows you to view `.uasset` files within `UE Viewer`. However, the file browser is difficult to use; I recommend exporting and viewing them with Windows Explorer.
 
-Right-click the folder you want to export, such as `All Package` or `Game`. Click `Export folder content` . You can choose which folder to output. I’m defaulting here.
+Right-click the folder you want to export, such as `All Package` or `Game`, and click `Export folder content`. You can choose the output folder; I am using the default.
 
 ![](../../assets/images/2025-08-24-01-35-49-image.webp)
 
-Next, you will find all general format resource files in the export folder you’ve set up, such as *mage*.
+You can now view all resource files in general format within the export folder you have set, such as
 
 ![](../../assets/images/2025-08-24-01-36-37-image.webp)
 
-# Get CG images
+# Get CG image
 
-Global search keywords can be used to explore.
+A global search for the keyword `PlotCG` will suffice.
 
-Exported image CG files are converted to `.TGA` file format, which is a lossless image format. We can view them using [BandiView - 、](https://www.bandisoft.com/bandiview/).
+The exported image CG file is a `.TGA` file, an uncompressed image format, which can be viewed using [BandiView - Image Viewer, Fast and Powerful](https://www.bandisoft.com/bandiview/).
 
 ![](../../assets/images/2025-08-24-01-37-40-3824c5ece06cc56241688f4a4aacbcbd.webp)

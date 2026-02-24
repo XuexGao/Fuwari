@@ -1,6 +1,6 @@
 ---
-title: "Use NoneBot2 to build your QQ Bot!"
-description: "Using NapCat to connect with NoneBot2, you can build your own chatbot."
+title: "Build Your QQ Bot with NoneBot2!"
+description: "Use NapCat to connect with NoneBot2 and create your own chatbot."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/QmcMSSKysZmgUCUk9W7hQUvZCtVSFH6hGKHctg99yo1yDE.webp
@@ -9,45 +9,45 @@ published: 2024-11-20
 tags:
 - QQBot
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+To install NapCat for QQ login and message handling, download and run `launcher.bat` with your QQ number, then access the web UI via the printed URL. For NoneBot2, install Python, set up pipx, and use `nb bs` to scaffold a new bot project, configuring the listening address and port (e.g., 8080) to match NapCat’s web UI. After creating the project with `nb run`, test connectivity with `/ping` and manage plugins or dependencies within the virtual environment.
 :::
 
-# Installation of NapCat (Windows)
+# Install NapCat (Win)
 
-Login to QQ to send and receive messages.
+> Used for logging into QQ to send and receive messages
 
-1. Please download [Release NapCat V4.1.12 · NapNeko/NapCatQQ · GitHub](https://github.com/NapNeko/NapCatQQ/releases/latest)’s `NapCat.Shell.zip` file.
+1. Enter [Release NapCat V4.1.12 · NapNeko/NapCatQQ · GitHub](https://github.com/NapNeko/NapCatQQ/releases/latest), download `NapCat.Shell.zip`
 
-2. Here’s the translation:  “Move the stress to a separate folder, then open the command line and run `\launcher.bat <BOT QQ ID>`”
+2. Unzip it into a separate folder, then open the command prompt and run `launcher.bat <BOT QQ>`
 
-3. Upon completion of the process, please scan your mobile device using the provided QR code to log in.
+3. Log in via scanning the QR code with your phone after launch.
 
-4. It will print the local console address information, such as `[NapCat` [WebUi] WebUi Local Panel Url: http://127.0.0.1:6099/webui?token=4xldg5fqb1]].
+4. It will print the local console address information, such as: `[NapCat` [WebUi] WebUi Local Panel Url: http://127.0.0.1:6099/webui?token=4xldg5fqb1]]
 
 5. 直接进入，如图配置即可（端口号可以自己修改，但是要和下部分NoneBot2监听的端口一致。这里是9090）![](../../assets/images/2024-11-20-19-21-21-2024-11-20-19-15-39-image.webp)
 
-# Installation of NoneBot2.
+# Install NoneBot2
 
-For implementing logic to control NapCat communication, this section will define the system’s communication protocols and management procedures.
+Used to implement logic for controlling NapCat's message sending and receiving.
 
-1. First, you must install Python. Windows supports it at https://scoop.sh/.
+1. First, you need to install [Python](https://www.python.org/downloads/). On Windows, you can use https://scoop.sh/
 
-2. Pypi Cleanwater Source: `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`
+2. PyPI Tsinghua Source: `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`
 
-3. To install pipx, please run: `pip install pipx`. You can also use `scoop install pipx`.
+3. Install pipx: `pip install pipx`. You can also use `scoop install pipx`
 
-4. Set the global pipx variable: `pipx ensurepath`
+4. Set the pipx global variable: `pipx ensurepath`
 
-5. ``` Install the nb-cli package using pipx: `pipx install nb-cli` ```
+5. Install nb-cli: `pipx install nb-cli`
 
-6. **If you cannot find the 'nb' command:** For root users, you can edit `/root/.bashrc` or `/root/.profile` (if using Bash): Add the following lines to the file: `export PATH="$HOME/.local/bin:$PATH"` Save and reload the configuration: `source /root/.bashrc`
+6. **If the 'nb' command is not found:** For the root user, you can edit `/root/.bashrc` or `/root/.profile` (if you are using Bash): `nano /root/.bashrc` Add the following line: `export PATH="$HOME/.local/bin:$PATH"` Save and reload the configuration: `source /root/.bashrc`
 
-7. `nb self install nb-cli-plugin-bootstrap`
+7. Install nb bootstrap: `nb self install nb-cli-plugin-bootstrap`
 
-8. Develop a new project, selecting a folder you prefer. Then: `nb bs` (Unclear, proceed to the end).
+8. Create a new project, choose a folder you like, then: `nb bs` (If you don't understand, just press Enter repeatedly)
 
-示例：
+Example:
 
 ```
 C:\afbot>nb bs
@@ -87,10 +87,10 @@ C:\afbot>nb bs
 项目配置完毕，开始使用吧！
 ```
 
-9. Upon completion of the project, initiate the launch process: `nb run`
+9. After the project is created, start it: `nb run`
 
-10. Connection to Lagrange has been established successfully. `INFO` nonebot | OneBot V11 | Bot XXXXXXXXXX connected]]
+10. Appeared: `*NFO* nonebot | OneBot V11 | Bot XXXXXXXXXX connected` You have successfully connected to Lagrange.
 
-11. Please test the ping service and observe if it encounters the Pong error.
+11. Test, send a `/ping`, see if Pong appears~
 
-12. To debug NoneBot2, first enter the virtual environment using `nb`. Subsequently, install the necessary package using `pip install <package_name>`.
+12. If you need to debug NoneBot2, first use `nb` to enter the virtual environment. Then use `pip install <package_name>`

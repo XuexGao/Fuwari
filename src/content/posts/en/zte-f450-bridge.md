@@ -1,6 +1,6 @@
 ---
-title: "ZTE Photon F450 Unboxed Get Super Secure"
-description: "My friend has been considering switching to a bridge lighting system for the long-term, and today I successfully completed the installation. However, due to the lack of ultra-high density, we eventually found a solution through internet resources."
+title: "ZTE Optical Modem F450 Without Disassembly to Obtain Super Dense"
+description: "My friend had been wanting to change the optical modem to bridge mode for a long time, and today I finally got it done. However, I didn’t have a super-dense (or ultra-dense) device, but with the help of the internet, we eventually found a solution."
 published: 2025-11-01
 image: ../../assets/images/zte-f450-bridge-4.webp
 tags:
@@ -8,25 +8,25 @@ tags:
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-The ZTE F450, with the ‘Super Password’ (ZXhnf450), can be accessed through USB by navigating to a specific directory via file management and copying files to a U disk, followed by decryption to reveal system information. A FAT32 formatted U disk is required for this process.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide explains how to retrieve the super administrator password from ZTE F450/F650 optical modems by injecting HTML code via USB to access the root directory, copying the encrypted configuration file, and using NirSoft’s RouterPassView to decrypt and reveal the password. The process requires a FAT32-formatted USB drive and specific file manipulation within the modem’s file manager. The final step involves searching for the "tele" entry in the decrypted XML file to extract the password.
 :::
 
-> 参考：
+> Reference:
 > 
-[ZTEF450_zxhnf450-CSDN](https://blog.csdn.net/z47913/article/details/140727685) translates to:  “ZTE Lumina Cat F450, without disassembly, obtains ultra-secure data – ZXHNf450 Lumina Cat Super Password – CSDN Blog.”
+> [ZTE Optical Modem F450 Obtain Super Password Without Disassembling_zxhnf450 Optical Modem Super Password - CSDN Blog](https://blog.csdn.net/z47913/article/details/140727685)
 > 
-Here’s the translation of the text:  “How to obtain the password for the Zhongxing Tianyue F450/F650 Ultra-Tube.”
+> [【Network】ZTE Tianyi Optical Modem F450/F650 Super Admin Password Retrieval - Bilibili](https://www.bilibili.com/video/BV1ri4y1h7Zo/?vd_source=6b94c66d8e200ba092130f674228bbff)
 
-# Basic principles
-Through external USB connections, accessing the official file management path `\..\` to view the root directory and subsequently copy the detailed “Super-Secret” files to a USB drive for decryption and knowledge.
+# Basic Principles
+By connecting via an external USB and injecting the path `../..` through the official file manager to view the root directory, copy the file containing the optical modem's super-encrypted data to a USB drive, and decrypt and read it to understand the super-encryption.
 
-# Formal commencement.
-First, prepare a USB drive with a FAT32 partition.
+# Formally begin
+First, prepare a USB drive, **must have a FAT32 formatted partition**
 
-Insert the USB port for the cat, allowing it to be recognized.
+Insert into the optical cat's USB port and wait for recognition.
 
-进入光猫的文件管理，查看U盘内文件。此时F12，选中其中一个文件夹，将 HTML 代码改为
+Enter the file manager of the optical modem to view the files on the USB drive. At this point, press F12, select one folder, and change the HTML code to
 ```html
 <a href="javascript:;" style="color:#535353;"
    onclick="openfile('../..', false)"
@@ -36,20 +36,20 @@ Insert the USB port for the cat, allowing it to be recognized.
 
 ```
 
-Please click the folder, and wait a few seconds for it to navigate to the `/` directory of the light box.
+Then click on the folder, wait a few seconds, and you will enter the `/` directory of the optical modem.
 
-Please copy the file located at C:/userconfig/cfg/db_user_cfg.xml to a USB drive.
+Copy `/userconfig/cfg/db_user_cfg.xml` to USB drive
 
-Remove the USB drive, insert your computer, and then transfer the `db_user_cfg.xml` file to it.
+Eject the USB drive, insert it into the computer, and take out `db_user_cfg.xml`
 
-Please visit [RouterPassView - From Windows Router Backup Files to Restore Lost Passwords](https://www.nirsoft.net/utils/router_password_recovery.html).
+Go to [RouterPassView - Recover Lost Router Passwords from Router Backup Files on Windows](https://www.nirsoft.net/utils/router_password_recovery.html) to download
 
 ![](../../assets/images/zte-f450-bridge.webp)
 
 ![](../../assets/images/zte-f450-bridge-1.webp)
 
-Release tension and utilize `RouterPassView` to access `db_user_cfg.xml`.
+Unzip and use `RouterPassView` to open `db_user_cfg.xml`
 
-Search for `tele` to locate highly sensitive information.
+Search `tele`, looking for superdense
 
 ![](../../assets/images/zte-f450-bridge-3.webp)

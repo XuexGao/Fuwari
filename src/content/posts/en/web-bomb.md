@@ -1,117 +1,115 @@
 ---
-title: "How to put a compressed bomb on your website?"
-description: "Do you know about compressed files? These are small, seemingly innocuous files – typically under kilobytes – that, when decompressed, can yield substantial amounts of data, ranging from hundreds to several thousand gigabytes."
+title: "How to place a ZIP bomb on your website?"
+description: "Do you know about zip bombs? They're those mysterious things that look harmless—tiny files, only a few KB in size—but when decompressed, they explode into files that can be hundreds or even thousands of gigabytes!"
 published: 2026-02-14
 image: ../../assets/images/web-bomb.png
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-Here’s a summary of the article:
-
-The author discovered that a simple website, when opened, sends a 42kb file compressed as br, which is then not displayed correctly. They used a web compression technique – compressing the original HTML file into a smaller format – to achieve this. This process effectively duplicates the content and then compresses it, resulting in a surprisingly small file size. The author demonstrates how to create a "web bomb" using a simple compression algorithm, showcasing its potential for disrupting website performance by forcing browsers to interpret the compressed content as HTML.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article explains how to create and deploy a "web compression bomb"—a small compressed file that, when decompressed by a browser, explodes into an enormous file, causing browser slowdown or crash. It demonstrates the technique using tools like Cloudflare Pages, requiring disabling automatic compression and manually setting the `Content-Encoding` header to force decompression. While primarily a prank or demo, it highlights potential misuse for DDoS-like attacks, though it’s not practical for real-world exploitation due to browser and CDN defenses.
 :::
 
-# Introduction
-Several years ago, a friend sent me an intriguing website that began to rotate endlessly when I opened it.
+# Preface
+Long ago, a friend of mine sent me a mysterious website; once opened, it just kept spinning.
 
-Normally, rotating in a browser is resource-intensive; I’ve been waiting for several minutes before it finally stops.
+But normally, the browser's loading spinner has a timeout; I waited for several minutes, but it was still spinning.
 
-Finally, it was discovered that the issue wasn’t a network request, but rather a problem with the assets provided by the webpage!
+Finally, it turned out not to be an issue with the network request, but with the assets provided by the webpage!
 
-The original webpage transmitted a 42KB file via the response header, indicating compression using bzip2. The original format was HTML, followed by…
+The original webpage sent a 42kb file, informing the browser via the response header that it was compressed with br, in its original HTML format, and then...
 
-Open the F12 debugger console. I’m going! This thing has 10 Gs! Wrong! It's still loading!
+Open the F12 console, wow! How come this thing is 10GB! No, wait! It's still loading!
 
 ![](../../assets/images/web-bomb.png)
 
-Following the discovery of this web compression bomb, it’s come to light that I’ve revisited the matter again today, and I’ve attempted to provoke it.
+Then I later found out that this was a web compression bomb, and today I remembered this incident, so I tried messing around with it again.
 
-Here’s a professional translation of the text:  “Let's demonstrate how to create a compressed explosive – a ‘blast-off’ device.”
+Next, I'll show you step by step how to make this compressed bomb!
 
-# The core principle.
+# Principle
 
-In modern web applications, servers typically do not provide the original source files (e.g., .html), but instead offer compressed versions of the files (e.g., .br, .gz, .zstd).
+In modern web pages, servers typically do not provide original source files (such as .html), but instead provide compressed files (such as .br, .gz, .zstd).
 
-The browser responds to the received file by examining the Content-Encoding header value to determine if the asset has been compressed and which decompression algorithm is utilized.
+After receiving the file, the browser determines whether the asset is compressed and which decompression algorithm to use based on the value of the `Content-Encoding` response header.
 
-This measure was implemented to reduce network bandwidth consumption, and the compression of web files typically results in significantly lower bandwidth usage compared to distributing the original files.
+This measure was originally intended to save network bandwidth; distributing compressed web pages typically consumes significantly less bandwidth than distributing uncompressed files.
 
-If you have a basic understanding of compression principles, you’ll recognize that it fundamentally involves removing redundant data and organizing it into meaningful categories.
+If you have a slight understanding of compression principles, you should know that compression is essentially deduplication plus categorization.
 
-Using an inappropriate example.
+With an admittedly inappropriate example
 
-Assuming this is a source file, there are 10 zeros present.
+If this is the source file, there are a total of ten 0s.
 
 ```
 0000000000
 ```
 
-We can easily compress this file by simply having it contain only 10 zeros. We can represent this with `10-0,`. This allows for a straightforward compression algorithm.
+If we want to compress? It's very simple! Since the file consists of only ten 0s, we can write it as `10-0,` to represent ten 0s, thus achieving a simple compression algorithm.
 
-It successfully compressed the source file by reducing it to 50% of its original size, resulting in only 5 units instead of 10.
+It successfully compressed the source file by 50% (the source file required 10 units for storage, but only needs 5 units after compression).
 
-Here’s the translation:  “This is a simplified demonstration and does not represent any compression algorithm found on the market; it's intended solely to illustrate the principles of compression.”
+*This is merely a simple demonstration and does not represent any compression algorithm available on the market; it is intended solely for a basic understanding of "how compression is implemented"*
 
-Here’s a professional translation:  “When embedding an extremely large number of zeros within a file, and subsequently compressing it, the resulting compressed file will be significantly smaller, but unpacking it will release a substantial archive.”
+So, what if we stuff an extremely large number of zeros into a file, then compress it, resulting in a very small compressed file? But when decompressed, it would unleash an enormous file!
 
-[!TIP]
-Zstandard compression achieves significantly higher compression ratios than Gzip, making it a common choice for creating "compression bombs" – where the resulting compressed files offer exceptional compression rates, often exceeding 1:1.
+> [!TIP]
+> zstd and br achieve much higher compression ratios than gz, so they are generally used to create compression bombs, with compression ratios reaching astonishing **1:124878.0487804878**
 > 
-A compressed bomb, when decompressed, can release up to **10 GB** of files!
+> A **8.20 KB** compressed bomb that, when decompressed, can release up to **10 GB** of files!
 
-# Practical
+# Hands-on
 
-We need to prepare a custom-designed compressed bomb, which can be fabricated manually or downloaded directly from here: [Eating Memory's Web Bomb - Morning Sun's Blog~](https://www.chenxublog.com/2020/11/16/web-bomb-eat-memory.html)
+First, we need to prepare this specially designed compressed bomb; you can make it manually or download it directly from here [Memory-Eating Web Bomb – Chen Xu's Blog~](https://www.chenxublog.com/2020/11/16/web-bomb-eat-memory.html)
 
-Here’s the translation:  “We are now receiving a compressed explosive device – it appears to be harmless to people and animals.”
+Next, we get a compression bomb, which appears harmless to humans and animals.
 
 ![](../../assets/images/web-bomb-1.png)
 
-Using a stress relief tool, we can obtain this massive original file after the decompression process.
+After using a decompression tool to decompress, we can obtain this large original file.
 
 ![](../../assets/images/web-bomb-2.png)
 
-Okay, we will deploy this compressed bomb onto the web and set up a compression header accordingly.
+OK, next we just need to place this compression bomb on the web and set the compression headers accordingly.
 
-Therefore, where should it go? It’s okay with anything – you just need to ensure…
+So... where should I put it? Actually, anywhere works; you just need to make sure
 
-- Here’s the translation:  The web server can provide access to raw compressed explosive files.
-- A web server can provide a client with a compression header that enables normal decompression of the compressed data **Normally decompressed compression headers**.
+- Web servers can provide **original compressed bomb files**
+- Web servers can provide clients with a compressed bomb **a compressed header that can be normally decompressed [[C:Content-Encoding**.
 
-Here’s the translation:  We provide a practical example of static hosting using Cloudflare Page/Worker.
+We take Cloudflare Page/Worker's static hosting as an example.
 
-首先，将压缩炸弹放到静态资产目录（为了伪装，我这边重命名为了 `index.html` ）
+First, place the compressed bomb in the static assets directory (for, I renamed it here to `index.html`).
 ![](../../assets/images/web-bomb-3.png)
 
-Here’s the translation:  “Next, revise Cloudflare rules to ensure they provide clients with a standardized header.”
+Next, edit the Cloudflare rules to allow the client to receive the header we expect.
 
-Due to Cloudflare’s default compression for HTML files, our compressed data will be further compressed by Cloudflare, potentially rendering the compressed data unusable.  See the logical chain illustrated in the image.
+Since Cloudflare automatically compresses HTML files by default, our compression bomb will be compressed again by CF, which will cause the compression bomb to fail. Please refer to the logical chain in the diagram below.
 
-Cloudflare Automatic Compression (typically using .zstd) -> Raw Compressed Bomb.br.zstd -> Sent to client and carries the zstd compression header -> Client decompresses the raw compressed bomb.br -> Displays the raw compressed bomb.br directly -> Encoded.
+Original compressed bomb.br -> Cloudflare automatic compression (usually .zstd) -> Original compressed bomb.br.zstd -> Sent to client with zstd compression header -> Client decompresses using zstd algorithm to get Original compressed bomb.br -> Directly displays Original compressed bomb.br as HTML -> Garbled text
 
-The current method is not yielding the desired results, so we must first disable Cloudflare’s automatic compression and allow the files to be served directly.
+This would be ineffective, so we first need to disable Cloudflare's automatic compression to allow it to serve the original files directly.
 
 ![](../../assets/images/web-bomb-4.png)
 
-Due to Cloudflare’s automatic compression disabling, the response header `Content-Encoding` will also be removed. Consequently, if a client requests data, this results in the following:
+Next, since Cloudflare's automatic compression is disabled, the `Content-Encoding` response header will also be removed; at this point, if the client fetches it, the result will be as follows
 
-The provided text is a corrupted HTML snippet, likely representing a compressed data file. It’s essentially a mess of code and should not be displayed directly.
+Original compressed bomb.br -> Display original compressed bomb.br directly as HTML -> Garbled text
 
-We have yet to achieve our objectives, necessitating the implementation of additional response header rules to ensure that clients parse our compressed data using the BR algorithm. This is in place to prevent other content types from causing the client to misinterpret the file type and thus avoid potential issues with encoding.
+We have still not achieved our goal, so we need to configure an additional response header rule to force the client to decompress our compression bomb using the BR algorithm *For safety, here we force the client to parse the file type as HTML to avoid other types causing the client to ignore [[C:Content-Encoding*.
 
 ![](../../assets/images/web-bomb-5.png)
 
-We successfully accessed our compressed payload, and the client is now fully integrated.
+Next, try accessing again—unless something goes wrong, the client will successfully trigger our compression bomb!
 
 ![](../../assets/images/msedge_xYm7TNsMiq.gif)
 
-# The purpose of compressing explosives is to reduce their volume, thereby decreasing the weight and size of the device, facilitating easier transportation and storage. It also minimizes the risk of accidental detonation due to reduced sensitivity.
+# What is the use of a compressed bomb?
 
-I have no use for it; I can only be used to fry your friend’s browser.
+Not useful, it can only be used to crash your friend's browser.
 
-Using this method effectively can mitigate WAF attacks, however, for bandwidth-sensitive CDNs, it’s recommended to revert to the CDN's built-in filtering mechanism to avoid CDN misidentification *you haven’t taken adequate protection*
+If you want to use this method as an alternative to WAF interception, it does work; however, for bandwidth-sensitive CDNs, it is still recommended to return the CDN's own interception page to avoid misjudgment by the CDN *You haven't done proper protection*.
 
-# Thank you.
+# Acknowledgments
 
-Here’s the translation:  “Memory Bytes: A Web Bomb by Morning Dawn”
+[Memory-Eating Web Bombs – Chen Xu’s Blog~](https://www.chenxublog.com/2020/11/16/web-bomb-eat-memory.html)

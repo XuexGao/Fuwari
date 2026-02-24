@@ -1,6 +1,6 @@
 ---
-title: "Hugo Blog Setup and Configuration Tuning"
-description: "Hugo is a static blog platform built on Go, achieving a 600% increase in build efficiency compared to Hexo. It also supports low-JavaScript features and offers enhanced SEO optimization, making it easier for search engine crawlers to access content."
+title: "Hugo Blog Setup Tutorial and Configuration Optimization"
+description: "Hugo is a static blog built with Golang. Compared to Hexo built with Node.js, its construction efficiency is improved by 600%, and it also supports low JavaScript features, offering better SEO and easier crawling for spiders."
 category: "Tutorial"
 draft: false
 image: ../../assets/images/3d1b097d-7e31-4312-b3e5-d213e2903f4d.webp
@@ -9,31 +9,31 @@ published: 2025-03-03
 tags:
 - Hugo
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+The author abandoned their Astro-based Fuwari blog due to maintenance difficulties and switched to Hugo, a static site generator using HTML/JS/CSS, for easier customization and faster builds. They detail a Windows setup using Scoop to install Hugo and PaperMod theme, configure site settings, and create content structure. The guide concludes with deploying the site via Git to platforms like Vercel or Cloudflare Pages.
 :::
 
 # Introduction
 
-Here’s the translation:  “I previously wrote an article titled [Fuwari Static Blog Setup Tutorial](/posts/fuwari/).”
+I once wrote an article called: [Fuwari static blog setup tutorial](/posts/fuwari/).
 
-The [Fuwari](https://github.com/saicaca/fuwari) rendering utilizes Astro and combines server-client architecture, despite the UI being visually appealing. However, due to my lack of experience with Astro development, maintaining it presents significant challenges in the long term – specifically, manually resolving conflicts when adding comments to the Giscus branch requires manual intervention.
+The [Fuwari](https://github.com/saicaca/fuwari) in the text is based on Astro and uses a hybrid rendering approach combining server and client-side rendering. Although the UI is indeed nice, because I am not proficient in writing Astro, maintenance will be particularly difficult in the future (for example, after manually adding Giscus comments, conflicts with the upstream branch will require manual resolution before merging upstream).
 
-Ultimately, I decided to relinquish my pursuit and recognize that my current skillset is not suitable for building a project using native HTML, JavaScript, and CSS frameworks.
+In the end, I gave up. Since I’m just a beginner, why not find a framework that natively uses HTML + JS + CSS?
 
-Therefore, I inquired with AI, Claude, to recommend Hugo for me.
+So I asked the AI, and Claude recommended that I use Hugo.
 
-I had previously heard of Hugo’s name, but I didn't delve deeply into it. However, Claude informed me that Hugo utilizes Go language for compilation, offering fast performance and requiring only minor modifications to my existing HTML, CSS, and JavaScript knowledge.
+Actually, I had long heard of Hugo's reputation, but I hadn't delved into it deeply. However, Claude told me that Hugo is compiled using Go language, which makes it fast, and if I want to modify it, I only need to tweak the HTML+JS+CSS that I'm most familiar with.
 
-Following this process, I dedicated two hours to in-depth research, deployment, and optimization of Hugo. I discovered that Hugo is remarkably powerful: the migration was straightforward, the modifications were simple, and the construction was rapid.
+So I spent two hours deeply researching, deploying, and optimizing. I found Hugo to be truly powerful: easy to migrate, simple to customize, and fast to build.
 
-# Formal commencement.
+# Formally begin
 
-Please operate entirely on Windows.
+> Please operate throughout on Windows.
 
-We must first install Scoop, a package manager for Windows that I find to be exceptionally useful.
+We first need to install Scoop, a package manager for Windows that I personally find very useful.
 
-Default installations are typically placed in the C drive. If you wish to change the installation location, please modify it as needed.
+Scoop defaults to installing on the C drive; if you wish to change the drive, adjust accordingly.
 
 ```powershell
 $env:SCOOP='D:\Scoop'
@@ -42,18 +42,18 @@ $env:SCOOP_GLOBAL='D:\ScoopApps'
 [Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine')
 ```
 
-Installation of Scoop:
+Install Scoop:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 ```
 
-If you encounter installation failures as an administrator, please switch to a standard user account. To install Scoop with administrative privileges, please use…
+If installation fails when run as an administrator, switch to a regular user. If you wish to force installation as an administrator, use
 
-[github original post](https://github.com/ScoopInstaller/Install#for-admin)
+[original post on GitHub](https://github.com/ScoopInstaller/Install#for-admin)
 
-To ensure security, default administrator control panel installation is disabled. If you know what you are doing and wish to install Scoop in a privileged administrative role, please download the installer and manually execute it from the enhanced console using `-RunAsAdmin`. An example is provided below:
+For security reasons, installation under the Administrator console is disabled by default. If you know what you're doing and wish to install Scoop as an administrator, download the installer and manually execute it in an elevated console using the `-RunAsAdmin` parameter. Here is an example:
 
 ```powershell
 irm get.scoop.sh -outfile 'install.ps1'
@@ -62,26 +62,26 @@ irm get.scoop.sh -outfile 'install.ps1'
 iex "& {$(irm get.scoop.sh)} -RunAsAdmin"
 ```
 
-Installation of the Hugo framework:
+Install the Hugo framework:
 
 ```powershell
 scoop install hugo
 ```
 
-Select a folder for your site and create it within the `myblog` directory.
+Then choose a folder you like to create your site. `myblog` is your site folder name.
 
 ```shell
 hugo new site myblog
 cd myblog
 ```
 
-Install PaperMod Theme
+Install the PaperMod theme:
 
 ```shell
 git clone https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 ```
 
-The root directory will contain a `hugo.toml`. I recommend using YAML. Please rename the file to `hugo.yaml` and paste in the following content.
+The root directory of the site will have a `hugo.toml`. I recommend using YAML. Rename the file to `hugo.yaml`. Paste and modify the following content
 
 ```yaml
 baseURL: "https://站点url"
@@ -163,9 +163,9 @@ outputs:
     - JSON # 必须，用于搜索功能
 ```
 
-We need to configure classification, labels, archiving, and search pages separately.
+Then we need to configure the categories, tags, archives, and search pages separately.
 
-Create `content\categories\_index.md`.
+Create `content\categories\_index.md` Write:
 
 ```markdown
 ---
@@ -174,7 +174,7 @@ layout: categories
 ---
 ```
 
-Create a `content\tags\_index.md` file with the following tags:
+Create `content\tags\_index.md` Write:
 
 ```markdown
 ---
@@ -183,7 +183,7 @@ layout: tags
 ---
 ```
 
-Create an archive file named “archives.md” and populate it with the following content:
+Create `content\archives.md` Write:
 
 ```markdown
 ---
@@ -192,7 +192,7 @@ layout: archives
 ---
 ```
 
-Create a search index in the `search.md` file.
+Create `content\search.md` Write:
 
 ```markdown
 ---
@@ -201,9 +201,9 @@ layout: "search"
 ---
 ```
 
-We need to modify the default article creation template.
+Then we need to change the default article creation template.
 
-In `archetypes\default.md`, the following was written:
+Write into `archetypes\default.md`:
 
 ```markdown
 ---
@@ -219,31 +219,31 @@ lang: ''
 ---
 ```
 
-Following this, we can utilize commands to create articles and begin writing. Please note that the final URL for your article will be the name of the document itself – for example, `https://yourwebsite.com/posts/first`.  It’s recommended to keep the article filename concise as it won't affect your article title.
+Next, we can create articles using commands and begin writing. Note that the final built article URL is your article's filename. For example: `https://yourwebsite.com/posts/first`. Therefore, keep your article filenames as short as possible, as this will not affect your article's title.
 
 ```shell
 hugo new posts/first.md
 ```
 
-When completing an article, you can preview the website using.
+When we finish writing an article and want to preview the website, we can use
 
 ```powershell
 hugo server
 ```
 
-When we intend to publish our website to Vercel, Cloudflare Pages, or similar static website hosting platforms, we can utilize our `myblog` as a Git repository and push it to GitHub.
+When we want to deploy our site to static site hosting platforms such as Vercel, Cloudflare Pages, we can submit our `myblog` as a Git repository to GitHub.
 
 Root directory: `./`
 
 Output directory: `public`
 
-``` Build command: `ugo --gc` ```
+Build command: `hugo --gc`
 
-Environment variables: Key: `HUGO_VERSION`, Value: `0.145.0`
+Environment variable: Key: `HUGO_VERSION` Value: `0.145.0`
 
 ---
 
-### Object Storage Intermediate Code:
+### Object storage middleware code for storing images:
 
 ```python
 import keyboard

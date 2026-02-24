@@ -1,89 +1,89 @@
 ---
-title: "A post-injury review!"
-description: "Since November 25, 2023, this website has been subjected to continuous and relentless attacks totaling several hundred Terabytes (TiB), with peak attack rates reaching 6.8 Gbps. Furthermore, the attackers have shifted from initial attacks originating from Indian IP addresses to those originating from mainland China. Today, we will discuss why attackers are targeting this website, what they hope to achieve, and how to mitigate Distributed Denial of Service (DDOS) attacks."
+title: "After being hit continuously for four months, let's do a thorough review!"
+description: "Since November 25th, this website has been subjected to continuous attacks totaling as much as hundreds of TiB, with peak attack rates reaching up to 6.8 Gbps. The attackers have shifted from initially targeting purely Indian IP addresses to now exclusively targeting Chinese mainland IP addresses. Today, let’s discuss why the attackers are launching these attacks, what they aim to achieve, and how to defend against DDoS attacks."
 published: 2026-02-10
 image: ../../assets/images/review-ddos-5.png
 draft: false
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This website suffered a sustained DDoS attack lasting approximately four months, resulting in a total traffic of 6.65TB and peak traffic of 1.95GB/s. The attackers utilized numerous domestic IP addresses, likely targeting unpatched vulnerabilities. The attack escalated to include a large number of HTTP connections, further complicating mitigation efforts. Despite rate limiting, the attackers continued to exploit multiple IPs, effectively preventing effective protection.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This article recounts a prolonged DDoS attack on a static website, initially thought to be immune due to CDN-based hosting. The attack, peaking at 6.65TB, targeted the CDN rather than the origin, but attackers adapted by using domestic IPs and eventually expanded to attack APIs. The author’s attempts to mitigate the attack—switching CDNs, implementing IP-based routing, and disabling HTTP/2—were largely ineffective against the scale and adaptability of the assault. The site endured four months of sustained attacks, forcing constant operational adjustments and highlighting the vulnerabilities even static sites face when using global CDNs.
 :::
 
 # Introduction
 
-The initial implementation of this platform utilized a static architecture to mitigate the risk of malicious actors engaging in DoS (Distributed Denial-of-Service) attacks.
+When this site was first established, it used a **static** architecture to prevent malicious individuals from launching DDoS attacks.
 
-I’ve considered this, and the primary traffic is directed towards the edge nodes of a static website. Specifically, it’s being targeted at the CDN provider itself.
+Think about it: a static website, all attack traffic hits the **CDN's edge nodes**, which is equivalent to attacking **the entire CDN provider**.
 
-It’s challenging to kill, and it’s unnecessary – as there is no backend server behind a static website, and it doesn't involve any financial interests. It’s simply a waste of time.
+First, it's hard to kill them; second, it's unnecessary, since static websites don't have backend servers and don't involve any interests—purely a waste of effort.
 
-In standard practice, DDoS attacks are directed at individual IP addresses. This is because operating a website typically requires the purchase of a server and its subsequent deployment to serve services, ultimately making them accessible to the public network.
+Normally, DDoS attacks should target individual IPs, because typically, running a website requires purchasing a server and running services on it, ultimately making everything ready and accessible to the public.
 
-If no high-level DDoS protection or CDN is in place, numerous free DDOS attacks are readily available to easily terminate an IP address.
+If there is no high-defense protection and no CDN, many free DDoS attacks available on the market can easily bring down an IP address.
 
-However, the situation with this website is markedly different – it’s a static website directly addressed by CDN (Content Delivery Network).
+However, the situation on this website is very different; it is a **static website served directly by a CDN**.
 
 ![](../../assets/images/review-ddos.png)
 
-Attacking this website means attacking the CDN.
+That means, **Attacking the website = Attacking the CDN**
 
-As is customary, this is virtually impossible.
+As is usual, this is almost impossible.
 
-From a macro perspective, CDN is utilized for traffic cleansing, neutralizing malicious traffic, and then releasing clean traffic to the origin server.
+From a macro perspective, CDN is used to clean traffic, filtering out malicious traffic and allowing clean traffic to access the origin server.
 
-However, if it’s a static website?
+But what if it's a static website?
 
-The system lacks a central repository for requests; every request is treated as a valid request and responded to by the CDN.
+It has no origin server at all; every request is treated as a valid request and responded to by the CDN.
 
-Therefore, if someone initiates a CDN outage, it’s simply self-inflicted suffering, and I don't need to intervene in any way.
+Therefore, in summary, if someone attacks a CDN, they are absolutely making things harder for themselves, and I simply don't need to get involved.
 
-However, is this truly so?
+But, is that really the case?
 
-If the attacker’s objective is not simply to **kill CDN**, what is their true aim?
+If the attacker's objective is not **CDN**?
 
-So things have become more interesting.
+Then things became interesting.
 
 ---
 
-# First, a major attack: 6.65 TB traffic surge
+# First large-scale attack: 6.65TB traffic surge
 
-On December 16, 2025, this website experienced a significant and widespread Distributed Denial-of-Service (DDoS) attack.
+*Recorded on December 16, 2025, this is the first large-scale DDoS attack the site has suffered*
 
-On December 16, 2025, during a testing project with my friend, he inadvertently forgot a key concept. I suggested he review my blog, but was informed that the blog’s access status code is **570**.
+At **December 16, 2025, 11:13**, while testing a project with my friend, he forgot a piece of knowledge. I suggested he check my blog, but he was informed that the blog returned a **570** status code.
 
-I immediately tested my blog website at https://itdog.cn and discovered that most nodes are in the **570** state code status.
+I immediately tested my blog website https://acofork.com using https://itdog.cn and found that most nodes returned the **570** status code.
 
 ![](../../assets/images/4f3b8517527460574d03479cc64655be.webp)
 
-Due to the deployment of my website at **EdgeOne**,...
+Because my website was deployed on **EdgeOne** at that time
 
-Following this, I contacted Tencent customer service to inquire about the status code being a **Single Node Limited Frequency Access**.
+Subsequently, I consulted Tencent's customer service to verify, and learned that this status code is a **single-node access frequency limit** status code
 
 ![](../../assets/images/5082a73ffa31ee435c9c7894263ae4cd.webp)
 
-My friend even joked about it: “You’ve really gotten to me.”
+My friend is even jokingly saying: **Your website 🔥ed**
 
 ![](../../assets/images/ddos-6t-1.webp)
 
-However, the situation appears unsettling, why is it that overseas countries are consistently showing a high level of interest in **200 OK**?
+But the situation seems a bit strange; why are all overseas responses **200 OK**?
 
-I’m beginning to question whether I have been wronged.
+I started to suspect that I was beaten.
 
 ![](../../assets/images/ddos-6t-2.webp)
 
-It’s possible to spend a long time playing static, without immediately checking the EdgeOne request count and traffic data. It seems like nobody is interested in engaging with it.
+Maybe I got used to static content and didn't check the request count and traffic on **EdgeOne** right away, thinking that since it's all static, who would bother accessing it unnecessarily.
 
-Then I went home, briefly interrupting my logic.
+Then I went home and temporarily cut the logic.
 
-- Here’s the translation:  “Previously, EdgeOne offered services directly, but now they provide service with a focus on **EdgeOne Pages**.”
-- Here’s the translation:  “EdgeOne CDN is returning data from Cloudflare Pages.”
+- Previously: **EdgeOne Pages** provided services directly, but 570
+- Now: **EdgeOne CDN** fetching from **Cloudflare Pages**
 
-After completing the procedure, the symptoms gradually improved, although the speed was somewhat slow. Eventually, I fell asleep.
+After cutting, it gradually improved, although the progress was somewhat slow, and then I went to sleep.
 
-## The truth has been revealed.
+## The truth comes to light.
 
-Upon waking, I found myself increasingly perplexed, so I accessed the EdgeOne Pages control panel and then observed a rather significant anomaly – a large lightning strike.
+After waking up, I kept thinking it was strange, so I logged into the **EdgeOne Pages** console, and then I saw—what a big shock!
 
 ![](../../assets/images/2f4df8e383a1b41625ad02eb70375465.webp)
 
@@ -93,143 +93,143 @@ Upon waking, I found myself increasingly perplexed, so I accessed the EdgeOne Pa
 
 ![](../../assets/images/01f15a24f395a3731010c8046cb2008c.webp)
 
-Following my curiosity, I wanted to observe the defensive capabilities of ESA and was surprised to receive a message from Alibaba shortly after I had recently cut through it.
+Then, out of curiosity, I wanted to see how good ESA's defense was, but unexpectedly, as soon as I switched over, Alibaba Cloud sent me a message.
 
 ![](../../assets/images/9318872dc53b38334312619b2373c81e.webp)
 
-Here’s the translation:  “Thus…”
+So...
 
 ![](../../assets/images/5b3bcf42d0e4f73fbe031699a291a5c2.webp)
 
 ![](../../assets/images/c4b6bdd2c39ae7585b9d3ecc5dbe9c6d.webp)
 
-Still familiar with Indonesia.
+Still the familiar Indonesia
 
 ![](../../assets/images/5a86eb051d48615259e8dcecb0fe8185.webp)
 
-“I’ve lost it,” followed by a rapid transition to Cloudflare Pages, completed within ten minutes.
+No more options, then I quickly switched to Cloudflare Pages within 10 minutes **Cloudflare Pages**
 
 ![](../../assets/images/ddos-6t-3.webp)
 
-Currently, Cloudflare Pages appears verdant.
+At present, **Cloudflare Pages** also looks quite green.
 
 ![](../../assets/images/image_2025-12-16_08-24-54.webp)
 
-Finally, I received a video on Bilibili that was damaged.
+Finally posted a Bilibili video showing (being beaten), then found out
 
-I’m going! The big one has arrived!
+**Wow! The big shot is here!**
 
 ![](../../assets/images/Screenshot_2025-12-16-08-08-33-65_149003a2d400f6a.webp)
 
-## Here’s the translation:  This report summarizes the recent attack.
+## Summary of this attack
 
 ![](../../assets/images/d16b7b134dec1224dcfc16e59a21942f.webp)
 
 ![](../../assets/images/3c33b054a3180932ae87bea8bd06c3ed.webp)
 
-Here’s the translation:  “This platform has experienced the largest DDoS attack since its launch, resulting in a total traffic volume of 6.65 TB and peak instantaneous throughput of 1.95 GB/s.”
+**This site has suffered its largest DDoS attack since its establishment, with a total traffic of 6.65TB and a peak instantaneous rate of 1.95GB/s**
 
-At **acofork.com**, the primary business operations have been redirected to **2x.nz**. All business activities utilize **Cloudflare CDN**.
+At that time, all major business operations of the **acofork.com** domain were redirected to **2x.nz**, with all services utilizing **Cloudflare CDN**
 
 ---
 
-# Dead horse return, again.
+# Suicide Backhand: Back to ESA again
 
-After Cloudflare, the attack subsided for a period of time, and the website returned to normal accessibility.
+After switching to Cloudflare, the attacks subsided for a while, and the website resumed normal access.
 
-However, I sometimes have a nagging feeling – I’ve already registered a domain name with an international CDN, and isn't it a bit frustrating not to use it domestically?
+But I always had a nagging feeling—since I already have a registered domain, isn’t it too frustrating not to use a domestic CDN?
 
-Here’s the translation:  “Domestic CDN providers offer exceptionally fast speeds for domestic visitors. While Cloudflare possesses robust security measures, domestic access speeds generally surpass those achieved through CDN infrastructure within the country.”
+For domestic CDN, the access speed for domestic visitors is indeed top-tier. Although Cloudflare has strong protection capabilities, its access speed for domestic users is indeed not as good as that of domestic CDNs.
 
-Subsequently, after considerable deliberation, I made the decision to “do myself a favor” – **reverting to ESA (Aliyun All-in-One Acceleration)**.
+So, after much deliberation, I made a "suicidal" decision—**switched the website back to ESA (Alibaba Cloud's Global Acceleration Service)**
 
-However, this time I learned to be more intelligent. I configured a redirection: domestic visitors will use the domestic IP address to access ESA, while international visitors will use CF. Simultaneously, I configured an overseas blocking layer on ESA – if forced through an overseas IP address, the request will be blocked.
+But this time I learned smarter and set up traffic diversion: domestic visitors accessing via domestic IPs will be responded to by ESA, while overseas visitors will be responded to by CF. At the same time, I configured L7-level overseas blocking on ESA — if overseas IPs attempt to access ESA forcibly, the requests will be intercepted.
 
 ![](../../assets/images/review-ddos-2.png)
 
-At first, I believed this would provide a balance between speed and protection, but the situation has proven far more complex than initially anticipated.
+At the time, we thought this would allow us to balance speed and protection, but the situation was far more complicated than that.
 
 ---
 
-# Extended conflict: A protracted battle of defense and offense lasting four months.
+# Sustained Attack: A Four-Month Battle of Offense and Defense
 
-## Attack Escalation: Domestic IP Attack
+## Attack Escalation: Domestic IP Attacks
 
-Despite the deployment of split tunneling and L7 global blocking, the attacker did not abandon their strategy; they shifted to utilizing a substantial amount of domestic IP addresses for attack.
+Under the circumstances where I have implemented traffic diversion and L7 overseas blocking, the attackers did not give up but instead changed their strategy—**beginning to launch attacks using a large number of domestic IPs**
 
-Due to the lack of a unified and comprehensive approach to protecting domestic visitors accessing our CDN, this attack is virtually impossible to effectively mitigate at L7 level.
+Since we cannot and will never implement a one-size-fits-all block for domestic visitors accessing domestic CDNs, this attack is nearly impossible to effectively defend against at the L7 level.
 
 ![](../../assets/images/review-ddos-3.png)
 
-We can briefly consider why attackers have so many domestic IP addresses. Is it simply a matter of spending money on these? Let’s examine the majority of traffic and its potential origins – UA (though it can be spoofed).
+We canthink about why attackers have so many domestic IPs. Is it really their own money being burned? Let's take a look at the UA of most traffic (although it can be forged).
 
-The majority of the observed instances appear to be BT downloaders, potentially linked to recent activity involving [React/NextJS - NVD - CVE-2025-55182](https://nvd.nist.gov/vuln/detail/CVE-2025-55182) and [FnOS - Important security updates notifications](https://mp.weixin.qq.com/s/LzkLcy92m5O24up_9c4NUA). Attackers may have initiated attacks leveraging a large-scale campaign of exploiting unpatched vulnerabilities in compromised meat chickens originating from public networks.
+Most of them appear to be BitTorrent downloaders, which may be related to the recent [React/NextJS - NVD - CVE-2025-55182](https://nvd.nist.gov/vuln/detail/CVE-2025-55182) and [FnOS - Important Security Update Notification](https://mp.weixin.qq.com/s/LzkLcy92m5O24up_9c4NUA). Attackers may have launched attacks by scanning a large number of compromised hosts that have not been patched in a timely manner from the public network.
 
 ![](../../assets/images/review-ddos-12.png)
 
-Despite a general understanding of the attack methodology, we are currently operating with little to no defense. Consequently, we have been largely in a state of helplessness, though our rate limits have been triggered multiple times, and subsequent IP addresses have been immediately blocked, effectively preventing any substantial data flow for an extended period.
+However, even if we roughly understand the attack methods, we still don't know how to defend against them, so during these days, we were almost helpless. Although we implemented rate limiting, due to the large number of attacking source IPs, the rate limit was essentially triggered and then switched to a new IP immediately, ultimately still allowing dozens of terabytes of traffic to be pulled in a single day.
 
-Following the closure of the domestic CDN’s HTTP/2 protocol, due to its ability to serve multiple requests concurrently, and the risk of H2 failing to function, attackers are increasingly reliant on H1 or H1.1 for traffic amplification. Each HTTP connection consumes a separate TCP connection, making it significantly more challenging to effectively leverage this technique for sustained bandwidth manipulation. This approach, while potentially increasing the difficulty of single-source traffic amplification, is unlikely to be sustainable given the sheer volume of attacker IP addresses involved.
+Then I also disabled HTTP/2 for domestic CDNs. Since HTTP/2 allows connection reuse, once H2 is not supported, attackers can only use HTTP/1 or HTTP/1.1 to flood traffic, and each HTTP connection will consume an original TCP connection. I believed this would make it more difficult for attackers to pull streams from a single machine, but as mentioned above, there are many attack source IPs, and this approach seems unable to deter attacks for long.
 
-When the website was attacked, everyone was unable to access it, but I myself had already exhausted all options.
+When the website was attacked, everyone couldn't access it, but I indeed had no further options.
 
-## Attack Propagation: The API has also been targeted.
+## Attack Spread: APIs Are Also Being Targeted
 
-Finally, the attacker has ceased to focus solely on this static site. Instead, they have shifted their attention to attacking other APIs, such as Umami and random images.
+Finally, attackers are no longer solely focused on attacking this static site but have shifted to targeting other APIs, such as Umami, random images, etc.
 
-Shortly after, EdgeOne blocked the domain name for the random image. I was forced to seek alternative solutions to resolve this issue.
+Soon after, EdgeOne blocked the domain of the random image, and I had to seek alternative solutions.
 
 ![](../../assets/images/review-ddos-4.png)
 
-At the time, I temporarily circumvented a DNS restriction to avoid blocking by the search engine for the domain. However, once I changed the API domain, all business utilizing this API required a synchronization of their operations, which consumed considerable effort.
+At that time, I temporarily avoided the domain block by switching to a different subdomain, but once the API domain was changed, all services using this API needed to be updated synchronously, which consumed a significant amount of my effort.
 
-The thought of encountering another round of attacks on the domain, followed by its restriction and subsequent re-blocking and service alterations, becomes increasingly tiresome.
+Just thinking about having to go through the same process again once the next wave of attacks comes—domains getting attacked and banned again, switching domains, changing services, etc.—is exhausting.
 
-“fan groups” also frequently express concerns about…
+Group U fans have also mentioned it.
 
 ![](../../assets/images/Screenshot_2026-02-10-12-01-36-17_9d26c6446fd7bb8.jpg)
 
-Certainly, here’s the translation:  “Indeed, this is the case; despite direct connections to domestic CDNs offering superior access and performance, users experience intermittent connectivity issues when they are blocked, even rendering access unavailable. Furthermore, speed is significantly compromised.”
+Indeed, that's also the case. Although domestic users accessing domestic CDNs directly can achieve extremely good performance, once under attack, they may not even be able to access the service, let alone enjoy fast speeds.
 
-## Finalized and migrated to Cloudflare.
+## Final Solution: Migrate to Cloudflare
 
-Ultimately, it took approximately half a day to migrate the entire website’s core and all other APIs to Cloudflare, despite ongoing persistent attacks from attackers; however, it is not expected to render Cloudflare ineffective.
+In the end, it took another half-day to migrate the entire website and all other APIs to Cloudflare. Although attackers are still launching continuous attacks, Cloudflare has not yet been completely overwhelmed.
 
 ![](../../assets/images/review-ddos-5.png)
 
 ---
 
-# Difficult questions.
+# Troubleshooting
 
-Here’s the translation:  “There are many more aspects of this that remain unaddressed, but they cannot be consolidated into a single question-and-answer format.”
+> There is still a lot of content left unsaid, but they can't be connected together, so let's answer them in Q&A format.
 
-- Here’s a professional translation of the text:  “Why is only you being targeted? Why hasn't my website been affected?”
+- **Why only you got hit? Why didn't my website get hit?**
 
-Due to my role as a streamer, I experience reactions when being challenged, which is endearing.
+Because I'm a streamer, getting hit will cause a reaction, which is very cute.
 
-- Here’s the translation:  “Why attack a static website? Static isn't necessarily an insurmountable challenge?”
+- **Why attack a static website? Isn't static invincible?**
 
-Certainly, “activating a static website” refers to utilizing a CDN (Content Delivery Network) instead of relying on a global CDN like EO/ESA. Due to the high cost of bandwidth within China, and the fact that EO/ESA offers free services, the protective capabilities are significantly diminished compared to large international providers such as Cloudflare. As demonstrated previously, attackers can indeed **killEO/ESA** to render their website unavailable for a period. Conversely, without any proactive measures, CDN platforms may perceive our usage as excessive resource consumption, potentially leading to domain blocking or expulsion, complicating subsequent remediation efforts.
+Indeed, defending static websites is akin to defending CDNs, but since domestic CDNs like EO/ESA are used, it is well known that bandwidth in China is extremely scarce, and EO/ESA still provides free services, so their protective strength naturally cannot match that of major international providers like Cloudflare. As mentioned above, attackers can indeed **bring down EO/ESA**, rendering it unable to serve your website for a period of time. On the other hand, if we take no protective measures at all, the CDN platform may consider us to be abusing resources, leading to the domain being banned or expelled, making it more difficult for us to implement remedial measures later.
 
-- Is this not a WAF (Web Application Firewall) being implemented, such as geo-blocking or rate limiting? Are these rules merely a formality?
+- **Haven't we already implemented a WAF (such as overseas blocking, rate limiting, etc.)? Are these rules just for show?**
 
-To address this question, we first need to understand the purpose of a WAF. In general, a website should be designed with a secure foundation, utilizing Content Delivery Networks (CDNs) to mitigate most malicious requests and ensure that only legitimate traffic reaches the origin server. For example, if your origin server hosts high-resolution, uncompressed video content, you can implement rate limiting, restricting each IP address to only one request per second, thereby preventing malicious requests from accessing this content. However, we are static – lacking a traditional origin server – or the origin server is entirely reliant on the CDN. All inbound requests, regardless of their validity, are directly routed to the CDN, which then acts as the final point of contact for any attempts to reach our domain’s services. While measures like international blocking and rate limiting can be implemented, these are typically handled at Layer 7 (L7) – the application layer – and attackers can still bypass these defenses by establishing direct TCP connections to L4 layers within the CDN infrastructure.  Only through effective control of the CDN's L4 WAF and stringent WAF rules can we realistically prevent a successful attack from reaching our domain’s services.
+To answer this question, we first need to understand what WAF was originally designed to prevent. Normally, a website should be vulnerable at its origin server, with the CDN intercepting most malicious requests and allowing only legitimate requests to reach the origin. Think of it like your origin server hosting high-definition, uncensored movies—you could set up rate limiting so that a single IP can only request once per second, thereby preventing malicious requests from accessing your origin’s hot, high-definition content and instead getting the CDN’s cold, blocking page. But we’re static, with no origin server—or, more accurately, the origin server is the CDN itself. All requests, whether valid or invalid, directly hit the “origin,” which is the CDN. Even if we implement overseas blocking or rate limiting, these are all L7-level controls. Attackers can still establish unlimited TCP connections at the L4 layer to force the CDN to reject services for our domain. Unless we can control the CDN’s L4-layer WAF and set strict WAF rules to directly reject TCP handshake requests from attackers, we may ultimately be doomed to being “killed” by such attacks.
 
-- Here’s a professional translation of the text:  “Why is Cloudflare being considered as a target? While attackers often focus on CDN providers, Cloudflare's architecture and security measures are designed to withstand such attacks. It’s not simply about defending against DDoS; it’s a comprehensive approach to network resilience.”
+- **Why cut off Cloudflare? Isn't it true that attackers target CDNs, and Cloudflare won't be taken down if it's a CDN?**
 
-Here’s the translation:  Cloudflare has successfully defended against over 22.2 Tbps of attacks, making it a relatively minor challenge for our traffic flow. Details can be found at https://x.com/Cloudflare/status/1970244046946759024, [Cloudflare 2025 Annual Third Quarter DDoS Threat Report – Including Top Attackers Aisuru](https://blog.cloudflare.com/ddos-threat-report-2025-q3/?utm_source=chatgpt.com/)
+Cloudflare has previously defended against attacks as high as 22.2 Tbps; for traffic aimed at us, it's absolutely a piece of cake. See: https://x.com/Cloudflare/status/1970244046946759024, [Cloudflare Q3 2025 DDoS Threat Report — Including the Top Botnet Attackers, Aisuru](https://blog.cloudflare.com/ddos-threat-report-2025-q3/?utm_source=chatgpt.com/)
 
-- Here’s the translation:  “I have a website and I need to determine how to mitigate such severe Distributed Denial of Service (DDoS) attacks.”
+- **I also have a website; how can I avoid such terrifying DDoS attacks?**
 
-Here’s the translation:  “Don’t let attackers perceive you as a valuable target, or as a game. If you don’t engage them, you won’t be taken advantage of.”
+Don't let attackers think it's worth it to attack you or that it's fun to hit you, and you won't get attacked (?).
 
 ---
 
-# Attack Reports
+# All attack reports
 
-We recently transitioned to Cloudflare, prior to that we utilized EdgeOne/ESA.
+> We recently switched to Cloudflare; prior to this, we were using EdgeOne/ESA.
 
-### Cloudflare.
+### Cloudflare
 
 ![](../../assets/images/review-ddos-6.png)
 
@@ -247,14 +247,14 @@ We recently transitioned to Cloudflare, prior to that we utilized EdgeOne/ESA.
 
 ---
 
-# Final assessment and review.
+# Final Review
 
-Following four months of intense conflict, the following key takeaways have been identified:
+After this four-month battle of offense and defense, the following points are summarized:
 
-1. **Free Domestic CDN Does Not Prevent DDoS Attacks**：Even with well-crafted WAF rules, a CDN will not terminate your service during an attack. However, the website remains unavailable during the attack due to the inherent downtime associated with TCP handshakes.  Without L4 authorization to drop the attacker's connection at the TCP layer, L7 WAF rules offer limited effectiveness against this type of large-scale distributed attacks.
+1. **Free domestic CDNs are not resilient**: Even if WAF rules are properly configured, the CDN will not kick you out, but during an attack, the website will still be down. Unless we have L4 permissions to drop the attacker's connection at the TCP handshake layer, WAF rules at the L7 level have limited effectiveness against large-scale distributed attacks.
 
-2. Here’s the translation:  “The risk of a compromised CDN, particularly in poorly secured CDNs, is exceptionally high for purely static websites.”
+2. **For purely static websites, the risk of poorly protected CDNs is high**: If deployed on a poorly protected CDN, attackers pulling large traffic volumes not only cause the website to go down temporarily but may also be expelled by the CDN if left unhandled for an extended period.
 
-3. **This attack level is unprecedented, and the current solution is to switch to Cloudflare CDN.** Because Cloudflare’s scale is sufficient to withstand such a massive DDoS attack and guarantee SLA, Cloudflare has successfully defended against attacks of 22.2 Tbps. This level of threat is simply unmatched for this magnitude.
+3. **This attack scale is unprecedented; the current solution is to switch to Cloudflare CDN**: Because Cloudflare is large enough to withstand such massive DDoS attacks and ensure SLA. Cloudflare has previously defended against attacks of 22.2 Tbps, which is completely within its capability for this scale of attack.
 
-4. Here’s the translation:  “Readers are largely unconcerned about their websites being targeted. Such sophisticated attacks are clearly organized and targeted, incurring a substantial cost and practically impossible to launch broadly. Standard websites lack any inherent value in terms of vulnerability; they are simply not susceptible to such deliberate attacks unless someone like the author is actively targeted.”
+4. **Readers hardly need to worry about their websites being attacked**: Such-scale attacks are clearly organized and targeted, with high costs, making them virtually unsuitable for broad, indiscriminate attacks. Ordinary websites have no value to be targeted, unless you, like the author, have been "singled out."

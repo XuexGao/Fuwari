@@ -1,6 +1,6 @@
 ---
-title: "I used Claude10 minutes to write a six-piece game…?"
-description: "I’m hesitant to undertake this project, which appears rather straightforward. However, the group has persistently requested it, and I am forced to proceed."
+title: "I wrote a Gomoku game in 10 minutes using Claude...?"
+description: "I originally didn't want to work on such a project that looks so simple, but since the group members begged me persistently, I had no choice but to implement it."
 category: "Record"
 published: 2025-07-14
 image: ../../assets/images/d359734c-1415-4ebc-8caf-4d807282fad6.webp
@@ -8,19 +8,19 @@ tags: [六子棋, AI]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-This article details a small project involving an AI trained using Python Flask and a simple in-memory database, culminating in the creation of a memory-based AI model. The project utilizes JSON data initially, but ultimately produces a functioning AI that’s been refined through multiple iterations of testing.  The code is available on GitHub for open-source development.
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+A small AI-powered web project was built overnight using Python Flask and an in-memory database, with AI assistance for development. The app is now live at https://sixqi.afo.im and open-source on GitHub. The creator humorously notes it took seven rounds of prompting to complete.
 :::
 
-# Here’s the translation:  Press release summary.
+# Previous Summary
 
-I woke up late last night.
+Originally, I was woken up in the middle of the night.
 
-Preparing a snack and going to sleep to rest.
+Ready to eat something and take a nap.
 
-Let’s spread the word about this group on QQ.
+By the way, chat idly in the QQ group.
 
-Then, I was entrusted with a **neural project**.
+Then I was entrusted with a **neurotic little project**
 
 ![](../../assets/images/29afe2b7-db53-4707-81ef-173befb84a06.webp)
 
@@ -28,26 +28,26 @@ Then, I was entrusted with a **neural project**.
 
 ![](../../assets/images/0d0b13c2-e2d5-4394-b7fd-48af6277869c.webp)
 
-Here’s the translation:  “Thus…”
+So then...
 
-# Let’s go!
+# Let's get started!
 
-Utilize the most familiar Python Flask framework!
+First, use the most familiar Python Flask framework!
 
-Using the simplest memory database!
+Then use the simplest in-memory database!
 
-Then begin training AI!
+Then start training the AI!
 
-I initially intended to store this data in JSON format, but the intelligent AI ultimately delivered it as memory storage.
+~~Here, I originally intended to store it using JSON, but the clever little AI ultimately delivered it as in-memory storage.~~
 
 ![](../../assets/images/1d62004f-ed07-4ced-be59-63bb4dd03b2d.webp)
 
-“It’s finally done!” (I’m not sure, I asked it seven times!)
+Then it was written out! (~~Not really, I asked a total of 7 times~~)
 
-# Please proceed.
+# Launch!
 
-Enjoy the game at [https://sixqi.afo.im/](https://sixqi.afo.im/).
+It is now playable at https://sixqi.afo.im/
 
-GitHub - afoim/sixqi
+Open source: [GitHub - afoim/sixqi](https://github.com/afoim/sixqi)
 
 ![](../../assets/images/1416208a-b44c-40b7-a1ba-743e8a28d3bc.webp)

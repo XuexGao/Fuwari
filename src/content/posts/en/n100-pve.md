@@ -1,6 +1,6 @@
 ---
-title: "N100 - PVE (fnOS+Debian) Infrastructure Records"
-description: "Here’s the translation:  “Setting up PVE on a N100 small server, followed by installing FlyNet NAS and Debian within it, enabling a separation of tracking and build servers for scalability and ease of migration.”"
+title: "N100 - PVE (fnOS + Debian) Infrastructure Record"
+description: "Install PVE on the N100 mini PC, then install Feinu NAS and Debian within it to achieve separation of anime tracking and website hosting, while ensuring easy scalability and migration."
 category: "Record"
 draft: false
 image: ../../assets/images/N100-PVE_cover.webp
@@ -9,83 +9,83 @@ published: 2024-10-28
 tags:
 - PVE
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide outlines setting up Proxmox VE (PVE) on an N100 mini PC, installing fnOS as a NAS with direct access to the CPU's integrated graphics and a 512GB SATA HDD for anime tracking, and installing Debian for running QQBot, a blog, and AList. It includes detailed steps for PVE installation, Realtek R8168 driver setup, network bridging, and configuring STUN via Lucky for external access. The process also covers using Ventoy for bootable media and custom scripts to streamline PVE management.
 :::
 
 # Configuration & Requirements
 
-- N100 CPU Frequency: Minimum 700 MHz, Maximum 3400 MHz | TDP: 6W
+- N100 CPU Frequency: Minimum 700 MHz, Maximum 3400 MHz | TDP: 6 W
 
-- 8GB of RAM
+- 8G RAM
 
-- 128GB M.2 NVMe SSD
+- 128G M.2 NVMe SSD
 
-- 512GB SATA Hard Disk Drive
+- 512G SATA HDD
 
-- Here’s the translation of “Realtek R8168 has a wired network card” into professional English:  “The Realtek R8168 utilizes a wired network interface.”
+- Realtek R8168 Ethernet Network Card
 
-- Here’s the translation:  “USB wired network card”
+- USB wired network card
 
-- USB drive (as a Pathfinder guided disk)
+- USB drive (as a PVE boot disk)
 
-# 目标
+# Objective
 
-1. All systems operate through a PVE management framework.
+1. All systems are managed through PVE.
 
-2. Upon installation of PVE, configure a NAS and implement automatic mirroring (direct-to-router: `N100 CPU Core` `512GB SATA HDD`).
+2. Install fnOS under PVE to function as a NAS and configure automatic anime tracking (direct passthrough: `N100 integrated graphics` `512G SATA HDD` )
 
-3. Here’s the translation:  “Installing PVE on Debian, setting up a QQ bot, creating a blog, and establishing an AList.”
+3. Install Debian under PVE, set up QQBot, a blog, and AList
 
 * **
 
 # 1\. PVE
 
-## Installation
+## Install
 
-- Download the latest Ventoy executable file.
+- Download the latest executable file of Ventoy:
 
 [https://www.ventoy.net/cn/download.html](https://www.ventoy.net/cn/download.html)
 
-Here’s the translation:  “Utilizing a partition table, NTFS format is employed to write Ventoy onto a USB drive.”
+- Use GPT partition table, NTFS format to write Ventoy to the USB drive
 
-- Download the latest PVE version as an ISO file using USTC mirror sources.
+- Download the latest PVE ISO (using the USTC mirror source):
 
 [https://mirrors.ustc.edu.cn/help/proxmox.html](https://mirrors.ustc.edu.cn/help/proxmox.html)
 
-Please insert the PVE ISO file into the root directory of your U drive.
+- Place the PVE ISO file in the root directory of the USB drive
 
-- Insert a USB drive into the N100 and connect it to the system. Upon startup, the system will boot from the USB drive, initiating the PVE installation process. Network configuration options are selected via the USB device.
+- Insert the USB network card and USB drive into the N100, boot from the USB drive, enter the PVE installation interface, and install PVE. For network configuration, select the USB network card.
 
-- Restart the system, enter PVE mode via IP + 8006 port to access the Web UI and log in.
+- Reboot, enter PVE, access the WebUI via IP:8006, and log in.
 
-## 配置
+## Configuration
 
-### Installation of the PVE Quick Management Script.
+### Install PVE Quick Management Script
 
-- 安装PVE快捷管理脚本：[pve\_source.tar.gz | AcoFork-AList](https://alist.onani.cn/pve_source.tar.gz) 或 [**https://wwp.lanzoul.com/ivHta1ngmo6d**](https://wwp.lanzoul.com/ivHta1ngmo6d) （密码:i1ws）（来自：在下莫老师）
-  
-  - 解压：`tar zxvf pve_source.tar.gz`
-  
-  - 运行：`./pve_source`
-  
-  - 同意许可协议
-  
+- Install the PVE quick management script: [pve_source.tar.gz | AcoFork-AList](https://alist.onani.cn/pve_source.tar.gz) or [[L:**https://wwp.lanzoul.com/ivHta1ngmo6d** (password: i1ws) (from: Below Mo Teacher)
+
+- Extract: `tar zxvf pve_source.tar.gz`
+
+- Run: `./pve_source`
+
+- Agree to the license agreement
+
   - 依次执行白框操作![](../../assets/images/ea205e1a00e7029dfa4bd7850c5a6a68d6d4c0d9.webp)
-  
-  - 扩容local：`lvextend -rl +100%FREE /dev/pve/root`
 
-### Configuration of Realtek R8168 Network Adapter
+- Expand local: `lvextend -rl +100%FREE /dev/pve/root`
 
-Due to the default installation of R8169 drivers on Debian, we must manually install the R8168 driver. Otherwise, we will be unable to connect to the network ports provided by the built-in wired Ethernet connection on the N100 small host.
+### Configure Realtek R8168 network card
 
-- 下载驱动：
-  
+> Since Debian-based systems default to installing the R8169 driver, we need to manually install the R8168 driver; otherwise, we won't be able to use the wired Ethernet port on the N100 mini PC for internet access.
+
+- Download driver:
+
   [https://www.realtek.com/Download/List?cate\_id=584](https://www.realtek.com/Download/List?cate_id=584)![](../../assets/images/0d8457c7fb0d497e12e2c8b544f07c3c37cf96cd.webp)
 
-- Release and installation: `sh autorun.sh`
+- Extract and install: `sh autorun.sh`
 
-- Check for new network interfaces: `ip a`
+- Check for any new network interfaces: `ip a`
 
 - ```shell
   root@n100-pve:~# ip a
@@ -95,8 +95,8 @@ Due to the default installation of R8169 drivers on Debian, we must manually ins
   ...
   ```
 
-- 配置网络配置文件：`nano /etc/network/interfaces`
-  
+- Configure the network configuration file: `nano /etc/network/interfaces`
+
   ```
   # network interface settings; autogenerated
   # Please do NOT modify this file directly, unless you know what
@@ -132,10 +132,10 @@ Due to the default installation of R8169 drivers on Debian, we must manually ins
   source /etc/network/interfaces.d/*
   ```
 
-- Restart network services: `systemctl restart networking`
+- Restart the network service: `systemctl restart networking`
 
-- 查看ip：`ip a`
-  
+- View IP: `ip a`
+
   ```shell
   root@n100-pve:~# ip a
   ...
@@ -152,40 +152,40 @@ Due to the default installation of R8169 drivers on Debian, we must manually ins
          valid_lft forever preferred_lft forever
   ```
 
-- Removal of USB card.
+- Remove USB network card
 
-### Configuration STUN penetration testing.
+### Configure STUN tunneling
 
-#### Router configuration: Set the DMZ host to PVEIP.
+#### Set the router's DMZ host to the PVE IP
 
 - ![](../../assets/images/dbeb7980e5fc699c696ffa6f2fda4a17c05ee821.webp)
 
-#### Installation of Lucky.
+#### Install Lucky
 
-- Executed: `curl -o /tmp/install.sh http://6.666666.host:6/files/golucky.sh && sh /tmp/install.sh http://6.666666.host:6/files 2.13.4`
+- Execute: `curl -o /tmp/install.sh http://6.666666.host:6/files/golucky.sh && sh /tmp/install.sh http://6.666666.host:6/files 2.13.4`
 
-- Please enter Lucky’s backend via `host:16601`. Configure STUN for penetration testing.
+- Enter the Lucky backend via `host:16601` and configure STUN tunneling
 
 - ![](../../assets/images/2175839424184aee880b91382bd1fbf3c578d258.webp)
 
-# 2. fnOS
+# 2\. fnOS
 
-## Installation.
+## Install
 
-- Please download the latest version of ISO from our website.
+- Go to the official website to download the latest ISO:
 
 [https://www.fnnas.com/](https://www.fnnas.com/)
 
 - 上传至PVE：![](../../assets/images/073808516d357e099a866c30b4a77954c5b9b458.webp)
 
-- Here’s a professional translation of the text:  “Develop a functional OS virtual machine, configuring the CPU type to ‘host’. The process involves several steps.”
+- Create the fnOS virtual machine, select host as the CPU type, steps omitted.
 
 - 直通核显和硬盘：![](../../assets/images/08e4f7a3b87ae86334011e1d4c3a384a36ad9866.webp)
 
-- 如果你不知道你的核显和SATA控制器的PCI ID：`lspci`
-  
-  - 可见核显为`00:02.0`，SATA控制器为`00:17.0`
-    
+- If you don't know the PCI ID of your integrated graphics and SATA controller: `lspci`
+
+- The integrated graphics are at `00:02.0`, and the SATA controller is at `00:17.0`
+
     ```shell
     root@n100-pve:~# lspci
     00:00.0 Host bridge: Intel Corporation Device 461c
@@ -210,20 +210,20 @@ Due to the default installation of R8169 drivers on Debian, we must manually ins
     03:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 2b)
     ```
 
-- Start a virtual machine and install fnOS.
+- Start the virtual machine and install fnOS
 
-## 配置
+## Configuration
 
 - 前往飞牛设置，创建储存空间，Linear模式，选择刚才直通的硬盘![](../../assets/images/581cf01462df545a8662acbb5e20e1676bd17744.webp)
 
 - 前往飞牛应用中心安装qBittorrent、影视，并且在设置给予目录读取权限![](../../assets/images/92a2e0bf25d630db4858775fdbb6c907f419c25d.webp)
 
-- Configure the username and password for qBittorrent.
+- Configure the username and password for qBittorrent
 
-- Open the Flyfish Docker, initialize.
+- Open Feiniu Docker and initialize
 
-- 拉取并运行AutoBangumi Docker镜像：
-  
+- Pull and run the AutoBangumi Docker image:
+
   ```shell
   docker run -d \
   --name=AutoBangumi \
@@ -242,48 +242,48 @@ Due to the default installation of R8169 drivers on Debian, we must manually ins
 
 - 进入`host:7892` 让AutoBangumi连接qBittorrent并配置下载地址![](../../assets/images/82c4a003d2399f82a7ccf5849cd1d5858d5f1f61.webp)
 
-- 添加RSS。可前往[蜜柑计划 - Mikan Project](https://mikanime.tv/)获得各个字幕组的RSS
-  
+- Add RSS. You can obtain the RSS feeds for various subtitle groups at [Mikan Project - Mikan Project](https://mikanime.tv/).
+
   ![](../../assets/images/f36daae968d8043bbcd1e4a2bbb9b9cd2d707cee.webp)
-  
-  注意：使用[蜜柑计划 - Mikan Project](https://mikanime.tv/)时，请订阅单个字幕组的RSS，不要使用个人的RSS，会导致**只能获取到你所有追番的最新一集而不是单个番的全部剧集**
+
+Note: When using [Mikan Project - Mikan Project](https://mikanime.tv/), please subscribe to the RSS feed of a single subtitle group, do not use personal RSS feeds, as this will result in **only receiving the latest episode of all your followed anime instead of all episodes of individual anime**.
 
 - 打开飞牛影视，初始化并设置媒体库![](../../assets/images/269b78c3b7dffe7f8cdb861098f44147552b5eb4.webp)
-  
-  - 注意：如果要刮削旧集旧番，请规范重命名，可以使用自动化工具：[Episode-ReName.zip | AcoFork-AList](https://alist.onani.cn/Episode-ReName.zip)
-    
-    - 一级目录：即qb下载目录，无需重命名
-    
-    - 二级目录：番剧名称
-    
-    - 三级目录：季，如`Season 1`
-    
-    - 四级目录：集和字幕，如`S01E01.mp4` `S01E01.chs.ass`
 
-# Debian is a widely used, open-source operating system known for its stability and extensive package repository. It’s frequently employed in servers, workstations, and embedded systems due to its robust nature and commitment to free software principles.
+- Note: If you want to scrape old episodes, please rename them properly; you can use automation tools: [Episode-ReName.zip | AcoFork-AList](https://alist.onani.cn/Episode-ReName.zip)
 
-## Installation
+- Primary directory: That is the qb download directory, no renaming required
 
-- Download Debian 12 ISO (USTC Mirror Source) – Recommended: DVD Image, Larger Package, Faster Installation.
+- Second-level directory: Anime title
 
-[https://mirrors.ustc.edu.cn/help/debian-cd.html](https://mirrors.ustc.edu.cn/help/debian-cd.html) translates to “Debian CD” in English.
+- Third-level directory: Season, such as `Season 1`
 
-- Upload to PVE, create a Debian virtual machine, select the host CPU type and follow the steps.
+- Fourth-level directory: episodes and subtitles, such as `S01E01.mp4` `S01E01.chs.ass`
 
-### Installation of [1Panel]
+# 3\. Debian
 
-[https://1panel.cn/docs/installation/online\_installation/](https://1panel.cn/docs/installation/online_installation/)
+## Install
 
-- Here’s the translation of the text:  “The installation process for `Openresty` involves configuring it with `MySQL`, `Halo`, `AList`, and `Cloudflared`.”
+- Download the Debian 12 ISO (USTC mirror source) (recommended to choose the DVD image, which includes more packages and installs faster)
 
-### Constructing a QQ Bot.
+[https://mirrors.ustc.edu.cn/help/debian-cd.html](https://mirrors.ustc.edu.cn/help/debian-cd.html)
 
-#### Installation of the OneBotv11 protocol: Lagrange.OneBot
+- Upload to PVE, create a Debian virtual machine, select host as the CPU type, steps omitted.
+
+### Install 1Panel:
+
+[https://1panel.cn/docs/installation/online_installation/](https://1panel.cn/docs/installation/online_installation/)
+
+- Installing `Openresty` `MySQL` `Halo` `AList` `Cloudflared` in 1Panel; configuration steps omitted
+
+### Building QQBot
+
+#### Installation of OneBot v11 protocol implementation: Lagrange.OneBot
 
 - Docker Run: `docker run -td -p 8081:8081 -v /root/qqbot/lo:/app/data -e UID=$UID -e GID=$(id -g) ghcr.onani.cn/lagrangedev/lagrange.onebot:edge`
 
-- 修改配置文件：`appsettings.json`
-  
+- Modify the configuration file: `appsettings.json`
+
   ```json
   {
       "Logging": {
@@ -324,23 +324,23 @@ Due to the default installation of R8169 drivers on Debian, we must manually ins
   }
   ```
 
-- Restart the container, log in via QR code.
+- Restart the container, scan to log in
 
-#### Installation of NoneBot2.
+#### Install NoneBot2
 
 - Install pip: `apt install python3-pip`
 
-- Configure the global index URL for USTC sources using the following command: `pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple`.
+- Configure pip USTC source: `pip config set global.index-url https://mirrors.ustc.edu.cn/pypi/simple`
 
 - Install pipx: `apt install pipx`
 
-- Install the nb-cli: `pipx install nb-cli`
+- Install nb-cli: `pipx install nb-cli`
 
 - Set the pipx variable: `pipx ensurepath`
 
-- Install the NB Bootstrap plugin: `nb self install nb-cli-plugin-bootstrap`
+- Install nb bootstrap: `nb self install nb-cli-plugin-bootstrap`
 
-- Create a new project for the “New NoneBot2” initiative.
+- Create a new NoneBot2 project: `nb bs`
 
 - ```
   root@n100-debian:~# nb bs
@@ -381,7 +381,7 @@ Due to the default installation of R8169 drivers on Debian, we must manually ins
   项目配置完毕，开始使用吧！
   ```
 
-# Results Showcase (Domain Name Retired)
+# Exhibition of Achievements (Domain has been discontinued)
 
 ![](../../assets/images/4b4680cc548e0c59ec18cef537c9b1f5412fbbcd.webp)
 

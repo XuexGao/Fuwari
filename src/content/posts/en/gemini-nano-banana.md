@@ -1,6 +1,6 @@
 ---
-title: "Google's latest AI avatar model, Nano Banana! Turning chibi into real! One-click photo!"
-description: "I’ve created something inappropriate for children in our village, and I don't know how you could react to it. This AI image is incredibly convenient – no installation required, and it’s easy to create. I’m going to make it as loud and enthusiastic as possible, tilting my head and smiling widely."
+title: "Google's Latest AI Image Generation Model: Nano Banana! Turn Character Art into Real People! One-Click Photo Editing!"
+description: "Hey, I’ve made the village kids eat city goods, is that? This AI-generated image is super convenient, no need to deploy, no brainpower required, just produce it in big chunks, even if the nose is crooked and eyes slanted, just laugh heartily."
 published: 2025-09-01
 image: '../../assets/images/2025-09-01-16-39-17-5976a1f7-3f14-4987-aa60-3257b05f8b7b.webp'
 tags: [AI, Gemini, Google]
@@ -8,71 +8,71 @@ tags: [AI, Gemini, Google]
 draft: false 
 lang: en
 ---
-:::ai-summary[AI Summary]{model="google/gemma-3-1b"}
-
+:::ai-summary[AI Summary]{model="qwen/qwen3-vl-8b"}
+This guide teaches users how to quickly generate realistic images using Google AI Studio by pasting artwork and specifying desired changes. It includes prompts for converting anime-style illustrations into live-action cosplay photos, creating realistic scenes with cosplayers in everyday settings like a McDonald’s, and removing backgrounds to isolate subjects. Tips emphasize using English prompts, leveraging AI assistants for prompt refinement, and iterative refinement for better results.
 :::
 
-# Rapidly get started.
+# Getting Started Quickly
 
-[Google AI Studio](https://aistudio.google.com/prompts/new_chat)
+Enter [Google AI Studio](https://aistudio.google.com/prompts/new_chat)
 
-Please provide the image you would like me to translate. I need the image content to fulfill your request.
+Paste a picture and state the changes you want
 
 ![](../../assets/images/2025-09-01-16-33-14-1dc081b4dcb4eb99fd68c1d97322517a.webp)
 
-# The illustration has been transformed into a realistic portrayal of a character, embodying the essence of a cosplayer.
+# Character illustration turned into live-action cosplay
 
-> Prompt：Generate a highly detailed photo of
+> Generate a highly detailed photo of
 > 
-A young woman is portraying the illustration in the style of the image. This event took place at Comiket.
+> a girl cosplaying this illustration, at Comiket.
 > 
-Maintain the exact same pose, body posture, and alignment.
+> Exactly replicate the same pose, body posture,
 > 
-Hand movements, facial expressions, and the use of a camera are all key elements in visual communication.
+> hand gestures, facial expressions, and camera
 > 
-> framing as in the original llustration. Keep the
+> framing as in the original illustration. Keep the
 > 
-Maintaining a similar visual style, perspective, and framing throughout the piece is crucial for achieving a cohesive and impactful result.
+> same angle, perspective, and composition,
 > 
 > without any deviation
 
-注意：
+Note:
 
-- The best approach is to use a solid-color background, ensuring the figure’s primary elements are fully defined.
+- The character illustration should preferably have a solid-colored background, with the main character fully intact.
 
-- In the chibi style, character actions and poses should not depict impossible movements or actions that are not present in the original artwork. This could trigger AI to copy the image verbatim rather than create a Coser effect.
+- In the character illustrations, the characters should not perform actions that are impossible in reality, as this may trigger the AI's Copy function, causing the image to be copied entirely rather than generating a Cosplayer.
 
 ![](../../assets/images/2025-09-01-16-34-07-7d28242d1b8c18abf6d6b44f8064abff.webp)
 
 ![](../../assets/images/2025-09-01-16-37-48-572b1752-d279-4fc3-93a4-165a75640d84.webp)
 
-# Seven-Flower Lanterns
+# Qixi Grass Sketch
 
-Here’s the translation of “A photorealistic scene inside a McDonald’s restaurant” into professional English:  “A highly detailed and realistic photograph depicting an interior space within a McDonald's establishment.”
+> A photorealistic scene inside a McDonald’s restaurant.
 > 
-On my table, there’s a framed photograph displaying the anime-inspired artwork I submitted.
+> On my table, there is a picture frame showing the anime-style image I provided.
 > 
-All elements beyond the boundaries of the frame should be rendered with a high degree of realism and a convincing sense of humanity.
+> Everything outside the frame must be 100% realistic and human.
 > 
-On the opposite side of the table, a genuine Chinese couple are seated side-by-side.
+> On the opposite table, a real Chinese couple is sitting together.
 > 
-The female partner is portraying the character depicted in the image, replicating the attire while maintaining a realistic appearance – resembling a genuine human girl rather than a stylized drawing or cartoon representation.
+> The female partner is cosplaying the character from the provided image, wearing the same outfit, but she must look like a real human girl, not a drawing or cartoon.
 > 
-Here’s the translation:  “She should avoid replicating the precise pose and mannerism of the anime illustration; instead, she should portray a natural action within a restaurant environment – for example, consuming food, sipping from a glass, engaging in conversation with a partner, or exhibiting a relaxed, casual expression.”
+> ⚠️ She should not mimic the exact pose or gesture from the anime illustration — instead, she should be doing something natural for a restaurant setting, such as eating food, drinking from a cup, talking with her partner, or smiling casually.
 > 
-The restaurant’s interior design and ambiance should evoke a natural photographic style. This includes the furniture, lighting, décor, and overall atmosphere – aiming for a realistic representation of a photograph.
+> The entire environment (restaurant interior, people, cosplay) must look like a natural camera photo.
 > 
-Apply a bokeh effect – background blur – to the opposite table and all elements behind it, simulating a photograph captured using a DSLR camera.
+> Apply background blur (bokeh effect) to the opposite table and everything behind it, making the image look like it was taken with a DSLR camera, not generated.
 > 
-The image within the frame is restricted to an anime aesthetic. All other elements should be rendered in a realistic manner.
+> Only the picture inside the frame can contain anime style; all other elements must be realistic.
 
 ![](../../assets/images/2025-09-01-16-38-35-cfdbd266c99acc5da9bc6d5f4edf57ba.webp)
 
 ![](../../assets/images/2025-09-01-16-39-17-5976a1f7-3f14-4987-aa60-3257b05f8b7b.webp)
 
-# Removing the background.
+# Remove background
 
-Please remove the background and focus solely on the subject matter.
+> [[X:content]]
 
 ![](../../assets/images/2025-09-01-16-39-56-1dc081b4dcb4eb99fd68c1d97322517a.webp)
 
@@ -80,10 +80,10 @@ Please remove the background and focus solely on the subject matter.
 
 ---
 
-# Concluding remarks
+# Conclusion
 
-- 最好使用英语Prompt
+- It is best to use English prompts.
 
-- Here’s a professional translation:  “Please describe the image you would like me to generate, and I will provide you with an appropriate English prompt.”
+- You can first describe to a general-purpose large model (such as ChatGPT) what image you want to draw, and then have it return an English prompt.
 
-- The brilliance of a good image is not achieved with a single stroke; it requires careful refinement and polish.
+- Good images are not achieved overnight; they require careful refinement.
