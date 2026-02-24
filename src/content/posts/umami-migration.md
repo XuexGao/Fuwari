@@ -1,6 +1,6 @@
 ---
 title: Umami Cloud迁移到本地踩坑记录
-published: 2025-12-05T10:13:34
+published: 2025-12-05
 description: 早期的我很有先见之明，在使用Umami的时候是自建的，但是不久后因为想要全上云，又用回了Umami Cloud，但是现在访问记录激增，我又不得不迁移到本地...
 image: ../assets/images/umami-migration.webp
 tags:

@@ -116,6 +116,26 @@ export function setDevServer(server: string): void {
 	localStorage.setItem("dev-server", server);
 }
 
+export function getLang(): string {
+	const stored = localStorage.getItem("lang");
+	if (stored) return stored;
+
+	// Detection
+	const browserLang = navigator.language.toLowerCase();
+	if (browserLang.startsWith("zh")) {
+		return "zh_CN";
+	}
+	return "en";
+}
+
+export function setLang(lang: string): void {
+	localStorage.setItem("lang", lang);
+	document.documentElement.setAttribute("lang", lang.replace("_", "-"));
+	// Reload the page to apply translations if they are handled at build time
+	// Or we can use a custom event for client-side updates
+	window.dispatchEvent(new Event("lang-change"));
+}
+
 export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 	switch (theme) {
 		case LIGHT_MODE:

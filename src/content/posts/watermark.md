@@ -1,6 +1,6 @@
 ---
 title: 你需要为你的网站上水印吗？水印怎么打才有效？
-published: 2026-02-04T15:21:17
+published: 2026-02-04
 description: 很早之前，我得知了我的文章被盗了，当时觉得也没啥，今天又翻到当时的聊天记录，还是觉得就算文章被盗了，也应该让看文章的所有用户都知道原文章到底是谁写的
 image: ../assets/images/watermark.webp
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: 如何给你的文章上修订记录？就像维基百科那样！
-published: 2026-02-11T10:51:13
+published: 2026-02-11
 description: 尽管我们已经做了基于客户端的文章更新系统，但如果用户还没来及查看更改就又有新的更改了呢？我们能不能做全生命周期的文章diff？
 image: ../assets/images/posts-diff.png
 draft: false

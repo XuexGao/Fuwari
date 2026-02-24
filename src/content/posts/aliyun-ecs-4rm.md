@@ -1,6 +1,6 @@
 ---
 title: 什么？4元每月200G的服务器？还是阿里的？还有联通9929精品回程？？
-published: 2026-01-16T23:59:40
+published: 2026-01-16
 description: 通过创建抢占型实例+每月免费CDT 200G流量包，你几乎只需要付很少的硬盘费！
 image: ../assets/images/aliyun-ecs-4rm.webp
 draft: false

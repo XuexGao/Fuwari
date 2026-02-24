@@ -1,6 +1,6 @@
 ---
 title: 来！让我们用Vercel来分享你的OneDrive！
-published: 2025-11-14T15:03:46
+published: 2025-11-14
 description: 利用onedrive-index这个项目可以将你的OneDrive映射到公网，轻松分发资源！
 image: ../assets/images/onedrive-index.webp
 tags:

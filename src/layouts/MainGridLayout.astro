@@ -44,9 +44,8 @@ const mainPanelTop = siteConfig.banner.enable
 
 <Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle}>
 
-<!-- Navbar -->
-<slot slot="head" name="head"></slot>
-<div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto" class:list={[""]}>
+	<slot slot="head" name="head" />
+<div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto">
     <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all" style="top: var(--navbar-offset, 0px);">
         <Navbar></Navbar>
     </div>
@@ -143,10 +142,8 @@ const mainPanelTop = siteConfig.banner.enable
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'code-expand-btn';
-                btn.setAttribute('aria-label', '展开代码');
-                btn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                `;
+                btn.setAttribute('aria-label', window.i18n(window.Translation.ExpandCode));
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
                 
                 btn.onclick = () => {
                     block.classList.remove('is-collapsed');

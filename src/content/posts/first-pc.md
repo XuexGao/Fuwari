@@ -1,6 +1,6 @@
 ---
 title: 人生中的第一台自己组装的台式！键盘亮显示器必亮！
-published: 2025-10-11T05:15:38
+published: 2025-10-11
 description: 很早就想装一个台式常驻家里了，这次阴差阳错的获得了一个机会，至于为什么我称它为阴差阳错，请看VCR
 image: ../assets/images/IMG20251010160613.webp
 tags:

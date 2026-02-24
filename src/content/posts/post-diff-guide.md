@@ -1,6 +1,6 @@
 ---
 title: 文章更新提醒功能食用指南 - 超级牛逼！
-published: 2026-02-22T01:32:00
+published: 2026-02-22
 description: 也就是右下角那个超级牛逼的小铃铛，到底该怎么用？
 image: ../assets/images/post-diff-guide.png
 draft: false

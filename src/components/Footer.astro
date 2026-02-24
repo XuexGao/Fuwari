@@ -3,6 +3,8 @@
 import { execSync } from "node:child_process";
 import { profileConfig, siteConfig } from "../config";
 import { url } from "../utils/url-utils";
+import I18n from "./I18n.astro";
+import { Translation } from "../i18n/translation";
 
 const currentYear = new Date().getFullYear();
 
@@ -13,26 +15,21 @@ try {
 	commitHash = execSync("git rev-parse --short=7 HEAD").toString().trim();
 
 	const date = new Date();
-	const parts = new Intl.DateTimeFormat("zh-CN", {
+	const parts = new Intl.DateTimeFormat(siteConfig.lang.replace('_', '-'), {
 		timeZone: "Asia/Shanghai",
 		year: "numeric",
 		month: "2-digit",
 		day: "2-digit",
-		hour: "2-digit",
-		minute: "2-digit",
-		second: "2-digit",
-		hour12: false,
 	}).formatToParts(date);
 	const year = parts.find((p) => p.type === "year")?.value ?? "0000";
 	const month = parts.find((p) => p.type === "month")?.value ?? "00";
 	const day = parts.find((p) => p.type === "day")?.value ?? "00";
-	const hours = parts.find((p) => p.type === "hour")?.value ?? "00";
-	const minutes = parts.find((p) => p.type === "minute")?.value ?? "00";
-	const seconds = parts.find((p) => p.type === "second")?.value ?? "00";
-	buildDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+	buildDate = `${year}-${month}-${day}`;
 } catch (e) {
 	console.warn("Failed to get git info", e);
 }
+
+const { lang } = Astro.params;
 ---
 
   
@@ -51,21 +48,20 @@ try {
 </div>
 <div class="card-base w-fit mx-auto rounded-xl mt-4 mb-4">
     <div class="transition text-50 text-sm text-center p-6">
-        &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://space.bilibili.com/325903362"> {profileConfig.name} </a>，采用
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可
+        &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://space.bilibili.com/325903362"> <I18n key={Translation.AuthorName} /> </a>，<I18n key={Translation.License} />
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
         <br>
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap.xml')}>网站地图</a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml', lang)}><I18n key={Translation.Rss} /></a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap.xml', lang)}><I18n key={Translation.Sitemap} /></a> /
         <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
 
-        <a class="transition link text-[var(--primary)] font-medium" href="#" id="open_preferences_center">更新您的Cookie</a>
+        <a class="transition link text-[var(--primary)] font-medium" href="#" id="open_preferences_center"><I18n key={Translation.UpdateCookie} /></a>
         <br>
-        由
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> 和
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> 强力驱动
+        <I18n key={Translation.PoweredBy} />
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
         <br>
-        本网站代码
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/afoim/fuwari">已开源</a>
+        <I18n key={Translation.AuthorName} /> <I18n key={Translation.OpenSource} />
         <a class="transition link text-black/30 dark:text-white/30 hover:text-[var(--primary)] text-xs ml-1" target="_blank" href={`https://github.com/afoim/fuwari/commit/${commitHash}`}>({commitHash} @ {buildDate})</a>
         <br>
 
@@ -101,7 +97,7 @@ try {
 
             const valueSpan = document.createElement('span');
             valueSpan.className = 'server-value text-black/30 dark:text-white/30 text-xs';
-            valueSpan.innerText = '检测中...';
+            valueSpan.innerText = window.i18n(window.Translation.Checking);
             div.appendChild(valueSpan);
 
             const iconImg = document.createElement('img');
@@ -139,7 +135,7 @@ try {
                     valueSpan.classList.remove('hidden');
                 }
             } else {
-                valueSpan.innerText = "未知";
+                valueSpan.innerText = window.i18n(window.Translation.Unknown);
                 iconImg.classList.add('hidden');
                 valueSpan.classList.remove('hidden');
             }
@@ -166,7 +162,7 @@ try {
                 const devServer = localStorage.getItem("dev-server");
                 containers.forEach(container => {
                     container.innerHTML = '';
-                    const elements = createServerEntry({ text: 'Dev Node' });
+                    const elements = createServerEntry({ text: window.i18n(window.Translation.DevMode) });
                     container.appendChild(elements.div);
                     updateEntryDisplay(elements, devServer);
                 });
@@ -187,7 +183,7 @@ try {
                 container.innerHTML = '';
 
                 if (!serverConfig || serverConfig.length === 0) {
-                    const elements = createServerEntry({ text: '访问节点' });
+                    const elements = createServerEntry({ text: window.i18n(window.Translation.AccessNode) });
                     container.appendChild(elements.div);
                     getServerInfo('').then(server => updateEntryDisplay(elements, server));
                     return;

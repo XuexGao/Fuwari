@@ -1,6 +1,6 @@
 ---
 title: 记录解包尘白禁区以获得涩涩（？）CG
-published: 2025-08-24T01:11:44
+published: 2025-08-24
 description: '受人委托解包尘白禁区的加载图CG，记录一下流程，方便日后复习'
 image: '../assets/images/2025-08-24-01-13-41-3824c5ece06cc56241688f4a4aacbcbd.webp'
 tags: [尘白禁区, 解包]

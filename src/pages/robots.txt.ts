@@ -12,7 +12,8 @@ Allow: /sponsors/
 Allow: /cover/
 Allow: /changes/
 
-Sitemap: ${new URL("sitemap.xml", import.meta.env.SITE).href}
+Sitemap: ${new URL("zh-cn/sitemap.xml", import.meta.env.SITE).href}
+Sitemap: ${new URL("en/sitemap.xml", import.meta.env.SITE).href}
 `.trim();
 
 export const GET: APIRoute = () => {

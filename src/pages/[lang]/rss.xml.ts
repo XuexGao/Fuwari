@@ -8,6 +8,14 @@ import type { APIContext, ImageMetadata } from "astro";
 import MarkdownIt from "markdown-it";
 import { parse as htmlParser } from "node-html-parser";
 import sanitizeHtml from "sanitize-html";
+import { Translation, i18n } from "@/i18n/translation";
+
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'zh-cn' } },
+		{ params: { lang: 'en' } },
+	];
+}
 
 const markdownParser = new MarkdownIt();
 
@@ -17,6 +25,7 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 export async function GET(context: APIContext) {
+	const { lang } = context.params;
 	if (!context.site) {
 		throw Error("site not set");
 	}
@@ -68,7 +77,7 @@ export async function GET(context: APIContext) {
 			title: post.data.title,
 			description: post.data.description,
 			pubDate: post.data.published,
-			link: new URL(`posts/${post.slug}/`, context.site).href,
+			link: new URL(`${lang}/posts/${post.slug}/`, context.site).href,
 			// sanitize the new html string with corrected image paths
 			content: sanitizeHtml(html.toString(), {
 				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
@@ -77,10 +86,10 @@ export async function GET(context: APIContext) {
 	}
 
 	return rss({
-		title: siteConfig.title,
-		description: siteConfig.subtitle || "No description",
+		title: i18n(Translation.SiteTitle, lang === 'zh-cn' ? 'zh_CN' : 'en'),
+		description: i18n(Translation.SiteDescription, lang === 'zh-cn' ? 'zh_CN' : 'en'),
 		site: context.site,
 		items: feed,
-		customData: `<language>${siteConfig.lang}</language>`,
+		customData: `<language>${lang === 'zh-cn' ? 'zh-CN' : 'en'}</language>`,
 	});
 }

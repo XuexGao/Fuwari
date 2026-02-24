@@ -1,6 +1,6 @@
 ---
 title: 论DeepWiki为什么是神！
-published: 2026-02-11T12:54:28
+published: 2026-02-11
 description: 你是否在Github有一些脍炙人口的开源项目？快看看有没有被DeepWiki收录！获得免费！强大！易用！实时更新的知识库！
 image: ../assets/images/deepwiki.png
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: 隐私政策
-published: 1999-01-01T03:20:15
+published: 1999-01-01
 description: 本隐私政策适用于AcoFork Blog（以下简称“我们”）。
 image: ""
 draft: false

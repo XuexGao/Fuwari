@@ -4,6 +4,17 @@ import type { Sponsor } from "@/types/data";
 import LinkSubmitInfo from "@components/misc/LinkSubmitInfo.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { Icon } from "astro-icon/components";
+import I18n from "@components/I18n.astro";
+import { Translation, i18n } from "@/i18n/translation";
+
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'zh-cn' } },
+		{ params: { lang: 'en' } },
+	];
+}
+
+const { lang } = Astro.params;
 
 const sponsors = Object.values(
 	import.meta.glob<Sponsor>("@/data/sponsors/*.json", {
@@ -19,71 +30,71 @@ const breadcrumbSchema = {
 		{
 			"@type": "ListItem",
 			position: 1,
-			name: "首页",
+			name: i18n(Translation.Home, lang === 'zh-cn' ? 'zh_CN' : 'en'),
 			item: Astro.site,
 		},
 		{
 			"@type": "ListItem",
 			position: 2,
-			name: "赞助支持",
+			name: i18n(Translation.Sponsors, lang === 'zh-cn' ? 'zh_CN' : 'en'),
 			item: new URL("/sponsors", Astro.site).toString(),
 		},
 	],
 };
 ---
 
-<MainGridLayout title="赞助支持">
+<MainGridLayout title={i18n(Translation.Sponsors, lang === 'zh-cn' ? 'zh_CN' : 'en')} lang={lang === 'zh-cn' ? 'zh_CN' : 'en'}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
     <div class="card-base p-6 md:p-8">
         <div class="flex items-center gap-2 mb-6">
             <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
-                <Icon name="material-symbols:favorite" class="text-[1.5rem]">
+                <Icon name="material-symbols:favorite" class="text-[1.5rem]" />
             </div>
-            <h1 class="text-2xl font-bold text-black dark:text-white">赞助支持</h1>
+            <h1 class="text-2xl font-bold text-black dark:text-white"><I18n key={Translation.Sponsors} /></h1>
         </div>
 
         <div class="mb-6">
             <p class="text-lg text-black/80 dark:text-white/80 mb-3">
-                如果您觉得我的内容对您有帮助，欢迎通过以下方式支持我的创作。您的每一份支持都是我持续创作的动力！
+                <I18n key={Translation.SponsorHelp} />
             </p>
             <p class="text-sm text-black/60 dark:text-white/60">
-                所有赞助将用于网站维护、服务器费用以及内容创作。
+                <I18n key={Translation.SponsorUsage} />
             </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 max-w-4xl mx-auto">
-            <!-- 支付宝 -->
+            <!-- Alipay -->
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-blue-500 flex items-center justify-center">
-                        <Icon name="simple-icons:alipay" class="text-[1.5rem] text-white">
+                        <Icon name="simple-icons:alipay" class="text-[1.5rem] text-white" />
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">支付宝</h3>
-                        <p class="text-sm text-black/60 dark:text-white/60">扫码支付</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white"><I18n key={Translation.Alipay} /></h3>
+                        <p class="text-sm text-black/60 dark:text-white/60"><I18n key={Translation.ScanToPay} /></p>
                     </div>
                 </div>
                 <div class="qr-code-placeholder">
                     <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                        <img src="/sponsors/alipay.svg" alt="支付宝二维码" class="w-full h-full object-cover transition duration-500" />
+                        <img src="/sponsors/alipay.svg" alt="Alipay QR Code" class="w-full h-full object-cover transition duration-500" />
                     </div>
                 </div>
             </div>
 
-            <!-- 微信支付 -->
+            <!-- WeChat Pay -->
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-green-500 flex items-center justify-center">
-                        <Icon name="simple-icons:wechat" class="text-[1.5rem] text-white">
+                        <Icon name="simple-icons:wechat" class="text-[1.5rem] text-white" />
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-black dark:text-white">微信支付</h3>
-                        <p class="text-sm text-black/60 dark:text-white/60">扫码支付</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white"><I18n key={Translation.WechatPay} /></h3>
+                        <p class="text-sm text-black/60 dark:text-white/60"><I18n key={Translation.ScanToPay} /></p>
                     </div>
                 </div>
                 <div class="qr-code-placeholder">
                     <div class="relative w-48 h-48 mx-auto rounded-lg overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                        <img src="/sponsors/wechat.svg" alt="微信支付二维码" class="w-full h-full object-cover transition duration-500" />
+                        <img src="/sponsors/wechat.svg" alt="WeChat Pay QR Code" class="w-full h-full object-cover transition duration-500" />
                     </div>
                 </div>
             </div>
@@ -94,37 +105,37 @@ const breadcrumbSchema = {
 
         <br>
 
-        <!-- 其他支持方式 -->
+        <!-- Other ways to support -->
         <div class="card-base p-6 mb-6">
-            <h2 class="text-xl font-bold text-black dark:text-white mb-3">其他支持方式</h2>
+            <h2 class="text-xl font-bold text-black dark:text-white mb-3"><I18n key={Translation.OtherSupport} /></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="support-card">
                     <div class="flex items-center gap-2 mb-2">
-                        <Icon name="material-symbols:share" class="text-[1.2rem] text-[var(--primary)]">
-                        <span class="font-semibold text-black dark:text-white">分享推荐</span>
+                        <Icon name="material-symbols:share" class="text-[1.2rem] text-[var(--primary)]" />
+                        <span class="font-semibold text-black dark:text-white"><I18n key={Translation.ShareRecommend} /></span>
                     </div>
                     <p class="text-sm text-black/60 dark:text-white/60">
-                        将我的博客分享给更多朋友
+                        <I18n key={Translation.ShareDescription} />
                     </p>
                 </div>
 
                 <div class="support-card">
                     <div class="flex items-center gap-2 mb-2">
-                        <Icon name="material-symbols:comment" class="text-[1.2rem] text-[var(--primary)]">
-                        <span class="font-semibold text-black dark:text-white">留言互动</span>
+                        <Icon name="material-symbols:comment" class="text-[1.2rem] text-[var(--primary)]" />
+                        <span class="font-semibold text-black dark:text-white"><I18n key={Translation.CommentInteraction} /></span>
                     </div>
                     <p class="text-sm text-black/60 dark:text-white/60">
-                        在文章下方留下您的想法
+                        <I18n key={Translation.CommentDescription} />
                     </p>
                 </div>
 
                 <div class="support-card">
                     <div class="flex items-center gap-2 mb-2">
-                        <Icon name="material-symbols:star" class="text-[1.2rem] text-[var(--primary)]">
-                        <span class="font-semibold text-black dark:text-white">关注订阅</span>
+                        <Icon name="material-symbols:star" class="text-[1.2rem] text-[var(--primary)]" />
+                        <span class="font-semibold text-black dark:text-white"><I18n key={Translation.FollowSubscribe} /></span>
                     </div>
                     <p class="text-sm text-black/60 dark:text-white/60">
-                        订阅RSS或关注社交媒体
+                        <I18n key={Translation.FollowDescription} />
                     </p>
                 </div>
             </div>
@@ -132,7 +143,7 @@ const breadcrumbSchema = {
         <div class="sponsors-section card-base p-6">
             <h2 class="text-xl font-bold text-black dark:text-white mb-3 flex items-center gap-2">
                 <Icon name="material-symbols:group" class="text-[1.5rem] text-[var(--primary)]"></Icon>
-                <span>已赞助的小伙伴</span>
+                <span><I18n key={Translation.RecentSponsors} /></span>
             </h2>
             <div class="mb-4">
                 <LinkSubmitInfo dataType="sponsors"></LinkSubmitInfo>
@@ -144,7 +155,7 @@ const breadcrumbSchema = {
                             <div class="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden">
                             {sponsor.avatar ? (
                                 <div class="relative w-full h-full rounded-lg overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                                    <img src={sponsor.avatar} alt={`${sponsor.name}的头像`} loading="lazy" class="w-full h-full object-cover transition duration-500" />
+                                    <img src={sponsor.avatar} alt={sponsor.name} loading="lazy" class="w-full h-full object-cover transition duration-500" />
                                 </div>
                             ) : (
                                 <Icon name="material-symbols:person" class="text-gray-500 dark:text-gray-400 text-[1.2rem]" />

@@ -2,30 +2,41 @@
 import ViewsCounter from "@components/ViewsCounter.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { Icon } from "astro-icon/components";
+import I18n from "@components/I18n.astro";
+import { Translation, i18n } from "@/i18n/translation";
+
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'zh-cn' } },
+		{ params: { lang: 'en' } },
+	];
+}
+
+const { lang } = Astro.params;
 ---
 
-<MainGridLayout title="画廊">
+<MainGridLayout title={i18n(Translation.Gallery, lang === 'zh-cn' ? 'zh_CN' : 'en')} lang={lang === 'zh-cn' ? 'zh_CN' : 'en'}>
 	<div class="card-base p-6 md:p-8">
 		<div class="flex items-center justify-between gap-3 flex-wrap mb-6">
 			<div class="flex items-center gap-2">
 				<div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
-					<Icon name="material-symbols:photo-library-rounded" class="text-[1.5rem]"></Icon>
+					<Icon name="material-symbols:photo-library-rounded" class="text-[1.5rem]" />
 				</div>
-				<h1 class="text-2xl font-bold text-90">画廊</h1>
+				<h1 class="text-2xl font-bold text-90"><I18n key={Translation.Gallery} /></h1>
 				<div id="status" class="text-sm font-bold text-50 transition-all"></div>
 				<ViewsCounter pathname="/gallery/" />
 			</div>
 			<div class="flex items-center gap-2">
-				<button id="btn-h" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium">横屏</button>
-				<button id="btn-v" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium">竖屏</button>
-				<button id="btn-sort" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium">最新</button>
+				<button id="btn-h" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium"><I18n key={Translation.Horizontal} /></button>
+				<button id="btn-v" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium"><I18n key={Translation.Vertical} /></button>
+				<button id="btn-sort" type="button" class="btn-regular h-9 px-3 rounded-lg text-sm font-medium"><I18n key={Translation.Newest} /></button>
 			</div>
 		</div>
 
 		<div class="text-sm text-50 mb-5 leading-relaxed">
-			图片二进制自托管于： <a href="https://p.2x.nz" target="_blank" rel="noopener noreferrer" class="font-medium text-75 hover:text-[var(--primary)] transition-colors">https://p.2x.nz</a> 
+			<I18n key={Translation.BinarySelfHosted} />： <a href="https://p.2x.nz" target="_blank" rel="noopener noreferrer" class="font-medium text-75 hover:text-[var(--primary)] transition-colors">https://p.2x.nz</a> 
             <br>
-            特别鸣谢：<b class="font-bold text-75">锦瑟/瑞希</b> 大佬提供的图源
+            <I18n key={Translation.SpecialThanks} />：<b class="font-bold text-75">锦瑟/瑞希</b> <I18n key={Translation.ImageSourceProvidedBy} />
 		</div>
 
 		<div id="gallery" class="gallery-grid" data-ready="false"></div>
@@ -56,6 +67,9 @@ import { Icon } from "astro-icon/components";
 		import imagesLoaded from "imagesloaded";
 		import { Fancybox } from "@fancyapps/ui";
 		import "@fancyapps/ui/dist/fancybox/fancybox.css";
+		import { Translation } from "@/i18n/translation";
+
+		const i18n = (key: any) => (window as any).i18n(key);
 
 		const RANDOM_JS_URL = "https://p.2x.nz/random.js";
 		const DOMAIN = "https://p.2x.nz";
@@ -95,7 +109,7 @@ import { Icon } from "astro-icon/components";
 
 		function updateStatus() {
 			const count = counts[currentType] || 0;
-			setStatus(`共 ${count} 张`);
+			setStatus(`${count} ${i18n(Translation.TotalImages)}`);
 		}
 
 		function setActiveButton() {
@@ -112,7 +126,7 @@ import { Icon } from "astro-icon/components";
 		function updateSortButton() {
 			const btnSort = document.getElementById("btn-sort");
 			if (!btnSort) return;
-			btnSort.textContent = isReverse ? "最早" : "最新";
+			btnSort.textContent = isReverse ? i18n(Translation.Oldest) : i18n(Translation.Newest);
 			// 可选：添加高亮表示当前状态，或者仅通过文本区分
 			const activeClasses = ["ring-2", "ring-[var(--primary)]"];
 			for (const c of activeClasses) {
@@ -206,7 +220,7 @@ import { Icon } from "astro-icon/components";
 			const max = counts[currentType];
 			if (!max) return;
 			loading = true;
-			if (footerStatus) footerStatus.textContent = "加载中...";
+			if (footerStatus) footerStatus.textContent = i18n(Translation.Loading);
 
 			try {
 				const { gutter, columnWidth } = getLayoutConfig(galleryEl);
@@ -255,7 +269,7 @@ import { Icon } from "astro-icon/components";
 					} else {
 						hasMore = nextIndex <= max;
 					}
-					footerStatus.textContent = hasMore ? "" : "已加载全部";
+					footerStatus.textContent = hasMore ? "" : i18n(Translation.LoadedAll);
 
 					// 如果还有更多且 sentinel 可见，继续加载
 					if (hasMore) {

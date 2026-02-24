@@ -1,6 +1,6 @@
 ---
 title: 手把手教你跑一个二次元AI老婆！
-published: 2026-02-12T18:20:25
+published: 2026-02-12
 description: 极！其！简！单！傻！子！都！会！本期将手把手教你从软件安装，到模型配置再到出图，百分百画出惊艳的图片！
 image: ../assets/images/ai-wife-15.png
 tags: [AI绘图, NoobAI]

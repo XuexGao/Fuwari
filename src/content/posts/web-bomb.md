@@ -1,6 +1,6 @@
 ---
 title: 如何在你的网站上放一个压缩炸弹？
-published: 2026-02-14T11:59:29
+published: 2026-02-14
 description: 你知道压缩炸弹吗？就是那种看着人畜无害小小的只有几kb的文件，但是解压后却有高达几十几百G的文件的神秘东西！
 image: ../assets/images/web-bomb.png
 draft: false

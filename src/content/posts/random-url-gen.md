@@ -1,6 +1,6 @@
 ---
 title: 完全免费！从架构，开发到部署，一条龙实打实的教你做一言/随机图等随机URL的最佳实践
-published: 2025-12-29T10:10:40
+published: 2025-12-29
 description: 我曾于2024搭建了第一个随机图网站，最近几周又深度研究了类似项目，发现这类项目有很多坑也有很多神秘的捷径，并且某些架构还可以做到“永生”...
 image: ../assets/images/random-url-gen.webp
 draft: false

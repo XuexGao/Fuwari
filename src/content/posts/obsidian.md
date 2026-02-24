@@ -1,6 +1,6 @@
 ---
 title: 现代！易上手！高效！且社区支持的超高校级的MarkDown编辑器！
-published: 2025-09-17T02:20:34
+published: 2025-09-17
 description: 曾经我使用MarkText编写文章，今天收到朋友推荐，来尝试一下黑曜石（Obsidian），发现真的很好用，且社区完善！
 image: ../assets/images/obsidian.webp
 tags:

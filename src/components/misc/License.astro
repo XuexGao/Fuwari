@@ -4,6 +4,9 @@ import { licenseConfig, profileConfig } from "../../config";
 
 import { formatPostDateForDisplay } from "../../utils/date-utils";
 
+import I18n from "@components/I18n.astro";
+import { Translation } from "../../i18n/translation";
+
 interface Props {
 	title: string;
 	slug: string;
@@ -30,32 +33,32 @@ const postUrl = decodeURIComponent(Astro.url.toString());
 	if (currentLink) {
 	    const oldUrl = window.location.href;
 	    const url = new URL(oldUrl);
-	    url.search = ''; // 移除查询字符串
+	    url.search = ''; // Remove query string
 	    if (url.hash.includes('giscus-')) {
-	        url.hash = ''; // 移除 #giscus-xxx 的 hash
+	        url.hash = ''; // Remove #giscus-xxx hash
 	    }
 	    const newUrl = url.toString();
 	    if (oldUrl !== newUrl) {
 	        console.log(`[license] replaced url: ${oldUrl} -> ${newUrl}`);
 	    }
 	
-	    currentLink.textContent = newUrl;  // 显示文本 = 当前 URL
-	    currentLink.href = newUrl;         // 点击跳转 = 当前 URL
-	    currentLink.style.display = 'inline'; // 显示出来
+	    currentLink.textContent = newUrl;  // Text = Current URL
+	    currentLink.href = newUrl;         // Link = Current URL
+	    currentLink.style.display = 'inline'; // Show
 	}
     </script>
 
     <div class="flex gap-6 mt-2">
         <div>
-            <div class="transition text-black/30 dark:text-white/30 text-sm">作者</div>
+            <div class="transition text-black/30 dark:text-white/30 text-sm"><I18n key={Translation.Author} /></div>
             <div class="transition text-black/75 dark:text-white/75 line-clamp-2">{profileConf.name}</div>
         </div>
         <div>
-            <div class="transition text-black/30 dark:text-white/30 text-sm">发布于</div>
+            <div class="transition text-black/30 dark:text-white/30 text-sm"><I18n key={Translation.PublishedAt} /></div>
             <div class="transition text-black/75 dark:text-white/75 line-clamp-2">{formatPostDateForDisplay(pubDate)}</div>
         </div>
         <div>
-            <div class="transition text-black/30 dark:text-white/30 text-sm">许可协议</div>
+            <div class="transition text-black/30 dark:text-white/30 text-sm"><I18n key={Translation.PostLicense} /></div>
             <a href={licenseConf.url} target="_blank" class="link text-[var(--primary)] line-clamp-2">{licenseConf.name}</a>
         </div>
     </div>

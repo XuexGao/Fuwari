@@ -101,6 +101,13 @@ export default defineConfig({
 	base: "/",
 	trailingSlash: "always",
 	output: "static",
+	i18n: {
+		defaultLocale: "zh-cn",
+		locales: ["zh-cn", "en"],
+		routing: {
+			prefixDefaultLocale: true,
+		},
+	},
 	redirects: {
 		"/privacy-policy": {
 			status: 302,

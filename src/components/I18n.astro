@@ -1,0 +1,10 @@
+---
+import { Translation, i18n } from "../i18n/translation";
+
+interface Props {
+	key: Translation;
+}
+
+const { key } = Astro.props;
+---
+<span class="i18n-zh">{i18n(key, 'zh_CN')}</span><span class="i18n-en">{i18n(key, 'en')}</span>

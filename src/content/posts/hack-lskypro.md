@@ -1,6 +1,6 @@
 ---
 title: 记录破解兰空图床（Lsky-Pro）
-published: 2025-08-19T21:09:47
+published: 2025-08-19
 description: '兰空图床是一个简洁易用（？）的图床框架，抓包了一下激活过程，这玩意居然没加密...记录一下'
 image: '../assets/images/2025-08-20-21-11-48-image.webp'
 tags: [兰空图床]

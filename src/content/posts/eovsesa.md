@@ -1,6 +1,6 @@
 ---
 title: EO VS ESA，谁才是国内CDNの王？！
-published: 2026-01-16T16:53:08
+published: 2026-01-16
 description: EdgeOne和ESA都是非常好的免费国内CDN，常规用起来几乎一模一样，今天我们就来让他俩一决雌雄！
 image: ../assets/images/eovsesa.webp
 draft: false

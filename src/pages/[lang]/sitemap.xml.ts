@@ -1,29 +1,36 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
 
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'zh-cn' } },
+		{ params: { lang: 'en' } },
+	];
+}
+
 interface SitemapPage {
 	url: string;
 	priority: number;
 	changefreq: string;
 	lastmod?: Date;
 }
-
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async (context) => {
+	const { lang } = context.params;
 	const posts = await getCollection("posts", ({ data }) => {
 		return !data.draft;
 	});
 
 	const staticPages: SitemapPage[] = [
-		{ url: "/", priority: 1.0, changefreq: "daily" },
-		{ url: "/archive/", priority: 0.8, changefreq: "weekly" },
-		{ url: "/friends/", priority: 0.6, changefreq: "monthly" },
-		{ url: "/gallery/", priority: 0.6, changefreq: "monthly" },
-		{ url: "/sponsors/", priority: 0.5, changefreq: "monthly" },
-		{ url: "/changes/", priority: 0.5, changefreq: "daily" },
+		{ url: `/${lang}/`, priority: 1.0, changefreq: "daily" },
+		{ url: `/${lang}/archive/`, priority: 0.8, changefreq: "weekly" },
+		{ url: `/${lang}/friends/`, priority: 0.6, changefreq: "monthly" },
+		{ url: `/${lang}/gallery/`, priority: 0.6, changefreq: "monthly" },
+		{ url: `/${lang}/sponsors/`, priority: 0.5, changefreq: "monthly" },
+		{ url: `/${lang}/changes/`, priority: 0.5, changefreq: "daily" },
 	];
 
 	const postPages: SitemapPage[] = posts.map((post) => ({
-		url: `/posts/${post.slug}/`,
+		url: `/${lang}/posts/${post.slug}/`,
 		priority: 0.7,
 		changefreq: "weekly",
 		lastmod: post.data.updated || post.data.published,

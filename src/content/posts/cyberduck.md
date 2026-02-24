@@ -1,6 +1,6 @@
 ---
 title: Cyberduck - 简洁好用的S3文件浏览器
-published: 2025-08-31T03:38:24
+published: 2025-08-31
 description: '对象存储是一个非常好用的东西，但是要如何方便的上传文件呢？'
 image: '../assets/images/2025-08-31-03-39-46-image.webp'
 tags: [Cyberduck, 对象存储]

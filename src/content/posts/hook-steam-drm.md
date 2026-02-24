@@ -1,6 +1,6 @@
 ---
 title: 如何绕过Steam直接启动Steam上的游戏？
-published: 2025-10-15T14:39:40
+published: 2025-10-15
 description: 经常买Steam单机游戏的小伙伴们都知道，Steam上的大部分游戏在启动时都要求Steam在后台运行，那么如果我只是在玩一个单机游戏又不想带Steam启动要怎么办呢？这篇文章来帮你
 image: ../assets/images/hook-steam-drm.webp
 tags:

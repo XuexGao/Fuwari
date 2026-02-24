@@ -1,6 +1,6 @@
 ---
 title: 解决困扰我多时的JS重复请求问题
-published: 2025-11-18T08:46:02
+published: 2025-11-18
 description: 如果你在我的博客初创就关注了，且具有一定的技术能力，你会发现我的博客曾经有一段时间在疯狂魔改，这可能会导致一些问题，并影响至今
 image: ../assets/images/swup-js.webp
 tags:

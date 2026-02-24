@@ -1,6 +1,6 @@
 ---
 title: 在Mac上玩GalGame竟如此简单！
-published: 2025-09-30T19:29:21
+published: 2025-09-30
 description: 虽然说用了Mac就等于远离了所有游戏，但是偶尔还是想打打Gal放松放松的，那么有没有傻瓜式的方法让我们可以抱着Mac在床上嗯嗯啊啊呢，有的！
 image: ../assets/images/d5441bcd48dca4226efe40ba6d522551.webp
 tags:

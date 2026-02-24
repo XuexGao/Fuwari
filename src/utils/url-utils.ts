@@ -9,8 +9,8 @@ function joinUrl(...parts: string[]): string {
 	return joined.replace(/\/+/g, "/");
 }
 
-export function getPostUrlBySlug(slug: string): string {
-	return url(`/posts/${slug}/`);
+export function getPostUrlBySlug(slug: string, lang?: string): string {
+	return url(`/posts/${slug}/`, lang);
 }
 
 export function getDir(path: string): string {
@@ -21,6 +21,7 @@ export function getDir(path: string): string {
 	return path.substring(0, lastSlashIndex + 1);
 }
 
-export function url(path: string) {
-	return joinUrl("", import.meta.env.BASE_URL, path);
+export function url(path: string, lang?: string) {
+	const langPrefix = lang ? `/${lang}` : "";
+	return joinUrl("", import.meta.env.BASE_URL, langPrefix, path);
 }

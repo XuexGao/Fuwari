@@ -1,6 +1,6 @@
 ---
 title: ZTE光猫F450不拆机获取超密
-published: 2025-11-01T14:42:54
+published: 2025-11-01
 description: 朋友老早之前就想将光猫改为桥接，今天终于整上了，但奈何没有超密，不过，在互联网的帮助下，我们最终找到了解决方案
 image: ../assets/images/zte-f450-bridge-4.webp
 tags:

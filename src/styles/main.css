@@ -143,6 +143,14 @@
     .btn-regular-dark.success {
         @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
     }
+
+    /* i18n support */
+    html:not([lang^="zh"]) .i18n-zh {
+        display: none !important;
+    }
+    html[lang^="zh"] .i18n-en {
+        display: none !important;
+    }
 }
 
 html {

@@ -1,6 +1,6 @@
 ---
 title: Oracle（甲骨文云）踩坑记录
-published: 2025-09-08T00:01:25
+published: 2025-09-08
 description: '在钞能力的帮助下也是成功薅到了一个甲骨文账号，上手把玩发现坑点挺多的，遂记录'
 image: '../assets/images/2025-09-08-00-02-59-image.webp'
 tags: [Oracle]

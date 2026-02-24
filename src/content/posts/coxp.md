@@ -1,6 +1,6 @@
 ---
 title: 你真的懂了浏览器跨域吗？COOP，COEP，CORP，CORS都是管什么的？
-published: 2026-02-03T04:54:03
+published: 2026-02-03
 description: 你是否在浏览或开发网站时在浏览器控制台看到过“由于跨域XXX，已阻止加载XXX”，或“200 Failed”状态？今天带你搞懂浏览器的跨域安全模型
 image: ../assets/images/coxp.webp
 draft: false

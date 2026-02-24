@@ -1,6 +1,6 @@
 ---
 title: 你可曾想过，直接将BitWarden部署到Cloudflare Worker？
-published: 2026-01-26T17:00:52
+published: 2026-01-26
 description: warden-worker就是这样一个项目，它将Rust编译为WASM，然后部署到Cloudflare Worker，无需VPS，无需家里云，只需点点鼠标就可免费用上自己的密码托管！
 image: ../assets/images/warden-worker.webp
 tags:

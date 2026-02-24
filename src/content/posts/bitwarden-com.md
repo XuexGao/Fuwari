@@ -1,6 +1,6 @@
 ---
 title: 魔幻嫁接！免费用上完全体的Bitwarden！
-published: 2026-02-23T16:08:48
+published: 2026-02-23
 description: 你是否正在寻找一个密码库？又不想自托管？
 image: ../assets/images/bitwarden.png
 draft: false

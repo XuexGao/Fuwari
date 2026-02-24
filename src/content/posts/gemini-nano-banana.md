@@ -1,6 +1,6 @@
 ---
 title: Google最新的AI生图模型 Nano Banana！立绘转真人！一键P图！
-published: 2025-09-01T16:25:34
+published: 2025-09-01
 description: '哎我造了村里孩子吃上城里货了，这你扯不扯，这AI生图方便好，无需部署不费脑，大口大口使劲造，鼻歪眼斜使劲笑'
 image: '../assets/images/2025-09-01-16-39-17-5976a1f7-3f14-4987-aa60-3257b05f8b7b.webp'
 tags: [AI, Gemini, Google]

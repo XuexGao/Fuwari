@@ -4,6 +4,8 @@ import { Icon } from "astro-icon/components";
 import { umamiConfig } from "../config";
 import { formatPostDateForDisplay } from "../utils/date-utils";
 import { url, getDir } from "../utils/url-utils";
+import I18n from "./I18n.astro";
+import { Translation } from "../i18n/translation";
 
 interface Props {
 	class: string;
@@ -52,14 +54,14 @@ const className = Astro.props.class;
                 <div class="meta-icon">
                     <Icon name="material-symbols:visibility-outline-rounded" class="text-xl"></Icon>
                 </div>
-                <span class="text-50 text-sm font-medium" id={`page-views-${slug}`}>0 次</span>
+                <span class="text-50 text-sm font-medium" id={`page-views-${slug}`}>0 <I18n key={Translation.Views} /></span>
             </div>
             <!--
             <div class="flex items-center">
                 <div class="meta-icon">
                     <Icon name="material-symbols:person" class="text-xl"></Icon>
                 </div>
-                <span class="text-50 text-sm font-medium" id={`page-visitors-${slug}`}>0 人</span>
+                <span class="text-50 text-sm font-medium" id={`page-visitors-${slug}`}>0 <I18n key={Translation.Visitors} /></span>
             </div>
             -->
         </>
@@ -82,9 +84,9 @@ const className = Astro.props.class;
                 const currentViews = parseInt(viewsElement.textContent) || 0;
                 if (currentViews !== pageViews) {
                     if (currentViews === 0) {
-                         animateValueWithSuffix(viewsElement, currentViews, pageViews, 1000, '次');
+                         animateValueWithSuffix(viewsElement, currentViews, pageViews, 1000, " " + window.i18n(window.Translation.Views));
                     } else {
-                         viewsElement.innerHTML = `${pageViews} 次`;
+                         viewsElement.innerHTML = pageViews + " " + window.i18n(window.Translation.Views);
                     }
                 }
             }
@@ -93,7 +95,7 @@ const className = Astro.props.class;
         }
     }
 
-    // 页面加载完成后获取统计数据
+    // Get stats after page load
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', fetchPageViews);
     } else {

@@ -3,6 +3,8 @@ import Icon from "@iconify/svelte";
 import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
 import Highlight from "./Highlight.svelte";
+import { Translation } from "@/i18n/translation";
+import { t } from "@/i18n/i18n-svelte";
 
 interface SearchResult {
 	url: string;
@@ -21,6 +23,14 @@ let result: SearchResult[] = [];
 let isSearching = false;
 // biome-ignore lint/suspicious/noExplicitAny: Temporary usage of any for posts array
 let posts: any[] = [];
+
+const getCurrentLang = () => {
+	const segments = window.location.pathname.split('/').filter(Boolean);
+	if (segments[0] === 'zh-cn' || segments[0] === 'en') {
+		return segments[0];
+	}
+	return 'zh-cn';
+};
 
 const togglePanel = () => {
 	const panel = document.getElementById("search-panel");
@@ -100,8 +110,10 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 					if (linkMatches) matchCount += linkMatches.length;
 				});
 
+				const lang = getCurrentLang();
+
 				return {
-					url: url(`/posts/${post.link}/`),
+					url: url(`/posts/${post.link}/`, lang),
 					meta: { title: post.title },
 					excerpt,
 					urlPath: `/posts/${post.link}`,
@@ -166,7 +178,7 @@ $: search(keywordMobile, false);
       dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10
 ">
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-    <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true)}
+    <input placeholder={$t(Translation.Search)} bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true)}
            class="transition-all pl-10 text-sm bg-transparent outline-0
          h-full w-40 active:w-60 focus:w-60 text-black/50 dark:text-white/50"
     >
@@ -188,7 +200,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
       dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10
   ">
         <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-        <input placeholder="Search" bind:value={keywordMobile}
+        <input placeholder={$t(Translation.Search)} bind:value={keywordMobile}
                class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
                focus:w-60 text-black/50 dark:text-white/50"
         >
@@ -197,7 +209,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
     <!-- search results header -->
     {#if result.length > 0}
         <div class="text-xs text-black/40 dark:text-white/40 px-3 py-2 border-b border-black/5 dark:border-white/5">
-            {result.length} 条搜索结果
+            {result.length} {$t(Translation.SearchResults)}
         </div>
     {/if}
 
@@ -212,7 +224,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
             </div>
             <div class="transition text-xs text-black/50 dark:text-white/50 mb-1 font-mono">
                 <Highlight text={item.urlPath} query={item.highlightQuery} />
-                <span class="ml-2 text-[var(--primary)]">命中 {item.matchCount} 个关键词</span>
+                <span class="ml-2 text-[var(--primary)]">{$t(Translation.KeywordsMatched)} {item.matchCount}</span>
             </div>
             <div class="transition text-sm text-50">
                 <Highlight text={item.excerpt} query={item.highlightQuery} />

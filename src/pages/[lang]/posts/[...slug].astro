@@ -11,28 +11,37 @@ import { Icon } from "astro-icon/components";
 import { gitHubEditConfig, licenseConfig } from "src/config";
 import PostDiffInArticle from "@components/widget/PostDiffInArticle.astro";
 import DiffDebugEditor from "@components/widget/DiffDebugEditor.astro";
-import PostMetadata from "../../components/PostMeta.astro";
-import ImageWrapper from "../../components/misc/ImageWrapper.astro";
-import { profileConfig, siteConfig, umamiConfig } from "../../config";
+import PostMetadata from "@components/PostMeta.astro";
+import ImageWrapper from "@components/misc/ImageWrapper.astro";
+import { profileConfig, siteConfig, umamiConfig } from "@/config";
 import {
 	formatDateToYYYYMMDD,
 	formatPostDateForDisplay,
-} from "../../utils/date-utils";
+} from "@utils/date-utils";
+
+import { Translation, i18n } from "@/i18n/translation";
+import I18n from "@components/I18n.astro";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+	const locales = ["zh-cn", "en"];
+	return locales.flatMap((lang) => {
+		return blogEntries.map((entry) => ({
+			params: { lang, slug: entry.slug },
+			props: { entry },
+		}));
+	});
 }
 
 const { entry } = Astro.props;
+const { lang } = Astro.params;
 const { Content, headings } = await entry.render();
 
 const { remarkPluginFrontmatter } = await entry.render();
 
 const history = getPostHistory(entry.id);
+
+const authorName = i18n(Translation.AuthorName, lang === 'zh-cn' ? 'zh_CN' : 'en');
 
 const jsonLd = [
 	{
@@ -42,7 +51,7 @@ const jsonLd = [
 		description: entry.data.description || entry.data.title,
 		author: {
 			"@type": "Person",
-			name: profileConfig.name,
+			name: authorName,
 			url: Astro.site,
 		},
 		datePublished: formatDateToYYYYMMDD(entry.data.published),
@@ -53,9 +62,7 @@ const jsonLd = [
 			"@type": "WebPage",
 			"@id": Astro.url,
 		},
-		inLanguage: entry.data.lang
-			? entry.data.lang.replace("_", "-")
-			: siteConfig.lang.replace("_", "-"),
+		inLanguage: lang === 'zh-cn' ? 'zh-CN' : 'en',
 		image: entry.data.image,
 	},
 	{
@@ -65,13 +72,13 @@ const jsonLd = [
 			{
 				"@type": "ListItem",
 				position: 1,
-				name: "首页",
+				name: i18n(Translation.Home, lang === 'zh-cn' ? 'zh_CN' : 'en'),
 				item: Astro.site,
 			},
 			{
 				"@type": "ListItem",
 				position: 2,
-				name: "归档",
+				name: i18n(Translation.Archive, lang === 'zh-cn' ? 'zh_CN' : 'en'),
 				item: new URL("/archive", Astro.site).toString(),
 			},
 			{
@@ -84,7 +91,7 @@ const jsonLd = [
 	},
 ];
 ---
-<MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
+<MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={lang === 'zh-cn' ? 'zh_CN' : 'en'} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full",
@@ -96,13 +103,13 @@ const jsonLd = [
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:notes-rounded"></Icon>
                     </div>
-                    <div class="text-sm">{remarkPluginFrontmatter.words} 字</div>
+                    <div class="text-sm">{remarkPluginFrontmatter.words} <I18n key={Translation.Words} /></div>
                 </div>
                 <div class="flex flex-row items-center">
                     <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:schedule-outline-rounded"></Icon>
                     </div>
-                    <div class="text-sm">{remarkPluginFrontmatter.minutes} 分钟</div>
+                    <div class="text-sm">{remarkPluginFrontmatter.minutes} <I18n key={Translation.Minutes} /></div>
                 </div>
             </div>
 
@@ -156,40 +163,40 @@ const jsonLd = [
                 <Content />
             </Markdown>
 
-            <!-- 文章反馈与编辑区域 -->
+            <!-- Article feedback and edit area -->
             <div class="mb-4 p-4 rounded-lg bg-[var(--license-block-bg)] border border-[var(--line-divider)] onload-animation">
-                <!-- 反馈区域 -->
+                <!-- Feedback area -->
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex items-center gap-3">
                         <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center">
                             <Icon name="material-symbols:help-outline" class="text-[0.75rem] text-white dark:text-black/70"></Icon>
                         </div>
-                        <p class="text-black/80 dark:text-white/80 text-sm">这篇文章是否对你有帮助？</p>
+                        <p class="text-black/80 dark:text-white/80 text-sm"><I18n key={Translation.ArticleHelpful} /></p>
                     </div>
                     <div class="flex gap-2">
                         <a href="/posts/pin/" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)] text-[var(--btn-content)] text-xs font-medium transition-all active:scale-95">
                             <Icon name="material-symbols:contact-mail-outline" class="text-[0.875rem] group-hover:scale-110 transition-transform"></Icon>
-                            联系
+                            <I18n key={Translation.Contact} />
                         </a>
                         <a href="/donate/" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--primary)] hover:bg-[oklch(0.65_0.16_var(--hue))] active:bg-[oklch(0.60_0.18_var(--hue))] text-white dark:text-black/80 text-xs font-medium transition-all active:scale-95">
                             <Icon name="material-symbols:favorite-outline" class="text-[0.875rem] group-hover:scale-110 transition-transform"></Icon>
-                            赞助
+                            <I18n key={Translation.Sponsors} />
                         </a>
                     </div>
                 </div>
                 
                 {gitHubEditConfig.enable && (
                     <>
-                        <!-- 分隔线 -->
+                        <!-- Divider -->
                         <div class="border-t border-[var(--line-divider)] my-3"></div>
                         
-                        <!-- GitHub编辑区域 -->
+                        <!-- GitHub edit area -->
                         <div class="flex items-start gap-3">
                             <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center">
                                 <Icon name="material-symbols:edit-outline" class="text-[0.875rem] text-white dark:text-black/70"></Icon>
                             </div>
                             <div class="flex-1">
-                                <p class="text-black/80 dark:text-white/80 text-sm mb-1">发现错误或想要改进这篇文章？</p>
+                                <p class="text-black/80 dark:text-white/80 text-sm mb-1"><I18n key={Translation.ImprovePost} /></p>
                                 <a 
                                     href={`${gitHubEditConfig.baseUrl}/${entry.slug}.md`}
                                     target="_blank"
@@ -197,29 +204,29 @@ const jsonLd = [
                                     class="inline-flex items-center gap-1 text-[var(--primary)] hover:text-[oklch(0.65_0.16_var(--hue))] text-sm font-medium transition-colors"
                                 >
                                     <Icon name="fa6-brands:github" class="text-[0.875rem]"></Icon>
-                                    在 GitHub 上编辑此页
+                                    <I18n key={Translation.EditOnGithub} />
                                     <Icon name="material-symbols:open-in-new" class="text-[0.75rem]"></Icon>
                                 </a>
                             </div>
                         </div>
 
-                        <!-- 修订历史 -->
+                        <!-- Revision history -->
                         {history.length > 0 && (
                             <div class="flex items-start gap-3 mt-4">
                                 <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center">
                                     <Icon name="material-symbols:history-rounded" class="text-[0.875rem] text-white dark:text-black/70"></Icon>
                                 </div>
                                 <div class="flex-1">
-                                    <p class="text-black/80 dark:text-white/80 text-sm mb-1">文章修订历史 ({history.length} 次)</p>
+                                    <p class="text-black/80 dark:text-white/80 text-sm mb-1"><I18n key={Translation.RevisionHistory} /> ({history.length} <I18n key={Translation.Views} />)</p>
                                     <details class="group">
                                         <summary class="cursor-pointer text-sm text-[var(--primary)] font-medium hover:underline select-none">
-                                            查看变更记录
+                                            <I18n key={Translation.ViewChanges} />
                                         </summary>
                                         <div class="mt-2 space-y-2 max-h-48 overflow-y-auto">
                                             {history.map(commit => (
                                                 <div class="flex flex-col text-xs bg-black/5 dark:bg-white/5 p-2 rounded">
                                                     <div class="flex justify-between items-center mb-1">
-														<span class="font-bold text-black/70 dark:text-white/70">{formatPostDateForDisplay(new Date(commit.date))}</span>
+                                						<span class="font-bold text-black/70 dark:text-white/70">{formatPostDateForDisplay(new Date(commit.date))}</span>
                                                         <a href={getCommitUrl(commit.hash)} target="_blank" class="text-[var(--primary)] hover:underline font-mono">
                                                             {commit.hash.substring(0, 7)}
                                                         </a>
@@ -240,7 +247,7 @@ const jsonLd = [
             
 
             
-            <!-- Giscus 评论区 -->
+            <!-- Giscus comments -->
             <div id="giscus-container" class="giscus" data-swup-ignore-script
                 data-repo="afoim/giscus-fuwari"
                 data-repo-id="R_kgDOOi8quw"

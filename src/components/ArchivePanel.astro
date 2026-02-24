@@ -2,10 +2,14 @@
 
 import { getSortedPosts } from "../utils/content-utils";
 import { getPostUrlBySlug } from "../utils/url-utils";
+import I18n from "./I18n.astro";
+import { Translation } from "../i18n/translation";
 
 interface Props {
 	keyword?: string;
 }
+
+const { lang } = Astro.params;
 
 let posts = await getSortedPosts();
 
@@ -49,10 +53,10 @@ function formatDate(date: Date) {
                     <div class="w-[15%] md:w-[10%]">
                         <div class="h-3 w-3 bg-none rounded-full outline outline-[var(--primary)] mx-auto -outline-offset-[2px] z-50 outline-3"></div>
                     </div>
-                    <div class="w-[70%] md:w-[80%] transition text-left text-50">{group.posts.length} 篇文章</div>
+                    <div class="w-[70%] md:w-[80%] transition text-left text-50">{group.posts.length} <I18n key={Translation.PostCount} /></div>
                 </div>
                 {group.posts.map(post => (
-                    <a href={getPostUrlBySlug(post.slug)}
+                    <a href={getPostUrlBySlug(post.slug, lang)}
                        aria-label={post.data.title}
                        class="group btn-plain !block h-10 w-full rounded-lg hover:text-[initial]"
                     >

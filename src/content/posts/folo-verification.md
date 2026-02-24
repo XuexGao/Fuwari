@@ -1,6 +1,6 @@
 ---
 title: 认证为Folo的创作者
-published: 2025-08-10T21:26:55
+published: 2025-08-10
 description: 'Folo是一个RSS聚合平台，在上面不仅可以订阅很多优质的RSS源，也可以认领自己的RSS源'
 image: '../assets/images/2025-08-10-21-31-04-image.webp'
 tags: [Folo]

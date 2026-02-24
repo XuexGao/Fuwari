@@ -1,6 +1,6 @@
 ---
 title: 超高校级的监控服务：UptimeFlare！基于CF Worker！自托管！声明式！新手友好！
-published: 2026-01-03T03:10:53
+published: 2026-01-03
 description: 谁不想拥有一个监控自己服务的服务呢？
 image: ../assets/images/uptimeflare.webp
 draft: false

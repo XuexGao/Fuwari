@@ -1,6 +1,6 @@
 ---
 title: 手把手教你进入e站里站（exhentai.org）
-published: 2025-08-12T19:10:40
+published: 2025-08-12
 description: '上周也是突然想到e站这个神奇的网站，但是2年的账号居然进不了里站，这里总结一些进里站的心路历程~'
 image: '../assets/images/2025-08-12-19-13-14-image.webp'
 tags: [exhentai]

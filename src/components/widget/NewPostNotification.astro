@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
+import { Translation, i18n } from "../../i18n/translation";
+import I18n from "@components/I18n.astro";
 ---
 
 <style>
@@ -57,16 +59,16 @@ import { Icon } from "astro-icon/components";
             <div class="flex items-center justify-between mb-3">
                 <div class="flex items-center gap-2 text-[var(--primary)]">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-                    <h3 class="font-bold text-black dark:text-white">发现新文章</h3>
-                    <a href="/posts/post-diff-guide/#食用方法" class="ml-1 text-xs text-[var(--primary)] hover:underline opacity-80" title="查看食用方法">
+                    <h3 class="font-bold text-black dark:text-white"><I18n key={Translation.NewPostFound} /></h3>
+                    <a href="/posts/post-diff-guide/#食用方法" class="ml-1 text-xs text-[var(--primary)] hover:underline opacity-80" title={i18n(Translation.HowToUse, undefined)}>
                         <Icon name="material-symbols:help-outline-rounded" size={16} />
                     </a>
                 </div>
                 <div class="flex items-center gap-1">
-                    <button id="clear-notification" class="text-black/50 dark:text-white/50 hover:text-red-500 transition-colors p-1 rounded-md hover:bg-red-500/10" title="清空通知">
+                    <button id="clear-notification" class="text-black/50 dark:text-white/50 hover:text-red-500 transition-colors p-1 rounded-md hover:bg-red-500/10" title={i18n(Translation.ClearNotification, undefined)}>
                         <Icon name="material-symbols:delete-rounded" size={18} class="mx-auto" />
                     </button>
-                    <button id="minimize-notification" class="text-black/50 dark:text-white/50 hover:text-[var(--primary)] transition-colors p-1 rounded-md hover:bg-[var(--primary)]/10" title="隐藏">
+                    <button id="minimize-notification" class="text-black/50 dark:text-white/50 hover:text-[var(--primary)] transition-colors p-1 rounded-md hover:bg-[var(--primary)]/10" title={i18n(Translation.Minimize, undefined)}>
                         <Icon name="material-symbols:close-rounded" size={18} class="mx-auto" />
                     </button>
                 </div>
@@ -79,8 +81,10 @@ import { Icon } from "astro-icon/components";
 
 <script>
     import * as Diff from 'diff';
+    import { Translation } from "../../i18n/translation";
 
     (async function() {
+    const i18n = (key: any) => (window as any).i18n(key);
     const __diffLogEnabled = (() => {
         try {
             const sp = new URLSearchParams(window.location.search);
@@ -342,7 +346,7 @@ import { Icon } from "astro-icon/components";
         // Logic for "No updates"
         if (newPosts.length === 0) {
              list.innerHTML = `<div class="text-center text-gray-500 dark:text-gray-400 py-4">
-                <p class="text-sm font-medium mb-2">暂无文章更新</p>
+                <p class="text-sm font-medium mb-2">${i18n(Translation.NoUpdates)}</p>
                 <div class="text-xs opacity-70 bg-gray-100 dark:bg-gray-800 rounded px-2 py-1 inline-block">
                     ${initTimeStr} - ${checkTimeStr}
                 </div>
@@ -357,15 +361,15 @@ import { Icon } from "astro-icon/components";
         // Show timestamp header
         let html = `
             <div class="text-xs text-gray-500 dark:text-gray-400 mb-2 px-1 flex flex-col gap-0.5">
-                <div class="font-medium">发现更新</div>
+                <div class="font-medium">${i18n(Translation.UpdatesFound)}</div>
                 <div class="opacity-70 text-[10px]">${initTimeStr} - ${checkTimeStr}</div>
             </div>`;
         
         newPosts.forEach(post => {
             const isUpdated = post.isUpdated;
             const badge = isUpdated 
-                ? '<span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-1.5 py-0.5 rounded ml-2">更新</span>'
-                : '<span class="text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-1.5 py-0.5 rounded ml-2">新文章</span>';
+                ? `<span class="text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 px-1.5 py-0.5 rounded ml-2">${i18n(Translation.Updated)}</span>`
+                : `<span class="text-xs bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 px-1.5 py-0.5 rounded ml-2">${i18n(Translation.NewPost)}</span>`;
             
             // Convert absolute URL to relative path
             let postLink = post.link;

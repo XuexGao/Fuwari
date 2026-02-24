@@ -1,6 +1,6 @@
 ---
 title: 如何让一个文件在Git提交中永远消失？如何丢掉其中一条提交并保持逻辑完整？
-published: 2026-01-24T06:57:21
+published: 2026-01-24
 description: 我们有时候可能会误操作导致提交了一个不该提交的文件，当你发现的时候，在此之后已经堆砌了很多新的提交...
 image: ../assets/images/del-git-commit-1.webp
 draft: false
