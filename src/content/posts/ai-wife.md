@@ -38,7 +38,7 @@ lang: ""
 > [!tip]
 > 更推荐使用 [Stable Diffusion Forge](https://www.bilibili.com/video/BV1rc6nYNEYo/)，如果不需要复杂的节点配布，sdf可以更方便的去写提示词
 > ![](../assets/images/ai-wife-17.png)
-
+> 
 > 尽管ComfyUI支持AMD显卡以及纯CPU绘图，但还是建议使用 **NVIDIA Cuda** 进行绘图，更快，兼容性也更好！ 
 
 ### 方式一：官方版（推荐）
