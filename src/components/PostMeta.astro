@@ -71,16 +71,19 @@ const className = Astro.props.class;
 {slug && (
     <script define:vars={{ slug: slug }}>
     async function fetchPageViews() {
+        // --- 你的 Umami 配置 ---
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28"; 
         const baseUrl = "https://u.xiegao.top";
-        const shareId = "IoWiNCvTUPxaDg5x"; // 你的 Share ID
+        const shareId = "IoWiNCvTUPxaDg5x";
 
         try {
+            // 1. 获取 Token
             const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);
             if (!tokenRes.ok) return;
             const tokenData = await tokenRes.json();
             const token = tokenData.token;
 
+            // 2. 获取数据
             const url = `${baseUrl}/api/websites/${websiteId}/stats?path=/posts/${slug}/&startAt=0&endAt=${Date.now()}`;
             const response = await fetch(url, {
                 headers: { 'x-umami-share-token': token }
@@ -88,19 +91,29 @@ const className = Astro.props.class;
             if (!response.ok) return;
             const data = await response.json();
             
-            console.log(`Umami Post (${slug}) Data:`, data); // 调试日志
-
+            // 3. 更新 UI
             const viewsElement = document.getElementById(`page-views-${slug}`);
             if (viewsElement) {
-                // 【关键修复】兼容两种格式
+                // 【修复1】正确读取数字
+                // 根据你的截图，pageviews 是直接的数字，不是对象
                 let views = 0;
-                if (data.pageviews && typeof data.pageviews === 'object' && data.pageviews.value !== undefined) {
-                    views = data.pageviews.value;
-                } else if (data.pageviews !== undefined) {
+                if (typeof data.pageviews === 'number') {
                     views = data.pageviews;
+                } else if (data.pageviews && data.pageviews.value) {
+                    views = data.pageviews.value;
                 }
 
-                const suffix = (window.Translation && window.i18n) ? " " + window.i18n(window.Translation.views) : " 次";
+                // 【修复2】解决 "undefined" 后缀问题
+                // 尝试获取翻译，如果获取失败，默认显示 " 次"
+                let suffix = " 次";
+                if (window.i18n && window.Translation) {
+                    if (window.Translation.Views) {
+                        suffix = " " + window.i18n(window.Translation.Views); // 尝试大写 Views
+                    } else if (window.Translation.views) {
+                        suffix = " " + window.i18n(window.Translation.views); // 尝试小写 views
+                    }
+                }
+
                 viewsElement.innerHTML = views + suffix;
             }
         } catch (error) {
@@ -109,7 +122,13 @@ const className = Astro.props.class;
     }
 
     function initStats() { fetchPageViews(); }
-    initStats();
+    
+    // 适配初始加载和 Swup 切换
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initStats);
+    } else {
+        initStats();
+    }
     document.addEventListener('swup:contentReplaced', initStats);
 </script>
 )}
