@@ -18,7 +18,7 @@ async function getSiteUrl() {
     } catch (e) {
         console.error('Error reading astro.config.mjs:', e);
     }
-    return 'https://acofork.com'; // Fallback
+    return 'https://xiegao.top'; // Fallback
 }
 
 function loadCache() {
