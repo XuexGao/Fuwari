@@ -2,6 +2,9 @@
 import Icon from "@iconify/svelte";
 import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
+import Highlight from "./Highlight.svelte";
+import { Translation } from "@/i18n/translation";
+import { t, initLang, lang } from "@/i18n/i18n-svelte";
 
 interface SearchResult {
 	url: string;
@@ -10,6 +13,8 @@ interface SearchResult {
 	};
 	excerpt: string;
 	urlPath?: string;
+	highlightQuery?: string;
+	matchCount: number;
 }
 
 let keywordDesktop = "";
@@ -18,6 +23,14 @@ let result: SearchResult[] = [];
 let isSearching = false;
 // biome-ignore lint/suspicious/noExplicitAny: Temporary usage of any for posts array
 let posts: any[] = [];
+
+const getCurrentLang = () => {
+	const segments = window.location.pathname.split('/').filter(Boolean);
+	if (segments[0] === 'zh-cn' || segments[0] === 'en') {
+		return segments[0];
+	}
+	return 'zh-cn';
+};
 
 const togglePanel = () => {
 	const panel = document.getElementById("search-panel");
@@ -40,12 +53,6 @@ const setPanelVisibility = (show: boolean, isDesktop: boolean): void => {
 	}
 };
 
-const highlightText = (text: string, keyword: string): string => {
-	if (!keyword) return text;
-	const regex = new RegExp(`(${keyword})`, "gi");
-	return text.replace(regex, "<mark>$1</mark>");
-};
-
 const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 	if (!keyword) {
 		setPanelVisibility(false, isDesktop);
@@ -56,26 +63,27 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 	isSearching = true;
 
 	try {
+		const keywords = keyword
+			.toLowerCase()
+			.split(/\s+/)
+			.filter((k) => k.length > 0);
+
 		const searchResults = posts
 			.filter((post) => {
-				const keywordLower = keyword.toLowerCase();
 				const searchText =
-					`${post.title} ${post.description} ${post.content}`.toLowerCase();
-				const urlPath = `/posts/${post.link}`;
+					`${post.title} ${post.description} ${post.content} ${post.link}`.toLowerCase();
 
-				// 支持内容搜索和URL后缀搜索
-				return (
-					searchText.includes(keywordLower) ||
-					urlPath.toLowerCase().includes(keywordLower) ||
-					post.link.toLowerCase().includes(keywordLower)
-				);
+				return keywords.every((k) => searchText.includes(k));
 			})
 			.map((post) => {
+				const titleLower = post.title.toLowerCase();
+				const descriptionLower = post.description.toLowerCase();
 				const contentLower = post.content.toLowerCase();
-				const keywordLower = keyword.toLowerCase();
-				const contentIndex = contentLower.indexOf(keywordLower);
+				const linkLower = post.link.toLowerCase();
 
 				let excerpt = "";
+				const firstKeyword = keywords[0];
+				const contentIndex = contentLower.indexOf(firstKeyword);
 				if (contentIndex !== -1) {
 					const start = Math.max(0, contentIndex - 50);
 					const end = Math.min(post.content.length, contentIndex + 100);
@@ -86,13 +94,31 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 					excerpt = post.description || `${post.content.substring(0, 150)}...`;
 				}
 
+				let matchCount = 0;
+				keywords.forEach((k) => {
+					const regex = new RegExp(
+						k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+						"gi",
+					);
+					const titleMatches = titleLower.match(regex);
+					const descriptionMatches = descriptionLower.match(regex);
+					const contentMatches = contentLower.match(regex);
+					const linkMatches = linkLower.match(regex);
+					if (titleMatches) matchCount += titleMatches.length;
+					if (descriptionMatches) matchCount += descriptionMatches.length;
+					if (contentMatches) matchCount += contentMatches.length;
+					if (linkMatches) matchCount += linkMatches.length;
+				});
+
+				const langCode = getCurrentLang();
+
 				return {
-					url: url(`/posts/${post.link}/`),
-					meta: {
-						title: post.title,
-					},
-					excerpt: highlightText(excerpt, keyword),
+					url: url(`/posts/${post.link}/`, langCode),
+					meta: { title: post.title },
+					excerpt,
 					urlPath: `/posts/${post.link}`,
+					highlightQuery: keyword,
+					matchCount,
 				};
 			});
 
@@ -108,8 +134,11 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 };
 
 onMount(async () => {
+	initLang();
 	try {
-		const response = await fetch("/rss.xml");
+		const langCode = getCurrentLang();
+		const rssPath = `/${langCode}/rss.xml`;
+		const response = await fetch(rssPath);
 		const text = await response.text();
 		const parser = new DOMParser();
 		const xml = parser.parseFromString(text, "text/xml");
@@ -152,7 +181,7 @@ $: search(keywordMobile, false);
       dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10
 ">
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-    <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true)}
+    <input placeholder={$t(Translation.Search)} bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true)}
            class="transition-all pl-10 text-sm bg-transparent outline-0
          h-full w-40 active:w-60 focus:w-60 text-black/50 dark:text-white/50"
     >
@@ -174,11 +203,18 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
       dark:bg-white/5 dark:hover:bg-white/10 dark:focus-within:bg-white/10
   ">
         <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-        <input placeholder="Search" bind:value={keywordMobile}
+        <input placeholder={$t(Translation.Search)} bind:value={keywordMobile}
                class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
                focus:w-60 text-black/50 dark:text-white/50"
         >
     </div>
+
+    <!-- search results header -->
+    {#if result.length > 0}
+        <div class="text-xs text-black/40 dark:text-white/40 px-3 py-2 border-b border-black/5 dark:border-white/5">
+            {result.length} {$t(Translation.SearchResults)}
+        </div>
+    {/if}
 
     <!-- search results -->
     {#each result as item}
@@ -186,19 +222,34 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
            class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
        rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
             <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
-                {item.meta.title}<Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
+                <Highlight text={item.meta.title} query={item.highlightQuery} />
+                <Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
             </div>
             <div class="transition text-xs text-black/50 dark:text-white/50 mb-1 font-mono">
-                            {item.urlPath}
-                        </div>
+                <Highlight text={item.urlPath} query={item.highlightQuery} />
+                <span class="ml-2 text-[var(--primary)]">
+                    {#if $lang === 'zh_CN'}
+                        {item.matchCount} {$t(Translation.KeywordsMatched)}
+                    {:else}
+                        {$t(Translation.KeywordsMatched)} {item.matchCount}
+                    {/if}
+                </span>
+            </div>
             <div class="transition text-sm text-50">
-                {@html item.excerpt}
+                <Highlight text={item.excerpt} query={item.highlightQuery} />
             </div>
         </a>
     {/each}
 </div>
 
 <style>
+  :global(.hl) {
+    color: var(--primary);
+  }
+  :global(.hl.no-wrap) {
+    white-space: nowrap;
+    display: inline-block;
+  }
   input:focus {
     outline: 0;
   }
@@ -212,5 +263,10 @@ top-20 left-4 md:left-[unset] right-4 shadow-2xl rounded-2xl p-2">
 
   .search-panel::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
+  }
+
+  .search-panel :global(mark) {
+    color: var(--primary);
+    background: none;
   }
 </style>

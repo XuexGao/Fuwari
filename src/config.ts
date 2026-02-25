@@ -17,7 +17,24 @@ export const siteConfig: SiteConfig = {
 	description:
 		"雪xie高是一个专注于IT/互联网技术分享与实践的个人技术博客，在这里你可以找到众多前沿技术的分享与实践经验。",
 
+<<<<<<< HEAD
 	keywords: ["雪xie高","雪高","雪",＂xiegao","博客","XieGao Blog","xiegao","Blog","xiegao blog","xuegao","blog"],
+=======
+	keywords: [
+		"二叉树树",
+		"二叉树树官网",
+		"树",
+		"二叉树",
+		"二叉",
+		"博客",
+		"AcoFork Blog",
+		"AcoFork",
+		"Blog",
+		"acofork blog",
+		"acofork",
+		"blog",
+	],
+>>>>>>> upstream/main
 	lang: "zh_CN", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
 	themeColor: {
 		hue: 210, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
@@ -81,8 +98,28 @@ export const navBarConfig: NavBarConfig = {
 			external: false, // Show an external link icon and will open in a new tab
 		},
 		{
+<<<<<<< HEAD
 			name: "云盘",
 			url: "https://pan.xiegao.top", // Internal links should not include the base path, as it is automatically added
+=======
+			name: "画廊",
+			url: "/gallery/", // Internal links should not include the base path, as it is automatically added
+			external: false, // Show an external link icon and will open in a new tab
+		},
+		{
+			name: "封面",
+			url: "/cover/", // Internal links should not include the base path, as it is automatically added
+			external: false, // Show an external link icon and will open in a new tab
+		},
+		{
+			name: "统计",
+			url: "https://u.2x.nz/share/CdkXbGgZr6ECKOyK", // Internal links should not include the base path, as it is automatically added
+			external: true, // Show an external link icon and will open in a new tab
+		},
+		{
+			name: "论坛",
+			url: "https://i.2x.nz", // Internal links should not include the base path, as it is automatically added
+>>>>>>> upstream/main
 			external: true, // Show an external link icon and will open in a new tab
 		},
 	],
@@ -117,7 +154,7 @@ export const profileConfig: ProfileConfig = {
 			name: "Folo",
 			icon: "folo", // Local icon
 			url: "https://app.folo.is/share/feeds/245004133358075904",
-		}
+		},
 	],
 };
 

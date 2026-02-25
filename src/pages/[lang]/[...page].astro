@@ -1,0 +1,42 @@
+---
+import type { GetStaticPaths } from "astro";
+import PostPage from "@components/PostPage.astro";
+import Pagination from "@components/control/Pagination.astro";
+import { siteConfig } from "@/config";
+import { PAGE_SIZE } from "@constants/constants";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { getSortedPosts } from "@utils/content-utils";
+import { Translation, i18n } from "@/i18n/translation";
+import I18n from "@components/I18n.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const locales = ["zh-cn", "en"];
+	const results = await Promise.all(
+		locales.map(async (lang) => {
+			const posts = await getSortedPosts(lang);
+			return paginate(posts, { params: { lang }, pageSize: PAGE_SIZE });
+		}),
+	);
+	return results.flat();
+}) satisfies GetStaticPaths;
+// https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
+
+const { page } = Astro.props;
+const { lang } = Astro.params;
+
+const len = page.data.length;
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: siteConfig.title,
+	url: Astro.site,
+	description: siteConfig.description,
+};
+---
+
+<MainGridLayout title={page.currentPage === 1 ? undefined : `${i18n(Translation.Page, lang === 'zh-cn' ? 'zh_CN' : 'en')} ${page.currentPage}`} lang={lang === 'zh-cn' ? 'zh_CN' : 'en'}>
+    {page.currentPage === 1 && <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}
+    <PostPage page={page}></PostPage>
+    <Pagination class="mx-auto onload-animation" page={page} style=`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)` lang={lang}></Pagination>
+</MainGridLayout>

@@ -1,4 +1,3 @@
-import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
@@ -13,20 +12,85 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive"; /* Handle directives */
-import { remarkGithubAdmonitions } from "./src/plugins/remark-github-admonitions.js";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
+import { SKIP, visit } from "unist-util-visit";
 import { imageFallbackConfig, siteConfig } from "./src/config.ts";
 import { expressiveCodeConfig } from "./src/config.ts";
 // import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
+import { AISummaryComponent } from "./src/plugins/rehype-component-ai-summary.mjs";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { UrlCardComponent } from "./src/plugins/rehype-component-url-card.mjs";
 import rehypeImageFallback from "./src/plugins/rehype-image-fallback.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
+import { remarkGithubAdmonitions } from "./src/plugins/remark-github-admonitions.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
+import { rehypeInjectAds } from "./src/plugins/rehype-inject-ads.mjs";
+
+function remarkSpoiler() {
+	return (tree) => {
+		visit(tree, "paragraph", (node) => {
+			const newChildren = [];
+			let inSpoiler = false;
+
+			// Check if any child contains '||'
+			const hasSpoiler = node.children.some(
+				(child) =>
+					child.type === "text" && child.value && child.value.includes("||"),
+			);
+
+			if (!hasSpoiler) return;
+
+			for (const child of node.children) {
+				if (child.type === "text") {
+					const parts = child.value.split("||");
+
+					if (parts.length === 1) {
+						newChildren.push(child);
+						continue;
+					}
+
+					parts.forEach((part, index) => {
+						if (part) {
+							newChildren.push({ type: "text", value: part });
+						}
+
+						if (index < parts.length - 1) {
+							if (!inSpoiler) {
+								newChildren.push({
+									type: "html",
+									value: '<span class="spoiler" title="点击显示">',
+								});
+								inSpoiler = true;
+							} else {
+								newChildren.push({
+									type: "html",
+									value: "</span>",
+								});
+								inSpoiler = false;
+							}
+						}
+					});
+				} else {
+					newChildren.push(child);
+				}
+			}
+
+			if (inSpoiler) {
+				newChildren.push({
+					type: "html",
+					value: "</span>",
+				});
+			}
+
+			node.children = newChildren;
+			return SKIP;
+		});
+	};
+}
 
 // https://astro.build/config
 export default defineConfig({
@@ -35,9 +99,97 @@ image: {
         },
         site: "https://xiegao.top",
 	base: "/",
-	trailingSlash: "always",
+	trailingSlash: "ignore",
 	output: "static",
+<<<<<<< HEAD
 	
+=======
+	i18n: {
+		defaultLocale: "zh-cn",
+		locales: ["zh-cn", "en"],
+		routing: {
+			prefixDefaultLocale: true,
+		},
+	},
+	redirects: {
+		"/privacy-policy": {
+			status: 302,
+			destination: "https://2x.nz/posts/privacy-policy/",
+		},
+		"/long": {
+			status: 302,
+			destination:
+				"https://iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.in/",
+		},
+		"/tit": {
+			status: 302,
+			destination: "/posts/pin/",
+		},
+		"/q": {
+			status: 302,
+			destination: "/posts/pin/",
+		},
+		"/t": {
+			status: 302,
+			destination: "https://i.2x.nz",
+		},
+		"/ak": {
+			status: 302,
+			destination:
+				"https://akile.io/register?aff_code=503fe5ea-e7c5-4d68-ae05-6de99513680e",
+		},
+		"/yyb": {
+			status: 302,
+			destination: "https://www.rainyun.com/acofork_?s=bilibili",
+		},
+		"/wly": {
+			status: 302,
+			destination: "https://wl.awcmam.com/#/register?code=FNQwOQBM",
+		},
+		"/mly": {
+			status: 302,
+			destination: "https://muleyun.com/aff/GOTRJLPN",
+		},
+		"/tly": {
+			status: 302,
+			destination: "https://tianlicloud.cn/aff/HNNCFKGP",
+		},
+		"/kook": {
+			status: 302,
+			destination: "https://kook.vip/K29zpT",
+		},
+		"/gal": {
+			status: 302,
+			destination: "/post/gal/",
+		},
+		"/ok": {
+			status: 302,
+			destination: "https://acofork-uptime.zeabur.app/status/acofork",
+		},
+		"/donate": {
+			status: 302,
+			destination: "/sponsors",
+		},
+		"/tg": {
+			status: 302,
+			destination: "https://t.me/+_07DERp7k1ljYTc1",
+		},
+		"/esa": {
+			status: 302,
+			destination:
+				"https://tianchi.aliyun.com/specials/promotion/freetier/esa?taskCode=25254&recordId=c856e61228828a0423417a767828d166",
+		},
+		"/s": {
+			status: 302,
+			destination: "https://2x.nz/_url",
+		},
+		"/plan": {
+			status: 302,
+			destination:
+				"https://acofork.notion.site/2e11e011d4e5800fa050e8f7cf448347",
+		},
+	},
+>>>>>>> upstream/main
 	integrations: [
 		tailwind({
 			nesting: true,
@@ -69,7 +221,6 @@ image: {
 			iconDir: "public/icons",
 		}),
 		svelte(),
-		sitemap(),
 		expressiveCode({
 			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
 			plugins: [
@@ -118,6 +269,7 @@ image: {
 	],
 	markdown: {
 		remarkPlugins: [
+			remarkSpoiler,
 			remarkMath,
 			remarkReadingTime,
 			remarkExcerpt,
@@ -129,6 +281,7 @@ image: {
 		rehypePlugins: [
 			rehypeKatex,
 			rehypeSlug,
+			rehypeInjectAds,
 			[rehypeImageFallback, imageFallbackConfig],
 			[
 				rehypeComponents,
@@ -136,6 +289,7 @@ image: {
 					components: {
 						github: GithubCardComponent,
 						url: UrlCardComponent,
+						"ai-summary": AISummaryComponent,
 						note: (x, y) => AdmonitionComponent(x, y, "note"),
 						tip: (x, y) => AdmonitionComponent(x, y, "tip"),
 						important: (x, y) => AdmonitionComponent(x, y, "important"),
@@ -176,6 +330,9 @@ image: {
 		],
 	},
 	vite: {
+		server: {
+		allowedHosts: ['2x.nz']
+	},
 		build: {
 			rollupOptions: {
 				onwarn(warning, warn) {

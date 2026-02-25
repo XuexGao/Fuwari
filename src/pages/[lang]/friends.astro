@@ -1,8 +1,11 @@
 ---
 import { siteConfig } from "@/config";
 import type { Friend } from "@/types/data";
+import LinkSubmitInfo from "@components/misc/LinkSubmitInfo.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { Icon } from "astro-icon/components";
+import I18n from "@components/I18n.astro";
+import { Translation, i18n } from "@/i18n/translation";
 
 const friends = Object.values(
 	import.meta.glob<Friend>("@/data/friends/*.json", {
@@ -11,51 +14,64 @@ const friends = Object.values(
 	}),
 );
 
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'zh-cn' } },
+		{ params: { lang: 'en' } },
+	];
+}
+
+const { lang } = Astro.params;
+
 const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "首页",
-      "item": Astro.site
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "友链",
-      "item": new URL("/friends", Astro.site).toString()
-    }
-  ]
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: [
+		{
+			"@type": "ListItem",
+			position: 1,
+			name: i18n(Translation.Home, lang === 'zh-cn' ? 'zh_CN' : 'en'),
+			item: Astro.site,
+		},
+		{
+			"@type": "ListItem",
+			position: 2,
+			name: i18n(Translation.Friends, lang === 'zh-cn' ? 'zh_CN' : 'en'),
+			item: new URL("/friends", Astro.site).toString(),
+		},
+	],
 };
 ---
 
-<MainGridLayout title="友链">
+<MainGridLayout title={i18n(Translation.Friends, lang === 'zh-cn' ? 'zh_CN' : 'en')} lang={lang === 'zh-cn' ? 'zh_CN' : 'en'}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
     <div class="card-base p-6 md:p-8">
         <div class="flex items-center gap-2 mb-6">
             <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
-                <Icon name="material-symbols:diversity-3" class="text-[1.5rem]">
+                <Icon name="material-symbols:diversity-3" class="text-[1.5rem]" />
             </div>
-            <h1 class="text-2xl font-bold text-black dark:text-white">友链</h1>
+            <h1 class="text-2xl font-bold text-black dark:text-white"><I18n key={Translation.Friends} /></h1>
         </div>
 
         <!-- 申请友链 -->
             <div class="mb-4">
+<<<<<<< HEAD:src/pages/friends.astro
                 <p class="text-sm text-black/60 dark:text-white/60">
                     如果您也想加入友链名单，<a target="_blank" href="https://github.com/XuexGao/Fuwari/tree/main/src/data/friends" class="transition link text-[var(--primary)] font-medium underline">请点击这里提交</a>
                 </p>
                 <p class="text-sm text-black/60 dark:text-white/60 mt-2">
                     我们会定期通过 Github Action 运行一个工作流，使用 Github 的 IP 对这里的所有站点做访问性测试，如果不通过测试（如网站无法访问），该条目将被<strong>自动删除</strong>。当您再次做好准备时，欢迎再次提交 PR 申请。访问性测试结果可以<a target="_blank" href="https://github.com/XuexGao/Fuwari/actions/workflows/check-links.yml" class="transition link text-[var(--primary)] font-medium underline">访问此 URL 来得知</a>。
                 </p>
+=======
+                <LinkSubmitInfo dataType="friends"></LinkSubmitInfo>
+>>>>>>> upstream/main:src/pages/[lang]/friends.astro
             </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             {friends.map((friend) => (
                 <a href={friend.url} target="_blank" class="friend-card">
                     <div class="flex items-center gap-2">
                         <div class="relative w-5 h-5 rounded overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                            <img src={friend.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={`${friend.name}的头像`} />
+                            <img src={friend.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={friend.name} />
                         </div>
                         <div class="font-bold text-black dark:text-white">{friend.name}</div>
                     </div>
@@ -70,7 +86,7 @@ const breadcrumbSchema = {
 
 <style>
     .friend-card {
-        @apply flex flex-col gap-1 p-4 rounded-lg bg-[var(--card-bg)] border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-black/5 dark:hover:bg-white/5;
+        @apply border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 transition flex flex-col gap-1 p-4 rounded-lg;
         transition-property: background-color, border-color, scale;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 0.15s;
@@ -79,11 +95,6 @@ const breadcrumbSchema = {
     
     .friend-card:active {
         scale: .98;
-        background-color: var(--btn-regular-bg-active);
-    }
-    
-    .friend-card:hover {
-        background-color: var(--btn-regular-bg-hover);
     }
     
     .friend-card:hover .font-bold {

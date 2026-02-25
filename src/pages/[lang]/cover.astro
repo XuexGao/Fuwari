@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+import CoverGenerator from "@components/CoverGenerator.svelte";
+import ViewsCounter from "@components/ViewsCounter.astro";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import I18n from "@components/I18n.astro";
+import { siteConfig } from "@/config";
+import { Translation, i18n } from "@/i18n/translation";
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'zh-cn' } },
+		{ params: { lang: 'en' } },
+	];
+}
+
+const { lang } = Astro.params;
+const title = i18n(Translation.Cover, lang === 'zh-cn' ? 'zh_CN' : 'en');
+---
+
+<MainGridLayout title={title} lang={lang === 'zh-cn' ? 'zh_CN' : 'en'}>
+	<div class="card-base p-6 md:p-8">
+		<div class="flex items-center justify-between gap-3 flex-wrap mb-6">
+			<div class="flex items-center gap-2">
+				<div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
+					<Icon name="material-symbols:image-rounded" class="text-[1.5rem]" />
+				</div>
+				<h1 class="text-2xl font-bold text-90"><I18n key={Translation.Cover} /></h1>
+			</div>
+			<ViewsCounter pathname="/cover/" />
+		</div>
+		<CoverGenerator client:load />
+	</div>
+</MainGridLayout>

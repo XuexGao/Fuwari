@@ -16,6 +16,8 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.env.local
+.translation_cache.json
 
 # macOS-specific files
 .DS_Store
@@ -38,3 +40,7 @@ ori
 # src/content/img/
 
 .git
+
+v0-gallery-website-main
+
+dev

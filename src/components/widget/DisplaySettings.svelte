@@ -8,6 +8,7 @@ import {
 	getDevServer,
 	getHideBg,
 	getHue,
+	getLang,
 	getRainbowMode,
 	getRainbowSpeed,
 	getStoredTheme,
@@ -17,14 +18,18 @@ import {
 	setDevServer,
 	setHideBg,
 	setHue,
+	setLang,
 	setRainbowMode,
 	setRainbowSpeed,
 	setTheme,
 } from "@utils/setting-utils";
 import { onMount } from "svelte";
+import { Translation } from "@/i18n/translation";
+import { t, lang } from "@/i18n/i18n-svelte";
 
 let hue = getHue();
 let theme = getStoredTheme();
+let currentLang = getLang();
 let isRainbowMode = getRainbowMode();
 let rainbowSpeed = getRainbowSpeed();
 let bgBlur = getBgBlur();
@@ -50,6 +55,12 @@ $: {
 function switchTheme(newTheme: string) {
 	theme = newTheme;
 	setTheme(newTheme);
+}
+
+function switchLang(newLang: string) {
+	currentLang = newLang;
+	setLang(newLang);
+    lang.set(newLang);
 }
 
 function toggleRainbow() {
@@ -110,24 +121,24 @@ onMount(() => {
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
-            主题模式
+            {$t(Translation.DarkMode)}
         </div>
         <div class="flex gap-1">
-            <button aria-label="Light Mode"
+            <button aria-label={$t(Translation.LightMode)}
                 class="w-10 h-7 rounded-md transition flex items-center justify-center active:scale-90
                 {theme === LIGHT_MODE ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
                 on:click={() => switchTheme(LIGHT_MODE)}
             >
                 <Icon icon="material-symbols:wb-sunny-rounded" class="text-[1.1rem]"></Icon>
             </button>
-            <button aria-label="Dark Mode"
+            <button aria-label={$t(Translation.DarkMode)}
                 class="w-10 h-7 rounded-md transition flex items-center justify-center active:scale-90
                 {theme === DARK_MODE ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
                 on:click={() => switchTheme(DARK_MODE)}
             >
                 <Icon icon="material-symbols:dark-mode-rounded" class="text-[1.1rem]"></Icon>
             </button>
-            <button aria-label="Auto Mode"
+            <button aria-label={$t(Translation.AutoMode)}
                 class="w-10 h-7 rounded-md transition flex items-center justify-center active:scale-90
                 {theme === AUTO_MODE ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
                 on:click={() => switchTheme(AUTO_MODE)}
@@ -142,7 +153,32 @@ onMount(() => {
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
-            主题色彩
+            {$t(Translation.Language)}
+        </div>
+        <div class="flex gap-1">
+            <button aria-label="English"
+                class="w-12 h-7 rounded-md transition flex items-center justify-center active:scale-90 font-bold text-xs
+                {currentLang === 'en' ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
+                on:click={() => switchLang('en')}
+            >
+                EN
+            </button>
+            <button aria-label="简体中文"
+                class="w-12 h-7 rounded-md transition flex items-center justify-center active:scale-90 font-bold text-xs
+                {currentLang === 'zh_CN' ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
+                on:click={() => switchLang('zh_CN')}
+            >
+                CN
+            </button>
+        </div>
+    </div>
+
+    <div class="flex flex-row gap-2 mb-3 items-center justify-between">
+        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+            before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+            before:absolute before:-left-3 before:top-[0.33rem]"
+        >
+            {$t(Translation.ThemeColor)}
             <button aria-label="Reset to Default" class="btn-regular w-7 h-7 rounded-md  active:scale-90"
                     class:opacity-0={hue === defaultHue} class:pointer-events-none={hue === defaultHue} on:click={resetHue}>
                 <div class="text-[var(--btn-content)]">
@@ -157,7 +193,7 @@ onMount(() => {
         </div>
     </div>
     <div class="w-full h-6 px-1 bg-[oklch(0.80_0.10_0)] dark:bg-[oklch(0.70_0.10_0)] rounded select-none mb-3">
-        <input aria-label="主题色彩" type="range" min="0" max="360" bind:value={hue} disabled={isRainbowMode}
+        <input aria-label={$t(Translation.ThemeColor)} type="range" min="0" max="360" bind:value={hue} disabled={isRainbowMode}
                class="slider" id="colorSlider" step="1" style="width: 100%">
     </div>
 
@@ -166,7 +202,7 @@ onMount(() => {
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
-            禁用背景
+            {$t(Translation.HideBackground)}
         </div>
         <input aria-label="Hide Background" type="checkbox" class="toggle-switch" checked={hideBg} on:change={toggleHideBg} />
     </div>
@@ -176,9 +212,9 @@ onMount(() => {
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
-            彩虹模式
+            {$t(Translation.RainbowMode)}
         </div>
-        <input aria-label="Rainbow Mode" type="checkbox" class="toggle-switch" checked={isRainbowMode} on:change={toggleRainbow} />
+        <input aria-label={$t(Translation.RainbowMode)} type="checkbox" class="toggle-switch" checked={isRainbowMode} on:change={toggleRainbow} />
     </div>
 
     {#if isRainbowMode}
@@ -187,7 +223,7 @@ onMount(() => {
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
-            变换速率
+            {$t(Translation.Speed)}
         </div>
         <div class="flex gap-1">
              <div class="transition bg-[var(--btn-regular-bg)] w-10 h-7 rounded-md flex justify-center
@@ -197,7 +233,7 @@ onMount(() => {
         </div>
     </div>
     <div class="w-full h-6 bg-[var(--btn-regular-bg)] rounded select-none overflow-hidden">
-        <input aria-label="变换速率" type="range" min="1" max="100" bind:value={rainbowSpeed} on:change={onSpeedChange}
+        <input aria-label={$t(Translation.Speed)} type="range" min="1" max="100" bind:value={rainbowSpeed} on:change={onSpeedChange}
                class="slider" step="1" style="width: 100%; --value-percent: {(rainbowSpeed - 1) / 99 * 100}%">
     </div>
     {/if}
@@ -207,7 +243,7 @@ onMount(() => {
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
-            背景模糊
+            {$t(Translation.BackgroundBlur)}
         </div>
         <div class="flex gap-1">
             <div class="transition bg-[var(--btn-regular-bg)] w-10 h-7 rounded-md flex justify-center
@@ -217,7 +253,7 @@ onMount(() => {
         </div>
     </div>
     <div class="w-full h-6 bg-[var(--btn-regular-bg)] rounded select-none overflow-hidden">
-        <input aria-label="背景模糊" type="range" min="0" max="20" bind:value={bgBlur}
+        <input aria-label={$t(Translation.BackgroundBlur)} type="range" min="0" max="20" bind:value={bgBlur}
                class="slider" step="1" style="width: 100%; --value-percent: {bgBlur / 20 * 100}%">
     </div>
 
@@ -226,9 +262,9 @@ onMount(() => {
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
-            开发模式
+            {$t(Translation.DevMode)}
         </div>
-        <input aria-label="Developer Mode" type="checkbox" class="toggle-switch" checked={isDevMode} on:change={toggleDevMode} />
+        <input aria-label={$t(Translation.DevMode)} type="checkbox" class="toggle-switch" checked={isDevMode} on:change={toggleDevMode} />
     </div>
 
     {#if isDevMode}

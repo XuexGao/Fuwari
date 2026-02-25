@@ -1,7 +1,13 @@
 ---
 import { getEntry } from "astro:content";
 
-const announcement = await getEntry("spec", "announcement");
+const { lang } = Astro.params;
+const announcementId = `announcement-${lang}`;
+let announcement = await getEntry("spec", announcementId as any);
+
+if (!announcement) {
+	announcement = await getEntry("spec", "announcement-zh-cn");
+}
 let enable = false;
 let level = "info";
 let Content = null;
@@ -106,8 +112,7 @@ const currentColor = colorMap[level] || colorMap.info;
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    查看图片
-                `;
+                ` + window.i18n(window.Translation.ViewImage);
 
                 // Wrap image
                 img.parentNode.insertBefore(btn, img);
@@ -122,15 +127,13 @@ const currentColor = colorMap[level] || colorMap.info;
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                            查看图片
-                        `;
+                        ` + window.i18n(window.Translation.ViewImage);
                     } else {
                          btn.innerHTML = `
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
                             </svg>
-                            收起图片
-                        `;
+                        ` + window.i18n(window.Translation.CollapseImage);
                     }
                 };
             });

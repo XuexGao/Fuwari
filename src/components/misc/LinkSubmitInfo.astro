@@ -1,0 +1,31 @@
+---
+import I18n from "@components/I18n.astro";
+import { Translation } from "../../i18n/translation";
+
+interface Props {
+	dataType: "friends" | "sponsors";
+	class?: string;
+}
+
+const { dataType, class: className } = Astro.props;
+
+const linkText =
+	dataType === "friends"
+		? "https://github.com/afoim/fuwari/tree/main/src/data/friends"
+		: "https://github.com/afoim/fuwari/tree/main/src/data/sponsors";
+---
+
+<div class:list={["text-sm text-black/60 dark:text-white/60", className]}>
+    <p>
+        <I18n key={dataType === 'friends' ? Translation.Added : Translation.Sponsored} />，
+        <a target="_blank" href={linkText} class="transition link text-[var(--primary)] font-medium underline">
+            <I18n key={Translation.SubmitPrTip} />
+        </a>
+    </p>
+    <p class="mt-2">
+        <I18n key={Translation.LinkCheckDescription} />
+        <a target="_blank" href="https://github.com/afoim/fuwari/actions/workflows/check-links.yml" class="transition link text-[var(--primary)] font-medium underline">
+            <I18n key={Translation.LinkCheckResultTip} />
+        </a>。
+    </p>
+</div>

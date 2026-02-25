@@ -3,6 +3,8 @@
 import { execSync } from "node:child_process";
 import { profileConfig, siteConfig } from "../config";
 import { url } from "../utils/url-utils";
+import I18n from "./I18n.astro";
+import { Translation } from "../i18n/translation";
 
 const currentYear = new Date().getFullYear();
 
@@ -13,48 +15,75 @@ try {
 	commitHash = execSync("git rev-parse --short=7 HEAD").toString().trim();
 
 	const date = new Date();
-	const year = date.getFullYear();
-	const month = (date.getMonth() + 1).toString().padStart(2, "0");
-	const day = date.getDate().toString().padStart(2, "0");
-	const hours = date.getHours().toString().padStart(2, "0");
-	const minutes = date.getMinutes().toString().padStart(2, "0");
-	const seconds = date.getSeconds().toString().padStart(2, "0");
-	buildDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+	const parts = new Intl.DateTimeFormat(siteConfig.lang.replace('_', '-'), {
+		timeZone: "Asia/Shanghai",
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+	}).formatToParts(date);
+	const year = parts.find((p) => p.type === "year")?.value ?? "0000";
+	const month = parts.find((p) => p.type === "month")?.value ?? "00";
+	const day = parts.find((p) => p.type === "day")?.value ?? "00";
+	buildDate = `${year}-${month}-${day}`;
 } catch (e) {
 	console.warn("Failed to get git info", e);
 }
+
+const { lang } = Astro.params;
 ---
 
   
 <!--<div class="border-t border-[var(--primary)] mx-16 border-dashed py-8 max-w-[var(--page-width)] flex flex-col items-center justify-center px-6">-->
 <div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-4 md:mx-32"></div>
+<!-- AdSense 广告 -->
+<div class="w-full mx-auto max-w-[var(--page-width)] px-4 mb-8">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="autorelaxed"
+         data-ad-client="ca-pub-1683686345039700"
+         data-ad-slot="7869965007"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
 <div class="card-base w-fit mx-auto rounded-xl mt-4 mb-4">
     <div class="transition text-50 text-sm text-center p-6">
+<<<<<<< HEAD
         &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://space.bilibili.com/2083649546"> {profileConfig.name} </a>，采用
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可
+=======
+        &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://space.bilibili.com/325903362"> <I18n key={Translation.AuthorName} /> </a>，<I18n key={Translation.License} />
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+>>>>>>> upstream/main
         <br>
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap-index.xml')}>网站地图</a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml', lang)}><I18n key={Translation.Rss} /></a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap.xml', lang)}><I18n key={Translation.Sitemap} /></a> /
         <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
 
-        <a class="transition link text-[var(--primary)] font-medium" href="#" id="open_preferences_center">更新您的Cookie</a>
+        <a class="transition link text-[var(--primary)] font-medium" href="#" id="open_preferences_center"><I18n key={Translation.UpdateCookie} /></a>
         <br>
-        由
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> 和
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> 强力驱动
+        <I18n key={Translation.PoweredBy} />
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
         <br>
+<<<<<<< HEAD
         本网站代码
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/XuexGao/Fuwari">已开源</a>
         <a class="transition link text-black/30 dark:text-white/30 hover:text-[var(--primary)] text-xs ml-1" target="_blank" href={`https://github.com/XuexGao/Fuwari/commit/${commitHash}`}>({commitHash} @ {buildDate})</a>
+=======
+        <I18n key={Translation.AuthorName} /> <I18n key={Translation.OpenSource} />
+        <a class="transition link text-black/30 dark:text-white/30 hover:text-[var(--primary)] text-xs ml-1" target="_blank" href={`https://github.com/afoim/fuwari/commit/${commitHash}`}>({commitHash} @ {buildDate})</a>
+>>>>>>> upstream/main
         <br>
 
 		<!-- <a class="transition link text-[var(--primary)] font-medium inline-flex items-center" href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"><img alt="" src="/favicon/foot-icp.png" width="16" height="16" class="h-4 mr-1">皖ICP备2025099787号-2</a>
         <br> -->
-        <div class="server-info-container flex flex-col items-center justify-center gap-1 mt-1">
-            <!-- Server info will be injected here -->
-        </div>
+        <!-- <div class="server-info-container flex flex-col items-center justify-center gap-1 mt-1">
+            什么？你问我TM的节点显示去哪了？拜托！我都不分流了看那玩意也没集贸用了，所以看集贸看！别看了！
+            Server info will be injected here
+        </div>-->
          <!-- <a class="transition link text-[var(--primary)] font-medium inline-flex items-center" href="https://beian.mps.gov.cn/#/query/webSearch?code=34010302002608" target="_blank"><img alt="" src="/favicon/foot-ga.png" class="h-4 mr-1">皖公网安备34010302002608号</a>
-        <br> -->
+        <br> 
     </div>
 </div>
 
@@ -79,7 +108,7 @@ try {
 
             const valueSpan = document.createElement('span');
             valueSpan.className = 'server-value text-black/30 dark:text-white/30 text-xs';
-            valueSpan.innerText = '检测中...';
+            valueSpan.innerText = window.i18n(window.Translation.Checking);
             div.appendChild(valueSpan);
 
             const iconImg = document.createElement('img');
@@ -117,7 +146,7 @@ try {
                     valueSpan.classList.remove('hidden');
                 }
             } else {
-                valueSpan.innerText = "未知";
+                valueSpan.innerText = window.i18n(window.Translation.Unknown);
                 iconImg.classList.add('hidden');
                 valueSpan.classList.remove('hidden');
             }
@@ -144,7 +173,7 @@ try {
                 const devServer = localStorage.getItem("dev-server");
                 containers.forEach(container => {
                     container.innerHTML = '';
-                    const elements = createServerEntry({ text: 'Dev Node' });
+                    const elements = createServerEntry({ text: window.i18n(window.Translation.DevMode) });
                     container.appendChild(elements.div);
                     updateEntryDisplay(elements, devServer);
                 });
@@ -165,7 +194,7 @@ try {
                 container.innerHTML = '';
 
                 if (!serverConfig || serverConfig.length === 0) {
-                    const elements = createServerEntry({ text: '访问节点' });
+                    const elements = createServerEntry({ text: window.i18n(window.Translation.AccessNode) });
                     container.appendChild(elements.div);
                     getServerInfo('').then(server => updateEntryDisplay(elements, server));
                     return;
@@ -183,4 +212,4 @@ try {
         document.addEventListener('astro:after-swap', initServerInfo);
         document.addEventListener('content:replace', initServerInfo);
     })();
-</script>
+</script> -->

@@ -32,6 +32,19 @@
     .card-hover {
         @apply hover:scale-[1.01] hover:shadow-xl hover:border-black/10 dark:hover:border-white/20 hover:z-10;
     }
+    .card-glass {
+        @apply bg-[var(--card-bg)] border border-black/10 dark:border-white/10 backdrop-blur-md;
+        -webkit-backdrop-filter: blur(12px);
+    }
+    .card-interactive {
+        @apply border border-black/10 dark:border-white/10 
+        hover:border-black/20 dark:hover:border-white/20 
+        hover:bg-black/5 dark:hover:bg-white/5 
+        transition;
+    }
+    .card-interactive:active {
+        @apply bg-black/10 dark:bg-white/10;
+    }
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition;
     }
@@ -129,6 +142,14 @@
     }
     .btn-regular-dark.success {
         @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
+    }
+
+    /* i18n support */
+    html:not([lang^="zh"]) .i18n-zh {
+        display: none !important;
+    }
+    html[lang^="zh"] .i18n-en {
+        display: none !important;
     }
 }
 

@@ -1,0 +1,23 @@
+---
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=/zh-cn/" />
+    </noscript>
+    <script is:inline>
+        const lang = navigator.language.toLowerCase();
+        if (lang.startsWith('en')) {
+            window.location.href = '/en/';
+        } else {
+            window.location.href = '/zh-cn/';
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to <a href="/zh-cn/">Home</a>...</p>
+</body>
+</html>
