@@ -13,4 +13,6 @@ controls
 autoplay>  
 </video>
 
+由于视频过大，需要等待加载。同时确保你的设备支持AV1解码
+
 https://github.com/FalseFor/GeekerwanTest2026/
