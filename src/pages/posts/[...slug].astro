@@ -1,86 +1,43 @@
 ---
 import { getCollection } from 'astro:content';
 
-// 使用更稳妥的相对路径导入，直接从当前文件的上级寻找
-import MainGridLayout from '../../layouts/MainGridLayout.astro';
-import PostMetadata from '../../components/PostMetadata.astro';
-import Markdown from '../../components/Markdown.astro';
-import Icon from 'astro-icon/components';
-
-// 导入 i18n 相关逻辑
-import { i18n } from '../../i18n/translation';
-import I18nKey from '../../i18n/i18nKey';
-import { Translation } from "../../i18n/translation";
-
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
-    return posts.map(entry => {
-        // 移除语言前缀 (例如 'en/my-post' -> 'my-post')
-        const slug = entry.slug.startsWith('en/') ? entry.slug.substring(3) : entry.slug;
-        return {
-            params: { slug },
-            props: { entry }
-        };
+    const slugs = new Set();
+    posts.forEach(post => {
+        let slug = post.slug;
+        if (slug.startsWith('en/')) {
+            slug = slug.substring(3);
+        }
+        slugs.add(slug);
     });
+    
+    return Array.from(slugs).map(slug => ({
+        params: { slug },
+        props: { slug }
+    }));
 }
 
-const { entry } = Astro.props;
 const { slug } = Astro.params;
-
-// 渲染 Markdown 内容
-const { Content, headings, remarkPluginFrontmatter } = await entry.render();
-
-const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": entry.data.title,
-    "description": entry.data.description,
-    "author": { "@type": "Person", "name": "Author" }
-};
 ---
-<MainGridLayout 
-    banner={entry.data.image} 
-    title={entry.data.title} 
-    description={entry.data.description} 
-    lang={entry.data.lang} 
-    setOGTypeArticle={true} 
-    headings={headings}
->
-    <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
-    
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
-        <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full", {}]}>
-            <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
-                <div class="flex flex-row items-center">
-                    <Icon name="material-symbols:notes-rounded" class="mr-2"></Icon>
-                    <div class="text-sm">{remarkPluginFrontmatter.words} {i18n(I18nKey.words)}</div>
-                </div>
-                <div class="flex flex-row items-center">
-                    <Icon name="material-symbols:schedule-outline-rounded" class="mr-2"></Icon>
-                    <div class="text-sm">{remarkPluginFrontmatter.minutes} {i18n(I18nKey.minutes)}</div>
-                </div>
-            </div>
-
-            <div class="relative onload-animation">
-                <div data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title" class="transition w-full flex items-center font-bold mb-3 text-3xl md:text-[2.25rem]/[2.75rem] text-black/90 dark:text-white/90">
-                    {entry.data.title}
-                </div>
-            </div>
-
-            <PostMetadata class="mb-5" published={entry.data.published} updated={entry.data.updated} tags={entry.data.tags} slug={entry.slug}></PostMetadata>
-
-            <Markdown class="mb-6 markdown-content onload-animation">
-                <Content />
-            </Markdown>
-
-            <div id="giscus-container" class="giscus"></div>
-        </div>
-    </div>
-</MainGridLayout>
-
-<script is:inline define:vars={{ slug }}>
-    const lang = navigator.language.toLowerCase().startsWith('en') ? 'en' : 'zh-cn';
-    if (!window.location.pathname.includes(`/${lang}/`)) {
-        window.location.href = `/${lang}/posts/${slug}/`;
-    }
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <noscript>
+        <meta http-equiv="refresh" content={`0;url=/zh-cn/posts/${slug}/`} />
+    </noscript>
+    <script is:inline define:vars={{ slug }}>
+        const lang = navigator.language.toLowerCase();
+        if (lang.startsWith('en')) {
+            window.location.href = `/en/posts/${slug}/`;
+        } else {
+            window.location.href = `/zh-cn/posts/${slug}/`;
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting to <a href={`/zh-cn/posts/${slug}/`}>{slug}</a>...</p>
+</body>
+</html>
