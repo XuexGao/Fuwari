@@ -2,7 +2,7 @@
 title: 雪xie高の博客
 published: 2026-02-07
 description: 欢迎来到我的博客，这里正在建设中。
-image: /random/h
+image: ""
 tags: [测试, 公告]
 category: 闲聊
 draft: false
