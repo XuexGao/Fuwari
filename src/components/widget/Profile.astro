@@ -86,31 +86,37 @@ for (const post of posts) {
     }
 </style>
 
-<style>
-    .loading-bar {
-        transition: opacity 0.5s ease-out;
-    }
-</style>
-
 <script>
     async function loadSiteStats() {
         // --- 你的 Umami 配置 ---
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28";
         const baseUrl = "https://u.xiegao.top";
+        const shareId = "IoWiNCvTUPxaDg5x"; // <--- 记得替换成你自己的 Share ID！
         
         try {
+            // 1. 先用 Share ID 换取公开访问的 Token
+            const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);
+            if (!tokenRes.ok) return;
+            const tokenData = await tokenRes.json();
+            const token = tokenData.token;
+
+            // 2. 拿着 Token 去请求全站历史访问量数据
             const url = `${baseUrl}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`;
-            const res = await fetch(url);
+            const res = await fetch(url, {
+                headers: {
+                    'x-umami-share-token': token
+                }
+            });
             if (!res.ok) return;
             const data = await res.json();
             
             const el = document.getElementById('site-views');
             if (el && data.pageviews) {
-                // 如果你想保留数字动画，这里可以直接赋值，或者保持现状
+                // 直接更新数字
                 el.innerHTML = data.pageviews.value;
             }
         } catch (e) { 
-            console.error("Site Stats Error"); 
+            console.warn("Site Stats Error"); 
         }
     }
 
