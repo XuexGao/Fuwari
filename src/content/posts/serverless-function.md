@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Serverless 是一种无需管理服务器的云服务模式，用户仅需上传代码，平台自动部署与运维。相比传统 VPS，它省去安装、配置、维护等步骤，支持 Git 版本控制，便于调试与回滚，且多数平台提供免费层。但受限于平台资源配额（如请求次数、执行时长、流量），不适合高负载或需完整 Node.js 环境的服务。主流平台包括 EdgeOne Pages（免费无计费、但流量限制）、Vercel（4C8G 构建、宽松配额）、Netlify（100G 月流量）、Cloudflare Workers（支持多语言、可协同 Cloudflare 产品）、Hugging Face（支持 Docker、但限 AI 服务）、ClawCloud Run（按 Docker 计费）、Render（免费 100G 流量）、Zeabur（免费 5 美元/月，支持托管自建 VPS）。使用时需避开平台限制，商用或高负载服务建议购买付费套餐。
+
 # 何为Serverless
 就像简介所说，传统来说我们搭建Web服务一般会选择买一个VPS，然后在其上安装管理面板，再安装所需软件，如Nginx，AList，最后运行，开放端口，再设置DNS解析，这样，一个网站就成功上线了
 

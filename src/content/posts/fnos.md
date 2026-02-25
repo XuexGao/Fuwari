@@ -9,6 +9,9 @@ tags:
 - 飞牛NAS
 title: 飞牛NAS玩机体验
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 影视刮削快且支持自动追番，数据源为TMDB/IMDB；相册可手机自动备份、多用户互不干扰；飞牛NAS安装需分系统盘与存储池，系统盘不可参与存储池；应用需授权目录访问；发行版Debian 12，根目录为系统盘，/vol1/vol2为存储空间；推荐RaiDrive或SSHFS挂载Linux目录至Windows；SSH需自行开启并建议改密钥登录；网卡驱动：Realtek需手动安装，Intel AC3160与USB网卡免驱；存储模式Basic不可扩容，Linear可扩容但不能换盘，RAID类未测试。NAS迅雷内测码：迅雷牛通
+
 ### 吸引我的东西
 
 1. 影视刮削：飞快，薄纱Plex几条街。通过[AutoBangumi](/autobangumi)可以完美自动追番+刮削一条龙服务。偶尔会有不准，但可以手动匹配，数据源来自[TMDB](https://www.themoviedb.org/)和[IMDB](https://www.imdb.com/)

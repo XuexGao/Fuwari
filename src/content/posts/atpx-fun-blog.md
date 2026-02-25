@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 偶然发现一个博客，因封面或内容吸引，捐了100 CNY支持；作者已弃用JavaScript，呼应朋友观点，遂共鸣支持，无更多感想。
+
 
 今天偶然找到一个神秘博客，还挺有意思的，于是捐了 100 CNY
 

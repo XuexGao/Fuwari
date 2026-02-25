@@ -6,6 +6,9 @@ image: ../assets/images/watermark.webp
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 有人盗用作者文章并擅自添加水印，作者通过技术手段在图片中嵌入不可见水印，但因压缩失效而放弃，转而用可见域名水印覆盖所有图片，并重写Git历史以清除原始无水印资源，确保盗版无法获取纯净原图。
+
 > [!CAUTION]
 > 2月4号的2xss你好呀
 > 

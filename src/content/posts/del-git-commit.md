@@ -6,6 +6,9 @@ image: ../assets/images/del-git-commit-1.webp
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 使用 git-filter-repo 可剔除特定文件的提交历史，同时通过 git rebase 架空目标提交，强制推送到远程仓库即可抹除该提交及其关联内容。虽文件与提交记录已从历史中移除，但若他人持有 commit ID，仍可通过 URL 访问该提交，此时需向 GitHub 提交工单请求删除对应页面，GitHub 通常在12分钟内处理完毕。
+
 # 引言
 接简介
 

@@ -9,6 +9,11 @@ tags:
 - QQBot
 title: 使用NoneBot2搭建你的QQBot！
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 安装 NapCat 用于登录 QQ 收发消息：下载 `NapCat.Shell.zip`，解压后运行 `launcher.bat <BOT QQ号>`，手机扫码登录，获取 WebUI 地址（如 `http://127.0.0.1:6099/webui?token=...`），配置端口需与 NoneBot2 一致（如 9090）。
+> 
+> 安装 NoneBot2 实现逻辑控制：安装 Python，配置 pip 使用清华源，安装 pipx 并添加 PATH，安装 nb-cli 和 bootstrap，新建项目（如 `nb bs`），配置 Bot 超级用户、昵称、命令符、监听地址/端口（如 127.0.0.1:8080），启动后验证连接成功并测试 `/ping` 响应。调试时用 `nb` 进入虚拟环境安装依赖。
+
 # 安装 NapCat(Win)
 
 > 用于登录 QQ 实现收发消息

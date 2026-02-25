@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 使用美国家宽IP注册E-Hentai论坛账号，注册时绑定gmail邮箱并确保平台识别为美国家宽用户；注册后等待约一周，期间可自由操作；一周后用无痕模式登录论坛，再访问exhentai.org即可成功进入；F12打开控制台保存Cookie以实现后续免梯登录。
+
 
 # 前期准备
 

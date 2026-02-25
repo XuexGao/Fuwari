@@ -6,6 +6,9 @@ image: ../assets/images/eo-umami-1.webp
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Umami v3经裁剪后可在EdgeOne Pages部署，因原SSR包超128MiB限制，移除像素、链接统计、团队及Geo文件后可运行，但丢失地区数据功能；数据库用Supabase（禁用Direct Connection），部署需Fork仓库、填DATABASE_URL、绑定域名；当前主分支仅支持GET请求，POST被拦截，master分支含敏感信息勿用。
+
 # 原理探寻
 由于 **Umami** 使用的是 **SSR** ，我原以为EdgeOne Pages不支持该模式，尝试部署后发现最大的问题在于
 ```

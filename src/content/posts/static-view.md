@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 静态博客可通过逆向Umami Cloud API获取文章浏览量，需启用分享URL并获取token后，调用`/stats`接口传入文章路径（带`eq.`前缀）和时间范围，返回的`pageviews`即为浏览量，可直接用于前端展示。
+
 
 # 引言
 

@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 文章因备案问题被DDOS回退，域名2x.nz不支持ICP备案；当前CDN（Netlify）在中国大陆速度尚可，换用EdgeOne节点收益有限；备案流程繁琐且需购买备案码；本站未被GFW SNI阻断，仅部分区域因未备案限制访问；IP站点已恢复；备案可能性存在但非主站，或因管理双分支放弃。
+
 > ~~目前已备案，该文章存档~~  被DDOS大肘子打回CF了
 # 违规内容
 

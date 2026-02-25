@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 这是Folo平台的RSS订阅源认证说明，用于证明你对多个RSS源的所有权，认证方式是将指定文本粘贴到博客文章中，包含feedId和userId，以完成验证。
+
 
 # 这是啥？
 

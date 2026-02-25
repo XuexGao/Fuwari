@@ -6,6 +6,9 @@ image: ""
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 阿里云网关对未备案域名的TLS阻断存在DPI缺陷：当Client Hello因启用PQC（如Kyber768）超MTU分片时，引擎因无法重组或解析超时而Fail-Open放行，导致现代浏览器与新版工具（如Curl）可绕过拦截，仅旧版或降级配置被阻断。根本原因是DPI仅处理首个TCP包，未支持流重组，建议升级引擎支持跨包解析。
+
 > [!caution]
 > 提了Bug也没人管，公开了，侵删
 

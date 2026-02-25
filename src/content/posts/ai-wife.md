@@ -8,6 +8,9 @@ category: '教程'
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 本文指导零基础用户通过 ComfyUI 快速上手 AI 绘图，核心步骤包括：下载并安装 ComfyUI（推荐官方版或秋叶整合包）、导入基底模型（如 NoobAI-XL）与 LoRA 角色模型、配置提示词（正反向英文提示）、使用预设工作流启动绘图。重点强调模型放置路径、角色提示词获取方式（Danbooru 标签或 LoRA Trigger Words）、推荐分辨率（如 NoobAI 使用 832x1216），并提醒使用 NVIDIA 显卡以提升效率。无需复杂配置，小白亦可一键生成指定角色图像。
+
 # 引言
 
 曾经我写过一篇文章，记录了从零开始研究AI绘图的经历——当时把Stable Diffusion WebUI、Stable Diffusion Forge WebUI、ComfyUI全装了一遍，各种找教程、实操、试错。好在凭借着仅剩的记忆也是顺着这些蛛丝马迹把丢掉的知识找回来了。

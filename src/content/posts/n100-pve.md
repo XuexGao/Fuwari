@@ -9,6 +9,9 @@ tags:
 - PVE
 title: N100 - PVE（fnOS+Debian）基建记录
 ---
+> [!ai] qwen/qwen3-vl-8b
+> N100小主机配置PVE+fnOS+Debian，实现NAS+自动追番+博客服务：PVE通过Ventoy安装并配置Realtek R8168网卡驱动，桥接VMBR1静态IP；fnOS直通核显与SATA硬盘，部署NAS与追番功能；Debian虚拟机部署QQBot、博客、AList，全部通过PVE统一管理。网络通过路由器DMZ+Lucky实现STUN穿透。
+
 # 配置&需求
 
 - N100 CPU 频率：最小 700 Mhz, 最大 3400 Mhz | TDP：6 W

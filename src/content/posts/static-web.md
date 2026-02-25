@@ -14,6 +14,9 @@ tags:
 - Render
 title: N款CDN/静态托管服务商的优缺点比较
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Netlify注册需谷歌邮箱，支持IPv6回源，免费计划带宽与构建时间限制宽松，构建时间按月计，流量不限，作者认为其为免费CDN中速度最快且限制最少；Vercel注册无门槛，延迟佳但用量严，仅支持IPv4回源，国内SNI阻断需绑定域名，每日100次构建每次45分钟内；EdgeOne内测需兑换码，无流量与请求数限制，支持高级回源设置，全球节点可用（不含中国），中国区需实名与备案，CNAME默认可用；Cloudflare无流量与请求数限制，抗封锁能力强，作者提供分流优选域名；Render注册简单但用量限制严；GitHub Pages需GitHub Action部署，中国大陆多地区间歇性被阻断，不推荐。
+
 
 # [Netlify](https://www.netlify.com)
 

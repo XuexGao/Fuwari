@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 通过复制网易云音乐歌曲分享链接提取ID，拼接API地址可获取带时间戳的歌词数据，返回JSON包含歌词内容及时间标记，便于解析或播放控制。
+
 
 # 正式开始
 

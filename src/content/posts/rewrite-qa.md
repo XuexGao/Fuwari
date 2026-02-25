@@ -9,6 +9,9 @@ tags:
 - Rewrite
 title: 关于Rewrite MV无法播放\没有画面的解决方法
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 在Windows 10及以上带Microsoft Store的系统中，可安装指定应用并设置游戏内播放器为Windows Media Player；或安装K-Lite Basic解码器后将游戏内播放器设为MCI。
+
 # 我使用的解决方法（Windows 10及以上带有Microsoft Store的系统）
 
 安装这个即可

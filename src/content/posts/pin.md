@@ -5,6 +5,11 @@ published: 2025-05-24
 pinned: true
 description: 关于如何联系二叉树树~
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Telegram群组链接：https://t.me/+_07DERp7k1ljYTc1  
+> QQ群需赞助至少10 CNY方可加入，因平台易被举报封群，但交流更便捷；高级用户可选非QQ群。  
+> 非官方粉丝群：https://t.me/blog2x
+
 
 
 # 官方

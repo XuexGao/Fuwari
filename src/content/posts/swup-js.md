@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 博客基于Fuwari静态模板魔改，原版无动态功能，访问量显示需额外实现。曾因多页面并发请求全局Token导致冗余，引入中间件缓存至浏览器解决。近期发现Swup导致页面跳转时重复请求Umami，经排查为Swup管理不当所致。通过配置Swup不处理特定JS，问题彻底解决，无冗余请求，访问统计与行为上报正常，CORS预检机制保障安全。
+
 # 正式开始
 就如封面所说，我的博客是 **魔改** 而来的，而母版为 [saicaca/fuwari: ✨A static blog template built with Astro.](https://github.com/saicaca/fuwari) 
 

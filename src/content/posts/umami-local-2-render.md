@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 使用 pgAdmin4 备份本地 PostgreSQL 数据库，再通过 Supabase 还原至云端，接着在 Render 上部署 Umami，配置其数据库与密钥，最后借助 EdgeOne CDN 解决 CORS 问题以保障统计安全。
+
 
 > 回滚了
 

@@ -10,6 +10,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 在Mac上运行Windows游戏需通过虚拟机模拟Arm架构的Win11系统，借助VMware Fusion导入微软官方Arm版ISO，安装后自动兼容x64游戏；虽性能损耗明显，但兼容性最优，适合如Gal类轻量游戏；安装后需补装DX9与VC++运行库以保障游戏运行，必要时调整微软仿真设置即可。
+
 # 思路
 首先，新版的Mac用的是Arm架构的Apple自研芯片并且搭载基于Unix的MacOS系统。而大部分游戏则是专为Windows x64打造的。也就是说，我们需要翻译两层，首先将Unix转Win，再将Arm架构专为x64架构
 

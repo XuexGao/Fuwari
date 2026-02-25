@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 通过VPS或Cloudflare Tunnel获取拨测IP后，创建Vercel API Token并抓取防火墙接口，将主机名改为api.vercel.com并携带Token后可成功更新规则。使用Python脚本批量处理IP，每组最多75个，自动分组并发送PATCH请求，实现大规模IP拒绝策略部署。
+
 
 # 配套视频
 

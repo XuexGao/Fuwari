@@ -8,6 +8,9 @@ tags: [哪吒监控]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 安装哪吒面板端（WebUI）需执行脚本并指定VPS IP:8008，支持TLS与多语言，登录默认admin/admin，需改密。后端Agent通过WebUI生成系统命令安装，中国大陆用户建议用raw.gitmirror.com镜像。支持服务监测（HTTP/TCP）与通知配置，CDN环境下需设真实IP头，Cloudflare兼容性差可改用yumusb/nezha-new。
+
 
 > 官方教程： https://nezha.wiki/
 

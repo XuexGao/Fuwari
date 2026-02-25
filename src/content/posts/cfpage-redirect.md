@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Fork仓库后绑定域名，修改 `_redirects` 文件配置重定向规则，如 `/` 301 永久跳转至 `https://www.afo.im/`，或 `/test/*` 302 临时跳转至 `https://test.test/test/:splat`，无需消耗Worker配额或请求数。
+
 
 # 快速上手！
 

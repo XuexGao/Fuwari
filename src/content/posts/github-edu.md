@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 学生需持学生证/录取通知书/毕业证之一，登录GitHub修改支付信息为真实姓名（拼音），重登后进入教育福利页申请认证，拍照时若无英文版证件需手动翻译并拍照上传。认证通过后可领取GitHub Student Developer Pack福利，含1个.tech、1个.me及2个其他免费一年域名，均需绑定GitHub账号并设置NS至Cloudflare激活。
+
 
 # Github学生认证教程
 

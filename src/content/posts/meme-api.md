@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 部署后端：安装依赖、克隆仓库及表情库，配置 config.toml 后运行 python -m meme_generator.app，日志显示服务启动于 127.0.0.1:2233。前端通过 Koishi 插件市场安装 1.0.3 版本，启用后加载 455 个表情，发送“表情列表”可查看并生成表情。
+
 
 # 正式开始
 

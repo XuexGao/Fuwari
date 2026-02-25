@@ -8,6 +8,9 @@ tags: [UptimeRobot]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 注册 UptimeRobot 账号后，可创建最多50个免费监控，仅支持HEAD请求，无法自定义请求头或体，最小轮询间隔5分钟，不支持IPv6。通过“Status pages”创建公开状态页，建议启用自动添加功能，新监控将实时同步至页面。公开页面链接位于“Public status page, hosted on”后。
+
 
 # 正式开始
 

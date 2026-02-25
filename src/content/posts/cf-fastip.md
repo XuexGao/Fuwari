@@ -10,6 +10,9 @@ tags:
   - Cloudflare Byoip
 title: 试试Cloudflare IP优选！让Cloudflare在国内再也不是减速器！
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 优选是手动选择国内访问更快的Cloudflare节点，通过控制路由规则和DNS解析实现。传统方法需关闭小黄云，而SaaS或Worker路由允许自主管理，支持CNAME指向优选IP。优选域名如cf.090227.xyz或Byoip（如AS209242）可提升速度，但需监控可用性。Worker项目可直接用Worker路由+DNS CNAME实现；进阶方案用Worker反代源站，通过域名前缀映射实现优选，但源站Host仍指向原域名。
+
 > 本教程初始发布时间为 25年6月
 
 #### 未优选

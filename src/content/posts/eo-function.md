@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 部署EdgeOne边缘函数随机图API需复制worker.js并配置R2存储参数，设置横竖图路径前缀为ri/h/和ri/v/，绑定域名需配置触发规则，每月限300万次请求。
+
 
 # 正式开始
 

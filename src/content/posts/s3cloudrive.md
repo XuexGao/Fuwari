@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 该教程推荐使用GitHub仓库afoim/S3cloudrive-index，基于Next.js搭建，通过Vercel Function对接S3实现公共目录浏览，原版支持OneDrive，仅需修改后端即可适配其他云存储。作者曾尝试对接天翼云盘但遇鉴权问题，寻求帮助。
+
 
 > 视频教程（推荐）： https://www.bilibili.com/video/BV17b5gz5Ea4
 

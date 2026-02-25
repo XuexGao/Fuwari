@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> IPv6反向解析域名格式为 `ip6.arpa`，由IPv6地址倒序拼接而成，用于DNS反查。通过Hurricane Electric隧道服务获取IPv6地址，经转换生成对应域名并配置至Cloudflare，可实现反向解析。因默认SSL无法签发，需切换至SSL.COM作为证书提供商，但仅限Cloudflare环境下生效，自建SSL.COM账户无法签发。
+
 
 # 这是什么
 

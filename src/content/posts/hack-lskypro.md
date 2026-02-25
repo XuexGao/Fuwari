@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 本地开心版已破解，授权校验绕过，更新与操作全本地执行，无需服务器交互，推荐使用宝塔面板部署，1Panel需特殊配置避免500/404。自建授权服务器可使用Cloudflare Worker，提供伪造响应通过验证。安装包及破解方法见文中链接与步骤。
+
 
 > 仅供学习交流，请在下载后24h内删除。体验地址： https://lsky.2x.nz
 > 视频教程： https://www.bilibili.com/video/BV1UieUzQEvq/

@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 使用个人免费OneDrive账号部署OneDrive-Index，需获取client_id与secret，配置Vercel环境变量（含USER_PRINCIPAL_NAME邮箱），部署后因未绑定Redis报错，通过Upstash绑定Redis实例并重部署即可解决；访问项目域名授权微软后复制回调URI粘贴完成初始化；更换账号时需更新Vercel环境变量并清空Upstash中对应Redis的Token。
+
 # 正式开始
 你可以根据[前文](/posts/ms-e3/)免费拿E3，得到至高免费5T的OneDrive存储空间，也可以用你个人永久免费的5G空间，都可以！
 

@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> EdgeOne现提供免费CDN与Pages服务，虽IP质量曾差（新加坡），现优化为香港/日本节点，延迟改善。未备案用户可选CNAME或优选IP（如eo.072103.xyz）加速静态站，需绑定域名防401；Pages默认不可优选IP，指向CDN节点会报418。备案用户默认中国大陆延迟<50ms。
+
 
 # 这是个啥？
 

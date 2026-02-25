@@ -10,6 +10,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 64位电脑可通过开启路由器UPnP并使用UU远程实现P2P连接；32位电脑需借助DMZ设置将RDP端口映射至公网，再用Natter工具建立STUN隧道，通过公网IP+随机端口访问，最终用mstsc远程控制。此方案依赖NAT类型为Full Cone。
+
 # 前言
 你可能觉得，这人不是XX吗，远控当然下载个类似UU远程、向日葵这种软件不就行了，这还要出一篇文章？
 

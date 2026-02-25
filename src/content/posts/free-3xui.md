@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 通过FOFA搜索`app="3x-ui" && region="HK"`获取香港地区部署的3x-ui站点列表，分析其登录接口为`/login`，POST请求含`username`与`password`字段，可被Postman成功模拟。后续可编写爬虫，遍历站点列表，使用弱口令尝试登录，若返回成功JSON则记录有效节点。
+
 
 # 正式开始
 

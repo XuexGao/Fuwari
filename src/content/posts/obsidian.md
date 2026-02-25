@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Obsidian（黑曜石）以仓库为单位管理Markdown文件，每个仓库含`.obsidian`配置文件，配置仅限单仓库，频繁换仓库易丢失配置。建议将仓库设于`src/content`根目录，图片存放在`src/content/assets/images`，文章内用`../assets/images/xxx.webp`引用，黑曜石自动管理路径。默认图片为内部链接且含空格，需通过设置调整链接格式，并借助插件“Pasts image rename”自动重命名图片以兼容外部框架。关闭安全模式后安装并启用该插件，开启Auto rename可避免手动输入图片名。截图粘贴后自动生成带路径的图片标记。支持通过点选、下拉、勾选等方式便捷填写`published`、`tags`、布尔字段等元数据，无需手动格式化。
+
 > 视频链接： https://www.bilibili.com/video/BV1C7pDzpEHY
 # 下载
 前往 [Download - Obsidian](https://obsidian.md/download) 下载对应你系统版本的软件。安装界面就可以选择语言为 **简体中文**

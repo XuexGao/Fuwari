@@ -8,6 +8,9 @@ tags: [Cyberduck, 对象存储]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 使用 Cyberduck 替代 AList 后，可直接连接 Cloudflare R2 对象存储，无需中转，上传效率提升，支持 S3 统计与 SFTP 文件传输，简化工作流。
+
 
 # 前情提要
 

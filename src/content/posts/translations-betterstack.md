@@ -8,6 +8,9 @@ tags: [BetterStack]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> BetterStack状态面板支持中文汉化，可通过“Status pages”进入翻译界面；因平台未适配中文，需手动硬编码“日”“年”“月”及“UTC+8”时区显示，避免歧义。
+
 
 # 速览
 

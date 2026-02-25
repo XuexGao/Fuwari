@@ -8,6 +8,9 @@ tags: [随机图API]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 新版通过EdgeOne Pages Functions分发横屏、竖屏、自适应图，存储于EdgeOne Page；旧版经eopf代理cnb.cool图库；旧旧版因R2被刷7千万次、扣费28.08美元而弃用，原用Cloudflare R2存储Webp格式分屏图，eopf免费接入实现随机图服务。
+
 
 # API端点
 

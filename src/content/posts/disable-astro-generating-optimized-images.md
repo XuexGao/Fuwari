@@ -8,6 +8,9 @@ tags: [Astro]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 禁用Astro图片优化可避免构建时因微弱压缩（甚至反向）导致的性能损耗，但官方无直接配置方案。尝试将图片移至`/public`目录虽可规避优化，却引发编辑器路径识别与构建失败问题。配置`no-op`透传服务无效，最终通过修改源码实现全局禁用：一是重写文件路径生成逻辑，取消hash与格式转换；二是硬编码跳过`generate.js`中的图片优化流程，彻底阻止Astro构建时生成优化图片。此方案虽非官方推荐，但有效解决性能瓶颈。
+
 
 > 视频： [禁用Astro跟弱智一般的静态构建图像优化_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV12VH2z1EDb)
 

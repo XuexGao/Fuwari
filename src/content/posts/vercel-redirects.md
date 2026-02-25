@@ -8,6 +8,9 @@ tags: [Vercel, 重定向]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 在项目根目录创建 `vercel.json` 文件，配置重定向规则：每个规则包含 `source`（源路径）、`destination`（目标地址）和可选 `permanent`（布尔值，默认 true，308 状态码；false 为 307）。示例中定义了 9 条临时重定向（`permanent: false`），分别指向不同外部链接或站内路径。
+
 
 # 正式开始
 

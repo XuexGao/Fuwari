@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 深夜被吵醒，顺手吃点东西准备回睡，结果被委托做个小AI项目。用Flask+内存数据库快速搭建，AI帮忙生成逻辑（虽原计划存JSON但最终仍用内存），反复调试七次后上线。现开放游玩：https://sixqi.afo.im/，开源地址：https://github.com/afoim/sixqi。
+
 
 # 前情提要
 

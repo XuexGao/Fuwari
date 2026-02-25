@@ -6,6 +6,9 @@ image: ../assets/images/coxp.webp
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> CORP 限制资源被跨域引用，仅允许同站或同源访问；CORS 控制 API 跨域调用权限，需配置 Allow-Origin、Allow-Methods、Allow-Headers、Expose-Headers 等头；COOP 控制跨源页面间窗口上下文隔离，防止劫持。三者分别作用于资源加载、API调用、页面上下文，共同构建现代前端安全防线。
+
 # 正式开始
 如果你做过网站（HTML），你就会知道，一个网页除了自身提供内容，如 `<p>hello world</p>` ，还可以 **内嵌外链资源** ，如 `<img src="https://othersite.com/hello.webp">`
 

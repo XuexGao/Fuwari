@@ -9,6 +9,9 @@ tags:
 - Phira
 title: Phira多人联机服务器搭建/使用教程
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 可直接下载预构建的Phira多玩家服务器文件运行，支持主流系统，端口默认12346，可用`--port`自定义。运行时加`RUST_LOG=debug`可查看日志，默认为`WARN`。若系统不兼容，可自行用Rust编译：Windows需安装Rust + Visual Studio C++桌面开发；Linux执行`curl -sSf https://sh.rustup.rs | sh`并`source $HOME/.cargo/env`，然后克隆仓库并运行`cargo build --release -p phira-mp-server`，再用`RUST_LOG=info target/release/phira-mp-server`启动。
+
 # 直接下载服务端文件并运行
 
 [https://github.com/afoim/phira-mp-autobuild](https://github.com/afoim/phira-mp-autobuild)

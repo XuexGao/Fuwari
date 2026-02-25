@@ -10,6 +10,9 @@ tags:
 - AList
 title: 利用阿里云云函数 FC 搭建AList后端，每月仅需5毛！
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 建议使用阿里云FC函数计算+NAS部署AList，前端用Vercel部署，免费且高效；后端通过HTTP触发器暴露公网地址，前端配置VITE_API_URL指向该地址；部署时需上传alist二进制文件并绑定NAS持久化数据，启动命令为./alist server --data /mnt/AList；计费按CU和存储空间，需开通日志与网络权限；登录密码在实例日志中生成，前端登录后即可正常使用。
+
 # 还是建议购买一个便宜的云服务器来部署或者用家里云，这种方法很灵车
 
 推荐Akile：https://akile.io/register?aff_code=503fe5ea-e7c5-4d68-ae05-6de99513680e

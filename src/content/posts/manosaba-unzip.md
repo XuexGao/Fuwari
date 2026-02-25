@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 下载并启动 AssetRipper，访问本地游戏目录，粘贴至程序中打开 *_Data 文件夹（如 manosaba_Data），等待资源加载完成，点击“导出所有文件”，选择目标路径，勾选“导出主要内容”，最终在 Assets 文件夹中获取CG、MV、语音等资源；骨骼/模型与动作文件需自行合成画面，本文不详述。
+
 # 正式开始
 前往 https://github.com/AssetRipper/ ，下载 **AssetRipper** 并打开
 

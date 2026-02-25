@@ -9,6 +9,9 @@ tags:
   - Fuwari
 title: Fuwari静态博客搭建教程
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 准备部署Fuwari博客需：脑力并行思考、Git与Node.js环境、GitHub仓库、Cloudflare Pages、Obsidian编辑器、Markdown基础能力。流程为本地部署 → 推送代码 → Cloudflare自动构建 → 网站更新。部署步骤包括Fork仓库、克隆、安装pnpm依赖、修改config.ts配置标题、主题色、导航、头像等，清理示例内容。可选私有仓库或手动上传。图标需从icones.js获取，如QQ填`fa6-brands:qq`。配置示例已提供，支持多语言与主题色自定义。
+
 
 ### 你需要准备的东西
 

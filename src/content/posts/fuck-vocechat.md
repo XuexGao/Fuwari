@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> VoceChat因前端验证机制可被绕过，通过BurpSuite拦截并篡改授权请求，将无效许可证响应强制设为`check: true`即可激活。伪造授权码经Base58解码后含域名、用户数、有效期等字段，可自定义生成。作者因付费350元未获官方支持而调侃维权无门。
+
 
 # 前因
 

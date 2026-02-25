@@ -6,6 +6,9 @@ image: ../assets/images/aliyun-ecs-4rm.webp
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 阿里云国内版抢占型实例需注意高峰期可能回收，仅适合非生产业务。为极致节省成本，推荐使用60M Alpine镜像，配合1GB ESSD云盘安装。需先上传ISO至中国香港地域OSS，再导入为自定义镜像并设置1GB容量。创建香港B/C/D区实例时，可对比带宽与价格。开通CDT后，绑定弹性公网IP可享每月200G免费流量，但需注意释放IP避免扣费。Alpine安装后需手动配置网络、时区、SSH及DNS，推荐使用阿里云镜像源并安装基础工具。为避免CDT流量超限扣费，需部署Cloudflare Worker监控并自动停机，需配置阿里云AccessKey与Region。
+
 # 正式开始
 > [!CAUTION]
 > 抢占型实例在高峰期可能会进行回收，不要跑生产业务

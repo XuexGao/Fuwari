@@ -12,6 +12,9 @@ tags:
 - STUN
 title: 究极喂饭教程，手把手教你内网穿透
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Zerotier打洞成功率显著高于Tailscale，尤其在UPnP/DMZ缺失时仍能稳定穿透；若具备公网IPv6、UPnP或DMZ任一条件，Zerotier近乎100%成功。判断连接为中继：ping延迟＞200ms或丢包频繁。内网穿透依赖P2P或中继，需设备安装客户端并长期运行。Zerotier需创建网络组、授权设备、安装客户端后测试连通性；Tailscale流程类似但界面更简洁。Cloudflare Tunnel仅支持Web服务，需域名托管至Cloudflare。
+
 # 经实测，Zerotier的打洞能力明显优于Tailscale，所以建议通过Zerotier来实现内网穿透
 
 详细报表：

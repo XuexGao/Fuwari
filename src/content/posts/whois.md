@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Whois查询可获取域名注册信息，但传统方式无统一格式，难自动化处理；RDAP协议提供标准化JSON响应，支持REST API，便于程序解析，但非所有顶级域支持。构建三方API需兼容两种协议：对仅支持传统Whois的域，服务器需先查询再返回文本；对仅支持RDAP的域，需通过IANA获取其RDAP服务器并调用；对两者皆支持的域，优先使用RDAP。
+
 
 # 前言
 

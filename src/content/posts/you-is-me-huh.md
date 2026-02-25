@@ -9,6 +9,9 @@ draft: false
 lang: ''
 
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 有人Fork仓库但未改Giscus评论区导致被拒；Umami统计可加CORS限制防误报；开源非照搬，务必替换所有内容与API后上线。
+
 
 # 前情提要
 

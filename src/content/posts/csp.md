@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 无CSP防护的网站会因直接使用innerHTML插入用户输入而触发XSS攻击，如`<img src=x onerror=alert('XSS攻击成功')>`可弹窗或窃取数据；设置CSP策略如`default-src 'self'`可阻断内联脚本执行，防止此类攻击，保障数据安全。
+
 
 # 举个例子吧！
 

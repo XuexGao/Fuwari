@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 通过浏览器插件Aria2 Explorer拦截下载请求并转发至Motrix实现三方下载，需先下载并配置Motrix（默认RPC端口16800，需记录密钥），再在Chromium系浏览器中安装Aria2 Explorer并配置RPC参数，启用下载拦截后即可将下载任务交由Motrix处理。
+
 
 # 原理
 

@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 修改 Typora 激活状态检查逻辑：在安装目录用 VSCode 将 `e.hasActivated="true"==e.hasActivated` 改为 `e.hasActivated="true"==“true”`，重启后即可激活。
+
 
 进入 [Typora 官方中文站](https://typoraio.cn/)
 

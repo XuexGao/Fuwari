@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> WPWebPlayer 是一款轻量级 HTML 网站音乐播放器，仅需引入 CSS 和 JS 文件并使用 `<wp-music-player>` 标签即可集成。支持自定义音频地址、标题、封面、播放模式、主题颜色等参数，具备迷你模式与固定定位功能。因浏览器安全策略，autoplay 默认失效需用户触发播放。默认主题色为 #00c3ff，体积小、易用，适合嵌入任意 HTML 项目。项目由他人提交至 GitHub，作者鸣谢 MarSeventh 提供技术支持。
+
 
 > 本文章非站长本人撰写，由他人Pr添加： https://github.com/afoim/fuwari/pull/23
 

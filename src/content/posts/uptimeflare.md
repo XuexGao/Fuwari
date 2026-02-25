@@ -6,6 +6,9 @@ image: ../assets/images/uptimeflare.webp
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 原项目已将数据存储从KV迁移至D1并支持i18n，建议升级旧版UptimeFlare。迁移需：添加Cloudflare API的“编辑D1”权限，备份并替换`uptime.config.ts`，Fork新仓库，将自定义callback迁至官方WebHook，推送后自动部署并迁移数据。服务由Cloudflare Worker+D1构成，前端为Page，Worker每分钟检查并存D1。部署需创建API Token、绑定GitHub、配置Action，完成后可绑定域名访问。自定义监控通过编辑`uptime.config.ts`实现，如配置Resend邮件通知，需添加环境变量并设置payload。最终服务地址为https://ok.2x.nz。
+
 # 从KV迁移
 由于原项目于26/1/3将数据存储从KV迁移到了D1，并且配备了完备的i18n，如果你仍在运营旧版的UptimeFlare，建议升级，下面是迁移教程
 

@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 项目基于 Rust 编写的 Vaultwarden，编译为 WASM 以在 Cloudflare Worker 上运行，REST API 由 Worker 提供，数据存储于 D1。部署需安装 Rust、克隆仓库、创建并配置 D1 数据库、编译 WASM、部署 Worker，并设置白名单邮箱、JWT 密钥、2FA 加密密钥。移动端创建账号后，可通过网页端启用 2FA（需另存 TOTP），修改邮箱或主密码亦可在网页端操作。导入密码库需先导出 .json 文件，登录后导入即可。
+
 # 原理
 项目参考开源的 [dani-garcia/vaultwarden: Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs](https://github.com/dani-garcia/vaultwarden) 将Rust源码编译为WASM以支持在Cloudflare Worker上运行。其中Worker负责REST API，D1负责存储加密后的数据
 

@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 下载尘白禁区并确认UE4 4.26版本后，从Paks目录提取含CG的PAK文件，用QuickBMS配合snowbreak.bms脚本解包至指定目录。再用UE Viewer（设为UE4 4.26）导出资源，通过全局搜索“PlotCG”定位TGA格式CG图，可用BandiView查看。
+
 
 > 参考了 [虚幻4游戏解包导出及Mod制作指南 - 知乎](https://zhuanlan.zhihu.com/p/7144045084)
 

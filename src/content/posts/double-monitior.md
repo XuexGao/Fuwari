@@ -6,6 +6,9 @@ image: ../assets/images/double-monitior.webp
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 博客使用Cloudflare（海外）与阿里云ESA/EdgeOne（国内）双节点，通过自托管Uptime Kuma（国内）与大厂监控（如BetterStack、UptimeRobot，海外）互监。自托管需配Cloudflare Tunnel防DDoS。可借HTTP Host头模拟访问CDN节点，如`http://cdn.2x.nz`带Host头`blog.acofork.com`，绕分流监测存活状态，支持HEAD请求降压。常用CDN节点：Cloudflare（如cdn.2x.nz）、GitHub（pages.github.com）。监测配置需设Host头、禁重定向、响应200即算存活。示例：status.acofork.com。
+
 
 > [!warning]
 > 由于被DDOS，已经不再做分流监控，故本文诸多链接失效

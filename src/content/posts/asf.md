@@ -9,6 +9,9 @@ tags:
 - Steam
 title: 使用ArchiSteamFarm进行Steam自动挂卡
 ---
+> [!ai] qwen/qwen3-vl-8b
+> ArchiSteamFarm支持Windows、Linux、OS X多平台，可手动编译运行；下载后启动，通过WebUI添加机器人并配置，启用手机验证后终端输入Y确认登录，登录成功后自动挂卡；账号占用时自动暂停，释放后恢复；作为无头Steam客户端，支持更多功能，详见其Wiki。
+
 # 可用的目标作业系统
 
 Windows x86/Arm64

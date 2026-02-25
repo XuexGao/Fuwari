@@ -24,6 +24,7 @@ import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.m
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { UrlCardComponent } from "./src/plugins/rehype-component-url-card.mjs";
 import rehypeImageFallback from "./src/plugins/rehype-image-fallback.mjs";
+import { rehypeAIAdmonition } from "./src/plugins/rehype-ai-admonition.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkGithubAdmonitions } from "./src/plugins/remark-github-admonitions.js";
@@ -283,9 +284,11 @@ export default defineConfig({
 						important: (x, y) => AdmonitionComponent(x, y, "important"),
 						caution: (x, y) => AdmonitionComponent(x, y, "caution"),
 						warning: (x, y) => AdmonitionComponent(x, y, "warning"),
+						ai: (x, y) => AdmonitionComponent(x, y, "ai"),
 					},
 				},
 			],
+			rehypeAIAdmonition,
 			[
 				rehypeExternalLinks,
 				{

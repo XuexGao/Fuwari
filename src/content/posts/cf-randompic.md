@@ -10,6 +10,9 @@ tags:
 - Cloudflare Workers
 title: Cloudflare R2+Workers！马上搭建自己的云上图床！
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 通过 Cloudflare R2 对象存储与 Workers 实现随机横竖屏图床：创建 R2 存储桶并生成 API 令牌，使用 AList 本地高速上传文件至 R2，划分 `/ri/h` 和 `/ri/v` 目录用于横竖屏图，再通过 Workers 动态读取并展示随机图片。
+
 ### **结果图**
 
 ![QmVgqgoC7G8NLS21WvR8j9gf5amu33XvuV68ZrgM5B9iFf.webp](../assets/images/408795f3ec1a5a9baf91b6cd7564d6f1d7dbc5bd.webp)

@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 注册微软账户并绑定纳税人识别号（国家填CN），购买E3订阅，通过管理中心分配许可证给主账户，即可使用1T OneDrive。扩容步骤：在管理中心开启“全部显示”，进入SharePoint设置，将OneDrive存储限制设为5120GB，等待同步或手动强制扩容（用户-活跃用户-管理角色-OneDrive）。扩容后可通过My Apps或SharePoint链接访问。最后建议绑定多重安全信息以防账户风险。注：不建议使用Symphony。
+
 # 参考文献
 [微软Office365 E3订阅回归？25个E3 Dev免费开通指南 - 极圈 奶昔论坛](https://forum.naixi.net/thread-6702-1-1.html)
 

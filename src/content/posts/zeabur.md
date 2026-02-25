@@ -8,6 +8,9 @@ tags: [k3s, Zeabur]
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Zeabur允许你将VPS（需≥1c CPU和2G RAM）接入其平台，通过SSH配置后自动部署k3s等工具，实现免手动操作的远程服务管理，且自托管服务部署免费。
+
 
 # 这是个啥？
 

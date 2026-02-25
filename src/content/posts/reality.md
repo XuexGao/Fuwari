@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 一行命令部署reality，自动配置并启动，无需手动操作。
+
 
 # 正式开始
 

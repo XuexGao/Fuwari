@@ -9,6 +9,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 从Umami Cloud导出数据，解压得`website_event.csv`，本地部署最新版Umami PostgreSQL，用SmoothCSV编辑CSV，匹配新旧`website_id`，解除`session`表主键约束，导入CSV数据，确保字段顺序一致，导入后恢复主键约束，删除重复`session_id`记录，完成迁移。
+
 # 正式开始
 首先，我们想要迁移，首先肯定是要拿到原来的Umami Cloud存放的数据
 

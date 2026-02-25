@@ -8,6 +8,9 @@ category: '记录'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> Secbit回源Cloudflare R2在大陆直连时延迟更低、带宽更优，性能优于直连；但价格高昂，建议通过写博客积累流量（月IP达3k可申请）。
+
 
 # 官网
 

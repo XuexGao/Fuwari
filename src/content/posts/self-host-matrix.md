@@ -8,6 +8,9 @@ category: '教程'
 draft: false 
 lang: ''
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 安装1Panel面板，部署PostgreSQL并创建`synapse`数据库，配置PGAdmin4连接与重设参数；部署Synapse时需预先创建存储卷，编辑`homeserver.yaml`配置服务器名、URL、数据库、SMTP、注册与登录策略；通过命令行创建管理员账号，最后在Element App中使用HTTPS地址登录并允许他人邮箱注册。
+
 
 # 前置环境准备
 

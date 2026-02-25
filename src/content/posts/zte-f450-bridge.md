@@ -8,6 +8,9 @@ tags:
 draft: false
 lang: ""
 ---
+> [!ai] qwen/qwen3-vl-8b
+> 通过USB外接U盘（FAT32格式），利用光猫文件管理器注入HTML代码触发路径跳转至根目录，复制`/userconfig/cfg/db_user_cfg.xml`至U盘，用RouterPassView软件解析该文件并搜索`tele`字段即可获取超管密码。
+
 > 参考：
 > 
 > [ZTE光猫F450不拆机获取超密_zxhnf450光猫超级密码-CSDN博客](https://blog.csdn.net/z47913/article/details/140727685)

@@ -9,6 +9,9 @@ tags:
 - GFW
 title: 让我们来探讨一下如何绕过GFW
 ---
+> [!ai] qwen/qwen3-vl-8b
+> GFW通过IP黑洞、DNS污染、HTTP劫持和SNI阻断封锁流量，其中SNI阻断是针对未在白名单域名的SSL连接检测。以`discord.com`为例，其因SNI字段被拦截导致连接重置。绕过方法包括：启用ECH（需服务器支持，如Cloudflare），或使用Accesser代理抹除SNI字段，通过域前置机制实现访问。前者依赖浏览器配置，后者需本地运行代理并信任证书，适用于Linux和Windows系统。
+
 ### 首先，我们要知道GFW是如何封锁我们的流量的
 
 1. IP黑洞：目前无解，但仅对部分服务黑洞，如谷歌系（谷歌、推特、YouTube等）

@@ -9,6 +9,9 @@ tags:
 - USTC
 title: 绕过USTC的浏览器JS验证
 ---
+> [!ai] qwen/qwen3-vl-8b
+> USTC镜像站对大文件下载实施JS验证，实际是通过向Cookie写入用户IP并重定向实现的，非复杂JS逻辑；使用wget可伪造Cookie与User-Agent绕过，成功下载。
+
 # 前言
 
 当我们去下载类似于 https://mirrors.ustc.edu.cn/debian-cd/12.10.0/amd64/iso-dvd/debian-12.10.0-amd64-DVD-1.iso 这样的大文件时，USTC大概率会给你一个这样的：正在验证你的浏览器 的页面
