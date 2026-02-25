@@ -1,16 +1,18 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
-import MainGridLayout from '../../layouts/MainGridLayout.astro';
-import PostMetadata from '../../components/PostMetadata.astro';
+import { getCollection } from 'astro:content';
+// 修正路径：从 src/pages/posts/ 到 src/ 目录需要向上退三层
+import MainGridLayout from '../../../src/layouts/MainGridLayout.astro';
+import PostMetadata from '../../../src/components/PostMetadata.astro';
 import Icon from 'astro-icon/components';
-import { i18n } from '../../i18n/translation';
-import I18nKey from '../../i18n/i18nKey';
-import Markdown from '../../components/Markdown.astro';
+import { i18n } from '../../../src/i18n/translation';
+import I18nKey from '../../../src/i18n/i18nKey';
+import Markdown from '../../../src/components/Markdown.astro';
+import { Translation } from "../../../src/i18n/translation";
 
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
     return posts.map(entry => {
-        // 移除语言前缀以匹配动态路由 [...slug]
+        // 移除语言前缀 (例如 'en/my-post' 变为 'my-post')
         const slug = entry.slug.startsWith('en/') ? entry.slug.substring(3) : entry.slug;
         return {
             params: { slug },
@@ -22,16 +24,15 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { slug } = Astro.params;
 
-// 渲染 Markdown 内容
+// 渲染内容
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 
-// 简单的 JSON-LD 数据
 const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": entry.data.title,
     "description": entry.data.description,
-    "author": { "@type": "Person", "name": "YourName" } // 这里可以改成你的名字
+    "author": { "@type": "Person", "name": "Author" }
 };
 ---
 
@@ -76,9 +77,7 @@ const jsonLd = {
 </MainGridLayout>
 
 <script is:inline define:vars={{ slug }}>
-    // 自动重定向逻辑
     const lang = navigator.language.toLowerCase().startsWith('en') ? 'en' : 'zh-cn';
-    // 避免循环重定向
     if (!window.location.pathname.includes(`/${lang}/`)) {
         window.location.href = `/${lang}/posts/${slug}/`;
     }
