@@ -6,6 +6,7 @@ image: ""
 tags: [Test, Announcement]
 category: Chit-chat
 draft: false
+lang: en
 ---
 
 # XieGao's Blog
