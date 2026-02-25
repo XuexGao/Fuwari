@@ -11,19 +11,12 @@ interface Props {
 }
 
 const className = Astro.props.class;
+---
 
-
-        <!-- 侧边栏 -->
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-1683686345039700"
-            data-ad-slot="2162342758"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+<div id="sidebar" class:list={[className, "w-full"]}>
+    <div class="flex flex-col w-full gap-4 mb-4">
+        
+        <Profile></Profile>
+        
     </div>
 </div>
-
-
