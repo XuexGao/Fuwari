@@ -69,47 +69,47 @@ const className = Astro.props.class;
 </div>
 
 {slug && (
-    <script define:vars={{ slug }}>
+    <script define:vars={{ slug: slug }}>
     async function fetchPageViews() {
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28"; 
         const baseUrl = "https://u.xiegao.top";
-        const shareId = "IoWiNCvTUPxaDg5x"; // <--- 记得替换这里！
+        const shareId = "IoWiNCvTUPxaDg5x"; // 你的 Share ID
 
         try {
-            // 1. 先用 Share ID 换取公开访问的 Token
             const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);
             if (!tokenRes.ok) return;
             const tokenData = await tokenRes.json();
             const token = tokenData.token;
 
-            // 2. 拿着 Token 去请求阅读量数据
             const url = `${baseUrl}/api/websites/${websiteId}/stats?path=/posts/${slug}/&startAt=0&endAt=${Date.now()}`;
             const response = await fetch(url, {
-                headers: {
-                    'x-umami-share-token': token
-                }
+                headers: { 'x-umami-share-token': token }
             });
             if (!response.ok) return;
             const data = await response.json();
             
+            console.log(`Umami Post (${slug}) Data:`, data); // 调试日志
+
             const viewsElement = document.getElementById(`page-views-${slug}`);
-            if (viewsElement && data.pageviews) {
+            if (viewsElement) {
+                // 【关键修复】兼容两种格式
+                let views = 0;
+                if (data.pageviews && typeof data.pageviews === 'object' && data.pageviews.value !== undefined) {
+                    views = data.pageviews.value;
+                } else if (data.pageviews !== undefined) {
+                    views = data.pageviews;
+                }
+
                 const suffix = (window.Translation && window.i18n) ? " " + window.i18n(window.Translation.views) : " 次";
-                viewsElement.innerHTML = data.pageviews.value + suffix;
+                viewsElement.innerHTML = views + suffix;
             }
         } catch (error) {
-            console.warn('Umami PV fetch failed.');
+            console.warn('Umami PV fetch failed.', error);
         }
     }
-    // 初始化函数
-    function initStats() {
-        fetchPageViews();
-    }
 
-    // 初始加载
+    function initStats() { fetchPageViews(); }
     initStats();
-    
-    // 适配 Fuwari 的 Swup 无刷新跳转：监听内容替换事件
     document.addEventListener('swup:contentReplaced', initStats);
 </script>
 )}
