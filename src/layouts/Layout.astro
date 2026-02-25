@@ -79,7 +79,6 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 		<link rel="canonical" href={Astro.url}>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<meta name="google-adsense-account" content="ca-pub-1683686345039700">
 		<meta name="description" content={description}>
 		<meta name="author" content={authorName}>
 		{siteConfig.keywords && (
@@ -100,10 +99,8 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 
         <link rel="preconnect" href="https://pic1.acofork.com" />
         <link rel="preconnect" href="https://umami.acofork.com" />
-        <link rel="preconnect" href="https://t.2x.nz" />
-        <link rel="preconnect" href="https://support.nodeget.com" />
+        <link rel="preconnect" href="https://u.xiegao.top" />
 		
-		<script data-swup-ignore-script src="https://p.2x.nz/random.js" defer></script>
 		<script>import "../scripts/animate-value.js";</script>
 
         <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -176,8 +173,6 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 	<body class:list={["min-h-screen transition", {"lg:is-home": isHomePage, "enable-banner": enableBanner}]}>
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8V8663M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1683686345039700" crossorigin="anonymous"></script>
-
         <script defer src="https://u.xiegao.top/script.js" data-website-id="4696c062-4271-4b8b-8ed7-b481f5961f28" data-swup-ignore-script></script>
 
         <script is:inline data-swup-ignore-script>
@@ -204,3 +199,296 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 	</body>
 </html>
+
+<style is:global define:vars={{
+	bannerOffset,
+	'banner-height-home': `${BANNER_HEIGHT_HOME}vh`,
+	'banner-height': `${BANNER_HEIGHT}vh`,
+}}>
+@tailwind components;
+@layer components {
+	.enable-banner.is-home #banner-wrapper {
+		@apply h-[var(--banner-height-home)] translate-y-[var(--banner-height-extend)]
+	}
+	.enable-banner #banner-wrapper {
+		@apply h-[var(--banner-height-home)]
+	}
+
+	.enable-banner.is-home #banner {
+		@apply h-[var(--banner-height-home)] translate-y-0
+	}
+	.enable-banner #banner {
+		@apply h-[var(--banner-height-home)] translate-y-[var(--bannerOffset)]
+	}
+	.enable-banner.is-home #main-grid {
+		@apply translate-y-[var(--banner-height-extend)];
+	}
+	.enable-banner #top-row {
+		@apply h-[calc(var(--banner-height-home)_-_4.5rem)] transition-all duration-300
+	}
+	.enable-banner.is-home #sidebar-sticky {
+		@apply top-[calc(1rem_-_var(--banner-height-extend))]
+	}
+	.navbar-hidden {
+		@apply opacity-0 -translate-y-16
+	}
+}
+</style>
+
+<script>
+import {getHue, getStoredTheme, setHue, setTheme, getBgBlur, setBgBlur, getHideBg, setHideBg} from "../utils/setting-utils";
+import {pathsEqual, url} from "../utils/url-utils";
+import { bindPostInlineDiff } from "../scripts/post-inline-diff";
+import {
+	BANNER_HEIGHT,
+	BANNER_HEIGHT_HOME,
+	BANNER_HEIGHT_EXTEND,
+	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT
+} from "../constants/constants";
+import { siteConfig } from '../config';
+
+const bannerEnabled = !!document.getElementById('banner-wrapper')
+
+function setClickOutsideToClose(panel: string, ignores: string[]) {
+	document.addEventListener("click", event => {
+		let panelDom = document.getElementById(panel);
+		let tDom = event.target;
+		if (!(tDom instanceof Node)) return;
+		for (let ig of ignores) {
+			let ie = document.getElementById(ig)
+			if (ie == tDom || (ie?.contains(tDom))) return;
+		}
+		panelDom!.classList.add("float-panel-closed");
+	});
+}
+setClickOutsideToClose("display-setting", ["display-setting", "display-settings-switch"])
+setClickOutsideToClose("nav-menu-panel", ["nav-menu-panel", "nav-menu-switch"])
+setClickOutsideToClose("search-panel", ["search-panel", "search-bar", "search-switch"])
+
+function loadTheme() { setTheme(getStoredTheme()) }
+function loadHue() { setHue(getHue()) }
+function loadBgBlur() { setBgBlur(getBgBlur()); setHideBg(getHideBg()); }
+
+function showBanner() {
+	if (!siteConfig.banner.enable) return;
+	const banner = document.getElementById('banner');
+	if (!banner) return;
+	banner.classList.remove('opacity-0', 'scale-105');
+}
+
+function loadGiscus() {
+	const container = document.getElementById('giscus-container');
+	if (!container) return;
+	if (container.querySelector('iframe.giscus-frame') || container.querySelector('script[src*="giscus"]')) return;
+
+	const script = document.createElement('script');
+	script.src = "https://giscus.app/client.js";
+	const attributes = [
+		"data-repo", "data-repo-id", "data-category", "data-category-id",
+		"data-mapping", "data-strict", "data-reactions-enabled",
+		"data-emit-metadata", "data-input-position", "data-lang", "data-loading"
+	];
+	attributes.forEach(attr => {
+		const val = container.getAttribute(attr);
+		if (val) script.setAttribute(attr, val);
+	});
+	script.setAttribute("data-theme", document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+	const giscusLang = (localStorage.getItem('lang') || 'zh_CN') === 'zh_CN' ? 'zh-CN' : 'en';
+	script.setAttribute("data-lang", giscusLang);
+	script.crossOrigin = "anonymous";
+	script.async = true;
+
+	container.appendChild(script);
+}
+
+function init() {
+	loadTheme();
+	loadHue();
+    loadBgBlur();
+	showBanner();
+	loadGiscus();
+
+	new MutationObserver(() => {
+		const frame = document.querySelector('iframe.giscus-frame') as HTMLIFrameElement;
+		if (!frame) return;
+		const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+		const lang = document.documentElement.getAttribute('lang') === 'zh-CN' ? 'zh-CN' : 'en';
+		frame.contentWindow?.postMessage({ giscus: { setConfig: { theme, lang } } }, 'https://giscus.app');
+	}).observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'lang'] });
+}
+
+init();
+bindPostInlineDiff();
+
+const setup = () => {
+	window.swup.hooks.on('link:click', () => {
+		document.documentElement.style.setProperty('--content-delay', '0ms')
+		if (!bannerEnabled) return
+		let threshold = window.innerHeight * (BANNER_HEIGHT / 100) - 72 - 16
+		let navbar = document.getElementById('navbar-wrapper')
+		if (!navbar || !document.body.classList.contains('lg:is-home')) return
+		if (document.body.scrollTop >= threshold || document.documentElement.scrollTop >= threshold) {
+			navbar.classList.add('navbar-hidden')
+		}
+	})
+	window.swup.hooks.on('visit:start', (visit: {to: {url: string}}) => {
+		const bodyElement = document.querySelector('body')
+		if (pathsEqual(visit.to.url, url('/'))) {
+			bodyElement!.classList.add('lg:is-home');
+		} else {
+			bodyElement!.classList.remove('lg:is-home');
+		}
+		const heightExtend = document.getElementById('page-height-extend')
+		if (heightExtend) heightExtend.classList.remove('hidden')
+		let toc = document.getElementById('toc-wrapper');
+		if (toc) toc.classList.add('toc-not-ready')
+	});
+	window.swup.hooks.on('page:view', () => {
+		const heightExtend = document.getElementById('page-height-extend')
+		if (heightExtend) heightExtend.classList.remove('hidden')
+		scrollFunction()
+		loadGiscus()
+	});
+	window.swup.hooks.on('visit:end', (_visit: {to: {url: string}}) => {
+		setTimeout(() => {
+			const heightExtend = document.getElementById('page-height-extend')
+			if (heightExtend) heightExtend.classList.add('hidden')
+            const toc = document.getElementById('toc-wrapper');
+            if (toc) toc.classList.remove('toc-not-ready')
+        }, 200)
+	});
+}
+if (window?.swup?.hooks) {
+	setup()
+} else {
+	document.addEventListener('swup:enable', setup)
+}
+
+let backToTopBtn = document.getElementById('back-to-top-btn');
+let goToCommentsBtn = document.getElementById('go-to-comments-btn');
+let toc = document.getElementById('toc-wrapper');
+let navbar = document.getElementById('navbar-wrapper')
+function refreshControlRefs() {
+	backToTopBtn = document.getElementById('back-to-top-btn');
+	goToCommentsBtn = document.getElementById('go-to-comments-btn');
+	toc = document.getElementById('toc-wrapper');
+	navbar = document.getElementById('navbar-wrapper')
+}
+function scrollFunction() {
+	refreshControlRefs()
+	let bannerHeight = window.innerHeight * (BANNER_HEIGHT / 100)
+
+	if (backToTopBtn) {
+		if (document.body.scrollTop > bannerHeight || document.documentElement.scrollTop > bannerHeight) {
+			backToTopBtn.classList.remove('hide')
+		} else {
+			backToTopBtn.classList.add('hide')
+		}
+	}
+
+    if (goToCommentsBtn) {
+        const commentsExist = !!document.getElementById('giscus-container');
+        if (commentsExist) {
+            goToCommentsBtn.classList.remove('hide')
+        } else {
+            goToCommentsBtn.classList.add('hide')
+        }
+    }
+
+	if (bannerEnabled && toc) {
+		if (document.body.scrollTop > bannerHeight || document.documentElement.scrollTop > bannerHeight) {
+			toc.classList.remove('toc-hide')
+		} else {
+			toc.classList.add('toc-hide')
+		}
+	}
+
+	if (!bannerEnabled) return
+	if (navbar) {
+		const NAVBAR_HEIGHT = 72
+		const MAIN_PANEL_EXCESS_HEIGHT = MAIN_PANEL_OVERLAPS_BANNER_HEIGHT * 16			
+		let bannerHeight = BANNER_HEIGHT
+		if (document.body.classList.contains('lg:is-home') && window.innerWidth >= 1024) {
+			bannerHeight = BANNER_HEIGHT_HOME
+		}
+		let threshold = window.innerHeight * (bannerHeight / 100) - NAVBAR_HEIGHT - MAIN_PANEL_EXCESS_HEIGHT - 16
+		if (document.body.scrollTop >= threshold || document.documentElement.scrollTop >= threshold) {
+			navbar.classList.add('navbar-hidden')
+		} else {
+			navbar.classList.remove('navbar-hidden')
+		}
+	}
+}
+window.onscroll = scrollFunction
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', scrollFunction)
+} else {
+	scrollFunction()
+}
+window.onresize = () => {
+	let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
+	offset = offset - offset % 4;
+	document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
+}
+</script>
+
+<script>
+import { Fancybox } from "@fancyapps/ui"
+import "@fancyapps/ui/dist/fancybox/fancybox.css"
+
+const setup = () => {
+	const cleanupFancybox = () => {
+		try { Fancybox.close() } catch {}
+		document.querySelectorAll('.fancybox__container').forEach(el => el.remove())
+		document.documentElement.style.removeProperty('overflow')
+		document.body.style.removeProperty('overflow')
+	}
+	const restoreNativeScrollIfSafe = () => {
+		const hasFancybox = !!document.querySelector('.fancybox__container')
+		if (hasFancybox) return
+		document.documentElement.style.removeProperty('overflow')
+		document.body.style.removeProperty('overflow')
+	}
+
+	Fancybox.bind(".custom-md img, #post-cover img", {
+		wheel: 'zoom', clickContent: 'close', dblclickContent: 'zoom', click: 'close', dblclick: 'zoom',
+		Panels: { display: ['counter', 'zoom'] },
+		Images: { panning: true, zoom: true, protect: false }
+	})
+
+	window.swup.hooks.on("page:view", () => {
+		Fancybox.bind(".custom-md img, #post-cover img", {
+			wheel: 'zoom', clickContent: 'close', dblclickContent: 'zoom', click: 'close', dblclick: 'zoom',
+			Panels: { display: ['counter', 'zoom'] },
+			Images: { panning: true, zoom: true, protect: false }
+		})
+	})
+
+	window.swup.hooks.on("content:replace", () => {
+		cleanupFancybox(); Fancybox.unbind(".custom-md img, #post-cover img")
+	}, { before: true })
+
+	window.swup.hooks.on("visit:start", () => { cleanupFancybox() }, { before: true })
+
+	window.addEventListener('keydown', (e) => {
+		if (e.key !== 'Escape') return
+		setTimeout(restoreNativeScrollIfSafe, 0)
+	})
+	document.addEventListener('click', () => { setTimeout(restoreNativeScrollIfSafe, 0) }, true)
+}
+
+if (window.swup) {
+	setup()
+} else {
+	document.addEventListener("swup:enable", setup)
+}
+</script>
+
+<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+  <defs>
+    <filter id="liquid-glass">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
