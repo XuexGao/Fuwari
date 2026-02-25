@@ -63,7 +63,7 @@ export const siteConfig: SiteConfig = {
 		{ url: "https://xiegao.top", alias: "Global" },
 	],
 	server: [
-		{ url: "/", text: "Blog" },
+		{ url: "", text: "Blog" },
 	],
 };
 
