@@ -91,42 +91,47 @@ for (const post of posts) {
         // --- 你的 Umami 配置 ---
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28";
         const baseUrl = "https://u.xiegao.top";
-        const shareId = "IoWiNCvTUPxaDg5x"; // <--- 记得替换成你自己的 Share ID！
+        const shareId = "IoWiNCvTUPxaDg5x"; // 你的 Share ID
         
         try {
-            // 1. 先用 Share ID 换取公开访问的 Token
+            // 1. 获取 Token
             const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);
             if (!tokenRes.ok) return;
             const tokenData = await tokenRes.json();
             const token = tokenData.token;
 
-            // 2. 拿着 Token 去请求全站历史访问量数据
+            // 2. 获取数据
             const url = `${baseUrl}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`;
             const res = await fetch(url, {
-                headers: {
-                    'x-umami-share-token': token
-                }
+                headers: { 'x-umami-share-token': token }
             });
             if (!res.ok) return;
             const data = await res.json();
             
+            // 3. 调试日志 (按 F12 可以在控制台看到真实数据)
+            console.log("Umami Profile Data:", data);
+
             const el = document.getElementById('site-views');
-            if (el && data.pageviews) {
-                // 直接更新数字
-                el.innerHTML = data.pageviews.value;
+            if (el) {
+                // 【关键修复】兼容两种格式
+                let views = 0;
+                if (data.pageviews && typeof data.pageviews === 'object' && data.pageviews.value !== undefined) {
+                    views = data.pageviews.value; // V2 格式
+                } else if (data.pageviews !== undefined) {
+                    views = data.pageviews;       // V1 格式
+                }
+                
+                el.innerHTML = views;
             }
         } catch (e) { 
-            console.warn("Site Stats Error"); 
+            console.warn("Site Stats Error", e); 
         }
     }
 
-    // 适配初始加载
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', loadSiteStats);
     } else {
         loadSiteStats();
     }
-
-    // 适配 Swup 无刷新页面切换
     document.addEventListener('swup:contentReplaced', loadSiteStats);
 </script>
