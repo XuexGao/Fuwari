@@ -87,20 +87,35 @@ for (const post of posts) {
 </style>
 
 <script>
+    // 动画函数：让数字动起来
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            // 计算当前数字
+            obj.innerHTML = Math.floor(progress * (end - start) + start);
+            // 如果动画没结束，继续下一帧
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                obj.innerHTML = end; // 确保最终数字准确
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
     async function loadSiteStats() {
-        // --- 你的 Umami 配置 ---
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28";
         const baseUrl = "https://u.xiegao.top";
-        const shareId = "IoWiNCvTUPxaDg5x"; // 你的 Share ID
+        const shareId = "IoWiNCvTUPxaDg5x";
         
         try {
-            // 1. 获取 Token
             const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);
             if (!tokenRes.ok) return;
             const tokenData = await tokenRes.json();
             const token = tokenData.token;
 
-            // 2. 获取数据
             const url = `${baseUrl}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`;
             const res = await fetch(url, {
                 headers: { 'x-umami-share-token': token }
@@ -108,20 +123,18 @@ for (const post of posts) {
             if (!res.ok) return;
             const data = await res.json();
             
-            // 3. 调试日志 (按 F12 可以在控制台看到真实数据)
-            console.log("Umami Profile Data:", data);
-
             const el = document.getElementById('site-views');
             if (el) {
-                // 【关键修复】兼容两种格式
                 let views = 0;
                 if (data.pageviews && typeof data.pageviews === 'object' && data.pageviews.value !== undefined) {
-                    views = data.pageviews.value; // V2 格式
+                    views = data.pageviews.value;
                 } else if (data.pageviews !== undefined) {
-                    views = data.pageviews;       // V1 格式
+                    views = data.pageviews;
                 }
                 
-                el.innerHTML = views;
+                // 【核心修改】这里不再直接赋值，而是调用动画函数
+                // 从 0 滚动到 views，持续 800 毫秒
+                animateValue(el, 0, views, 800);
             }
         } catch (e) { 
             console.warn("Site Stats Error", e); 
