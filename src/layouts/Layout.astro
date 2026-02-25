@@ -159,8 +159,10 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 				position: fixed; top: 0; left: 0; width: 100%; height: 100%;
 				background-image: var(--bg-url); background-position: var(--bg-position);
 				background-size: var(--bg-size); background-repeat: var(--bg-repeat);
-				background-attachment: var(--bg-attachment); opacity: 0;
-				pointer-events: none; z-index: -1; transition: opacity 0.3s ease-in-out;
+				background-attachment: var(--bg-attachment); 
+                /* 直接赋值透明度，拒绝强制隐身 */
+                opacity: calc(var(--bg-opacity) * var(--bg-enable));
+				pointer-events: none; z-index: -1; 
                 will-change: transform; transform: translateZ(0);
 			}
 			#bg-box.loaded { opacity: calc(var(--bg-opacity) * var(--bg-enable)); }
