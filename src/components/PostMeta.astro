@@ -71,28 +71,36 @@ const className = Astro.props.class;
 {slug && (
     <script define:vars={{ slug }}>
     async function fetchPageViews() {
-        // --- 你的 Umami 配置 ---
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28"; 
         const baseUrl = "https://u.xiegao.top";
+        const shareId = "IoWiNCvTUPxaDg5x"; // <--- 记得替换这里！
 
         try {
-            // 获取全量数据 (startAt=0)
+            // 1. 先用 Share ID 换取公开访问的 Token
+            const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);
+            if (!tokenRes.ok) return;
+            const tokenData = await tokenRes.json();
+            const token = tokenData.token;
+
+            // 2. 拿着 Token 去请求阅读量数据
             const url = `${baseUrl}/api/websites/${websiteId}/stats?path=/posts/${slug}/&startAt=0&endAt=${Date.now()}`;
-            const response = await fetch(url);
+            const response = await fetch(url, {
+                headers: {
+                    'x-umami-share-token': token
+                }
+            });
             if (!response.ok) return;
             const data = await response.json();
             
             const viewsElement = document.getElementById(`page-views-${slug}`);
             if (viewsElement && data.pageviews) {
-                // 自动获取 I18n 翻译，如果获取失败则默认显示“次”
-                const suffix = (window.Translation && window.i18n) ? " " + window.i18n(window.Translation.words) : " 次";
+                const suffix = (window.Translation && window.i18n) ? " " + window.i18n(window.Translation.views) : " 次";
                 viewsElement.innerHTML = data.pageviews.value + suffix;
             }
         } catch (error) {
             console.warn('Umami PV fetch failed.');
         }
     }
-
     // 初始化函数
     function initStats() {
         fetchPageViews();
