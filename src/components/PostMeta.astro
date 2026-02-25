@@ -69,100 +69,14 @@ const className = Astro.props.class;
 </div>
 
 {slug && (
-<<<<<<< HEAD
-    <script define:vars={{ slug, umamiConfig }}>
-    // 数字动画函数
-    function animateValue(obj, start, end, duration, suffix = '') {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = `${Math.floor(progress * (end - start) + start)} ${suffix}`;
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            } else {
-                obj.innerHTML = `${end} ${suffix}`;
-            }
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    // 获取访问量统计 (Archived: Old Logic)
-    /*
-    async function fetchPageViews() {
-    // 1. 定义你的配置
-    const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28"; // 例如: 8848a-xxx-xxx
-    const baseUrl = "https://u.xiegao.top";
-    
-    try {
-        // 2. 构造请求 URL
-        // 使用你的自建 API 终点，统计该路径的所有历史数据 (startAt=0)
-        const url = `${baseUrl}/api/websites/${websiteId}/stats?path=/posts/${slug}/&startAt=0&endAt=${Date.now()}`;
-
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
-
-        if (!response.ok) return;
-
-        const data = await response.json();
-        
-        // 3. 提取阅读量 (自建版通常在 data.pageviews.value)
-        const pageViews = data.pageviews?.value || 0;
-        
-        const viewsElement = document.getElementById(`page-views-${slug}`);
-        
-        if (viewsElement) {
-            const currentViews = parseInt(viewsElement.textContent) || 0;
-            if (currentViews !== pageViews) {
-                if (currentViews === 0) {
-                     animateValue(viewsElement, currentViews, pageViews, 1000, '次');
-                } else {
-                     viewsElement.innerHTML = `${pageViews} 次`;
-                }
-            }
-        }
-    } catch (error) {
-        // 自建版如果挂了，我们静默失败，不给控制台报红字
-        console.warn('Umami stats sync skipped.');
-    }
-}
-            
-            // 如果数据来自缓存，直接显示结果，跳过动画
-            if (statsData._fromCache) {
-                if (viewsElement) viewsElement.innerHTML = `${pageViews} 次`;
-                if (visitorsElement) visitorsElement.innerHTML = `${visits} 人`;
-                return;
-            }
-
-            if (viewsElement) {
-                const currentViews = parseInt(viewsElement.textContent) || 0;
-                if (currentViews !== pageViews) {
-                    if (currentViews === 0) {
-                         animateValue(viewsElement, currentViews, pageViews, 1000, '次');
-                    } else {
-                         viewsElement.innerHTML = `${pageViews} 次`;
-                    }
-                }
-            }
-            
-            if (visitorsElement) {
-                const currentVisits = parseInt(visitorsElement.textContent) || 0;
-                if (currentVisits !== visits) {
-                    if (currentVisits === 0) {
-
-{slug && (
     <script define:vars={{ slug }}>
     async function fetchPageViews() {
-        // --- 你的 Umami 配置开始 ---
+        // --- 你的 Umami 配置 ---
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28"; 
         const baseUrl = "https://u.xiegao.top";
-        // --- 你的 Umami 配置结束 ---
 
         try {
+            // 获取全量数据 (startAt=0)
             const url = `${baseUrl}/api/websites/${websiteId}/stats?path=/posts/${slug}/&startAt=0&endAt=${Date.now()}`;
             const response = await fetch(url);
             if (!response.ok) return;
@@ -170,27 +84,24 @@ const className = Astro.props.class;
             
             const viewsElement = document.getElementById(`page-views-${slug}`);
             if (viewsElement && data.pageviews) {
-                // 使用 window.i18n 确保“次”这个单位能根据语言自动切换
-                const suffix = (window.i18n && window.Translation) ? " " + window.i18n(window.Translation.views) : " 次";
+                // 自动获取 I18n 翻译，如果获取失败则默认显示“次”
+                const suffix = (window.Translation && window.i18n) ? " " + window.i18n(window.Translation.words) : " 次";
                 viewsElement.innerHTML = data.pageviews.value + suffix;
             }
         } catch (error) {
-            console.error('Umami PV Error:', error);
+            console.warn('Umami PV fetch failed.');
         }
     }
 
-    // 适配页面加载和 Swup 无刷新跳转
+    // 初始化函数
     function initStats() {
         fetchPageViews();
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initStats);
-    } else {
-        initStats();
-    }
+    // 初始加载
+    initStats();
     
-    // 关键：监听 Swup 页面替换事件，确保切换文章后重新加载阅读量
+    // 适配 Fuwari 的 Swup 无刷新跳转：监听内容替换事件
     document.addEventListener('swup:contentReplaced', initStats);
 </script>
 )}
