@@ -11,8 +11,8 @@ const { dataType, class: className } = Astro.props;
 
 const linkText =
 	dataType === "friends"
-		? "https://github.com/afoim/fuwari/tree/main/src/data/friends"
-		: "https://github.com/afoim/fuwari/tree/main/src/data/sponsors";
+		? "https://github.com/XuexGao/Fuwari/tree/main/src/data/friends"
+		: "https://github.com/XuexGao/Fuwari/tree/main/src/data/sponsors";
 ---
 
 <div class:list={["text-sm text-black/60 dark:text-white/60", className]}>
@@ -24,7 +24,7 @@ const linkText =
     </p>
     <p class="mt-2">
         <I18n key={Translation.LinkCheckDescription} />
-        <a target="_blank" href="https://github.com/afoim/fuwari/actions/workflows/check-links.yml" class="transition link text-[var(--primary)] font-medium underline">
+        <a target="_blank" href="https://github.com/XuexGao/Fuwari/actions/workflows/check-links.yml" class="transition link text-[var(--primary)] font-medium underline">
             <I18n key={Translation.LinkCheckResultTip} />
         </a>。
     </p>
