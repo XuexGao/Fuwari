@@ -7,13 +7,10 @@ import { profileConfig, siteConfig } from "@/config";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import NewPostNotification from "@components/widget/NewPostNotification.astro";
 import {
-	AUTO_MODE,
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
 	BANNER_HEIGHT_HOME,
 	DARK_MODE,
-	DEFAULT_THEME,
-	LIGHT_MODE,
 	PAGE_WIDTH,
 } from "../constants/constants";
 import { defaultFavicons } from "../constants/icon";
@@ -162,29 +159,10 @@ const bannerOffset =
 		))}
 
 		<!-- Set the theme before the page is rendered to avoid a flash -->
-		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue, forceDarkMode: siteConfig.themeColor.forceDarkMode}}>
-			// Force dark mode if configured
-			if (forceDarkMode) {
-				document.documentElement.classList.add('dark');
-				localStorage.setItem('theme', DARK_MODE);
-			} else {
-				// Load the theme from local storage
-			const theme = localStorage.getItem('theme') || DARK_MODE;
-			switch (theme) {
-				case LIGHT_MODE:
-					document.documentElement.classList.remove('dark');
-					break
-				case DARK_MODE:
-					document.documentElement.classList.add('dark');
-					break
-				case AUTO_MODE:
-					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-						document.documentElement.classList.add('dark');
-					} else {
-						document.documentElement.classList.remove('dark');
-					}
-			}
-			}
+		<script is:inline define:vars={{DARK_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
+			// Force dark mode
+			document.documentElement.classList.add('dark');
+			localStorage.setItem('theme', DARK_MODE);
 
 			// Load the hue from local storage
 			const hue = localStorage.getItem('hue') || configHue;
@@ -324,20 +302,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script data-swup-ignore-script type="text/javascript" charset="UTF-8">
 (function () {
 	const getStoredTheme = () => {
-		try {
-			const theme = localStorage.getItem("theme");
-			return theme === "light" || theme === "dark" || theme === "auto" ? theme : null;
-		} catch {
-			return null;
-		}
+		return "dark";
 	};
 
 	const getPalette = () => {
-		const theme = getStoredTheme();
-		if (theme === "dark") return "dark";
-		if (theme === "light") return "light";
-		if (document.documentElement.classList.contains("dark")) return "dark";
-		return window.matchMedia?.("(prefers-color-scheme: dark)")?.matches ? "dark" : "light";
+		return "dark";
 	};
 
 	const baseConfig = {
@@ -664,7 +633,7 @@ function loadGiscus() {
 		const val = container.getAttribute(attr);
 		if (val) script.setAttribute(attr, val);
 	});
-	script.setAttribute("data-theme", document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+	script.setAttribute("data-theme", 'dark');
 	script.crossOrigin = "anonymous";
 	script.async = true;
 
@@ -686,8 +655,7 @@ function init() {
 	new MutationObserver(() => {
 		const frame = document.querySelector('iframe.giscus-frame');
 		if (!frame) return;
-		const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-		frame.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+		frame.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
 	}).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 	// console.timeEnd("init");
 }

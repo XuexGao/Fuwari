@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
+import { DARK_MODE } from "@constants/constants";
 import Icon from "@iconify/svelte";
 import {
 	getBgBlur,
@@ -47,10 +47,7 @@ $: {
 	setBgBlur(bgBlur);
 }
 
-function switchTheme(newTheme: string) {
-	theme = newTheme;
-	setTheme(newTheme);
-}
+
 
 function toggleRainbow() {
 	isRainbowMode = !isRainbowMode;
@@ -105,37 +102,7 @@ onMount(() => {
 </script>
 
 <div id="display-setting" class="float-panel float-panel-closed absolute transition-all w-80 right-4 px-4 py-4">
-    <div class="flex flex-row gap-2 mb-3 items-center justify-between">
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
-            before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
-            before:absolute before:-left-3 before:top-[0.33rem]"
-        >
-            主题模式
-        </div>
-        <div class="flex gap-1">
-            <button aria-label="Light Mode"
-                class="w-10 h-7 rounded-md transition flex items-center justify-center active:scale-90
-                {theme === LIGHT_MODE ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
-                on:click={() => switchTheme(LIGHT_MODE)}
-            >
-                <Icon icon="material-symbols:wb-sunny-rounded" class="text-[1.1rem]"></Icon>
-            </button>
-            <button aria-label="Dark Mode"
-                class="w-10 h-7 rounded-md transition flex items-center justify-center active:scale-90
-                {theme === DARK_MODE ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
-                on:click={() => switchTheme(DARK_MODE)}
-            >
-                <Icon icon="material-symbols:dark-mode-rounded" class="text-[1.1rem]"></Icon>
-            </button>
-            <button aria-label="Auto Mode"
-                class="w-10 h-7 rounded-md transition flex items-center justify-center active:scale-90
-                {theme === AUTO_MODE ? 'bg-[var(--primary)] text-white' : 'bg-[var(--btn-regular-bg)] text-[var(--btn-content)] hover:bg-[var(--btn-regular-bg-hover)]'}"
-                on:click={() => switchTheme(AUTO_MODE)}
-            >
-                <Icon icon="material-symbols:hdr-auto-rounded" class="text-[1.1rem]"></Icon>
-            </button>
-        </div>
-    </div>
+
 
     <div class="flex flex-row gap-2 mb-3 items-center justify-between">
         <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
