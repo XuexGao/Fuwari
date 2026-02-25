@@ -1,18 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
-// 修正路径：从 src/pages/posts/ 到 src/ 目录需要向上退三层
-import MainGridLayout from '../../../src/layouts/MainGridLayout.astro';
-import PostMetadata from '../../../src/components/PostMetadata.astro';
+
+// 使用更稳妥的相对路径导入，直接从当前文件的上级寻找
+import MainGridLayout from '../../layouts/MainGridLayout.astro';
+import PostMetadata from '../../components/PostMetadata.astro';
+import Markdown from '../../components/Markdown.astro';
 import Icon from 'astro-icon/components';
-import { i18n } from '../../../src/i18n/translation';
-import I18nKey from '../../../src/i18n/i18nKey';
-import Markdown from '../../../src/components/Markdown.astro';
-import { Translation } from "../../../src/i18n/translation";
+
+// 导入 i18n 相关逻辑
+import { i18n } from '../../i18n/translation';
+import I18nKey from '../../i18n/i18nKey';
+import { Translation } from "../../i18n/translation";
 
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
     return posts.map(entry => {
-        // 移除语言前缀 (例如 'en/my-post' 变为 'my-post')
+        // 移除语言前缀 (例如 'en/my-post' -> 'my-post')
         const slug = entry.slug.startsWith('en/') ? entry.slug.substring(3) : entry.slug;
         return {
             params: { slug },
@@ -24,7 +27,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { slug } = Astro.params;
 
-// 渲染内容
+// 渲染 Markdown 内容
 const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 
 const jsonLd = {
@@ -35,7 +38,6 @@ const jsonLd = {
     "author": { "@type": "Person", "name": "Author" }
 };
 ---
-
 <MainGridLayout 
     banner={entry.data.image} 
     title={entry.data.title} 
