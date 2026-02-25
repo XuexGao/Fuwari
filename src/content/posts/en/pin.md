@@ -3,9 +3,8 @@ title: XieGao's Blog
 published: 2026-02-07
 description: Welcome to my blog; it is currently under construction.
 image: /random/h
-tags: [Test, Announcement]
-category: Chit-chat
-draft: false
+pinned: true
+lang: en
 ---
 
 # XieGao's Blog
