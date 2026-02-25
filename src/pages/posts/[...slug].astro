@@ -1,26 +1,48 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+import MainGridLayout from '../../layouts/MainGridLayout.astro';
+import PostMetadata from '../../components/PostMetadata.astro';
+import Icon from 'astro-icon/components';
+import { i18n } from '../../i18n/translation';
+import I18nKey from '../../i18n/i18nKey';
+import Markdown from '../../components/Markdown.astro';
 
 export async function getStaticPaths() {
     const posts = await getCollection('posts');
-    const slugs = new Set();
-    posts.forEach(post => {
-        let slug = post.slug;
-        if (slug.startsWith('en/')) {
-            slug = slug.substring(3);
-        }
-        slugs.add(slug);
+    return posts.map(entry => {
+        // 移除语言前缀以匹配动态路由 [...slug]
+        const slug = entry.slug.startsWith('en/') ? entry.slug.substring(3) : entry.slug;
+        return {
+            params: { slug },
+            props: { entry }
+        };
     });
-    
-    return Array.from(slugs).map(slug => ({
-        params: { slug },
-        props: { slug }
-    }));
 }
 
+const { entry } = Astro.props;
 const { slug } = Astro.params;
+
+// 渲染 Markdown 内容
+const { Content, headings, remarkPluginFrontmatter } = await entry.render();
+
+// 简单的 JSON-LD 数据
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": entry.data.title,
+    "description": entry.data.description,
+    "author": { "@type": "Person", "name": "YourName" } // 这里可以改成你的名字
+};
 ---
-<MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
+
+<MainGridLayout 
+    banner={entry.data.image} 
+    title={entry.data.title} 
+    description={entry.data.description} 
+    lang={entry.data.lang} 
+    setOGTypeArticle={true} 
+    headings={headings}
+>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative mb-4">
@@ -28,11 +50,11 @@ const { slug } = Astro.params;
             <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
                 <div class="flex flex-row items-center">
                     <Icon name="material-symbols:notes-rounded" class="mr-2"></Icon>
-                    <div class="text-sm">{remarkPluginFrontmatter.words} <I18n key={Translation.words} /></div>
+                    <div class="text-sm">{remarkPluginFrontmatter.words} {i18n(I18nKey.words)}</div>
                 </div>
                 <div class="flex flex-row items-center">
                     <Icon name="material-symbols:schedule-outline-rounded" class="mr-2"></Icon>
-                    <div class="text-sm">{remarkPluginFrontmatter.minutes} <I18n key={Translation.minutes} /></div>
+                    <div class="text-sm">{remarkPluginFrontmatter.minutes} {i18n(I18nKey.minutes)}</div>
                 </div>
             </div>
 
@@ -48,26 +70,16 @@ const { slug } = Astro.params;
                 <Content />
             </Markdown>
 
-            <div id="giscus-container"
-                data-repo="XuexGao/Fuwari"
-                data-repo-id="R_kgDORKqH6w"
-                data-category="Announcements"
-                data-category-id="DIC_kwDORKqH684C2CSW"
-                data-mapping="pathname"
-                data-strict="0"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-input-position="bottom"
-                data-theme="preferred_color_scheme"
-                data-lang="zh-CN"
-                data-loading="lazy"
-                class="giscus"></div>
+            <div id="giscus-container" class="giscus"></div>
         </div>
     </div>
 </MainGridLayout>
 
 <script is:inline define:vars={{ slug }}>
-    // 强制重定向到带语言路径的新地址 (上游最新规范)
+    // 自动重定向逻辑
     const lang = navigator.language.toLowerCase().startsWith('en') ? 'en' : 'zh-cn';
-    window.location.href = `/${lang}/posts/${slug}/`;
+    // 避免循环重定向
+    if (!window.location.pathname.includes(`/${lang}/`)) {
+        window.location.href = `/${lang}/posts/${slug}/`;
+    }
 </script>
