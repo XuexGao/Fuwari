@@ -8,8 +8,8 @@ tags: [随机图API]
 draft: false 
 lang: ''
 ---
-> [!ai] qwen/qwen3-vl-8b
-> 新版通过EdgeOne Pages Functions分发横屏、竖屏、自适应图，存储于EdgeOne Page；旧版经eopf代理cnb.cool图库；旧旧版因R2被刷7千万次、扣费28.08美元而弃用，原用Cloudflare R2存储Webp格式分屏图，eopf免费接入实现随机图服务。
+> [!ai] gemini-3-flash-preview
+> 图片API现采用EdgeOne Pages Functions实现（https://eopfapi.acofork.com/pic?img=ua），支持通过h/v/ua参数区分横竖屏及自适应方向。该方案利用其免费特性，取代了此前因产生高额请求费用而废弃的Cloudflare R2版本。
 
 
 # API端点

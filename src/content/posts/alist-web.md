@@ -11,8 +11,8 @@ tags:
 - Cloudflare Pages
 title: 教你把AList的前端部署到CF Pages！让你的AList秒加载！
 ---
-> [!ai] qwen/qwen3-vl-8b
-> 本教程仅部署 AList 前端至 Cloudflare Pages，提升前端加载速度，后端仍需公网服务器或 Cloudflare Tunnel 支持。需确保后端支持 IPv4/IPv6，前端部署步骤包括 Fork 仓库、修改 env.production、克隆、下载汉化包、配置 gitignore、安装 Node.js 与依赖、生成语言文件、提交并推送代码至 Pages，设置构建命令为 pnpm build，输出目录为 /dist，绑定自定义域名后访问。定制功能通过硬编码 index.html 实现，修改后重新提交即可生效。若构建失败因缺少 solid-route 文件夹，需手动从原仓库迁移该文件夹内容并重试。
+> [!ai] gemini-3-flash-preview
+> 通过将AList前端部署至Cloudflare Pages可优化访问速度。需Fork alist-web仓库，在env.production配置后端地址并添加语言包。在Cloudflare中连接存储库，构建命令设为pnpm install && pnpm build，输出目录为/dist，完成后绑定自定义域。若需定制页面，可直接在index.html中硬编码。
 
 ## 前情提要[#](https://afo.im/shen-me-Cloudflare-dai-li-AList-tai-man--jiao-ni-bu-shu-qian-duan-dao-Pages-ju-jue-hui-yuan-#user-content-%E5%89%8D%E6%83%85%E6%8F%90%E8%A6%81)
 

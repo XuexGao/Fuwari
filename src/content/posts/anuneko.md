@@ -10,8 +10,8 @@ tags:
 draft: false
 lang: ""
 ---
-> [!ai] qwen/qwen3-vl-8b
-> 橘猫会哈气，可通过API交互：发送消息用`/msg/stream`，选择回复用`/msg/select-choice`，切换猫模型用`/user/select_model`，附NoneBot2插件链接。
+> [!ai] gemini-3-flash-preview
+> AnuNeko平台利用x-token进行接口鉴权，通过调用API可实现对话流发送、回复分支选择及猫咪模型切换，相关功能已集成至开源的NoneBot2插件。
 
 # 这是What
 这是橘猫，会哈气（见封面
