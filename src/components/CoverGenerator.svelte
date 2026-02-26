@@ -3,9 +3,9 @@ import Icon from "@iconify/svelte";
 import { getHue } from "@utils/setting-utils";
 import { onMount } from "svelte";
 
-let leftText = "Text";
-let rightText = "Text";
-let iconName = "material-symbols:home-outline";
+let leftText = "鸣潮";
+let rightText = "牛逼";
+let iconName = "arcticons:wuthering-waves";
 let fontSize = 64;
 let iconSize = 64;
 let gap = 20;
@@ -126,9 +126,9 @@ onMount(() => {
 	hue = getHue();
 
 	// Set initial canvas colors
-	bgColor = "#1e1e1e";
-	color = "#ffffff";
-	iconColor = "#ffffff";
+	bgColor = "#ffffff";
+	color = "#000000";
+	iconColor = "#000000";
 
 	// Default shadows should be transparent/none
 	textShadow = { x: 0, y: 0, blur: 0, color: "#000000", alpha: 0 };
@@ -956,7 +956,7 @@ function downloadLink(url: string, filename: string) {
                     </div>
                 {/if}
                 <div class="flex flex-wrap justify-between items-center text-xs mt-1 gap-2">
-                    <span class="text-gray-400 truncate max-w-[150px]" title={iconName}>当前: {iconName}</span>
+                    <span class="text-gray-400 break-all select-text" title={iconName}>当前: {iconName}</span>
                     <button on:click={() => window.open('https://icones.js.org/', '_blank')} class="text-[var(--primary)] hover:underline whitespace-nowrap">
                         浏览图标库 ↗
                     </button>
