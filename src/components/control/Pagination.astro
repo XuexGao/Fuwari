@@ -50,6 +50,8 @@ const getPageUrl = (p: number) => {
 	if (p === 1) return prefix || "/";
 	return `${prefix}/${p}/`;
 };
+
+const prefix = sort ? `/${sort}` : "";
 ---
 
 <div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
@@ -63,7 +65,11 @@ const getPageUrl = (p: number) => {
     <div class="bg-[var(--card-bg)] flex flex-row rounded-lg items-center text-neutral-300 font-bold" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
         {pages.map((p) => {
             if (p == HIDDEN)
-                return <Icon name="material-symbols:more-horiz" class="mx-1"/>;
+                return <button aria-label="Jump to page"
+                               class="jump-btn transition flex items-center justify-center w-8 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-white/75"
+                >
+                    <Icon name="material-symbols:more-horiz" class="mx-1"/>
+                </button>;
             if (p == page.currentPage)
                 return <div class="h-11 w-11 rounded-lg bg-[var(--primary)] flex items-center justify-center
                     font-bold text-black/70"
@@ -83,3 +89,34 @@ const getPageUrl = (p: number) => {
         <Icon name="material-symbols:chevron-right-rounded" class="text-[1.75rem]"></Icon>
     </a>
 </div>
+
+<script is:inline define:vars={{ lastPage: page.lastPage, prefix }}>
+    function initJumpButtons() {
+        const btns = document.querySelectorAll('.jump-btn');
+        btns.forEach(btn => {
+            btn.onclick = () => {
+                const target = window.prompt(`请输入要跳转的页码 (1-${lastPage}):`);
+                if (target) {
+                    const pageNum = parseInt(target);
+                    if (!isNaN(pageNum) && pageNum >= 1 && pageNum <= lastPage) {
+                        let targetUrl = prefix || "/";
+                        if (pageNum > 1) {
+                            targetUrl = `${prefix}/${pageNum}/`;
+                        }
+                        // Use swup if available for SPA-like transition
+                        if (window.swup) {
+                            window.swup.navigate(targetUrl);
+                        } else {
+                            window.location.href = targetUrl;
+                        }
+                    } else {
+                        alert('请输入有效的页码！');
+                    }
+                }
+            };
+        });
+    }
+
+    initJumpButtons();
+    document.addEventListener('swup:contentReplaced', initJumpButtons);
+</script>
