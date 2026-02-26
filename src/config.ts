@@ -112,7 +112,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "Telegram",
 			icon: "telegram", // Local icon
-			url: "https://t.me/zihang518",
+			url: "https://t.me/xuexgao",
 		},
 		{
 			name: "Bilibli",
