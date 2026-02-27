@@ -10,6 +10,8 @@ jobs:
       CNB_TOKEN: ${{ secrets.GIT_PASSWORD }}
       CNB_URL: "cnb.cool/2x.nz/fuwari.git"
       REPO_ZIP_URL: "https://github.com/afoim/fuwari/archive/refs/heads/main.zip"
+      # 强制 Git 在需要输入时报错，而不是卡住
+      GIT_TERMINAL_PROMPT: 0
 
     steps:
       - name: 1. Download Source ZIP
@@ -34,6 +36,7 @@ jobs:
 
       - name: 5. Configure CNB Remote
         working-directory: ${{ env.DIR_NAME }}
+        # 显式使用带有凭据的 URL
         run: git remote add origin "https://cnb:${CNB_TOKEN}@${CNB_URL}"
 
       - name: 6. Create Sync Commit
@@ -45,4 +48,8 @@ jobs:
 
       - name: 7. Force Push to CNB
         working-directory: ${{ env.DIR_NAME }}
-        run: git push -f origin main
+        env:
+          # 开启详细的网络调试日志（如果还是卡住，从日志能看出卡在哪个环节）
+          GIT_CURL_VERBOSE: 1
+        # 使用 --progress 强制显示进度，即便不是在终端运行
+        run: git push -f --progress origin main
