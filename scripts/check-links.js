@@ -266,7 +266,6 @@ async function main() {
     console.log(`${colors.magenta}=== Starting Link Checker ===${colors.reset}`);
     
     await scanDirectory('friends', 'Friend');
-    await scanDirectory('sponsors', 'Sponsor');
 
     console.log(`\n${colors.magenta}=== Summary ===${colors.reset}`);
     console.log(`Total checks: ${stats.total}`);
