@@ -45,4 +45,4 @@ jobs:
 
       - name: 7. Force Push to CNB
         working-directory: ${{ env.DIR_NAME }}
-        run: git push -f -q origin main
+        run: git push -f origin main
