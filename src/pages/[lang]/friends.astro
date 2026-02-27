@@ -47,10 +47,17 @@ const breadcrumbSchema = {
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
     <div class="card-base p-6 md:p-8">
         <div class="flex items-center gap-2 mb-6">
+<<<<<<< HEAD:src/pages/[lang]/friends.astro
             <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
                 <Icon name="material-symbols:diversity-3" class="text-[1.5rem]" />
             </div>
             <h1 class="text-2xl font-bold text-black dark:text-white"><I18n key={Translation.Friends} /></h1>
+=======
+            <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70">
+                <Icon name="material-symbols:diversity-3" class="text-[1.5rem]">
+            </div>
+            <h1 class="text-2xl font-bold text-white">友链</h1>
+>>>>>>> upstream/main:src/pages/friends.astro
         </div>
 
         <!-- 申请友链 -->
@@ -64,9 +71,9 @@ const breadcrumbSchema = {
                         <div class="relative w-5 h-5 rounded overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
                             <img src={friend.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={friend.name} />
                         </div>
-                        <div class="font-bold text-black dark:text-white">{friend.name}</div>
+                        <div class="font-bold text-white">{friend.name}</div>
                     </div>
-                    <div class="text-sm text-black/50 dark:text-white/50">{friend.description}</div>
+                    <div class="text-sm text-white/50">{friend.description}</div>
                 </a>
             ))}
         </div>
@@ -93,7 +100,7 @@ const breadcrumbSchema = {
     }
     
     .friend-card:hover .text-sm {
-    @apply text-gray-700 dark:text-white;
+    @apply text-white;
     }
 
     .friend-card .font-bold,

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants";
+import { DARK_MODE } from "@constants/constants";
 import Icon from "@iconify/svelte";
 import {
 	getBgBlur,
@@ -52,10 +52,7 @@ $: {
 	setBgBlur(bgBlur);
 }
 
-function switchTheme(newTheme: string) {
-	theme = newTheme;
-	setTheme(newTheme);
-}
+
 
 function switchLang(newLang: string) {
 	currentLang = newLang;
@@ -116,6 +113,7 @@ onMount(() => {
 </script>
 
 <div id="display-setting" class="float-panel float-panel-closed absolute transition-all w-80 right-4 px-4 py-4">
+<<<<<<< HEAD
     <div class="flex flex-row gap-2 mb-3 items-center justify-between">
         <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
@@ -147,9 +145,12 @@ onMount(() => {
             </button>
         </div>
     </div>
+=======
+
+>>>>>>> upstream/main
 
     <div class="flex flex-row gap-2 mb-3 items-center justify-between">
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
@@ -192,13 +193,18 @@ onMount(() => {
             />
         </div>
     </div>
+<<<<<<< HEAD
     <div class="w-full h-6 px-1 bg-[oklch(0.80_0.10_0)] dark:bg-[oklch(0.70_0.10_0)] rounded select-none mb-3">
         <input aria-label={$t(Translation.ThemeColor)} type="range" min="0" max="360" bind:value={hue} disabled={isRainbowMode}
+=======
+    <div class="w-full h-6 px-1 bg-[oklch(0.70_0.10_0)] rounded select-none mb-3">
+        <input aria-label="主题色彩" type="range" min="0" max="360" bind:value={hue} disabled={isRainbowMode}
+>>>>>>> upstream/main
                class="slider" id="colorSlider" step="1" style="width: 100%">
     </div>
 
     <div class="flex flex-row gap-2 mb-3 items-center justify-between">
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
@@ -208,7 +214,7 @@ onMount(() => {
     </div>
 
     <div class="flex flex-row gap-2 mb-3 items-center justify-between">
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
@@ -219,7 +225,7 @@ onMount(() => {
 
     {#if isRainbowMode}
     <div class="flex flex-row gap-2 mb-3 items-center justify-between transition-all" >
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
@@ -239,7 +245,7 @@ onMount(() => {
     {/if}
 
     <div class="flex flex-row gap-2 mb-3 mt-3 items-center justify-between">
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
@@ -258,7 +264,7 @@ onMount(() => {
     </div>
 
     <div class="flex flex-row gap-2 mb-3 mt-3 items-center justify-between">
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >
@@ -269,7 +275,7 @@ onMount(() => {
 
     {#if isDevMode}
     <div class="flex flex-row gap-2 mb-3 items-center justify-between transition-all" >
-        <div class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
             before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
             before:absolute before:-left-3 before:top-[0.33rem]"
         >

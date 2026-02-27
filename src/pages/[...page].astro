@@ -1,0 +1,65 @@
+---
+import type { GetStaticPaths } from "astro";
+import PostPage from "../components/PostPage.astro";
+import PostSort from "../components/control/PostSort.astro";
+import Pagination from "../components/control/Pagination.astro";
+import { siteConfig } from "../config";
+import { PAGE_SIZE } from "../constants/constants";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { getSortedPosts } from "../utils/content-utils";
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const allBlogPosts = await getSortedPosts();
+
+	const sorts = [
+		{ name: undefined, data: allBlogPosts }, // Default (Date Desc)
+		{ name: "date-asc", data: [...allBlogPosts].reverse() },
+		{
+			name: "alpha-asc",
+			data: [...allBlogPosts].sort((a, b) =>
+				a.data.title.localeCompare(b.data.title, "zh-CN"),
+			),
+		},
+		{
+			name: "alpha-desc",
+			data: [...allBlogPosts].sort((a, b) =>
+				b.data.title.localeCompare(a.data.title, "zh-CN"),
+			),
+		},
+	];
+
+	return sorts.flatMap((sort) => {
+		const pages = paginate(sort.data, {
+			pageSize: PAGE_SIZE,
+			props: { sort: sort.name },
+		});
+		return pages.map((p) => {
+			if (sort.name) {
+				p.params.page = p.params.page
+					? `${sort.name}/${p.params.page}`
+					: sort.name;
+			}
+			return p;
+		});
+	});
+}) satisfies GetStaticPaths;
+
+const { page, sort } = Astro.props;
+
+const len = page.data.length;
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: siteConfig.title,
+	url: Astro.site,
+	description: siteConfig.description,
+};
+---
+
+<MainGridLayout title={page.currentPage === 1 ? undefined : `第 ${page.currentPage} 页`}>
+    {page.currentPage === 1 && <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}
+    <PostSort sort={sort} class="onload-animation" style="animation-delay: var(--content-delay);"></PostSort>
+    <PostPage page={page}></PostPage>
+    <Pagination sort={sort} class="mx-auto onload-animation" page={page} style=`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`></Pagination>
+</MainGridLayout>

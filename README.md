@@ -215,3 +215,7 @@ themeColor: {
 ## 🙏 致谢
 
 感谢所有为这个项目做出贡献的开发者们！尤其感谢[上游仓库](https://github.com/saicaca/fuwari)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=afoim/fuwari&type=date&legend=top-left)](https://www.star-history.com/#afoim/fuwari&type=date&legend=top-left)

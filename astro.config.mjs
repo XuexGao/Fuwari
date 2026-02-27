@@ -24,6 +24,7 @@ import { AISummaryComponent } from "./src/plugins/rehype-component-ai-summary.mj
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { UrlCardComponent } from "./src/plugins/rehype-component-url-card.mjs";
 import rehypeImageFallback from "./src/plugins/rehype-image-fallback.mjs";
+import { rehypeAIAdmonition } from "./src/plugins/rehype-ai-admonition.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkGithubAdmonitions } from "./src/plugins/remark-github-admonitions.js";
@@ -120,15 +121,6 @@ image: {
 			globalInstance: true,
 		}),
 		icon({
-			include: {
-				"fa6-brands": ["*"],
-				"fa6-regular": ["*"],
-				"fa6-solid": ["*"],
-				mingcute: ["*"],
-				"simple-icons": ["*"],
-				"material-symbols-light": ["*"],
-				"material-symbols": ["*"],
-			},
 			iconDir: "public/icons",
 		}),
 		svelte(),
@@ -206,9 +198,11 @@ image: {
 						important: (x, y) => AdmonitionComponent(x, y, "important"),
 						caution: (x, y) => AdmonitionComponent(x, y, "caution"),
 						warning: (x, y) => AdmonitionComponent(x, y, "warning"),
+						ai: (x, y) => AdmonitionComponent(x, y, "ai"),
 					},
 				},
 			],
+			rehypeAIAdmonition,
 			[
 				rehypeExternalLinks,
 				{

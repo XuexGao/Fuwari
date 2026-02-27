@@ -14,13 +14,33 @@ export function remarkGithubAdmonitions() {
 
 			const text = firstTextNode.value;
 			// Match [!TYPE] at the start of the text, allowing for optional whitespace
-			const match = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i);
+			const match = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|AI)\]/i);
 
 			if (match) {
 				const type = match[1].toLowerCase();
 
 				// Remove the [!TYPE] text
 				let newFirstTextValue = text.slice(match[0].length);
+				let title = undefined;
+
+				if (type === "ai") {
+					const firstLineEndIndex = newFirstTextValue.indexOf("\n");
+					if (firstLineEndIndex !== -1) {
+						const potentialTitle = newFirstTextValue
+							.slice(0, firstLineEndIndex)
+							.trim();
+						if (potentialTitle) {
+							title = potentialTitle;
+							newFirstTextValue = newFirstTextValue.slice(firstLineEndIndex);
+						}
+					} else {
+						const potentialTitle = newFirstTextValue.trim();
+						if (potentialTitle) {
+							title = potentialTitle;
+							newFirstTextValue = "";
+						}
+					}
+				}
 
 				// If there's a newline or space immediately after, trim it
 				if (
@@ -44,7 +64,9 @@ export function remarkGithubAdmonitions() {
 				// Transform the node to containerDirective
 				node.type = "containerDirective";
 				node.name = type;
-				node.attributes = {};
+				node.attributes = {
+					title,
+				};
 
 				// Ensure data exists
 				node.data = node.data || {};

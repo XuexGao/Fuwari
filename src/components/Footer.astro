@@ -34,8 +34,23 @@ const { lang } = Astro.params;
 
   
 <!--<div class="border-t border-[var(--primary)] mx-16 border-dashed py-8 max-w-[var(--page-width)] flex flex-col items-center justify-center px-6">-->
+<<<<<<< HEAD
 <div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-4 md:mx-32"></div>
 
+=======
+<div class="transition border-t border-white/15 my-10 border-dashed mx-4 md:mx-32"></div>
+<!-- AdSense 广告 -->
+<div class="w-full mx-auto max-w-[var(--page-width)] px-4 mb-8">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="autorelaxed"
+         data-ad-client="ca-pub-1683686345039700"
+         data-ad-slot="7869965007"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+>>>>>>> upstream/main
 <div class="card-base w-fit mx-auto rounded-xl mt-4 mb-4">
     <div class="transition text-50 text-sm text-center p-6">
         &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://space.bilibili.com/325903362"> <I18n key={Translation.AuthorName} /> </a>，<I18n key={Translation.License} />
@@ -51,8 +66,14 @@ const { lang } = Astro.params;
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
         <br>
+<<<<<<< HEAD
         <I18n key={Translation.AuthorName} /> <I18n key={Translation.OpenSource} />
         <a class="transition link text-black/30 dark:text-white/30 hover:text-[var(--primary)] text-xs ml-1" target="_blank" href={`https://github.com/XuexGao/Fuwari/commit/${commitHash}`}>({commitHash} @ {buildDate})</a>
+=======
+        本网站代码
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/afoim/fuwari">已开源</a>
+        <a class="transition link text-white/30 hover:text-[var(--primary)] text-xs ml-1" target="_blank" href={`https://github.com/afoim/fuwari/commit/${commitHash}`}>({commitHash} @ {buildDate})</a>
+>>>>>>> upstream/main
         <br>
 
 		<!-- <a class="transition link text-[var(--primary)] font-medium inline-flex items-center" href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"><img alt="" src="/favicon/foot-icp.png" width="16" height="16" class="h-4 mr-1">皖ICP备2025099787号-2</a>
@@ -81,13 +102,18 @@ const { lang } = Astro.params;
             div.className = 'flex items-center justify-center';
 
             const label = document.createElement('span');
-            label.className = 'text-black/30 dark:text-white/30 text-xs mr-1';
+            label.className = 'text-white/30 text-xs mr-1';
             label.innerText = `${config.text}：`;
             div.appendChild(label);
 
             const valueSpan = document.createElement('span');
+<<<<<<< HEAD
             valueSpan.className = 'server-value text-black/30 dark:text-white/30 text-xs';
             valueSpan.innerText = window.i18n(window.Translation.Checking);
+=======
+            valueSpan.className = 'server-value text-white/30 text-xs';
+            valueSpan.innerText = '检测中...';
+>>>>>>> upstream/main
             div.appendChild(valueSpan);
 
             const iconImg = document.createElement('img');

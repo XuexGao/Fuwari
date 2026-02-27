@@ -17,12 +17,16 @@ for (const post of posts) {
 	}
 }
 ---
-<div class="card-base p-3 border border-black/10 dark:border-white/10">
+<div class="card-base p-3 border border-white/10">
     <div class="relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3 max-w-[12rem] lg:max-w-none rounded-xl overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
         <img src={config.avatar} alt="Profile Image of the Author" class="w-full h-full object-cover transition duration-500" width="640" height="640" loading="eager" decoding="async" />
     </div>
     <div class="px-2">
+<<<<<<< HEAD
         <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition"><h3><I18n key={Translation.AuthorName} /></h3></div>
+=======
+        <div class="font-bold text-xl text-center mb-1 text-neutral-50 transition"><h3>{config.name}</h3></div>
+>>>>>>> upstream/main
         <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
         <div class="text-center text-neutral-400 mb-2.5 transition"><I18n key={Translation.AuthorBio} /></div>
         <div class="flex flex-wrap gap-2 justify-center mb-1">
@@ -38,34 +42,44 @@ for (const post of posts) {
             </a>}
         </div>
         
+<<<<<<< HEAD
         <!-- Post and word count statistics -->
         <div class="grid grid-cols-2 mt-3 pt-3 border-t border-neutral-300 dark:border-neutral-700">
+=======
+        <!-- 全站文章与字数统计 -->
+        <div class="grid grid-cols-2 mt-3 pt-3 border-t border-neutral-700">
+>>>>>>> upstream/main
             <div class="text-center">
                 <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:article-outline" class="text-base"></Icon>
                     <span class="text-xs"><I18n key={Translation.PostCountLabel} /></span>
                 </div>
-                <div class="font-bold text-lg text-neutral-700 dark:text-neutral-300">{totalPosts}</div>
+                <div class="font-bold text-lg text-neutral-300">{totalPosts}</div>
             </div>
-            <div class="text-center border-l border-neutral-300 dark:border-neutral-700">
+            <div class="text-center border-l border-neutral-700">
                 <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:format-list-numbered" class="text-base"></Icon>
                     <span class="text-xs"><I18n key={Translation.TotalWords} /></span>
                 </div>
-                <div class="font-bold text-lg text-neutral-700 dark:text-neutral-300">
+                <div class="font-bold text-lg text-neutral-300">
                     {(totalWords / 10000).toFixed(1)}w
                 </div>
             </div>
         </div>
 
+<<<<<<< HEAD
         <!-- Site view statistics -->
         <div class="grid grid-cols-1 mt-3 pt-3 border-t border-neutral-300 dark:border-neutral-700">
+=======
+        <!-- 全站访问量统计 -->
+        <div class="grid grid-cols-1 mt-3 pt-3 border-t border-neutral-700">
+>>>>>>> upstream/main
             <div class="text-center">
                 <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:visibility-outline" class="text-base"></Icon>
                     <span class="text-xs"><I18n key={Translation.PageViews} /></span>
                 </div>
-                <div id="site-views" class="font-bold text-lg text-neutral-700 dark:text-neutral-300">0</div>
+                <div id="site-views" class="font-bold text-lg text-neutral-300">0</div>
             </div>
             <!--
             <div class="text-center border-l border-neutral-300 dark:border-neutral-700">

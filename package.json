@@ -15,6 +15,7 @@
 		"del-space": "node scripts/del-space.js",
 		"update-diff": "node scripts/update-diff.js",
 		"watermark": "node scripts/add-watermark.js",
+		"ai-summary": "node scripts/generate-ai-summary.js",
 		"format": "biome format --write ./src",
 		"lint": "biome check --write ./src",
 		"postinstall": "patch-package"
@@ -31,6 +32,7 @@
 		"@fancyapps/ui": "^6.0.5",
 		"@fontsource-variable/jetbrains-mono": "^5.2.5",
 		"@fontsource/roboto": "^5.2.5",
+		"@google/genai": "^1.43.0",
 		"@iconify-json/fa6-brands": "^1.2.5",
 		"@iconify-json/fa6-regular": "^1.2.3",
 		"@iconify-json/fa6-solid": "^1.2.3",
@@ -42,6 +44,7 @@
 		"astro-expressive-code": "^0.41.3",
 		"astro-icon": "^1.1.5",
 		"diff": "^8.0.3",
+		"dotenv": "^17.3.1",
 		"imagesloaded": "^5.0.0",
 		"katex": "^0.16.22",
 		"masonry-layout": "^4.2.2",

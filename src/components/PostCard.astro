@@ -49,8 +49,8 @@ const { remarkPluginFrontmatter } = await entry.render();
     <div class:list={["pl-9 pr-2 pt-6 pb-6 relative", {"w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
         <a href={url}
            class="transition group w-full block font-bold mb-2 md:mb-3 text-xl md:text-3xl text-90 relative
-        hover:text-[var(--primary)] dark:hover:text-[var(--primary)]
-        active:text-[var(--title-active)] dark:active:text-[var(--title-active)]
+        hover:text-[var(--primary)]
+        active:text-[var(--title-active)]
         before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
         before:absolute before:top-1 md:before:top-2 before:-left-[1.125rem] before:block
         ">
@@ -73,8 +73,13 @@ const { remarkPluginFrontmatter } = await entry.render();
         ></PostMetadata>
 
         <!-- word count, read time and page views -->
+<<<<<<< HEAD
         <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition">
             <div>{remarkPluginFrontmatter.words} <I18n key={Translation.Words} /></div>
+=======
+        <div class="text-sm text-white/30 flex gap-4 transition">
+            <div>{remarkPluginFrontmatter.words} 字</div>
+>>>>>>> upstream/main
             <div>|</div>
             <div>{remarkPluginFrontmatter.minutes} <I18n key={Translation.Minutes} /></div>
         </div>
@@ -109,7 +114,7 @@ const { remarkPluginFrontmatter } = await entry.render();
         </a>
     }
 </div>
-<div class="transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 hidden"></div>
+<div class="transition border-t-[1px] border-dashed mx-6 border-white/15 last:border-t-0 hidden"></div>
 
 
 

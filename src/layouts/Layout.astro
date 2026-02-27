@@ -7,13 +7,10 @@ import { profileConfig, siteConfig } from "@/config";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import NewPostNotification from "@components/widget/NewPostNotification.astro";
 import {
-	AUTO_MODE,
 	BANNER_HEIGHT,
 	BANNER_HEIGHT_EXTEND,
 	BANNER_HEIGHT_HOME,
 	DARK_MODE,
-	DEFAULT_THEME,
-	LIGHT_MODE,
 	PAGE_WIDTH,
 } from "../constants/constants";
 import { defaultFavicons } from "../constants/icon";
@@ -117,6 +114,7 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 			/>
 		))}
 
+<<<<<<< HEAD
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue, forceDarkMode: siteConfig.themeColor.forceDarkMode}}>
 			if (forceDarkMode) {
 				document.documentElement.classList.add('dark');
@@ -127,6 +125,15 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
     			else if (theme === DARK_MODE) document.documentElement.classList.add('dark');
     			else if (window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.classList.add('dark');
 			}
+=======
+		<!-- Set the theme before the page is rendered to avoid a flash -->
+		<script is:inline define:vars={{DARK_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
+			// Force dark mode
+			document.documentElement.classList.add('dark');
+			localStorage.setItem('theme', DARK_MODE);
+
+			// Load the hue from local storage
+>>>>>>> upstream/main
 			const hue = localStorage.getItem('hue') || configHue;
 			document.documentElement.style.setProperty('--hue', hue);
 			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
@@ -175,6 +182,7 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 	<body class:list={["min-h-screen transition", {"lg:is-home": isHomePage, "enable-banner": enableBanner}]}>
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P8V8663M" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+<<<<<<< HEAD
         <script defer src="https://u.xiegao.top/script.js" data-website-id="4696c062-4271-4b8b-8ed7-b481f5961f28" data-swup-ignore-script></script>
 
         <script is:inline data-swup-ignore-script>
@@ -186,6 +194,19 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
           s.parentNode.insertBefore(hm, s);
         })();
         </script>
+=======
+<!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+<script data-swup-ignore-script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+<script data-swup-ignore-script type="text/javascript" charset="UTF-8">
+(function () {
+	const getStoredTheme = () => {
+		return "dark";
+	};
+
+	const getPalette = () => {
+		return "dark";
+	};
+>>>>>>> upstream/main
 
         <script data-swup-ignore-script async src="https://www.googletagmanager.com/gtag/js?id=G-RBZVQJCV26"></script>
         <script is:inline data-swup-ignore-script>
@@ -199,6 +220,11 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 		<ConfigCarrier></ConfigCarrier>
 		<slot />
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
+<<<<<<< HEAD
+=======
+
+		<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+>>>>>>> upstream/main
 	</body>
 </html>
 
@@ -294,9 +320,13 @@ function loadGiscus() {
 		const val = container.getAttribute(attr);
 		if (val) script.setAttribute(attr, val);
 	});
+<<<<<<< HEAD
 	script.setAttribute("data-theme", document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 	const giscusLang = (localStorage.getItem('lang') || 'zh_CN') === 'zh_CN' ? 'zh-CN' : 'en';
 	script.setAttribute("data-lang", giscusLang);
+=======
+	script.setAttribute("data-theme", 'dark');
+>>>>>>> upstream/main
 	script.crossOrigin = "anonymous";
 	script.async = true;
 
@@ -313,10 +343,16 @@ function init() {
 	new MutationObserver(() => {
 		const frame = document.querySelector('iframe.giscus-frame') as HTMLIFrameElement;
 		if (!frame) return;
+<<<<<<< HEAD
 		const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 		const lang = document.documentElement.getAttribute('lang') === 'zh-CN' ? 'zh-CN' : 'en';
 		frame.contentWindow?.postMessage({ giscus: { setConfig: { theme, lang } } }, 'https://giscus.app');
 	}).observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'lang'] });
+=======
+		frame.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
+	}).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+	// console.timeEnd("init");
+>>>>>>> upstream/main
 }
 
 init();

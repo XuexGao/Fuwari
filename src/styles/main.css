@@ -27,23 +27,23 @@
 
     .card-base {
         @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
-        @apply border border-black/5 dark:border-white/10;
+        @apply border border-white/10;
     }
     .card-hover {
-        @apply hover:scale-[1.01] hover:shadow-xl hover:border-black/10 dark:hover:border-white/20 hover:z-10;
+        @apply hover:scale-[1.01] hover:shadow-xl hover:border-white/20 hover:z-10;
     }
     .card-glass {
-        @apply bg-[var(--card-bg)] border border-black/10 dark:border-white/10 backdrop-blur-md;
+        @apply bg-[var(--card-bg)] border border-white/10 backdrop-blur-md;
         -webkit-backdrop-filter: blur(12px);
     }
     .card-interactive {
-        @apply border border-black/10 dark:border-white/10 
-        hover:border-black/20 dark:hover:border-white/20 
-        hover:bg-black/5 dark:hover:bg-white/5 
+        @apply border border-white/10 
+        hover:border-white/20 
+        hover:bg-white/5 
         transition;
     }
     .card-interactive:active {
-        @apply bg-black/10 dark:bg-white/10;
+        @apply bg-white/10;
     }
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition;
@@ -62,7 +62,7 @@
         @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
     }
     .float-panel {
-        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none;
+        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-none;
     }
     .float-panel-closed {
         @apply -translate-y-1 opacity-0 pointer-events-none
@@ -76,11 +76,11 @@
         active:bg-[var(--btn-card-bg-active)]
     }
     .btn-card.disabled {
-        @apply pointer-events-none text-black/10 dark:text-white/10
+        @apply pointer-events-none text-white/10
     }
     .btn-plain {
         @apply transition relative flex items-center justify-center bg-none
-        text-black/75 hover:text-[var(--primary)] dark:text-white/75 dark:hover:text-[var(--primary)];
+        text-white/75 hover:text-[var(--primary)];
         &:not(.scale-animation) {
             @apply hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
         }
@@ -93,7 +93,7 @@
     }
     .btn-regular {
         @apply transition flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
-        text-[var(--btn-content)] dark:text-white/75
+        text-white/75
     }
 
     .link-underline {
@@ -111,19 +111,19 @@
     }
 
     .text-90 {
-        @apply text-black/90 dark:text-white/90
+        @apply text-white/90
     }
     .text-75 {
-        @apply text-black/75 dark:text-white/75
+        @apply text-white/75
     }
     .text-50 {
-        @apply text-black/50 dark:text-white/50
+        @apply text-white/50
     }
     .text-30 {
-        @apply text-black/30 dark:text-white/30
+        @apply text-white/30
     }
     .text-25 {
-        @apply text-black/25 dark:text-white/25
+        @apply text-white/25
     }
 
     .meta-icon {
@@ -137,11 +137,10 @@
 
     .btn-regular-dark {
         @apply flex items-center justify-center
-        bg-[oklch(0.45_0.01_var(--hue))] hover:bg-[oklch(0.50_0.01_var(--hue))] active:bg-[oklch(0.55_0.01_var(--hue))]
-        dark:bg-[oklch(0.30_0.02_var(--hue))] dark:hover:bg-[oklch(0.35_0.03_var(--hue))] dark:active:bg-[oklch(0.40_0.03_var(--hue))]
+        bg-[oklch(0.30_0.02_var(--hue))] hover:bg-[oklch(0.35_0.03_var(--hue))] active:bg-[oklch(0.40_0.03_var(--hue))]
     }
     .btn-regular-dark.success {
-        @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
+        @apply bg-[oklch(0.75_0.14_var(--hue))]
     }
 
     /* i18n support */
