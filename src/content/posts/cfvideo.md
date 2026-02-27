@@ -69,7 +69,7 @@ ffmpeg -i 0.mp4 -map 0 -c copy -f dash -seg_duration 4 -use_template 1 -use_time
 
 首先，使用CDN引入 Dash.js 至 `<body>` 块内： [dashjs - Libraries - cdnjs - The #1 free and open source CDN built to make life easier for developers](https://cdnjs.com/libraries/dashjs)
 
-```
+```html
 <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
 ```
 
