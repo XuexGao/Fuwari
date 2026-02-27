@@ -224,6 +224,40 @@ jobs:
 
             const siteBase = await getSiteBase()
 
+            // Reusable verification logic from link-utils.js (simplified for github-script)
+            async function checkUrlReachability(url) {
+              const controller = new AbortController()
+              const timer = setTimeout(() => controller.abort(), 10000)
+              try {
+                const res = await fetch(url, {
+                  method: 'GET',
+                  redirect: 'follow',
+                  headers: { 'user-agent': 'fuwari-auto-pr/1.0 (+github actions)', accept: 'text/html,*/*;q=0.8' },
+                  signal: controller.signal,
+                })
+                const body = res.ok ? await res.text() : ''
+                return { ok: res.ok, status: res.status, body, url: res.url }
+              } catch (e) {
+                return { ok: false, error: e?.message || String(e) }
+              } finally {
+                clearTimeout(timer)
+              }
+            }
+
+            function verifyBacklink(html, expected) {
+              if (!html || !expected) return false
+              const target = expected.replace(/\/$/, '')
+              const re = /href\s*=\s*["']([^"']+)["']/gi
+              let m
+              while ((m = re.exec(html)) !== null) {
+                const href = (m[1] || '').trim()
+                if (!href.startsWith('http')) continue
+                const normalized = href.replace(/\/$/, '')
+                if (normalized === target) return true
+              }
+              return false
+            }
+
             function normalizeUrl(rawUrl) {
               if (!isNonEmptyString(rawUrl)) return null
               const u = rawUrl.trim()
@@ -460,14 +494,14 @@ jobs:
               }
             }
 
-            const avatarCheck = avatarUrl ? await checkUrl(avatarUrl, { timeoutMs: 10000 }) : { ok: false, error: 'Invalid avatar URL' }
+            const avatarCheck = avatarUrl ? await checkUrlReachability(avatarUrl) : { ok: false, error: 'Invalid avatar URL' }
             const siteCheck =
               primary.kind === 'friend'
                 ? siteUrl
-                  ? await checkUrl(siteUrl, { timeoutMs: 10000 })
+                  ? await checkUrlReachability(siteUrl)
                   : { ok: false, error: 'Invalid site URL' }
                 : siteUrl
-                  ? await checkUrl(siteUrl, { timeoutMs: 10000 })
+                  ? await checkUrlReachability(siteUrl)
                   : null
 
             const addReach = []
@@ -575,81 +609,42 @@ jobs:
                   return lines.join('\n')
                 }
 
-                const fetched = await (async () => {
-                  const controller = new AbortController()
-                  const timer = setTimeout(() => controller.abort(), 10000)
-                  try {
-                    const res = await fetch(backlinkUrl, {
-                      method: 'GET',
-                      redirect: 'follow',
-                      headers: { 'user-agent': 'fuwari-auto-pr/1.0 (+github actions)', accept: 'text/html,*/*;q=0.8' },
-                      signal: controller.signal,
-                    })
-                    if (!res.ok) {
-                      core.info(`bidir: fetch backlink not ok status=${res.status}`)
-                      await setLabels({ addLabels: [LABEL_BIDIR], removeLabels: [LABEL_BIDIR_OK] })
-                      await createComment(
-                        [
-                          `${MSG.BIDIR_ACCESS_FAIL}（${res.status}）。`,
-                          '',
-                          `backlink：${backlinkUrl}`,
-                          formatBacklinkDebug({
-                            finalUrl: res.url,
-                            status: res.status,
-                            contentType: res.headers.get('content-type') || '',
-                          }),
-                        ].join('\n')
-                      )
-                      return { ok: false }
-                    }
-                    core.info('bidir: fetch backlink ok, read text')
-                    const html = await res.text()
-                    return {
-                      ok: true,
-                      html,
-                      finalUrl: res.url,
-                      status: res.status,
-                      contentType: res.headers.get('content-type') || '',
-                      title: extractTitle(html),
-                    }
-                  } catch (e) {
-                    core.info(`bidir: fetch backlink threw: ${e?.message || e}`)
-                    await setLabels({ addLabels: [LABEL_BIDIR], removeLabels: [LABEL_BIDIR_OK] })
-                    await createComment(
-                      [
-                        MSG.BIDIR_FETCH_ERROR,
-                        '',
-                        `backlink：${backlinkUrl}`,
-                        `错误：${e?.message || e}`,
-                      ].join('\n')
-                    )
-                    return { ok: false }
-                  } finally {
-                    clearTimeout(timer)
-                  }
-                })()
-                if (!fetched.ok) return
-                const html = fetched.html || ''
+                const fetched = await checkUrlReachability(backlinkUrl)
+                if (!fetched.ok) {
+                  core.info(`bidir: fetch backlink not ok status=${fetched.status}`)
+                  await setLabels({ addLabels: [LABEL_BIDIR], removeLabels: [LABEL_BIDIR_OK] })
+                  await createComment(
+                    [
+                      `${MSG.BIDIR_ACCESS_FAIL}（${fetched.status || fetched.error}）。`,
+                      '',
+                      `backlink：${backlinkUrl}`,
+                      formatBacklinkDebug({
+                        finalUrl: fetched.url,
+                        status: fetched.status,
+                      }),
+                    ].join('\n')
+                  )
+                  return
+                }
+                
+                core.info('bidir: fetch backlink ok, read text')
+                const html = fetched.body || ''
                 core.info(`bidir: html length=${html.length}`)
 
-                let found = false
-                const re = /href\s*=\s*["']([^"']+)["']/gi
-                let m
-                while ((m = re.exec(html)) !== null) {
-                  const href = (m[1] || '').trim()
-                  if (!href.startsWith('http')) continue
-                  const normalized = href.replace(/\/$/, '')
-                  if (normalized === expected) {
-                    found = true
-                    break
-                  }
-                }
+                const found = verifyBacklink(html, expected)
                 core.info(`bidir: expected=${expected} found=${found}`)
 
                 if (!found) {
                   core.info('bidir: not found -> setLabels + comment')
                   await setLabels({ addLabels: [LABEL_BIDIR], removeLabels: [LABEL_BIDIR_OK] })
-                  await createComment(MSG.BIDIR_NOT_FOUND(siteBase, backlinkUrl) + formatBacklinkDebug(fetched) + '\n\n' + '请添加后 push 更新（无需评论）。')
+                  
+                  const debugInfo = {
+                    finalUrl: fetched.url,
+                    status: fetched.status,
+                    title: extractTitle(html),
+                  }
+                  
+                  await createComment(MSG.BIDIR_NOT_FOUND(siteBase, backlinkUrl) + formatBacklinkDebug(debugInfo) + '\n\n' + '请添加后 push 更新（无需评论）。')
                   return
                 }
 
@@ -1016,6 +1011,26 @@ jobs:
               title: `${primary.kind === 'friend' ? '友链' : '赞助'}：${primary.data.name}`,
             })
             const siteBase = await getSiteBase(pr.data.base.repo.default_branch)
+
+            async function checkUrlReachability(url) {
+              const controller = new AbortController()
+              const timer = setTimeout(() => controller.abort(), 10000)
+              try {
+                const res = await fetch(url, {
+                  method: 'GET',
+                  redirect: 'follow',
+                  headers: { 'user-agent': 'fuwari-auto-pr/1.0 (+github actions)', accept: 'text/html,*/*;q=0.8' },
+                  signal: controller.signal,
+                })
+                const body = res.ok ? await res.text() : ''
+                return { ok: res.ok, status: res.status, body, url: res.url }
+              } catch (e) {
+                return { ok: false, error: e?.message || String(e) }
+              } finally {
+                clearTimeout(timer)
+              }
+            }
+
             const avatarUrl = normalizeUrl(primary.data.avatar, siteBase)
             const siteUrl = normalizeUrl(primary.data.url, siteBase)
             const selfSite = siteBase ? siteBase.replace(/\/$/, '') : null
@@ -1025,14 +1040,14 @@ jobs:
               return
             }
 
-            const avatarCheck = avatarUrl ? await checkUrl(avatarUrl, { timeoutMs: 10000 }) : { ok: false, error: 'Invalid avatar URL' }
+            const avatarCheck = avatarUrl ? await checkUrlReachability(avatarUrl) : { ok: false, error: 'Invalid avatar URL' }
             const siteCheck =
               primary.kind === 'friend'
                 ? siteUrl
-                  ? await checkUrl(siteUrl, { timeoutMs: 10000 })
+                  ? await checkUrlReachability(siteUrl)
                   : { ok: false, error: 'Invalid site URL' }
                 : siteUrl
-                  ? await checkUrl(siteUrl, { timeoutMs: 10000 })
+                  ? await checkUrlReachability(siteUrl)
                   : null
 
             const addReach = []
