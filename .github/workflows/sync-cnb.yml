@@ -10,26 +10,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Sync to CNB (No History)
+      - name: Sync to CNB (No History via /tmp)
         env:
           CNB_TOKEN: ${{ secrets.GIT_PASSWORD }}
           CNB_URL: "cnb.cool/2x.nz/fuwari.git"
         run: |
-          # 1. 配置 Git 用户
+          # 1. 定义临时目录并拷贝文件（不带 .git）
+          SYNC_DIR="/tmp/fuwari_sync_$(date +%s)"
+          mkdir -p "$SYNC_DIR"
+          
+          # 仅拷贝项目文件，不拷贝 .git 目录以确保“无历史”
+          rsync -av --exclude='.git' ./ "$SYNC_DIR/"
+          
+          cd "$SYNC_DIR"
+          
+          # 2. 初始化新的 Git 仓库
+          git init
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # 2. 准备同步环境
-          # 记录当前分支名
+          # 3. 准备提交
           BRANCH_NAME=${GITHUB_REF_NAME}
-          
-          # 3. 移除现有 Git 历史，重新初始化
-          rm -rf .git
-          git init
-          git checkout -b $BRANCH_NAME
+          git checkout -b "$BRANCH_NAME"
           git add .
           git commit -m "sync: commit from GitHub (${GITHUB_SHA:0:7})"
           
-          # 4. 强制推送至 CNB
+          # 4. 改写远程仓库为 CNB 并强制提交
           git remote add origin "https://cnb:${CNB_TOKEN}@${CNB_URL}"
-          git push -f origin $BRANCH_NAME
+          git push -f origin "$BRANCH_NAME"
+          
+          # 5. 清理临时目录
+          rm -rf "$SYNC_DIR"
