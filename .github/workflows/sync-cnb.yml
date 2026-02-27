@@ -6,33 +6,43 @@ on: [push]
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      CNB_TOKEN: ${{ secrets.GIT_PASSWORD }}
+      CNB_URL: "cnb.cool/2x.nz/fuwari.git"
+      REPO_ZIP_URL: "https://github.com/afoim/fuwari/archive/refs/heads/main.zip"
+
     steps:
-      - name: Sync via ZIP (No Local History)
-        env:
-          CNB_TOKEN: ${{ secrets.GIT_PASSWORD }}
-          CNB_URL: "cnb.cool/2x.nz/fuwari.git"
-          # 显式使用 main.zip
-          REPO_ZIP_URL: "https://github.com/afoim/fuwari/archive/refs/heads/main.zip"
+      - name: 1. Download Source ZIP
+        run: curl -L -s "$REPO_ZIP_URL" -o repo.zip
+
+      - name: 2. Extract ZIP
+        run: unzip -q repo.zip
+
+      - name: 3. Identify Source Directory
+        id: identify
         run: |
-          # 1. 下载 ZIP
-          curl -L -q "$REPO_ZIP_URL" -o repo.zip
-          
-          # 2. 解压并进入目录
-          unzip -q repo.zip
-          # 解压出的目录通常是 {repo_name}-{branch_name}
           DIR_NAME=$(find . -maxdepth 1 -type d -name "fuwari-*" | head -n 1)
-          cd "$DIR_NAME"
-          
-          # 3. 初始化 Git 并配置
+          echo "DIR_NAME=$DIR_NAME" >> $GITHUB_ENV
+          echo "Found directory: $DIR_NAME"
+
+      - name: 4. Initialize New Git Repository
+        working-directory: ${{ env.DIR_NAME }}
+        run: |
           git init -q
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # 4. 改写远程仓库为 CNB
-          git remote add origin "https://cnb:${CNB_TOKEN}@${CNB_URL}"
-          
-          # 5. 创建同步提交并强制推送
+
+      - name: 5. Configure CNB Remote
+        working-directory: ${{ env.DIR_NAME }}
+        run: git remote add origin "https://cnb:${CNB_TOKEN}@${CNB_URL}"
+
+      - name: 6. Create Sync Commit
+        working-directory: ${{ env.DIR_NAME }}
+        run: |
           git checkout -b main -q
           git add .
           git commit -q -m "sync: commit from GitHub zip"
-          git push -f -q origin main
+
+      - name: 7. Force Push to CNB
+        working-directory: ${{ env.DIR_NAME }}
+        run: git push -f -q origin main
