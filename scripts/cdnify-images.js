@@ -57,6 +57,20 @@ async function cdnifyImages() {
 	}
 
 	console.log(`\n✨ 完成！更新了 ${updatedCount} 个文件，共替换 ${totalReplaced} 处路径。`);
+
+	// 删除 src/content/assets 文件夹
+	const ASSETS_DIR_TO_DELETE = path.join(process.cwd(), "src/content/assets");
+	if (fs.existsSync(ASSETS_DIR_TO_DELETE)) {
+		console.log(`🗑️  正在删除 ${ASSETS_DIR_TO_DELETE}...`);
+		try {
+			fs.rmSync(ASSETS_DIR_TO_DELETE, { recursive: true, force: true });
+			console.log("✅ src/content/assets 文件夹已成功删除。");
+		} catch (error) {
+			console.warn(`⚠️  删除 src/content/assets 文件夹失败: ${error.message}`);
+		}
+	} else {
+		console.log("ℹ️  src/content/assets 文件夹不存在，无需删除。");
+	}
 }
 
 // 运行脚本
