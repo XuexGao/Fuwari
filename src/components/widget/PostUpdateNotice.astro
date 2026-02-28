@@ -1,14 +1,16 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
 
 interface Props {
-    publishedAt: string | Date;
-    lastUpdated: string | Date;
+	publishedAt: string | Date;
+	lastUpdated: string | Date;
 }
 
 const { publishedAt, lastUpdated } = Astro.props;
-const publishedStr = publishedAt instanceof Date ? publishedAt.toISOString() : publishedAt;
-const updatedStr = lastUpdated instanceof Date ? lastUpdated.toISOString() : lastUpdated;
+const publishedStr =
+	publishedAt instanceof Date ? publishedAt.toISOString() : publishedAt;
+const updatedStr =
+	lastUpdated instanceof Date ? lastUpdated.toISOString() : lastUpdated;
 ---
 
 <div id="outdated-notice" class="hidden mb-6 p-4 rounded-xl bg-[var(--license-block-bg)] border border-[var(--line-divider)] items-center gap-3 text-white/80 onload-animation">

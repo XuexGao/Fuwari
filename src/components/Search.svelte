@@ -99,7 +99,8 @@ const search = async (
 					searchText = `${titleLower} ${descriptionLower} ${contentLower} ${linkLower}`;
 				} else {
 					if (types.includes("title")) searchText += ` ${titleLower}`;
-					if (types.includes("description")) searchText += ` ${descriptionLower}`;
+					if (types.includes("description"))
+						searchText += ` ${descriptionLower}`;
 					if (types.includes("content")) searchText += ` ${contentLower}`;
 					if (types.includes("link")) searchText += ` ${linkLower}`;
 				}

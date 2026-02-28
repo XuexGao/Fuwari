@@ -47,8 +47,6 @@ $: {
 	setBgBlur(bgBlur);
 }
 
-
-
 function toggleRainbow() {
 	isRainbowMode = !isRainbowMode;
 	setRainbowMode(isRainbowMode);

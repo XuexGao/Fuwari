@@ -14,7 +14,9 @@ export function remarkGithubAdmonitions() {
 
 			const text = firstTextNode.value;
 			// Match [!TYPE] at the start of the text, allowing for optional whitespace
-			const match = text.match(/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|AI)\]/i);
+			const match = text.match(
+				/^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|AI)\]/i,
+			);
 
 			if (match) {
 				const type = match[1].toLowerCase();
