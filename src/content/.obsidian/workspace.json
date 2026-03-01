@@ -13,18 +13,11 @@
             "state": {
               "type": "markdown",
               "state": {
-<<<<<<< HEAD
-                "file": "spec/announcement-zh-cn.md",
-=======
                 "file": "posts/win11-native-nvme.md",
->>>>>>> upstream/main
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-<<<<<<< HEAD
-              "title": "announcement-zh-cn"
-=======
               "title": "win11-native-nvme"
             }
           },
@@ -40,7 +33,6 @@
               },
               "icon": "lucide-file",
               "title": "jkw"
->>>>>>> upstream/main
             }
           }
         ]
@@ -193,45 +185,6 @@
   },
   "active": "f6b5e7abc96521b9",
   "lastOpenFiles": [
-<<<<<<< HEAD
-    "posts/en/ai-wife.md",
-    "posts/en/zte-f450-bridge.md",
-    "posts/en/wx-zfb-card.md",
-    "posts/en/why-not-icp.md",
-    "posts/en/win11-to-win10.md",
-    "posts/en/zeabur.md",
-    "posts/en/you-is-me-huh.md",
-    "posts/en/wyy-timestrap.md",
-    "posts/en/watermark.md",
-    "posts/en/whois.md",
-    "posts/en/WPwebplayer.md",
-    "posts/en/web-bomb.md",
-    "posts/en/vercel-deny.md",
-    "posts/en/warden-worker.md",
-    "posts/en/unknown-upload.md",
-    "posts/en/waf.md",
-    "posts/en/vpn.md",
-    "posts/en/translations-betterstack.md",
-    "posts/en/vercel-redirects.md",
-    "posts/en/uptimeflare.md",
-    "posts/en/uptimerobot.md",
-    "posts/en/umami-local-2-render.md",
-    "posts/en/umami.md",
-    "posts/en/static-redirect-group.md",
-    "posts/en/starrail-fast.md",
-    "posts/en/umami-migration.md",
-    "posts/en",
-    "assets/images/google-adsense-11.png",
-    "assets/images/google-adsense-10.png",
-    "assets/images/google-adsense-9.png",
-    "assets/images/google-adsense-8.png",
-    "assets/images/google-adsense-7.png",
-    "assets/images/google-adsense-6.png",
-    "assets/images/google-adsense-5.png",
-    "assets/images/google-adsense-4.png",
-    "assets/images/google-adsense-3.png",
-    "assets/images/google-adsense-2.png",
-=======
     "assets/images/win11-native-nvme-3.png",
     "assets/images/win11-native-nvme-2.png",
     "assets/images/d86fb68e-f5a4-4a18-a94f-e31d309457bd.png",
@@ -268,7 +221,6 @@
     "posts copy/shorter-url.md",
     "posts copy/serverless-function.md",
     "posts copy/self-host-matrix.md",
->>>>>>> upstream/main
     "posts copy",
     "posts/posts.zip",
     "posts/watermark.zip",
@@ -277,6 +229,7 @@
     "assets/images/基础起手+Lora.json",
     "assets/images",
     "assets/images/_slug_.CWICv0vP.css",
-    "assets/images/_page_.DhhhZL1-.css"
+    "assets/images/_page_.DhhhZL1-.css",
+    "assets/images/_page_.BtlFgdAB.css"
   ]
 }

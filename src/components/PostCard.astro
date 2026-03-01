@@ -8,8 +8,6 @@ import { formatPostDateForDisplay } from "../utils/date-utils";
 import { getDir } from "../utils/url-utils";
 import PostMetadata from "./PostMeta.astro";
 import ImageWrapper from "./misc/ImageWrapper.astro";
-import I18n from "./I18n.astro";
-import { Translation } from "../i18n/translation";
 
 interface Props {
 	class?: string;
@@ -73,15 +71,10 @@ const { remarkPluginFrontmatter } = await entry.render();
         ></PostMetadata>
 
         <!-- word count, read time and page views -->
-<<<<<<< HEAD
-        <div class="text-sm text-black/30 dark:text-white/30 flex gap-4 transition">
-            <div>{remarkPluginFrontmatter.words} <I18n key={Translation.Words} /></div>
-=======
         <div class="text-sm text-white/30 flex gap-4 transition">
             <div>{remarkPluginFrontmatter.words} 字</div>
->>>>>>> upstream/main
             <div>|</div>
-            <div>{remarkPluginFrontmatter.minutes} <I18n key={Translation.Minutes} /></div>
+            <div>{remarkPluginFrontmatter.minutes} 分钟</div>
         </div>
 
     </div>

@@ -3,8 +3,6 @@
 import { execSync } from "node:child_process";
 import { profileConfig, siteConfig } from "../config";
 import { url } from "../utils/url-utils";
-import I18n from "./I18n.astro";
-import { Translation } from "../i18n/translation";
 
 const currentYear = new Date().getFullYear();
 
@@ -15,29 +13,30 @@ try {
 	commitHash = execSync("git rev-parse --short=7 HEAD").toString().trim();
 
 	const date = new Date();
-	const parts = new Intl.DateTimeFormat(siteConfig.lang.replace('_', '-'), {
+	const parts = new Intl.DateTimeFormat("zh-CN", {
 		timeZone: "Asia/Shanghai",
 		year: "numeric",
 		month: "2-digit",
 		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit",
+		second: "2-digit",
+		hour12: false,
 	}).formatToParts(date);
 	const year = parts.find((p) => p.type === "year")?.value ?? "0000";
 	const month = parts.find((p) => p.type === "month")?.value ?? "00";
 	const day = parts.find((p) => p.type === "day")?.value ?? "00";
-	buildDate = `${year}-${month}-${day}`;
+	const hours = parts.find((p) => p.type === "hour")?.value ?? "00";
+	const minutes = parts.find((p) => p.type === "minute")?.value ?? "00";
+	const seconds = parts.find((p) => p.type === "second")?.value ?? "00";
+	buildDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 } catch (e) {
 	console.warn("Failed to get git info", e);
 }
-
-const { lang } = Astro.params;
 ---
 
   
 <!--<div class="border-t border-[var(--primary)] mx-16 border-dashed py-8 max-w-[var(--page-width)] flex flex-col items-center justify-center px-6">-->
-<<<<<<< HEAD
-<div class="transition border-t border-black/10 dark:border-white/15 my-10 border-dashed mx-4 md:mx-32"></div>
-
-=======
 <div class="transition border-t border-white/15 my-10 border-dashed mx-4 md:mx-32"></div>
 <!-- AdSense 广告 -->
 <div class="w-full mx-auto max-w-[var(--page-width)] px-4 mb-8">
@@ -50,30 +49,24 @@ const { lang } = Astro.params;
          (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 </div>
->>>>>>> upstream/main
 <div class="card-base w-fit mx-auto rounded-xl mt-4 mb-4">
     <div class="transition text-50 text-sm text-center p-6">
-        &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://space.bilibili.com/325903362"> <I18n key={Translation.AuthorName} /> </a>，<I18n key={Translation.License} />
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+        &copy; <span id="copyright-year">2024 - {currentYear}</span> <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://space.bilibili.com/325903362"> {profileConfig.name} </a>，采用
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可
         <br>
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml', lang)}><I18n key={Translation.Rss} /></a> /
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap.xml', lang)}><I18n key={Translation.Sitemap} /></a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('rss.xml')}>RSS</a> /
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href={url('sitemap.xml')}>网站地图</a> /
         <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
 
-        <a class="transition link text-[var(--primary)] font-medium" href="#" id="open_preferences_center"><I18n key={Translation.UpdateCookie} /></a>
+        <a class="transition link text-[var(--primary)] font-medium" href="#" id="open_preferences_center">更新您的Cookie</a>
         <br>
-        <I18n key={Translation.PoweredBy} />
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
-        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+        由
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> 和
+        <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a> 强力驱动
         <br>
-<<<<<<< HEAD
-        <I18n key={Translation.AuthorName} /> <I18n key={Translation.OpenSource} />
-        <a class="transition link text-black/30 dark:text-white/30 hover:text-[var(--primary)] text-xs ml-1" target="_blank" href={`https://github.com/XuexGao/Fuwari/commit/${commitHash}`}>({commitHash} @ {buildDate})</a>
-=======
         本网站代码
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/afoim/fuwari">已开源</a>
         <a class="transition link text-white/30 hover:text-[var(--primary)] text-xs ml-1" target="_blank" href={`https://github.com/afoim/fuwari/commit/${commitHash}`}>({commitHash} @ {buildDate})</a>
->>>>>>> upstream/main
         <br>
 
 		<!-- <a class="transition link text-[var(--primary)] font-medium inline-flex items-center" href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"><img alt="" src="/favicon/foot-icp.png" width="16" height="16" class="h-4 mr-1">皖ICP备2025099787号-2</a>
@@ -107,13 +100,8 @@ const { lang } = Astro.params;
             div.appendChild(label);
 
             const valueSpan = document.createElement('span');
-<<<<<<< HEAD
-            valueSpan.className = 'server-value text-black/30 dark:text-white/30 text-xs';
-            valueSpan.innerText = window.i18n(window.Translation.Checking);
-=======
             valueSpan.className = 'server-value text-white/30 text-xs';
             valueSpan.innerText = '检测中...';
->>>>>>> upstream/main
             div.appendChild(valueSpan);
 
             const iconImg = document.createElement('img');
@@ -151,7 +139,7 @@ const { lang } = Astro.params;
                     valueSpan.classList.remove('hidden');
                 }
             } else {
-                valueSpan.innerText = window.i18n(window.Translation.Unknown);
+                valueSpan.innerText = "未知";
                 iconImg.classList.add('hidden');
                 valueSpan.classList.remove('hidden');
             }
@@ -178,7 +166,7 @@ const { lang } = Astro.params;
                 const devServer = localStorage.getItem("dev-server");
                 containers.forEach(container => {
                     container.innerHTML = '';
-                    const elements = createServerEntry({ text: window.i18n(window.Translation.DevMode) });
+                    const elements = createServerEntry({ text: 'Dev Node' });
                     container.appendChild(elements.div);
                     updateEntryDisplay(elements, devServer);
                 });
@@ -199,7 +187,7 @@ const { lang } = Astro.params;
                 container.innerHTML = '';
 
                 if (!serverConfig || serverConfig.length === 0) {
-                    const elements = createServerEntry({ text: window.i18n(window.Translation.AccessNode) });
+                    const elements = createServerEntry({ text: '访问节点' });
                     container.appendChild(elements.div);
                     getServerInfo('').then(server => updateEntryDisplay(elements, server));
                     return;

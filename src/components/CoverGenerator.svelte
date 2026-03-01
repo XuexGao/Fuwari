@@ -2,8 +2,6 @@
 import Icon from "@iconify/svelte";
 import { getHue } from "@utils/setting-utils";
 import { onMount } from "svelte";
-import { Translation } from "@/i18n/translation";
-import { t, initLang } from "@/i18n/i18n-svelte";
 
 let leftText = "鸣潮";
 let rightText = "牛逼";
@@ -125,7 +123,6 @@ let exportConfig = {
 };
 
 onMount(() => {
-	initLang();
 	hue = getHue();
 
 	// Set initial canvas colors
@@ -214,7 +211,7 @@ function handleFontUpload(e: Event) {
 
 async function loadLocalFonts() {
 	if (!("queryLocalFonts" in window)) {
-		localFontError = $t(Translation.ChromiumOnly);
+		localFontError = "仅支持 PC端新版Chrome/Edge等Chromium内核的浏览器";
 		return;
 	}
 	isLoadingLocalFonts = true;
@@ -229,9 +226,9 @@ async function loadLocalFonts() {
 		}));
 	} catch (e: any) {
 		if (e.name === "NotAllowedError") {
-			localFontError = $t(Translation.FontAccessDenied);
+			localFontError = "您拒绝了字体访问权限";
 		} else {
-			localFontError = $t(Translation.LoadFontFailed) + ": " + e.message;
+			localFontError = "加载本地字体失败: " + e.message;
 		}
 	} finally {
 		isLoadingLocalFonts = false;
@@ -783,100 +780,74 @@ function downloadLink(url: string, filename: string) {
     <div class="flex flex-col gap-6">
       <h3 class="text-lg font-bold text-[var(--primary)] flex items-center gap-2">
           <Icon icon="material-symbols:edit-outline" class="w-5 h-5" />
-          {$t(Translation.ContentSettings)}
+          内容设置
       </h3>
       
       <div class="space-y-4">
           <div class="flex flex-col gap-2">
-<<<<<<< HEAD
-              <label class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.BgImage)}</label>
-=======
               <label class="text-sm font-bold text-gray-300">背景图片</label>
->>>>>>> upstream/main
               <div class="relative">
                   <input type="file" accept="image/*" on:change={handleBgImageUpload} class="hidden" id="bg-upload" />
                   <label for="bg-upload" class="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed border-gray-600 rounded-lg cursor-pointer hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 transition-all group">
                       <div class="flex flex-col items-center gap-1 text-gray-400 group-hover:text-[var(--primary)]">
                           <Icon icon="material-symbols:upload-file" class="w-6 h-6" />
-                          <span class="text-xs">{bgImage ? $t(Translation.ClickToChange) : $t(Translation.ClickToUpload)}</span>
+                          <span class="text-xs">{bgImage ? '点击更换图片' : '点击上传背景图'}</span>
                       </div>
                   </label>
                   {#if bgImage}
                       <button 
                           on:click={() => { bgImage = null; bgImageScale = 1; bgImageX = 0; bgImageY = 0; }}
                           class="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 shadow-sm"
-                          title={$t(Translation.RemoveBg)}
+                          title="移除背景图"
                       >
                           <Icon icon="material-symbols:close" class="w-3 h-3" />
                       </button>
                       <div class="mt-2 space-y-1" on:click|stopPropagation>
-<<<<<<< HEAD
-                          <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                              <label>{$t(Translation.Blur)}</label>
-=======
                           <div class="flex justify-between text-xs text-gray-400">
                               <label>模糊程度</label>
->>>>>>> upstream/main
                               <span>{bgBlur}px</span>
                           </div>
                           <input type="range" bind:value={bgBlur} min="0" max="20" class="range-slider h-1" />
                       </div>
                       <div class="mt-2 space-y-1" on:click|stopPropagation>
-<<<<<<< HEAD
-                          <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                              <label>{$t(Translation.Opacity)}</label>
-=======
                           <div class="flex justify-between text-xs text-gray-400">
                               <label>不透明度</label>
->>>>>>> upstream/main
                               <span>{Math.round(bgOpacity * 100)}%</span>
                           </div>
                           <input type="range" bind:value={bgOpacity} min="0" max="1" step="0.01" class="range-slider h-1" />
                       </div>
                       <p class="text-[10px] text-gray-400 mt-1 text-center">
-                          {$t(Translation.DragTip)}
+                          提示: 拖拽移动位置，滚轮缩放大小
                       </p>
                   {/if}
               </div>
           </div>
 
 <div class="flex flex-col gap-2">
-<<<<<<< HEAD
-                <label class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.LeftText)}</label>
-=======
                 <label class="text-sm font-bold text-gray-300">左侧文字</label>
->>>>>>> upstream/main
                 <input type="text" bind:value={leftText} class="input-field w-full" />
             </div>
 
             <div class="flex flex-col gap-2">
-<<<<<<< HEAD
-                <label class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.RightText)}</label>
-=======
                 <label class="text-sm font-bold text-gray-300">右侧文字</label>
->>>>>>> upstream/main
                 <input type="text" bind:value={rightText} class="input-field w-full" />
             </div>
 
             <div class="flex flex-col gap-2">
-<<<<<<< HEAD
-                <label class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.CustomFont)}</label>
-=======
                 <label class="text-sm font-bold text-gray-300">自定义字体</label>
->>>>>>> upstream/main
                 <div class="relative">
                     <input type="file" accept=".ttf,.otf,.woff,.woff2" on:change={handleFontUpload} class="hidden" id="font-upload" />
                     <label for="font-upload" class="flex items-center justify-center w-full px-4 py-2 border-2 border-dashed border-gray-600 rounded-lg cursor-pointer hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 transition-all group">
                         <div class="flex flex-col items-center gap-1 text-gray-400 group-hover:text-[var(--primary)]">
                             <Icon icon="material-symbols:font-download" class="w-5 h-5" />
-                            <span class="text-xs">{customFontName ? customFontName : $t(Translation.ClickToUploadFont)}</span>
+                            <span class="text-xs">{customFontName ? customFontName : '点击上传字体'}</span>
                         </div>
                     </label>
                     {#if customFontName}
                         <button 
                             on:click={() => { customFont = null; customFontName = ""; }}
                             class="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 shadow-sm"
-                            title={$t(Translation.RemoveFont)}
+                            title="移除字体"
                         >
                             <Icon icon="material-symbols:close" class="w-3 h-3" />
                         </button>
@@ -893,7 +864,7 @@ function downloadLink(url: string, filename: string) {
                         {:else}
                             <Icon icon="material-symbols:computer" class="w-4 h-4" />
                         {/if}
-                        <span>{$t(Translation.ReadLocalFonts)}</span>
+                        <span>读取本地字体</span>
                     </button>
                 </div>
                 {#if localFontError}
@@ -904,7 +875,7 @@ function downloadLink(url: string, filename: string) {
                         <input 
                             type="text" 
                             bind:value={localFontSearchQuery}
-                            placeholder={$t(Translation.SearchingFonts)}
+                            placeholder="搜索字体..."
                             class="input-field w-full text-xs !py-1"
                         />
                         <div class="max-h-40 overflow-y-auto space-y-1">
@@ -923,38 +894,18 @@ function downloadLink(url: string, filename: string) {
                             on:click={() => { localFonts = []; localFontSearchQuery = ""; }}
                             class="w-full text-xs text-gray-400 hover:text-red-500 transition-colors"
                         >
-                            {$t(Translation.Close)}
+                            关闭
                         </button>
                     </div>
                 {/if}
             </div>
 
             <div class="flex flex-col gap-2">
-<<<<<<< HEAD
-                <div class="flex justify-between text-sm"><label class="text-gray-700 dark:text-gray-300 font-bold">{$t(Translation.FontWeight)}</label> <span class="text-gray-500 dark:text-gray-400 font-mono">{fontWeight}</span></div>
-=======
                 <div class="flex justify-between text-sm"><label class="text-gray-300 font-bold">字体粗细</label> <span class="text-gray-400 font-mono">{fontWeight}</span></div>
->>>>>>> upstream/main
                 <input type="range" bind:value={fontWeight} min="100" max="900" step="100" class="range-slider" />
             </div>
 
             <div class="flex flex-col gap-2">
-<<<<<<< HEAD
-                <label class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.IconSearch)}</label>
-                <div class="relative">
-                    <input 
-                        type="text" 
-                        value={searchQuery} 
-                        on:input={onSearchInput}
-                        placeholder={$t(Translation.SearchIconPlaceholder)} 
-                        class="input-field w-full" 
-                    />
-                    {#if isSearching}
-                        <div class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                            <Icon icon="line-md:loading-twotone-loop" class="w-5 h-5" />
-                        </div>
-                    {/if}
-=======
                 <label class="text-sm font-bold text-gray-300">图标设置</label>
                 <div class="grid grid-cols-2 gap-2">
                     <div class="relative">
@@ -989,7 +940,6 @@ function downloadLink(url: string, filename: string) {
                             </div>
                         {/if}
                     </div>
->>>>>>> upstream/main
                 </div>
                 
                 {#if searchResults.length > 0}
@@ -1006,13 +956,9 @@ function downloadLink(url: string, filename: string) {
                     </div>
                 {/if}
                 <div class="flex flex-wrap justify-between items-center text-xs mt-1 gap-2">
-<<<<<<< HEAD
-                    <span class="text-gray-500 dark:text-gray-400 truncate max-w-[150px]" title={iconName}>{$t(Translation.CurrentIcon)}: {iconName}</span>
-=======
                     <span class="text-gray-400 break-all select-text" title={iconName}>当前: {iconName}</span>
->>>>>>> upstream/main
                     <button on:click={() => window.open('https://icones.js.org/', '_blank')} class="text-[var(--primary)] hover:underline whitespace-nowrap">
-                        {$t(Translation.BrowseIconLib)} ↗
+                        浏览图标库 ↗
                     </button>
                 </div>
             </div>
@@ -1024,28 +970,17 @@ function downloadLink(url: string, filename: string) {
         <h3 class="text-lg font-bold text-[var(--primary)] flex items-center gap-2 justify-between">
             <div class="flex items-center gap-2">
                 <Icon icon="material-symbols:palette-outline" class="w-5 h-5" />
-                {$t(Translation.StyleSettings)}
+                样式设置
             </div>
             <label class="flex items-center gap-2 text-xs font-normal cursor-pointer select-none bg-transparent border border-[var(--line-color)] px-2 py-1 rounded hover:bg-[var(--btn-regular-bg)] transition-colors text-gray-300">
                 <input type="checkbox" bind:checked={linkScale} class="accent-[var(--primary)]" />
-                {$t(Translation.LinkScale)}
+                等比缩放
             </label>
         </h3>
 
         <!-- Sizes -->
         <div class="space-y-6">
             <div class="flex flex-col gap-2">
-<<<<<<< HEAD
-                <div class="flex justify-between text-sm"><label class="text-gray-700 dark:text-gray-300 font-bold">{$t(Translation.FontSize)}</label> <span class="text-gray-500 dark:text-gray-400 font-mono">{fontSize}px</span></div>
-                <input type="range" value={fontSize} on:input={handleFontSizeChange} min="20" max="700" class="range-slider" />
-            </div>
-            <div class="flex flex-col gap-2">
-                <div class="flex justify-between text-sm"><label class="text-gray-700 dark:text-gray-300 font-bold">{$t(Translation.IconSize)}</label> <span class="text-gray-500 dark:text-gray-400 font-mono">{iconSize}px</span></div>
-                <input type="range" value={iconSize} on:input={handleIconSizeChange} min="20" max="700" class="range-slider" />
-            </div>
-            <div class="flex flex-col gap-2">
-                <div class="flex justify-between text-sm"><label class="text-gray-700 dark:text-gray-300 font-bold">{$t(Translation.Gap)}</label> <span class="text-gray-500 dark:text-gray-400 font-mono">{gap}px</span></div>
-=======
                 <div class="flex justify-between text-sm"><label class="text-gray-300 font-bold">字体大小</label> <span class="text-gray-400 font-mono">{fontSize}px</span></div>
                 <input type="range" value={fontSize} on:input={handleFontSizeChange} min="20" max="700" class="range-slider" />
             </div>
@@ -1059,7 +994,6 @@ function downloadLink(url: string, filename: string) {
             </div>
             <div class="flex flex-col gap-2">
                 <div class="flex justify-between text-sm"><label class="text-gray-300 font-bold">间距</label> <span class="text-gray-400 font-mono">{gap}px</span></div>
->>>>>>> upstream/main
                 <input type="range" bind:value={gap} min="0" max="200" class="range-slider" />
             </div>
         </div>
@@ -1071,20 +1005,16 @@ function downloadLink(url: string, filename: string) {
             <div class="flex items-center justify-between mb-2 flex-wrap gap-2">
                 <label class="flex items-center gap-2 text-xs font-normal cursor-pointer select-none bg-transparent border border-[var(--line-color)] px-2 py-1 rounded hover:bg-[var(--btn-regular-bg)] transition-colors text-gray-300">
                     <input type="checkbox" bind:checked={linkColor} class="accent-[var(--primary)]" />
-                    {$t(Translation.ColorSync)}
+                    颜色同步
                 </label>
                 <label class="flex items-center gap-2 text-xs font-normal cursor-pointer select-none bg-transparent border border-[var(--line-color)] px-2 py-1 rounded hover:bg-[var(--btn-regular-bg)] transition-colors text-gray-300">
                     <input type="checkbox" bind:checked={useOriginalIconColor} class="accent-[var(--primary)]" />
-                    {$t(Translation.OriginalColor)}
+                    原色图标
                 </label>
             </div>
 
             <div class="flex items-center justify-between flex-wrap gap-2">
-<<<<<<< HEAD
-                <label class="text-sm font-bold text-gray-700 dark:text-gray-300 min-w-[4rem]">{$t(Translation.TextColor)}</label>
-=======
                 <label class="text-sm font-bold text-gray-300 min-w-[4rem]">文字颜色</label>
->>>>>>> upstream/main
                 <div class="flex items-center gap-2">
                     <input type="text" value={color} on:input={(e) => handleColorChange((e.target as HTMLInputElement).value, 'text')} class="input-field text-xs !p-1 !h-8 w-24 font-mono text-center" />
                     <div class="relative w-8 h-8 rounded-full overflow-hidden border border-gray-600 shadow-sm shrink-0">
@@ -1094,11 +1024,7 @@ function downloadLink(url: string, filename: string) {
             </div>
             
             <div class="flex items-center justify-between flex-wrap gap-2">
-<<<<<<< HEAD
-                <label class="text-sm font-bold text-gray-700 dark:text-gray-300 min-w-[4rem]">{$t(Translation.IconColor)}</label>
-=======
                 <label class="text-sm font-bold text-gray-300 min-w-[4rem]">图标颜色</label>
->>>>>>> upstream/main
                 <div class="flex items-center gap-2">
                     <input type="text" value={iconColor} disabled={useOriginalIconColor} on:input={(e) => handleColorChange((e.target as HTMLInputElement).value, 'icon')} class="input-field text-xs !p-1 !h-8 w-24 font-mono text-center disabled:opacity-50" />
                     <div class="relative w-8 h-8 rounded-full overflow-hidden border border-gray-600 shadow-sm shrink-0 {useOriginalIconColor ? 'opacity-50 pointer-events-none' : ''}">
@@ -1108,11 +1034,7 @@ function downloadLink(url: string, filename: string) {
             </div>
 
             <div class="flex items-center justify-between flex-wrap gap-2">
-<<<<<<< HEAD
-                <label class="text-sm font-bold text-gray-700 dark:text-gray-300 min-w-[4rem]">{$t(Translation.BgColor)}</label>
-=======
                 <label class="text-sm font-bold text-gray-300 min-w-[4rem]">背景颜色</label>
->>>>>>> upstream/main
                 <div class="flex items-center gap-2">
                     <div class="flex flex-col items-end gap-1">
                         <div class="flex items-center gap-2">
@@ -1122,7 +1044,7 @@ function downloadLink(url: string, filename: string) {
                             </div>
                         </div>
                         <div class="flex items-center gap-2 w-full justify-end">
-                            <span class="text-[10px] text-gray-500">{$t(Translation.Opacity)} {Math.round(bgColorOpacity * 100)}%</span>
+                            <span class="text-[10px] text-gray-500">不透明度 {Math.round(bgColorOpacity * 100)}%</span>
                             <input type="range" bind:value={bgColorOpacity} min="0" max="1" step="0.01" class="range-slider w-16 h-1" />
                         </div>
                     </div>
@@ -1135,17 +1057,13 @@ function downloadLink(url: string, filename: string) {
     <div class="flex flex-col gap-6 md:col-span-2 lg:col-span-1">
         <h3 class="text-lg font-bold text-[var(--primary)] flex items-center gap-2">
             <Icon icon="material-symbols:auto-fix" class="w-5 h-5" />
-            {$t(Translation.EffectsAndExport)}
+            特效与导出
         </h3>
 
         <!-- Icon Background -->
         <div class="bg-transparent rounded-lg p-4 space-y-4 border border-[var(--line-color)]">
             <div class="flex items-center justify-between">
-<<<<<<< HEAD
-                <h4 class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.IconBg)}</h4>
-=======
                 <h4 class="text-sm font-bold text-gray-300">图标背景</h4>
->>>>>>> upstream/main
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" bind:checked={iconBgEnabled} class="sr-only peer">
                     <div class="w-9 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-600 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[var(--primary)]"></div>
@@ -1155,11 +1073,7 @@ function downloadLink(url: string, filename: string) {
             {#if iconBgEnabled}
                 <div class="space-y-3 pt-2 border-t border-[var(--line-color)]">
                     <div class="flex items-center justify-between flex-wrap gap-2">
-<<<<<<< HEAD
-                        <label class="text-xs text-gray-500 dark:text-gray-400">{$t(Translation.BgColor)}</label>
-=======
                         <label class="text-xs text-gray-400">背景颜色</label>
->>>>>>> upstream/main
                         <div class="flex items-center gap-2">
                             <input type="text" bind:value={iconBgColor} class="input-field text-xs !p-1 !h-6 w-20 font-mono" />
                             <div class="relative w-6 h-6 rounded-full overflow-hidden border border-[var(--line-color)] shadow-sm shrink-0">
@@ -1170,49 +1084,29 @@ function downloadLink(url: string, filename: string) {
 
                     <div class="grid grid-cols-2 gap-4">
                         <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                            <div class="flex justify-between text-[10px] text-gray-500 dark:text-gray-400">
-                                <label>{$t(Translation.Padding)}</label>
-=======
                             <div class="flex justify-between text-[10px] text-gray-400">
                                 <label>内边距</label>
->>>>>>> upstream/main
                                 <span>{iconBgPadding}px</span>
                             </div>
                             <input type="range" bind:value={iconBgPadding} min="0" max="100" class="range-slider h-1" />
                         </div>
                         <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                            <div class="flex justify-between text-[10px] text-gray-500 dark:text-gray-400">
-                                <label>{$t(Translation.Radius)}</label>
-=======
                             <div class="flex justify-between text-[10px] text-gray-400">
                                 <label>圆角半径</label>
->>>>>>> upstream/main
                                 <span>{iconBgRadius}%</span>
                             </div>
                             <input type="range" bind:value={iconBgRadius} min="0" max="50" class="range-slider h-1" />
                         </div>
                         <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                            <div class="flex justify-between text-[10px] text-gray-500 dark:text-gray-400">
-                                <label>{$t(Translation.Blur)}</label>
-=======
                             <div class="flex justify-between text-[10px] text-gray-400">
                                 <label>模糊</label>
->>>>>>> upstream/main
                                 <span>{iconBgBlur}px</span>
                             </div>
                             <input type="range" bind:value={iconBgBlur} min="0" max="20" class="range-slider h-1" />
                         </div>
                         <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                            <div class="flex justify-between text-[10px] text-gray-500 dark:text-gray-400">
-                                <label>{$t(Translation.Opacity)}</label>
-=======
                             <div class="flex justify-between text-[10px] text-gray-400">
                                 <label>不透明度</label>
->>>>>>> upstream/main
                                 <span>{Math.round(iconBgOpacity * 100)}%</span>
                             </div>
                             <input type="range" bind:value={iconBgOpacity} min="0" max="1" step="0.01" class="range-slider h-1" />
@@ -1225,16 +1119,12 @@ function downloadLink(url: string, filename: string) {
         <!-- Shadows -->
         <div class="bg-transparent rounded-lg p-4 space-y-4 border border-[var(--line-color)]">
             <div class="flex items-center justify-between mb-2">
-<<<<<<< HEAD
-                <span class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.ShadowSettings)}</span>
-=======
                 <span class="text-sm font-bold text-gray-300">阴影设置</span>
->>>>>>> upstream/main
                 <div class="flex bg-transparent rounded-lg p-1 border border-[var(--line-color)]">
                     {#each [
-                        { id: 'both', icon: 'material-symbols:layers', label: $t(Translation.ShadowBoth) },
-                        { id: 'text', icon: 'material-symbols:title', label: $t(Translation.ShadowText) },
-                        { id: 'icon', icon: 'material-symbols:star', label: $t(Translation.ShadowIcon) }
+                        { id: 'both', icon: 'material-symbols:layers', label: '全部' },
+                        { id: 'text', icon: 'material-symbols:title', label: '文字' },
+                        { id: 'icon', icon: 'material-symbols:star', label: '图标' }
                     ] as target}
                         <button 
                             class="p-1.5 rounded transition-all {shadowTarget === target.id ? 'bg-[var(--primary)] text-white shadow-sm' : 'text-gray-500 hover:text-[var(--primary)] bg-transparent'}"
@@ -1247,13 +1137,8 @@ function downloadLink(url: string, filename: string) {
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <div class="text-sm font-bold flex items-center justify-between flex-wrap gap-2 text-gray-700 dark:text-gray-300">
-                <span class="text-xs text-gray-500 font-normal">{$t(Translation.ShadowColor)} ({shadowTarget === 'both' ? $t(Translation.ShadowBoth) : (shadowTarget === 'text' ? $t(Translation.ShadowText) : $t(Translation.ShadowIcon))})</span>
-=======
             <div class="text-sm font-bold flex items-center justify-between flex-wrap gap-2 text-gray-300">
                 <span class="text-xs text-gray-400 font-normal">颜色 ({shadowTarget === 'both' ? '统一' : (shadowTarget === 'text' ? '仅文字' : '仅图标')})</span>
->>>>>>> upstream/main
                 <div class="flex items-center gap-2">
                     <input type="text" value={shadowTarget === 'icon' ? iconShadow.color : textShadow.color} on:input={(e) => updateShadow('color', (e.target as HTMLInputElement).value)} class="input-field text-xs !p-1 !h-6 w-20 font-mono" />
                     <div class="relative w-6 h-6 rounded-full overflow-hidden border border-[var(--line-color)] shadow-sm shrink-0">
@@ -1264,22 +1149,6 @@ function downloadLink(url: string, filename: string) {
             
             <div class="grid grid-cols-3 gap-2">
                 <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                    <label class="text-[10px] text-gray-500 dark:text-gray-400 uppercase">{$t(Translation.ShadowBlur)}</label>
-                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.blur : textShadow.blur} on:input={(e) => updateShadow('blur', (e.target as HTMLInputElement).valueAsNumber)} class="input-field text-sm !px-1" />
-                </div>
-                <div class="flex flex-col gap-1">
-                    <label class="text-[10px] text-gray-500 dark:text-gray-400 uppercase">{$t(Translation.ShadowX)}</label>
-                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.x : textShadow.x} on:input={(e) => updateShadow('x', (e.target as HTMLInputElement).valueAsNumber)} class="input-field text-sm !px-1" />
-                </div>
-                <div class="flex flex-col gap-1">
-                    <label class="text-[10px] text-gray-500 dark:text-gray-400 uppercase">{$t(Translation.ShadowY)}</label>
-                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.y : textShadow.y} on:input={(e) => updateShadow('y', (e.target as HTMLInputElement).valueAsNumber)} class="input-field text-sm !px-1" />
-                </div>
-                <div class="col-span-3 flex flex-col gap-1 mt-1">
-                    <div class="flex justify-between text-[10px] text-gray-500 dark:text-gray-400 uppercase">
-                        <label>{$t(Translation.Opacity)}</label>
-=======
                     <label class="text-[10px] text-gray-400 uppercase">模糊</label>
                     <input type="number" value={shadowTarget === 'icon' ? iconShadow.blur : textShadow.blur} on:input={(e) => updateShadow('blur', (e.target as HTMLInputElement).valueAsNumber)} class="input-field text-sm !px-1" />
                 </div>
@@ -1294,7 +1163,6 @@ function downloadLink(url: string, filename: string) {
                 <div class="col-span-3 flex flex-col gap-1 mt-1">
                     <div class="flex justify-between text-[10px] text-gray-400 uppercase">
                         <label>不透明度</label>
->>>>>>> upstream/main
                         <span>{Math.round((shadowTarget === 'icon' ? iconShadow.alpha : textShadow.alpha) * 100)}%</span>
                     </div>
                     <input type="range" value={shadowTarget === 'icon' ? iconShadow.alpha : textShadow.alpha} on:input={(e) => updateShadow('alpha', parseFloat((e.target as HTMLInputElement).value))} min="0" max="1" step="0.01" class="range-slider h-1" />
@@ -1304,11 +1172,7 @@ function downloadLink(url: string, filename: string) {
 
         <!-- Ratios -->
         <div class="flex flex-col gap-3">
-<<<<<<< HEAD
-            <label class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.CanvasRatio)}</label>
-=======
             <label class="text-sm font-bold text-gray-300">画板比例 (多选)</label>
->>>>>>> upstream/main
             <div class="grid grid-cols-2 gap-2">
                 {#each ratios as ratio}
                     <label class="flex items-center gap-2 p-2 border border-[var(--line-color)] rounded-lg cursor-pointer hover:bg-[var(--btn-regular-bg)] transition-colors select-none">
@@ -1321,28 +1185,16 @@ function downloadLink(url: string, filename: string) {
 
         <!-- Export -->
         <div class="bg-transparent rounded-lg p-4 space-y-4 border border-[var(--line-color)]">
-<<<<<<< HEAD
-            <h4 class="text-sm font-bold text-gray-700 dark:text-gray-300">{$t(Translation.ExportSettings)}</h4>
-            
-            <div class="space-y-3">
-                <div class="flex flex-col gap-1">
-                    <label class="text-xs text-gray-500 dark:text-gray-400">{$t(Translation.FileName)}</label>
-=======
             <h4 class="text-sm font-bold text-gray-300">导出设置</h4>
             
             <div class="space-y-3">
                 <div class="flex flex-col gap-1">
                     <label class="text-xs text-gray-400">文件名</label>
->>>>>>> upstream/main
                     <input type="text" bind:value={exportConfig.filename} class="input-field w-full text-sm !py-1" />
                 </div>
 
                 <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                    <label class="text-xs text-gray-500 dark:text-gray-400">{$t(Translation.Format)}</label>
-=======
                     <label class="text-xs text-gray-400">格式</label>
->>>>>>> upstream/main
                     <div class="flex gap-2">
                         <label class="flex-1 flex items-center justify-center gap-1 p-2 border rounded-lg cursor-pointer transition-all text-xs {exportConfig.format === 'png' ? 'border-[var(--primary)] bg-[var(--primary)]/5 text-[var(--primary)]' : 'border-[var(--line-color)] bg-transparent text-gray-300'}">
                             <input type="radio" bind:group={exportConfig.format} value="png" class="hidden" />
@@ -1357,13 +1209,8 @@ function downloadLink(url: string, filename: string) {
 
                 {#if exportConfig.format === 'png'}
                     <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                        <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                            <label>{$t(Translation.ExportScale)}</label>
-=======
                         <div class="flex justify-between text-xs text-gray-400">
                             <label>缩放倍率</label>
->>>>>>> upstream/main
                         </div>
                         <div class="grid grid-cols-4 gap-1">
                             {#each [1, 2, 3, 4] as scale}
@@ -1391,22 +1238,13 @@ function downloadLink(url: string, filename: string) {
                 {/if}
 
                 <label class="flex items-center justify-between p-2 bg-transparent rounded border border-[var(--line-color)] cursor-pointer">
-<<<<<<< HEAD
-                    <span class="text-xs font-bold text-gray-700 dark:text-gray-300">{$t(Translation.TransparentBg)}</span>
-=======
                     <span class="text-xs font-bold text-gray-300">背景透明</span>
->>>>>>> upstream/main
                     <input type="checkbox" bind:checked={exportConfig.transparentBg} class="accent-[var(--primary)] w-4 h-4" />
                 </label>
 
                 <div class="flex flex-col gap-1">
-<<<<<<< HEAD
-                    <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                        <label>{$t(Translation.ExportSize)}</label>
-=======
                     <div class="flex justify-between text-xs text-gray-400">
                         <label>导出尺寸 (可多选)</label>
->>>>>>> upstream/main
                     </div>
                     <div class="grid grid-cols-4 gap-1">
                         {#each activeRatios.length === 0 ? [] : (activeRatios.length === 1 ? [] : ratios) as ratio}
@@ -1431,24 +1269,15 @@ function downloadLink(url: string, filename: string) {
                     </div>
                     {#if activeRatios.length === 0}
                         <p class="text-[10px] text-red-500 text-left mt-0.5 font-bold">
-                            {$t(Translation.ExportTip1)}
+                            请至少选择一个画板比例以进行导出
                         </p>
                     {:else if activeRatios.length === 1}
-<<<<<<< HEAD
-                        <p class="text-[10px] text-gray-400 dark:text-gray-500 text-left mt-0.5">
-                            {$t(Translation.ExportTip2)} {activeRatios[0].label}
-                        </p>
-                    {:else}
-                        <p class="text-[10px] text-gray-400 dark:text-gray-500 text-right mt-0.5">
-                            {$t(Translation.ExportTip3)}
-=======
                         <p class="text-[10px] text-gray-400 text-left mt-0.5">
                             当前仅预览 {activeRatios[0].label}，将导出此尺寸
                         </p>
                     {:else}
                         <p class="text-[10px] text-gray-400 text-right mt-0.5">
                             不选默认导出预览选中比例
->>>>>>> upstream/main
                         </p>
                     {/if}
                 </div>
@@ -1460,7 +1289,7 @@ function downloadLink(url: string, filename: string) {
                 class="w-full px-4 py-3 bg-[var(--primary)] text-white hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:brightness-100 rounded-xl font-bold transition-all shadow-lg shadow-[var(--primary)]/30 text-sm flex items-center justify-center gap-2 mt-2"
             >
                 <Icon icon="material-symbols:download" class="w-5 h-5" />
-                {$t(Translation.ExportBtn)}
+                导出图片
             </button>
         </div>
     </div>

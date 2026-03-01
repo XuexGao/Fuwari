@@ -4,8 +4,6 @@ import type { Friend } from "@/types/data";
 import LinkSubmitInfo from "@components/misc/LinkSubmitInfo.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { Icon } from "astro-icon/components";
-import I18n from "@components/I18n.astro";
-import { Translation, i18n } from "@/i18n/translation";
 
 const friends = Object.values(
 	import.meta.glob<Friend>("@/data/friends/*.json", {
@@ -14,15 +12,6 @@ const friends = Object.values(
 	}),
 );
 
-export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'zh-cn' } },
-		{ params: { lang: 'en' } },
-	];
-}
-
-const { lang } = Astro.params;
-
 const breadcrumbSchema = {
 	"@context": "https://schema.org",
 	"@type": "BreadcrumbList",
@@ -30,34 +19,27 @@ const breadcrumbSchema = {
 		{
 			"@type": "ListItem",
 			position: 1,
-			name: i18n(Translation.Home, lang === 'zh-cn' ? 'zh_CN' : 'en'),
+			name: "首页",
 			item: Astro.site,
 		},
 		{
 			"@type": "ListItem",
 			position: 2,
-			name: i18n(Translation.Friends, lang === 'zh-cn' ? 'zh_CN' : 'en'),
+			name: "友链",
 			item: new URL("/friends", Astro.site).toString(),
 		},
 	],
 };
 ---
 
-<MainGridLayout title={i18n(Translation.Friends, lang === 'zh-cn' ? 'zh_CN' : 'en')} lang={lang === 'zh-cn' ? 'zh_CN' : 'en'}>
+<MainGridLayout title="友链">
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
     <div class="card-base p-6 md:p-8">
         <div class="flex items-center gap-2 mb-6">
-<<<<<<< HEAD:src/pages/[lang]/friends.astro
-            <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
-                <Icon name="material-symbols:diversity-3" class="text-[1.5rem]" />
-            </div>
-            <h1 class="text-2xl font-bold text-black dark:text-white"><I18n key={Translation.Friends} /></h1>
-=======
             <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70">
                 <Icon name="material-symbols:diversity-3" class="text-[1.5rem]">
             </div>
             <h1 class="text-2xl font-bold text-white">友链</h1>
->>>>>>> upstream/main:src/pages/friends.astro
         </div>
 
         <!-- 申请友链 -->
@@ -69,7 +51,7 @@ const breadcrumbSchema = {
                 <a href={friend.url} target="_blank" class="friend-card">
                     <div class="flex items-center gap-2">
                         <div class="relative w-5 h-5 rounded overflow-hidden" style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-                            <img src={friend.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={friend.name} />
+                            <img src={friend.avatar} loading="lazy" class="w-full h-full object-cover transition-opacity duration-500" alt={`${friend.name}的头像`} />
                         </div>
                         <div class="font-bold text-white">{friend.name}</div>
                     </div>

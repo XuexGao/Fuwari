@@ -3,8 +3,6 @@ import Icon from "@iconify/svelte";
 import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
 import Highlight from "./Highlight.svelte";
-import { Translation } from "@/i18n/translation";
-import { t, initLang, lang } from "@/i18n/i18n-svelte";
 
 interface SearchResult {
 	url: string;
@@ -23,14 +21,6 @@ let result: SearchResult[] = [];
 let isSearching = false;
 // biome-ignore lint/suspicious/noExplicitAny: Temporary usage of any for posts array
 let posts: any[] = [];
-
-const getCurrentLang = () => {
-	const segments = window.location.pathname.split('/').filter(Boolean);
-	if (segments[0] === 'zh-cn' || segments[0] === 'en') {
-		return segments[0];
-	}
-	return 'zh-cn';
-};
 
 const togglePanel = () => {
 	const panel = document.getElementById("search-panel");
@@ -110,10 +100,8 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 					if (linkMatches) matchCount += linkMatches.length;
 				});
 
-				const langCode = getCurrentLang();
-
 				return {
-					url: url(`/posts/${post.link}/`, langCode),
+					url: url(`/posts/${post.link}/`),
 					meta: { title: post.title },
 					excerpt,
 					urlPath: `/posts/${post.link}`,
@@ -134,11 +122,8 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 };
 
 onMount(async () => {
-	initLang();
 	try {
-		const langCode = getCurrentLang();
-		const rssPath = `/${langCode}/rss.xml`;
-		const response = await fetch(rssPath);
+		const response = await fetch("/rss.xml");
 		const text = await response.text();
 		const parser = new DOMParser();
 		const xml = parser.parseFromString(text, "text/xml");
@@ -179,13 +164,8 @@ $: search(keywordMobile, false);
 <div id="search-bar" class="hidden lg:flex transition-all items-center h-11 mr-2 rounded-lg
       bg-white/5 hover:bg-white/10 focus-within:bg-white/10
 ">
-<<<<<<< HEAD
-    <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-    <input placeholder={$t(Translation.Search)} bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true)}
-=======
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
     <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true)}
->>>>>>> upstream/main
            class="transition-all pl-10 text-sm bg-transparent outline-0
          h-full w-40 active:w-60 focus:w-60 text-white/50"
     >
@@ -205,13 +185,8 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
     <div id="search-bar-inside" class="flex relative lg:hidden transition-all items-center h-11 rounded-xl
       bg-white/5 hover:bg-white/10 focus-within:bg-white/10
   ">
-<<<<<<< HEAD
-        <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-black/30 dark:text-white/30"></Icon>
-        <input placeholder={$t(Translation.Search)} bind:value={keywordMobile}
-=======
         <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
         <input placeholder="Search" bind:value={keywordMobile}
->>>>>>> upstream/main
                class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
                focus:w-60 text-white/50"
         >
@@ -219,13 +194,8 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
 
     <!-- search results header -->
     {#if result.length > 0}
-<<<<<<< HEAD
-        <div class="text-xs text-black/40 dark:text-white/40 px-3 py-2 border-b border-black/5 dark:border-white/5">
-            {result.length} {$t(Translation.SearchResults)}
-=======
         <div class="text-xs text-white/40 px-3 py-2 border-b border-white/5">
             {result.length} 条搜索结果
->>>>>>> upstream/main
         </div>
     {/if}
 
@@ -240,13 +210,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
             </div>
             <div class="transition text-xs text-white/50 mb-1 font-mono">
                 <Highlight text={item.urlPath} query={item.highlightQuery} />
-                <span class="ml-2 text-[var(--primary)]">
-                    {#if $lang === 'zh_CN'}
-                        {item.matchCount} {$t(Translation.KeywordsMatched)}
-                    {:else}
-                        {$t(Translation.KeywordsMatched)} {item.matchCount}
-                    {/if}
-                </span>
+                <span class="ml-2 text-[var(--primary)]">命中 {item.matchCount} 个关键词</span>
             </div>
             <div class="transition text-sm text-50">
                 <Highlight text={item.excerpt} query={item.highlightQuery} />

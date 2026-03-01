@@ -7,14 +7,9 @@ interface Props {
 	sort?: string;
 	class?: string;
 	style?: string;
-	lang?: string;
 }
 
-<<<<<<< HEAD
-const { page, style, lang } = Astro.props;
-=======
 const { page, style, sort } = Astro.props;
->>>>>>> upstream/main
 
 const HIDDEN = -1;
 
@@ -81,13 +76,8 @@ const prefix = sort ? `/${sort}` : "";
                 >
                     {p}
                 </div>
-<<<<<<< HEAD
-            return <a href={url(getPageUrl(p), lang)} aria-label=`Page ${p}`
-                class="transition flex items-center justify-center w-11 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-black/75 dark:text-white/75"
-=======
             return <a href={url(getPageUrl(p))} aria-label=`Page ${p}`
                 class="transition flex items-center justify-center w-11 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-white/75"
->>>>>>> upstream/main
             >{p}</a>
         })}
     </div>
