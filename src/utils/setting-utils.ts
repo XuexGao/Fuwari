@@ -1,8 +1,6 @@
 import { expressiveCodeConfig } from "@/config";
 import type { LIGHT_DARK_MODE } from "@/types/config";
-import {
-	DARK_MODE,
-} from "@constants/constants.ts";
+import { DARK_MODE } from "@constants/constants.ts";
 
 export function getDefaultHue(): number {
 	const fallback = "250";

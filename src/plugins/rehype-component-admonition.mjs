@@ -28,7 +28,7 @@ export function AdmonitionComponent(properties, children, type) {
 	};
 
 	const isAI = type.toLowerCase() === "ai";
-	
+
 	let label = null;
 	if (properties?.["has-directive-label"]) {
 		label = children[0]; // The first child is the label
@@ -40,9 +40,10 @@ export function AdmonitionComponent(properties, children, type) {
 		children.push(h("div", { class: "bdm-footer" }, properties.title));
 	}
 
-	const displayTitle = (!isAI && label)
-		? label
-		: titleMap[type.toLowerCase()] ?? type.toUpperCase();
+	const displayTitle =
+		!isAI && label
+			? label
+			: (titleMap[type.toLowerCase()] ?? type.toUpperCase());
 
 	return h("blockquote", { class: `admonition bdm-${type}` }, [
 		h("span", { class: "bdm-title" }, displayTitle),

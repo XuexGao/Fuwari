@@ -4,8 +4,6 @@ import { Icon } from "astro-icon/components";
 import { umamiConfig } from "../config";
 import { formatPostDateForDisplay } from "../utils/date-utils";
 import { url, getDir } from "../utils/url-utils";
-import I18n from "./I18n.astro";
-import { Translation } from "../i18n/translation";
 
 interface Props {
 	class: string;
@@ -26,7 +24,6 @@ const className = Astro.props.class;
 ---
 
 <div class:list={["flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2", className]}>
-    <!-- publish date -->
     {!hidePublishedDate && (
         <div class="flex items-center">
             <div class="meta-icon">
@@ -36,7 +33,6 @@ const className = Astro.props.class;
         </div>
     )}
 
-    <!-- update date -->
     {!hideUpdateDate && updated && updated.getTime() !== published.getTime() && (
         <div class="flex items-center">
             <div class="meta-icon"
@@ -47,24 +43,15 @@ const className = Astro.props.class;
         </div>
     )}
 
-    <!-- page views & visitors -->
     {slug && (
         <>
             <div class="flex items-center">
                 <div class="meta-icon">
                     <Icon name="material-symbols:visibility-outline-rounded" class="text-xl"></Icon>
                 </div>
-                <span class="text-50 text-sm font-medium" id={`page-views-${slug}`}>0 <I18n key={Translation.Views} /></span>
+                <span class="text-50 text-sm font-medium" id={`page-views-${slug}`}>0 次</span>
             </div>
-            <!--
-            <div class="flex items-center">
-                <div class="meta-icon">
-                    <Icon name="material-symbols:person" class="text-xl"></Icon>
-                </div>
-                <span class="text-50 text-sm font-medium" id={`page-visitors-${slug}`}>0 <I18n key={Translation.Visitors} /></span>
-            </div>
-            -->
-        </>
+            </>
     )}
 </div>
 
@@ -114,14 +101,8 @@ const className = Astro.props.class;
                     views = data.pageviews.value;
                 }
 
+                // 直接写死后缀，删掉那堆繁琐的 window.i18n 判断
                 let suffix = " 次";
-                if (window.i18n && window.Translation) {
-                    if (window.Translation.Views) {
-                        suffix = " " + window.i18n(window.Translation.Views);
-                    } else if (window.Translation.views) {
-                        suffix = " " + window.i18n(window.Translation.views);
-                    }
-                }
 
                 // 【核心修改】调用动画，把 suffix (后缀) 传进去
                 animateValue(viewsElement, 0, views, 800, suffix);

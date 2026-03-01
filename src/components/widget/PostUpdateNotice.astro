@@ -1,0 +1,67 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	publishedAt: string | Date;
+	lastUpdated: string | Date;
+}
+
+const { publishedAt, lastUpdated } = Astro.props;
+const publishedStr =
+	publishedAt instanceof Date ? publishedAt.toISOString() : publishedAt;
+const updatedStr =
+	lastUpdated instanceof Date ? lastUpdated.toISOString() : lastUpdated;
+---
+
+<div id="outdated-notice" class="hidden mb-6 p-4 rounded-xl bg-[var(--license-block-bg)] border border-[var(--line-divider)] items-center gap-3 text-white/80 onload-animation">
+    <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center shrink-0">
+        <Icon name="material-symbols:info-outline-rounded" class="text-xl text-black/70" />
+    </div>
+    <div class="text-sm leading-relaxed flex flex-col sm:flex-row sm:items-center gap-2">
+        <span id="outdated-message">正在计算文章时效性...</span>
+        <a id="history-link" href="#revision-history" class="hidden items-center gap-1 px-2 py-1 rounded bg-[var(--primary)] text-black/70 text-xs font-bold hover:opacity-80 transition-all w-fit whitespace-nowrap shrink-0">
+            <Icon name="material-symbols:history-rounded" class="text-sm" />
+            查看修订历史
+        </a>
+    </div>
+</div>
+
+<script define:vars={{ publishedAt: publishedStr, lastUpdated: updatedStr }}>
+    function updateNotice() {
+        const notice = document.getElementById('outdated-notice');
+        const message = document.getElementById('outdated-message');
+        const historyLink = document.getElementById('history-link');
+        if (!notice || !message) return;
+
+        const publishedDate = new Date(publishedAt);
+        const updatedDate = new Date(lastUpdated);
+        const now = new Date();
+        
+        const diffTimeUpdated = Math.abs(now - updatedDate);
+        const diffDaysUpdated = Math.floor(diffTimeUpdated / (1000 * 60 * 60 * 24));
+
+        const diffTimePublished = Math.abs(now - publishedDate);
+        const diffDaysPublished = Math.floor(diffTimePublished / (1000 * 60 * 60 * 24));
+
+        let statusText = "";
+        if (diffDaysUpdated === 0) {
+            statusText = "这篇文章今天刚刚更新，内容非常新鲜。";
+            if (historyLink) historyLink.classList.add('hidden');
+        } else {
+            statusText = `文章初次发布于 ${diffDaysPublished} 天前，最后修改于 ${diffDaysUpdated} 天前，部分技术细节可能已随时间演变，请结合实际情况参考。`;
+            if (historyLink) {
+                historyLink.classList.remove('hidden');
+                historyLink.classList.add('flex');
+            }
+        }
+
+        message.innerText = statusText;
+        
+        notice.classList.remove('hidden');
+        notice.classList.add('flex');
+    }
+
+    updateNotice();
+
+    document.addEventListener('swup:contentReplaced', updateNotice);
+</script>

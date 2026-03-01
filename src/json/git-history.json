@@ -1,183 +1,10 @@
 {
-	"zte-f450-bridge.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "7944e59df6ec4550cfc309e218fbc31f801c7bac",
-			"date": "2025-11-01 14:56:28 +0800",
-			"message": "posts: 添加ZTE光猫F450不拆机获取超密教程"
-		}
-	],
-	"wyy-timestrap.md": [
-		{
-			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
-			"date": "2025-08-01 08:32:28 +0800",
-			"message": "!update: 将封面图也由R2更改为Netlify"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "6f2db52a936c30d1d0e9c3061f8e0e4692e17139",
-			"date": "2025-07-27 19:57:09 +0800",
-			"message": "docs: 更新文档中的图片链接和超链接"
-		},
-		{
-			"hash": "29cde4bbddf75ab12bc16a35590f7cd1f36056d8",
-			"date": "2025-07-27 18:31:04 +0800",
-			"message": "posts: 添加网易云音乐获取歌词时间戳的教程文档"
-		}
-	],
-	"you-is-me-huh.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "c73695b917e3321b4072baeb7ae3b71f245df0fb",
-			"date": "2025-08-12 16:12:12 +0800",
-			"message": "docs(posts): 更新文章中的链接格式以增强可读性"
-		},
-		{
-			"hash": "2e980d6b3ed5619dbcf8389421e3f52d7d0c4ed4",
-			"date": "2025-08-12 15:54:42 +0800",
-			"message": "posts: 添加关于防止Fork仓库配置错误的博客文章"
-		}
-	],
-	"zeabur.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "b4f3f3748a4fe12381f62c6831146d1793cf8e28",
-			"date": "2025-09-03 07:01:34 +0800",
-			"message": "docs(posts): 更新Zeabur文章的描述信息以包含更多细节"
-		},
-		{
-			"hash": "6013013c208171f66265535f95e18c3794a0cf04",
-			"date": "2025-09-03 06:58:33 +0800",
-			"message": "posts: 加一篇介绍如何使用Zeabur部署k3s服务的博客文章，包含详细的操作步骤和截图说明"
-		}
-	],
-	"wx-zfb-card.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "acebb82a13d6e39def9035758d4529c000c47f84",
-			"date": "2025-11-11 09:49:47 +0800",
-			"message": "posts: 添加新文章《微信，支付宝，储蓄卡与信用卡的爱恨情仇》并更新相关图片资源"
-		},
-		{
-			"hash": "5b68bbb2bf46fb153178e66e07deea2fff0138b2",
-			"date": "2025-11-11 09:35:19 +0800",
-			"message": "posts: 添加新文章《微信，支付宝，储蓄卡与信用卡的爱恨情仇》并更新相关图片资源"
-		}
-	],
-	"WPwebplayer.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "3b002c586ee5dcff7946f5ea4d0935bcc922db1a",
-			"date": "2026-01-09 13:13:34 +0800",
-			"message": "feat(scripts): 添加删除图片路径空格的脚本"
-		},
-		{
-			"hash": "16514576551051cdc6773e439e86f11f73d6b359",
-			"date": "2025-08-09 22:31:03 +0800",
-			"message": "Update WPwebplayer.md"
-		},
-		{
-			"hash": "eb9e1316eeae5dc59ee838ca200fe9d2a6e4b33d",
-			"date": "2025-08-09 22:28:48 +0800",
-			"message": "Update WPwebplayer.md"
-		},
-		{
-			"hash": "9fcc49cd84383c9fd7b9a853b2294e523a90ac39",
-			"date": "2025-08-09 21:41:31 +0800",
-			"message": "docs：【开源】WPwebplayer——简洁通用的网页播放器"
-		}
-	],
-	"wordpress-pinglunhuifu.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "e50846c9247ca8f3a7d3a98def1c00f0ef14586c",
-			"date": "2025-08-21 04:25:01 +0800",
-			"message": "Update wordpress-pinglunhuifu.md"
-		},
-		{
-			"hash": "173cbe9ffbfa92fc8ac031436cc485d854e64bbb",
-			"date": "2025-08-21 04:04:54 +0800",
-			"message": "feat(posts): 添加了好多文章"
-		}
-	],
-	"win11-to-win10.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "44ae8f6371aa2a5890248f4b3d78105f82bf8013",
-			"date": "2026-02-04 12:10:53 +0800",
-			"message": "chore: 重新启用图片压缩并移除不支持Sharp压缩的图片后缀源文件"
-		},
-		{
-			"hash": "62ec10d95598ea3d97473a56ba3202e801b9c59d",
-			"date": "2025-11-24 18:38:13 +0800",
-			"message": "posts: 添加远程控制文章和相关图片资源"
-		},
-		{
-			"hash": "4a317b81da7634c8d1c2ec34d7828aadad2bddfd",
-			"date": "2025-11-23 16:30:58 +0800",
-			"message": "posts: 新增Windows 11保留数据无损降级到Windows 10的教程"
-		}
-	],
-	"why-not-icp.md": [
-		{
-			"hash": "792c8199cf0f7c10edd4624f38473c4c3be2f7ad",
-			"date": "2025-11-21 10:03:40 +0800",
-			"message": "post: Yes ICP"
-		},
-		{
-			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
-			"date": "2025-08-01 08:32:28 +0800",
-			"message": "!update: 将封面图也由R2更改为Netlify"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "3635c5dab0f319f354091e1194163252fd9c2bfa",
-			"date": "2025-07-29 22:16:36 +0800",
-			"message": "posts: 更新关于IP站点恢复的信息"
-		},
-		{
-			"hash": "71eb43703839dac71158800165c6ff024b029115",
-			"date": "2025-07-29 21:50:05 +0800",
-			"message": "posts: 更新gh-proxy.md中的代码引用方式为GitHub仓库链接 新增why-not-icp.md文章解释未备案原因"
-		}
-	],
 	"whois.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -229,7 +56,201 @@
 			"message": "posts: 发布文章Whois查询那点事"
 		}
 	],
+	"why-not-icp.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "d304c4e6af53579a39fedc73eac4d2e1c72d92f6",
+			"date": "2026-02-22 17:50:08 +0800",
+			"message": "docs: 更新博客文章内容并删除过时页面"
+		},
+		{
+			"hash": "792c8199cf0f7c10edd4624f38473c4c3be2f7ad",
+			"date": "2025-11-21 10:03:40 +0800",
+			"message": "post: Yes ICP"
+		},
+		{
+			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
+			"date": "2025-08-01 08:32:28 +0800",
+			"message": "!update: 将封面图也由R2更改为Netlify"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "3635c5dab0f319f354091e1194163252fd9c2bfa",
+			"date": "2025-07-29 22:16:36 +0800",
+			"message": "posts: 更新关于IP站点恢复的信息"
+		},
+		{
+			"hash": "71eb43703839dac71158800165c6ff024b029115",
+			"date": "2025-07-29 21:50:05 +0800",
+			"message": "posts: 更新gh-proxy.md中的代码引用方式为GitHub仓库链接 新增why-not-icp.md文章解释未备案原因"
+		}
+	],
+	"win11-to-win10.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "3055362f918aad722e42ffa5d98281f9456d17b9",
+			"date": "2026-02-12 22:48:17 +0800",
+			"message": "docs(posts): 为两篇指南文章添加演示GIF图像"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "44ae8f6371aa2a5890248f4b3d78105f82bf8013",
+			"date": "2026-02-04 12:10:53 +0800",
+			"message": "chore: 重新启用图片压缩并移除不支持Sharp压缩的图片后缀源文件"
+		},
+		{
+			"hash": "62ec10d95598ea3d97473a56ba3202e801b9c59d",
+			"date": "2025-11-24 18:38:13 +0800",
+			"message": "posts: 添加远程控制文章和相关图片资源"
+		},
+		{
+			"hash": "4a317b81da7634c8d1c2ec34d7828aadad2bddfd",
+			"date": "2025-11-23 16:30:58 +0800",
+			"message": "posts: 新增Windows 11保留数据无损降级到Windows 10的教程"
+		}
+	],
+	"wx-zfb-card.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "acebb82a13d6e39def9035758d4529c000c47f84",
+			"date": "2025-11-11 09:49:47 +0800",
+			"message": "posts: 添加新文章《微信，支付宝，储蓄卡与信用卡的爱恨情仇》并更新相关图片资源"
+		},
+		{
+			"hash": "5b68bbb2bf46fb153178e66e07deea2fff0138b2",
+			"date": "2025-11-11 09:35:19 +0800",
+			"message": "posts: 添加新文章《微信，支付宝，储蓄卡与信用卡的爱恨情仇》并更新相关图片资源"
+		}
+	],
+	"wyy-timestrap.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
+			"date": "2025-08-01 08:32:28 +0800",
+			"message": "!update: 将封面图也由R2更改为Netlify"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "6f2db52a936c30d1d0e9c3061f8e0e4692e17139",
+			"date": "2025-07-27 19:57:09 +0800",
+			"message": "docs: 更新文档中的图片链接和超链接"
+		},
+		{
+			"hash": "29cde4bbddf75ab12bc16a35590f7cd1f36056d8",
+			"date": "2025-07-27 18:31:04 +0800",
+			"message": "posts: 添加网易云音乐获取歌词时间戳的教程文档"
+		}
+	],
+	"you-is-me-huh.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "c73695b917e3321b4072baeb7ae3b71f245df0fb",
+			"date": "2025-08-12 16:12:12 +0800",
+			"message": "docs(posts): 更新文章中的链接格式以增强可读性"
+		},
+		{
+			"hash": "2e980d6b3ed5619dbcf8389421e3f52d7d0c4ed4",
+			"date": "2025-08-12 15:54:42 +0800",
+			"message": "posts: 添加关于防止Fork仓库配置错误的博客文章"
+		}
+	],
+	"zte-f450-bridge.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "7944e59df6ec4550cfc309e218fbc31f801c7bac",
+			"date": "2025-11-01 14:56:28 +0800",
+			"message": "posts: 添加ZTE光猫F450不拆机获取超密教程"
+		}
+	],
+	"zeabur.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "b4f3f3748a4fe12381f62c6831146d1793cf8e28",
+			"date": "2025-09-03 07:01:34 +0800",
+			"message": "docs(posts): 更新Zeabur文章的描述信息以包含更多细节"
+		},
+		{
+			"hash": "6013013c208171f66265535f95e18c3794a0cf04",
+			"date": "2025-09-03 06:58:33 +0800",
+			"message": "posts: 加一篇介绍如何使用Zeabur部署k3s服务的博客文章，包含详细的操作步骤和截图说明"
+		}
+	],
 	"watermark.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -252,6 +273,16 @@
 		}
 	],
 	"warden-worker.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "66a01fdd2a8c4eac114e234835e59cece133f931",
+			"date": "2026-02-11 18:21:15 +0800",
+			"message": "更新warden-worker描述"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -313,7 +344,34 @@
 			"message": "posts: 添加warden-worker项目的博文，实现BitWarden在Cloudflare Worker上的部署指南"
 		}
 	],
+	"waf.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "d535c85f6f7db848147bded36ee0f01db08e9a12",
+			"date": "2026-01-18 04:29:35 +0800",
+			"message": "posts: 更新WAF防护策略文章内容"
+		},
+		{
+			"hash": "08f40e2d16db004294e656a5ae91499a6010ee70",
+			"date": "2026-01-09 12:09:40 +0800",
+			"message": "posts: 添加一篇详细介绍静态网站如何配置WAF防护的文章，包含静态网站被打死的原理以及如何避免被打死"
+		}
+	],
 	"vpn.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -375,83 +433,12 @@
 			"message": "初始化"
 		}
 	],
-	"waf.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "d535c85f6f7db848147bded36ee0f01db08e9a12",
-			"date": "2026-01-18 04:29:35 +0800",
-			"message": "posts: 更新WAF防护策略文章内容"
-		},
-		{
-			"hash": "08f40e2d16db004294e656a5ae91499a6010ee70",
-			"date": "2026-01-09 12:09:40 +0800",
-			"message": "posts: 添加一篇详细介绍静态网站如何配置WAF防护的文章，包含静态网站被打死的原理以及如何避免被打死"
-		}
-	],
-	"vercel-github.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "d484922726ee6081133971bbb9fc8ebcb130f85b",
-			"date": "2025-08-30 22:15:04 +0800",
-			"message": "posts: 利用Vercel Function搭建一个Github全站反代"
-		}
-	],
-	"vercel-redirects.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "a42ff8facb301281dd90b513cbb11965e0b0a553",
-			"date": "2025-09-02 06:40:21 +0800",
-			"message": "posts: 更新重定向文档并添加vercel重定向指南"
-		},
-		{
-			"hash": "87acd90f81bf7206f001868bba922e28cd60abe6",
-			"date": "2025-09-02 06:26:50 +0800",
-			"message": "ci: 添加vercel.json配置文件用于URL重定向"
-		},
-		{
-			"hash": "d6f8fd9a24c5decd981d77d48fd6edced33ce347",
-			"date": "2025-09-02 06:24:22 +0800",
-			"message": "build: 添加静态输出配置到astro配置"
-		},
-		{
-			"hash": "7357dd8781b2dfca4d5a086221c3a8fcce112a0b",
-			"date": "2025-07-11 02:33:43 +0800",
-			"message": "chore: 移除vercel.json中的缓存控制配置"
-		},
-		{
-			"hash": "b95e56d9502f08540a0b1c7960704efbb4de0f99",
-			"date": "2025-07-11 02:22:35 +0800",
-			"message": "ci(vercel): 简化缓存控制头配置"
-		},
-		{
-			"hash": "777fb0926049e5cd41eec1cbc9fc2ddfaddf9935",
-			"date": "2025-07-11 01:03:04 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "9c93e71fb23c301ab1cc131dfa375a11055c7fa7",
-			"date": "2025-07-11 00:46:22 +0800",
-			"message": "ci(vercel): 添加no-store缓存控制头"
-		},
-		{
-			"hash": "63671e0c0f78ce07cde199afdf6377d1b3a650dd",
-			"date": "2025-04-30 08:01:43 +0800",
-			"message": "Initial commit"
-		}
-	],
 	"vercel-deny.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -508,7 +495,64 @@
 			"message": "posts: 添加Vercel防火墙配置教程阻止ITDog测试"
 		}
 	],
+	"vercel-redirects.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "a42ff8facb301281dd90b513cbb11965e0b0a553",
+			"date": "2025-09-02 06:40:21 +0800",
+			"message": "posts: 更新重定向文档并添加vercel重定向指南"
+		},
+		{
+			"hash": "87acd90f81bf7206f001868bba922e28cd60abe6",
+			"date": "2025-09-02 06:26:50 +0800",
+			"message": "ci: 添加vercel.json配置文件用于URL重定向"
+		},
+		{
+			"hash": "d6f8fd9a24c5decd981d77d48fd6edced33ce347",
+			"date": "2025-09-02 06:24:22 +0800",
+			"message": "build: 添加静态输出配置到astro配置"
+		},
+		{
+			"hash": "7357dd8781b2dfca4d5a086221c3a8fcce112a0b",
+			"date": "2025-07-11 02:33:43 +0800",
+			"message": "chore: 移除vercel.json中的缓存控制配置"
+		},
+		{
+			"hash": "b95e56d9502f08540a0b1c7960704efbb4de0f99",
+			"date": "2025-07-11 02:22:35 +0800",
+			"message": "ci(vercel): 简化缓存控制头配置"
+		},
+		{
+			"hash": "777fb0926049e5cd41eec1cbc9fc2ddfaddf9935",
+			"date": "2025-07-11 01:03:04 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "9c93e71fb23c301ab1cc131dfa375a11055c7fa7",
+			"date": "2025-07-11 00:46:22 +0800",
+			"message": "ci(vercel): 添加no-store缓存控制头"
+		},
+		{
+			"hash": "63671e0c0f78ce07cde199afdf6377d1b3a650dd",
+			"date": "2025-04-30 08:01:43 +0800",
+			"message": "Initial commit"
+		}
+	],
 	"uptimerobot.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -521,6 +565,16 @@
 		}
 	],
 	"uptimeflare.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -557,7 +611,73 @@
 			"message": "posts: 添加UptimeFlare监控服务的文章"
 		}
 	],
-	"umami.md": [
+	"unknown-upload.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "c862f09cab3d488f178ba1232447eae31ad8774b",
+			"date": "2026-02-22 17:31:09 +0800",
+			"message": "docs(posts): 合并上传方案文章并添加方案对比"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "3cc393011ddaa87e9255d5ae44fa794366a7583c",
+			"date": "2025-11-08 12:02:49 +0800",
+			"message": "docs(posts): 在未知上传文章中添加视频链接"
+		},
+		{
+			"hash": "be95da0468b7849cb8c27b9a39473e2d7d57ccd3",
+			"date": "2025-11-08 11:41:26 +0800",
+			"message": "posts: 新增匿名文件上传功能文章，介绍如何使用EdgeOne Pages和对象存储实现匿名文件上传。在世界各地，只要有网，就能将你想要的文件带回家"
+		}
+	],
+	"web-bomb.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "ce55b60b11172101dbb0177f3445b1237594ec30",
+			"date": "2026-02-14 13:06:41 +0800",
+			"message": "docs: 修正web-bomb.md中的格式与标点错误"
+		},
+		{
+			"hash": "ad9425bf7b5a28b796f230a4c3d583b307e3dfdf",
+			"date": "2026-02-14 12:44:42 +0800",
+			"message": "docs: 在文章末尾添加鸣谢信息"
+		},
+		{
+			"hash": "1e0f556ac8047c46bf3a82aa5682cfee1da12a56",
+			"date": "2026-02-14 12:43:59 +0800",
+			"message": "posts: 新增Web压缩炸弹教程"
+		}
+	],
+	"win11-native-nvme.md": [
+		{
+			"hash": "5b3c56a32f0997ba6a05a5f4bffc0ba7eb4d3b5b",
+			"date": "2026-02-27 06:44:57 +0800",
+			"message": "posts: 添加新文章《一行命令拉爆你的Win11硬盘4K随机性能！》，介绍通过启用Windows 11隐藏功能来提升NVMe固态硬盘性能的方法。"
+		}
+	],
+	"static-view.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "99278cf91543f1e7217230bf2690dba3224b6cf3",
+			"date": "2025-10-11 19:42:12 +0800",
+			"message": "update: 更新Umami API路径和响应数据处理逻辑"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -589,85 +709,47 @@
 			"message": "1"
 		},
 		{
-			"hash": "5a9a9adf4d7e2aa352425160a37aa13464b0a7bb",
-			"date": "2025-07-13 03:09:40 +0800",
-			"message": "docs(posts): 更新umami文章内容"
+			"hash": "08ee3e223a3d20fa61b60aa78175a863593d4201",
+			"date": "2025-07-04 07:46:06 +0800",
+			"message": "docs(posts): 更新静态博客文章中的图片链接"
 		},
 		{
-			"hash": "446f18c90189fcc2b0a4debf18deed431dc892df",
-			"date": "2025-07-06 07:11:14 +0800",
-			"message": "docs: 添加Umami统计服务使用教程文档"
-		}
-	],
-	"unknown-upload.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "b3d16dea96eaff0d44957aaf54a2eabcc0db9eef",
+			"date": "2025-07-04 07:43:02 +0800",
+			"message": "posts: 更新图片链接和文档说明"
 		},
 		{
-			"hash": "3cc393011ddaa87e9255d5ae44fa794366a7583c",
-			"date": "2025-11-08 12:02:49 +0800",
-			"message": "docs(posts): 在未知上传文章中添加视频链接"
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
 		},
 		{
-			"hash": "be95da0468b7849cb8c27b9a39473e2d7d57ccd3",
-			"date": "2025-11-08 11:41:26 +0800",
-			"message": "posts: 新增匿名文件上传功能文章，介绍如何使用EdgeOne Pages和对象存储实现匿名文件上传。在世界各地，只要有网，就能将你想要的文件带回家"
-		}
-	],
-	"umami-migration.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
 		},
 		{
-			"hash": "2138f797200de088b7be4fda2c3039af84be20c7",
-			"date": "2025-12-05 11:06:00 +0800",
-			"message": "docs: 修正文档中的文件扩展名拼写错误"
+			"hash": "cad7e2eeb5c6e3c904a63187bc8d3c69ff276505",
+			"date": "2025-06-25 06:21:51 +0800",
+			"message": "posts: 更新文章：《静态博客也想展示文章浏览量？当然可以！》更新新的方法，直接针对Umami逆向"
 		},
 		{
-			"hash": "3144ed3a6db78a497f1699dd07f0a3de508bb6b1",
-			"date": "2025-12-05 10:51:25 +0800",
-			"message": "posts: 添加了umami从云端迁移到本地的详细教程文档。包含如何从Umami Cloud获取数据，以及本地对接PostgreSQL进行导入等操作。重点讲述了导入前解锁主键和导入后回锁主键"
-		}
-	],
-	"umami-local-2-render.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
 		},
 		{
-			"hash": "64e3158170cea41ec624afa9f240521fe9d8e823",
-			"date": "2025-08-28 15:50:07 +0800",
-			"message": "docs: 在文章中添加回滚说明"
-		},
-		{
-			"hash": "6e3d8e55a699695e1a9c1330be82a8b7efb60e36",
-			"date": "2025-08-28 10:44:22 +0800",
-			"message": "docs: 修正umami部署文档中的镜像名称错误"
-		},
-		{
-			"hash": "8806a5b25ee3b32a033de79dff14f17f0ae7ce17",
-			"date": "2025-08-28 10:35:47 +0800",
-			"message": "posts: 添加Umami迁移文档"
-		}
-	],
-	"translations-betterstack.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "ad1442ccd38d65eec7a105117e44483d4cef08ae",
-			"date": "2025-08-28 19:05:22 +0800",
-			"message": "posts: 添加BetterStack状态页面汉化文档和图片资源"
+			"hash": "bd40f24691accb06e4bc8a77e56edf580dc0cdec",
+			"date": "2025-06-18 01:55:47 +0800",
+			"message": "posts: 发布文章：静态博客也想展示文章浏览量？当然可以！"
 		}
 	],
 	"static-web.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "414614bf4fca64205c64ecc146e8ee63b415b6ce",
 			"date": "2025-08-13 16:40:15 +0800",
@@ -761,6 +843,11 @@
 	],
 	"swup-js.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -788,6 +875,11 @@
 	],
 	"tg-emoji.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -803,11 +895,82 @@
 			"message": "posts: 添加一篇关于如何制作Telegram Emoji的教程文章，包含详细步骤说明和所需图片资源"
 		}
 	],
-	"static-view.md": [
+	"translations-betterstack.md": [
 		{
-			"hash": "99278cf91543f1e7217230bf2690dba3224b6cf3",
-			"date": "2025-10-11 19:42:12 +0800",
-			"message": "update: 更新Umami API路径和响应数据处理逻辑"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "ad1442ccd38d65eec7a105117e44483d4cef08ae",
+			"date": "2025-08-28 19:05:22 +0800",
+			"message": "posts: 添加BetterStack状态页面汉化文档和图片资源"
+		}
+	],
+	"umami-local-2-render.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "64e3158170cea41ec624afa9f240521fe9d8e823",
+			"date": "2025-08-28 15:50:07 +0800",
+			"message": "docs: 在文章中添加回滚说明"
+		},
+		{
+			"hash": "6e3d8e55a699695e1a9c1330be82a8b7efb60e36",
+			"date": "2025-08-28 10:44:22 +0800",
+			"message": "docs: 修正umami部署文档中的镜像名称错误"
+		},
+		{
+			"hash": "8806a5b25ee3b32a033de79dff14f17f0ae7ce17",
+			"date": "2025-08-28 10:35:47 +0800",
+			"message": "posts: 添加Umami迁移文档"
+		}
+	],
+	"umami-migration.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "2138f797200de088b7be4fda2c3039af84be20c7",
+			"date": "2025-12-05 11:06:00 +0800",
+			"message": "docs: 修正文档中的文件扩展名拼写错误"
+		},
+		{
+			"hash": "3144ed3a6db78a497f1699dd07f0a3de508bb6b1",
+			"date": "2025-12-05 10:51:25 +0800",
+			"message": "posts: 添加了umami从云端迁移到本地的详细教程文档。包含如何从Umami Cloud获取数据，以及本地对接PostgreSQL进行导入等操作。重点讲述了导入前解锁主键和导入后回锁主键"
+		}
+	],
+	"umami.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
@@ -840,59 +1003,22 @@
 			"message": "1"
 		},
 		{
-			"hash": "08ee3e223a3d20fa61b60aa78175a863593d4201",
-			"date": "2025-07-04 07:46:06 +0800",
-			"message": "docs(posts): 更新静态博客文章中的图片链接"
+			"hash": "5a9a9adf4d7e2aa352425160a37aa13464b0a7bb",
+			"date": "2025-07-13 03:09:40 +0800",
+			"message": "docs(posts): 更新umami文章内容"
 		},
 		{
-			"hash": "b3d16dea96eaff0d44957aaf54a2eabcc0db9eef",
-			"date": "2025-07-04 07:43:02 +0800",
-			"message": "posts: 更新图片链接和文档说明"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "cad7e2eeb5c6e3c904a63187bc8d3c69ff276505",
-			"date": "2025-06-25 06:21:51 +0800",
-			"message": "posts: 更新文章：《静态博客也想展示文章浏览量？当然可以！》更新新的方法，直接针对Umami逆向"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "bd40f24691accb06e4bc8a77e56edf580dc0cdec",
-			"date": "2025-06-18 01:55:47 +0800",
-			"message": "posts: 发布文章：静态博客也想展示文章浏览量？当然可以！"
-		}
-	],
-	"sshfs.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "910d27fc2d53f48446251ebe717f679bde7710c9",
-			"date": "2025-08-04 12:42:25 +0800",
-			"message": "posts: 删除矩阵相关的加入教程 对EO反代一切添加一个明确的方法 添加Giscus+反垃圾评论集成方法 添加“光棱坦克”制作方法 添加详细的操作结果针对于SSHFS 仅将 2x.nz 视为官方域名"
-		},
-		{
-			"hash": "894e8aae5b87102bdde8063ef7cf151f4f3f019f",
-			"date": "2025-08-03 19:21:03 +0800",
-			"message": "posts: 添加SSHFS教程文章和相关图片资源"
+			"hash": "446f18c90189fcc2b0a4debf18deed431dc892df",
+			"date": "2025-07-06 07:11:14 +0800",
+			"message": "docs: 添加Umami统计服务使用教程文档"
 		}
 	],
 	"starrail-fast.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -956,6 +1082,11 @@
 	],
 	"static-redirect-group.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -966,7 +1097,34 @@
 			"message": "posts: 添加静态重定向组短链服务及相关文档"
 		}
 	],
+	"sshfs.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "910d27fc2d53f48446251ebe717f679bde7710c9",
+			"date": "2025-08-04 12:42:25 +0800",
+			"message": "posts: 删除矩阵相关的加入教程 对EO反代一切添加一个明确的方法 添加Giscus+反垃圾评论集成方法 添加“光棱坦克”制作方法 添加详细的操作结果针对于SSHFS 仅将 2x.nz 视为官方域名"
+		},
+		{
+			"hash": "894e8aae5b87102bdde8063ef7cf151f4f3f019f",
+			"date": "2025-08-03 19:21:03 +0800",
+			"message": "posts: 添加SSHFS教程文章和相关图片资源"
+		}
+	],
 	"sixqi-py.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -1010,6 +1168,11 @@
 	],
 	"shorter-url.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -1035,29 +1198,12 @@
 			"message": "posts: 新增短链服务教程文章，包含搭建指南、架构图和示例图片"
 		}
 	],
-	"self-host-fastip.md": [
-		{
-			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
-			"date": "2025-08-01 08:32:28 +0800",
-			"message": "!update: 将封面图也由R2更改为Netlify"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "0779a358eeace9aa2637b773a1f19eacdf8890be",
-			"date": "2025-07-22 20:32:45 +0800",
-			"message": "posts: 添加自建CDN优选域名教程文章"
-		}
-	],
 	"serverless-function.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -1084,7 +1230,61 @@
 			"message": "posts: 添加关于Serverless平台的文章，介绍其是什么，优势和使用场景，并包含"
 		}
 	],
+	"self-host-matrix.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "350de23bc3c5f9e8e59fda13a6260f958a814dc8",
+			"date": "2025-08-06 21:23:52 +0800",
+			"message": "posts: 更新Matrix服务器配置文档"
+		},
+		{
+			"hash": "fe8055feaeb8b3c996cce1971b952d81ffaefad9",
+			"date": "2025-08-02 17:43:40 +0800",
+			"message": "posts: 添加Matrix自建聊天服务器教程并更新关于页面"
+		}
+	],
+	"self-host-fastip.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
+			"date": "2025-08-01 08:32:28 +0800",
+			"message": "!update: 将封面图也由R2更改为Netlify"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "0779a358eeace9aa2637b773a1f19eacdf8890be",
+			"date": "2025-07-22 20:32:45 +0800",
+			"message": "posts: 添加自建CDN优选域名教程文章"
+		}
+	],
 	"secbit.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -1126,24 +1326,29 @@
 			"message": "posts: 添加SecBit MCDN香港区域质量测评文章"
 		}
 	],
-	"self-host-matrix.md": [
+	"rvc.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "350de23bc3c5f9e8e59fda13a6260f958a814dc8",
-			"date": "2025-08-06 21:23:52 +0800",
-			"message": "posts: 更新Matrix服务器配置文档"
-		},
-		{
-			"hash": "fe8055feaeb8b3c996cce1971b952d81ffaefad9",
-			"date": "2025-08-02 17:43:40 +0800",
-			"message": "posts: 添加Matrix自建聊天服务器教程并更新关于页面"
+			"hash": "a81f6996e02c2a015d187316112caaeb566181e6",
+			"date": "2025-10-13 14:58:41 +0800",
+			"message": "posts: 添加关于使用RVC进行AI翻唱的详细教程文章，包含训练音色模型和使用Replay进行翻唱的完整流程说明"
 		}
 	],
 	"s3cloudrive.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -1220,76 +1425,12 @@
 			"message": "添加Vercel对接S3对象存储的教程"
 		}
 	],
-	"rewrite-qa.md": [
+	"qqbot.md": [
 		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
-			"date": "2025-04-30 08:38:25 +0800",
-			"message": "初始化"
-		}
-	],
-	"rvc.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "a81f6996e02c2a015d187316112caaeb566181e6",
-			"date": "2025-10-13 14:58:41 +0800",
-			"message": "posts: 添加关于使用RVC进行AI翻唱的详细教程文章，包含训练音色模型和使用Replay进行翻唱的完整流程说明"
-		}
-	],
-	"reset-bedroom.md": [
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -1346,19 +1487,49 @@
 			"message": "初始化"
 		}
 	],
-	"review-ddos.md": [
+	"random-url-gen.md": [
 		{
-			"hash": "be682f27c406c3b2786fe3da4a6a63899e258770",
-			"date": "2026-02-10 13:02:55 +0800",
-			"message": "docs: 修正博客文章中的标点符号错误"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
-			"hash": "db0a8c4085af60f2582057d7a93993dfcdc14721",
-			"date": "2026-02-10 12:49:44 +0800",
-			"message": "posts: 新增DDOS攻击复盘文章及相关图片资源"
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "4950388a8da02c97af112548b61cbaf71260eaeb",
+			"date": "2026-01-15 15:52:44 +0800",
+			"message": "docs: 更新随机图API域名并移除相关脚本"
+		},
+		{
+			"hash": "da64093ccab3012ba727e98f02da0b69b5ff4ad8",
+			"date": "2025-12-29 12:02:13 +0800",
+			"message": "docs: 优化随机URL生成文章格式与可读性"
+		},
+		{
+			"hash": "57f44bfd922f3cce1a6eaa8b5804bfc09751e16d",
+			"date": "2025-12-29 11:51:07 +0800",
+			"message": "posts: 添加了随机URL生成功能的实现 的文章，包括三种不同技术方案： 1. 传统边缘函数方案 2. Cloudflare规则方案 3. 纯前端JS方案"
+		},
+		{
+			"hash": "3b02cab54f106c8024334022317bf9070ebabcce",
+			"date": "2025-12-29 11:33:54 +0800",
+			"message": "posts: 添加随机URL生成功能及相关文档和图片资源"
 		}
 	],
-	"replay.md": [
+	"reality.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "dee6c423ccaf144fb3fd7e02961c752d16e88485",
+			"date": "2025-09-09 00:35:57 +0800",
+			"message": "posts: 简化reality部署指南并添加源码链接"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -1410,24 +1581,22 @@
 			"message": "更改图源URL"
 		},
 		{
-			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
-			"date": "2025-04-30 08:38:25 +0800",
-			"message": "初始化"
-		}
-	],
-	"rename.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "87c5d435314831b9d86be5d84a882b2b052af36c",
+			"date": "2025-05-01 19:44:38 +0800",
+			"message": "更新Reality协议的代理服务端搭建教程，添加封面图片"
 		},
 		{
-			"hash": "581d8a94b1048e5193b73f6a602e8eff35db7362",
-			"date": "2025-09-06 02:23:20 +0800",
-			"message": "posts: 更新随机图API架构说明并添加重命名插件文章"
+			"hash": "731e206dd5f180166ad4d70923687515b3b95e7f",
+			"date": "2025-05-01 19:43:21 +0800",
+			"message": "添加Reality协议的代理服务端搭建教程"
 		}
 	],
 	"record.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "d77c485f00c192de3bfd9f40ed75afe313d0cc1b",
 			"date": "2026-01-24 16:19:25 +0800",
@@ -1616,6 +1785,11 @@
 	],
 	"remote.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -1631,113 +1805,29 @@
 			"message": "posts: 添加远程控制文章和相关图片资源"
 		}
 	],
-	"random-url-gen.md": [
+	"rename.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "4950388a8da02c97af112548b61cbaf71260eaeb",
-			"date": "2026-01-15 15:52:44 +0800",
-			"message": "docs: 更新随机图API域名并移除相关脚本"
-		},
-		{
-			"hash": "da64093ccab3012ba727e98f02da0b69b5ff4ad8",
-			"date": "2025-12-29 12:02:13 +0800",
-			"message": "docs: 优化随机URL生成文章格式与可读性"
-		},
-		{
-			"hash": "57f44bfd922f3cce1a6eaa8b5804bfc09751e16d",
-			"date": "2025-12-29 11:51:07 +0800",
-			"message": "posts: 添加了随机URL生成功能的实现 的文章，包括三种不同技术方案： 1. 传统边缘函数方案 2. Cloudflare规则方案 3. 纯前端JS方案"
-		},
-		{
-			"hash": "3b02cab54f106c8024334022317bf9070ebabcce",
-			"date": "2025-12-29 11:33:54 +0800",
-			"message": "posts: 添加随机URL生成功能及相关文档和图片资源"
+			"hash": "581d8a94b1048e5193b73f6a602e8eff35db7362",
+			"date": "2025-09-06 02:23:20 +0800",
+			"message": "posts: 更新随机图API架构说明并添加重命名插件文章"
 		}
 	],
-	"reality.md": [
+	"replay.md": [
 		{
-			"hash": "dee6c423ccaf144fb3fd7e02961c752d16e88485",
-			"date": "2025-09-09 00:35:57 +0800",
-			"message": "posts: 简化reality部署指南并添加源码链接"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "87c5d435314831b9d86be5d84a882b2b052af36c",
-			"date": "2025-05-01 19:44:38 +0800",
-			"message": "更新Reality协议的代理服务端搭建教程，添加封面图片"
-		},
-		{
-			"hash": "731e206dd5f180166ad4d70923687515b3b95e7f",
-			"date": "2025-05-01 19:43:21 +0800",
-			"message": "添加Reality协议的代理服务端搭建教程"
-		}
-	],
-	"qiyewx-deepseek.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "b017b7da8bb7210dbb3578424d4de8798781862a",
-			"date": "2025-08-07 04:15:37 +0800",
-			"message": "posts: 发布文章： 你说什么？企业微信能免费用Deepseek？！还能调成猫娘？！！"
-		}
-	],
-	"qqbot.md": [
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -1794,20 +1884,175 @@
 			"message": "初始化"
 		}
 	],
-	"py-uploadserver.md": [
+	"reset-bedroom.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+		},
+		{
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
+		},
+		{
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
+		},
+		{
+			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
+			"date": "2025-05-16 18:11:52 +0800",
+			"message": "更改图源URL"
+		},
+		{
+			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
+			"date": "2025-04-30 08:38:25 +0800",
+			"message": "初始化"
+		}
+	],
+	"review-ddos.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "435bdd3bb8e7f88a103716308b731a50b2f52c58",
+			"date": "2026-02-21 21:20:42 +0800",
+			"message": "docs: 合并并重构DDoS攻击相关博客文章"
+		},
+		{
+			"hash": "be682f27c406c3b2786fe3da4a6a63899e258770",
+			"date": "2026-02-10 13:02:55 +0800",
+			"message": "docs: 修正博客文章中的标点符号错误"
+		},
+		{
+			"hash": "db0a8c4085af60f2582057d7a93993dfcdc14721",
+			"date": "2026-02-10 12:49:44 +0800",
+			"message": "posts: 新增DDOS攻击复盘文章及相关图片资源"
+		}
+	],
+	"rewrite-qa.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "b2782e117695703b33bb913b455e62368e9be193",
-			"date": "2025-12-11 09:45:01 +0800",
-			"message": "posts: 添加py-uploadserver文章及相关图片资源"
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+		},
+		{
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
+		},
+		{
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
+		},
+		{
+			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
+			"date": "2025-05-16 18:11:52 +0800",
+			"message": "更改图源URL"
+		},
+		{
+			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
+			"date": "2025-04-30 08:38:25 +0800",
+			"message": "初始化"
 		}
 	],
-	"posts-diff.md": [],
+	"qiyewx-deepseek.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "b017b7da8bb7210dbb3578424d4de8798781862a",
+			"date": "2025-08-07 04:15:37 +0800",
+			"message": "posts: 发布文章： 你说什么？企业微信能免费用Deepseek？！还能调成猫娘？！！"
+		}
+	],
 	"proxy-tgweb.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -1836,6 +2081,16 @@
 	],
 	"privacy-policy.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "e991bcfcd03f7aad5d3d58c59576095c19d1fba3",
+			"date": "2026-02-12 12:05:13 +0800",
+			"message": "docs(隐私政策): 更新Cookie列表并添加Cloudflare Analytics"
+		},
+		{
 			"hash": "aca8d4db106cf29f26036c1c324d37c4332b3232",
 			"date": "2026-02-04 11:02:11 +0800",
 			"message": "docs: 更新隐私政策文档并调整分析脚本配置"
@@ -1851,64 +2106,17 @@
 			"message": "feat: 添加隐私政策页面和Cookie同意管理"
 		}
 	],
-	"phira-mp.md": [
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
-			"date": "2025-04-30 08:38:25 +0800",
-			"message": "初始化"
-		}
-	],
 	"pin.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -2435,216 +2643,24 @@
 			"message": "posts: 添加置顶功能，更新帖子排序逻辑，新增加群向导文档"
 		}
 	],
-	"paoshoushou.md": [
+	"posts-diff.md": [
 		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
-			"hash": "4877125885347b9919669a28cef7746c5a5a2885",
-			"date": "2025-08-21 04:24:44 +0800",
-			"message": "Update paoshoushou.md"
-		},
-		{
-			"hash": "674f00f92ecc537277275437318a9e2417743198",
-			"date": "2025-08-21 04:21:53 +0800",
-			"message": "fix(paoshoushou): 修正发布日期格式为日期类型"
-		},
-		{
-			"hash": "0c1f955d38b910702fd1d1095d2e6c7e63f4d224",
-			"date": "2025-08-21 04:17:36 +0800",
-			"message": "style(paoshoushou): 统一YAML格式，修正字段引号和缩进"
-		},
-		{
-			"hash": "173cbe9ffbfa92fc8ac031436cc485d854e64bbb",
-			"date": "2025-08-21 04:04:54 +0800",
-			"message": "feat(posts): 添加了好多文章"
+			"hash": "4597b3d313c8aa7317b96931d4939430fd2a85b6",
+			"date": "2026-02-11 12:22:54 +0800",
+			"message": "posts: 添加如何实现文章修订记录功能的文章"
 		}
 	],
-	"other-sites.md": [
+	"phira-mp.md": [
 		{
-			"hash": "4950388a8da02c97af112548b61cbaf71260eaeb",
-			"date": "2026-01-15 15:52:44 +0800",
-			"message": "docs: 更新随机图API域名并移除相关脚本"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
-		{
-			"hash": "6a3e35b146116e14f783ca8f949533698e0766d0",
-			"date": "2026-01-02 02:51:04 +0800",
-			"message": "docs: 在other-sites.md中添加新链接"
-		},
-		{
-			"hash": "5aa4748363111d99f368bf200cfce92732f7b98b",
-			"date": "2026-01-01 19:42:26 +0800",
-			"message": "feat(导航): 添加其他网站页面和URL卡片组件"
-		}
-	],
-	"onedrive-index.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "26747694797911248bff809eeb9ea5e8ac59b7a9",
-			"date": "2025-11-22 23:20:47 +0800",
-			"message": "docs: 更新文章内容并添加相关图片"
-		},
-		{
-			"hash": "5f9bb23997a4b2a9dd82250f3b22152f9713e036",
-			"date": "2025-11-14 15:22:09 +0800",
-			"message": "posts: 添加关于如何使用Vercel部署onedrive-index项目的教程文档"
-		}
-	],
-	"oci.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "bf458c39ba3c21d3a5f0b9e539db690363b38c07",
-			"date": "2025-09-09 06:25:37 +0800",
-			"message": "posts: 添加OCI文档关于IPv6的配置说明并更新依赖"
-		},
-		{
-			"hash": "b521a27c7583f8b17566f2d390955483316cacf2",
-			"date": "2025-09-09 01:27:00 +0800",
-			"message": "posts: 添加关于闲置实例回收的重要说明"
-		},
-		{
-			"hash": "df50c5a240a4d560c46f0d2f14532a247cfa9642",
-			"date": "2025-09-08 03:28:38 +0800",
-			"message": "docs(oci): 添加OCI配置说明和图片"
-		},
-		{
-			"hash": "1545e76e284c5266f9a1fc99ecc2462300f881db",
-			"date": "2025-09-08 01:21:30 +0800",
-			"message": "posts: 添加Oracle云使用指南及踩坑记录文档"
-		}
-	],
-	"noobai-vpre.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "a7420f2bf2c6b0df7304da0c8d7dfd7af463d513",
-			"date": "2025-05-13 15:08:21 +0800",
-			"message": "更新NoobAI-V预测模型教程文章标题和描述"
-		},
-		{
-			"hash": "83657c164370167ee3cb84bf3da35d6da0c37e30",
-			"date": "2025-05-13 12:53:46 +0800",
-			"message": "加了个）"
-		},
-		{
-			"hash": "c9fa65d3d1c996173b4b65e9c926c14c4ef16eb2",
-			"date": "2025-05-13 12:49:15 +0800",
-			"message": "更新教程文章中的图片链接，替换为外部存储地址"
-		},
-		{
-			"hash": "224aa5dc8af36a653e516bef76c6f47846016ce1",
-			"date": "2025-05-13 12:44:22 +0800",
-			"message": "删除多余的图片资源文件"
-		},
-		{
-			"hash": "d0b790f7d301353e940a6add95d036a037802956",
-			"date": "2025-05-13 12:31:22 +0800",
-			"message": "添加NoobAI-V预测模型教程及相关资源"
-		}
-	],
-	"obsidian.md": [
-		{
-			"hash": "e29cb5f9babe9dc04f60ecf6196ec44327d191b9",
-			"date": "2026-02-10 13:38:03 +0800",
-			"message": "改错字"
-		},
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "42e4af698e4011f2ea2a569329e9f364b432dc0d",
-			"date": "2025-09-30 11:46:11 +0800",
-			"message": "docs(posts): 更新黑曜石和mac文章内容并调整格式"
-		},
-		{
-			"hash": "5a1efd8bb4f57d0057dade40d2db2b26a0018cf0",
-			"date": "2025-09-17 04:34:55 +0800",
-			"message": "docs(posts): 在obsidian.md中添加视频链接并更新workspace配置"
-		},
-		{
-			"hash": "0dc07ba698e0cbf31d48bc49d96062b321ff023d",
-			"date": "2025-09-17 03:19:34 +0800",
-			"message": "posts: 发布黑曜石MarkDown编辑器文章"
-		}
-	],
-	"nezha.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "def9510c1c343fd5fd2ead637f11eea87a2ae48f",
-			"date": "2025-09-03 05:21:24 +0800",
-			"message": "posts: 添加哪吒监控搭建教程"
-		}
-	],
-	"new-nas.md": [
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -2701,7 +2717,353 @@
 			"message": "初始化"
 		}
 	],
+	"post-diff-guide.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "6a00dca2a21cddb19223be4e83a62c975e85a944",
+			"date": "2026-02-22 04:21:58 +0800",
+			"message": "测试生产Diff"
+		},
+		{
+			"hash": "2b89f774e416151d63acbdd76be458abbb31429d",
+			"date": "2026-02-22 03:25:18 +0800",
+			"message": "docs: 移除文章标题和描述中的夸张用语"
+		},
+		{
+			"hash": "3f7c2a295a3a5eef0555f7bff7299f3235f3fc2c",
+			"date": "2026-02-22 03:02:33 +0800",
+			"message": "docs: 更新文章标题和描述以增强语气"
+		},
+		{
+			"hash": "867cb7efd0f36fe27d110f9fcd0ff04432749b9f",
+			"date": "2026-02-22 01:59:04 +0800",
+			"message": "feat(文章更新提醒): 新增文章更新提醒功能调试工具与指南"
+		}
+	],
+	"onedrive-index.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "26747694797911248bff809eeb9ea5e8ac59b7a9",
+			"date": "2025-11-22 23:20:47 +0800",
+			"message": "docs: 更新文章内容并添加相关图片"
+		},
+		{
+			"hash": "5f9bb23997a4b2a9dd82250f3b22152f9713e036",
+			"date": "2025-11-14 15:22:09 +0800",
+			"message": "posts: 添加关于如何使用Vercel部署onedrive-index项目的教程文档"
+		}
+	],
+	"oci.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "bf458c39ba3c21d3a5f0b9e539db690363b38c07",
+			"date": "2025-09-09 06:25:37 +0800",
+			"message": "posts: 添加OCI文档关于IPv6的配置说明并更新依赖"
+		},
+		{
+			"hash": "b521a27c7583f8b17566f2d390955483316cacf2",
+			"date": "2025-09-09 01:27:00 +0800",
+			"message": "posts: 添加关于闲置实例回收的重要说明"
+		},
+		{
+			"hash": "df50c5a240a4d560c46f0d2f14532a247cfa9642",
+			"date": "2025-09-08 03:28:38 +0800",
+			"message": "docs(oci): 添加OCI配置说明和图片"
+		},
+		{
+			"hash": "1545e76e284c5266f9a1fc99ecc2462300f881db",
+			"date": "2025-09-08 01:21:30 +0800",
+			"message": "posts: 添加Oracle云使用指南及踩坑记录文档"
+		}
+	],
+	"motrix.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+		},
+		{
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
+		},
+		{
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
+		},
+		{
+			"hash": "b8f0756e3f261740034e39a2ca200dc91a4eca91",
+			"date": "2025-05-26 21:47:01 +0800",
+			"message": "posts: 添加Motrix下载器教程文章，包含安装与配置步骤"
+		}
+	],
+	"ms-e3.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "26747694797911248bff809eeb9ea5e8ac59b7a9",
+			"date": "2025-11-22 23:20:47 +0800",
+			"message": "docs: 更新文章内容并添加相关图片"
+		},
+		{
+			"hash": "8e3648ba2a0adbcf0095e23f6189db6b34f8effb",
+			"date": "2025-11-15 14:58:51 +0800",
+			"message": "docs: 更新MS E3教程中的OneDrive访问说明"
+		},
+		{
+			"hash": "2a6aacafea352623fe5626e467a639db94e23af4",
+			"date": "2025-11-15 13:44:57 +0800",
+			"message": "docs(ms-e3): 更新注册流程说明，简化绑卡步骤"
+		},
+		{
+			"hash": "dd110830e6fe0d48c25081a460e7ed87cb9626f6",
+			"date": "2025-11-14 18:41:52 +0800",
+			"message": "docs(posts): 更新ms-e3.md内容并调整工作区文件"
+		},
+		{
+			"hash": "249662fc960a1cc02b96371e1a036d689b493fc9",
+			"date": "2025-11-14 14:26:33 +0800",
+			"message": "posts: 添加关于如何获取永久免费OneDrive 5T空间的MS 365 E3教程文章，包含详细步骤说明和配套图片资源 (参考文献：奶昔论坛)"
+		}
+	],
+	"nat1-web.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+		},
+		{
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
+		},
+		{
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
+		},
+		{
+			"hash": "d96fd18e051250142dd4ebf6fec7d8e43450d340",
+			"date": "2025-05-31 04:07:48 +0800",
+			"message": "posts: 发布NAT1家宽建站文章"
+		}
+	],
+	"n100-pve.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+		},
+		{
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
+		},
+		{
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
+		},
+		{
+			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
+			"date": "2025-05-16 18:11:52 +0800",
+			"message": "更改图源URL"
+		},
+		{
+			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
+			"date": "2025-04-30 08:38:25 +0800",
+			"message": "初始化"
+		}
+	],
+	"netlify-oss.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "3a76e29dca31bb3099b6cd06061d40a16fb57c41",
+			"date": "2025-08-14 14:24:10 +0800",
+			"message": "docs: 在Netlify OSS文档中添加警告提示"
+		},
+		{
+			"hash": "287ba24dfc7d362dd8066a979e7054222af12b53",
+			"date": "2025-08-12 19:48:34 +0800",
+			"message": "docs(posts): 添加Netlify开源计划申请示例内容"
+		},
+		{
+			"hash": "4b4cc73611b5131dacdc3f0e9ccdfdff68b1ba40",
+			"date": "2025-08-10 17:57:57 +0800",
+			"message": "feat: 为文章发布时间添加精确到秒的时间戳"
+		},
+		{
+			"hash": "3842f0762ad1496fe24da72a3e4180b75591caa5",
+			"date": "2025-08-09 12:30:49 +0800",
+			"message": "docs(posts): 更新Netlify开源指南并添加图片"
+		},
+		{
+			"hash": "c7d03298d4f479bf0dbbb3563f8a9eccae3fbd22",
+			"date": "2025-08-09 05:20:32 +0800",
+			"message": "docs: 更新Netlify开源计划邮件说明"
+		},
+		{
+			"hash": "2f4d3bba9cd2ed3186da1cf9eaa5e60476c6d476",
+			"date": "2025-08-09 05:18:24 +0800",
+			"message": "posts: 添加Netlify开源计划申请指南文章"
+		}
+	],
 	"netlify-vercel-proxy.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -2778,59 +3140,29 @@
 			"message": "初始化"
 		}
 	],
-	"netlify-webhook.md": [
+	"nezha.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "4b4cc73611b5131dacdc3f0e9ccdfdff68b1ba40",
-			"date": "2025-08-10 17:57:57 +0800",
-			"message": "feat: 为文章发布时间添加精确到秒的时间戳"
-		},
-		{
-			"hash": "76b44a51b7597ecdb0e8a286cb914c58865228c8",
-			"date": "2025-08-09 23:58:36 +0800",
-			"message": "update: 添加一张图片，这也是测试UPDATE类型的提交是否有效。 如何做一个这样的Bot？ https://2x.nz/posts/netlify-webhook/"
-		},
-		{
-			"hash": "1e72a3521c910afe0dc40833f79d10e6392fa7d0",
-			"date": "2025-08-09 23:55:27 +0800",
-			"message": "posts: 添加Netlify WebHook实现文章更新实时推送"
-		},
-		{
-			"hash": "e075d4bbb8f0bd66e9a5dd71ae5c4925072c76d8",
-			"date": "2025-08-09 23:52:07 +0800",
-			"message": "posts: 添加Netlify WebHook实现文章更新实时推送"
-		},
-		{
-			"hash": "74247d7013ed0b7522378a0220d25f866449f759",
-			"date": "2025-08-09 23:49:41 +0800",
-			"message": "posts: 添加Netlify WebHook实现文章更新实时推送"
-		},
-		{
-			"hash": "5d0c80c550c525842d990830e332b0e044f33d93",
-			"date": "2025-08-09 23:45:48 +0800",
-			"message": "posts: 添加Netlify WebHook实现文章更新实时推送"
-		},
-		{
-			"hash": "2dead7113d7979b95ca6bf7661b99792fabb9242",
-			"date": "2025-08-09 23:39:57 +0800",
-			"message": "posts: 添加Netlify WebHook实现文章更新实时推送"
-		},
-		{
-			"hash": "da9bfa714aa278e7686e84c3a46a5a75ea6683da",
-			"date": "2025-08-09 23:37:05 +0800",
-			"message": "posts: 添加Netlify WebHook实现文章更新实时推送"
-		},
-		{
-			"hash": "b5d252eb98698269831c3a5770e5bf1f5efed758",
-			"date": "2025-08-09 23:35:01 +0800",
-			"message": "posts: 添加Netlify WebHook实现文章更新实时推送"
+			"hash": "def9510c1c343fd5fd2ead637f11eea87a2ae48f",
+			"date": "2025-09-03 05:21:24 +0800",
+			"message": "posts: 添加哪吒监控搭建教程"
 		}
 	],
-	"n100-pve.md": [
+	"new-nas.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -2887,180 +3219,81 @@
 			"message": "初始化"
 		}
 	],
-	"nat1-web.md": [
+	"obsidian.md": [
 		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
+			"hash": "e29cb5f9babe9dc04f60ecf6196ec44327d191b9",
+			"date": "2026-02-10 13:38:03 +0800",
+			"message": "改错字"
 		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "d96fd18e051250142dd4ebf6fec7d8e43450d340",
-			"date": "2025-05-31 04:07:48 +0800",
-			"message": "posts: 发布NAT1家宽建站文章"
-		}
-	],
-	"netlify-oss.md": [
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "3a76e29dca31bb3099b6cd06061d40a16fb57c41",
-			"date": "2025-08-14 14:24:10 +0800",
-			"message": "docs: 在Netlify OSS文档中添加警告提示"
+			"hash": "42e4af698e4011f2ea2a569329e9f364b432dc0d",
+			"date": "2025-09-30 11:46:11 +0800",
+			"message": "docs(posts): 更新黑曜石和mac文章内容并调整格式"
 		},
 		{
-			"hash": "287ba24dfc7d362dd8066a979e7054222af12b53",
-			"date": "2025-08-12 19:48:34 +0800",
-			"message": "docs(posts): 添加Netlify开源计划申请示例内容"
+			"hash": "5a1efd8bb4f57d0057dade40d2db2b26a0018cf0",
+			"date": "2025-09-17 04:34:55 +0800",
+			"message": "docs(posts): 在obsidian.md中添加视频链接并更新workspace配置"
 		},
 		{
-			"hash": "4b4cc73611b5131dacdc3f0e9ccdfdff68b1ba40",
-			"date": "2025-08-10 17:57:57 +0800",
-			"message": "feat: 为文章发布时间添加精确到秒的时间戳"
-		},
-		{
-			"hash": "3842f0762ad1496fe24da72a3e4180b75591caa5",
-			"date": "2025-08-09 12:30:49 +0800",
-			"message": "docs(posts): 更新Netlify开源指南并添加图片"
-		},
-		{
-			"hash": "c7d03298d4f479bf0dbbb3563f8a9eccae3fbd22",
-			"date": "2025-08-09 05:20:32 +0800",
-			"message": "docs: 更新Netlify开源计划邮件说明"
-		},
-		{
-			"hash": "2f4d3bba9cd2ed3186da1cf9eaa5e60476c6d476",
-			"date": "2025-08-09 05:18:24 +0800",
-			"message": "posts: 添加Netlify开源计划申请指南文章"
+			"hash": "0dc07ba698e0cbf31d48bc49d96062b321ff023d",
+			"date": "2025-09-17 03:19:34 +0800",
+			"message": "posts: 发布黑曜石MarkDown编辑器文章"
 		}
 	],
-	"ms-e3.md": [
+	"mobile-git.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "26747694797911248bff809eeb9ea5e8ac59b7a9",
-			"date": "2025-11-22 23:20:47 +0800",
-			"message": "docs: 更新文章内容并添加相关图片"
+			"hash": "7e71dbb7edc8908051ccae0413555563f955980e",
+			"date": "2026-01-09 02:58:37 +0800",
+			"message": "docs(posts): 更新移动端git博客教程中的图片引用路径"
 		},
 		{
-			"hash": "8e3648ba2a0adbcf0095e23f6189db6b34f8effb",
-			"date": "2025-11-15 14:58:51 +0800",
-			"message": "docs: 更新MS E3教程中的OneDrive访问说明"
+			"hash": "2c1d3c847ab10cd3ce589c7824adbc142aa6b85b",
+			"date": "2025-11-24 08:07:41 +0800",
+			"message": "post: 更新文章：（在手机上写博客）中添加配置仓库权限教程"
 		},
 		{
-			"hash": "2a6aacafea352623fe5626e467a639db94e23af4",
-			"date": "2025-11-15 13:44:57 +0800",
-			"message": "docs(ms-e3): 更新注册流程说明，简化绑卡步骤"
+			"hash": "0bc96df9488e58ac3abb5e3f4d4cdaf24e02c3c6",
+			"date": "2025-11-11 14:35:02 +0800",
+			"message": "post：fix no draft"
 		},
 		{
-			"hash": "dd110830e6fe0d48c25081a460e7ed87cb9626f6",
-			"date": "2025-11-14 18:41:52 +0800",
-			"message": "docs(posts): 更新ms-e3.md内容并调整工作区文件"
+			"hash": "20242feb3eec793486d5b291391b580419dce124",
+			"date": "2025-11-11 14:29:04 +0800",
+			"message": "post: fix"
 		},
 		{
-			"hash": "249662fc960a1cc02b96371e1a036d689b493fc9",
-			"date": "2025-11-14 14:26:33 +0800",
-			"message": "posts: 添加关于如何获取永久免费OneDrive 5T空间的MS 365 E3教程文章，包含详细步骤说明和配套图片资源 (参考文献：奶昔论坛)"
-		}
-	],
-	"motrix.md": [
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "b8f0756e3f261740034e39a2ca200dc91a4eca91",
-			"date": "2025-05-26 21:47:01 +0800",
-			"message": "posts: 添加Motrix下载器教程文章，包含安装与配置步骤"
+			"hash": "a421f1715fb9d433731fbaed52d5ed83efb96b5b",
+			"date": "2025-11-11 14:21:05 +0800",
+			"message": "posts: 发布文章：如何在手机上优雅的写博客～"
 		}
 	],
 	"mic.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -3078,6 +3311,11 @@
 		}
 	],
 	"meme-api.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -3119,39 +3357,17 @@
 			"message": "posts: 更新EdgeOne优选IP并添加meme-api部署指南"
 		}
 	],
-	"mobile-git.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "7e71dbb7edc8908051ccae0413555563f955980e",
-			"date": "2026-01-09 02:58:37 +0800",
-			"message": "docs(posts): 更新移动端git博客教程中的图片引用路径"
-		},
-		{
-			"hash": "2c1d3c847ab10cd3ce589c7824adbc142aa6b85b",
-			"date": "2025-11-24 08:07:41 +0800",
-			"message": "post: 更新文章：（在手机上写博客）中添加配置仓库权限教程"
-		},
-		{
-			"hash": "0bc96df9488e58ac3abb5e3f4d4cdaf24e02c3c6",
-			"date": "2025-11-11 14:35:02 +0800",
-			"message": "post：fix no draft"
-		},
-		{
-			"hash": "20242feb3eec793486d5b291391b580419dce124",
-			"date": "2025-11-11 14:29:04 +0800",
-			"message": "post: fix"
-		},
-		{
-			"hash": "a421f1715fb9d433731fbaed52d5ed83efb96b5b",
-			"date": "2025-11-11 14:21:05 +0800",
-			"message": "posts: 发布文章：如何在手机上优雅的写博客～"
-		}
-	],
 	"manosaba-unzip.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -3164,6 +3380,16 @@
 		}
 	],
 	"mac.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -3200,7 +3426,39 @@
 			"message": "posts: 添加mac上手文章"
 		}
 	],
+	"mac-gal.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "961fdf75470eb9667fae969c1adc160aa955289a",
+			"date": "2025-10-01 09:14:20 +0800",
+			"message": "posts: 添加mac-gal文章中的仿真配置说明和图片"
+		},
+		{
+			"hash": "9b78c43bbee0bcb86807a0e78e2a232ee0039f4e",
+			"date": "2025-09-30 19:53:59 +0800",
+			"message": "feat: 添加mac-gal文章及相关图片资源"
+		}
+	],
 	"ipfs.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "d304c4e6af53579a39fedc73eac4d2e1c72d92f6",
+			"date": "2026-02-22 17:50:08 +0800",
+			"message": "docs: 更新博客文章内容并删除过时页面"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -3267,51 +3525,29 @@
 			"message": "初始化"
 		}
 	],
-	"mac-gal.md": [
+	"jkw.md": [
 		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "d304ff0cfbe4ee63b8781b3914a0d20ca4794f0e",
+			"date": "2026-02-27 06:26:16 +0800",
+			"message": "posts: 新增《教你在Cloudflare上原生托管视频！自建YouTube！》文章，详细说明如何利用Cloudflare Pages托管大视频文件并通过流式分片技术绕过单文件大小限制。"
 		},
 		{
-			"hash": "961fdf75470eb9667fae969c1adc160aa955289a",
-			"date": "2025-10-01 09:14:20 +0800",
-			"message": "posts: 添加mac-gal文章中的仿真配置说明和图片"
+			"hash": "7856234f1babf01a935f8670e302d9a581fb32b4",
+			"date": "2026-02-26 02:49:31 +0800",
+			"message": "docs: 为视频添加加载和解码说明"
 		},
 		{
-			"hash": "9b78c43bbee0bcb86807a0e78e2a232ee0039f4e",
-			"date": "2025-09-30 19:53:59 +0800",
-			"message": "feat: 添加mac-gal文章及相关图片资源"
-		}
-	],
-	"lskypro-local.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "8462f893ea1d153a4ae54f65a2bf8dc93270cd18",
-			"date": "2025-11-23 13:16:17 +0800",
-			"message": "docs(posts): 更新lskypro-local.md的下载链接并调整workspace配置"
-		},
-		{
-			"hash": "825709a5ea08a7925f67de64f5c2166d9528ec96",
-			"date": "2025-08-27 22:45:16 +0800",
-			"message": "docs: 更新文档中的链接并添加视频教程"
-		},
-		{
-			"hash": "22426b695946cefb3d41c33cce563a5e38e33ef8",
-			"date": "2025-08-22 04:28:27 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "712753de72e2bc341eb85627e361dc2148334c39",
-			"date": "2025-08-22 04:26:36 +0800",
-			"message": "posts: 添加无需授权的lskypro本地安装教程"
+			"hash": "332b861d4df6d322fb15060aad6fa323a282d7ba",
+			"date": "2026-02-26 02:41:52 +0800",
+			"message": "posts: 添加极客湾手机大横评文章，可在线播放或下载"
 		}
 	],
 	"ipfs-api.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -3365,6 +3601,11 @@
 	],
 	"ip6-arpa.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -3375,295 +3616,51 @@
 			"message": "posts: 添加ip6.arpa教程文章和相关图片资源"
 		}
 	],
-	"index-tts2.md": [
+	"google-adsense.md": [
 		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
-			"hash": "15ee399a87a40ea7a9dab5d2183a0e20e209326c",
-			"date": "2025-10-13 15:36:51 +0800",
-			"message": "docs(posts): 添加视频教程链接并更新工作区文件"
-		},
-		{
-			"hash": "4bd2790835b1d35b02935d4a32f2cc4502d56870",
-			"date": "2025-10-13 12:43:45 +0800",
-			"message": "posts: 添加了关于音色克隆的新文章index-tts2，包含详细使用教程"
+			"hash": "d946babc4a97967b5cd9fc4640379181a3967896",
+			"date": "2026-02-23 21:45:27 +0800",
+			"message": "posts: 添加 Google Adsense 教程文章及相关图片资源"
 		}
 	],
-	"hugo.md": [
+	"goedge.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
+			"hash": "55890803984d499462ad121607f4dacbde6f5dea",
+			"date": "2025-09-09 07:01:45 +0800",
+			"message": "posts: 添加GoEdge自建CDN系统踩坑记录文档"
 		},
 		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
-			"date": "2025-04-30 08:38:25 +0800",
-			"message": "初始化"
-		}
-	],
-	"improve-seo.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "39bc5f36f99bb64cf4696c6c58b5292ef27599d2",
-			"date": "2026-02-04 11:49:55 +0800",
-			"message": "docs: 在SEO文章中增加主动提交站点地图章节"
-		},
-		{
-			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
-			"date": "2025-08-01 08:32:28 +0800",
-			"message": "!update: 将封面图也由R2更改为Netlify"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "5d2bc6e727eb06cab5071705f1e577a3a4e4f2ef",
-			"date": "2025-07-30 11:04:21 +0800",
-			"message": "docs(seo): 移除meta keywords相关配置和说明"
-		},
-		{
-			"hash": "80c90f0eff7ce2b444f25001bb948417b017c569",
-			"date": "2025-07-30 10:35:14 +0800",
-			"message": "posts: 添加关于同内容网站和云托管服务的SEO注意事项"
-		},
-		{
-			"hash": "86bbf4104e2b969e26911c97b0419b7a78664c65",
-			"date": "2025-07-30 09:56:08 +0800",
-			"message": "posts: 添加SEO优化指南文章"
-		}
-	],
-	"hook-steam-drm.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "44ae8f6371aa2a5890248f4b3d78105f82bf8013",
-			"date": "2026-02-04 12:10:53 +0800",
-			"message": "chore: 重新启用图片压缩并移除不支持Sharp压缩的图片后缀源文件"
-		},
-		{
-			"hash": "aba7f1cc784273489b6a735cfa65a4af2e29088d",
-			"date": "2025-10-15 15:06:57 +0800",
-			"message": "posts: 添加绕过Steam DRM启动游戏的教程和相关图片资源"
-		}
-	],
-	"http-header-host.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "8f202a4d757531f2b0f6d2087ba423c1e690832c",
-			"date": "2026-02-01 02:50:55 +0800",
-			"message": "docs: 更新HTTP Header Host文章内容并删除空文件"
-		},
-		{
-			"hash": "007144aa0cdefd1f977e97cc4865c8222fd03bb6",
-			"date": "2026-01-13 17:52:28 +0800",
-			"message": "posts: 修订分流文章：添加针对于重定向域名的分流措施。新增文章：利用HTTP Host头监测分流业务，不需要两个监测源了！"
-		}
-	],
-	"hideimg.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "910d27fc2d53f48446251ebe717f679bde7710c9",
-			"date": "2025-08-04 12:42:25 +0800",
-			"message": "posts: 删除矩阵相关的加入教程 对EO反代一切添加一个明确的方法 添加Giscus+反垃圾评论集成方法 添加“光棱坦克”制作方法 添加详细的操作结果针对于SSHFS 仅将 2x.nz 视为官方域名"
-		}
-	],
-	"hack-typora.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "9e4e666e5eda996366d79c76a6e3b1d7628292d0",
-			"date": "2025-08-20 21:22:23 +0800",
-			"message": "docs: 修正Typora文章中的描述错误"
-		},
-		{
-			"hash": "5b0bb1836f20a14c4de65528e5b0e7b44e1a21a3",
-			"date": "2025-08-20 21:19:23 +0800",
-			"message": "posts: 已回退为Fuwari"
-		}
-	],
-	"h3c-debug.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "c9fa65d3d1c996173b4b65e9c926c14c4ef16eb2",
-			"date": "2025-05-13 12:49:15 +0800",
-			"message": "更新教程文章中的图片链接，替换为外部存储地址"
-		},
-		{
-			"hash": "224aa5dc8af36a653e516bef76c6f47846016ce1",
-			"date": "2025-05-13 12:44:22 +0800",
-			"message": "删除多余的图片资源文件"
-		},
-		{
-			"hash": "1bf0359205d5c883d66644ac91399226fbbe9e79",
-			"date": "2025-05-02 04:27:08 +0800",
-			"message": "发布文章H3C路由器折腾记录"
-		}
-	],
-	"hack-lskypro.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "712753de72e2bc341eb85627e361dc2148334c39",
-			"date": "2025-08-22 04:26:36 +0800",
-			"message": "posts: 添加无需授权的lskypro本地安装教程"
-		},
-		{
-			"hash": "8706ad55242a122c1dc9dc519baf1c6805620c02",
-			"date": "2025-08-21 22:36:51 +0800",
-			"message": "posts: 添加通过Cloudflare Worker自建Lsky Pro授权服务器的代码示例"
-		},
-		{
-			"hash": "eaf0488a45079fbf2f62ab0d8839b07123770486",
-			"date": "2025-08-20 22:02:22 +0800",
-			"message": "style(posts): 移除hack-lskypro.md中的多余空行"
-		},
-		{
-			"hash": "c429c8b321544a4faad98e13f66533c2d0bf494b",
-			"date": "2025-08-20 21:59:34 +0800",
-			"message": "docs: 清理文章中的多余空行和注释格式"
-		},
-		{
-			"hash": "0f21fc2bccf6e6329a2c4e7607cb08d5136cd12f",
-			"date": "2025-08-20 21:30:17 +0800",
-			"message": "docs: 修正兰空图床文章中的描述用词"
-		},
-		{
-			"hash": "5b0bb1836f20a14c4de65528e5b0e7b44e1a21a3",
-			"date": "2025-08-20 21:19:23 +0800",
-			"message": "posts: 已回退为Fuwari"
+			"hash": "a608ed13b518deee6147c7d6cd9bb40478e13db0",
+			"date": "2025-09-09 06:55:11 +0800",
+			"message": "posts: 添加GoEdge自建CDN系统踩坑记录文档"
 		}
 	],
 	"github-webhook.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "38eccc6b50cc86812d6615c3afb32f9bcfe0747d",
+			"date": "2026-02-22 17:39:38 +0800",
+			"message": "docs: 合并Netlify WebHook文章内容并更新相关指南"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -3730,7 +3727,130 @@
 			"message": "posts: 测试"
 		}
 	],
-	"go-proxy-gh.md": [
+	"hack-lskypro.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "2108a9bc11aca9bc1e50dca5a2b2c0325ba6a31c",
+			"date": "2026-02-22 17:36:27 +0800",
+			"message": "docs(posts): 重构兰空图床破解教程并整合内容"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "712753de72e2bc341eb85627e361dc2148334c39",
+			"date": "2025-08-22 04:26:36 +0800",
+			"message": "posts: 添加无需授权的lskypro本地安装教程"
+		},
+		{
+			"hash": "8706ad55242a122c1dc9dc519baf1c6805620c02",
+			"date": "2025-08-21 22:36:51 +0800",
+			"message": "posts: 添加通过Cloudflare Worker自建Lsky Pro授权服务器的代码示例"
+		},
+		{
+			"hash": "eaf0488a45079fbf2f62ab0d8839b07123770486",
+			"date": "2025-08-20 22:02:22 +0800",
+			"message": "style(posts): 移除hack-lskypro.md中的多余空行"
+		},
+		{
+			"hash": "c429c8b321544a4faad98e13f66533c2d0bf494b",
+			"date": "2025-08-20 21:59:34 +0800",
+			"message": "docs: 清理文章中的多余空行和注释格式"
+		},
+		{
+			"hash": "0f21fc2bccf6e6329a2c4e7607cb08d5136cd12f",
+			"date": "2025-08-20 21:30:17 +0800",
+			"message": "docs: 修正兰空图床文章中的描述用词"
+		},
+		{
+			"hash": "5b0bb1836f20a14c4de65528e5b0e7b44e1a21a3",
+			"date": "2025-08-20 21:19:23 +0800",
+			"message": "posts: 已回退为Fuwari"
+		}
+	],
+	"hack-typora.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "9e4e666e5eda996366d79c76a6e3b1d7628292d0",
+			"date": "2025-08-20 21:22:23 +0800",
+			"message": "docs: 修正Typora文章中的描述错误"
+		},
+		{
+			"hash": "5b0bb1836f20a14c4de65528e5b0e7b44e1a21a3",
+			"date": "2025-08-20 21:19:23 +0800",
+			"message": "posts: 已回退为Fuwari"
+		}
+	],
+	"hook-steam-drm.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "3055362f918aad722e42ffa5d98281f9456d17b9",
+			"date": "2026-02-12 22:48:17 +0800",
+			"message": "docs(posts): 为两篇指南文章添加演示GIF图像"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "44ae8f6371aa2a5890248f4b3d78105f82bf8013",
+			"date": "2026-02-04 12:10:53 +0800",
+			"message": "chore: 重新启用图片压缩并移除不支持Sharp压缩的图片后缀源文件"
+		},
+		{
+			"hash": "aba7f1cc784273489b6a735cfa65a4af2e29088d",
+			"date": "2025-10-15 15:06:57 +0800",
+			"message": "posts: 添加绕过Steam DRM启动游戏的教程和相关图片资源"
+		}
+	],
+	"hideimg.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "910d27fc2d53f48446251ebe717f679bde7710c9",
+			"date": "2025-08-04 12:42:25 +0800",
+			"message": "posts: 删除矩阵相关的加入教程 对EO反代一切添加一个明确的方法 添加Giscus+反垃圾评论集成方法 添加“光棱坦克”制作方法 添加详细的操作结果针对于SSHFS 仅将 2x.nz 视为官方域名"
+		}
+	],
+	"hugo.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -3777,29 +3897,91 @@
 			"message": "update: 更新R2源"
 		},
 		{
-			"hash": "6ca9722a6021630ab605ca2ff740b808f8bd4056",
-			"date": "2025-06-20 23:38:12 +0800",
-			"message": "posts: 发布文章：在VPS上部署一个自己的Github全站反代！"
+			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
+			"date": "2025-05-16 18:11:52 +0800",
+			"message": "更改图源URL"
+		},
+		{
+			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
+			"date": "2025-04-30 08:38:25 +0800",
+			"message": "初始化"
 		}
 	],
-	"goedge.md": [
+	"improve-seo.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "55890803984d499462ad121607f4dacbde6f5dea",
-			"date": "2025-09-09 07:01:45 +0800",
-			"message": "posts: 添加GoEdge自建CDN系统踩坑记录文档"
+			"hash": "39bc5f36f99bb64cf4696c6c58b5292ef27599d2",
+			"date": "2026-02-04 11:49:55 +0800",
+			"message": "docs: 在SEO文章中增加主动提交站点地图章节"
 		},
 		{
-			"hash": "a608ed13b518deee6147c7d6cd9bb40478e13db0",
-			"date": "2025-09-09 06:55:11 +0800",
-			"message": "posts: 添加GoEdge自建CDN系统踩坑记录文档"
+			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
+			"date": "2025-08-01 08:32:28 +0800",
+			"message": "!update: 将封面图也由R2更改为Netlify"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "5d2bc6e727eb06cab5071705f1e577a3a4e4f2ef",
+			"date": "2025-07-30 11:04:21 +0800",
+			"message": "docs(seo): 移除meta keywords相关配置和说明"
+		},
+		{
+			"hash": "80c90f0eff7ce2b444f25001bb948417b017c569",
+			"date": "2025-07-30 10:35:14 +0800",
+			"message": "posts: 添加关于同内容网站和云托管服务的SEO注意事项"
+		},
+		{
+			"hash": "86bbf4104e2b969e26911c97b0419b7a78664c65",
+			"date": "2025-07-30 09:56:08 +0800",
+			"message": "posts: 添加SEO优化指南文章"
+		}
+	],
+	"index-tts2.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "15ee399a87a40ea7a9dab5d2183a0e20e209326c",
+			"date": "2025-10-13 15:36:51 +0800",
+			"message": "docs(posts): 添加视频教程链接并更新工作区文件"
+		},
+		{
+			"hash": "4bd2790835b1d35b02935d4a32f2cc4502d56870",
+			"date": "2025-10-13 12:43:45 +0800",
+			"message": "posts: 添加了关于音色克隆的新文章index-tts2，包含详细使用教程"
 		}
 	],
 	"github-edu.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "19315b2946010c9f1cf5121a511f84d84204cc4a",
+			"date": "2026-02-21 20:23:51 +0800",
+			"message": "docs: 合并GitHub学生认证相关文章并更新内容"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -3812,6 +3994,11 @@
 		}
 	],
 	"giscus-akismet.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "77be64d25d33f9a3781844c462241ef4621e03b6",
 			"date": "2026-02-10 16:33:21 +0800",
@@ -3833,41 +4020,17 @@
 			"message": "posts: 删除矩阵相关的加入教程 对EO反代一切添加一个明确的方法 添加Giscus+反垃圾评论集成方法 添加“光棱坦克”制作方法 添加详细的操作结果针对于SSHFS 仅将 2x.nz 视为官方域名"
 		}
 	],
-	"ghedu-free-name.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "0c37405c1f3f33a52ca06447a8e7031cf523ea10",
-			"date": "2025-08-11 23:10:03 +0800",
-			"message": "posts: 添加了关于通过Github教育包获取 name.com 免费域名的教程文章，包含详细步骤说明和配套图片资源"
-		},
-		{
-			"hash": "de99266d38518ad9d5f9b82e0bbabcb6c7e8e25f",
-			"date": "2025-08-11 23:08:38 +0800",
-			"message": "posts: 添加了关于通过Github教育包获取 name.com 免费域名的教程文章，包含详细步骤说明和配套图片资源"
-		}
-	],
-	"ghedu-free-tech.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "9a62345dbb8bd1647f188f7e90a491a7ce267fea",
-			"date": "2025-08-11 22:00:05 +0800",
-			"message": "docs: 调整文章格式，增加空行提高可读性"
-		},
-		{
-			"hash": "58472c83258ba02fbb3da9a56d20d1c143e43dfa",
-			"date": "2025-08-11 21:56:57 +0800",
-			"message": "posts: 添加关于Github Education免费获取.tech域名的文章和相关图片资源"
-		}
-	],
 	"gh-proxy.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "ab007fe7283c0e43e00b2860bdcb8527454a90f9",
+			"date": "2026-02-21 21:02:26 +0800",
+			"message": "docs: 重构并整合多个Github代理文章为完整指南"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -3939,36 +4102,12 @@
 			"message": "初始化"
 		}
 	],
-	"ghedu-free-me.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "5e66385ffd85293184d8da7d5b0c88399adfd039",
-			"date": "2025-08-11 22:54:49 +0800",
-			"message": "docs: 添加新图片并更新博文内容"
-		},
-		{
-			"hash": "2392b50597b9cc97d37a8a2737c8d838cebc808d",
-			"date": "2025-08-11 22:45:13 +0800",
-			"message": "posts: 添加关于获取免费.me域名的教程文章。详细介绍如何通过GitHub学生开发者包获取免费一年的.me域名，并包含完整的配置步骤和截图说明"
-		}
-	],
-	"gal.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "26601d253ba97b09075ea21abc0c86d7419f9a42",
-			"date": "2026-01-24 07:58:04 +0800",
-			"message": "posts: 更新文章：《如何让一个文件在Git提交中永远消失？如何丢掉其中一条提交并保持逻辑完整？》"
-		}
-	],
 	"gemini-nano-banana.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -3991,6 +4130,11 @@
 		}
 	],
 	"fuwari.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "ace7ade0a4e626b5d0cf8e00401fa3d117be4498",
 			"date": "2025-12-18 08:25:24 +0800",
@@ -4094,6 +4238,11 @@
 	],
 	"free-3xui.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -4161,6 +4310,11 @@
 	],
 	"fuck-vocechat.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
 			"date": "2025-08-01 08:32:28 +0800",
 			"message": "!update: 将封面图也由R2更改为Netlify"
@@ -4181,7 +4335,64 @@
 			"message": "posts: 添加破解VoceChat的教程文章"
 		}
 	],
+	"folo-verification.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "05ca882205f90d3f09c44434866a2509ceb85537",
+			"date": "2026-02-13 13:25:48 +0800",
+			"message": "docs: 添加新的Folo验证信息"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "f8cbe45fcaf73371680dbaf04320c57e76a7ef68",
+			"date": "2026-01-21 23:31:48 +0800",
+			"message": "docs: 修正folo验证文档中的RSS链接格式"
+		},
+		{
+			"hash": "6c1568054fded5f2b6eea3b0434eacd3a0e40bdb",
+			"date": "2026-01-21 23:16:36 +0800",
+			"message": "feat: 添加QQ和Telegram链接并更新Folo验证信息"
+		},
+		{
+			"hash": "01ed1173f33aac29f85a5f61dd05268fc027b573",
+			"date": "2025-08-20 22:08:36 +0800",
+			"message": "docs: 更新Folo认证文章内容"
+		},
+		{
+			"hash": "2b0a738a37716e922451b617b9f96e6855accdab",
+			"date": "2025-08-10 23:57:26 +0000",
+			"message": "合并上游8个commit"
+		},
+		{
+			"hash": "4d193c7932d19b70e43701d169baa8d4f84f8dff",
+			"date": "2025-08-10 21:35:54 +0800",
+			"message": "posts: 更新Folo认证文章内容和元数据"
+		},
+		{
+			"hash": "ff99f8aa3f5650d3f84687c8d5a251b9b4e98454",
+			"date": "2025-08-10 21:27:54 +0800",
+			"message": "docs: 更新Folo验证文章的内容和元数据"
+		},
+		{
+			"hash": "fa426f37e73d5598dafbb5b3a2b933f6f01690f1",
+			"date": "2025-08-10 21:24:25 +0800",
+			"message": "docs: 添加Folo RSS feed验证文章"
+		}
+	],
 	"fnos.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -4238,124 +4449,11 @@
 			"message": "初始化"
 		}
 	],
-	"fenliu.md": [
+	"edgeone.md": [
 		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "4950388a8da02c97af112548b61cbaf71260eaeb",
-			"date": "2026-01-15 15:52:44 +0800",
-			"message": "docs: 更新随机图API域名并移除相关脚本"
-		},
-		{
-			"hash": "007144aa0cdefd1f977e97cc4865c8222fd03bb6",
-			"date": "2026-01-13 17:52:28 +0800",
-			"message": "posts: 修订分流文章：添加针对于重定向域名的分流措施。新增文章：利用HTTP Host头监测分流业务，不需要两个监测源了！"
-		},
-		{
-			"hash": "8e36d19f127b4b333c16574fc39456de987e8f10",
-			"date": "2026-01-12 23:31:53 +0800",
-			"message": "fix(scripts): 修复图片路径处理中的括号和空格问题"
-		},
-		{
-			"hash": "1d3d3d395b206580d1761d5aca42c6afa5324002",
-			"date": "2026-01-12 22:40:39 +0800",
-			"message": "upgrade: 删除部分文件名的空格避免ESA爆炸"
-		},
-		{
-			"hash": "f696d4d769fbfae32a45fc39f18234e43a9da443",
-			"date": "2026-01-12 18:19:45 +0800",
-			"message": "posts: 将新文章从Notion转为原生，并且新增了诸多有效内容！推荐看看！"
-		},
-		{
-			"hash": "82fd8809928a80f2245892bfe80df348c722f432",
-			"date": "2026-01-12 02:24:05 +0800",
-			"message": "posts: 添加关于网站分流的文章和图片资源"
-		}
-	],
-	"first-pc.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "3dc17a5aa543ad4ecfcc9bcefaedbacfc9738471",
-			"date": "2026-01-09 19:58:10 +0800",
-			"message": "fix(posts): 修正错别字\"保暖思淫欲\"为\"饱暖思淫欲\""
-		},
-		{
-			"hash": "4bd2790835b1d35b02935d4a32f2cc4502d56870",
-			"date": "2025-10-13 12:43:45 +0800",
-			"message": "posts: 添加了关于音色克隆的新文章index-tts2，包含详细使用教程"
-		},
-		{
-			"hash": "86e6f2cdef0305c767facbfefc9522327d261379",
-			"date": "2025-10-11 06:14:08 +0800",
-			"message": "posts: 添加新文章《人生中的第一台自己组装的台式！键盘亮显示器必亮！》"
-		}
-	],
-	"folo-verification.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "f8cbe45fcaf73371680dbaf04320c57e76a7ef68",
-			"date": "2026-01-21 23:31:48 +0800",
-			"message": "docs: 修正folo验证文档中的RSS链接格式"
-		},
-		{
-			"hash": "6c1568054fded5f2b6eea3b0434eacd3a0e40bdb",
-			"date": "2026-01-21 23:16:36 +0800",
-			"message": "feat: 添加QQ和Telegram链接并更新Folo验证信息"
-		},
-		{
-			"hash": "01ed1173f33aac29f85a5f61dd05268fc027b573",
-			"date": "2025-08-20 22:08:36 +0800",
-			"message": "docs: 更新Folo认证文章内容"
-		},
-		{
-			"hash": "2b0a738a37716e922451b617b9f96e6855accdab",
-			"date": "2025-08-10 23:57:26 +0000",
-			"message": "合并上游8个commit"
-		},
-		{
-			"hash": "4d193c7932d19b70e43701d169baa8d4f84f8dff",
-			"date": "2025-08-10 21:35:54 +0800",
-			"message": "posts: 更新Folo认证文章内容和元数据"
-		},
-		{
-			"hash": "ff99f8aa3f5650d3f84687c8d5a251b9b4e98454",
-			"date": "2025-08-10 21:27:54 +0800",
-			"message": "docs: 更新Folo验证文章的内容和元数据"
-		},
-		{
-			"hash": "fa426f37e73d5598dafbb5b3a2b933f6f01690f1",
-			"date": "2025-08-10 21:24:25 +0800",
-			"message": "docs: 添加Folo RSS feed验证文章"
-		}
-	],
-	"exhentai.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "259cffd85a8bfa6f5d95cec9678db6c01ed0edc9",
-			"date": "2025-08-12 19:31:45 +0800",
-			"message": "posts: 添加一篇详细介绍如何访问exhentai里站的文章，包含注册流程和注意事项"
-		}
-	],
-	"exmail-qq.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
@@ -4393,6 +4491,16 @@
 			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
 		},
 		{
+			"hash": "bf8039c88d23c5836d6b0bbde544c53dbd979eed",
+			"date": "2025-06-30 06:01:20 +0800",
+			"message": "docs(posts): 更新EdgeOne文章的描述内容以反映实际体验"
+		},
+		{
+			"hash": "9a4d7ccdecb5af0789279dde75afa3146aafb210",
+			"date": "2025-06-30 05:39:47 +0800",
+			"message": "posts: 更新EdgeOne优选IP并添加meme-api部署指南"
+		},
+		{
 			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
 			"date": "2025-06-26 21:07:29 +0800",
 			"message": "update: 更新R2源。删除302"
@@ -4403,259 +4511,17 @@
 			"message": "update: 更新R2源"
 		},
 		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "c9fa65d3d1c996173b4b65e9c926c14c4ef16eb2",
-			"date": "2025-05-13 12:49:15 +0800",
-			"message": "更新教程文章中的图片链接，替换为外部存储地址"
-		},
-		{
-			"hash": "224aa5dc8af36a653e516bef76c6f47846016ce1",
-			"date": "2025-05-13 12:44:22 +0800",
-			"message": "删除多余的图片资源文件"
-		},
-		{
-			"hash": "ae1c3a7b0f2161b5bf1126bbdb947f95e5e08d9f",
-			"date": "2025-05-02 22:23:06 +0800",
-			"message": "添加Discourse部署教程及相关配置示例"
-		},
-		{
-			"hash": "d64bff94ade1a74f66e707522839a1a7435286a4",
-			"date": "2025-05-02 21:14:22 +0800",
-			"message": "添加关于微信企业邮箱的使用教程"
-		}
-	],
-	"expressive-code.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "3fad90892ad8d7afcca110bc4e2332a8675039b8",
-			"date": "2025-08-11 21:59:12 +0800",
-			"message": "docs(posts): 更新文章中的图片引用路径"
-		},
-		{
-			"hash": "58472c83258ba02fbb3da9a56d20d1c143e43dfa",
-			"date": "2025-08-11 21:56:57 +0800",
-			"message": "posts: 添加关于Github Education免费获取.tech域名的文章和相关图片资源"
-		},
-		{
-			"hash": "6e8b97a944a30a797447b7a14417753ccb5f5a06",
-			"date": "2025-08-11 07:56:47 +0000",
-			"message": "v1:删除ec部分"
-		},
-		{
-			"hash": "7321c60b0e68a6ecf69f1742bcf2931a971a6a59",
-			"date": "2025-08-11 00:01:07 +0000",
-			"message": "收工"
-		},
-		{
-			"hash": "547bdc5997309a2d43b1a3b49e944076772eee57",
-			"date": "2025-08-10 23:35:46 +0000",
-			"message": "111"
-		},
-		{
-			"hash": "61b200ece3876e3ecb718c2dabe16b76ca97a186",
-			"date": "2025-08-10 23:17:43 +0000",
-			"message": "修改关于"
-		},
-		{
-			"hash": "1ea9a37926128bbc82e1afa85cffe11fc3764b2a",
-			"date": "2025-08-10 23:13:48 +0000",
-			"message": "修改样式"
-		},
-		{
-			"hash": "8ef308b1d73b55bfc94861cb8eed1771e521607a",
-			"date": "2025-08-10 11:42:45 +0000",
-			"message": "feat: EC代码块"
-		}
-	],
-	"eovsesa.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "073d31303df6935b9437bbacdfca691424c8957c",
-			"date": "2026-01-16 18:21:24 +0800",
-			"message": "updates: 更新关于EO 伪装WAF不推荐的结论"
-		},
-		{
-			"hash": "d587474e5b0cf3e8175e5299b41877dcb9825b93",
-			"date": "2026-01-16 18:11:26 +0800",
-			"message": "posts: 添加关于EdgeOne和ESA CDN对比的文章，包含21张对比图片"
-		}
-	],
-	"eopf-github-proxy.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "d484922726ee6081133971bbb9fc8ebcb130f85b",
-			"date": "2025-08-30 22:15:04 +0800",
-			"message": "posts: 利用Vercel Function搭建一个Github全站反代"
-		},
-		{
-			"hash": "0aed7e97460e496290dca49dd7679cb3a2f6fe8a",
-			"date": "2025-08-30 20:49:35 +0800",
-			"message": "posts: 添加Github全站反代文章及相关图片资源"
-		}
-	],
-	"eo-umami.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "fdcd7c122ab560cdaa3256fd2f39595bff793e48",
-			"date": "2026-01-19 22:28:47 +0800",
-			"message": "docs: 更新文章发布日期至2026-01-19"
-		},
-		{
-			"hash": "60455d9d993c27932e162ecf1627bcea6eb4f648",
-			"date": "2026-01-19 22:18:29 +0800",
-			"message": "posts: 更新在EdgeOne Pages上部署Umami的文章 添加关于POST请求被拦截的临时解决方案说明 移除已解决的内部重定向问题描述"
-		},
-		{
-			"hash": "af009c1feb920cd2074141c4450ab84c58ceb893",
-			"date": "2025-12-22 10:36:42 +0800",
-			"message": "posts: 添加EdgeOne Pages原生部署Umami的教程"
-		}
-	],
-	"eo-function.md": [
-		{
-			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
-			"date": "2025-08-01 08:32:28 +0800",
-			"message": "!update: 将封面图也由R2更改为Netlify"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "012fdd1778f7249ff0085ed981a3777d1fe866dd",
-			"date": "2025-08-01 07:52:52 +0800",
-			"message": "posts: 添加EdgeOne边缘函数随机图API教程文档"
-		}
-	],
-	"element.md": [
-		{
-			"hash": "09550e030fec56e2459188181a15b2edd2e7d60a",
-			"date": "2025-08-15 03:37:12 +0800",
-			"message": "docs: 更新群组信息并标记删除旧说明"
-		},
-		{
-			"hash": "65d62357016ade6658a211a7b4bd834c2b89c979",
-			"date": "2025-08-06 23:14:39 +0800",
-			"message": "docs: 更新安卓通知配置的说明文档"
-		},
-		{
-			"hash": "f964a65d0ac6ed49d7c406f334164014b778577e",
-			"date": "2025-08-06 22:54:21 +0800",
-			"message": "docs(posts): 添加安卓通知替代方案说明"
-		},
-		{
-			"hash": "69fdcc5a15203951256a78deb98271f486b0d941",
-			"date": "2025-08-06 21:52:05 +0800",
-			"message": "测试Element通知"
-		},
-		{
-			"hash": "d0edaaee9658682f21441ae31ca96e12a032a898",
-			"date": "2025-08-06 21:44:57 +0800",
-			"message": "docs: 更新Matrix邀请链接和界面文本说明"
-		},
-		{
-			"hash": "e39cf4e08b4e1a77be1197d0ad14b21ad8c4e153",
-			"date": "2025-08-06 21:37:29 +0800",
-			"message": "测试Element通知"
-		},
-		{
-			"hash": "e6b42914c982d3e80b2e24f9da6d114a6e2e4497",
-			"date": "2025-08-06 21:34:46 +0800",
-			"message": "测试Element通知"
-		},
-		{
-			"hash": "54bb4f98727c493e1da387960fdaf1ecdbce5d9c",
-			"date": "2025-08-06 21:14:10 +0800",
-			"message": "docs(posts): 添加关于Github用户名限制的登录问题说明"
-		},
-		{
-			"hash": "ffe867147fd08574875b1665e8eae99fe015abd3",
-			"date": "2025-08-06 21:02:46 +0800",
-			"message": "docs: 更新Matrix登录指南文档内容,添加疑难解答章节"
-		},
-		{
-			"hash": "1b081a63b57dfbdd9adf4a16ba4a2f7946af5ec8",
-			"date": "2025-08-06 20:50:08 +0800",
-			"message": "posts: 复活Matrix！现在也顺便支持了联邦！"
-		},
-		{
-			"hash": "553d6e8954c33e176757c1fcffd275e5272cfd0f",
-			"date": "2025-08-05 10:29:48 +0800",
-			"message": "docs: 更新giscus-akismet文档并删除过时文章"
-		},
-		{
-			"hash": "910d27fc2d53f48446251ebe717f679bde7710c9",
-			"date": "2025-08-04 12:42:25 +0800",
-			"message": "posts: 删除矩阵相关的加入教程 对EO反代一切添加一个明确的方法 添加Giscus+反垃圾评论集成方法 添加“光棱坦克”制作方法 添加详细的操作结果针对于SSHFS 仅将 2x.nz 视为官方域名"
-		},
-		{
-			"hash": "2a5bb4aae529f3c55be8381e282b1b0fdc8852d6",
-			"date": "2025-08-02 03:10:25 +0800",
-			"message": "update: 强烈推荐前往 2x.nz/tit 并加入我们的矩阵!!!"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "0172e1c4ff97046a252a68a9411da6c4791e08ff",
-			"date": "2025-07-17 18:39:24 +0800",
-			"message": "docs(posts): 添加Matrix登录说明到element.md"
-		},
-		{
-			"hash": "1eaac907356f1b1693807a67f2464a460241ab84",
-			"date": "2025-07-17 00:15:34 +0800",
-			"message": "docs: 添加关于加入自托管Matrix服务器的教程文档"
+			"hash": "4e8fa6581466db98334d1f5a70327ab586227766",
+			"date": "2025-06-22 06:05:41 +0800",
+			"message": "posts: 发布文章：关于我折腾了一晚上 EdgeOne（ps：腾讯云我草泥马😅）"
 		}
 	],
 	"email-privacy.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "ebcae88d426a471725a1316bfe4b91e04fd109ff",
 			"date": "2025-08-12 17:13:03 +0800",
@@ -4673,6 +4539,11 @@
 		}
 	],
 	"eo-cf.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -4739,7 +4610,211 @@
 			"message": "posts: 发布文章：《EdgeOne + Cloudflare，我们天下无敌！》"
 		}
 	],
-	"edgeone.md": [
+	"eo-umami.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "fdcd7c122ab560cdaa3256fd2f39595bff793e48",
+			"date": "2026-01-19 22:28:47 +0800",
+			"message": "docs: 更新文章发布日期至2026-01-19"
+		},
+		{
+			"hash": "60455d9d993c27932e162ecf1627bcea6eb4f648",
+			"date": "2026-01-19 22:18:29 +0800",
+			"message": "posts: 更新在EdgeOne Pages上部署Umami的文章 添加关于POST请求被拦截的临时解决方案说明 移除已解决的内部重定向问题描述"
+		},
+		{
+			"hash": "af009c1feb920cd2074141c4450ab84c58ceb893",
+			"date": "2025-12-22 10:36:42 +0800",
+			"message": "posts: 添加EdgeOne Pages原生部署Umami的教程"
+		}
+	],
+	"eo-function.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
+			"date": "2025-08-01 08:32:28 +0800",
+			"message": "!update: 将封面图也由R2更改为Netlify"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "012fdd1778f7249ff0085ed981a3777d1fe866dd",
+			"date": "2025-08-01 07:52:52 +0800",
+			"message": "posts: 添加EdgeOne边缘函数随机图API教程文档"
+		}
+	],
+	"eovsesa.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "073d31303df6935b9437bbacdfca691424c8957c",
+			"date": "2026-01-16 18:21:24 +0800",
+			"message": "updates: 更新关于EO 伪装WAF不推荐的结论"
+		},
+		{
+			"hash": "d587474e5b0cf3e8175e5299b41877dcb9825b93",
+			"date": "2026-01-16 18:11:26 +0800",
+			"message": "posts: 添加关于EdgeOne和ESA CDN对比的文章，包含21张对比图片"
+		}
+	],
+	"exhentai.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "259cffd85a8bfa6f5d95cec9678db6c01ed0edc9",
+			"date": "2025-08-12 19:31:45 +0800",
+			"message": "posts: 添加一篇详细介绍如何访问exhentai里站的文章，包含注册流程和注意事项"
+		}
+	],
+	"first-pc.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "3dc17a5aa543ad4ecfcc9bcefaedbacfc9738471",
+			"date": "2026-01-09 19:58:10 +0800",
+			"message": "fix(posts): 修正错别字\"保暖思淫欲\"为\"饱暖思淫欲\""
+		},
+		{
+			"hash": "4bd2790835b1d35b02935d4a32f2cc4502d56870",
+			"date": "2025-10-13 12:43:45 +0800",
+			"message": "posts: 添加了关于音色克隆的新文章index-tts2，包含详细使用教程"
+		},
+		{
+			"hash": "86e6f2cdef0305c767facbfefc9522327d261379",
+			"date": "2025-10-11 06:14:08 +0800",
+			"message": "posts: 添加新文章《人生中的第一台自己组装的台式！键盘亮显示器必亮！》"
+		}
+	],
+	"fenliu.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "4950388a8da02c97af112548b61cbaf71260eaeb",
+			"date": "2026-01-15 15:52:44 +0800",
+			"message": "docs: 更新随机图API域名并移除相关脚本"
+		},
+		{
+			"hash": "007144aa0cdefd1f977e97cc4865c8222fd03bb6",
+			"date": "2026-01-13 17:52:28 +0800",
+			"message": "posts: 修订分流文章：添加针对于重定向域名的分流措施。新增文章：利用HTTP Host头监测分流业务，不需要两个监测源了！"
+		},
+		{
+			"hash": "8e36d19f127b4b333c16574fc39456de987e8f10",
+			"date": "2026-01-12 23:31:53 +0800",
+			"message": "fix(scripts): 修复图片路径处理中的括号和空格问题"
+		},
+		{
+			"hash": "1d3d3d395b206580d1761d5aca42c6afa5324002",
+			"date": "2026-01-12 22:40:39 +0800",
+			"message": "upgrade: 删除部分文件名的空格避免ESA爆炸"
+		},
+		{
+			"hash": "f696d4d769fbfae32a45fc39f18234e43a9da443",
+			"date": "2026-01-12 18:19:45 +0800",
+			"message": "posts: 将新文章从Notion转为原生，并且新增了诸多有效内容！推荐看看！"
+		},
+		{
+			"hash": "82fd8809928a80f2245892bfe80df348c722f432",
+			"date": "2026-01-12 02:24:05 +0800",
+			"message": "posts: 添加关于网站分流的文章和图片资源"
+		}
+	],
+	"double-monitior.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "4638c937bc091fb70b5448e86759cba98fc5f907",
+			"date": "2026-02-22 17:21:57 +0800",
+			"message": "docs: 合并分流监控文章并更新失效链接"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "4c0599dd3d88ae7cf91eb98e287e2786aa8dc0da",
+			"date": "2026-01-09 11:33:28 +0800",
+			"message": "posts: 添加关于全球网站监控方案的文章和配套图片资源，介绍国内自托管Uptime Kuma和海外云监控的实施方案"
+		}
+	],
+	"domain-email.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "0e73f9f66bac2b4f3fe704f6a443e26ac51e26ef",
+			"date": "2026-02-22 17:45:32 +0800",
+			"message": "docs(posts): 合并并更新域名邮箱教程文章"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -4776,16 +4851,6 @@
 			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
 		},
 		{
-			"hash": "bf8039c88d23c5836d6b0bbde544c53dbd979eed",
-			"date": "2025-06-30 06:01:20 +0800",
-			"message": "docs(posts): 更新EdgeOne文章的描述内容以反映实际体验"
-		},
-		{
-			"hash": "9a4d7ccdecb5af0789279dde75afa3146aafb210",
-			"date": "2025-06-30 05:39:47 +0800",
-			"message": "posts: 更新EdgeOne优选IP并添加meme-api部署指南"
-		},
-		{
 			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
 			"date": "2025-06-26 21:07:29 +0800",
 			"message": "update: 更新R2源。删除302"
@@ -4796,12 +4861,54 @@
 			"message": "update: 更新R2源"
 		},
 		{
-			"hash": "4e8fa6581466db98334d1f5a70327ab586227766",
-			"date": "2025-06-22 06:05:41 +0800",
-			"message": "posts: 发布文章：关于我折腾了一晚上 EdgeOne（ps：腾讯云我草泥马😅）"
+			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
+			"date": "2025-05-16 18:11:52 +0800",
+			"message": "更改图源URL"
+		},
+		{
+			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
+			"date": "2025-04-30 08:38:25 +0800",
+			"message": "初始化"
+		}
+	],
+	"disable-astro-generating-optimized-images.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
+		},
+		{
+			"hash": "790f55346833179ba19224aa387dba5bf25a49bb",
+			"date": "2025-09-10 07:14:54 +0800",
+			"message": "docs(posts): 在禁用Astro图片优化文章中添加相关视频链接"
+		},
+		{
+			"hash": "c55c4910abd2e29149284fb981cde57b7cdbe465",
+			"date": "2025-09-10 07:06:30 +0800",
+			"message": "docs: 修正文章标签中的拼写错误"
+		},
+		{
+			"hash": "4846be762ab21b1c8b442e69fbdb1c7d9d2c2e22",
+			"date": "2025-09-10 06:57:33 +0800",
+			"message": "posts: 添加禁用Astro图片优化的文章及解决方案"
+		},
+		{
+			"hash": "bf506f8e1cb2b43f753add390ee50bf09ed0ed31",
+			"date": "2025-09-10 06:50:16 +0800",
+			"message": "posts: 添加禁用Astro图片优化的文章及解决方案"
 		}
 	],
 	"discourse.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -4873,46 +4980,29 @@
 			"message": "添加Discourse部署教程及相关配置示例"
 		}
 	],
-	"double-monitior.md": [
+	"cyberduck.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "4c0599dd3d88ae7cf91eb98e287e2786aa8dc0da",
-			"date": "2026-01-09 11:33:28 +0800",
-			"message": "posts: 添加关于全球网站监控方案的文章和配套图片资源，介绍国内自托管Uptime Kuma和海外云监控的实施方案"
-		}
-	],
-	"disable-astro-generating-optimized-images.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "790f55346833179ba19224aa387dba5bf25a49bb",
-			"date": "2025-09-10 07:14:54 +0800",
-			"message": "docs(posts): 在禁用Astro图片优化文章中添加相关视频链接"
-		},
-		{
-			"hash": "c55c4910abd2e29149284fb981cde57b7cdbe465",
-			"date": "2025-09-10 07:06:30 +0800",
-			"message": "docs: 修正文章标签中的拼写错误"
-		},
-		{
-			"hash": "4846be762ab21b1c8b442e69fbdb1c7d9d2c2e22",
-			"date": "2025-09-10 06:57:33 +0800",
-			"message": "posts: 添加禁用Astro图片优化的文章及解决方案"
-		},
-		{
-			"hash": "bf506f8e1cb2b43f753add390ee50bf09ed0ed31",
-			"date": "2025-09-10 06:50:16 +0800",
-			"message": "posts: 添加禁用Astro图片优化的文章及解决方案"
+			"hash": "99a4e898dbed083e216c5d318fa2a91d5fcecab7",
+			"date": "2025-08-31 03:53:27 +0800",
+			"message": "posts: 添加一篇介绍Cyberduck云存储浏览器的文章，包含其功能特点和使用场景"
 		}
 	],
 	"del-git-commit.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -4954,36 +5044,12 @@
 			"message": "posts: 更新文章：《如何让一个文件在Git提交中永远消失？如何丢掉其中一条提交并保持逻辑完整？》"
 		}
 	],
-	"cyberduck.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "99a4e898dbed083e216c5d318fa2a91d5fcecab7",
-			"date": "2025-08-31 03:53:27 +0800",
-			"message": "posts: 添加一篇介绍Cyberduck云存储浏览器的文章，包含其功能特点和使用场景"
-		}
-	],
-	"ddos-6t.md": [
-		{
-			"hash": "c66fc1d56a0aa8f6097df1c3880f4a6f54bf9ba8",
-			"date": "2026-02-10 13:00:48 +0800",
-			"message": "style(markdown): 居中显示文章图片并增加间距"
-		},
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "4c37d97042291d2acde935f045d76592d73e907d",
-			"date": "2025-12-16 09:00:25 +0800",
-			"message": "posts: 发布新文章《本站遭受了建站以来规模最大的一次DDoS攻击，总流量6.65TB，峰值瞬发1.95GB/s》"
-		}
-	],
 	"csp.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
 			"date": "2025-08-01 08:32:28 +0800",
@@ -5005,7 +5071,24 @@
 			"message": "posts: 添加关于CSP标头防护XSS攻击的文章"
 		}
 	],
+	"deepwiki.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "e63c003b997560af18d842e507dc44fe8e1edbdb",
+			"date": "2026-02-11 13:07:06 +0800",
+			"message": "posts: 更新文章：论DeepWiki为什么是神！"
+		}
+	],
 	"coxp.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -5019,6 +5102,11 @@
 	],
 	"cookie-consent.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -5029,112 +5117,11 @@
 			"message": "posts: 添加关于使用Cookie Consent实现GDPR合规的教程文章，无需编写任何代码即可实现一个GDPR合规的Cookie管理器"
 		}
 	],
-	"cloudflare-imgbed-auto-backup.md": [
+	"bypass-ustc-verifying.md": [
 		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "9f023b9d6502ea3d55dc0206ac3c2d5649beff28",
-			"date": "2025-08-21 04:24:17 +0800",
-			"message": "Update cloudflare-imgbed-auto-backup.md"
-		},
-		{
-			"hash": "173cbe9ffbfa92fc8ac031436cc485d854e64bbb",
-			"date": "2025-08-21 04:04:54 +0800",
-			"message": "feat(posts): 添加了好多文章"
-		}
-	],
-	"chevereto.md": [
-		{
-			"hash": "6b874de14ca2d4ea993e1606a52c09c305ec6165",
-			"date": "2025-08-05 22:33:14 +0800",
-			"message": "docs: 更新Chevereto文章中的资源链接"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "089315ef5434afa321f54cba7adef9b6ad166681",
-			"date": "2025-07-20 05:53:09 +0800",
-			"message": "docs: 更新Chevereto文档中的URL地址"
-		},
-		{
-			"hash": "d176c3c9e81f2c5c6399e243c7fb57905abef476",
-			"date": "2025-07-20 04:07:12 +0800",
-			"message": "docs: 更新chevereto文章中的资源链接"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "0f041934f68e1f40fa0324c5bb0c2ee347c65887",
-			"date": "2025-07-16 07:40:01 +0800",
-			"message": "docs(chevereto): 添加视频教程链接到文档"
-		},
-		{
-			"hash": "772b4421e339e5097e53451b2911cdf7cd715a73",
-			"date": "2025-07-16 07:04:34 +0800",
-			"message": "docs: 添加Chevereto搭建完成后的访问链接"
-		},
-		{
-			"hash": "35164ed59fd235051826762e89651a15fd93347d",
-			"date": "2025-07-16 06:49:59 +0800",
-			"message": "posts: 添加Chevereto图床搭建教程文档"
-		}
-	],
-	"cloudflare-bandwidth-alliance.md": [
-		{
-			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
-			"date": "2025-08-01 08:32:28 +0800",
-			"message": "!update: 将封面图也由R2更改为Netlify"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "90dadfb1ea3e3c94c2f6473714a7071e0b0e6ad0",
-			"date": "2025-07-22 20:02:38 +0800",
-			"message": "posts: 添加关于Cloudflare带宽联盟的文章"
-		}
-	],
-	"cfpage-redirect.md": [
-		{
-			"hash": "b3f33f0959575a6aacbe980a3dabeacd1179f422",
-			"date": "2025-08-29 19:16:56 +0800",
-			"message": "docs: 修复仓库链接格式并添加空格"
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
@@ -5165,82 +5152,6 @@
 			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
 			"date": "2025-07-18 12:27:16 +0800",
 			"message": "1"
-		},
-		{
-			"hash": "b5d4fc0e435011d83fa428307c6d57da004bc183",
-			"date": "2025-07-13 04:14:55 +0800",
-			"message": "posts: 添加Cloudflare Page重定向功能使用教程"
-		}
-	],
-	"check-notebook.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "5b68bbb2bf46fb153178e66e07deea2fff0138b2",
-			"date": "2025-11-11 09:35:19 +0800",
-			"message": "posts: 添加新文章《微信，支付宝，储蓄卡与信用卡的爱恨情仇》并更新相关图片资源"
-		},
-		{
-			"hash": "8e1aea4ef0ab444d862a36f6aeede710ebd17764",
-			"date": "2025-11-10 17:57:47 +0800",
-			"message": "posts: 发布文章：如何买好，验好，退好笔记本电脑"
-		},
-		{
-			"hash": "00b3966d3913759a308d35acf8feb79c88b40fe4",
-			"date": "2025-11-10 17:44:37 +0800",
-			"message": "posts: 发布文章：如何买好，验好，退好笔记本电脑"
-		}
-	],
-	"cf-saas.md": [
-		{
-			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
-			"date": "2026-02-09 07:50:52 +0800",
-			"message": "压缩图片"
-		},
-		{
-			"hash": "0ff9d6f8784f49e93489082a6babc3e7d831c090",
-			"date": "2026-01-16 21:26:07 +0800",
-			"message": "posts: 添加Cloudflare SaaS文章及相关图片资源"
-		}
-	],
-	"cf-randompic.md": [
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "3a730c432734b0348152ce74b5ffe45f2c65c653",
-			"date": "2025-07-17 15:17:43 +0800",
-			"message": "docs: 更新文档中的域名引用"
 		},
 		{
 			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
@@ -5268,29 +5179,56 @@
 			"message": "初始化"
 		}
 	],
-	"cf-byoip.md": [
+	"cfvideo.md": [
 		{
-			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
-			"date": "2025-08-01 08:32:28 +0800",
-			"message": "!update: 将封面图也由R2更改为Netlify"
+			"hash": "d304ff0cfbe4ee63b8781b3914a0d20ca4794f0e",
+			"date": "2026-02-27 06:26:16 +0800",
+			"message": "posts: 新增《教你在Cloudflare上原生托管视频！自建YouTube！》文章，详细说明如何利用Cloudflare Pages托管大视频文件并通过流式分片技术绕过单文件大小限制。"
+		}
+	],
+	"cbjq-unzip.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
 		},
 		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
+			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+			"date": "2026-02-09 07:50:52 +0800",
+			"message": "压缩图片"
 		},
 		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "818f0fcea35ece6725b4728aca64f2635ea28098",
-			"date": "2025-07-22 19:36:48 +0800",
-			"message": "posts: 添加关于Cloudflare Byoip的文档"
+			"hash": "4e101478d856ae88c2ffeaac5c2a02c8f42100c6",
+			"date": "2025-08-24 01:39:23 +0800",
+			"message": "posts: 添加尘白禁区解包教程及获取CG流程"
 		}
 	],
 	"cf-fastip.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "488a734c4fc731c87da77b15077e0245698440e6",
+			"date": "2026-02-22 17:11:26 +0800",
+			"message": "feat(scripts): 添加 imgf 脚本以自动修复相邻图片间的空行"
+		},
+		{
+			"hash": "250866fad778a1f89c03ebbd12ca486c3a3279b9",
+			"date": "2026-02-21 21:40:59 +0800",
+			"message": "docs: 完善 Cloudflare 优选教程并补充 Byoip 方案"
+		},
+		{
+			"hash": "21d88110c15bb5c9c57005b5531782d97ec54076",
+			"date": "2026-02-14 13:02:51 +0800",
+			"message": "docs: 在CF优选教程中添加Worker路由的SaaS前置要求说明"
+		},
+		{
+			"hash": "8dcf04b4cdf465e035fa969a453ee3b6970fd1e9",
+			"date": "2026-02-14 12:54:06 +0800",
+			"message": "post: 新增Worker项目优选方法说明与图片"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -5412,7 +5350,12 @@
 			"message": "初始化"
 		}
 	],
-	"bypass-ustc-verifying.md": [
+	"cf-randompic.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -5444,6 +5387,11 @@
 			"message": "1"
 		},
 		{
+			"hash": "3a730c432734b0348152ce74b5ffe45f2c65c653",
+			"date": "2025-07-17 15:17:43 +0800",
+			"message": "docs: 更新文档中的域名引用"
+		},
+		{
 			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
 			"date": "2025-07-01 23:29:28 +0800",
 			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
@@ -5469,19 +5417,180 @@
 			"message": "初始化"
 		}
 	],
-	"cbjq-unzip.md": [
+	"cfpage-redirect.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "b3f33f0959575a6aacbe980a3dabeacd1179f422",
+			"date": "2025-08-29 19:16:56 +0800",
+			"message": "docs: 修复仓库链接格式并添加空格"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "b5d4fc0e435011d83fa428307c6d57da004bc183",
+			"date": "2025-07-13 04:14:55 +0800",
+			"message": "posts: 添加Cloudflare Page重定向功能使用教程"
+		}
+	],
+	"check-notebook.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
 		},
 		{
-			"hash": "4e101478d856ae88c2ffeaac5c2a02c8f42100c6",
-			"date": "2025-08-24 01:39:23 +0800",
-			"message": "posts: 添加尘白禁区解包教程及获取CG流程"
+			"hash": "5b68bbb2bf46fb153178e66e07deea2fff0138b2",
+			"date": "2025-11-11 09:35:19 +0800",
+			"message": "posts: 添加新文章《微信，支付宝，储蓄卡与信用卡的爱恨情仇》并更新相关图片资源"
+		},
+		{
+			"hash": "8e1aea4ef0ab444d862a36f6aeede710ebd17764",
+			"date": "2025-11-10 17:57:47 +0800",
+			"message": "posts: 发布文章：如何买好，验好，退好笔记本电脑"
+		},
+		{
+			"hash": "00b3966d3913759a308d35acf8feb79c88b40fe4",
+			"date": "2025-11-10 17:44:37 +0800",
+			"message": "posts: 发布文章：如何买好，验好，退好笔记本电脑"
+		}
+	],
+	"chevereto.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "6b874de14ca2d4ea993e1606a52c09c305ec6165",
+			"date": "2025-08-05 22:33:14 +0800",
+			"message": "docs: 更新Chevereto文章中的资源链接"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "089315ef5434afa321f54cba7adef9b6ad166681",
+			"date": "2025-07-20 05:53:09 +0800",
+			"message": "docs: 更新Chevereto文档中的URL地址"
+		},
+		{
+			"hash": "d176c3c9e81f2c5c6399e243c7fb57905abef476",
+			"date": "2025-07-20 04:07:12 +0800",
+			"message": "docs: 更新chevereto文章中的资源链接"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "0f041934f68e1f40fa0324c5bb0c2ee347c65887",
+			"date": "2025-07-16 07:40:01 +0800",
+			"message": "docs(chevereto): 添加视频教程链接到文档"
+		},
+		{
+			"hash": "772b4421e339e5097e53451b2911cdf7cd715a73",
+			"date": "2025-07-16 07:04:34 +0800",
+			"message": "docs: 添加Chevereto搭建完成后的访问链接"
+		},
+		{
+			"hash": "35164ed59fd235051826762e89651a15fd93347d",
+			"date": "2025-07-16 06:49:59 +0800",
+			"message": "posts: 添加Chevereto图床搭建教程文档"
+		}
+	],
+	"cloudflare-bandwidth-alliance.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "29df54a01f928b0381b953299ff3b5c0cbcf0856",
+			"date": "2025-08-01 08:32:28 +0800",
+			"message": "!update: 将封面图也由R2更改为Netlify"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "90dadfb1ea3e3c94c2f6473714a7071e0b0e6ad0",
+			"date": "2025-07-22 20:02:38 +0800",
+			"message": "posts: 添加关于Cloudflare带宽联盟的文章"
 		}
 	],
 	"bypass-gfw.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "28d6a9d72105d319395139ecd2f821f5de4a8fc0",
 			"date": "2025-09-05 03:18:55 +0800",
@@ -5550,6 +5659,11 @@
 	],
 	"browser-run-js.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
 			"message": "!update: 将图源由R2改为Netlify"
@@ -5606,6 +5720,11 @@
 		}
 	],
 	"autobangumi.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "4ca8bb858a2b304ff9cd55b6f5da94a8045753e2",
 			"date": "2025-08-03 18:27:22 +0800",
@@ -5677,7 +5796,24 @@
 			"message": "初始化"
 		}
 	],
+	"bitwarden-com.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "e105eeefd36e782a0263e755a54400565cef4536",
+			"date": "2026-02-23 17:01:05 +0800",
+			"message": "posts: 新增Bitwarden.com绕过限制教程及相关资源"
+		}
+	],
 	"avatar.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -5716,6 +5852,11 @@
 	],
 	"atpx-fun-blog.md": [
 		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -5726,7 +5867,29 @@
 			"message": "posts: 发现一个神秘博客，故赞助 100 CNY https://atpx.com/blog/"
 		}
 	],
+	"auto-pr-link.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "e3d9f3a5a677b1c589d855efad84dac24490ea45",
+			"date": "2026-02-18 21:24:29 +0800",
+			"message": "docs(posts): 更新自动友链文章内容并添加相关图片"
+		},
+		{
+			"hash": "cd32d0cc0fb38e30b436030c64f17452b24e787a",
+			"date": "2026-02-18 07:20:48 +0800",
+			"message": "posts: 添加自动化友链处理文章及相关图片资源"
+		}
+	],
 	"astrov3-redirects.md": [
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -5754,6 +5917,16 @@
 		}
 	],
 	"asf.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -5812,6 +5985,16 @@
 	],
 	"anuneko.md": [
 		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
 			"message": "压缩图片"
@@ -5822,64 +6005,17 @@
 			"message": "posts: 添加关于米哈游AI模型AnuNeko的文章：上手米哈游AI，然后把它逆了！：包含API调用方法和NoneBot2插件实现"
 		}
 	],
-	"alist-web.md": [
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
-			"date": "2025-04-30 08:38:25 +0800",
-			"message": "初始化"
-		}
-	],
 	"aliyun-ecs-4rm.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -5906,7 +6042,84 @@
 			"message": "posts: 添加阿里云香港G口ECS 4元每月教程及相关图片资源 包括： 1. 使用Alpine镜像最小化系统占用 2. 配置抢占型实例和CDT流量包 3. 设置弹性公网IP和自动停机策略 4. 添加了教程所需的12张截图和流程图"
 		}
 	],
+	"alist-web.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+		},
+		{
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
+		},
+		{
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
+		},
+		{
+			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
+			"date": "2025-05-16 18:11:52 +0800",
+			"message": "更改图源URL"
+		},
+		{
+			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
+			"date": "2025-04-30 08:38:25 +0800",
+			"message": "初始化"
+		}
+	],
 	"alist-for-aliyun.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -5968,7 +6181,111 @@
 			"message": "初始化"
 		}
 	],
+	"aliyun-icp-tls-bug.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "bc14ad357d9260d506d19ca2cb23b3901f1e8a2a",
+			"date": "2026-02-12 09:30:27 +0800",
+			"message": "修改粗体字无法显示的bug，加了个空格"
+		},
+		{
+			"hash": "adf8fd302105179c23131fcd6227dbfa2f792590",
+			"date": "2026-02-11 20:21:41 +0800",
+			"message": "docs: 修复阿里云ICP TLS漏洞文章中的表格格式"
+		},
+		{
+			"hash": "ab0c7c58ca62b59891c269e2c10e646f11f49a53",
+			"date": "2026-02-11 19:40:09 +0800",
+			"message": "posts: 更新文章：阿里云网关 DPI 阻断绕过漏洞分析报告：TLS Client Hello 分片逃逸"
+		}
+	],
+	"aicode-prompt.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "833e311e7b4995765a7686bd20e9da00a6353097",
+			"date": "2025-09-26 14:13:22 +0800",
+			"message": "docs: 更新文档内容和Obsidian工作区配置"
+		},
+		{
+			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
+			"date": "2025-08-01 08:16:25 +0800",
+			"message": "!update: 将图源由R2改为Netlify"
+		},
+		{
+			"hash": "98609b59922cf0452718413306e784dd28156b69",
+			"date": "2025-07-26 09:15:27 +0800",
+			"message": "feat: 更改域名为2x.nz"
+		},
+		{
+			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
+			"date": "2025-07-19 16:52:49 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
+			"date": "2025-07-19 16:09:57 +0800",
+			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
+		},
+		{
+			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
+			"date": "2025-07-19 15:18:58 +0800",
+			"message": "更改图源为EdgeOne"
+		},
+		{
+			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+			"date": "2025-07-18 12:27:16 +0800",
+			"message": "1"
+		},
+		{
+			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+			"date": "2025-07-01 23:29:28 +0800",
+			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+		},
+		{
+			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+			"date": "2025-06-26 21:07:29 +0800",
+			"message": "update: 更新R2源。删除302"
+		},
+		{
+			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
+			"date": "2025-06-25 00:10:13 +0800",
+			"message": "update: 更新R2源"
+		},
+		{
+			"hash": "d7e3fdde17bb4cea366c68a34e4f7fbc959d9080",
+			"date": "2025-06-17 02:39:50 +0800",
+			"message": "posts: 发布文章：AI写不出优质的代码？其实是你引导错了！"
+		}
+	],
 	"across-nat.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
 			"date": "2025-08-01 08:16:25 +0800",
@@ -6035,121 +6352,17 @@
 			"message": "初始化"
 		}
 	],
-	"aicode-prompt.md": [
-		{
-			"hash": "833e311e7b4995765a7686bd20e9da00a6353097",
-			"date": "2025-09-26 14:13:22 +0800",
-			"message": "docs: 更新文档内容和Obsidian工作区配置"
-		},
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "d7e3fdde17bb4cea366c68a34e4f7fbc959d9080",
-			"date": "2025-06-17 02:39:50 +0800",
-			"message": "posts: 发布文章：AI写不出优质的代码？其实是你引导错了！"
-		}
-	],
-	"163-free-domain-email.md": [
-		{
-			"hash": "2f74587a2fb03e0f5513c5608acd72caa32dee7e",
-			"date": "2025-08-01 08:16:25 +0800",
-			"message": "!update: 将图源由R2改为Netlify"
-		},
-		{
-			"hash": "98609b59922cf0452718413306e784dd28156b69",
-			"date": "2025-07-26 09:15:27 +0800",
-			"message": "feat: 更改域名为2x.nz"
-		},
-		{
-			"hash": "146fe9bb61ca695bd23761b29752249859cf5e2f",
-			"date": "2025-07-19 16:52:49 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "9bf0d901f92d8add208ec42c1a8a75e51cd327c1",
-			"date": "2025-07-19 16:09:57 +0800",
-			"message": "chore: 更新图片域名从eo-r2.2x.nz到r2.afo.im"
-		},
-		{
-			"hash": "f5afef144795cec4232cb6e0b78dfc18adb05468",
-			"date": "2025-07-19 15:18:58 +0800",
-			"message": "更改图源为EdgeOne"
-		},
-		{
-			"hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
-			"date": "2025-07-18 12:27:16 +0800",
-			"message": "1"
-		},
-		{
-			"hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
-			"date": "2025-07-01 23:29:28 +0800",
-			"message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
-		},
-		{
-			"hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
-			"date": "2025-06-26 21:07:29 +0800",
-			"message": "update: 更新R2源。删除302"
-		},
-		{
-			"hash": "e2d1f685d7272600c25e7bd958cd3c410111aebb",
-			"date": "2025-06-25 00:10:13 +0800",
-			"message": "update: 更新R2源"
-		},
-		{
-			"hash": "5178a56949ab7a0868243bd6c5def30bc26fe7aa",
-			"date": "2025-05-16 18:11:52 +0800",
-			"message": "更改图源URL"
-		},
-		{
-			"hash": "d80a2933830d60152013f06a581aa2df2f899a57",
-			"date": "2025-04-30 08:38:25 +0800",
-			"message": "初始化"
-		}
-	],
 	"acg-randompic-api.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
 		{
 			"hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
 			"date": "2026-02-09 07:50:52 +0800",
@@ -6179,6 +6392,53 @@
 			"hash": "e23f85934484a6e5f15db42de805692a9c305c30",
 			"date": "2025-08-31 04:24:02 +0800",
 			"message": "posts: 添加我的随机图API架构解析文章"
+		}
+	],
+	"ai-wife.md": [
+		{
+			"hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+			"date": "2026-02-26 22:30:37 +0800",
+			"message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+		},
+		{
+			"hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+			"date": "2026-02-25 22:23:08 +0800",
+			"message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+		},
+		{
+			"hash": "e698bc79d213e8dfe5fe37a247ae39c19f3a05c5",
+			"date": "2026-02-25 19:24:17 +0800",
+			"message": "docs: 修复AI妻子文章中的格式问题"
+		},
+		{
+			"hash": "6b5b268f0dac017d2f3ab812042eb893f9fa818e",
+			"date": "2026-02-21 20:33:56 +0800",
+			"message": "docs: 更新AI绘图教程，补充详细步骤与示例图片"
+		},
+		{
+			"hash": "a6f1891d4dae8fe7b97bc9fcd5adf6a39688a482",
+			"date": "2026-02-14 13:09:26 +0800",
+			"message": "docs: 更新文章提示框样式并调整工作区文件顺序"
+		},
+		{
+			"hash": "1e0f556ac8047c46bf3a82aa5682cfee1da12a56",
+			"date": "2026-02-14 12:43:59 +0800",
+			"message": "posts: 新增Web压缩炸弹教程"
+		},
+		{
+			"hash": "358770bad2453416d537c90be2b277f7db55ce0e",
+			"date": "2026-02-12 23:25:29 +0800",
+			"message": "更新 ai-wife.md"
+		},
+		{
+			"hash": "c2faf3ecf228fb96d428739660cd329dca9b6c02",
+			"date": "2026-02-12 22:36:36 +0800",
+			"message": "docs: 为AI伴侣教程添加实时预览步骤说明和示例图"
+		},
+		{
+			"hash": "b1dbd43eeae623f8045b66eaa95188114144cb62",
+			"date": "2026-02-12 19:24:42 +0800",
+			"message": "posts: 手把手教你跑一个二次元AI老婆！实现AI涩图自由！"
 		}
 	]
 }

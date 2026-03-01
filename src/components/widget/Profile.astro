@@ -2,14 +2,13 @@
 import { getSortedPosts } from "@utils/content-utils";
 import { Icon } from "astro-icon/components";
 import { profileConfig, siteConfig, umamiConfig } from "../../config";
-import I18n from "../I18n.astro";
-import { Translation } from "../../i18n/translation";
 
 const config = profileConfig;
-const { lang } = Astro.params;
-const posts = await getSortedPosts(lang);
+// 移除 lang 参数，直接获取所有文章
+const posts = await getSortedPosts();
 const totalPosts = posts.length;
 let totalWords = 0;
+
 for (const post of posts) {
 	const { remarkPluginFrontmatter } = await post.render();
 	if (remarkPluginFrontmatter?.words) {
@@ -24,7 +23,8 @@ for (const post of posts) {
     <div class="px-2">
         <div class="font-bold text-xl text-center mb-1 text-neutral-50 transition"><h3>{config.name}</h3></div>
         <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
-        <div class="text-center text-neutral-400 mb-2.5 transition"><I18n key={Translation.AuthorBio} /></div>
+        <div class="text-center text-neutral-400 mb-2.5 transition">{config.bio}</div>
+    
         <div class="flex flex-wrap gap-2 justify-center mb-1">
             {config.links.length > 1 && config.links.map(item =>
                     <a rel="me" aria-label={item.name} href={item.url} target="_blank" class="btn-regular rounded-lg h-10 w-10 active:scale-90">
@@ -38,45 +38,38 @@ for (const post of posts) {
             </a>}
         </div>
         
-        <!-- 全站文章与字数统计 -->
         <div class="grid grid-cols-2 mt-3 pt-3 border-t border-neutral-700">
             <div class="text-center">
                 <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:article-outline" class="text-base"></Icon>
-                    <span class="text-xs"><I18n key={Translation.PostCountLabel} /></span>
+                    <span class="text-xs">文章数</span>
                 </div>
                 <div class="font-bold text-lg text-neutral-300">{totalPosts}</div>
             </div>
+   
             <div class="text-center border-l border-neutral-700">
                 <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:format-list-numbered" class="text-base"></Icon>
-                    <span class="text-xs"><I18n key={Translation.TotalWords} /></span>
+                    <span class="text-xs">总字数</span>
                 </div>
+    
                 <div class="font-bold text-lg text-neutral-300">
                     {(totalWords / 10000).toFixed(1)}w
                 </div>
             </div>
         </div>
 
-        <!-- 全站访问量统计 -->
         <div class="grid grid-cols-1 mt-3 pt-3 border-t border-neutral-700">
+   
             <div class="text-center">
                 <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:visibility-outline" class="text-base"></Icon>
-                    <span class="text-xs"><I18n key={Translation.PageViews} /></span>
+                    <span class="text-xs">访问量</span>
                 </div>
+      
                 <div id="site-views" class="font-bold text-lg text-neutral-300">0</div>
             </div>
-            <!--
-            <div class="text-center border-l border-neutral-300 dark:border-neutral-700">
-                <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
-                    <Icon name="material-symbols:person" class="text-base"></Icon>
-                    <span class="text-xs"><I18n key={Translation.VisitorCount} /></span>
-                </div>
-                <div id="site-visitors" class="font-bold text-lg text-neutral-700 dark:text-neutral-300">0</div>
             </div>
-            -->
-        </div>
     </div>
 </div>
 
@@ -87,24 +80,23 @@ for (const post of posts) {
 </style>
 
 <script>
-    // 动画函数：让数字动起来
+    // 保留你的专属动画特效
     function animateValue(obj, start, end, duration) {
         let startTimestamp = null;
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            // 计算当前数字
             obj.innerHTML = Math.floor(progress * (end - start) + start);
-            // 如果动画没结束，继续下一帧
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             } else {
-                obj.innerHTML = end; // 确保最终数字准确
+                obj.innerHTML = end;
             }
         };
         window.requestAnimationFrame(step);
     }
 
+    // 完美保留你自己的 Umami 获取逻辑
     async function loadSiteStats() {
         const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28";
         const baseUrl = "https://u.xiegao.top";
@@ -132,12 +124,11 @@ for (const post of posts) {
                     views = data.pageviews;
                 }
                 
-                // 【核心修改】这里不再直接赋值，而是调用动画函数
-                // 从 0 滚动到 views，持续 800 毫秒
+                // 触发数字滚动
                 animateValue(el, 0, views, 800);
             }
         } catch (e) { 
-            console.warn("Site Stats Error", e); 
+            console.warn("Site Stats Error", e);
         }
     }
 
@@ -146,5 +137,7 @@ for (const post of posts) {
     } else {
         loadSiteStats();
     }
+    // 兼容新老页面的 Swup 事件
     document.addEventListener('swup:contentReplaced', loadSiteStats);
+    document.addEventListener('content:replace', loadSiteStats);
 </script>

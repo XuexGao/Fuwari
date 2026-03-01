@@ -1,31 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import https from 'https';
-import http from 'http';
 import { fileURLToPath } from 'url';
+import { getSiteUrl, checkUrl, verifyBacklinkPresence, TIMEOUT } from './link-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Configuration
 const DATA_DIR = path.join(__dirname, '../src/data');
-const CONFIG_PATH = path.join(__dirname, '../astro.config.mjs');
-const TIMEOUT = 10000; // 10 seconds timeout
-
-// Helper to get site URL from config
-function getSiteUrl() {
-    try {
-        const configContent = fs.readFileSync(CONFIG_PATH, 'utf8');
-        const match = configContent.match(/site:\s*["']([^"']+)["']/);
-        if (match && match[1]) {
-            return match[1].replace(/\/$/, ''); // Remove trailing slash
-        }
-    } catch (err) {
-        console.error('Failed to read astro.config.mjs:', err.message);
-    }
-    return null;
-}
-
 const SITE_URL = getSiteUrl();
 
 // Colors for console output
@@ -47,85 +29,6 @@ const stats = {
     errors: []
 };
 
-function checkUrl(url, redirectCount = 0) {
-    return new Promise((resolve) => {
-        if (!url) {
-            resolve({ ok: false, status: 'Missing URL', redirectCount });
-            return;
-        }
-
-        if (redirectCount > 5) {
-            resolve({ ok: false, status: 'Too many redirects', redirectCount });
-            return;
-        }
-
-        // Handle local paths
-        if (url.startsWith('/')) {
-            if (!SITE_URL) {
-                resolve({ ok: false, status: 'No Site URL', redirectCount });
-                return;
-            }
-            url = SITE_URL + url;
-        }
-
-        // Invalid URL check
-        if (!url.startsWith('http')) {
-             resolve({ ok: false, status: 'Invalid URL', redirectCount });
-             return;
-        }
-
-        const client = url.startsWith('https') ? https : http;
-        const options = {
-            method: 'GET', // Change HEAD to GET to mimic browser better
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-                'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8,zh;q=0.7',
-                'Cache-Control': 'no-cache',
-                'Pragma': 'no-cache',
-                'Sec-Ch-Ua': '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
-                'Sec-Ch-Ua-Mobile': '?0',
-                'Sec-Ch-Ua-Platform': '"Windows"',
-                'Sec-Fetch-Dest': 'document',
-                'Sec-Fetch-Mode': 'navigate',
-                'Sec-Fetch-Site': 'none',
-                'Sec-Fetch-User': '?1',
-                'Upgrade-Insecure-Requests': '1'
-            },
-            timeout: TIMEOUT
-        };
-
-        const req = client.request(url, options, (res) => {
-            // Consume response data to free up memory (since we switched to GET)
-            res.resume();
-            
-            if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-                const redirectUrl = new URL(res.headers.location, url).href;
-                checkUrl(redirectUrl, redirectCount + 1).then(resolve);
-                return;
-            }
-
-            // Consider 2xx as success (redirects handled above)
-            if (res.statusCode >= 200 && res.statusCode < 300) {
-                resolve({ ok: true, status: res.statusCode, redirectCount });
-            } else {
-                resolve({ ok: false, status: res.statusCode, redirectCount });
-            }
-        });
-
-        req.on('error', (err) => {
-            resolve({ ok: false, status: err.message, redirectCount });
-        });
-
-        req.on('timeout', () => {
-            req.destroy();
-            resolve({ ok: false, status: 'Timeout', redirectCount });
-        });
-
-        req.end();
-    });
-}
-
 async function processFile(filePath, type) {
     try {
         const content = fs.readFileSync(filePath, 'utf8');
@@ -140,53 +43,65 @@ async function processFile(filePath, type) {
             return;
         }
 
-        let urlResult = { status: 'N/A', redirectCount: 0 };
-        let avatarResult = { status: 'N/A', redirectCount: 0 };
-        let hasError = false;
+        let urlResult = { ok: false, status: 'N/A' };
+        let avatarResult = { ok: false, status: 'N/A' };
+        let backlinkResult = { ok: true, status: 'N/A' };
 
         // Check URL (for friends)
         if (data.url) {
             stats.total++;
-            urlResult = await checkUrl(data.url);
+            let checkUrlTarget = data.url;
+            // Handle local paths or paths without protocol
+            if (checkUrlTarget.startsWith('/')) {
+                if (SITE_URL) checkUrlTarget = SITE_URL + checkUrlTarget;
+            } else if (!checkUrlTarget.startsWith('http') && SITE_URL) {
+                checkUrlTarget = SITE_URL + '/' + checkUrlTarget.replace(/^\/+/, '');
+            }
+
+            urlResult = await checkUrl(checkUrlTarget);
             if (urlResult.ok) {
                 stats.success++;
             } else {
-                // If failed, and site URL is available, try prepending site URL if it wasn't a local path originally
-                // BUT only if it is NOT already a standard HTTP/HTTPS URL. If it is standard, don't retry with prefix.
-                if (!data.url.startsWith('/') && !data.url.startsWith('http') && SITE_URL) {
-                     const retryUrl = SITE_URL + '/' + data.url.replace(/^\/+/, '');
-                     const retryResult = await checkUrl(retryUrl);
-                     if (retryResult.ok) {
-                         urlResult = retryResult;
-                         stats.success++;
-                     } else {
-                         stats.failed++;
-                         hasError = true;
-                         stats.errors.push({ type, name, field: 'url', value: data.url, error: urlResult.status });
-                     }
-                } else {
-                    stats.failed++;
-                    hasError = true;
-                    stats.errors.push({ type, name, field: 'url', value: data.url, error: urlResult.status });
-                }
+                stats.failed++;
+                stats.errors.push({ type, name, field: 'url', value: data.url, error: urlResult.status });
             }
         }
 
-        // If URL check failed (and not just N/A), skip avatar check and return early
-        // Also delete the file if URL check failed
-        if (data.url && !urlResult.ok && urlResult.status !== 'N/A') {
-             // Print output for failed URL
+        // Check Backlink if present
+        if (data.url && urlResult.ok && data.backlink && SITE_URL) {
+            stats.total++;
+            const backlinkCheck = await checkUrl(data.backlink);
+            if (backlinkCheck.ok) {
+                const found = verifyBacklinkPresence(backlinkCheck.body, SITE_URL);
+                if (found) {
+                    backlinkResult = { ok: true, status: 'Found' };
+                    stats.success++;
+                } else {
+                    backlinkResult = { ok: false, status: 'Backlink Missing' };
+                    stats.failed++;
+                    stats.errors.push({ type, name, field: 'backlink', value: data.backlink, error: 'Backlink not found on page' });
+                }
+            } else {
+                backlinkResult = { ok: false, status: backlinkCheck.status };
+                stats.failed++;
+                stats.errors.push({ type, name, field: 'backlink', value: data.backlink, error: backlinkCheck.status });
+            }
+        }
+
+        // If URL check failed OR Backlink check failed, delete the file
+        const shouldDelete = (data.url && !urlResult.ok && urlResult.status !== 'N/A') || (data.backlink && !backlinkResult.ok);
+        
+        if (shouldDelete) {
+             // Print output for failed checks
              let output = `${colors.cyan}${name}${colors.reset}：`;
-             output += `url：${colors.red}${urlResult.status}${colors.reset}`;
+             if (!urlResult.ok && urlResult.status !== 'N/A') output += `url：${colors.red}${urlResult.status}${colors.reset} `;
+             if (data.backlink && !backlinkResult.ok) output += `backlink：${colors.red}${backlinkResult.status}${colors.reset}`;
              console.log(output);
 
              // DELETE THE FILE
              try {
                  fs.unlinkSync(filePath);
                  console.log(`${colors.red}DELETED file: ${filePath}${colors.reset}`);
-                 // Add to stats for report
-                 if (!stats.deleted) stats.deleted = [];
-                 stats.deleted.push({ type, name, file: path.basename(filePath), reason: `URL failed: ${urlResult.status}` });
              } catch (delErr) {
                  console.error(`${colors.red}Failed to delete file: ${delErr.message}${colors.reset}`);
              }
@@ -197,32 +112,23 @@ async function processFile(filePath, type) {
         // Check Avatar
         if (data.avatar) {
             stats.total++;
-            avatarResult = await checkUrl(data.avatar);
+            let avatarTarget = data.avatar;
+            if (avatarTarget.startsWith('/')) {
+                if (SITE_URL) avatarTarget = SITE_URL + avatarTarget;
+            } else if (!avatarTarget.startsWith('http') && SITE_URL) {
+                avatarTarget = SITE_URL + '/' + avatarTarget.replace(/^\/+/, '');
+            }
+
+            avatarResult = await checkUrl(avatarTarget);
             if (avatarResult.ok) {
                 stats.success++;
             } else {
-                  // Try fallback with site URL if it fails and doesn't start with http
-                  if (!data.avatar.startsWith('/') && !data.avatar.startsWith('http') && SITE_URL) {
-                      const retryUrl = SITE_URL + '/' + data.avatar.replace(/^\/+/, '');
-                      const retryResult = await checkUrl(retryUrl);
-                      if (retryResult.ok) {
-                          avatarResult = retryResult;
-                          stats.success++;
-                      } else {
-                          stats.failed++;
-                          hasError = true;
-                          stats.errors.push({ type, name, field: 'avatar', value: data.avatar, error: avatarResult.status });
-                      }
-                 } else {
-                     stats.failed++;
-                     hasError = true;
-                     stats.errors.push({ type, name, field: 'avatar', value: data.avatar, error: avatarResult.status });
-                 }
+                stats.failed++;
+                stats.errors.push({ type, name, field: 'avatar', value: data.avatar, error: avatarResult.status });
             }
         }
 
         // Format output
-        // abc的博客：url：200， avatar: 200（重定向共X次）
         let output = `${colors.cyan}${name}${colors.reset}：`;
         
         if (data.url) {
@@ -235,9 +141,9 @@ async function processFile(filePath, type) {
             output += `， avatar: ${statusColor}${avatarResult.status}${colors.reset}`;
         }
 
-        const totalRedirects = (urlResult.redirectCount || 0) + (avatarResult.redirectCount || 0);
-        if (totalRedirects > 0) {
-            output += `（重定向共${totalRedirects}次）`;
+        if (data.backlink) {
+            const statusColor = backlinkResult.ok ? colors.green : colors.red;
+            output += `， backlink: ${statusColor}${backlinkResult.status}${colors.reset}`;
         }
 
         console.log(output);
@@ -266,7 +172,6 @@ async function main() {
     console.log(`${colors.magenta}=== Starting Link Checker ===${colors.reset}`);
     
     await scanDirectory('friends', 'Friend');
-    await scanDirectory('sponsors', 'Sponsor');
 
     console.log(`\n${colors.magenta}=== Summary ===${colors.reset}`);
     console.log(`Total checks: ${stats.total}`);
@@ -283,24 +188,18 @@ async function main() {
         if (process.env.GITHUB_STEP_SUMMARY) {
             const summaryPath = process.env.GITHUB_STEP_SUMMARY;
             let summary = '## ❌ Link Check Failures\n\n';
+            summary += 'The following issues were detected during the link check process:\n\n';
             
-            if (stats.deleted && stats.deleted.length > 0) {
-                summary += '### 🗑️ Deleted Files\n';
-                summary += 'The following files were automatically deleted because their main URL was inaccessible:\n\n';
-                summary += '| Type | Name | File | Reason |\n';
-                summary += '|------|------|------|--------|\n';
-                stats.deleted.forEach(del => {
-                    summary += `| ${del.type} | ${del.name} | ${del.file} | ${del.reason} |\n`;
-                });
-                summary += '\n';
-            }
-
-            summary += '### ⚠️ Other Errors\n';
-            summary += '| Type | Name | Field | Error | URL |\n';
-            summary += '|------|------|-------|-------|-----|\n';
+            summary += '| Type | Name | Field | Error | Action | URL |\n';
+            summary += '|------|------|-------|-------|--------|-----|\n';
+            
             stats.errors.forEach(err => {
-                summary += `| ${err.type} | ${err.name} | ${err.field} | ${err.error} | ${err.value} |\n`;
+                const action = (err.field === 'url' || err.field === 'backlink') ? '🗑️ Deleted' : '⚠️ Kept';
+                summary += `| ${err.type} | ${err.name} | ${err.field} | ${err.error} | ${action} | ${err.value} |\n`;
             });
+            
+            summary += '\n> **Note**: Files are automatically deleted if their primary `url` is inaccessible OR if the `backlink` verification fails (when provided). Avatar failures only trigger a warning.\n';
+            
             fs.appendFileSync(summaryPath, summary);
         }
         

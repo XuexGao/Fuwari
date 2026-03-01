@@ -44,3 +44,5 @@ ori
 v0-gallery-website-main
 
 dev
+
+scripts/__pycache__/

@@ -236,7 +236,11 @@ function findImgBySrc(container: HTMLElement, src: string) {
 		const cand = img.getAttribute("src") || img.getAttribute("data-src") || "";
 		const candPath = normalizeUrlForCompare(cand);
 		if (candPath === normPath) return img;
-		if (candPath && normPath && (candPath.includes(normPath) || normPath.includes(candPath)))
+		if (
+			candPath &&
+			normPath &&
+			(candPath.includes(normPath) || normPath.includes(candPath))
+		)
 			return img;
 	}
 	return null;

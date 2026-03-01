@@ -29,7 +29,6 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkGithubAdmonitions } from "./src/plugins/remark-github-admonitions.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
-import { rehypeInjectAds } from "./src/plugins/rehype-inject-ads.mjs";
 
 function remarkSpoiler() {
 	return (tree) => {
@@ -184,7 +183,6 @@ image: {
 		rehypePlugins: [
 			rehypeKatex,
 			rehypeSlug,
-			rehypeInjectAds,
 			[rehypeImageFallback, imageFallbackConfig],
 			[
 				rehypeComponents,

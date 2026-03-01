@@ -17,9 +17,6 @@ import { defaultFavicons } from "../constants/icon";
 import type { Favicon } from "../types/config";
 import { url, pathsEqual } from "../utils/url-utils";
 import "katex/dist/katex.css";
-import { en } from "../i18n/languages/en";
-import { zh_CN } from "../i18n/languages/zh_CN";
-import { Translation, i18n } from "../i18n/translation";
 
 interface Props {
 	title?: string;
@@ -35,9 +32,10 @@ if (!lang) {
 	lang = `${siteConfig.lang}`;
 }
 
-const siteTitle = i18n(Translation.SiteTitle, lang);
-const siteDescription = i18n(Translation.SiteDescription, lang);
-const authorName = i18n(Translation.AuthorName, lang);
+// 直接从配置文件读取，抛弃 i18n
+const siteTitle = siteConfig.title;
+const siteDescription = siteConfig.description;
+const authorName = profileConfig.name;
 const isHomePage = pathsEqual(Astro.url.pathname, url("/"));
 const configHue = siteConfig.themeColor.hue;
 
@@ -72,6 +70,9 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 <!DOCTYPE html>
 <html lang={siteLang} class="bg-[var(--page-bg)] transition text-[12px] md:text-[16px] dark">
 	<head>
+
+		<meta name="referrer" content="unsafe-url" />
+
 		<title>{pageTitle}</title>
 		<link rel="canonical" href={Astro.url}>
 		<meta charset="UTF-8" />
@@ -100,12 +101,6 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 		
 		<script>import "../scripts/animate-value.js";</script>
 
-        <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-P8V8663M');</script>
-
 		{favicons.map(favicon => (
 			<link rel="icon"
 				  href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
@@ -114,7 +109,6 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 			/>
 		))}
 
-		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script is:inline define:vars={{DARK_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			// Force dark mode
 			document.documentElement.classList.add('dark');
@@ -127,15 +121,6 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 			offset = offset - offset % 4;
 			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
 		</script>
-        
-        <script define:vars={{ en, zh_CN, Translation }}>
-            window.Translation = Translation;
-            window.translations = { en, zh_CN };
-            window.i18n = function(key, l) {
-                const currentLang = l || document.documentElement.getAttribute('lang')?.replace('-', '_') || 'zh_CN';
-                return window.translations[currentLang][key];
-            };
-        </script>
         
 		<style define:vars={{
 			configHue,
@@ -163,7 +148,7 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 		</style>
 
 		<slot name="head"></slot>
-		<link rel="alternate" type="application/rss+xml" title={authorName} href={new URL(url('rss.xml', lang === 'zh_CN' ? 'zh-cn' : 'en'), Astro.site)}/>
+		<link rel="alternate" type="application/rss+xml" title={authorName} href={new URL(url('rss.xml'), Astro.site)}/>
 	</head>
 
 	<body class:list={["min-h-screen transition", {"lg:is-home": isHomePage, "enable-banner": enableBanner}]}>
@@ -412,6 +397,24 @@ window.onresize = () => {
 import { Fancybox } from "@fancyapps/ui"
 import "@fancyapps/ui/dist/fancybox/fancybox.css"
 
+const fancyboxOptions = {
+	wheel: 'zoom',
+	clickContent: 'close',
+	dblclickContent: 'zoom',
+	click: 'close',
+	dblclick: 'zoom',
+	Panels: {
+		display: ['counter', 'zoom']
+	},
+	Images: {
+		panning: true,
+		zoom: true,
+		protect: false
+	}
+}
+
+Fancybox.bind(".custom-md img, #post-cover img", fancyboxOptions)
+
 const setup = () => {
 	const cleanupFancybox = () => {
 		try { Fancybox.close() } catch {}
@@ -426,18 +429,8 @@ const setup = () => {
 		document.body.style.removeProperty('overflow')
 	}
 
-	Fancybox.bind(".custom-md img, #post-cover img", {
-		wheel: 'zoom', clickContent: 'close', dblclickContent: 'zoom', click: 'close', dblclick: 'zoom',
-		Panels: { display: ['counter', 'zoom'] },
-		Images: { panning: true, zoom: true, protect: false }
-	})
-
 	window.swup.hooks.on("page:view", () => {
-		Fancybox.bind(".custom-md img, #post-cover img", {
-			wheel: 'zoom', clickContent: 'close', dblclickContent: 'zoom', click: 'close', dblclick: 'zoom',
-			Panels: { display: ['counter', 'zoom'] },
-			Images: { panning: true, zoom: true, protect: false }
-		})
+		Fancybox.bind(".custom-md img, #post-cover img", fancyboxOptions)
 	})
 
 	window.swup.hooks.on("content:replace", () => {

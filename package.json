@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro build",
+		"build": "node scripts/cdnify-images.js && astro build",
+		"cdnify": "node scripts/cdnify-images.js",
 		"preview": "astro preview",
 		"astro": "astro",
 		"type-check": "tsc --noEmit --isolatedDeclarations",

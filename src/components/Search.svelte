@@ -22,6 +22,31 @@ let isSearching = false;
 // biome-ignore lint/suspicious/noExplicitAny: Temporary usage of any for posts array
 let posts: any[] = [];
 
+const searchTypes = [
+	{ id: "title", label: "标题" },
+	{ id: "description", label: "简介" },
+	{ id: "content", label: "正文" },
+	{ id: "link", label: "路径" },
+];
+let selectedTypes: string[] = [];
+let isMultiSelect = false;
+
+const toggleType = (typeId: string) => {
+	if (isMultiSelect) {
+		if (selectedTypes.includes(typeId)) {
+			selectedTypes = selectedTypes.filter((t) => t !== typeId);
+		} else {
+			selectedTypes = [...selectedTypes, typeId];
+		}
+	} else {
+		if (selectedTypes.includes(typeId) && selectedTypes.length === 1) {
+			selectedTypes = [];
+		} else {
+			selectedTypes = [typeId];
+		}
+	}
+};
+
 const togglePanel = () => {
 	const panel = document.getElementById("search-panel");
 	panel?.classList.toggle("float-panel-closed");
@@ -43,7 +68,11 @@ const setPanelVisibility = (show: boolean, isDesktop: boolean): void => {
 	}
 };
 
-const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
+const search = async (
+	keyword: string,
+	isDesktop: boolean,
+	types: string[] = selectedTypes,
+): Promise<void> => {
 	if (!keyword) {
 		setPanelVisibility(false, isDesktop);
 		result = [];
@@ -60,8 +89,21 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 
 		const searchResults = posts
 			.filter((post) => {
-				const searchText =
-					`${post.title} ${post.description} ${post.content} ${post.link}`.toLowerCase();
+				const titleLower = post.title.toLowerCase();
+				const descriptionLower = post.description.toLowerCase();
+				const contentLower = post.content.toLowerCase();
+				const linkLower = post.link.toLowerCase();
+
+				let searchText = "";
+				if (types.length === 0) {
+					searchText = `${titleLower} ${descriptionLower} ${contentLower} ${linkLower}`;
+				} else {
+					if (types.includes("title")) searchText += ` ${titleLower}`;
+					if (types.includes("description"))
+						searchText += ` ${descriptionLower}`;
+					if (types.includes("content")) searchText += ` ${contentLower}`;
+					if (types.includes("link")) searchText += ` ${linkLower}`;
+				}
 
 				return keywords.every((k) => searchText.includes(k));
 			})
@@ -90,14 +132,23 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 						k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
 						"gi",
 					);
-					const titleMatches = titleLower.match(regex);
-					const descriptionMatches = descriptionLower.match(regex);
-					const contentMatches = contentLower.match(regex);
-					const linkMatches = linkLower.match(regex);
-					if (titleMatches) matchCount += titleMatches.length;
-					if (descriptionMatches) matchCount += descriptionMatches.length;
-					if (contentMatches) matchCount += contentMatches.length;
-					if (linkMatches) matchCount += linkMatches.length;
+
+					if (types.length === 0 || types.includes("title")) {
+						const matches = titleLower.match(regex);
+						if (matches) matchCount += matches.length;
+					}
+					if (types.length === 0 || types.includes("description")) {
+						const matches = descriptionLower.match(regex);
+						if (matches) matchCount += matches.length;
+					}
+					if (types.length === 0 || types.includes("content")) {
+						const matches = contentLower.match(regex);
+						if (matches) matchCount += matches.length;
+					}
+					if (types.length === 0 || types.includes("link")) {
+						const matches = linkLower.match(regex);
+						if (matches) matchCount += matches.length;
+					}
 				});
 
 				return {
@@ -108,7 +159,8 @@ const search = async (keyword: string, isDesktop: boolean): Promise<void> => {
 					highlightQuery: keyword,
 					matchCount,
 				};
-			});
+			})
+			.sort((a, b) => b.matchCount - a.matchCount);
 
 		result = searchResults;
 		setPanelVisibility(result.length > 0, isDesktop);
@@ -156,8 +208,16 @@ onMount(async () => {
 	}
 });
 
-$: search(keywordDesktop, true);
-$: search(keywordMobile, false);
+$: {
+	if (keywordDesktop) {
+		search(keywordDesktop, true, selectedTypes);
+	} else if (keywordMobile) {
+		search(keywordMobile, false, selectedTypes);
+	} else {
+		result = [];
+		setPanelVisibility(false, true);
+	}
+}
 </script>
 
 <!-- search bar for desktop view -->
@@ -165,7 +225,7 @@ $: search(keywordMobile, false);
       bg-white/5 hover:bg-white/10 focus-within:bg-white/10
 ">
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
-    <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true)}
+    <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true, selectedTypes)}
            class="transition-all pl-10 text-sm bg-transparent outline-0
          h-full w-40 active:w-60 focus:w-60 text-white/50"
     >
@@ -190,6 +250,31 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
                class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
                focus:w-60 text-white/50"
         >
+    </div>
+
+    <!-- search types -->
+    <div class="flex flex-wrap gap-2 px-3 py-2 border-b border-white/5 items-center">
+        <button 
+            class="px-2 py-1 text-xs rounded-md transition-all flex items-center gap-1 {isMultiSelect ? 'bg-[var(--primary)] text-white' : 'bg-white/5 text-white/50 hover:bg-white/10'}"
+            on:click={() => {
+                isMultiSelect = !isMultiSelect;
+                if (!isMultiSelect && selectedTypes.length > 1) {
+                    selectedTypes = [selectedTypes[0]];
+                }
+            }}
+        >
+            <Icon icon={isMultiSelect ? "material-symbols:check-box" : "material-symbols:check-box-outline-blank"} class="text-sm" />
+            多选
+        </button>
+        <div class="w-[1px] h-3 bg-white/10 mx-1"></div>
+        {#each searchTypes as type}
+            <button 
+                class="px-2 py-1 text-xs rounded-md transition-all {selectedTypes.includes(type.id) ? 'bg-[var(--primary)] text-white' : 'bg-white/5 text-white/50 hover:bg-white/10'}"
+                on:click={() => toggleType(type.id)}
+            >
+                {type.label}
+            </button>
+        {/each}
     </div>
 
     <!-- search results header -->
