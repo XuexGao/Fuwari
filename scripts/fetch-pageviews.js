@@ -4,8 +4,8 @@ import path from 'node:path';
 // Configuration based on src/config.ts
 const umamiConfig = {
     enable: true,
-    baseUrl: "https://u.2x.nz",
-    shareId: "CdkXbGgZr6ECKOyK",
+    baseUrl: "https://u.xiegao.top",
+    shareId: "IoWiNCvTUPxaDg5x",
     timezone: "Asia/Shanghai",
 };
 
