@@ -1,8 +1,8 @@
 ---
-title: 从零打造国内直连的专属 Telegram Web：Cloudflare Pages + Nginx 终极反代指南
+title: 从零打造国内直连的专属 Telegram Web
 published: 2026-03-02
-description: 记录一次硬核的 Telegram Web 部署折腾之旅。通过 Cloudflare Pages 托管前端，配合香港服务器 Nginx 反代 API，解决 CORS、WebSocket 断连、动态路由等神坑，最终实现免翻墙直连秒开。
-image: ./cover.jpg
+description: TG Web采用前后端分离，前端可以部署到静态托管平台，而后端可以用各种服务反代
+image: "https://img.xiegao.top/file/AgACAgUAAyEGAATeotMCAAMLaaUfMy36qvEnIduodQM0r91-jD4AAq4OaxueIChVRmgb-qzpVQIBAAMCAAN5AAM6BA.jpg"
 tags: [Telegram, Nginx, 反向代理, Cloudflare Pages, GitHub Actions]
 category: 教程
 draft: false
@@ -31,7 +31,7 @@ pnpm run build && mv public/index.html public/xiegao.html && echo '<!DOCTYPE htm
 npx wrangler deploy --assets=public --compatibility-date=2026-02-22
 ```
 
-![图1：构建配置页面截图，注意 Build command 和 public 目录](./img1.jpg)
+![图1：构建配置页面截图，注意 Build command 和 public 目录](https://img.xiegao.top/file/AgACAgUAAyEGAATeotMCAAMDaaUcBtiaxHdOLkRMb0bWspuHDDUAAqUOaxueIChVxa6FlXtIY5EBAAMCAAN4AAM6BA.jpg)
 
 此时，当其他人访问你的前端主域名时，只能看到无聊的 `Welcome to nginx!`，而你自己访问 `/xiegao.html` 时，熟悉的登录界面就会出现。
 
@@ -121,7 +121,7 @@ server {
 }
 ```
 
-![图2：1Panel 面板网站配置界面](./img3.jpg)
+![图2：1Panel 面板网站配置界面](https://img.xiegao.top/file/AgACAgUAAyEGAATeotMCAAMFaaUcofEnIYWImDlpA3B9J02GfcgAAqcOaxueIChVEOtm3ODT8R0BAAMCAAN3AAM6BA.jpg)
 
 > **避坑笔记：** > 期间尝试过将 API 反代也放在 Cloudflare Workers 上以提升带宽上限。但实测发现，只要不开 VPN 页面依然无法加载。原因在于 Cloudflare 分配的 Anycast IP 在国内绝大部分地区被进行了 SNI 阻断或封锁。因此，退回使用干净的海外独立 IP 服务器直连，才是最稳妥的选择。关掉 `proxy_buffering` 后，普通的 20Mbps 带宽看视频也足够流畅。
 
@@ -182,8 +182,8 @@ jobs:
           git push origin master --force
 ```
 
-![图3：GitHub Actions 页面运行成功](./img4.jpg)
+![图3：GitHub Actions 页面运行成功](https://img.xiegao.top/file/AgACAgUAAyEGAATeotMCAAMHaaUdJgN8qzV7hYtoK4ab7MfzjhUAAqgOaxueIChVYT-dt4NU8dQBAAMCAAN3AAM6BA.jpg)
 
 至此，只要你的服务器稳定，这套系统就能全天候无死角运转。将前台专属网页添加到手机主屏幕，尽情享受秒开、防封锁的丝滑体验吧！
 
-![图4：成功截图](./img5.jpg)
+![图4：成功截图](https://img.xiegao.top/file/AgACAgUAAyEGAATeotMCAAMJaaUdyB6qCb-uSeYdQ3zrDRe9aowAAqsOaxueIChVAfQttpR5z8cBAAMCAAN3AAM6BA.jpg)
