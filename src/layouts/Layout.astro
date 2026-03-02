@@ -109,10 +109,14 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 			/>
 		))}
 
-		<script is:inline define:vars={{DARK_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
-			// Force dark mode
-			document.documentElement.classList.add('dark');
-			localStorage.setItem('theme', DARK_MODE);
+		<script is:inline define:vars={{BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
+			// 动态读取用户的白天/暗黑模式选择
+			const theme = localStorage.getItem('theme') || 'auto';
+			if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
 
 			// Load the hue from local storage
 			const hue = localStorage.getItem('hue') || configHue;
@@ -256,7 +260,8 @@ function loadGiscus() {
 		const val = container.getAttribute(attr);
 		if (val) script.setAttribute(attr, val);
 	});
-	script.setAttribute("data-theme", 'dark');
+	const isDark = document.documentElement.classList.contains('dark');
+	script.setAttribute("data-theme", isDark ? 'dark' : 'light');
 	script.crossOrigin = "anonymous";
 	script.async = true;
 
@@ -270,12 +275,18 @@ function init() {
 	showBanner();
 	loadGiscus();
 
+	// 恢复评论区主题同步，并增加安全保护防止控制台报错
 	new MutationObserver(() => {
-		const frame = document.querySelector('iframe.giscus-frame') as HTMLIFrameElement;
-		if (!frame) return;
-		frame.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
+		const frame = document.querySelector('iframe.giscus-frame');
+		if (!frame || !frame.contentWindow) return;
+		const isDark = document.documentElement.classList.contains('dark');
+		try {
+			frame.contentWindow.postMessage(
+				{ giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
+				'https://giscus.app'
+			);
+		} catch (e) {}
 	}).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-	// console.timeEnd("init");
 }
 
 init();
