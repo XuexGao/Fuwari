@@ -441,8 +441,6 @@ function handleLocalIconUpload(e: Event) {
 function selectIcon(icon: string) {
 	iconName = icon;
 	localIcon = null; // Clear local icon if selecting from library
-	searchResults = [];
-	searchQuery = "";
 }
 
 async function doExport() {
@@ -945,12 +943,18 @@ function downloadLink(url: string, filename: string) {
                 {#if searchResults.length > 0}
                     <div class="grid grid-cols-5 gap-2 mt-2 max-h-40 overflow-y-auto p-2 bg-transparent rounded-lg border border-[var(--line-color)]">
                         {#each searchResults as icon}
+                            {@const isSelected = icon === iconName}
                             <button 
                                 on:click={() => selectIcon(icon)}
-                                class="p-2 hover:bg-[var(--btn-regular-bg)] rounded flex flex-col items-center gap-1 group transition-colors aspect-square justify-center text-gray-300"
+                                class="p-2 rounded flex items-center justify-center group transition-colors aspect-square text-gray-300 hover:bg-[var(--btn-regular-bg)]"
                                 title={icon}
+                                aria-pressed={isSelected}
                             >
-                                <img src={`https://api.iconify.design/${icon.split(':')[0]}/${icon.split(':')[1]}.svg`} class="w-6 h-6" alt={icon} />
+                                <div class={`w-8 h-8 rounded-md bg-white border flex items-center justify-center overflow-hidden ${
+                                    isSelected ? "border-[var(--primary)]" : "border-gray-300/70"
+                                }`}>
+                                    <img src={`https://api.iconify.design/${icon.split(':')[0]}/${icon.split(':')[1]}.svg`} class="w-6 h-6" alt={icon} />
+                                </div>
                             </button>
                         {/each}
                     </div>
