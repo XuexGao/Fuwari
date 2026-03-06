@@ -171,6 +171,8 @@
   },
   "active": "f6b5e7abc96521b9",
   "lastOpenFiles": [
+    "posts/cookie-consent.md",
+    "posts/codex-unlimited-blade-works.md",
     "posts/codex-unlimited-blade-works.md.tmp.47664.1772805958791",
     "assets/images/codex-unlimited-blade-works-5.png",
     "assets/images/codex-unlimited-blade-works-4.png",
@@ -181,7 +183,6 @@
     "assets/images/mermaid-diagram.png",
     "assets/images/codex.png",
     "posts/ai-agent.md",
-    "posts/codex-unlimited-blade-works.md",
     "posts/codex-unlimited-blade-works.md.tmp.47664.1772804894124",
     "CLAUDE.md",
     "CLAUDE.md.tmp.51576.1772767822869",
@@ -215,7 +216,6 @@
     "posts/posts.zip",
     "posts/watermark.zip",
     "assets/files/基础起手+Lora.json",
-    "assets/files",
-    "assets/images/基础起手+Lora.json"
+    "assets/files"
   ]
 }
