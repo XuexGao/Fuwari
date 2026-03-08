@@ -1,63 +1,63 @@
 ---
+import fs from "node:fs";
+import path from "node:path";
 import { siteConfig } from "@/config";
-import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { Icon } from "astro-icon/components";
-import fs from 'fs';
-import path from 'path';
 import FileExplorer from "@components/FileExplorer.svelte";
 import OneDriveExplorer from "@components/OneDriveExplorer.svelte";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
 
 interface FileItem {
-    name: string;
-    path: string;
-    type: 'file' | 'directory';
-    size?: number;
-    mtime?: Date;
-    children?: FileItem[];
+	name: string;
+	path: string;
+	type: "file" | "directory";
+	size?: number;
+	mtime?: Date;
+	children?: FileItem[];
 }
 
-function getFiles(dir: string, baseDir: string = ''): FileItem[] {
-    const files = fs.readdirSync(dir);
-    const result: FileItem[] = [];
-    
-    // 排除列表
-    const exclude = ['.DS_Store', 'favicon', 'icons', 'js', 'cdn', 'aff'];
+function getFiles(dir: string, baseDir = ""): FileItem[] {
+	const files = fs.readdirSync(dir);
+	const result: FileItem[] = [];
 
-    for (const file of files) {
-        if (exclude.includes(file)) continue;
-        
-        const filePath = path.join(dir, file);
-        const stats = fs.statSync(filePath);
-        const relativePath = path.join(baseDir, file).replace(/\\/g, '/');
-        
-        if (stats.isDirectory()) {
-            result.push({
-                name: file,
-                path: relativePath,
-                type: 'directory',
-                children: getFiles(filePath, relativePath)
-            });
-        } else {
-            result.push({
-                name: file,
-                path: relativePath,
-                type: 'file',
-                size: stats.size,
-                mtime: stats.mtime
-            });
-        }
-    }
-    
-    // 文件夹排在前面，按名称排序
-    return result.sort((a, b) => {
-        if (a.type === b.type) {
-            return a.name.localeCompare(b.name);
-        }
-        return a.type === 'directory' ? -1 : 1;
-    });
+	// 排除列表
+	const exclude = [".DS_Store", "favicon", "icons", "js", "cdn", "aff"];
+
+	for (const file of files) {
+		if (exclude.includes(file)) continue;
+
+		const filePath = path.join(dir, file);
+		const stats = fs.statSync(filePath);
+		const relativePath = path.join(baseDir, file).replace(/\\/g, "/");
+
+		if (stats.isDirectory()) {
+			result.push({
+				name: file,
+				path: relativePath,
+				type: "directory",
+				children: getFiles(filePath, relativePath),
+			});
+		} else {
+			result.push({
+				name: file,
+				path: relativePath,
+				type: "file",
+				size: stats.size,
+				mtime: stats.mtime,
+			});
+		}
+	}
+
+	// 文件夹排在前面，按名称排序
+	return result.sort((a, b) => {
+		if (a.type === b.type) {
+			return a.name.localeCompare(b.name);
+		}
+		return a.type === "directory" ? -1 : 1;
+	});
 }
 
-const publicDir = path.join(process.cwd(), 'public');
+const publicDir = path.join(process.cwd(), "public");
 const fileTree = getFiles(publicDir);
 
 const breadcrumbSchema = {

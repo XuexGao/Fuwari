@@ -1,6 +1,12 @@
 ---
 import type { MarkdownHeading } from "astro";
 
+import {
+	buildTimetableViewModel,
+	resolveCurrentWeek,
+} from "@/utils/timetable-normalizer";
+import { parseTimetableFile } from "@/utils/timetable-parser";
+import LiveTimetableStatus from "@components/timetable/LiveTimetableStatus.astro";
 import Profile from "./Profile.astro";
 
 interface Props {
@@ -9,6 +15,19 @@ interface Props {
 }
 
 const className = Astro.props.class;
+
+const timetableData = parseTimetableFile("src/data/timetable/大一下.json");
+const timetableWeek = resolveCurrentWeek(
+	timetableData.meta.startDate,
+	timetableData.meta.maxWeek,
+);
+const timetableViewModel = buildTimetableViewModel(
+	timetableData,
+	timetableWeek,
+);
+const sidebarLiveStatusPayload = {
+	coursesByDay: timetableViewModel.coursesByDay,
+};
 ---
 
 <div id="sidebar" class:list={[className, "w-full"]}>
@@ -16,6 +35,10 @@ const className = Astro.props.class;
         <Profile></Profile>
     </div>
     <div id="sidebar-sticky" class="transition-all duration-700 flex flex-col w-full gap-4 top-4 sticky top-4" style="top: calc(var(--navbar-offset, 0px) + 1rem);">
+        <a href="/timetable/" class="block" aria-label="前往课程表">
+            <LiveTimetableStatus payload={sidebarLiveStatusPayload} class="card-interactive" />
+        </a>
+
                 <a href="https://deepwiki.com/afoim/fuwari" target="_blank" rel="noopener noreferrer"
            class="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-[var(--card-bg)] border-2 border-[var(--primary)] text-[var(--primary)] font-bold text-lg hover:bg-[var(--primary)] hover:text-white transition-all shadow-md active:scale-95 group">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform">
@@ -80,5 +103,4 @@ const className = Astro.props.class;
 
     </div>
 </div>
-
 

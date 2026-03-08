@@ -228,7 +228,7 @@ async function loadLocalFonts() {
 		if (e.name === "NotAllowedError") {
 			localFontError = "您拒绝了字体访问权限";
 		} else {
-			localFontError = "加载本地字体失败: " + e.message;
+			localFontError = `加载本地字体失败: ${e.message}`;
 		}
 	} finally {
 		isLoadingLocalFonts = false;

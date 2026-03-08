@@ -1,0 +1,30 @@
+---
+import type { TimetableViewModel } from "@/types/timetable";
+import TimetableCourseCard from "@components/timetable/TimetableCourseCard.astro";
+
+interface Props {
+	viewModel: TimetableViewModel;
+}
+
+const { viewModel } = Astro.props;
+---
+
+<div class="space-y-4 md:hidden">
+	{viewModel.dayColumns.map((day) => {
+		const courses = viewModel.coursesByDay[day.day] ?? [];
+		return (
+			<section class="card-base p-4">
+				<h2 class="text-sm font-semibold text-90 mb-3">{day.label}</h2>
+				{courses.length > 0 ? (
+					<div class="space-y-2.5">
+						{courses.map((course) => (
+							<TimetableCourseCard course={course} />
+						))}
+					</div>
+				) : (
+					<p class="text-xs text-50">本周暂无课程</p>
+				)}
+			</section>
+		);
+	})}
+</div>

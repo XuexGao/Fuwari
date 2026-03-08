@@ -1,107 +1,111 @@
 <script lang="ts">
-    import Icon from "@iconify/svelte";
-    
-    interface FileItem {
-        name: string;
-        path: string;
-        type: 'file' | 'directory';
-        size?: number;
-        mtime?: string | Date;
-        children?: FileItem[];
-    }
+import Icon from "@iconify/svelte";
 
-    export let items: FileItem[] = [];
-    
-    // 导航栈，初始为根目录
-    let pathStack: { name: string, items: FileItem[] }[] = [{ name: '根目录', items }];
-    
-    // 当前显示的条目
-    $: currentView = pathStack[pathStack.length - 1];
+interface FileItem {
+	name: string;
+	path: string;
+	type: "file" | "directory";
+	size?: number;
+	mtime?: string | Date;
+	children?: FileItem[];
+}
 
-    function navigateInto(item: FileItem) {
-        if (item.type === 'directory' && item.children) {
-            pathStack = [...pathStack, { name: item.name, items: item.children }];
-        }
-    }
+export let items: FileItem[] = [];
 
-    function navigateToLevel(index: number) {
-        pathStack = pathStack.slice(0, index + 1);
-    }
+// 导航栈，初始为根目录
+let pathStack: { name: string; items: FileItem[] }[] = [
+	{ name: "根目录", items },
+];
 
-    function goBack() {
-        if (pathStack.length > 1) {
-            pathStack = pathStack.slice(0, -1);
-        }
-    }
+// 当前显示的条目
+$: currentView = pathStack[pathStack.length - 1];
 
-    function formatSize(bytes?: number) {
-        if (bytes === undefined) return '';
-        if (bytes === 0) return '0 B';
-        const k = 1024;
-        const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
+function navigateInto(item: FileItem) {
+	if (item.type === "directory" && item.children) {
+		pathStack = [...pathStack, { name: item.name, items: item.children }];
+	}
+}
 
-    function getFileIcon(filename: string) {
-        const ext = filename.split('.').pop()?.toLowerCase();
-        switch (ext) {
-            case 'jpg':
-            case 'jpeg':
-            case 'png':
-            case 'gif':
-            case 'svg':
-            case 'webp':
-            case 'avif':
-                return 'material-symbols:image-outline';
-            case 'mp4':
-            case 'webm':
-            case 'mkv':
-            case 'mov':
-            case 'avi':
-                return 'material-symbols:movie-outline';
-            case 'mp3':
-            case 'wav':
-            case 'flac':
-            case 'ogg':
-                return 'material-symbols:audio-file-outline';
-            case 'zip':
-            case 'rar':
-            case '7z':
-            case 'tar':
-            case 'gz':
-            case 'zpaq':
-                return 'material-symbols:inventory-2-outline';
-            case 'pdf':
-                return 'material-symbols:picture-as-pdf-outline';
-            case 'doc':
-            case 'docx':
-                return 'material-symbols:description';
-            case 'xls':
-            case 'xlsx':
-                return 'material-symbols:table-chart';
-            case 'ppt':
-            case 'pptx':
-                return 'material-symbols:slideshow';
-            case 'js':
-            case 'ts':
-            case 'html':
-            case 'css':
-            case 'py':
-            case 'go':
-            case 'json':
-            case 'md':
-                return 'material-symbols:code-blocks-outline';
-            case 'exe':
-            case 'msi':
-            case 'iso':
-                return 'material-symbols:settings-applications';
-            case 'txt':
-                return 'material-symbols:text-snippet';
-            default:
-                return 'material-symbols:description';
-        }
-    }
+function navigateToLevel(index: number) {
+	pathStack = pathStack.slice(0, index + 1);
+}
+
+function goBack() {
+	if (pathStack.length > 1) {
+		pathStack = pathStack.slice(0, -1);
+	}
+}
+
+function formatSize(bytes?: number) {
+	if (bytes === undefined) return "";
+	if (bytes === 0) return "0 B";
+	const k = 1024;
+	const sizes = ["B", "KB", "MB", "GB", "TB"];
+	const i = Math.floor(Math.log(bytes) / Math.log(k));
+	return (
+		Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+	);
+}
+
+function getFileIcon(filename: string) {
+	const ext = filename.split(".").pop()?.toLowerCase();
+	switch (ext) {
+		case "jpg":
+		case "jpeg":
+		case "png":
+		case "gif":
+		case "svg":
+		case "webp":
+		case "avif":
+			return "material-symbols:image-outline";
+		case "mp4":
+		case "webm":
+		case "mkv":
+		case "mov":
+		case "avi":
+			return "material-symbols:movie-outline";
+		case "mp3":
+		case "wav":
+		case "flac":
+		case "ogg":
+			return "material-symbols:audio-file-outline";
+		case "zip":
+		case "rar":
+		case "7z":
+		case "tar":
+		case "gz":
+		case "zpaq":
+			return "material-symbols:inventory-2-outline";
+		case "pdf":
+			return "material-symbols:picture-as-pdf-outline";
+		case "doc":
+		case "docx":
+			return "material-symbols:description";
+		case "xls":
+		case "xlsx":
+			return "material-symbols:table-chart";
+		case "ppt":
+		case "pptx":
+			return "material-symbols:slideshow";
+		case "js":
+		case "ts":
+		case "html":
+		case "css":
+		case "py":
+		case "go":
+		case "json":
+		case "md":
+			return "material-symbols:code-blocks-outline";
+		case "exe":
+		case "msi":
+		case "iso":
+			return "material-symbols:settings-applications";
+		case "txt":
+			return "material-symbols:text-snippet";
+		default:
+			return "material-symbols:description";
+	}
+}
 </script>
 
 <div class="file-explorer-container">

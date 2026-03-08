@@ -1,162 +1,169 @@
 <script lang="ts">
-    import Icon from "@iconify/svelte";
-    import { onMount } from 'svelte';
+import Icon from "@iconify/svelte";
+import { onMount } from "svelte";
 
-    export let apiBase = 'https://e3.2x.nz/api/';
+export let apiBase = "https://e3.2x.nz/api/";
 
-    interface FileItem {
-        id: string;
-        name: string;
-        path: string;
-        type: 'file' | 'directory';
-        size?: number;
-        downloadUrl?: string;
-    }
+interface FileItem {
+	id: string;
+	name: string;
+	path: string;
+	type: "file" | "directory";
+	size?: number;
+	downloadUrl?: string;
+}
 
-    let items: FileItem[] = [];
-    let pathStack: { name: string, path: string, items: FileItem[] }[] = [];
-    let loading = false;
-    let error = '';
+let items: FileItem[] = [];
+let pathStack: { name: string; path: string; items: FileItem[] }[] = [];
+let loading = false;
+let error = "";
 
-    async function fetchItems(currentPath: string = '/') {
-        loading = true;
-        items = []; // 立即清空当前列表，防止显示旧数据
-        error = '';
-        try {
-            const url = `${apiBase}?path=${encodeURIComponent(currentPath)}`;
-            const response = await fetch(url);
-            
-            if (!response.ok) {
-                throw new Error(`API 请求失败: ${response.status}`);
-            }
+async function fetchItems(currentPath = "/") {
+	loading = true;
+	items = []; // 立即清空当前列表，防止显示旧数据
+	error = "";
+	try {
+		const url = `${apiBase}?path=${encodeURIComponent(currentPath)}`;
+		const response = await fetch(url);
 
-            const data = await response.json();
-            const folderValue = data.folder?.value || [];
+		if (!response.ok) {
+			throw new Error(`API 请求失败: ${response.status}`);
+		}
 
-            items = folderValue.map((item: any) => {
-                const isFolder = !!item.folder;
-                // 拼接完整路径用于下载或下级导航
-                const fullPath = currentPath === '/' ? `/${item.name}` : `${currentPath}/${item.name}`;
-                
-                return {
-                    id: item.id,
-                    name: item.name,
-                    path: fullPath,
-                    type: isFolder ? 'directory' : 'file',
-                    size: item.size,
-                    // 下载链接拼接规则
-                    downloadUrl: isFolder ? undefined : `${apiBase}raw/?path=${encodeURIComponent(fullPath)}`
-                };
-            }).sort((a: FileItem, b: FileItem) => {
-                if (a.type === b.type) return a.name.localeCompare(b.name);
-                return a.type === 'directory' ? -1 : 1;
-            });
+		const data = await response.json();
+		const folderValue = data.folder?.value || [];
 
-            if (pathStack.length === 0) {
-                pathStack = [{ name: 'OneDrive 根目录', path: '/', items }];
-            } else {
-                pathStack[pathStack.length - 1].items = items;
-            }
-        } catch (err: any) {
-            error = `加载失败: ${err.message}`;
-            console.error(err);
-        } finally {
-            loading = false;
-        }
-    }
+		items = folderValue
+			.map((item: any) => {
+				const isFolder = !!item.folder;
+				// 拼接完整路径用于下载或下级导航
+				const fullPath =
+					currentPath === "/" ? `/${item.name}` : `${currentPath}/${item.name}`;
 
-    async function navigateInto(item: FileItem) {
-        if (item.type === 'directory') {
-            pathStack = [...pathStack, { name: item.name, path: item.path, items: [] }];
-            await fetchItems(item.path);
-        }
-    }
+				return {
+					id: item.id,
+					name: item.name,
+					path: fullPath,
+					type: isFolder ? "directory" : "file",
+					size: item.size,
+					// 下载链接拼接规则
+					downloadUrl: isFolder
+						? undefined
+						: `${apiBase}raw/?path=${encodeURIComponent(fullPath)}`,
+				};
+			})
+			.sort((a: FileItem, b: FileItem) => {
+				if (a.type === b.type) return a.name.localeCompare(b.name);
+				return a.type === "directory" ? -1 : 1;
+			});
 
-    async function navigateToLevel(index: number) {
-        pathStack = pathStack.slice(0, index + 1);
-        await fetchItems(pathStack[index].path);
-    }
+		if (pathStack.length === 0) {
+			pathStack = [{ name: "OneDrive 根目录", path: "/", items }];
+		} else {
+			pathStack[pathStack.length - 1].items = items;
+		}
+	} catch (err: any) {
+		error = `加载失败: ${err.message}`;
+		console.error(err);
+	} finally {
+		loading = false;
+	}
+}
 
-    async function goBack() {
-        if (pathStack.length > 1) {
-            pathStack = pathStack.slice(0, -1);
-            await fetchItems(pathStack[pathStack.length - 1].path);
-        }
-    }
+async function navigateInto(item: FileItem) {
+	if (item.type === "directory") {
+		pathStack = [...pathStack, { name: item.name, path: item.path, items: [] }];
+		await fetchItems(item.path);
+	}
+}
 
-    function formatSize(bytes?: number) {
-        if (bytes === undefined || bytes === 0) return '';
-        const k = 1024;
-        const sizes = ['B', 'KB', 'MB', 'GB', 'TB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-    }
+async function navigateToLevel(index: number) {
+	pathStack = pathStack.slice(0, index + 1);
+	await fetchItems(pathStack[index].path);
+}
 
-    function getFileIcon(filename: string) {
-        const ext = filename.split('.').pop()?.toLowerCase();
-        switch (ext) {
-            case 'jpg':
-            case 'jpeg':
-            case 'png':
-            case 'gif':
-            case 'svg':
-            case 'webp':
-            case 'avif':
-                return 'material-symbols:image-outline';
-            case 'mp4':
-            case 'webm':
-            case 'mkv':
-            case 'mov':
-            case 'avi':
-                return 'material-symbols:movie-outline';
-            case 'mp3':
-            case 'wav':
-            case 'flac':
-            case 'ogg':
-                return 'material-symbols:audio-file-outline';
-            case 'zip':
-            case 'rar':
-            case '7z':
-            case 'tar':
-            case 'gz':
-            case 'zpaq':
-                return 'material-symbols:inventory-2-outline';
-            case 'pdf':
-                return 'material-symbols:picture-as-pdf-outline';
-            case 'doc':
-            case 'docx':
-                return 'material-symbols:description';
-            case 'xls':
-            case 'xlsx':
-                return 'material-symbols:table-chart';
-            case 'ppt':
-            case 'pptx':
-                return 'material-symbols:slideshow';
-            case 'js':
-            case 'ts':
-            case 'html':
-            case 'css':
-            case 'py':
-            case 'go':
-            case 'json':
-            case 'md':
-                return 'material-symbols:code-blocks-outline';
-            case 'exe':
-            case 'msi':
-            case 'iso':
-                return 'material-symbols:settings-applications';
-            case 'txt':
-                return 'material-symbols:text-snippet';
-            default:
-                return 'material-symbols:description';
-        }
-    }
+async function goBack() {
+	if (pathStack.length > 1) {
+		pathStack = pathStack.slice(0, -1);
+		await fetchItems(pathStack[pathStack.length - 1].path);
+	}
+}
 
-    onMount(() => {
-        fetchItems('/');
-    });
+function formatSize(bytes?: number) {
+	if (bytes === undefined || bytes === 0) return "";
+	const k = 1024;
+	const sizes = ["B", "KB", "MB", "GB", "TB"];
+	const i = Math.floor(Math.log(bytes) / Math.log(k));
+	return (
+		Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
+	);
+}
 
-    $: currentView = pathStack[pathStack.length - 1] || { items: [] };
+function getFileIcon(filename: string) {
+	const ext = filename.split(".").pop()?.toLowerCase();
+	switch (ext) {
+		case "jpg":
+		case "jpeg":
+		case "png":
+		case "gif":
+		case "svg":
+		case "webp":
+		case "avif":
+			return "material-symbols:image-outline";
+		case "mp4":
+		case "webm":
+		case "mkv":
+		case "mov":
+		case "avi":
+			return "material-symbols:movie-outline";
+		case "mp3":
+		case "wav":
+		case "flac":
+		case "ogg":
+			return "material-symbols:audio-file-outline";
+		case "zip":
+		case "rar":
+		case "7z":
+		case "tar":
+		case "gz":
+		case "zpaq":
+			return "material-symbols:inventory-2-outline";
+		case "pdf":
+			return "material-symbols:picture-as-pdf-outline";
+		case "doc":
+		case "docx":
+			return "material-symbols:description";
+		case "xls":
+		case "xlsx":
+			return "material-symbols:table-chart";
+		case "ppt":
+		case "pptx":
+			return "material-symbols:slideshow";
+		case "js":
+		case "ts":
+		case "html":
+		case "css":
+		case "py":
+		case "go":
+		case "json":
+		case "md":
+			return "material-symbols:code-blocks-outline";
+		case "exe":
+		case "msi":
+		case "iso":
+			return "material-symbols:settings-applications";
+		case "txt":
+			return "material-symbols:text-snippet";
+		default:
+			return "material-symbols:description";
+	}
+}
+
+onMount(() => {
+	fetchItems("/");
+});
+
+$: currentView = pathStack[pathStack.length - 1] || { items: [] };
 </script>
 
 <div class="onedrive-explorer-container">
