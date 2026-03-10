@@ -6,6 +6,10 @@ image: ../assets/images/cf-gh.png
 draft: false
 lang: ""
 ---
+# 视频
+
+https://bilibili.com/video/BV16YcXzeEGJ
+
 # 前言
 
 原理这里不说，好奇的可以自行站内搜索
