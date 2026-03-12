@@ -19,14 +19,14 @@ import {
 } from "@utils/setting-utils";
 import { onMount } from "svelte";
 
-let hue = getHue();
-let isRainbowMode = getRainbowMode();
-let rainbowSpeed = getRainbowSpeed();
-let bgBlur = getBgBlur();
-let hideBg = getHideBg();
-let isDevMode = getDevMode();
-let devServer = getDevServer();
-let animationId: number;
+let hue = 250;
+let isRainbowMode = false;
+let rainbowSpeed = 5;
+let bgBlur = 4;
+let hideBg = false;
+let isDevMode = false;
+let devServer = "";
+let isReady = false;
 
 const defaultHue = getDefaultHue();
 
@@ -34,11 +34,11 @@ function resetHue() {
 	hue = getDefaultHue();
 }
 
-$: if ((hue || hue === 0) && !isRainbowMode) {
+$: if (isReady && (hue || hue === 0) && !isRainbowMode) {
 	setHue(hue);
 }
 
-$: {
+$: if (isReady) {
 	setBgBlur(bgBlur);
 }
 
@@ -84,6 +84,15 @@ function onSpeedChange() {
 }
 
 onMount(() => {
+	hue = getHue();
+	isRainbowMode = getRainbowMode();
+	rainbowSpeed = getRainbowSpeed();
+	bgBlur = getBgBlur();
+	hideBg = getHideBg();
+	isDevMode = getDevMode();
+	devServer = getDevServer();
+	isReady = true;
+
 	if (isRainbowMode) {
 		document.documentElement.classList.add("is-rainbow-mode");
 		document.documentElement.style.setProperty(
@@ -111,7 +120,7 @@ onMount(() => {
             </button>
         </div>
         <div class="flex gap-1">
-            <input aria-label="Hue Value" id="hueValue" type="number" min="0" max="360" value={Math.round(hue)} on:input={(e) => hue = e.currentTarget.valueAsNumber} disabled={isRainbowMode}
+            <input aria-label="Hue Value" id="hueValue" type="number" min="0" max="360" bind:value={hue} disabled={isRainbowMode}
                    class="transition bg-[var(--btn-regular-bg)] w-12 h-7 rounded-md text-center font-bold text-sm text-[var(--btn-content)] outline-none"
             />
         </div>

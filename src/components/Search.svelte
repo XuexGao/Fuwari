@@ -163,11 +163,11 @@ const search = async (
 			.sort((a, b) => b.matchCount - a.matchCount);
 
 		result = searchResults;
-		setPanelVisibility(result.length > 0, isDesktop);
+		setPanelVisibility(true, isDesktop);
 	} catch (error) {
 		console.error("Search error:", error);
 		result = [];
-		setPanelVisibility(false, isDesktop);
+		setPanelVisibility(true, isDesktop);
 	} finally {
 		isSearching = false;
 	}
@@ -277,31 +277,39 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
         {/each}
     </div>
 
-    <!-- search results header -->
-    {#if result.length > 0}
-        <div class="text-xs text-white/40 px-3 py-2 border-b border-white/5">
-            {result.length} 条搜索结果
-        </div>
-    {/if}
+    {#if keywordDesktop || keywordMobile}
+        <!-- search results header -->
+        {#if result.length > 0}
+            <div class="text-xs text-white/40 px-3 py-2 border-b border-white/5">
+                {result.length} 条搜索结果
+            </div>
+        {/if}
 
-    <!-- search results -->
-    {#each result as item}
-        <a href={item.url} on:click={closePanel}
-           class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
-       rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
-            <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
-                <Highlight text={item.meta.title} query={item.highlightQuery} />
-                <Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
+        <!-- search results -->
+        {#each result as item}
+            <a href={item.url} on:click={closePanel}
+               class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
+           rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
+                <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
+                    <Highlight text={item.meta.title} query={item.highlightQuery} />
+                    <Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
+                </div>
+                <div class="transition text-xs text-white/50 mb-1 font-mono">
+                    <Highlight text={item.urlPath} query={item.highlightQuery} />
+                    <span class="ml-2 text-[var(--primary)]">命中 {item.matchCount} 个关键词</span>
+                </div>
+                <div class="transition text-sm text-50">
+                    <Highlight text={item.excerpt} query={item.highlightQuery} />
+                </div>
+            </a>
+        {/each}
+
+        {#if !isSearching && result.length === 0}
+            <div class="text-sm text-white/50 px-3 py-4">
+                无搜索结果
             </div>
-            <div class="transition text-xs text-white/50 mb-1 font-mono">
-                <Highlight text={item.urlPath} query={item.highlightQuery} />
-                <span class="ml-2 text-[var(--primary)]">命中 {item.matchCount} 个关键词</span>
-            </div>
-            <div class="transition text-sm text-50">
-                <Highlight text={item.excerpt} query={item.highlightQuery} />
-            </div>
-        </a>
-    {/each}
+        {/if}
+    {/if}
 </div>
 
 <style>
