@@ -29,7 +29,7 @@ https://fisco-bcos-documentation.readthedocs.io/
 
 更改APT源为中科大源
 ```bash
-sudo sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sudo sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list
 ```
 
 安装依赖
