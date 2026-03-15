@@ -1,8 +1,6 @@
 export const PAGE_SIZE = 8;
 
 export const DARK_MODE = "dark";
-export const LIGHT_MODE = "light";
-export const AUTO_MODE = "auto";
 
 // Banner height unit: vh
 export const BANNER_HEIGHT = 35;
