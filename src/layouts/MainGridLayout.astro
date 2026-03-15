@@ -46,7 +46,7 @@ const mainPanelTop = siteConfig.banner.enable
 <Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle}>
 
 	<slot slot="head" name="head" />
-<div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto">
+<div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-3 md:px-4 mx-auto">
     <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all" style="top: var(--navbar-offset, 0px);">
         <Navbar></Navbar>
     </div>
@@ -64,7 +64,7 @@ const mainPanelTop = siteConfig.banner.enable
 <div class="relative w-full z-30 pointer-events-none" style=`margin-top: ${mainPanelTop}`>
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
-        <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-1 md:grid-cols-[17.5rem_auto] grid-rows-[auto_auto_auto] lg:grid-rows-[auto_1fr] md:grid-rows-[auto_1fr] mx-auto gap-4 px-0 md:px-4"
+        <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-1 md:grid-cols-[17.5rem_auto] grid-rows-[auto_auto_auto] lg:grid-rows-[auto_1fr] md:grid-rows-[auto_1fr] mx-auto gap-4 px-3 md:px-4"
         >
             <!-- Banner image credit -->
             {hasBannerCredit && <a href={siteConfig.banner.credit.url} id="banner-credit" target="_blank" rel="noopener" aria-label="Visit image source"
