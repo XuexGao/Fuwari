@@ -22,7 +22,8 @@ import {
 import { defaultFavicons } from "../constants/icon";
 import type { Favicon } from "../types/config";
 import { url, pathsEqual } from "../utils/url-utils";
-import "katex/dist/katex.css";
+// KaTeX CSS loaded asynchronously via <link> in <head> to avoid blocking render
+// import "katex/dist/katex.css";
 
 interface Props {
 	title?: string;
@@ -244,6 +245,10 @@ const bannerOffset =
 			}
 		</style>
 
+		<!-- KaTeX CSS: async load to avoid blocking render -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" media="print" onload="this.media='all'" />
+		<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" /></noscript>
+
 		<slot name="head"></slot>
 
 
@@ -258,7 +263,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <script type="text/plain" async src="https://fundingchoicesmessages.google.com/i/pub-1683686345039700?ers=1"></script><script type="text/plain">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
 
-<script type="text/plain">(function(){'use strict';function aa(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}}var ba=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a};
+<script type="text/plain" data-cookie-consent="targeting">(function(){'use strict';function aa(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}}var ba=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a};
 function ca(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var c=a[b];if(c&&c.Math==Math)return c}throw Error("Cannot find global object");}var da=ca(this);function l(a,b){if(b)a:{var c=da;a=a.split(".");for(var d=0;d<a.length-1;d++){var e=a[d];if(!(e in c))break a;c=c[e]}a=a[a.length-1];d=c[a];b=b(d);b!=d&&b!=null&&ba(c,a,{configurable:!0,writable:!0,value:b})}}
 function ea(a){return a.raw=a}function n(a){var b=typeof Symbol!="undefined"&&Symbol.iterator&&a[Symbol.iterator];if(b)return b.call(a);if(typeof a.length=="number")return{next:aa(a)};throw Error(String(a)+" is not an iterable or ArrayLike");}function fa(a){for(var b,c=[];!(b=a.next()).done;)c.push(b.value);return c}var ha=typeof Object.create=="function"?Object.create:function(a){function b(){}b.prototype=a;return new b},p;
 if(typeof Object.setPrototypeOf=="function")p=Object.setPrototypeOf;else{var q;a:{var ja={a:!0},ka={};try{ka.__proto__=ja;q=ka.a;break a}catch(a){}q=!1}p=q?function(a,b){a.__proto__=b;if(a.__proto__!==b)throw new TypeError(a+" is not extensible");return a}:null}var la=p;
@@ -450,14 +455,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Cloudflare Web Analytics --><script data-cookie-consent="strictly-necessary" defer data-swup-ignore-script src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "15fe148e91b34f10a15652e1a74ab26c"}'></script><!-- End Cloudflare Web Analytics -->
 <!-- end of Basic Analytics-->
 
-<!-- Baidu Analytics -->
+<!-- Baidu Analytics (deferred) -->
 <script data-swup-ignore-script>
-var _hmt = _hmt || [];
 (function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?a87028bb5a1ed77d98f192bc12b56142";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
+	var _hmt = window._hmt = window._hmt || [];
+	var load = function() {
+		if (window.__baiduAnalyticsLoaded) return;
+		window.__baiduAnalyticsLoaded = true;
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?a87028bb5a1ed77d98f192bc12b56142";
+		hm.async = true;
+		document.head.appendChild(hm);
+	};
+	if ("requestIdleCallback" in window) {
+		window.requestIdleCallback(load, { timeout: 4000 });
+	} else {
+		setTimeout(load, 1500);
+	}
 })();
 </script>
 
@@ -562,7 +576,11 @@ var _hmt = _hmt || [];
 
 		<script>
 		(function () {
+			const needsDash = () => {
+				return document.querySelector('video[data-dashjs-player], [data-dashjs], video source[type="application/dash+xml"]');
+			};
 			const run = () => {
+				if (!needsDash()) return;
 				const script = document.createElement("script");
 				script.src = "https://cdn.dashjs.org/latest/dash.all.min.js";
 				script.async = true;
@@ -934,7 +952,16 @@ function scrollFunction() {
 		}
 	}
 }
-window.onscroll = scrollFunction
+let scrollTicking = false;
+window.onscroll = () => {
+	if (!scrollTicking) {
+		requestAnimationFrame(() => {
+			scrollFunction();
+			scrollTicking = false;
+		});
+		scrollTicking = true;
+	}
+};
 if (document.readyState === 'loading') {
 	document.addEventListener('DOMContentLoaded', scrollFunction)
 } else {
