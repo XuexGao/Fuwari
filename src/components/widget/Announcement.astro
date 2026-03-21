@@ -41,7 +41,7 @@ const currentColor = colorMap[level] || colorMap.info;
 ---
 
 {enable && (
-    <div class="notice-card mb-4 relative transition-all duration-300 hover:shadow-lg">
+    <div class="notice-card mb-4 relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg">
         <div
 			class="notice-content flex items-start p-4 rounded-xl bg-[var(--card-bg)] border transition-colors onload-animation"
 			class:list={[{ "notice-happy": isHappy }]}
@@ -169,9 +169,11 @@ const currentColor = colorMap[level] || colorMap.info;
 		oklch(0.78 0.18 calc(var(--hue) + 315)),
 		oklch(0.78 0.18 calc(var(--hue) + 360))
 	);
-	border: 2px solid transparent;
+	position: relative;
+	border: 1px solid transparent;
 	background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box, var(--notice-gradient) border-box;
 	background-size: 100% 100%, 200% 100%;
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04);
 	animation: rainbow-flow 3s linear infinite;
 }
 
