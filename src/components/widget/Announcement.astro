@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import Markdown from "../misc/Markdown.astro";
 
 const announcement = await getEntry("spec", "announcement");
 let enable = false;
@@ -57,8 +58,10 @@ const currentColor = colorMap[level] || colorMap.info;
 				)}
             </div>
             <div class="text-wrapper grow relative">
-                <div class="notice-text text-sm md:text-base font-bold custom-md transition-all duration-300" id="notice-content-container">
-					<h3><Content /></h3>
+                <div class="notice-text transition-all duration-300" id="notice-content-container">
+					<Markdown class="notice-markdown text-sm md:text-base">
+						<Content />
+					</Markdown>
 				</div>
             </div>
         </div>
@@ -177,7 +180,7 @@ const currentColor = colorMap[level] || colorMap.info;
 	animation: rainbow-flow 3s linear infinite;
 }
 
-.notice-happy .notice-text {
+.notice-happy .notice-markdown {
 	background: var(--notice-gradient);
 	background-size: 200% 100%;
 	-webkit-background-clip: text;
@@ -186,15 +189,32 @@ const currentColor = colorMap[level] || colorMap.info;
 	animation: rainbow-flow 3s linear infinite;
 }
 
-.notice-happy .notice-text::selection,
-.notice-happy .notice-text *::selection {
+.notice-happy .notice-markdown::selection,
+.notice-happy .notice-markdown *::selection {
 	color: var(--primary);
 	-webkit-text-fill-color: var(--primary);
 }
 
-.notice-happy .notice-text::-moz-selection,
-.notice-happy .notice-text *::-moz-selection {
+.notice-happy .notice-markdown::-moz-selection,
+.notice-happy .notice-markdown *::-moz-selection {
 	color: var(--primary);
+}
+
+.notice-markdown {
+	margin: 0;
+}
+
+.notice-markdown :global(:first-child) {
+	margin-top: 0;
+}
+
+.notice-markdown :global(:last-child) {
+	margin-bottom: 0;
+}
+
+.notice-markdown :global(ol),
+.notice-markdown :global(ul) {
+	padding-left: 1.5rem;
 }
 
 .notice-happy .notice-emoji {
