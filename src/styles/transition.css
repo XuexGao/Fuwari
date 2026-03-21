@@ -1,71 +1,22 @@
-/* Page transition animations with Swup */
-html.is-changing .transition-swup-fade {
-    @apply transition-opacity duration-200
-}
-html.is-animating .transition-swup-fade {
-    @apply opacity-0
-}
+/* Swup page transitions - disabled for debugging */
+html.is-changing .transition-swup-fade,
+html.is-animating .transition-swup-fade,
+html.is-changing .transition-swup-presence,
 html.is-changing .transition-swup-fade .onload-animation {
-    opacity: 1;
-    animation: none;
-}
-html.is-changing .transition-swup-presence {
-    transition: none;
-}
-
-/* Keep sort container visible during sort-to-sort navigation */
-.sort-keep {
     transition: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-/* Fade-in animations for components */
-@keyframes fade-in-up {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Main components */
-.onload-animation {
-    opacity: 0;
-    animation: 300ms fade-in-up;
-    animation-fill-mode: forwards;
-}
-#navbar {
-    animation-delay: 0ms
-}
-#sidebar {
-    animation-delay: 100ms
-}
-#swup-container {
-    outline: none;
-}
-#content-wrapper {
-    animation-delay: var(--content-delay);
-}
-.footer {
-    animation-delay: 250ms;
-}
-#banner-credit {
-    animation-delay: 400ms;
-}
-
-/* Post content - unified fade-in for the whole container */
-#post-container {
-    outline: none;
-}
-#post-container.onload-animation {
-    opacity: 0;
-    animation: 300ms fade-in-up;
-    animation-fill-mode: forwards;
-}
-#post-container :nth-child(n) {
     animation: none !important;
     opacity: 1 !important;
 }
 
+.onload-animation {
+    opacity: 1 !important;
+    animation: none !important;
+}
+
+#swup-container {
+    outline: none;
+}
+
+#post-container {
+    outline: none;
+}
