@@ -64,14 +64,16 @@ function buildToc(headings: MarkdownHeading[]): TocItem[] {
 const toc = buildToc(headings);
 ---
 {isPostsRoute &&
-<table-of-contents class:list={[className, "toc-panel group block relative z-0 h-auto max-h-full rounded-xl"]}>
-    <div id="toc-scroll-region" class="toc-scroll-region relative max-h-full overflow-y-auto overflow-x-hidden">
+<table-of-contents class:list={[className, "toc-panel group block relative z-0 h-auto max-h-[inherit] min-h-0 rounded-xl overflow-hidden flex flex-col"]}>
+    <div id="toc-scroll-region" class="toc-scroll-region relative flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain">
         <div class="relative p-2">
             <TOCList items={toc} />
             <div id="active-indicator" class:list={[{'hidden': headings.length == 0}, "-z-10 absolute bg-[var(--toc-btn-hover)] left-2 right-2 rounded-xl transition-all " +
                 "group-hover:bg-transparent border-2 border-[var(--toc-btn-hover)] group-hover:border-[var(--toc-btn-active)] border-dashed"]}></div>
         </div>
     </div>
+    <div id="toc-fade-top" class="pointer-events-none absolute inset-x-0 top-0 z-10 h-8 opacity-0 transition-opacity duration-200" style="background: linear-gradient(to bottom, color-mix(in srgb, var(--card-bg) 68%, transparent) 0%, color-mix(in srgb, var(--card-bg) 32%, transparent) 45%, transparent 100%);"></div>
+    <div id="toc-fade-bottom" class="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-8 opacity-0 transition-opacity duration-200" style="background: linear-gradient(to top, color-mix(in srgb, var(--card-bg) 68%, transparent) 0%, color-mix(in srgb, var(--card-bg) 32%, transparent) 45%, transparent 100%);"></div>
 </table-of-contents>}
 
 <script>
@@ -86,6 +88,21 @@ class TableOfContents extends HTMLElement {
     tocEntries: HTMLAnchorElement[] = [];
     active: boolean[] = [];
     activeIndicator: HTMLElement | null = null;
+    topFadeEl: HTMLElement | null = null;
+    bottomFadeEl: HTMLElement | null = null;
+    handleScrollFade = () => {
+        if (!this.tocEl) return;
+
+        const maxScrollTop = this.tocEl.scrollHeight - this.tocEl.clientHeight;
+        const isScrollable = maxScrollTop > 1;
+        const isAtTop = this.tocEl.scrollTop <= 1;
+        const isAtBottom = !isScrollable || this.tocEl.scrollTop >= maxScrollTop - 1;
+
+        if (this.topFadeEl)
+            this.topFadeEl.style.opacity = isScrollable && !isAtTop ? "1" : "0";
+        if (this.bottomFadeEl)
+            this.bottomFadeEl.style.opacity = isScrollable && !isAtBottom ? "1" : "0";
+    };
 
     constructor() {
         super();
@@ -215,15 +232,22 @@ class TableOfContents extends HTMLElement {
     };
 
     connectedCallback() {
-        // wait for the onload animation to finish, which makes the `getBoundingClientRect` return correct values
+        // wait for the onload animation to finish when present; otherwise initialize immediately
         const element = document.querySelector('.prose');
-        if (element) {
-            element.addEventListener('animationend', () => {
-                this.init();
-            }, { once: true });
-        } else {
-            console.debug('Animation element not found');
+        if (!(element instanceof HTMLElement)) {
+            this.init();
+            return;
         }
+
+        const computedStyle = window.getComputedStyle(element);
+        if (computedStyle.animationName === 'none' || computedStyle.animationDuration === '0s') {
+            this.init();
+            return;
+        }
+
+        element.addEventListener('animationend', () => {
+            this.init();
+        }, { once: true });
     };
 
     init() {
@@ -233,13 +257,23 @@ class TableOfContents extends HTMLElement {
 
         if (!this.tocEl) return;
 
-        if (this.tocEl.scrollHeight <= this.tocEl.clientHeight) {
+        if (this.tocEl.scrollHeight > this.tocEl.clientHeight) {
+            this.tocEl.classList.add("toc-scroll-region");
+        } else {
             this.tocEl.classList.remove("toc-scroll-region");
         }
 
+        this.topFadeEl = document.getElementById("toc-fade-top");
+        this.bottomFadeEl = document.getElementById("toc-fade-bottom");
+
+        this.handleScrollFade();
+        this.tocEl.addEventListener("scroll", this.handleScrollFade, {
+            passive: true,
+        });
         this.tocEl.addEventListener("click", this.handleAnchorClick, {
             capture: true,
         });
+        window.addEventListener("resize", this.handleScrollFade);
 
         this.activeIndicator = document.getElementById("active-indicator");
 
@@ -276,6 +310,8 @@ class TableOfContents extends HTMLElement {
             this.observer.unobserve(section)
         );
         this.observer.disconnect();
+        window.removeEventListener("resize", this.handleScrollFade);
+        this.tocEl?.removeEventListener("scroll", this.handleScrollFade);
         this.tocEl?.removeEventListener("click", this.handleAnchorClick);
     };
 }

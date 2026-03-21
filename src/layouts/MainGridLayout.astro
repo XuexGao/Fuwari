@@ -113,10 +113,10 @@ const mainPanelTop = siteConfig.banner.enable
         {siteConfig.toc.enable && <div id="toc-wrapper" class:list={["transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] flex items-center",
             {"toc-hide": siteConfig.banner.enable}]}
         >
-                <div id="toc-inner-wrapper" class="fixed top-14 max-h-[calc(100vh-theme(spacing.14)-theme(spacing.19))] w-[var(--toc-width)] overflow-hidden">
-                    <div id="toc" class="w-full h-full flex flex-col items-stretch justify-start px-2">
+                <div id="toc-inner-wrapper" class="fixed w-[var(--toc-width)] overflow-visible flex flex-col" style="top: calc(var(--navbar-offset, 0px) + 3.5rem); max-height: calc(100vh - (var(--navbar-offset, 0px) + 3.5rem) - 2rem);">
+                    <div id="toc" class="w-full max-h-[inherit] flex flex-col items-stretch justify-start px-2">
                         <div class="h-8 w-full shrink-0"></div>
-                        <TOC headings={headings} class="h-full"></TOC>
+                        <TOC headings={headings} class="max-h-[inherit]"></TOC>
                         <div class="h-8 w-full shrink-0"></div>
                     </div>
                 </div>
@@ -126,6 +126,23 @@ const mainPanelTop = siteConfig.banner.enable
         {!siteConfig.toc.enable && <div id="toc"></div>}
     </div>
 </div>
+
+<script is:inline>
+    (() => {
+        const tocInner = document.getElementById("toc-inner-wrapper");
+        const commentsBtn = document.getElementById("go-to-comments-btn");
+        if (!tocInner || !commentsBtn) return;
+
+        const updateTocMaxHeight = () => {
+            const btnRect = commentsBtn.getBoundingClientRect();
+            const tocTop = tocInner.getBoundingClientRect().top;
+            tocInner.style.maxHeight = (btnRect.top - tocTop - 8) + "px";
+        };
+
+        updateTocMaxHeight();
+        window.addEventListener("resize", updateTocMaxHeight);
+    })();
+</script>
 
 <script is:inline>
     (() => {

@@ -81,8 +81,6 @@
     }
     .toc-scroll-region {
         scroll-padding-block: 2.5rem;
-        mask-image: linear-gradient(to bottom, transparent 0%, black 1.5rem, black calc(100% - 1.5rem), transparent 100%);
-        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 1.5rem, black calc(100% - 1.5rem), transparent 100%);
     }
     .float-panel-closed {
         @apply -translate-y-1 opacity-0 pointer-events-none
