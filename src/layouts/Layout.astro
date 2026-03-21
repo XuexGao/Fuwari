@@ -236,7 +236,7 @@ const bannerOffset =
 			.site-bg-pane {
 				position: absolute;
 				inset: 0;
-				background-image: none;
+				background-image: var(--bg-image);
 				background-position: var(--bg-position);
 				background-size: var(--bg-size);
 				background-repeat: var(--bg-repeat);
@@ -244,15 +244,7 @@ const bannerOffset =
 				filter: blur(var(--bg-blur)) hue-rotate(var(--bg-hue-rotate));
 				transform: scale(1.05);
 				transform-origin: center;
-				transition: opacity 0.45s ease;
-			}
-
-			#site-bg-pane-a {
-				opacity: calc(var(--bg-enable) * var(--bg-opacity) * var(--site-bg-pane-a-alpha, 0));
-			}
-
-			#site-bg-pane-b {
-				opacity: calc(var(--bg-enable) * var(--bg-opacity) * var(--site-bg-pane-b-alpha, 0));
+				opacity: calc(var(--bg-enable) * var(--bg-opacity));
 			}
 
 			#site-content {
@@ -276,8 +268,7 @@ const bannerOffset =
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}>
 		<div id="site-bg-layer" aria-hidden="true">
-			<div id="site-bg-pane-a" class="site-bg-pane"></div>
-			<div id="site-bg-pane-b" class="site-bg-pane"></div>
+			<div id="site-bg-pane" class="site-bg-pane"></div>
 		</div>
 		<div id="site-content">
 			<BodyThirdPartyScripts />
@@ -291,79 +282,7 @@ const bannerOffset =
 
 			<DashLoaderScript />
 		</div>
-		<script is:inline>
-			(() => {
-				const layer = document.getElementById("site-bg-layer");
-				const paneA = document.getElementById("site-bg-pane-a");
-				const paneB = document.getElementById("site-bg-pane-b");
-				if (!(layer instanceof HTMLElement) || !(paneA instanceof HTMLElement) || !(paneB instanceof HTMLElement)) return;
 
-				let activePane = paneA;
-				let currentBgImage = "";
-
-				const setPaneAlpha = (pane, alpha) => {
-					pane.style.setProperty(pane === paneA ? "--site-bg-pane-a-alpha" : "--site-bg-pane-b-alpha", String(alpha));
-				};
-
-				const applyPaneAlpha = (visiblePane) => {
-					document.documentElement.style.setProperty("--site-bg-pane-a-alpha", visiblePane === paneA ? "1" : "0");
-					document.documentElement.style.setProperty("--site-bg-pane-b-alpha", visiblePane === paneB ? "1" : "0");
-				};
-
-				const waitForImage = (src) => new Promise((resolve) => {
-					const img = new Image();
-					img.decoding = "async";
-					img.onload = () => resolve(true);
-					img.onerror = () => resolve(false);
-					img.src = src;
-					if (typeof img.decode === "function") {
-						img.decode().then(() => resolve(true)).catch(() => undefined);
-					}
-				});
-
-				const extractUrl = (bgImage) => {
-					const match = String(bgImage).match(/^url\(["']?(.*?)["']?\)$/);
-					return match?.[1] || "";
-				};
-
-				const swapBackground = async () => {
-					const bgImage = getComputedStyle(document.documentElement).getPropertyValue("--bg-image").trim() || "none";
-					if (bgImage === currentBgImage) return;
-					currentBgImage = bgImage;
-
-					const nextPane = activePane === paneA ? paneB : paneA;
-					if (bgImage === "none") {
-						nextPane.style.backgroundImage = "none";
-						activePane = nextPane;
-						applyPaneAlpha(activePane);
-						return;
-					}
-
-					const src = extractUrl(bgImage);
-					if (src) {
-						const loaded = await waitForImage(src);
-						if (!loaded || currentBgImage !== bgImage) return;
-					}
-
-					nextPane.style.backgroundImage = bgImage;
-					requestAnimationFrame(() => {
-						activePane = nextPane;
-						applyPaneAlpha(activePane);
-					});
-				};
-
-				applyPaneAlpha(activePane);
-				swapBackground();
-
-				const observer = new MutationObserver(() => {
-					swapBackground();
-				});
-				observer.observe(document.documentElement, {
-					attributes: true,
-					attributeFilter: ["style"],
-				});
-			})();
-		</script>
 	</body>
 </html>
 

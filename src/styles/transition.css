@@ -55,11 +55,17 @@ html.is-changing .transition-swup-presence {
     animation-delay: 400ms;
 }
 
-/* Post content */
-#post-container :nth-child(1) { animation-delay: calc(var(--content-delay) + 0ms) }
-#post-container :nth-child(2) { animation-delay: calc(var(--content-delay) + 50ms) }
-#post-container :nth-child(3) { animation-delay: calc(var(--content-delay) + 100ms) }
-#post-container :nth-child(4) { animation-delay: calc(var(--content-delay) + 175ms) }
-#post-container :nth-child(5) { animation-delay: calc(var(--content-delay) + 250ms) }
-#post-container :nth-child(6) { animation-delay: calc(var(--content-delay) + 325ms) }
+/* Post content - unified fade-in for the whole container */
+#post-container {
+    outline: none;
+}
+#post-container.onload-animation {
+    opacity: 0;
+    animation: 300ms fade-in-up;
+    animation-fill-mode: forwards;
+}
+#post-container :nth-child(n) {
+    animation: none !important;
+    opacity: 1 !important;
+}
 
