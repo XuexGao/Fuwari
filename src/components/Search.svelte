@@ -35,6 +35,7 @@ let isSearching = false;
 let posts: SearchPost[] = [];
 let hasLoadedPosts = false;
 let isLoadingPosts = false;
+let isPanelOpen = false;
 let searchTimer: ReturnType<typeof setTimeout> | undefined;
 
 const searchTypes = [
@@ -65,19 +66,23 @@ const toggleType = (typeId: string) => {
 const togglePanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
-	panel?.classList.toggle("float-panel-closed");
+	if (!panel) return;
+	panel.classList.toggle("float-panel-closed");
+	isPanelOpen = !panel.classList.contains("float-panel-closed");
 };
 
 const closePanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
 	panel?.classList.add("float-panel-closed");
+	isPanelOpen = false;
 };
 
 const openPanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
 	panel?.classList.remove("float-panel-closed");
+	isPanelOpen = true;
 };
 
 const setPanelVisibility = (show: boolean): void => {
@@ -294,14 +299,16 @@ $: {
 			clearTimeout(searchTimer);
 		}
 		result = [];
-		setPanelVisibility(false, true);
+		if (!isPanelOpen) {
+			setPanelVisibility(false);
+		}
 	}
 }
 </script>
 
 <!-- search bar for desktop view -->
-<div id="search-bar" class="hidden lg:flex transition-all items-center h-11 mr-2 rounded-lg
-      bg-white/5 hover:bg-white/10 focus-within:bg-white/10
+<div id="search-bar" class="desktop-search transition-all items-center h-11 mr-2 rounded-lg
+      bg-white/5 hover:bg-white/10 focus-within:bg-white/10 shrink-0
 ">
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
     <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => void ensurePostsLoaded()}
@@ -310,8 +317,8 @@ $: {
     >
 </div>
 
-<!-- search bar for phone/tablet view -->
-<div class="relative flex h-11 flex-1 items-center rounded-lg bg-white/5 transition hover:bg-white/10 focus-within:bg-white/10 lg:hidden">
+<!-- search bar for non-desktop view -->
+<div class="mobile-search relative h-11 flex-1 items-center rounded-lg bg-white/5 transition hover:bg-white/10 focus-within:bg-white/10">
     <Icon icon="material-symbols:search" class="pointer-events-none absolute ml-3 text-[1.25rem] text-white/30 transition"></Icon>
     <input placeholder="搜索" bind:value={keywordMobile} on:focus={() => { void ensurePostsLoaded(); openPanel(); }}
            class="h-full w-full rounded-lg bg-transparent pl-10 pr-3 text-sm text-white/50 outline-0"
@@ -322,16 +329,6 @@ $: {
 <div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
 top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
 
-    <!-- search bar inside panel for phone/tablet -->
-    <div id="search-bar-inside" class="hidden relative lg:hidden transition-all items-center h-11 rounded-xl
-      bg-white/5 hover:bg-white/10 focus-within:bg-white/10
-  ">
-        <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
-        <input placeholder="搜索" bind:value={keywordMobile} on:focus={() => void ensurePostsLoaded()}
-               class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
-               focus:w-60 text-white/50"
-        >
-    </div>
 
     <!-- search types -->
     <div class="flex flex-wrap gap-2 px-3 py-2 border-b border-white/5 items-center">
@@ -410,6 +407,27 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
     overflow-y: auto;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .search-panel.float-panel-closed {
+    display: none;
+  }
+
+  .desktop-search,
+  .mobile-search {
+    display: none;
+  }
+
+  @media (max-width: 1085.98px) {
+    .mobile-search {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 1086px) {
+    .desktop-search {
+      display: flex;
+    }
   }
 
   .search-panel::-webkit-scrollbar {
