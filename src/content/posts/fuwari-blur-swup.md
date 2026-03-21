@@ -2,7 +2,7 @@
 title: 修了两天，终于把 Fuwari 的毛玻璃和 Swup 切页救回来了
 published: 2026-03-21T22:30:00
 description: 记录一次围绕 Fuwari、Swup、backdrop-filter 与固定背景层的完整排查过程：Firefox 一直正常，真正出问题的是 Chromium 下的渲染链、Swup 原动画与背景承载方式，最终靠分层重构与动画收敛把毛玻璃逐步救回正常。
-image: ""
+image: ../assets/images/sb-fuwari.png
 draft: false
 lang: ""
 tags:
