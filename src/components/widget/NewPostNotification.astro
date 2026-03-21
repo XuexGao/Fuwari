@@ -10,6 +10,8 @@ import { Icon } from "astro-icon/components";
         border-radius: 50%;
         overflow: hidden;
         box-sizing: border-box;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         transition:
             width 360ms cubic-bezier(0.4, 0, 0.2, 1),
             height 360ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -48,7 +50,7 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <div id="new-post-notification" class="fixed bottom-4 right-4 z-50 pointer-events-none">
-    <div id="notification-panel" class="pointer-events-auto bg-[var(--card-bg)] border-2 border-[var(--primary)] text-[var(--primary)] shadow-lg transform translate-y-20 opacity-0">
+    <div id="notification-panel" class="pointer-events-auto bg-[var(--card-bg)] border-2 border-[var(--primary)] text-[var(--primary)] shadow-lg transform translate-y-20 opacity-0 backdrop-blur-md supports-[backdrop-filter]:backdrop-blur-md">
         <button id="notification-minimized" aria-label="New post notification" class="flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
         </button>
