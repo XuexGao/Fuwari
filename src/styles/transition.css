@@ -20,3 +20,9 @@ html.is-changing .transition-swup-fade .onload-animation {
 #post-container {
     outline: none;
 }
+
+html.is-changing #site-bg-layer .site-bg-pane,
+html.is-animating #site-bg-layer .site-bg-pane,
+html.is-swup-blur-frozen #site-bg-layer .site-bg-pane {
+    filter: none !important;
+}

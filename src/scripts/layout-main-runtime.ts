@@ -19,6 +19,18 @@ import { url, pathsEqual } from "../utils/url-utils";
 
 const bannerEnabled = !!document.getElementById("banner-wrapper");
 
+function freezeBackgroundBlur() {
+	document.documentElement.classList.add("is-swup-blur-frozen");
+}
+
+function unfreezeBackgroundBlur() {
+	requestAnimationFrame(() => {
+		requestAnimationFrame(() => {
+			document.documentElement.classList.remove("is-swup-blur-frozen");
+		});
+	});
+}
+
 function setClickOutsideToClose(panel: string, ignores: string[]) {
 	document.addEventListener("click", (event) => {
 		const panelDom = document.getElementById(panel);
@@ -165,6 +177,7 @@ const setup = () => {
 	window.swup.hooks.on(
 		"visit:start",
 		(visit: { to: { url: string }; containers?: string[] }) => {
+			freezeBackgroundBlur();
 			const bodyElement = document.querySelector("body");
 			const targetIsHome = pathsEqual(visit.to.url, url("/"));
 
@@ -227,6 +240,7 @@ const setup = () => {
 			}
 
 			scrollFunction();
+			unfreezeBackgroundBlur();
 		});
 	});
 };

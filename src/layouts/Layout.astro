@@ -220,7 +220,6 @@ const bannerOffset =
 
 			body {
 				position: relative;
-				isolation: isolate;
 				background-color: transparent;
 			}
 
@@ -240,11 +239,9 @@ const bannerOffset =
 				background-position: var(--bg-position);
 				background-size: var(--bg-size);
 				background-repeat: var(--bg-repeat);
-				background-attachment: var(--bg-attachment);
-				filter: blur(var(--bg-blur)) hue-rotate(var(--bg-hue-rotate));
-				transform: scale(1.05);
-				transform-origin: center;
+				background-attachment: scroll;
 				opacity: calc(var(--bg-enable) * var(--bg-opacity));
+				will-change: opacity;
 			}
 
 			#site-content {
@@ -310,7 +307,7 @@ const bannerOffset =
 		@apply translate-y-[var(--banner-height-extend)];
 	}
 	.enable-banner #top-row {
-		@apply h-[calc(var(--banner-height-home)_-_4.5rem)] transition-all duration-300
+		@apply h-[calc(var(--banner-height-home)_-_4.5rem)]
 	}
 	.enable-banner.is-home #sidebar-sticky {
 		@apply top-[calc(1rem_-_var(--banner-height-extend))]
