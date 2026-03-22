@@ -1,0 +1,68 @@
+---
+import { Icon } from "astro-icon/components";
+import type { AiInvolvementLevel } from "../../types/config";
+
+interface Props {
+	level: AiInvolvementLevel;
+	class?: string;
+}
+
+const { level } = Astro.props;
+const className = Astro.props.class;
+
+const levelMap: Record<
+	AiInvolvementLevel,
+	{
+		label: string;
+		description: string;
+		icon: string;
+	}
+> = {
+	1: {
+		label: "人工编写，AI润色",
+		description: "正文由作者完成，AI 主要用于措辞优化和语言打磨。",
+		icon: "fa6-solid:wand-magic-sparkles",
+	},
+	2: {
+		label: "人工主导，AI编写",
+		description: "作者主导结构和核心观点，正文部分内容由 AI 协助生成。",
+		icon: "fa6-solid:people-group",
+	},
+	3: {
+		label: "AI主导，AI编写",
+		description: "文章内容由 AI 主导并生成，人工主要负责发布与必要校验。",
+		icon: "fa6-solid:microchip",
+	},
+};
+
+const current = levelMap[level];
+---
+
+{
+	current && (
+		<div
+			class:list={[
+				className,
+				"mb-4 p-4 rounded-xl bg-[var(--license-block-bg)] border border-[var(--line-divider)]",
+			]}
+		>
+			<div class="flex items-start gap-3">
+				<div class="h-9 w-9 rounded-lg bg-[var(--primary)] flex items-center justify-center shrink-0">
+					<Icon name={current.icon} class="text-base text-black/70" />
+				</div>
+				<div class="min-w-0 flex-1">
+					<div class="flex flex-wrap items-center gap-2 mb-1">
+						<span class="text-white/85 text-sm font-semibold">AI参与度</span>
+						<span class="px-2 py-1 rounded-md text-xs font-bold bg-[var(--btn-regular-bg)] text-[var(--btn-content)]">
+							Lv.{level}/3
+						</span>
+						<span class="text-xs text-white/60">{current.label}</span>
+					</div>
+					<p class="text-sm text-white/70 leading-relaxed">
+						{current.description}
+					</p>
+				</div>
+			</div>
+		</div>
+	)
+}

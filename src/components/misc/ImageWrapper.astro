@@ -36,9 +36,12 @@ const isPublic = src.startsWith("/");
 // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
 let img;
 if (isLocal) {
-	const files = import.meta.glob<ImageMetadata>("../../**", {
-		import: "default",
-	});
+	const files = import.meta.glob<ImageMetadata>(
+		"../../**/*.{png,jpg,jpeg,webp,avif,gif,svg}",
+		{
+			import: "default",
+		},
+	);
 	let normalizedPath = path
 		.normalize(path.join("../../", basePath, src))
 		.replace(/\\/g, "/");
@@ -53,23 +56,79 @@ if (isLocal) {
 
 const imageClass = "w-full h-full object-cover";
 const imageStyle = `object-position: ${position}`;
+const fetchPriority = loading === "eager" ? "high" : "low";
 ---
 <div id={id} class:list={[className, 'overflow-hidden relative image-wrapper']} style={`--theme-hue: ${siteConfig.themeColor.hue}`}>
-    {isLocal && img && <Image src={img} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} />}
+    {isLocal && img && <Image src={img} alt={alt || ""} class={`${imageClass} image-content image-pending`} style={imageStyle} loading={loading} fetchpriority={fetchPriority} decoding="async" />}
     {!isLocal && (
-        imageFallbackConfig.enable && src.includes(imageFallbackConfig.originalDomain) ? 
-            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} onerror={`this.onerror=null; this.src='${(isPublic ? url(src) : src).replace(imageFallbackConfig.originalDomain, imageFallbackConfig.fallbackDomain)}';`}/> :
-            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content`} style={imageStyle} loading={loading} fetchpriority={loading === 'eager' ? 'high' : 'auto'} />
+        imageFallbackConfig.enable && src.includes(imageFallbackConfig.originalDomain) ?
+            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content image-pending`} style={imageStyle} loading={loading} fetchpriority={fetchPriority} decoding="async" onerror={`this.onerror=null; this.src='${(isPublic ? url(src) : src).replace(imageFallbackConfig.originalDomain, imageFallbackConfig.fallbackDomain)}';`}/> :
+            <img src={isPublic ? url(src) : src} alt={alt || ""} class={`${imageClass} image-content image-pending`} style={imageStyle} loading={loading} fetchpriority={fetchPriority} decoding="async" />
     )}
 </div>
 
+<script is:inline>
+    (() => {
+        function revealImage(img) {
+            if (!(img instanceof HTMLImageElement)) return;
+            img.classList.remove('image-pending');
+            img.classList.add('image-loaded');
+        }
+
+        function bindImageReveal(root = document) {
+            const images = root.querySelectorAll('.image-wrapper img.image-content');
+            images.forEach((img) => {
+                if (!(img instanceof HTMLImageElement)) return;
+                if (img.dataset.imageRevealBound === 'true') return;
+                img.dataset.imageRevealBound = 'true';
+
+                const onReady = () => revealImage(img);
+
+                if (img.complete && img.naturalWidth > 0) {
+                    if (typeof img.decode === 'function') {
+                        img.decode().catch(() => undefined).finally(onReady);
+                    } else {
+                        onReady();
+                    }
+                    return;
+                }
+
+                img.addEventListener('load', () => {
+                    if (typeof img.decode === 'function') {
+                        img.decode().catch(() => undefined).finally(onReady);
+                    } else {
+                        onReady();
+                    }
+                }, { once: true });
+                img.addEventListener('error', onReady, { once: true });
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => bindImageReveal(), { once: true });
+        } else {
+            bindImageReveal();
+        }
+
+        document.addEventListener('astro:after-swap', () => bindImageReveal());
+        document.addEventListener('swup:contentReplaced', () => bindImageReveal());
+    })();
+</script>
+
 <style>
     .image-content {
-        transition: transform 0.3s ease-out;
+        transition: opacity 0.35s ease, transform 0.3s ease-out;
     }
-    
+
+    .image-content.image-pending {
+        opacity: 0;
+    }
+
+    .image-content.image-loaded {
+        opacity: 1;
+    }
+
     .image-wrapper:hover .image-content {
         transform: scale(1.05);
     }
 </style>
-

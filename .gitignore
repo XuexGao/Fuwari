@@ -46,3 +46,21 @@ v0-gallery-website-main
 dev
 
 scripts/__pycache__/
+
+# Claude Code local workspace
+.claude/
+
+# Spec workflow local artifacts
+.spec-workflow/
+
+# BMad Method V6
+_bmad/
+_bmad-output/
+
+# Playwright MCP
+.playwright-mcp/
+
+# 课表
+src/data/timetable/source/
+
+.serena

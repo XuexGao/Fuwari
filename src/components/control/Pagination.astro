@@ -62,7 +62,7 @@ const prefix = sort ? `/${sort}` : "";
     >
         <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]"></Icon>
     </a>
-    <div class="bg-[var(--card-bg)] flex flex-row rounded-lg items-center text-neutral-300 font-bold" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+    <div class="card-base flex flex-row rounded-lg items-center text-neutral-300 font-bold shadow-none">
         {pages.map((p) => {
             if (p == HIDDEN)
                 return <button aria-label="Jump to page"

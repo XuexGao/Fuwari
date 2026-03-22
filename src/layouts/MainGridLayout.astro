@@ -8,7 +8,6 @@ import { Icon } from "astro-icon/components";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
 import Announcement from "../components/widget/Announcement.astro";
 import TOC from "../components/widget/TOC.astro";
-import NewPostNotification from "@components/widget/NewPostNotification.astro";
 import { siteConfig } from "../config";
 import {
 	BANNER_HEIGHT,
@@ -45,11 +44,10 @@ const mainPanelTop = siteConfig.banner.enable
 
 <Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle}>
 
-	<slot slot="head" name="head" />
-<div id="top-row" class="z-50 pointer-events-none relative transition-all duration-700 max-w-[var(--page-width)] px-0 md:px-4 mx-auto">
-    <div id="navbar-wrapper" class="pointer-events-auto sticky top-0 transition-all" style="top: var(--navbar-offset, 0px);">
-        <Navbar></Navbar>
-    </div>
+<!-- Navbar -->
+<slot slot="head" name="head"></slot>
+<div id="navbar-wrapper" class="relative z-[80] max-w-[var(--page-width)] px-0 md:px-4 mx-auto">
+    <Navbar></Navbar>
 </div>
 
 <!-- Banner -->
@@ -64,7 +62,7 @@ const mainPanelTop = siteConfig.banner.enable
 <div class="relative w-full z-30 pointer-events-none" style=`margin-top: ${mainPanelTop}`>
     <!-- The pointer-events-none here prevent blocking the click event of the TOC -->
     <div class="relative max-w-[var(--page-width)] mx-auto pointer-events-auto">
-        <div id="main-grid" class="transition duration-700 w-full left-0 right-0 grid grid-cols-1 md:grid-cols-[17.5rem_auto] grid-rows-[auto_auto_auto] lg:grid-rows-[auto_1fr] md:grid-rows-[auto_1fr] mx-auto gap-4 px-3 md:px-4"
+        <div id="main-grid" class="w-full left-0 right-0 grid grid-cols-1 md:grid-cols-[17.5rem_auto] grid-rows-[auto_auto_auto] lg:grid-rows-[auto_1fr] md:grid-rows-[auto_1fr] mx-auto gap-4 px-3 md:px-4"
         >
             <!-- Banner image credit -->
             {hasBannerCredit && <a href={siteConfig.banner.credit.url} id="banner-credit" target="_blank" rel="noopener" aria-label="Visit image source"
@@ -80,19 +78,24 @@ const mainPanelTop = siteConfig.banner.enable
             </a>}
 
 
-            <SideBar class="mb-4 row-start-2 col-span-1 lg:row-start-1 lg:col-span-1 md:row-start-1 md:col-span-1 lg:max-w-[17.5rem] md:max-w-[17.5rem] onload-animation" headings={headings}></SideBar>
+            <SideBar class="mb-4 row-start-2 col-span-1 lg:row-start-1 lg:col-span-1 md:row-start-1 md:col-span-1 lg:max-w-[17.5rem] md:max-w-[17.5rem]" headings={headings}></SideBar>
 
-            <main id="swup-container" class="transition-swup-fade row-start-1 col-span-1 lg:row-start-1 lg:col-span-1 md:row-start-1 md:col-span-1 overflow-visible min-w-0">
-                <NewPostNotification lang={lang}></NewPostNotification>
-                <div id="content-wrapper" class="onload-animation">
+            <main id="swup-main" class="row-start-1 col-span-1 lg:row-start-1 lg:col-span-1 md:row-start-1 md:col-span-1 overflow-visible min-w-0">
+                <div id="content-wrapper">
                     <!-- the overflow-hidden here prevent long text break the layout-->
                     <!-- make id different from windows.swup global property -->
                     <Announcement></Announcement>
-                    <slot></slot>
+
+                    <div id="sort-container">
+                        <slot name="before-content" />
+                    </div>
+                    <div id="swup-container" class="transition-swup-presence">
+                        <slot></slot>
+                    </div>
                 </div>
             </main>
 
-            <div class="footer col-span-1 row-start-3 lg:col-span-1 lg:col-start-2 lg:row-start-2 md:col-span-1 md:col-start-2 md:row-start-2 onload-animation">
+            <div class="footer col-span-1 row-start-3 lg:col-span-1 lg:col-start-2 lg:row-start-2 md:col-span-1 md:col-start-2 md:row-start-2">
                 <Footer></Footer>
             </div>
         </div>
@@ -102,19 +105,19 @@ const mainPanelTop = siteConfig.banner.enable
 </div>
 
 <!-- The things that should be under the banner, only the TOC for now -->
-<div class="absolute w-full z-0 hidden 2xl:block xl:block">
+<div class="absolute w-full z-0 hidden min-[1600px]:block">
     <div class="relative max-w-[var(--page-width)] mx-auto">
         <!-- TOC component -->
-        {siteConfig.toc.enable && <div id="toc-wrapper" class:list={["hidden lg:block md:block transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] flex items-center",
+        {siteConfig.toc.enable && <div id="toc-wrapper" class:list={["transition absolute top-0 -right-[var(--toc-width)] w-[var(--toc-width)] flex items-center",
             {"toc-hide": siteConfig.banner.enable}]}
         >
-            <div id="toc-inner-wrapper" class="fixed top-14 w-[var(--toc-width)] h-[calc(100vh_-_20rem)] overflow-y-scroll overflow-x-hidden">
-                <div id="toc" class="w-full h-full transition-swup-fade ">
-                    <div class="h-8 w-full"></div>
-                    <TOC headings={headings}></TOC>
-                    <div class="h-8 w-full"></div>
+                <div id="toc-inner-wrapper" class="fixed w-[var(--toc-width)] overflow-visible flex flex-col" style="top: calc(var(--navbar-offset, 0px) + 3.5rem); max-height: calc(100vh - (var(--navbar-offset, 0px) + 3.5rem) - 2rem);">
+                    <div id="toc" class="w-full max-h-[inherit] flex flex-col items-stretch justify-start px-2">
+                        <div class="h-8 w-full shrink-0"></div>
+                        <TOC headings={headings} class="max-h-[inherit]"></TOC>
+                        <div class="h-8 w-full shrink-0"></div>
+                    </div>
                 </div>
-            </div>
         </div>}
 
         <!-- #toc needs to exist for Swup to work normally -->
@@ -123,6 +126,60 @@ const mainPanelTop = siteConfig.banner.enable
 </div>
 
 <script is:inline>
+    (() => {
+        const tocInner = document.getElementById("toc-inner-wrapper");
+        const commentsBtn = document.getElementById("go-to-comments-btn");
+        if (!tocInner || !commentsBtn) return;
+
+        const updateTocMaxHeight = () => {
+            const btnRect = commentsBtn.getBoundingClientRect();
+            const tocTop = tocInner.getBoundingClientRect().top;
+            tocInner.style.maxHeight = (btnRect.top - tocTop - 8) + "px";
+        };
+
+        updateTocMaxHeight();
+        window.addEventListener("resize", updateTocMaxHeight);
+    })();
+</script>
+
+<script is:inline>
+    (() => {
+    const ONLOAD_ANIMATION_CONTAINERS = ['#sort-container', '#swup-container', '#toc'];
+
+    function cleanupOnloadAnimations(root = document, immediate = false) {
+        const elements = root.querySelectorAll('.onload-animation');
+
+        elements.forEach((element) => {
+            const cleanup = () => {
+                element.classList.remove('onload-animation');
+                element.removeEventListener('animationend', cleanup);
+                element.removeEventListener('animationcancel', cleanup);
+            };
+
+            if (immediate) {
+                cleanup();
+                return;
+            }
+
+            element.addEventListener('animationend', cleanup, { once: true });
+            element.addEventListener('animationcancel', cleanup, { once: true });
+
+            const computedStyle = window.getComputedStyle(element);
+            if (computedStyle.animationName === 'none' || computedStyle.animationDuration === '0s') {
+                cleanup();
+            }
+        });
+    }
+
+    function cleanupContainerAnimations() {
+        ONLOAD_ANIMATION_CONTAINERS.forEach((selector) => {
+            const container = document.querySelector(selector);
+            if (container) {
+                cleanupOnloadAnimations(container, true);
+            }
+        });
+    }
+
     // Code block folding logic
     function setupCodeFolding() {
         const codeBlocks = document.querySelectorAll('.expressive-code .frame');
@@ -144,8 +201,10 @@ const mainPanelTop = siteConfig.banner.enable
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'code-expand-btn';
-                btn.setAttribute('aria-label', window.i18n(window.Translation.ExpandCode));
-                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+                btn.setAttribute('aria-label', '展开代码');
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                `;
                 
                 btn.onclick = () => {
                     block.classList.remove('is-collapsed');
@@ -158,9 +217,189 @@ const mainPanelTop = siteConfig.banner.enable
         });
     }
 
-    // Run on load and after Swup navigation
-    document.addEventListener('DOMContentLoaded', setupCodeFolding);
-    document.addEventListener('swup:contentReplaced', setupCodeFolding);
+    function initializePageEffects() {
+        setupCodeFolding();
+    }
 
+    // Run on load and after Swup navigation
+    document.addEventListener('DOMContentLoaded', () => {
+        cleanupOnloadAnimations(document, false);
+        initializePageEffects();
+    });
+    document.addEventListener('swup:contentReplaced', () => {
+        cleanupContainerAnimations();
+        initializePageEffects();
+    });
+
+    // Google Ads Anchor Ad support
+    function initGoogleAnchorAdSupport() {
+        const updateNavbarOffset = () => {
+            const bodyPaddingTop = document.body.style.paddingTop;
+            if (bodyPaddingTop && bodyPaddingTop !== '0px') {
+                document.documentElement.style.setProperty('--navbar-offset', bodyPaddingTop);
+            } else {
+                document.documentElement.style.removeProperty('--navbar-offset');
+            }
+        };
+
+        const observer = new MutationObserver(updateNavbarOffset);
+        observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+        updateNavbarOffset();
+    }
+    document.addEventListener('DOMContentLoaded', initGoogleAnchorAdSupport);
+    document.addEventListener('swup:contentReplaced', initGoogleAnchorAdSupport);
+    })();
 </script>
+
+<style is:global>
+#display-setting input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+#display-setting input[type="number"]::-webkit-inner-spin-button,
+#display-setting input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#display-setting input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.5rem;
+  background-color: transparent;
+  transition: background-image 0.15s ease-in-out;
+}
+
+#display-setting input[type="range"]:not(#colorSlider) {
+  background-image: linear-gradient(
+    to right,
+    var(--primary) 0%,
+    var(--primary) var(--value-percent),
+    transparent var(--value-percent),
+    transparent 100%
+  );
+}
+
+#display-setting #colorSlider {
+  background-image: var(--color-selection-bar);
+}
+
+#display-setting input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 0;
+  width: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#display-setting input[type="range"]::-moz-range-thumb {
+  appearance: none;
+  height: 0;
+  width: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#display-setting input[type="range"]::-ms-thumb {
+  appearance: none;
+  height: 0;
+  width: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+#display-setting #colorSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
+  background: rgb(255 255 255 / 0.7);
+  box-shadow: none;
+  margin-top: 0;
+  transform: none;
+  transition: background 0.15s;
+}
+
+#display-setting #colorSlider::-webkit-slider-thumb:hover {
+  background: rgb(255 255 255 / 0.8);
+}
+
+#display-setting #colorSlider::-webkit-slider-thumb:active {
+  background: rgb(255 255 255 / 0.6);
+}
+
+#display-setting #colorSlider::-moz-range-thumb {
+  appearance: none;
+  height: 1rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
+  border-width: 0;
+  background: rgb(255 255 255 / 0.7);
+  box-shadow: none;
+  transform: none;
+  transition: background 0.15s;
+}
+
+#display-setting #colorSlider::-moz-range-thumb:hover {
+  background: rgb(255 255 255 / 0.8);
+}
+
+#display-setting #colorSlider::-moz-range-thumb:active {
+  background: rgb(255 255 255 / 0.6);
+}
+
+#display-setting #colorSlider::-ms-thumb {
+  appearance: none;
+  height: 1rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
+  background: rgb(255 255 255 / 0.7);
+  box-shadow: none;
+  transform: none;
+  transition: background 0.15s;
+}
+
+#display-setting #colorSlider::-ms-thumb:hover {
+  background: rgb(255 255 255 / 0.8);
+}
+
+#display-setting #colorSlider::-ms-thumb:active {
+  background: rgb(255 255 255 / 0.6);
+}
+
+#display-setting .toggle-switch {
+  appearance: none;
+  width: 3rem;
+  height: 1.5rem;
+  background: var(--btn-regular-bg);
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#display-setting .toggle-switch::after {
+  content: "";
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--btn-content);
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+#display-setting .toggle-switch:checked {
+  background: var(--primary);
+}
+
+#display-setting .toggle-switch:checked::after {
+  transform: translateX(1.5rem);
+  background: white;
+}
+</style>
 </Layout>

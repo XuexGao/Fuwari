@@ -14,7 +14,7 @@ const linkText =
 const dataName = dataType === "friends" ? "友链" : "赞助";
 ---
 
-<div class:list={["text-sm text-black/60 dark:text-white/60", className]}>
+<div class:list={["text-sm text-white/60", className]}>
     <p>
         如果您已{dataType === 'friends' ? '添加' : '赞助'}，并且想加入{dataName}名单，<a target="_blank" href={linkText} class="transition link text-[var(--primary)] font-medium underline">请点击这里提交 PR</a>
     </p>

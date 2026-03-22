@@ -1,6 +1,6 @@
-import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { getSiteUrlFromConfig } from './utils/site-url.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,17 +11,12 @@ export const TIMEOUT = 10000;
  * 从 astro.config.mjs 获取站点 URL
  */
 export function getSiteUrl() {
-    const CONFIG_PATH = path.join(__dirname, '../astro.config.mjs');
-    try {
-        const configContent = fs.readFileSync(CONFIG_PATH, 'utf8');
-        const match = configContent.match(/site:\s*["']([^"']+)["']/);
-        if (match && match[1]) {
-            return match[1].replace(/\/$/, '');
-        }
-    } catch (err) {
-        console.error('Failed to read astro.config.mjs:', err.message);
+    const configPath = path.join(__dirname, "../astro.config.mjs");
+    const siteUrl = getSiteUrlFromConfig({ configPath, fallback: null });
+    if (!siteUrl) {
+        console.error("Failed to read site URL from astro.config.mjs");
     }
-    return null;
+    return siteUrl;
 }
 
 /**

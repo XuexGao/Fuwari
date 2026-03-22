@@ -1,0 +1,87 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import type { TimetableViewModel } from "@/types/timetable";
+import PageCardHeader from "@components/misc/PageCardHeader.astro";
+import TimetablePageContent from "@components/timetable/TimetablePageContent.astro";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import {
+	buildTimetableViewModel,
+	resolveCurrentWeek,
+} from "@utils/timetable-normalizer";
+import { parseTimetableFile } from "@utils/timetable-parser-server";
+
+const filePath = "src/data/timetable/大一下2.json";
+const absoluteFilePath = path.join(process.cwd(), filePath);
+
+let viewModel: TimetableViewModel | null = null;
+let loadError = "";
+let isCurrentWeek = false;
+let baselineText = "";
+
+const weekParam = Number(Astro.params.week);
+
+try {
+	baselineText = fs.readFileSync(absoluteFilePath, "utf-8");
+	const parsedData = parseTimetableFile(filePath);
+	const currentWeek = resolveCurrentWeek(
+		parsedData.meta.startDate,
+		parsedData.meta.maxWeek,
+	);
+	const selectedWeek =
+		Number.isFinite(weekParam) && weekParam >= 1
+			? Math.floor(weekParam)
+			: currentWeek;
+	viewModel = buildTimetableViewModel(parsedData, selectedWeek);
+	isCurrentWeek = viewModel.currentWeek === currentWeek;
+} catch (error) {
+	loadError = error instanceof Error ? error.message : "课表数据加载失败";
+}
+
+const breadcrumbSchema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: [
+		{
+			"@type": "ListItem",
+			position: 1,
+			name: "首页",
+			item: Astro.site,
+		},
+		{
+			"@type": "ListItem",
+			position: 2,
+			name: "课程表",
+			item: new URL("/timetable/", Astro.site).toString(),
+		},
+	],
+};
+
+export function getStaticPaths() {
+	const parsedData = parseTimetableFile("src/data/timetable/大一下2.json");
+	const maxWeek = Math.max(1, parsedData.meta.maxWeek || 1);
+	return Array.from({ length: maxWeek }, (_, index) => ({
+		params: {
+			week: String(index + 1),
+		},
+	}));
+}
+---
+
+<MainGridLayout title={viewModel ? `课表 - 第${viewModel.currentWeek}周` : "课表"}>
+	<script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+	{viewModel ? (
+		<TimetablePageContent
+			viewModel={viewModel}
+			isCurrentWeek={isCurrentWeek}
+			baselineText={baselineText}
+		/>
+	) : (
+		<div class="card-base p-6 md:p-8">
+			<PageCardHeader title="课程表" icon="material-symbols:calendar-month" pathname="/timetable/" />
+			<div class="rounded-lg border border-red-400/30 bg-red-500/10 p-4 text-sm text-red-200">
+				课表加载失败：{loadError || "未知错误"}
+			</div>
+		</div>
+	)}
+</MainGridLayout>

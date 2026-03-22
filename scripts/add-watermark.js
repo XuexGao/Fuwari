@@ -2,23 +2,22 @@ import fs from 'fs';
 import path from 'path';
 import { glob } from 'glob';
 import sharp from 'sharp';
+import { getSiteUrlFromConfig } from './utils/site-url.js';
 
 const CACHE_FILE = 'scripts/.watermark-cache.json';
 const TARGET_DIR = 'src/content/assets/images';
 const CONFIG_FILE = 'astro.config.mjs';
 
 async function getSiteUrl() {
-    try {
-        const configContent = fs.readFileSync(CONFIG_FILE, 'utf-8');
-        // Match site: "https://..." or site: 'https://...'
-        const match = configContent.match(/site:\s*["']([^"']+)["']/);
-        if (match && match[1]) {
-            return match[1];
-        }
-    } catch (e) {
-        console.error('Error reading astro.config.mjs:', e);
+    const siteUrl = getSiteUrlFromConfig({
+        configPath: CONFIG_FILE,
+        fallback: null,
+    });
+    if (!siteUrl) {
+        console.error("Error reading site URL from astro.config.mjs");
+        return "https://acofork.com";
     }
-    return 'https://xiegao.top'; // Fallback
+    return siteUrl;
 }
 
 function loadCache() {

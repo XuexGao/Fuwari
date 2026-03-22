@@ -3,6 +3,7 @@ import path from "node:path";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
 
+import AIInvolvementCard from "@components/widget/AIInvolvementCard.astro";
 import DiffDebugEditor from "@components/widget/DiffDebugEditor.astro";
 import PostDiffInArticle from "@components/widget/PostDiffInArticle.astro";
 import PostUpdateNotice from "@components/widget/PostUpdateNotice.astro";
@@ -130,6 +131,13 @@ const jsonLd = [
                     <div id="post-description" class="text-white/75 text-sm leading-relaxed">
                         {entry.data.description || remarkPluginFrontmatter.excerpt}
                     </div>
+                </div>
+            )}
+
+            <!-- AI involvement -->
+            {entry.data.ai_level && (
+                <div class="onload-animation">
+                    <AIInvolvementCard level={entry.data.ai_level} />
                 </div>
             )}
 

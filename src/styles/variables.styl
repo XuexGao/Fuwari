@@ -55,7 +55,7 @@ define({
   --codeblock-bg: oklch(0.17 0.015 var(--hue))
   --codeblock-topbar-bg: oklch(0.12 0.015 var(--hue))
 
-  --license-block-bg: var(--codeblock-bg)
+  --license-block-bg: oklch(0.26 0.015 var(--hue))
 
   --link-underline: oklch(0.40 0.08 var(--hue))
   --link-hover: oklch(0.40 0.08 var(--hue))
@@ -81,6 +81,6 @@ define({
   --toc-badge-bg: var(--btn-regular-bg)
   --toc-btn-hover: oklch(0.30 0.02 var(--hue))
   --toc-btn-active: oklch(0.33 0.02 var(--hue))
-  --toc-width: calc((100vw - var(--page-width)) / 2 - 1rem)
+  --toc-width: clamp(11rem, calc((100vw - var(--page-width)) / 2 - 1rem), 22rem)
   --toc-item-active: oklch(0.35 0.07 var(--hue))
 })

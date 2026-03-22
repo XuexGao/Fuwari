@@ -5,12 +5,17 @@ on:
     - cron: '0 0 */30 * *' # Run every 30 days
   workflow_dispatch: # Allow manual trigger
 
+concurrency:
+  group: check-links-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
 jobs:
   check-links:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

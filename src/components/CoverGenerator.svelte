@@ -105,6 +105,7 @@ let bgImageY = 0;
 let bgImageScale = 1;
 let bgBlur = 0; // New blur state
 let bgOpacity = 1; // New opacity state
+let isBgDragOver = false; // Drag over state for bg image upload
 let isDragging = false;
 let dragStartX = 0;
 let dragStartY = 0;
@@ -152,6 +153,34 @@ function handleColorChange(newColor: string, type: "text" | "icon") {
 	}
 }
 
+function handleTextColorInput(e: Event) {
+	handleColorChange((e.currentTarget as HTMLInputElement).value, "text");
+}
+
+function handleIconColorInput(e: Event) {
+	handleColorChange((e.currentTarget as HTMLInputElement).value, "icon");
+}
+
+function handleShadowColorInput(e: Event) {
+	updateShadow("color", (e.currentTarget as HTMLInputElement).value);
+}
+
+function handleShadowBlurInput(e: Event) {
+	updateShadow("blur", (e.currentTarget as HTMLInputElement).valueAsNumber);
+}
+
+function handleShadowXInput(e: Event) {
+	updateShadow("x", (e.currentTarget as HTMLInputElement).valueAsNumber);
+}
+
+function handleShadowYInput(e: Event) {
+	updateShadow("y", (e.currentTarget as HTMLInputElement).valueAsNumber);
+}
+
+function handleShadowAlphaInput(e: Event) {
+	updateShadow("alpha", (e.currentTarget as HTMLInputElement).valueAsNumber);
+}
+
 function handleFontSizeChange(e: Event) {
 	const newVal = (e.target as HTMLInputElement).valueAsNumber;
 	if (linkScale) {
@@ -177,18 +206,41 @@ function handleIconSizeChange(e: Event) {
 function handleBgImageUpload(e: Event) {
 	const file = (e.target as HTMLInputElement).files?.[0];
 	if (file) {
-		const reader = new FileReader();
-		reader.onload = (e) => {
-			bgImage = e.target?.result as string;
+		loadBgImageFile(file);
+	}
+}
 
-			// Reset state
-			bgImageX = 0;
-			bgImageY = 0;
-			bgImageScale = 1;
-			bgBlur = 0;
-			bgOpacity = 1;
-		};
-		reader.readAsDataURL(file);
+function loadBgImageFile(file: File) {
+	if (!file.type.startsWith("image/")) return;
+	const reader = new FileReader();
+	reader.onload = (e) => {
+		bgImage = e.target?.result as string;
+		// Reset state
+		bgImageX = 0;
+		bgImageY = 0;
+		bgImageScale = 1;
+		bgBlur = 0;
+		bgOpacity = 1;
+	};
+	reader.readAsDataURL(file);
+}
+
+function handleBgDragOver(e: DragEvent) {
+	e.preventDefault();
+	isBgDragOver = true;
+}
+
+function handleBgDragLeave(e: DragEvent) {
+	e.preventDefault();
+	isBgDragOver = false;
+}
+
+function handleBgDrop(e: DragEvent) {
+	e.preventDefault();
+	isBgDragOver = false;
+	const file = e.dataTransfer?.files?.[0];
+	if (file) {
+		loadBgImageFile(file);
 	}
 }
 
@@ -228,7 +280,7 @@ async function loadLocalFonts() {
 		if (e.name === "NotAllowedError") {
 			localFontError = "您拒绝了字体访问权限";
 		} else {
-			localFontError = "加载本地字体失败: " + e.message;
+			localFontError = `加载本地字体失败: ${e.message}`;
 		}
 	} finally {
 		isLoadingLocalFonts = false;
@@ -373,6 +425,12 @@ $: {
 					.replace(/width="[^"]*"/g, "")
 					.replace(/height="[^"]*"/g, "");
 
+				// Force square rendering in preview: fill the square icon box consistently
+				processedSvg = processedSvg.replace(
+					/<svg\b([^>]*)>/,
+					'<svg$1 width="100%" height="100%" preserveAspectRatio="none">',
+				);
+
 				// Only replace fill with currentColor if we are NOT using original colors
 				if (!useOriginalIconColor) {
 					processedSvg = processedSvg.replace(
@@ -441,8 +499,6 @@ function handleLocalIconUpload(e: Event) {
 function selectIcon(icon: string) {
 	iconName = icon;
 	localIcon = null; // Clear local icon if selecting from library
-	searchResults = [];
-	searchQuery = "";
 }
 
 async function doExport() {
@@ -708,6 +764,8 @@ function downloadLink(url: string, filename: string) {
                         <div style="
                             width: {iconSize}px; 
                             height: {iconSize}px; 
+                            aspect-ratio: 1 / 1;
+                            flex-shrink: 0;
                             color: {useOriginalIconColor ? 'inherit' : iconColor}; 
                             filter: drop-shadow({iconShadow.x}px {iconShadow.y}px {iconShadow.blur}px {hexToRgba(iconShadow.color, iconShadow.alpha)});
                             display: flex;
@@ -719,7 +777,9 @@ function downloadLink(url: string, filename: string) {
                             {#if localIcon}
                                 <img src={localIcon} style="width: 100%; height: 100%; object-fit: contain;" alt="Local Icon" />
                             {:else}
-                                {@html iconSvg}
+                                <div class="icon-svg-box">
+                                    {@html iconSvg}
+                                </div>
                             {/if}
                         </div>
                     </div>
@@ -788,10 +848,17 @@ function downloadLink(url: string, filename: string) {
               <label class="text-sm font-bold text-gray-300">背景图片</label>
               <div class="relative">
                   <input type="file" accept="image/*" on:change={handleBgImageUpload} class="hidden" id="bg-upload" />
-                  <label for="bg-upload" class="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed border-gray-600 rounded-lg cursor-pointer hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 transition-all group">
+                  <!-- svelte-ignore a11y-no-static-element-interactions -->
+                  <label
+                      for="bg-upload"
+                      class="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed rounded-lg cursor-pointer hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 transition-all group {isBgDragOver ? 'border-[var(--primary)] bg-[var(--primary)]/10' : 'border-gray-600'}"
+                      on:dragover={handleBgDragOver}
+                      on:dragleave={handleBgDragLeave}
+                      on:drop={handleBgDrop}
+                  >
                       <div class="flex flex-col items-center gap-1 text-gray-400 group-hover:text-[var(--primary)]">
                           <Icon icon="material-symbols:upload-file" class="w-6 h-6" />
-                          <span class="text-xs">{bgImage ? '点击更换图片' : '点击上传背景图'}</span>
+                          <span class="text-xs">{isBgDragOver ? '松开鼠标上传' : (bgImage ? '点击或拖拽更换图片' : '点击或拖拽上传背景图')}</span>
                       </div>
                   </label>
                   {#if bgImage}
@@ -943,14 +1010,20 @@ function downloadLink(url: string, filename: string) {
                 </div>
                 
                 {#if searchResults.length > 0}
-                    <div class="grid grid-cols-5 gap-2 mt-2 max-h-40 overflow-y-auto p-2 bg-transparent rounded-lg border border-[var(--line-color)]">
+                    <div class="grid grid-cols-4 gap-2 mt-2 h-60 sm:h-40 max-h-[60vh] overflow-y-auto show-scrollbar resize-y p-2 bg-transparent rounded-lg border border-[var(--line-color)]">
                         {#each searchResults as icon}
+                            {@const isSelected = icon === iconName}
                             <button 
                                 on:click={() => selectIcon(icon)}
-                                class="p-2 hover:bg-[var(--btn-regular-bg)] rounded flex flex-col items-center gap-1 group transition-colors aspect-square justify-center text-gray-300"
+                                class="p-2 rounded flex items-center justify-center group transition-colors aspect-square text-gray-300 hover:bg-[var(--btn-regular-bg)]"
                                 title={icon}
+                                aria-pressed={isSelected}
                             >
-                                <img src={`https://api.iconify.design/${icon.split(':')[0]}/${icon.split(':')[1]}.svg`} class="w-6 h-6" alt={icon} />
+                                <div class={`w-8 h-8 shrink-0 rounded-md bg-white border flex items-center justify-center overflow-hidden ${
+                                    isSelected ? "border-[var(--primary)]" : "border-gray-300/70"
+                                }`}>
+                                    <img src={`https://api.iconify.design/${icon.split(':')[0]}/${icon.split(':')[1]}.svg`} class="w-6 h-6" alt={icon} />
+                                </div>
                             </button>
                         {/each}
                     </div>
@@ -1016,9 +1089,9 @@ function downloadLink(url: string, filename: string) {
             <div class="flex items-center justify-between flex-wrap gap-2">
                 <label class="text-sm font-bold text-gray-300 min-w-[4rem]">文字颜色</label>
                 <div class="flex items-center gap-2">
-                    <input type="text" value={color} on:input={(e) => handleColorChange((e.target as HTMLInputElement).value, 'text')} class="input-field text-xs !p-1 !h-8 w-24 font-mono text-center" />
+                    <input type="text" value={color} on:input={handleTextColorInput} class="input-field text-xs !p-1 !h-8 w-24 font-mono text-center" />
                     <div class="relative w-8 h-8 rounded-full overflow-hidden border border-gray-600 shadow-sm shrink-0">
-                        <input type="color" value={color} on:input={(e) => handleColorChange((e.target as HTMLInputElement).value, 'text')} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] p-0 m-0 border-0 cursor-pointer" />
+                        <input type="color" value={color} on:input={handleTextColorInput} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] p-0 m-0 border-0 cursor-pointer" />
                     </div>
                 </div>
             </div>
@@ -1026,9 +1099,9 @@ function downloadLink(url: string, filename: string) {
             <div class="flex items-center justify-between flex-wrap gap-2">
                 <label class="text-sm font-bold text-gray-300 min-w-[4rem]">图标颜色</label>
                 <div class="flex items-center gap-2">
-                    <input type="text" value={iconColor} disabled={useOriginalIconColor} on:input={(e) => handleColorChange((e.target as HTMLInputElement).value, 'icon')} class="input-field text-xs !p-1 !h-8 w-24 font-mono text-center disabled:opacity-50" />
+                    <input type="text" value={iconColor} disabled={useOriginalIconColor} on:input={handleIconColorInput} class="input-field text-xs !p-1 !h-8 w-24 font-mono text-center disabled:opacity-50" />
                     <div class="relative w-8 h-8 rounded-full overflow-hidden border border-gray-600 shadow-sm shrink-0 {useOriginalIconColor ? 'opacity-50 pointer-events-none' : ''}">
-                        <input type="color" value={iconColor} on:input={(e) => handleColorChange((e.target as HTMLInputElement).value, 'icon')} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] p-0 m-0 border-0 cursor-pointer" />
+                        <input type="color" value={iconColor} on:input={handleIconColorInput} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] p-0 m-0 border-0 cursor-pointer" />
                     </div>
                 </div>
             </div>
@@ -1140,9 +1213,9 @@ function downloadLink(url: string, filename: string) {
             <div class="text-sm font-bold flex items-center justify-between flex-wrap gap-2 text-gray-300">
                 <span class="text-xs text-gray-400 font-normal">颜色 ({shadowTarget === 'both' ? '统一' : (shadowTarget === 'text' ? '仅文字' : '仅图标')})</span>
                 <div class="flex items-center gap-2">
-                    <input type="text" value={shadowTarget === 'icon' ? iconShadow.color : textShadow.color} on:input={(e) => updateShadow('color', (e.target as HTMLInputElement).value)} class="input-field text-xs !p-1 !h-6 w-20 font-mono" />
+                    <input type="text" value={shadowTarget === 'icon' ? iconShadow.color : textShadow.color} on:input={handleShadowColorInput} class="input-field text-xs !p-1 !h-6 w-20 font-mono" />
                     <div class="relative w-6 h-6 rounded-full overflow-hidden border border-[var(--line-color)] shadow-sm shrink-0">
-                        <input type="color" value={shadowTarget === 'icon' ? iconShadow.color : textShadow.color} on:input={(e) => updateShadow('color', (e.target as HTMLInputElement).value)} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] p-0 m-0 border-0 cursor-pointer" />
+                        <input type="color" value={shadowTarget === 'icon' ? iconShadow.color : textShadow.color} on:input={handleShadowColorInput} class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] p-0 m-0 border-0 cursor-pointer" />
                     </div>
                 </div>
             </div>
@@ -1150,22 +1223,22 @@ function downloadLink(url: string, filename: string) {
             <div class="grid grid-cols-3 gap-2">
                 <div class="flex flex-col gap-1">
                     <label class="text-[10px] text-gray-400 uppercase">模糊</label>
-                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.blur : textShadow.blur} on:input={(e) => updateShadow('blur', (e.target as HTMLInputElement).valueAsNumber)} class="input-field text-sm !px-1" />
+                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.blur : textShadow.blur} on:input={handleShadowBlurInput} class="input-field text-sm !px-1" />
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-[10px] text-gray-400 uppercase">水平偏移</label>
-                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.x : textShadow.x} on:input={(e) => updateShadow('x', (e.target as HTMLInputElement).valueAsNumber)} class="input-field text-sm !px-1" />
+                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.x : textShadow.x} on:input={handleShadowXInput} class="input-field text-sm !px-1" />
                 </div>
                 <div class="flex flex-col gap-1">
                     <label class="text-[10px] text-gray-400 uppercase">垂直偏移</label>
-                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.y : textShadow.y} on:input={(e) => updateShadow('y', (e.target as HTMLInputElement).valueAsNumber)} class="input-field text-sm !px-1" />
+                    <input type="number" value={shadowTarget === 'icon' ? iconShadow.y : textShadow.y} on:input={handleShadowYInput} class="input-field text-sm !px-1" />
                 </div>
                 <div class="col-span-3 flex flex-col gap-1 mt-1">
                     <div class="flex justify-between text-[10px] text-gray-400 uppercase">
                         <label>不透明度</label>
                         <span>{Math.round((shadowTarget === 'icon' ? iconShadow.alpha : textShadow.alpha) * 100)}%</span>
                     </div>
-                    <input type="range" value={shadowTarget === 'icon' ? iconShadow.alpha : textShadow.alpha} on:input={(e) => updateShadow('alpha', parseFloat((e.target as HTMLInputElement).value))} min="0" max="1" step="0.01" class="range-slider h-1" />
+                    <input type="range" value={shadowTarget === 'icon' ? iconShadow.alpha : textShadow.alpha} on:input={handleShadowAlphaInput} min="0" max="1" step="0.01" class="range-slider h-1" />
                 </div>
             </div>
         </div>
@@ -1312,5 +1385,15 @@ function downloadLink(url: string, filename: string) {
     }
     .text-gray-500 {
         color: #9ca3af !important; /* gray-400 */
+    }
+    .icon-svg-box {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+    }
+    .icon-svg-box :global(svg) {
+        width: 100% !important;
+        height: 100% !important;
+        display: block;
     }
 </style>

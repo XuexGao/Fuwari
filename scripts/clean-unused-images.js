@@ -3,10 +3,14 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { glob } from "glob";
+import {
+	CONTENT_DIR,
+	POSTS_DIR,
+	SPEC_DIR,
+	buildMarkdownGlob,
+	listFiles,
+} from "./utils/content-files.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 /**
  * 清理未使用的图片资源脚本
@@ -14,9 +18,6 @@ const __dirname = path.dirname(__filename);
  * 查找 src/content/assets 中未被引用的图片并删除
  */
 
-const CONTENT_DIR = path.join(process.cwd(), "src/content");
-const POSTS_DIR = path.join(CONTENT_DIR, "posts");
-const SPEC_DIR = path.join(CONTENT_DIR, "spec");
 const ASSETS_DIR = path.join(CONTENT_DIR, "assets/images");
 
 // 支持的图片格式
@@ -35,11 +36,10 @@ const IMAGE_EXTENSIONS = [
  */
 async function getAllMarkdownFiles() {
 	try {
-		const postsPattern = path.join(POSTS_DIR, "**/*.md").replace(/\\/g, "/");
-		const specPattern = path.join(SPEC_DIR, "**/*.md").replace(/\\/g, "/");
-		const postsFiles = await glob(postsPattern);
-		const specFiles = await glob(specPattern);
-		return [...postsFiles, ...specFiles];
+		return await listFiles([
+			buildMarkdownGlob(POSTS_DIR, ["md"]),
+			buildMarkdownGlob(SPEC_DIR, ["md"]),
+		]);
 	} catch (error) {
 		console.error("获取 markdown 文件失败:", error.message);
 		return [];
@@ -55,7 +55,7 @@ async function getAllImageFiles() {
 		const pattern = path
 			.join(ASSETS_DIR, `**/*{${extensions}}`)
 			.replace(/\\/g, "/");
-		return await glob(pattern);
+		return await listFiles(pattern);
 	} catch (error) {
 		console.error("获取图片文件失败:", error.message);
 		return [];
@@ -170,6 +170,12 @@ async function cleanUnusedImages() {
 	// 获取所有文件
 	const markdownFiles = await getAllMarkdownFiles();
 	const imageFiles = await getAllImageFiles();
+
+	if (markdownFiles.length === 0) {
+		console.error("No markdown files found. Abort to avoid accidental image deletion.");
+		return;
+	}
+
 
 	console.log(`📄 找到 ${markdownFiles.length} 个 markdown 文件`);
 	console.log(`🖼️  找到 ${imageFiles.length} 个图片文件`);

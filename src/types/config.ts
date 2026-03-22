@@ -1,5 +1,3 @@
-import type { DARK_MODE } from "@constants/constants";
-
 export type SiteConfig = {
 	title: string;
 	subtitle: string;
@@ -11,7 +9,6 @@ export type SiteConfig = {
 	themeColor: {
 		hue: number;
 		fixed: boolean;
-		forceDarkMode?: boolean;
 	};
 	banner: {
 		enable: boolean;
@@ -47,7 +44,6 @@ export type SiteConfig = {
 
 export type Favicon = {
 	src: string;
-	theme?: "light" | "dark";
 	sizes?: string;
 };
 
@@ -60,6 +56,7 @@ export type NavBarLink = {
 	name: string;
 	url: string;
 	external?: boolean;
+	icon?: string;
 };
 
 export type NavBarConfig = {
@@ -96,7 +93,7 @@ export type UmamiConfig = {
 	timezone: string;
 };
 
-export type LIGHT_DARK_MODE = string;
+export type AiInvolvementLevel = 1 | 2 | 3;
 
 export type BlogPostData = {
 	body: string;
@@ -106,6 +103,7 @@ export type BlogPostData = {
 	tags: string[];
 	draft?: boolean;
 	image?: string;
+	ai_level?: AiInvolvementLevel;
 	prevTitle?: string;
 	prevSlug?: string;
 	nextTitle?: string;

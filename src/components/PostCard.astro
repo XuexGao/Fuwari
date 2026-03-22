@@ -43,17 +43,23 @@ const coverWidth = "28%";
 
 const { remarkPluginFrontmatter } = await entry.render();
 ---
-<div class:list={["card-base card-hover flex flex-col w-full relative", className]} style={style}>
+<a
+    href={url}
+    aria-label={title}
+    class:list={["group card-base card-hover flex flex-col w-full relative", className]}
+    style={style}
+>
     <div class:list={["pl-9 pr-2 pt-6 pb-6 relative", {"w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
-        <a href={url}
-           class="transition group w-full block font-bold mb-2 md:mb-3 text-xl md:text-3xl text-90 relative
-        hover:text-[var(--primary)]
-        active:text-[var(--title-active)]
+        <h2
+            class="transition w-full block font-bold mb-2 md:mb-3 text-xl md:text-3xl text-90 relative
+        group-hover:text-[var(--primary)]
+        group-active:text-[var(--title-active)]
         before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
         before:absolute before:top-1 md:before:top-2 before:-left-[1.125rem] before:block
-        ">
-            <h2>{title}</h2>
-        </a>
+        "
+        >
+            {title}
+        </h2>
 
         <!-- description -->
         <div class:list={["transition text-75 mb-3.5 pr-4 line-clamp-1 md:line-clamp-2"]}>
@@ -79,8 +85,8 @@ const { remarkPluginFrontmatter } = await entry.render();
 
     </div>
 
-    {hasCover && <a href={url} aria-label={title}
-                    class:list={["group",
+    {hasCover && <div
+                    class:list={[
                         "max-h-none mx-0 mt-0",
                         "w-[var(--coverWidth)] absolute top-3 bottom-3 right-3 rounded-xl overflow-hidden active:scale-95"
                     ]} >
@@ -94,19 +100,19 @@ const { remarkPluginFrontmatter } = await entry.render();
         <ImageWrapper src={image} basePath={path.join("content/posts/", getDir(entry.id))} alt="Cover Image of the Post"
                   class="w-full h-full" loading={loading}>
         </ImageWrapper>
-    </a>}
+    </div>}
 
     {!hasCover &&
-        <a href={url} aria-label={title} class="!flex btn-regular w-[3.25rem]
+        <div class="!flex btn-regular w-[3.25rem]
          absolute right-3 top-3 bottom-3 rounded-xl bg-[var(--enter-btn-bg)]
-         hover:bg-[var(--enter-btn-bg-hover)] active:bg-[var(--enter-btn-bg-active)] active:scale-95
+         group-hover:bg-[var(--enter-btn-bg-hover)] group-active:bg-[var(--enter-btn-bg-active)] active:scale-95
         ">
             <Icon name="material-symbols:chevron-right-rounded"
                   class="transition text-[var(--primary)] text-4xl mx-auto">
             </Icon>
-        </a>
+        </div>
     }
-</div>
+</a>
 <div class="transition border-t-[1px] border-dashed mx-6 border-white/15 last:border-t-0 hidden"></div>
 
 

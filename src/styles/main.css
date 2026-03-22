@@ -28,6 +28,8 @@
     .card-base {
         @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
         @apply border border-white/10;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
     .card-hover {
         @apply hover:scale-[1.01] hover:shadow-xl hover:border-white/20 hover:z-10;
@@ -45,7 +47,13 @@
     .card-interactive:active {
         @apply bg-white/10;
     }
-    h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    summary,
+    [role="button"] {
         @apply transition;
     }
     .card-shadow {
@@ -63,6 +71,16 @@
     }
     .float-panel {
         @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-none;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+    }
+    .toc-panel {
+        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] border border-white/10 transition shadow-none;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+    .toc-scroll-region {
+        scroll-padding-block: 2.5rem;
     }
     .float-panel-closed {
         @apply -translate-y-1 opacity-0 pointer-events-none
@@ -86,9 +104,6 @@
         }
         &.scale-animation {
             @apply expand-animation;
-            &.current-theme-btn {
-                @apply before:scale-100 before:opacity-100 before:bg-[var(--btn-plain-bg-hover)] text-[var(--primary)]
-            }
         }
     }
     .btn-regular {
@@ -107,7 +122,6 @@
     }
 
     #toc-inner-wrapper {
-        mask-image: linear-gradient(to bottom, transparent 0%, black 2rem, black calc(100% - 2rem), transparent 100%);
     }
 
     .text-90 {
@@ -124,6 +138,10 @@
     }
     .text-25 {
         @apply text-white/25
+    }
+
+    .page-title-icon {
+        @apply h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70;
     }
 
     .meta-icon {
@@ -159,7 +177,11 @@ html {
 
 body {
     overflow: visible;
+    position: relative;
+    background-color: var(--page-bg);
+    min-height: 100vh;
 }
+
 
 *:not(html):not(body) {
     scrollbar-width: none;
@@ -170,6 +192,17 @@ body {
     width: 0;
     height: 0;
     display: none;
+}
+
+.show-scrollbar {
+    scrollbar-width: thin !important;
+    -ms-overflow-style: auto !important;
+}
+
+.show-scrollbar::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+    display: block !important;
 }
 
 .custom-md img, #post-cover img {

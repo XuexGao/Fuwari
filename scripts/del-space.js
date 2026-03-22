@@ -2,22 +2,18 @@
 
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
-import { glob } from "glob";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const CONTENT_DIR = path.join(process.cwd(), "src/content");
-const POSTS_DIR = path.join(CONTENT_DIR, "posts");
+import {
+	POSTS_DIR,
+	buildMarkdownGlob,
+	listFiles,
+} from "./utils/content-files.js";
 
 /**
  * 获取所有 markdown 文件
  */
 async function getAllMarkdownFiles() {
 	try {
-		const pattern = path.join(POSTS_DIR, "**/*.md").replace(/\\/g, "/");
-		return await glob(pattern);
+			return await listFiles(buildMarkdownGlob(POSTS_DIR, ["md"]));
 	} catch (error) {
 		console.error("获取 markdown 文件失败:", error.message);
 		return [];

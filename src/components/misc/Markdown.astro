@@ -7,13 +7,94 @@ interface Props {
 }
 const className = Astro.props.class;
 ---
-<div data-pagefind-body class=`prose dark:prose-invert prose-base !max-w-none custom-md break-words ${className}`>
-    <!--<div class="prose dark:prose-invert max-w-none custom-md">-->
+<div data-pagefind-body class=`prose prose-invert prose-base !max-w-none custom-md break-words ${className}`>
+    <!--<div class="prose prose-invert max-w-none custom-md">-->
     <!--<div class="max-w-none custom-md">-->
     <slot/>
 </div>
 
 <script>
+let mermaidLoader: Promise<any> | null = null;
+
+const loadMermaid = async () => {
+    if (!mermaidLoader) {
+        mermaidLoader = import("mermaid").then((mod) => {
+            const mermaid = mod.default;
+            mermaid.initialize({
+                startOnLoad: false,
+                securityLevel: "loose",
+                theme: "base",
+                darkMode: true,
+                themeVariables: {
+                    textColor: "#e5e7eb",
+                    lineColor: "#e5e7eb",
+                    primaryColor: "#1f2937",
+                    primaryTextColor: "#f9fafb",
+                    primaryBorderColor: "#9ca3af",
+                    secondaryColor: "#111827",
+                    secondaryBorderColor: "#9ca3af",
+                    tertiaryColor: "#0f172a",
+                    edgeLabelBackground: "#0b1220",
+                    clusterBkg: "#111827",
+                    clusterBorder: "#9ca3af",
+                },
+            });
+            return mermaid;
+        });
+    }
+
+    return mermaidLoader;
+};
+
+const transformMermaidBlocks = () => {
+    document.querySelectorAll(".custom-md pre").forEach((pre) => {
+        if (pre.dataset.mermaidProcessed === "true") return;
+        const code = pre.querySelector("code");
+        const langSources = [
+            code?.getAttribute("data-language"),
+            pre.getAttribute("data-language"),
+            pre.closest("[data-language]")?.getAttribute("data-language"),
+        ];
+        const className = `${pre.className || ""} ${code?.className || ""}`;
+        const lang = (langSources.find(Boolean) || "").toLowerCase();
+        const isMermaid = className.includes("language-mermaid") || lang === "mermaid";
+        if (!isMermaid) return;
+
+        const sourceByLines = code
+            ? Array.from(code.querySelectorAll(".code:not(summary *)"))
+                .map((el) => el.textContent)
+                .map((text) => (text === "\n" ? "" : text))
+                .join("\n")
+                .trim()
+            : "";
+        const source = sourceByLines || code?.textContent?.trim();
+        if (!source) return;
+
+        const container = document.createElement("div");
+        container.className = "mermaid";
+        container.textContent = source;
+        pre.dataset.mermaidProcessed = "true";
+
+        const codeBlockRoot = pre.closest(".expressive-code");
+        if (codeBlockRoot) {
+            codeBlockRoot.replaceWith(container);
+            return;
+        }
+
+        pre.replaceWith(container);
+    });
+};
+
+const renderMermaidBlocks = async () => {
+    transformMermaidBlocks();
+    const mermaidNodes = document.querySelectorAll(".custom-md .mermaid");
+    if (!mermaidNodes.length) return;
+    const mermaid = await loadMermaid();
+    await mermaid.run({
+        nodes: Array.from(mermaidNodes),
+    });
+};
+
 const wrapMarkdownTables = () => {
     document.querySelectorAll(".custom-md table").forEach((table) => {
         const parent = table.parentElement;
@@ -27,13 +108,20 @@ const wrapMarkdownTables = () => {
 };
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", wrapMarkdownTables);
+    document.addEventListener("DOMContentLoaded", () => {
+        wrapMarkdownTables();
+        void renderMermaidBlocks();
+    });
 } else {
     wrapMarkdownTables();
+    void renderMermaidBlocks();
 }
 
 if ((window as any).swup?.hooks) {
-    (window as any).swup.hooks.on("page:view", wrapMarkdownTables);
+    (window as any).swup.hooks.on("page:view", () => {
+        wrapMarkdownTables();
+        void renderMermaidBlocks();
+    });
 }
 
 document.addEventListener("click", function (e: MouseEvent) {

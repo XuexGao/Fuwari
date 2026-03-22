@@ -276,13 +276,13 @@
 		const panel = document.createElement("div");
 		panel.id = "diff-debug-editor";
 		panel.className =
-			"fixed bottom-4 left-4 z-[9999] w-[min(40rem,calc(100vw-2rem))] max-h-[75vh] overflow-hidden rounded-xl border border-black/10 dark:border-white/10 bg-[var(--card-bg)] shadow-lg";
+			"fixed bottom-4 left-4 z-[9999] w-[min(40rem,calc(100vw-2rem))] max-h-[75vh] overflow-hidden rounded-xl border border-white/10 bg-[var(--card-bg)] shadow-lg";
 
 		const header = document.createElement("div");
-		header.className = "flex items-center justify-between gap-3 px-4 py-3 border-b border-black/10 dark:border-white/10";
+		header.className = "flex items-center justify-between gap-3 px-4 py-3 border-b border-white/10";
 
 		const title = document.createElement("div");
-		title.className = "text-sm font-bold text-black/80 dark:text-white/80 truncate";
+		title.className = "text-sm font-bold text-white/80 truncate";
 		title.textContent = `DIFF 调试（${model.path}）`;
 
 		const btnBar = document.createElement("div");
@@ -290,7 +290,7 @@
 
 		const btnClose = document.createElement("button");
 		btnClose.className =
-			"text-xs px-2 py-1 rounded bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 text-black/70 dark:text-white/70";
+			"text-xs px-2 py-1 rounded bg-white/5 hover:bg-white/10 text-white/70";
 		btnClose.textContent = "关闭并清理";
 
 		btnBar.appendChild(btnClose);
@@ -301,52 +301,52 @@
 		body.className = "p-4 overflow-auto max-h-[calc(75vh-3.25rem)]";
 
 		const titleLabel = document.createElement("div");
-		titleLabel.className = "text-[11px] text-black/50 dark:text-white/50 mb-1 font-bold";
+		titleLabel.className = "text-[11px] text-white/50 mb-1 font-bold";
 		titleLabel.textContent = "标题 (Title)";
 
 		const oldTitleInput = document.createElement("input");
-		oldTitleInput.className = "w-full text-xs p-1 mb-1 rounded border border-black/10 dark:border-white/10 bg-[var(--card-bg)] text-black/50 dark:text-white/50";
+		oldTitleInput.className = "w-full text-xs p-1 mb-1 rounded border border-white/10 bg-[var(--card-bg)] text-white/50";
 		oldTitleInput.readOnly = true;
 		oldTitleInput.value = model.oldTitle || "";
 		oldTitleInput.placeholder = "旧标题";
 
 		const newTitleInput = document.createElement("input");
-		newTitleInput.className = "w-full text-xs p-1 mb-3 rounded border border-black/10 dark:border-white/10 bg-[var(--card-bg)] text-black/80 dark:text-white/80";
+		newTitleInput.className = "w-full text-xs p-1 mb-3 rounded border border-white/10 bg-[var(--card-bg)] text-white/80";
 		newTitleInput.value = model.newTitle || "";
 		newTitleInput.placeholder = "新标题 (修改此处以测试标题Diff)";
 
 		const descLabel = document.createElement("div");
-		descLabel.className = "text-[11px] text-black/50 dark:text-white/50 mb-1 font-bold";
+		descLabel.className = "text-[11px] text-white/50 mb-1 font-bold";
 		descLabel.textContent = "简介 (Description)";
 
 		const oldDescArea = document.createElement("textarea");
-		oldDescArea.className = "w-full h-16 text-xs p-1 mb-1 rounded border border-black/10 dark:border-white/10 bg-[var(--card-bg)] text-black/50 dark:text-white/50";
+		oldDescArea.className = "w-full h-16 text-xs p-1 mb-1 rounded border border-white/10 bg-[var(--card-bg)] text-white/50";
 		oldDescArea.readOnly = true;
 		oldDescArea.value = model.oldDesc || "";
 		oldDescArea.placeholder = "旧简介";
 
 		const newDescArea = document.createElement("textarea");
-		newDescArea.className = "w-full h-16 text-xs p-1 mb-3 rounded border border-black/10 dark:border-white/10 bg-[var(--card-bg)] text-black/80 dark:text-white/80";
+		newDescArea.className = "w-full h-16 text-xs p-1 mb-3 rounded border border-white/10 bg-[var(--card-bg)] text-white/80";
 		newDescArea.value = model.newDesc || "";
 		newDescArea.placeholder = "新简介 (修改此处以测试简介Diff)";
 
 		const oldLabel = document.createElement("div");
-		oldLabel.className = "text-[11px] text-black/50 dark:text-white/50 mb-1 font-bold";
+		oldLabel.className = "text-[11px] text-white/50 mb-1 font-bold";
 		oldLabel.textContent = "旧内容 (Content)";
 
 		const oldArea = document.createElement("textarea");
 		oldArea.className =
-			"w-full h-32 text-[11px] leading-relaxed p-2 rounded border border-black/10 dark:border-white/10 bg-[var(--card-bg)] text-black/70 dark:text-white/70";
+			"w-full h-32 text-[11px] leading-relaxed p-2 rounded border border-white/10 bg-[var(--card-bg)] text-white/70";
 		oldArea.readOnly = true;
 		oldArea.value = model.oldHtml || "";
 
 		const newLabel = document.createElement("div");
-		newLabel.className = "text-[11px] text-black/50 dark:text-white/50 mb-1 mt-3 font-bold";
+		newLabel.className = "text-[11px] text-white/50 mb-1 mt-3 font-bold";
 		newLabel.textContent = "新内容 (Content)";
 
 		const newArea = document.createElement("textarea");
 		newArea.className =
-			"w-full h-44 text-[11px] leading-relaxed p-2 rounded border border-black/10 dark:border-white/10 bg-[var(--card-bg)] text-black/80 dark:text-white/80";
+			"w-full h-44 text-[11px] leading-relaxed p-2 rounded border border-white/10 bg-[var(--card-bg)] text-white/80";
 		newArea.value = model.newHtml || "";
 
 		const actions = document.createElement("div");
@@ -358,7 +358,7 @@
 		btnSave.textContent = "保存并生成 DIFF";
 
 		const status = document.createElement("div");
-		status.className = "text-[11px] text-black/40 dark:text-white/40 self-center";
+		status.className = "text-[11px] text-white/40 self-center";
 		status.textContent = model.status || "";
 
 		actions.appendChild(btnSave);

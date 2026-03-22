@@ -1,0 +1,173 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import { siteConfig } from "@/config";
+import FileExplorer from "@components/FileExplorer.svelte";
+import OneDriveExplorer from "@components/OneDriveExplorer.svelte";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+
+interface FileItem {
+	name: string;
+	path: string;
+	type: "file" | "directory";
+	size?: number;
+	mtime?: Date;
+	children?: FileItem[];
+}
+
+function getFiles(dir: string, baseDir = ""): FileItem[] {
+	const files = fs.readdirSync(dir);
+	const result: FileItem[] = [];
+
+	// 排除列表
+	const exclude = [".DS_Store", "favicon", "icons", "js", "cdn", "aff"];
+
+	for (const file of files) {
+		if (exclude.includes(file)) continue;
+
+		const filePath = path.join(dir, file);
+		const stats = fs.statSync(filePath);
+		const relativePath = path.join(baseDir, file).replace(/\\/g, "/");
+
+		if (stats.isDirectory()) {
+			result.push({
+				name: file,
+				path: relativePath,
+				type: "directory",
+				children: getFiles(filePath, relativePath),
+			});
+		} else {
+			result.push({
+				name: file,
+				path: relativePath,
+				type: "file",
+				size: stats.size,
+				mtime: stats.mtime,
+			});
+		}
+	}
+
+	// 文件夹排在前面，按名称排序
+	return result.sort((a, b) => {
+		if (a.type === b.type) {
+			return a.name.localeCompare(b.name);
+		}
+		return a.type === "directory" ? -1 : 1;
+	});
+}
+
+const publicDir = path.join(process.cwd(), "public");
+const fileTree = getFiles(publicDir);
+
+const breadcrumbSchema = {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	itemListElement: [
+		{
+			"@type": "ListItem",
+			position: 1,
+			name: "首页",
+			item: Astro.site,
+		},
+		{
+			"@type": "ListItem",
+			position: 2,
+			name: "文件",
+			item: new URL("/files", Astro.site).toString(),
+		},
+	],
+};
+---
+
+<MainGridLayout title="文件">
+    <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+    <div class="card-base p-6 md:p-8">
+        <div class="flex items-center gap-2 mb-6">
+            <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70">
+                <Icon name="material-symbols:folder-open" class="text-[1.5rem]" />
+            </div>
+            <h1 class="text-2xl font-bold text-white">文件索引</h1>
+        </div>
+
+        <div class="mb-4 text-white/50 text-sm flex flex-col gap-1">
+            <p>这里展示了本站托管的各项公开资源，你可以点击查看并下载。</p>
+            <p class="text-red-400/80 text-xs italic">
+                免责声明：本站不对任何文件的安全性做保证，请在下载或运行前自行核实，风险自担。
+            </p>
+        </div>
+
+        <div class="flex gap-2 mb-6 border-b border-white/5 pb-1 overflow-x-auto no-scrollbar">
+            <button 
+                id="tab-local"
+                class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap active-tab"
+            >
+                <Icon name="material-symbols:home-storage-rounded" class="text-lg" />
+                本站
+            </button>
+            <button 
+                id="tab-onedrive"
+                class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap text-white/50 hover:bg-white/5"
+            >
+                <Icon name="simple-icons:microsoftonedrive" class="text-lg" />
+                OneDrive
+            </button>
+        </div>
+
+        <div id="content-local" class="tab-content">
+            <FileExplorer client:load items={fileTree} />
+        </div>
+
+        <div id="content-onedrive" class="tab-content hidden">
+            <OneDriveExplorer client:only="svelte" />
+        </div>
+
+        <script is:inline>
+            function setupTabs() {
+                const localTab = document.getElementById('tab-local');
+                const onedriveTab = document.getElementById('tab-onedrive');
+                const localContent = document.getElementById('content-local');
+                const onedriveContent = document.getElementById('content-onedrive');
+
+                if (!localTab || !onedriveTab) return;
+
+                function switchTab(activeTab, inactiveTab, activeContent, inactiveContent) {
+                    activeTab.classList.add('active-tab');
+                    activeTab.classList.remove('text-white/50', 'hover:bg-white/5');
+                    
+                    inactiveTab.classList.remove('active-tab');
+                    inactiveTab.classList.add('text-white/50', 'hover:bg-white/5');
+
+                    activeContent.classList.remove('hidden');
+                    inactiveContent.classList.add('hidden');
+                }
+
+                localTab.addEventListener('click', () => {
+                    switchTab(localTab, onedriveTab, localContent, onedriveContent);
+                });
+
+                onedriveTab.addEventListener('click', () => {
+                    switchTab(onedriveTab, localTab, onedriveContent, localContent);
+                });
+            }
+
+            // 处理 Swup 页面切换后的重新绑定
+            setupTabs();
+            document.addEventListener('swup:contentReplaced', setupTabs);
+        </script>
+    </div>
+</MainGridLayout>
+
+<style>
+    .active-tab {
+        @apply bg-[var(--primary)] text-black/70;
+    }
+    
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>

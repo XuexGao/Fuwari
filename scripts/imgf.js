@@ -2,9 +2,11 @@
 
 import fs from "fs";
 import path from "path";
-import { glob } from "glob";
-
-const CONTENT_DIR = path.join(process.cwd(), "src", "content");
+import {
+	CONTENT_DIR,
+	buildMarkdownGlob,
+	listFiles,
+} from "./utils/content-files.js";
 
 function isFenceStart(line) {
 	const m = String(line ?? "").match(/^\s*(```+|~~~+)\s*/);
@@ -71,8 +73,7 @@ async function main() {
 	}
 	const dryRun = args.has("--check") || args.has("--dry-run");
 
-	const pattern = path.join(CONTENT_DIR, "**/*.md").replace(/\\/g, "/");
-	const files = await glob(pattern, { nodir: true });
+	const files = await listFiles(buildMarkdownGlob(CONTENT_DIR, ["md"]));
 	if (!files.length) {
 		console.log("No markdown files found.");
 		return;

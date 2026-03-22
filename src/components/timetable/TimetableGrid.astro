@@ -1,0 +1,140 @@
+---
+import type {
+	TimetableCourseView,
+	TimetableViewModel,
+} from "@/types/timetable";
+import TimetableCourseCard from "@components/timetable/TimetableCourseCard.astro";
+
+interface Props {
+	viewModel: TimetableViewModel;
+	forceVisible?: boolean;
+}
+
+const { viewModel, forceVisible = false } = Astro.props;
+
+const dayIndexes = viewModel.dayColumns.map((day) => day.day);
+const dayCount = viewModel.dayColumns.length;
+const pairRowCount = viewModel.nodeRows.filter(
+	(row) => row.node % 2 === 1,
+).length;
+const courseMapByDayAndNode = new Map<string, TimetableCourseView[]>();
+
+for (const day of dayIndexes) {
+	for (const course of viewModel.coursesByDay[day] ?? []) {
+		const pairStartNode =
+			course.startNode % 2 === 1 ? course.startNode : course.startNode - 1;
+		const key = `${day}-${Math.max(1, pairStartNode)}`;
+		const list = courseMapByDayAndNode.get(key) ?? [];
+		list.push(course);
+		courseMapByDayAndNode.set(key, list);
+	}
+}
+---
+
+<div class="hidden md:block card-base w-full max-w-full overflow-hidden" style={`--day-count: ${dayCount}`} data-timetable-scale-root>
+	<div class="timetable-scale-viewport" data-timetable-scale-viewport>
+		<div class="timetable-scroll-content timetable-scale-content" data-timetable-scale-content>
+			<div class="timetable-header-grid border-b border-white/10">
+			<div class="px-3 py-2 text-xs text-white border-r border-white/10">节次</div>
+			{viewModel.dayColumns.map((day) => (
+				<div class="px-3 py-2 text-sm font-semibold text-white border-r last:border-r-0 border-white/10">{day.label}</div>
+			))}
+		</div>
+
+		{viewModel.nodeRows
+			.filter((row) => row.node % 2 === 1)
+			.map((row) => (
+				<div class="timetable-row-grid border-b last:border-b-0 border-white/10">
+					<div class="px-3 py-3 border-r border-white/10">
+						<p class="text-xs text-white font-medium">第 {row.node}-{Math.min(row.node + 1, viewModel.nodeRows.length)} 节</p>
+						<p class="text-[11px] text-white/80 mt-1">{row.startTime} - {viewModel.nodeRows.find((item) => item.node === Math.min(row.node + 1, viewModel.nodeRows.length))?.endTime ?? row.endTime}</p>
+					</div>
+					{viewModel.dayColumns.map((day) => {
+						const key = `${day.day}-${row.node}`;
+						const courses = courseMapByDayAndNode.get(key) ?? [];
+						return (
+							<div class="px-2 py-2 border-r last:border-r-0 border-white/10 align-top min-h-[88px]">
+								{courses.length > 0 ? (
+									<div class="space-y-2">
+										{courses.map((course) => (
+											<TimetableCourseCard course={course} compact={true} />
+										))}
+									</div>
+								) : (
+									<div class="h-full flex items-center justify-center text-[11px] text-white/60">—</div>
+								)}
+							</div>
+						);
+					})}
+				</div>
+			))}
+		</div>
+	</div>
+</div>
+
+<script is:inline>
+	function setupTimetableGridScale() {
+		const roots = document.querySelectorAll("[data-timetable-scale-root]");
+		for (const root of roots) {
+			if (!(root instanceof HTMLElement)) continue;
+			const viewport = root.querySelector("[data-timetable-scale-viewport]");
+			const content = root.querySelector("[data-timetable-scale-content]");
+			if (!(viewport instanceof HTMLElement) || !(content instanceof HTMLElement)) continue;
+
+			content.style.setProperty("--timetable-scale", "1");
+			viewport.style.setProperty("--timetable-scaled-height", "auto");
+
+			const viewportWidth = viewport.clientWidth;
+			const contentWidth = content.scrollWidth;
+			if (viewportWidth <= 0 || contentWidth <= 0) continue;
+
+			const scale = Math.min(1, viewportWidth / contentWidth);
+			content.style.setProperty("--timetable-scale", String(scale));
+			viewport.style.setProperty("--timetable-scaled-height", `${Math.ceil(content.scrollHeight * scale)}px`);
+		}
+	}
+
+	const runSetupTimetableGridScale = () => {
+		requestAnimationFrame(setupTimetableGridScale);
+	};
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", runSetupTimetableGridScale, { once: true });
+	} else {
+		runSetupTimetableGridScale();
+	}
+
+	const handlerKey = "__timetableGridScaleHandler";
+	const previousHandler = window[handlerKey];
+	if (typeof previousHandler === "function") {
+		window.removeEventListener("resize", previousHandler);
+	}
+	window[handlerKey] = runSetupTimetableGridScale;
+	window.addEventListener("resize", runSetupTimetableGridScale);
+	document.addEventListener("astro:after-swap", runSetupTimetableGridScale);
+	document.addEventListener("swup:contentReplaced", runSetupTimetableGridScale);
+</script>
+
+<style>
+	.timetable-scale-viewport {
+		width: 100%;
+		height: var(--timetable-scaled-height, auto);
+		overflow: hidden;
+	}
+
+	.timetable-scale-content {
+		--timetable-scale: 1;
+		transform-origin: top left;
+		transform: scale(var(--timetable-scale));
+	}
+
+	.timetable-scroll-content {
+		width: max(900px, calc(120px + var(--day-count) * 180px));
+	}
+
+	.timetable-header-grid,
+	.timetable-row-grid {
+		display: grid;
+		grid-template-columns: 120px repeat(var(--day-count), minmax(180px, 1fr));
+	}
+</style>

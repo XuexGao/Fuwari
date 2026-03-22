@@ -1,8 +1,14 @@
 <script lang="ts">
+import fa6Solid from "@iconify-json/fa6-solid/icons.json";
+import materialSymbols from "@iconify-json/material-symbols/icons.json";
 import Icon from "@iconify/svelte";
+import { addCollection } from "@iconify/svelte";
 import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
 import Highlight from "./Highlight.svelte";
+
+addCollection(materialSymbols);
+addCollection(fa6Solid);
 
 interface SearchResult {
 	url: string;
@@ -15,12 +21,22 @@ interface SearchResult {
 	matchCount: number;
 }
 
+interface SearchPost {
+	title: string;
+	description: string;
+	content: string;
+	link: string;
+}
+
 let keywordDesktop = "";
 let keywordMobile = "";
 let result: SearchResult[] = [];
 let isSearching = false;
-// biome-ignore lint/suspicious/noExplicitAny: Temporary usage of any for posts array
-let posts: any[] = [];
+let posts: SearchPost[] = [];
+let hasLoadedPosts = false;
+let isLoadingPosts = false;
+let isPanelOpen = false;
+let searchTimer: ReturnType<typeof setTimeout> | undefined;
 
 const searchTypes = [
 	{ id: "title", label: "标题" },
@@ -48,18 +64,31 @@ const toggleType = (typeId: string) => {
 };
 
 const togglePanel = () => {
+	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
-	panel?.classList.toggle("float-panel-closed");
+	if (!panel) return;
+	panel.classList.toggle("float-panel-closed");
+	isPanelOpen = !panel.classList.contains("float-panel-closed");
 };
 
 const closePanel = () => {
+	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
 	panel?.classList.add("float-panel-closed");
+	isPanelOpen = false;
 };
 
-const setPanelVisibility = (show: boolean, isDesktop: boolean): void => {
+const openPanel = () => {
+	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
-	if (!panel || !isDesktop) return;
+	panel?.classList.remove("float-panel-closed");
+	isPanelOpen = true;
+};
+
+const setPanelVisibility = (show: boolean): void => {
+	if (typeof document === "undefined") return;
+	const panel = document.getElementById("search-panel");
+	if (!panel) return;
 
 	if (show) {
 		panel.classList.remove("float-panel-closed");
@@ -68,13 +97,84 @@ const setPanelVisibility = (show: boolean, isDesktop: boolean): void => {
 	}
 };
 
+const loadPostsFromRss = async (): Promise<SearchPost[]> => {
+	const response = await fetch("/rss.xml");
+	const text = await response.text();
+	const parser = new DOMParser();
+	const xml = parser.parseFromString(text, "text/xml");
+	const items = xml.querySelectorAll("item");
+
+	return Array.from(items).map((item) => {
+		let content = "";
+		const contentEncoded =
+			item.getElementsByTagNameNS("*", "encoded")[0]?.textContent ||
+			item.querySelector("*|encoded")?.textContent ||
+			"";
+
+		if (contentEncoded) {
+			content = contentEncoded.replace(/<[^>]*>/g, "");
+		}
+
+		return {
+			title: item.querySelector("title")?.textContent || "",
+			description: item.querySelector("description")?.textContent || "",
+			content,
+			link:
+				item
+					.querySelector("link")
+					?.textContent?.replace(/.*\/posts\/(.*?)\//, "$1") || "",
+		};
+	});
+};
+
+const ensurePostsLoaded = async (): Promise<void> => {
+	if (hasLoadedPosts || isLoadingPosts) return;
+	isLoadingPosts = true;
+
+	try {
+		const cached = sessionStorage.getItem("search-posts-cache");
+		if (cached) {
+			posts = JSON.parse(cached) as SearchPost[];
+			hasLoadedPosts = true;
+			return;
+		}
+
+		try {
+			const response = await fetch("/search.json");
+			if (response.ok) {
+				posts = (await response.json()) as SearchPost[];
+			} else {
+				posts = await loadPostsFromRss();
+			}
+		} catch {
+			posts = await loadPostsFromRss();
+		}
+
+		hasLoadedPosts = true;
+		sessionStorage.setItem("search-posts-cache", JSON.stringify(posts));
+	} catch (error) {
+		console.error("Error loading search data:", error);
+		posts = [];
+		hasLoadedPosts = true;
+	} finally {
+		isLoadingPosts = false;
+	}
+};
+
+const scheduleSearchDataPreload = (): void => {
+	if (typeof window === "undefined") return;
+	window.setTimeout(() => {
+		void ensurePostsLoaded();
+	}, 300);
+};
+
 const search = async (
 	keyword: string,
 	isDesktop: boolean,
 	types: string[] = selectedTypes,
 ): Promise<void> => {
 	if (!keyword) {
-		setPanelVisibility(false, isDesktop);
+		setPanelVisibility(false);
 		result = [];
 		return;
 	}
@@ -163,94 +263,72 @@ const search = async (
 			.sort((a, b) => b.matchCount - a.matchCount);
 
 		result = searchResults;
-		setPanelVisibility(result.length > 0, isDesktop);
+		setPanelVisibility(true);
 	} catch (error) {
 		console.error("Search error:", error);
 		result = [];
-		setPanelVisibility(false, isDesktop);
+		setPanelVisibility(true);
 	} finally {
 		isSearching = false;
 	}
 };
 
-onMount(async () => {
-	try {
-		const response = await fetch("/rss.xml");
-		const text = await response.text();
-		const parser = new DOMParser();
-		const xml = parser.parseFromString(text, "text/xml");
-		const items = xml.querySelectorAll("item");
-
-		posts = Array.from(items).map((item) => {
-			// 尝试多种方式获取content:encoded内容
-			let content = "";
-			const contentEncoded =
-				item.getElementsByTagNameNS("*", "encoded")[0]?.textContent ||
-				item.querySelector("*|encoded")?.textContent ||
-				"";
-
-			if (contentEncoded) {
-				content = contentEncoded.replace(/<[^>]*>/g, "");
-			}
-
-			return {
-				title: item.querySelector("title")?.textContent || "",
-				description: item.querySelector("description")?.textContent || "",
-				content: content,
-				link:
-					item
-						.querySelector("link")
-						?.textContent?.replace(/.*\/posts\/(.*?)\//, "$1") || "",
-			};
-		});
-	} catch (error) {
-		console.error("Error fetching RSS:", error);
-	}
+onMount(() => {
+	scheduleSearchDataPreload();
 });
 
 $: {
 	if (keywordDesktop) {
-		search(keywordDesktop, true, selectedTypes);
+		if (searchTimer) {
+			clearTimeout(searchTimer);
+		}
+		searchTimer = setTimeout(async () => {
+			await ensurePostsLoaded();
+			await search(keywordDesktop, true, selectedTypes);
+		}, 120);
 	} else if (keywordMobile) {
-		search(keywordMobile, false, selectedTypes);
+		if (searchTimer) {
+			clearTimeout(searchTimer);
+		}
+		searchTimer = setTimeout(async () => {
+			await ensurePostsLoaded();
+			await search(keywordMobile, false, selectedTypes);
+		}, 120);
 	} else {
+		if (searchTimer) {
+			clearTimeout(searchTimer);
+		}
 		result = [];
-		setPanelVisibility(false, true);
+		if (!isPanelOpen) {
+			setPanelVisibility(false);
+		}
 	}
 }
 </script>
 
 <!-- search bar for desktop view -->
-<div id="search-bar" class="hidden lg:flex transition-all items-center h-11 mr-2 rounded-lg
-      bg-white/5 hover:bg-white/10 focus-within:bg-white/10
+<div id="search-bar" class="desktop-search transition-all items-center h-11 mr-2 rounded-lg
+      bg-white/5 hover:bg-white/10 focus-within:bg-white/10 shrink-0
 ">
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
-    <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => search(keywordDesktop, true, selectedTypes)}
+    <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => void ensurePostsLoaded()}
            class="transition-all pl-10 text-sm bg-transparent outline-0
          h-full w-40 active:w-60 focus:w-60 text-white/50"
     >
 </div>
 
-<!-- toggle btn for phone/tablet view -->
-<button on:click={togglePanel} aria-label="Search Panel" id="search-switch"
-        class="btn-plain scale-animation lg:!hidden rounded-lg w-11 h-11 active:scale-90">
-    <Icon icon="material-symbols:search" class="text-[1.25rem]"></Icon>
-</button>
+<!-- search bar for non-desktop view -->
+<div class="mobile-search relative h-11 flex-1 items-center rounded-lg bg-white/5 transition hover:bg-white/10 focus-within:bg-white/10">
+    <Icon icon="material-symbols:search" class="pointer-events-none absolute ml-3 text-[1.25rem] text-white/30 transition"></Icon>
+    <input placeholder="搜索" bind:value={keywordMobile} on:focus={() => { void ensurePostsLoaded(); openPanel(); }}
+           class="h-full w-full rounded-lg bg-transparent pl-10 pr-3 text-sm text-white/50 outline-0"
+    >
+</div>
 
 <!-- search panel -->
 <div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
 top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
 
-    <!-- search bar inside panel for phone/tablet -->
-    <div id="search-bar-inside" class="flex relative lg:hidden transition-all items-center h-11 rounded-xl
-      bg-white/5 hover:bg-white/10 focus-within:bg-white/10
-  ">
-        <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
-        <input placeholder="Search" bind:value={keywordMobile}
-               class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
-               focus:w-60 text-white/50"
-        >
-    </div>
 
     <!-- search types -->
     <div class="flex flex-wrap gap-2 px-3 py-2 border-b border-white/5 items-center">
@@ -277,31 +355,39 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
         {/each}
     </div>
 
-    <!-- search results header -->
-    {#if result.length > 0}
-        <div class="text-xs text-white/40 px-3 py-2 border-b border-white/5">
-            {result.length} 条搜索结果
-        </div>
-    {/if}
+    {#if keywordDesktop || keywordMobile}
+        <!-- search results header -->
+        {#if result.length > 0}
+            <div class="text-xs text-white/40 px-3 py-2 border-b border-white/5">
+                {result.length} 条搜索结果
+            </div>
+        {/if}
 
-    <!-- search results -->
-    {#each result as item}
-        <a href={item.url} on:click={closePanel}
-           class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
-       rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
-            <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
-                <Highlight text={item.meta.title} query={item.highlightQuery} />
-                <Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
+        <!-- search results -->
+        {#each result as item}
+            <a href={item.url} on:click={closePanel}
+               class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
+           rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
+                <div class="transition text-90 inline-flex font-bold group-hover:text-[var(--primary)]">
+                    <Highlight text={item.meta.title} query={item.highlightQuery} />
+                    <Icon icon="fa6-solid:chevron-right" class="transition text-[0.75rem] translate-x-1 my-auto text-[var(--primary)]"></Icon>
+                </div>
+                <div class="transition text-xs text-white/50 mb-1 font-mono">
+                    <Highlight text={item.urlPath} query={item.highlightQuery} />
+                    <span class="ml-2 text-[var(--primary)]">命中 {item.matchCount} 个关键词</span>
+                </div>
+                <div class="transition text-sm text-50">
+                    <Highlight text={item.excerpt} query={item.highlightQuery} />
+                </div>
+            </a>
+        {/each}
+
+        {#if !isSearching && result.length === 0}
+            <div class="text-sm text-white/50 px-3 py-4">
+                无搜索结果
             </div>
-            <div class="transition text-xs text-white/50 mb-1 font-mono">
-                <Highlight text={item.urlPath} query={item.highlightQuery} />
-                <span class="ml-2 text-[var(--primary)]">命中 {item.matchCount} 个关键词</span>
-            </div>
-            <div class="transition text-sm text-50">
-                <Highlight text={item.excerpt} query={item.highlightQuery} />
-            </div>
-        </a>
-    {/each}
+        {/if}
+    {/if}
 </div>
 
 <style>
@@ -316,11 +402,32 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
     outline: 0;
   }
   .search-panel {
-    background-color: var(--float-panel-bg-opaque);
+    background-color: var(--float-panel-bg);
     max-height: calc(100vh - 100px);
     overflow-y: auto;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .search-panel.float-panel-closed {
+    display: none;
+  }
+
+  .desktop-search,
+  .mobile-search {
+    display: none;
+  }
+
+  @media (max-width: 1085.98px) {
+    .mobile-search {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 1086px) {
+    .desktop-search {
+      display: flex;
+    }
   }
 
   .search-panel::-webkit-scrollbar {

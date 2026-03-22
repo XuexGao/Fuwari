@@ -1,10 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { execSync, spawn } from 'node:child_process';
-import { glob } from 'glob';
+import { spawn } from 'node:child_process';
 import os from 'node:os';
+import {
+	POSTS_DIR,
+	buildMarkdownGlob,
+	listFiles,
+} from './utils/content-files.js';
 
-const CONTENT_DIR = 'src/content/posts';
+const CONTENT_DIR = POSTS_DIR;
 const OUTPUT_FILE = 'src/json/git-history.json';
 const MAX_CONCURRENCY = Math.max(1, os.cpus().length - 1); // Leave one core free
 
@@ -81,8 +85,12 @@ async function main() {
     console.log('Generating git history...');
     console.log(`Using concurrency: ${MAX_CONCURRENCY}`);
 
-    // Use glob to find all markdown files in the content directory
-    const files = glob.sync(`${CONTENT_DIR}/**/*.{md,mdx}`);
+    const files = await listFiles(buildMarkdownGlob(CONTENT_DIR, ['md', 'mdx']));
+    if (files.length === 0) {
+        console.warn('No markdown files found, skip generating git history.');
+        fs.writeFileSync(OUTPUT_FILE, JSON.stringify({}, null, 2));
+        return;
+    }
     const historyMap = {};
     let processedCount = 0;
     

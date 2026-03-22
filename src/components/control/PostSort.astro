@@ -20,8 +20,8 @@ const getSortUrl = (type: string, descending: boolean) => {
 	return `/${type}-${descending ? "desc" : "asc"}/`;
 };
 ---
-<div class:list={["post-sort-container flex flex-wrap items-center gap-2 mb-4  text-neutral-500 dark:text-neutral-400", className]} style={style}>
-    <div class="flex bg-[var(--card-bg)] rounded-lg p-1 shadow-sm border border-black/5 dark:border-white/5">
+<div class:list={["post-sort-container flex flex-wrap items-center gap-2 mb-4  text-neutral-400", className]} style={style}>
+    <div class="flex bg-[var(--card-bg)] rounded-lg p-1 shadow-sm border border-white/5">
         <a href={url(getSortUrl("date", isDescending))} 
            class:list={["sort-btn", { "active": isDate }]} 
            title="按发布日期排序">
@@ -44,9 +44,82 @@ const getSortUrl = (type: string, descending: boolean) => {
 
 <style>
     .sort-btn {
-        @apply p-1.5 rounded-md transition-all flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/5 active:scale-90;
+        @apply p-1.5 rounded-md transition-all flex items-center justify-center hover:bg-white/5 active:scale-90;
     }
     .sort-btn.active {
-        @apply bg-[var(--primary)] text-black/80 shadow-sm;
+        @apply bg-[var(--primary)] text-black/80 shadow-sm hover:bg-[var(--primary)];
     }
 </style>
+
+<script is:inline>
+    function updateSortControls() {
+        const path = window.location.pathname;
+        const container = document.querySelector('.post-sort-container');
+        if (!container) return;
+
+        // Parse current state from URL
+        let type = 'date';
+        let desc = true;
+
+        // Simple matching based on route patterns
+        if (path.includes('/date-asc/')) { type = 'date'; desc = false; }
+        else if (path.includes('/alpha-asc/')) { type = 'alpha'; desc = false; }
+        else if (path.includes('/alpha-desc/')) { type = 'alpha'; desc = true; }
+        // else default (date-desc)
+
+        const dateBtn = container.querySelector('a[title="按发布日期排序"]');
+        const alphaBtn = container.querySelector('a[title="按标题字母排序"]');
+        const orderBtn = container.querySelector('a[title="切换正序/倒序"]');
+
+        if (!dateBtn || !alphaBtn || !orderBtn) return;
+
+        // Helper to construct URL (assuming root base for simplicity or grabbing base from existing href)
+        // A safer way is to use the existing href structure as template
+        // But since we know the pattern:
+        const getUrl = (t, d) => {
+            let baseUrl = '/';
+            // Check if site has a base path (e.g. /blog/)
+            // We can try to detect it from window.location or existing hrefs
+            // For now assume root or relative if possible.
+            // Swup handles relative links well.
+            if (t === 'date' && d) return baseUrl;
+            return `${baseUrl}${t}-${d ? 'desc' : 'asc'}/`;
+        };
+
+        // Update Active States
+        if (type === 'date') {
+            dateBtn.classList.add('active');
+            alphaBtn.classList.remove('active');
+        } else {
+            dateBtn.classList.remove('active');
+            alphaBtn.classList.add('active');
+        }
+
+        // Update Order Button Visuals
+        const orderText = orderBtn.querySelector('span');
+        const orderIcon = orderBtn.querySelector('svg');
+
+        if (orderText) orderText.textContent = desc ? '倒序' : '正序';
+        if (orderIcon) {
+            if (!desc) {
+                orderIcon.classList.add('rotate-180');
+            } else {
+                orderIcon.classList.remove('rotate-180');
+            }
+        }
+
+        // Update Hrefs for next interaction
+        // Date Button: switch to date sort, keep current direction?
+        // Original logic: getSortUrl("date", isDescending) -> keeps current direction
+        dateBtn.setAttribute('href', getUrl('date', desc));
+
+        // Alpha Button: switch to alpha sort, keep current direction
+        alphaBtn.setAttribute('href', getUrl('alpha', desc));
+
+        // Order Button: toggle direction, keep current type
+        orderBtn.setAttribute('href', getUrl(type, !desc));
+    }
+
+    // Run on Swup page view
+    document.addEventListener('swup:page:view', updateSortControls);
+</script>

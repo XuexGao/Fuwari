@@ -72,27 +72,31 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		{
 			name: "友链",
-			url: "/friends/", // Internal links should not include the base path, as it is automatically added
-			external: false, // Show an external link icon and will open in a new tab
+			url: "/friends/",
+			external: false,
+			icon: "material-symbols:group-outline-rounded",
 		},
 		{
 			name: "赞助",
-			url: "/sponsors/", // Internal links should not include the base path, as it is automatically added
-			external: false, // Show an external link icon and will open in a new tab
+			url: "/sponsors/",
+			external: false,
+			icon: "material-symbols:volunteer-activism-outline-rounded",
 		},
 		{
-			name: "封面",
-			url: "/cover/", // Internal links should not include the base path, as it is automatically added
-			external: false, // Show an external link icon and will open in a new tab
+		    name: "工具",
+			url: "/tools/",
+			external: false,
+			icon: "material-symbols:build-outline-rounded",
 		},
 		{
 			name: "统计",
 			url: "https://u.xiegao.top/share/IoWiNCvTUPxaDg5x",
-            external: true,
+			external: true,
+			icon: "material-symbols:table-chart",
 		},
 		{
 			name: "云盘",
-			url: "https://pan.xiegao.top", // Internal links should not include the base path, as it is automatically added
+			url: "https://pan.xiegao.top", 
 			external: true,
 		},
 	],

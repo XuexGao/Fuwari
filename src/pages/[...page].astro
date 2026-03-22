@@ -59,7 +59,7 @@ const jsonLd = {
 
 <MainGridLayout title={page.currentPage === 1 ? undefined : `第 ${page.currentPage} 页`}>
     {page.currentPage === 1 && <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>}
-    <PostSort sort={sort} class="onload-animation" style="animation-delay: var(--content-delay);"></PostSort>
+    <PostSort slot="before-content" sort={sort} class="onload-animation" style="animation-delay: var(--content-delay);"></PostSort>
     <PostPage page={page}></PostPage>
     <Pagination sort={sort} class="mx-auto onload-animation" page={page} style=`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`></Pagination>
 </MainGridLayout>

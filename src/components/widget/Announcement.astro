@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import Markdown from "../misc/Markdown.astro";
 
 const { lang } = Astro.params;
 const announcementId = `announcement-${lang}`;
@@ -47,9 +48,9 @@ const currentColor = colorMap[level] || colorMap.info;
 ---
 
 {enable && (
-    <div class="notice-card mb-4 relative transition-all duration-300 hover:shadow-lg onload-animation">
+    <div class="notice-card mb-4 relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-lg">
         <div
-			class="notice-content flex items-start p-4 rounded-xl bg-[var(--card-bg)] border transition-colors"
+			class="notice-content flex items-start p-4 rounded-xl bg-[var(--card-bg)] border transition-colors onload-animation"
 			class:list={[{ "notice-happy": isHappy }]}
 			style={isHappy ? {} : { borderColor: currentColor, color: currentColor }}
 		>
@@ -63,8 +64,10 @@ const currentColor = colorMap[level] || colorMap.info;
 				)}
             </div>
             <div class="text-wrapper grow relative">
-                <div class="notice-text text-sm md:text-base font-bold custom-md transition-all duration-300" id="notice-content-container">
-					<h3><Content /></h3>
+                <div class="notice-text transition-all duration-300" id="notice-content-container">
+					<Markdown class="notice-markdown text-sm md:text-base">
+						<Content />
+					</Markdown>
 				</div>
             </div>
         </div>
@@ -172,19 +175,49 @@ const currentColor = colorMap[level] || colorMap.info;
 		oklch(0.78 0.18 calc(var(--hue) + 315)),
 		oklch(0.78 0.18 calc(var(--hue) + 360))
 	);
-	border: 2px solid transparent;
+	position: relative;
+	border: 1px solid transparent;
 	background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box, var(--notice-gradient) border-box;
 	background-size: 100% 100%, 200% 100%;
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04);
 	animation: rainbow-flow 3s linear infinite;
 }
 
-.notice-happy .notice-text {
+.notice-happy .notice-markdown {
 	background: var(--notice-gradient);
 	background-size: 200% 100%;
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 	animation: rainbow-flow 3s linear infinite;
+}
+
+.notice-happy .notice-markdown::selection,
+.notice-happy .notice-markdown *::selection {
+	color: var(--primary);
+	-webkit-text-fill-color: var(--primary);
+}
+
+.notice-happy .notice-markdown::-moz-selection,
+.notice-happy .notice-markdown *::-moz-selection {
+	color: var(--primary);
+}
+
+.notice-markdown {
+	margin: 0;
+}
+
+.notice-markdown :global(:first-child) {
+	margin-top: 0;
+}
+
+.notice-markdown :global(:last-child) {
+	margin-bottom: 0;
+}
+
+.notice-markdown :global(ol),
+.notice-markdown :global(ul) {
+	padding-left: 1.5rem;
 }
 
 .notice-happy .notice-emoji {

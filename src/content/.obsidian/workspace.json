@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "6959bd3e0e877122",
+        "id": "7af6bd3dfb5e766f",
         "type": "tabs",
         "children": [
           {
@@ -13,26 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/cfvideo.md",
+                "file": "posts/fuwari-blur-swup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "cfvideo"
+              "title": "fuwari-blur-swup"
             }
           },
           {
-            "id": "149fabf71cf9bcb4",
+            "id": "ee215ba144416f8f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/jkw.md",
+                "file": "posts/eo-cf.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "jkw"
+              "title": "eo-cf"
             }
           }
         ]
@@ -92,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300.5
   },
   "right": {
     "id": "5baf836eb86f7a8f",
@@ -185,50 +185,51 @@
   },
   "active": "f6b5e7abc96521b9",
   "lastOpenFiles": [
-    "posts/win11-native-nvme.md",
-    "assets/images/win11-native-nvme-3.png",
-    "assets/images/win11-native-nvme-2.png",
-    "assets/images/d86fb68e-f5a4-4a18-a94f-e31d309457bd.png",
-    "assets/images/4833b89c-f0b6-42f0-9430-55dafc770678.png",
-    "assets/images/win11-native-nvme-1.png",
-    "assets/images/win11-native-nvme.png",
-    "posts/cfvideo.md",
-    "assets/images/cfvideo-5.png",
-    "posts/jkw.md",
-    "assets/images/cfvideo-4.png",
-    "assets/images/cfvideo-3.png",
-    "assets/images/cfvideo-2.png",
+    "assets/images/sb-fuwari.png",
     "spec/announcement.md",
+    "CLAUDE.md",
+    "posts/fuwari-blur-swup.md",
+    "posts/cf-fastip.md",
+    "posts/fuwari-blur-swup.md.tmp.48832.1774102208238",
+    "posts/fuwari-blur-swup.md.tmp.48832.1774101828328",
+    "posts/fuwari-blur-swup.md.tmp.48832.1774100816971",
+    "posts/fuwari-blur-swup.md.tmp.48832.1774100570959",
+    "assets/images/fuwari-blur-swup-3.png",
+    "assets/images/fuwari-blur-swup-2.png",
+    "assets/images/fuwari-blur-swup-1.png",
+    "assets/images/cf-fastip-8.png",
+    "assets/images/cf-fastip-7.png",
+    "assets/images/cf-fastip-6.png",
+    "assets/images/cf-fastip-5.png",
+    "assets/images/cf-fastip-4.png",
+    "posts/privacy-policy.md",
+    "posts/snippets.md",
+    "assets/images/snippets-1.png",
+    "posts/random-url-gen.md",
+    "posts/eo-cf.md",
+    "posts/email-privacy.md",
+    "posts/coxp.md",
+    "posts/fisco.md",
+    "posts/fisco-offline.md",
+    "assets/images/fisco-offline-2.png",
+    "posts/fnos.md",
+    "posts/fisco copy.md",
+    "posts/gh-cf.md",
+    "posts/gh-proxy.md",
+    "posts/obs-realtime-process-name.md",
+    "posts/codex-unlimited-blade-works.md",
+    "posts/cookie-consent.md",
+    "posts/codex-unlimited-blade-works.md.tmp.47664.1772805958791",
+    "posts/ai-agent.md",
+    "posts/codex-unlimited-blade-works.md.tmp.47664.1772804894124",
+    "CLAUDE.md.tmp.51576.1772767822869",
+    "assets/images",
+    "assets",
+    "posts/cfvideo.md",
+    "posts/win11-native-nvme.md",
+    "posts/jkw.md",
     "posts/google-adsense.md",
     "posts/bitwarden-com.md",
-    "posts/gad.md",
-    "posts/post-diff-guide.md",
-    "posts/domain-email.md",
-    "posts/cf-fastip.md",
-    "posts/auto-pr-link.md",
-    "posts/avatar.md",
-    "posts/alist-for-aliyun.md",
-    "posts/gal.md",
-    "posts/test-spoiler.md",
-    "posts/ai-wife.md",
-    "posts/web-bomb.md",
-    "posts copy/static-view.md",
-    "posts copy/static-redirect-group.md",
-    "posts copy/starrail-fast.md",
-    "posts copy/sshfs.md",
-    "posts copy/sixqi-py.md",
-    "posts copy/shorter-url.md",
-    "posts copy/serverless-function.md",
-    "posts copy/self-host-matrix.md",
-    "posts copy",
-    "posts/posts.zip",
-    "posts/watermark.zip",
-    "assets/files/基础起手+Lora.json",
-    "assets/files",
-    "assets/images/基础起手+Lora.json",
-    "assets/images",
-    "assets/images/_slug_.CWICv0vP.css",
-    "assets/images/_page_.DhhhZL1-.css",
-    "assets/images/_page_.BtlFgdAB.css"
+    "posts copy"
   ]
 }
