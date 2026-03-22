@@ -78,12 +78,12 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "赞助",
-			url: "/sponsors/"，
+			url: "/sponsors/",
 			external: false,
 			icon: "material-symbols:volunteer-activism-outline-rounded",
 		},
 		{
-		    name: "工具",
+			name: "工具",
 			url: "/tools/",
 			external: false,
 			icon: "material-symbols:build-outline-rounded",
@@ -96,7 +96,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "云盘",
-			url: "https://pan.xiegao.top", 
+			url: "https://pan.xiegao.top",
 			external: true,
 			icon: "material-symbols:cloud-outline-rounded",
 		},
