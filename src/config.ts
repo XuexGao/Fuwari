@@ -60,7 +60,7 @@ export const siteConfig: SiteConfig = {
 	officialSites: [
 		{ url: "https://xiegao.top", alias: "CN" },
 		{ url: "https://xiegao.top", alias: "Global" },
-	],
+	]，
 	server: [
 		{ url: "", text: "Blog" },
 	],
@@ -78,7 +78,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "赞助",
-			url: "/sponsors/",
+			url: "/sponsors/"，
 			external: false,
 			icon: "material-symbols:volunteer-activism-outline-rounded",
 		},
@@ -98,6 +98,7 @@ export const navBarConfig: NavBarConfig = {
 			name: "云盘",
 			url: "https://pan.xiegao.top", 
 			external: true,
+			icon: "material-symbols:cloud-outline-rounded",
 		},
 	],
 };
