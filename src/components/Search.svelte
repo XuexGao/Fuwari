@@ -407,11 +407,10 @@ $: {
     outline: 0;
   }
   .search-panel {
-  background-color: rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
-
   .search-panel.float-panel-closed {
     display: none;
   }
