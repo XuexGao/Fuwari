@@ -307,8 +307,9 @@ $: {
 </script>
 
 <!-- search bar for desktop view -->
-<div id="search-bar" class="desktop-search transition-all items-center h-11 mr-2 rounded-lg
-      bg-white/5 hover:bg-white/10 focus-within:bg-white/10 shrink-0
+<div id="search-bar"
+  class="desktop-search transition-all items-center h-11 mr-2 rounded-lg
+  bg-white/20 hover:bg-white/30 focus-within:bg-white/30 backdrop-blur-md shrink-0">
 ">
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
     <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => void ensurePostsLoaded()}
@@ -318,7 +319,8 @@ $: {
 </div>
 
 <!-- search bar for non-desktop view -->
-<div class="mobile-search relative h-11 flex-1 items-center rounded-lg bg-white/5 transition hover:bg-white/10 focus-within:bg-white/10">
+<div class="mobile-search relative h-11 flex-1 items-center rounded-lg
+  bg-white/20 backdrop-blur-md transition hover:bg-white/30 focus-within:bg-white/30">
     <Icon icon="material-symbols:search" class="pointer-events-none absolute ml-3 text-[1.25rem] text-white/30 transition"></Icon>
     <input placeholder="搜索" bind:value={keywordMobile} on:focus={() => { void ensurePostsLoaded(); openPanel(); }}
            class="h-full w-full rounded-lg bg-transparent pl-10 pr-3 text-sm text-white/50 outline-0"
