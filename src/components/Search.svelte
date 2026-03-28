@@ -1,8 +1,8 @@
 <script lang="ts">
-import fa6Solid from "@iconify-json/fa6-solid/icons.json";
-import materialSymbols from "@iconify-json/material-symbols/icons.json";
 import Icon from "@iconify/svelte";
 import { addCollection } from "@iconify/svelte";
+import materialSymbols from "@iconify-json/material-symbols/icons.json";
+import fa6Solid from "@iconify-json/fa6-solid/icons.json";
 import { url } from "@utils/url-utils.ts";
 import { onMount } from "svelte";
 import Highlight from "./Highlight.svelte";
@@ -35,7 +35,6 @@ let isSearching = false;
 let posts: SearchPost[] = [];
 let hasLoadedPosts = false;
 let isLoadingPosts = false;
-let isPanelOpen = false;
 let searchTimer: ReturnType<typeof setTimeout> | undefined;
 
 const searchTypes = [
@@ -66,23 +65,19 @@ const toggleType = (typeId: string) => {
 const togglePanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
-	if (!panel) return;
-	panel.classList.toggle("float-panel-closed");
-	isPanelOpen = !panel.classList.contains("float-panel-closed");
+	panel?.classList.toggle("float-panel-closed");
 };
 
 const closePanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
 	panel?.classList.add("float-panel-closed");
-	isPanelOpen = false;
 };
 
 const openPanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
 	panel?.classList.remove("float-panel-closed");
-	isPanelOpen = true;
 };
 
 const setPanelVisibility = (show: boolean): void => {
@@ -299,17 +294,14 @@ $: {
 			clearTimeout(searchTimer);
 		}
 		result = [];
-		if (!isPanelOpen) {
-			setPanelVisibility(false);
-		}
+		setPanelVisibility(false, true);
 	}
 }
 </script>
 
 <!-- search bar for desktop view -->
-<div id="search-bar"
-  class="desktop-search transition-all items-center h-11 mr-2 rounded-lg
-  bg-white/20 hover:bg-white/30 focus-within:bg-white/30 backdrop-blur-md shrink-0">
+<div id="search-bar" class="hidden lg:flex transition-all items-center h-11 mr-2 rounded-lg
+      bg-white/5 hover:bg-white/10 focus-within:bg-white/10
 ">
     <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
     <input placeholder="搜索" bind:value={keywordDesktop} on:focus={() => void ensurePostsLoaded()}
@@ -318,9 +310,8 @@ $: {
     >
 </div>
 
-<!-- search bar for non-desktop view -->
-<div class="mobile-search relative h-11 flex-1 items-center rounded-lg
-  bg-white/20 backdrop-blur-md transition hover:bg-white/30 focus-within:bg-white/30">
+<!-- search bar for phone/tablet view -->
+<div class="relative flex h-11 flex-1 items-center rounded-lg bg-white/5 transition hover:bg-white/10 focus-within:bg-white/10 lg:hidden">
     <Icon icon="material-symbols:search" class="pointer-events-none absolute ml-3 text-[1.25rem] text-white/30 transition"></Icon>
     <input placeholder="搜索" bind:value={keywordMobile} on:focus={() => { void ensurePostsLoaded(); openPanel(); }}
            class="h-full w-full rounded-lg bg-transparent pl-10 pr-3 text-sm text-white/50 outline-0"
@@ -328,12 +319,19 @@ $: {
 </div>
 
 <!-- search panel -->
-<div id="search-panel"
-  class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
-  top-20 left-4 md:left-[unset] right-4
-  rounded-2xl p-2
-  bg-white/10 backdrop-blur-xl">
+<div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
+top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
 
+    <!-- search bar inside panel for phone/tablet -->
+    <div id="search-bar-inside" class="hidden relative lg:hidden transition-all items-center h-11 rounded-xl
+      bg-white/5 hover:bg-white/10 focus-within:bg-white/10
+  ">
+        <Icon icon="material-symbols:search" class="absolute text-[1.25rem] pointer-events-none ml-3 transition my-auto text-white/30"></Icon>
+        <input placeholder="搜索" bind:value={keywordMobile} on:focus={() => void ensurePostsLoaded()}
+               class="pl-10 absolute inset-0 text-sm bg-transparent outline-0
+               focus:w-60 text-white/50"
+        >
+    </div>
 
     <!-- search types -->
     <div class="flex flex-wrap gap-2 px-3 py-2 border-b border-white/5 items-center">
@@ -407,34 +405,11 @@ $: {
     outline: 0;
   }
   .search-panel {
-  background-color: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-  .search-panel.float-panel-closed {
-    display: none;
-  }
-  #search-bar,
-  .mobile-search {
-   backdrop-filter: blur(16px);
-   -webkit-backdrop-filter: blur(16px);
-  }
-
-  .desktop-search,
-  .mobile-search {
-    display: none;
-  }
-
-  @media (max-width: 1085.98px) {
-    .mobile-search {
-      display: flex;
-    }
-  }
-
-  @media (min-width: 1086px) {
-    .desktop-search {
-      display: flex;
-    }
+    background-color: var(--float-panel-bg-opaque);
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
   }
 
   .search-panel::-webkit-scrollbar {
