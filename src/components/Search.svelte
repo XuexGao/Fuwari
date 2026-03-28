@@ -407,12 +407,10 @@ $: {
     outline: 0;
   }
   .search-panel {
-    background-color: var(--float-panel-bg);
-    max-height: calc(100vh - 100px);
-    overflow-y: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
 
   .search-panel.float-panel-closed {
     display: none;
