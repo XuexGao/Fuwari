@@ -412,6 +412,11 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
   .search-panel.float-panel-closed {
     display: none;
   }
+  #search-bar,
+  .mobile-search {
+   backdrop-filter: blur(16px);
+   -webkit-backdrop-filter: blur(16px);
+  }
 
   .desktop-search,
   .mobile-search {
