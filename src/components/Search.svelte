@@ -328,8 +328,11 @@ $: {
 </div>
 
 <!-- search panel -->
-<div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
-top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
+<div id="search-panel"
+  class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
+  top-20 left-4 md:left-[unset] right-4
+  rounded-2xl p-2
+  bg-white/10 backdrop-blur-xl">
 
 
     <!-- search types -->
