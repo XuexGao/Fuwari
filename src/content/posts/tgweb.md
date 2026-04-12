@@ -2,10 +2,13 @@
 title: 从零打造国内直连的专属 Telegram Web
 published: 2026-03-02
 description: TG Web采用前后端分离，前端可以部署到静态托管平台，而后端可以用各种服务反代
-image: "https://img.xiegao.top/file/s3:s3_1774059414759_2efaq3.jpg"
-tags: [Telegram, Nginx, 反向代理, Cloudflare Pages, GitHub Actions]
-category: 教程
-draft: false
+image: https://img.xiegao.top/file/s3:s3_1774059414759_2efaq3.jpg
+tags:
+  - Telegram
+  - Nginx
+  - 反向代理
+  - Cloudflare Pages
+  - GitHub Actions
 ---
 
 如果你想在没有任何翻墙工具的国内网络环境下，随时随地流畅访问 Telegram，自己动手部署一套专属的 Telegram Web（基于官方的 Web K 版本）绝对是最一劳永逸的选择。
@@ -32,7 +35,7 @@ npx wrangler deploy --assets=public --compatibility-date=2026-02-22
 
 ![图1：构建配置页面](https://img.xiegao.top/file/s3:s3_1774059414737_ku762a.jpg)
 
-此时，当其他人访问你的前端主域名时，只能看到无聊的 `Welcome to nginx!`，而你自己访问 `/xiegao.html` 时，熟悉的登录界面就会出现。
+此时，当其他人访问你的前端主域名时，只能看到 `Welcome to nginx!`，而你自己访问 `/xiegao.html` 时，熟悉的登录界面就会出现。
 
 ## 阶段二：后端 API 反向代理
 
@@ -182,6 +185,6 @@ jobs:
 
 ![图3：GitHub Actions 页面运行成功](https://img.xiegao.top/file/s3:s3_1774059416357_ype7ys.jpg)
 
-至此，只要你的服务器稳定，这套系统就能全天候运行。
+至此，只要你的服务器稳定，这套系统就能~~稳定运行~~。
 
 ![图4：成功截图](https://img.xiegao.top/file/s3:s3_1774059416511_x30x7v.jpg)
