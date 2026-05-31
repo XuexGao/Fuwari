@@ -84,7 +84,7 @@ rainbow-light = linear-gradient(to right, oklch(0.50 0.10 0), oklch(0.50 0.10 30
 html.dark
   --primary: oklch(0.75 0.14 var(--hue))
   --page-bg: oklch(0.16 0.014 var(--hue))
-  --card-bg: oklch(0.23 0.015 var(--hue) / 0.75)
+  --card-bg: unquote("oklch(0.23 0.015 var(--hue) / 0.75)")
   --card-bg-transparent: rgba(23, 23, 23, 0.8)
 
   --btn-content: oklch(0.75 0.1 var(--hue))
@@ -125,7 +125,7 @@ html.dark
   --link-hover: oklch(0.40 0.08 var(--hue))
   --link-active: oklch(0.35 0.07 var(--hue))
 
-  --float-panel-bg: oklch(0.19 0.015 var(--hue) / 0.9)
+  --float-panel-bg: unquote("oklch(0.19 0.015 var(--hue) / 0.9)")
   --float-panel-bg-transparent: rgba(23, 23, 23, 0.8)
   --float-panel-bg-opaque: oklch(0.19 0.015 var(--hue))
 
