@@ -23,7 +23,7 @@ for (const post of posts) {
     <div class="px-2">
         <div class="font-bold text-xl text-center mb-1 text-neutral-50 transition"><h3>{config.name}</h3></div>
         <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
-        <div class="text-center text-neutral-400 mb-2.5 transition">{config.bio}</div>
+        <div class="text-center text-neutral-600 dark:text-neutral-400 mb-2.5 transition">{config.bio}</div>
     
         <div class="flex flex-wrap gap-2 justify-center mb-1">
             {config.links.length > 1 && config.links.map(item =>
@@ -40,20 +40,20 @@ for (const post of posts) {
         
         <div class="grid grid-cols-2 mt-3 pt-3 border-t border-neutral-700">
             <div class="text-center">
-                <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
+                <div class="text-xs text-neutral-600 dark:text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:article-outline" class="text-base"></Icon>
                     <span class="text-xs">文章数</span>
                 </div>
-                <div class="font-bold text-lg text-neutral-300">{totalPosts}</div>
+                <div class="font-bold text-lg text-neutral-700 dark:text-neutral-300">{totalPosts}</div>
             </div>
    
             <div class="text-center border-l border-neutral-700">
-                <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
+                <div class="text-xs text-neutral-600 dark:text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:format-list-numbered" class="text-base"></Icon>
                     <span class="text-xs">总字数</span>
                 </div>
     
-                <div class="font-bold text-lg text-neutral-300">
+                <div class="font-bold text-lg text-neutral-700 dark:text-neutral-300">
                     {(totalWords / 10000).toFixed(1)}w
                 </div>
             </div>
@@ -62,12 +62,12 @@ for (const post of posts) {
         <div class="grid grid-cols-1 mt-3 pt-3 border-t border-neutral-700">
    
             <div class="text-center">
-                <div class="text-xs text-neutral-500 mb-1 flex items-center justify-center gap-1">
+                <div class="text-xs text-neutral-600 dark:text-neutral-500 mb-1 flex items-center justify-center gap-1">
                     <Icon name="material-symbols:visibility-outline" class="text-base"></Icon>
                     <span class="text-xs">访问量</span>
                 </div>
       
-                <div id="site-views" class="font-bold text-lg text-neutral-300">0</div>
+                <div id="site-views" class="font-bold text-lg text-neutral-700 dark:text-neutral-300">0</div>
             </div>
             </div>
     </div>
