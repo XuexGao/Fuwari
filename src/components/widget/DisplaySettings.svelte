@@ -9,6 +9,7 @@ import {
 	getHue,
 	getRainbowMode,
 	getRainbowSpeed,
+	getStoredTheme,
 	setBgBlur,
 	setDevMode,
 	setDevServer,
@@ -16,6 +17,7 @@ import {
 	setHue,
 	setRainbowMode,
 	setRainbowSpeed,
+	setTheme,
 } from "@utils/setting-utils";
 import { onMount } from "svelte";
 
@@ -23,6 +25,7 @@ const isBrowser = typeof document !== "undefined";
 const defaultHue = isBrowser ? getDefaultHue() : 250;
 
 let hue = isBrowser ? getHue() : defaultHue;
+let theme = isBrowser ? getStoredTheme() : "auto";
 let isRainbowMode = isBrowser ? getRainbowMode() : false;
 let rainbowSpeed = isBrowser ? getRainbowSpeed() : 5;
 let bgBlur = isBrowser ? getBgBlur() : 4;
@@ -104,6 +107,34 @@ onMount(() => {
 
 <div id="display-setting" class="float-panel float-panel-closed absolute z-[90] transition-all w-80 right-4 px-4 py-4">
 
+    <div class="flex flex-row gap-2 mb-3 items-center justify-between">
+        <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
+            before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
+            before:absolute before:-left-3 before:top-[0.33rem]"
+        >
+            外观模式
+        </div>
+        <div class="flex gap-1">
+            <button aria-label="Light Mode"
+                class="btn-regular w-7 h-7 rounded-md active:scale-90"
+                class:current-theme-btn={theme === 'light'}
+                onclick={() => { theme = 'light'; setTheme('light'); }}>
+                <Icon icon="material-symbols:wb-sunny-outline-rounded" class="text-[1rem]" />
+            </button>
+            <button aria-label="Auto Mode"
+                class="btn-regular w-7 h-7 rounded-md active:scale-90"
+                class:current-theme-btn={theme === 'auto'}
+                onclick={() => { theme = 'auto'; setTheme('auto'); }}>
+                <Icon icon="material-symbols:brightness-auto-outline-rounded" class="text-[1rem]" />
+            </button>
+            <button aria-label="Dark Mode"
+                class="btn-regular w-7 h-7 rounded-md active:scale-90"
+                class:current-theme-btn={theme === 'dark'}
+                onclick={() => { theme = 'dark'; setTheme('dark'); }}>
+                <Icon icon="material-symbols:dark-mode-outline-rounded" class="text-[1rem]" />
+            </button>
+        </div>
+    </div>
 
     <div class="flex flex-row gap-2 mb-3 items-center justify-between">
         <div class="flex gap-2 font-bold text-lg text-neutral-100 transition relative ml-3
@@ -219,3 +250,9 @@ onMount(() => {
     {/if}
 </div>
 
+<style>
+    :global(.current-theme-btn) {
+        background-color: var(--primary) !important;
+        color: white !important;
+    }
+</style>
