@@ -53,8 +53,8 @@ export function setBgHueRotate(hue: number): void {
 
 export function getBgHueRotate(): number {
 	const current = getComputedStyle(document.documentElement)
-		。getPropertyValue("--bg-hue-rotate")
-		。trim();
+		.getPropertyValue("--bg-hue-rotate")
+		.trim();
 	return current ? Number.parseInt(current) : 0;
 }
 
