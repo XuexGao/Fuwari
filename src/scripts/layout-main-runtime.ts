@@ -10,6 +10,7 @@ import {
 	getBgBlur,
 	getHideBg,
 	getHue,
+	getStoredTheme,
 	setBgBlur,
 	setHideBg,
 	setHue,
@@ -44,7 +45,7 @@ setClickOutsideToClose("search-panel", [
 ]);
 
 function loadTheme() {
-	setTheme();
+	setTheme(getStoredTheme());
 }
 
 function loadHue() {
@@ -97,7 +98,8 @@ function loadGiscus() {
 		const val = container.getAttribute(attr);
 		if (val) script.setAttribute(attr, val);
 	});
-	script.setAttribute("data-theme", "dark");
+	const isDark = document.documentElement.classList.contains("dark");
+	script.setAttribute("data-theme", isDark ? "dark" : "light");
 	script.crossOrigin = "anonymous";
 	script.async = true;
 
@@ -114,8 +116,9 @@ function init() {
 	new MutationObserver(() => {
 		const frame = document.querySelector<HTMLIFrameElement>("iframe.giscus-frame");
 		if (!frame?.contentWindow) return;
+		const isDark = document.documentElement.classList.contains("dark");
 		frame.contentWindow.postMessage(
-			{ giscus: { setConfig: { theme: "dark" } } },
+			{ giscus: { setConfig: { theme: isDark ? "dark" : "light" } } },
 			"https://giscus.app",
 		);
 	}).observe(document.documentElement, {
