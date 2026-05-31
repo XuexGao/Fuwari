@@ -125,20 +125,20 @@
     }
 
     .text-90 {
-        @apply text-white/90
-    }
-    .text-75 {
-        @apply text-white/75
-    }
-    .text-50 {
-        @apply text-white/50
-    }
-    .text-30 {
-        @apply text-white/30
-    }
-    .text-25 {
-        @apply text-white/25
-    }
+    @apply text-black/90 dark:text-white/90
+}
+.text-75 {
+    @apply text-black/75 dark:text-white/75
+}
+.text-50 {
+    @apply text-black/50 dark:text-white/50
+}
+.text-30 {
+    @apply text-black/30 dark:text-white/30
+}
+.text-25 {
+    @apply text-black/25 dark:text-white/25
+}
 
     .page-title-icon {
         @apply h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70;
