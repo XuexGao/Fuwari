@@ -1,5 +1,5 @@
 import { expressiveCodeConfig } from "@/config";
-import { DARK_MODE } from "@constants/constants.ts";
+import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants.ts";
 
 export function getDefaultHue(): number {
 	const fallback = "250";
@@ -53,8 +53,8 @@ export function setBgHueRotate(hue: number): void {
 
 export function getBgHueRotate(): number {
 	const current = getComputedStyle(document.documentElement)
-		.getPropertyValue("--bg-hue-rotate")
-		.trim();
+		。getPropertyValue("--bg-hue-rotate")
+		。trim();
 	return current ? Number.parseInt(current) : 0;
 }
 
@@ -86,15 +86,23 @@ export function setDevServer(server: string): void {
 	localStorage.setItem("dev-server", server);
 }
 
-export function applyThemeToDocument() {
-	document.documentElement.classList.add("dark");
+export function getStoredTheme(): string {
+	return localStorage.getItem("theme") || AUTO_MODE;
+}
+
+export function applyThemeToDocument(theme: string) {
+	if (theme === DARK_MODE || (theme === AUTO_MODE && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+		document.documentElement.classList.add("dark");
+	} else {
+		document.documentElement.classList.remove("dark");
+	}
 	document.documentElement.setAttribute(
 		"data-theme",
 		expressiveCodeConfig.theme,
 	);
 }
 
-export function setTheme(): void {
-	localStorage.setItem("theme", DARK_MODE);
-	applyThemeToDocument();
+export function setTheme(theme: string): void {
+	localStorage.setItem("theme", theme);
+	applyThemeToDocument(theme);
 }
