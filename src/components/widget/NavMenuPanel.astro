@@ -17,7 +17,7 @@ const { lang } = Astro.params;
         "
            target={link.external ? "_blank" : null}
         >
-            <div class="flex items-center gap-2 transition text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]">
+            <div class="flex items-center gap-2 transition text-black/75 dark:text-white/75 font-bold group-hover:text-[var(--primary)] group-active:text-[var(--primary)]">
                 {link.icon && <Icon name={link.icon} class="text-[1.1rem]" />}
                 {link.name}
             </div>
@@ -26,7 +26,7 @@ const { lang } = Astro.params;
             >
             </Icon>}
             {link.external && <Icon name="fa6-solid:arrow-up-right-from-square"
-                  class="transition text-[0.75rem] text-white/25 -translate-x-1"
+                  class="transition text-[0.75rem] text-black/25 dark:text-white/25 -translate-x-1"
             >
             </Icon>}
         </a>
