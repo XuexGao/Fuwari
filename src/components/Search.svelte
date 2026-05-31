@@ -405,7 +405,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
     outline: 0;
   }
   .search-panel {
-    background-color: var(--float-panel-bg);
+    background-color: var(--float-panel-bg-opaque);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     max-height: calc(100vh - 100px);
