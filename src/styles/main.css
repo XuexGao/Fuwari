@@ -98,7 +98,7 @@
     }
     .btn-plain {
         @apply transition relative flex items-center justify-center bg-none
-        text-white/75 hover:text-[var(--primary)];
+        text-black/75 dark:text-white/75 hover:text-[var(--primary)];
         &:not(.scale-animation) {
             @apply hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
         }
@@ -108,7 +108,7 @@
     }
     .btn-regular {
         @apply transition flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
-        text-white/75
+        text-black/75 dark:text-white/75
     }
 
     .link-underline {
@@ -125,20 +125,20 @@
     }
 
     .text-90 {
-    @apply text-black/90 dark:text-white/90
-}
-.text-75 {
-    @apply text-black/75 dark:text-white/75
-}
-.text-50 {
-    @apply text-black/50 dark:text-white/50
-}
-.text-30 {
-    @apply text-black/30 dark:text-white/30
-}
-.text-25 {
-    @apply text-black/25 dark:text-white/25
-}
+        @apply text-white/90
+    }
+    .text-75 {
+        @apply text-white/75
+    }
+    .text-50 {
+        @apply text-white/50
+    }
+    .text-30 {
+        @apply text-white/30
+    }
+    .text-25 {
+        @apply text-white/25
+    }
 
     .page-title-icon {
         @apply h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70;
