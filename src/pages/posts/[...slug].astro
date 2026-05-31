@@ -95,15 +95,15 @@ const jsonLd = [
             {}
         ]}>
             <!-- word count and reading time -->
-            <div class="flex flex-row text-white/30 gap-5 mb-3 transition onload-animation">
+            <div class="flex flex-row text-black/30 dark:text-white/30 gap-5 mb-3 transition onload-animation">
                 <div class="flex flex-row items-center">
-                    <div class="transition h-6 w-6 rounded-md bg-white/10 text-white/50 flex items-center justify-center mr-2">
+                    <div class="transition h-6 w-6 rounded-md bg-black/10 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:notes-rounded"></Icon>
                     </div>
                     <div class="text-sm">{remarkPluginFrontmatter.words} 字</div>
                 </div>
                 <div class="flex flex-row items-center">
-                    <div class="transition h-6 w-6 rounded-md bg-white/10 text-white/50 flex items-center justify-center mr-2">
+                    <div class="transition h-6 w-6 rounded-md bg-black/10 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
                         <Icon name="material-symbols:schedule-outline-rounded"></Icon>
                     </div>
                     <div class="text-sm">{remarkPluginFrontmatter.minutes} 分钟</div>
@@ -116,7 +116,7 @@ const jsonLd = [
                     data-pagefind-body data-pagefind-weight="10" data-pagefind-meta="title"
                     class="transition w-full flex items-center font-bold mb-3
                     text-3xl md:text-[2.25rem]/[2.75rem]
-                    text-white/90
+                    text-black/90 dark:text-white/90
                     md:before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
                     before:absolute before:top-[0.75rem] before:left-[-1.125rem]
                 ">
@@ -128,7 +128,7 @@ const jsonLd = [
             <!-- description/excerpt -->
             {(entry.data.description || remarkPluginFrontmatter.excerpt) && (
                 <div class="onload-animation mb-4">
-                    <div id="post-description" class="text-white/75 text-sm leading-relaxed">
+                    <div id="post-description" class="text-black/75 dark:text-white/75 text-sm leading-relaxed">
                         {entry.data.description || remarkPluginFrontmatter.excerpt}
                     </div>
                 </div>
@@ -177,7 +177,7 @@ const jsonLd = [
                         <div class="h-5 w-5 rounded bg-[var(--primary)] flex items-center justify-center">
                             <Icon name="material-symbols:help-outline" class="text-[0.75rem] text-black/70"></Icon>
                         </div>
-                        <p class="text-white/80 text-sm">这篇文章是否对你有帮助？</p>
+                        <p class="text-black/80 dark:text-white/80 text-sm">这篇文章是否对你有帮助？</p>
                     </div>
                     <div class="flex gap-2">
                         <a href="/posts/pin/" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)] text-[var(--btn-content)] text-xs font-medium transition-all active:scale-95">
@@ -202,7 +202,7 @@ const jsonLd = [
                                 <Icon name="material-symbols:edit-outline" class="text-[0.875rem] text-black/70"></Icon>
                             </div>
                             <div class="flex-1">
-                                <p class="text-white/80 text-sm mb-1">发现错误或想要改进这篇文章？</p>
+                                <p class="text-black/80 dark:text-white/80 text-sm mb-1">发现错误或想要改进这篇文章？</p>
                                 <a 
                                     href={`${gitHubEditConfig.baseUrl}/${entry.slug}.md`}
                                     target="_blank"
@@ -223,21 +223,21 @@ const jsonLd = [
                                     <Icon name="material-symbols:history-rounded" class="text-[0.875rem] text-black/70"></Icon>
                                 </div>
                                 <div class="flex-1">
-                                    <p class="text-white/80 text-sm mb-1">文章修订历史 ({history.length} 次)</p>
+                                    <p class="text-black/80 dark:text-white/80 text-sm mb-1">文章修订历史 ({history.length} 次)</p>
                                     <details class="group">
                                         <summary class="cursor-pointer text-sm text-[var(--primary)] font-medium hover:underline select-none">
                                             查看变更记录
                                         </summary>
                                         <div class="mt-2 space-y-2 max-h-48 overflow-y-auto">
                                             {history.map(commit => (
-                                                <div class="flex flex-col text-xs bg-white/5 p-2 rounded">
+                                                <div class="flex flex-col text-xs bg-black/5 dark:bg-white/5 p-2 rounded">
                                                     <div class="flex justify-between items-center mb-1">
-														<span class="font-bold text-white/70">{formatPostDateForDisplay(new Date(commit.date))}</span>
+														<span class="font-bold text-black/70 dark:text-white/70">{formatPostDateForDisplay(new Date(commit.date))}</span>
                                                         <a href={getCommitUrl(commit.hash)} target="_blank" class="text-[var(--primary)] hover:underline font-mono">
                                                             {commit.hash.substring(0, 7)}
                                                         </a>
                                                     </div>
-                                                    <p class="text-white/60 break-all">{commit.message}</p>
+                                                    <p class="text-black/60 dark:text-white/60 break-all">{commit.message}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -274,7 +274,7 @@ const jsonLd = [
            class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.nextSlug}]}>
             {entry.data.nextSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-start gap-4" >
                 <Icon name="material-symbols:chevron-left-rounded" class="text-[2rem] text-[var(--primary)]" />
-                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-white/75">
+                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
                     {entry.data.nextTitle}
                 </div>
             </div>}
@@ -283,7 +283,7 @@ const jsonLd = [
         <a href={entry.data.prevSlug ? getPostUrlBySlug(entry.data.prevSlug) : "#"}
            class:list={["w-full font-bold overflow-hidden active:scale-95", {"pointer-events-none": !entry.data.prevSlug}]}>
             {entry.data.prevSlug && <div class="btn-card rounded-2xl w-full h-[3.75rem] max-w-full px-4 flex items-center !justify-end gap-4" >
-                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-white/75">
+                <div class="overflow-hidden transition overflow-ellipsis whitespace-nowrap max-w-[calc(100%_-_3rem)] text-black/75 dark:text-white/75">
                     {entry.data.prevTitle}
                 </div>
                 <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-[var(--primary)]" />
