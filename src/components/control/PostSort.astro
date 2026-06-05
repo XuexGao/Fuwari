@@ -20,7 +20,7 @@ const getSortUrl = (type: string, descending: boolean) => {
 	return `/${type}-${descending ? "desc" : "asc"}/`;
 };
 ---
-<div class:list={["post-sort-container flex flex-wrap items-center gap-2 mb-4  text-neutral-400", className]} style={style}>
+<div class:list={["post-sort-container flex flex-wrap items-center gap-2 mb-4  text-neutral-600 dark:text-neutral-400", className]} style={style}>
     <div class="flex bg-[var(--card-bg)] rounded-lg p-1 shadow-sm border border-white/5">
         <a href={url(getSortUrl("date", isDescending))} 
            class:list={["sort-btn", { "active": isDate }]} 
