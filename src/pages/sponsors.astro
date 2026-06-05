@@ -39,14 +39,14 @@ const breadcrumbSchema = {
             <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70">
                 <Icon name="material-symbols:favorite" class="text-[1.5rem]" />
             </div>
-            <h1 class="text-2xl font-bold text-white">赞助支持</h1>
+            <h1 class="text-2xl font-bold text-black dark:text-white">赞助支持</h1>
         </div>
 
         <div class="mb-6">
-            <p class="text-lg text-white/80 mb-3">
+            <p class="text-lg text-black/80 dark:text-white/80 mb-3">
                 如果您觉得我的内容对您有帮助，欢迎通过以下方式支持我的创作。您的每一份支持都是我持续创作的动力！
             </p>
-            <p class="text-sm text-white/60">
+            <p class="text-sm text-black/60 dark:text-white/60">
                 所有赞助将用于网站维护、服务器费用以及内容创作。
             </p>
         </div>
@@ -56,11 +56,11 @@ const breadcrumbSchema = {
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-blue-500 flex items-center justify-center">
-                        <Icon name="simple-icons:alipay" class="text-[1.5rem] text-white" />
+                        <Icon name="simple-icons:alipay" class="text-[1.5rem] text-black dark:text-white" />
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-white">支付宝</h3>
-                        <p class="text-sm text-white/60">扫码支付</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white">支付宝</h3>
+                        <p class="text-sm text-black/60 dark:text-white/60">扫码支付</p>
                     </div>
                 </div>
                 <div class="qr-code-placeholder">
@@ -74,11 +74,11 @@ const breadcrumbSchema = {
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-green-500 flex items-center justify-center">
-                        <Icon name="simple-icons:wechat" class="text-[1.5rem] text-white" />
+                        <Icon name="simple-icons:wechat" class="text-[1.5rem] text-black dark:text-white" />
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-white">微信支付</h3>
-                        <p class="text-sm text-white/60">扫码支付</p>
+                        <h3 class="text-lg font-bold text-black dark:text-white">微信支付</h3>
+                        <p class="text-sm text-black/60 dark:text-white/60">扫码支付</p>
                     </div>
                 </div>
                 <div class="qr-code-placeholder">
@@ -96,14 +96,14 @@ const breadcrumbSchema = {
 
         <!-- 其他支持方式 -->
         <div class="card-base p-6 mb-6">
-            <h2 class="text-xl font-bold text-white mb-3">其他支持方式</h2>
+            <h2 class="text-xl font-bold text-black dark:text-white mb-3">其他支持方式</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="support-card">
                     <div class="flex items-center gap-2 mb-2">
                         <Icon name="material-symbols:share" class="text-[1.2rem] text-[var(--primary)]" />
-                        <span class="font-semibold text-white">分享推荐</span>
+                        <span class="font-semibold text-black dark:text-white">分享推荐</span>
                     </div>
-                    <p class="text-sm text-white/60">
+                    <p class="text-sm text-black/60 dark:text-white/60">
                         将我的博客分享给更多朋友
                     </p>
                 </div>
@@ -111,9 +111,9 @@ const breadcrumbSchema = {
                 <div class="support-card">
                     <div class="flex items-center gap-2 mb-2">
                         <Icon name="material-symbols:comment" class="text-[1.2rem] text-[var(--primary)]" />
-                        <span class="font-semibold text-white">留言互动</span>
+                        <span class="font-semibold text-black dark:text-white">留言互动</span>
                     </div>
-                    <p class="text-sm text-white/60">
+                    <p class="text-sm text-black/60 dark:text-white/60">
                         在文章下方留下您的想法
                     </p>
                 </div>
@@ -121,16 +121,16 @@ const breadcrumbSchema = {
                 <div class="support-card">
                     <div class="flex items-center gap-2 mb-2">
                         <Icon name="material-symbols:star" class="text-[1.2rem] text-[var(--primary)]" />
-                        <span class="font-semibold text-white">关注订阅</span>
+                        <span class="font-semibold text-black dark:text-white">关注订阅</span>
                     </div>
-                    <p class="text-sm text-white/60">
+                    <p class="text-sm text-black/60 dark:text-white/60">
                         订阅RSS或关注社交媒体
                     </p>
                 </div>
             </div>
         </div>
         <div class="sponsors-section card-base p-6">
-            <h2 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+            <h2 class="text-xl font-bold text-black dark:text-white mb-3 flex items-center gap-2">
                 <Icon name="material-symbols:group" class="text-[1.5rem] text-[var(--primary)]"></Icon>
                 <span>已赞助的小伙伴</span>
             </h2>
@@ -151,8 +151,8 @@ const breadcrumbSchema = {
                             )}
                         </div>
                             <div class="flex-1">
-                                <h4 class="font-semibold text-white text-sm">{sponsor.name}</h4>
-                                <p class="text-xs text-white/60">{sponsor.date}</p>
+                                <h4 class="font-semibold text-black dark:text-white text-sm">{sponsor.name}</h4>
+                                <p class="text-xs text-black/60 dark:text-white/60">{sponsor.date}</p>
                             </div>
                             <div class="text-xs text-[var(--primary)] font-medium">{sponsor.amount}</div>
                         </div>
