@@ -62,11 +62,11 @@ const prefix = sort ? `/${sort}` : "";
     >
         <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]"></Icon>
     </a>
-    <div class="card-base flex flex-row rounded-lg items-center text-neutral-300 font-bold shadow-none">
+    <div class="card-base flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold shadow-none">
         {pages.map((p) => {
             if (p == HIDDEN)
                 return <button aria-label="Jump to page"
-                               class="jump-btn transition flex items-center justify-center w-8 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-white/75"
+                               class="jump-btn transition flex items-center justify-center w-8 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-black/75 dark:text-white/75"
                 >
                     <Icon name="material-symbols:more-horiz" class="mx-1"/>
                 </button>;
@@ -77,7 +77,7 @@ const prefix = sort ? `/${sort}` : "";
                     {p}
                 </div>
             return <a href={url(getPageUrl(p))} aria-label=`Page ${p}`
-                class="transition flex items-center justify-center w-11 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-white/75"
+                class="transition flex items-center justify-center w-11 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-black/75 dark:text-white/75"
             >{p}</a>
         })}
     </div>
