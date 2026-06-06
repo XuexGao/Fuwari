@@ -16,12 +16,10 @@ interface FileItem {
 
 export let items: FileItem[] = [];
 
-// 导航栈，初始为根目录
 let pathStack: { name: string; items: FileItem[] }[] = [
 	{ name: "根目录", items },
 ];
 
-// 当前显示的条目
 $: currentView = pathStack[pathStack.length - 1];
 
 function navigateInto(item: FileItem) {
@@ -54,55 +52,25 @@ function formatSize(bytes?: number) {
 function getFileIcon(filename: string) {
 	const ext = filename.split(".").pop()?.toLowerCase();
 	switch (ext) {
-		case "jpg":
-		case "jpeg":
-		case "png":
-		case "gif":
-		case "svg":
-		case "webp":
-		case "avif":
+		case "jpg": case "jpeg": case "png": case "gif": case "svg": case "webp": case "avif":
 			return "material-symbols:image-outline";
-		case "mp4":
-		case "webm":
-		case "mkv":
-		case "mov":
-		case "avi":
+		case "mp4": case "webm": case "mkv": case "mov": case "avi":
 			return "material-symbols:movie-outline";
-		case "mp3":
-		case "wav":
-		case "flac":
-		case "ogg":
+		case "mp3": case "wav": case "flac": case "ogg":
 			return "material-symbols:audio-file-outline";
-		case "zip":
-		case "rar":
-		case "7z":
-		case "tar":
-		case "gz":
-		case "zpaq":
+		case "zip": case "rar": case "7z": case "tar": case "gz": case "zpaq":
 			return "material-symbols:inventory-2-outline";
 		case "pdf":
 			return "material-symbols:picture-as-pdf-outline";
-		case "doc":
-		case "docx":
+		case "doc": case "docx":
 			return "material-symbols:description";
-		case "xls":
-		case "xlsx":
+		case "xls": case "xlsx":
 			return "material-symbols:table-chart";
-		case "ppt":
-		case "pptx":
+		case "ppt": case "pptx":
 			return "material-symbols:slideshow";
-		case "js":
-		case "ts":
-		case "html":
-		case "css":
-		case "py":
-		case "go":
-		case "json":
-		case "md":
+		case "js": case "ts": case "html": case "css": case "py": case "go": case "json": case "md":
 			return "material-symbols:code-blocks-outline";
-		case "exe":
-		case "msi":
-		case "iso":
+		case "exe": case "msi": case "iso":
 			return "material-symbols:settings-applications";
 		case "txt":
 			return "material-symbols:text-snippet";
@@ -113,7 +81,6 @@ function getFileIcon(filename: string) {
 </script>
 
 <div class="file-explorer-container">
-    <!-- 面包屑导航 -->
     <div class="breadcrumb-bar flex items-center gap-1 mb-4 p-2 bg-gray-100 dark:bg-white/5 rounded-lg text-sm overflow-x-auto whitespace-nowrap">
         {#each pathStack as folder, i}
             {#if i > 0}
@@ -135,7 +102,6 @@ function getFileIcon(filename: string) {
     </div>
 
     <div class="file-list">
-        <!-- 返回上一级 -->
         {#if pathStack.length > 1}
             <div 
                 class="item-row flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
@@ -155,9 +121,8 @@ function getFileIcon(filename: string) {
                         class="folder-item flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
                         on:click={() => navigateInto(item)}
                     >
-                        <!-- 毛玻璃图标背景 + 白色半透明图标 -->
-                        <div class="w-8 h-8 flex items-center justify-center bg-white/30 dark:bg-white/20 backdrop-blur-sm rounded-full transition-all group-hover:scale-110 group-hover:bg-white/50 dark:group-hover:bg-white/30">
-                            <Icon icon="material-symbols:folder" class="text-xl text-white/90 dark:text-white/90" />
+                        <div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
+                            <Icon icon="material-symbols:folder" class="text-xl text-gray-800 dark:text-white/90" />
                         </div>
                         <span class="text-gray-800 dark:text-white/90 font-medium flex-1">{item.name}</span>
                         <div class="text-gray-400 dark:text-white/50 group-hover:text-gray-600 dark:group-hover:text-white transition-colors">
@@ -172,9 +137,8 @@ function getFileIcon(filename: string) {
                         class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors group no-underline"
                     >
                         <div class="flex items-center gap-2 flex-1">
-                            <!-- 毛玻璃图标背景 + 白色半透明图标 -->
-                            <div class="w-8 h-8 flex items-center justify-center bg-white/30 dark:bg-white/20 backdrop-blur-sm rounded-full transition-all group-hover:scale-110 group-hover:bg-white/50 dark:group-hover:bg-white/30">
-                                <Icon icon={getFileIcon(item.name)} class="text-xl text-white/90 dark:text-white/90" />
+                            <div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
+                                <Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90" />
                             </div>
                             <span class="text-gray-700 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{item.name}</span>
                         </div>
@@ -203,15 +167,12 @@ function getFileIcon(filename: string) {
         display: flex;
         flex-direction: column;
     }
-    
     .item-row {
         width: 100%;
     }
-
     :global(.file-explorer-container a) {
         text-decoration: none !important;
     }
-
     .breadcrumb-bar::-webkit-scrollbar {
         height: 2px;
     }
