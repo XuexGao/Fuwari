@@ -36,7 +36,7 @@ const breadcrumbSchema = {
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
     <div class="card-base p-6 md:p-8">
         <div class="flex items-center gap-2 mb-6">
-            <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70">
+            <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-white dark:text-black/70">
                 <Icon name="material-symbols:favorite" class="text-[1.5rem]" />
             </div>
             <h1 class="text-2xl font-bold text-black dark:text-white">赞助支持</h1>
@@ -56,7 +56,7 @@ const breadcrumbSchema = {
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-blue-500 flex items-center justify-center">
-                        <Icon name="simple-icons:alipay" class="text-[1.5rem] text-black dark:text-white" />
+                        <Icon name="simple-icons:alipay" class="text-[1.5rem] text-white" />
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-black dark:text-white">支付宝</h3>
@@ -74,7 +74,7 @@ const breadcrumbSchema = {
             <div class="donate-card">
                 <div class="flex items-center gap-3 mb-4">
                     <div class="h-10 w-10 rounded-lg bg-green-500 flex items-center justify-center">
-                        <Icon name="simple-icons:wechat" class="text-[1.5rem] text-black dark:text-white" />
+                        <Icon name="simple-icons:wechat" class="text-[1.5rem] text-white" />
                     </div>
                     <div>
                         <h3 class="text-lg font-bold text-black dark:text-white">微信支付</h3>
