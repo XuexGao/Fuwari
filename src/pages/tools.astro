@@ -29,7 +29,7 @@ const tools = Object.entries(toolPagesModules)
 ---
 
 <MainGridLayout title="工具">
-	<div class="p-6 md:p-8 border-b border-white/10">
+	<div class="card-base p-6 md:p-8">
 		<div class="flex items-center gap-2 mb-6">
 			<Icon name="material-symbols:build-circle-rounded" class="text-[var(--primary)] w-7 h-7" />
 			<h1 class="text-2xl font-bold text-75">工具</h1>
@@ -38,21 +38,26 @@ const tools = Object.entries(toolPagesModules)
 			本站提供的实用工具入口，点击即可跳转使用。
 		</p>
 
-		<div class="space-y-0">
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 			{tools.map((t) => (
 				<a
 					href={t.href}
-					class="group block p-5 hover:bg-white/5 transition-all border-b border-white/10 last:border-b-0"
+					class="group block rounded-xl border border-[var(--line-color)] bg-transparent p-5 hover:bg-[var(--btn-regular-bg)] hover:border-[var(--primary)] transition-all"
 				>
-					<div class="flex items-center gap-3 mb-1">
+					<div class="flex items-center gap-3 mb-2">
 						{t.isCustom ? (
-							<img src={t.icon} alt="" class="w-6 h-6 text-[var(--primary)]" style="filter: brightness(0) saturate(100%) invert(56%) sepia(89%) saturate(2476%) hue-rotate(191deg) brightness(101%) contrast(101%);" />
+							<img
+								src={t.icon}
+								alt=""
+								class="w-6 h-6 transition-transform group-hover:scale-110"
+								style="filter: brightness(0) saturate(100%) invert(56%) sepia(89%) saturate(2476%) hue-rotate(191deg) brightness(101%) contrast(101%);"
+							/>
 						) : (
-							<Icon name={t.icon} class="w-6 h-6 text-[var(--primary)]" />
+							<Icon name={t.icon} class="w-6 h-6 text-[var(--primary)] transition-transform group-hover:scale-110" />
 						)}
 						<span class="text-lg font-bold text-75 group-hover:text-[var(--primary)] transition">{t.title}</span>
 					</div>
-					<p class="text-sm text-50 ml-9">{t.desc}</p>
+					<p class="text-sm text-50">{t.desc}</p>
 				</a>
 			))}
 		</div>
