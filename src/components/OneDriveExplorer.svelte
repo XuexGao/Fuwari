@@ -27,36 +27,28 @@ async function fetchItems(currentPath = "/") {
 	try {
 		const url = `${apiBase}?path=${encodeURIComponent(currentPath)}`;
 		const response = await fetch(url);
-
 		if (!response.ok) {
 			throw new Error(`API 请求失败: ${response.status}`);
 		}
-
 		const data = await response.json();
 		const folderValue = data.folder?.value || data.value || [];
-
 		items = folderValue
 			.map((item: any) => {
 				const isFolder = !!item.folder;
-				const fullPath =
-					currentPath === "/" ? `/${item.name}` : `${currentPath}/${item.name}`;
-
+				const fullPath = currentPath === "/" ? `/${item.name}` : `${currentPath}/${item.name}`;
 				return {
 					id: item.id,
 					name: item.name,
 					path: fullPath,
 					type: isFolder ? "directory" : "file",
 					size: item.size,
-					downloadUrl: isFolder
-						? undefined
-						: `${apiBase}raw/?path=${encodeURIComponent(fullPath)}`,
+					downloadUrl: isFolder ? undefined : `${apiBase}raw/?path=${encodeURIComponent(fullPath)}`,
 				};
 			})
 			.sort((a: FileItem, b: FileItem) => {
 				if (a.type === b.type) return a.name.localeCompare(b.name);
 				return a.type === "directory" ? -1 : 1;
 			});
-
 		pathStack[pathStack.length - 1].items = items;
 	} catch (err: any) {
 		error = `加载失败: ${err.message}`;
@@ -98,55 +90,25 @@ function formatSize(bytes?: number) {
 function getFileIcon(filename: string) {
 	const ext = filename.split(".").pop()?.toLowerCase();
 	switch (ext) {
-		case "jpg":
-		case "jpeg":
-		case "png":
-		case "gif":
-		case "svg":
-		case "webp":
-		case "avif":
+		case "jpg": case "jpeg": case "png": case "gif": case "svg": case "webp": case "avif":
 			return "material-symbols:image-outline";
-		case "mp4":
-		case "webm":
-		case "mkv":
-		case "mov":
-		case "avi":
+		case "mp4": case "webm": case "mkv": case "mov": case "avi":
 			return "material-symbols:movie-outline";
-		case "mp3":
-		case "wav":
-		case "flac":
-		case "ogg":
+		case "mp3": case "wav": case "flac": case "ogg":
 			return "material-symbols:audio-file-outline";
-		case "zip":
-		case "rar":
-		case "7z":
-		case "tar":
-		case "gz":
-		case "zpaq":
+		case "zip": case "rar": case "7z": case "tar": case "gz": case "zpaq":
 			return "material-symbols:inventory-2-outline";
 		case "pdf":
 			return "material-symbols:picture-as-pdf-outline";
-		case "doc":
-		case "docx":
+		case "doc": case "docx":
 			return "material-symbols:description";
-		case "xls":
-		case "xlsx":
+		case "xls": case "xlsx":
 			return "material-symbols:table-chart";
-		case "ppt":
-		case "pptx":
+		case "ppt": case "pptx":
 			return "material-symbols:slideshow";
-		case "js":
-		case "ts":
-		case "html":
-		case "css":
-		case "py":
-		case "go":
-		case "json":
-		case "md":
+		case "js": case "ts": case "html": case "css": case "py": case "go": case "json": case "md":
 			return "material-symbols:code-blocks-outline";
-		case "exe":
-		case "msi":
-		case "iso":
+		case "exe": case "msi": case "iso":
 			return "material-symbols:settings-applications";
 		case "txt":
 			return "material-symbols:text-snippet";
@@ -159,12 +121,10 @@ $: if (!initialized && typeof window !== "undefined") {
 	initialized = true;
 	fetchItems("/");
 }
-
 $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
 </script>
 
 <div class="onedrive-explorer-container">
-    <!-- 面包屑导航 -->
     <div class="breadcrumb-bar flex items-center gap-1 mb-4 p-2 bg-gray-100 dark:bg-white/5 rounded-lg text-sm overflow-x-auto whitespace-nowrap">
         {#each pathStack as folder, i}
             {#if i > 0}
@@ -177,7 +137,6 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
                 {folder.name}
             </button>
         {/each}
-        
         {#if loading}
             <div class="ml-auto flex items-center gap-2 text-gray-500 dark:text-white/30 text-xs">
                 <Icon icon="svg-spinners:ring-resize" class="text-lg" />
@@ -207,7 +166,6 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
             </div>
         {/if}
 
-        <!-- 返回上一级 -->
         {#if pathStack.length > 1}
             <div 
                 class="item-row flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
@@ -227,8 +185,8 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
                         class="folder-item flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
                         on:click={() => navigateInto(item)}
                     >
-                        <div class="w-8 h-8 flex items-center justify-center bg-white/30 dark:bg-white/20 backdrop-blur-sm rounded-full transition-all group-hover:scale-110 group-hover:bg-white/50 dark:group-hover:bg-white/30">
-                            <Icon icon="material-symbols:folder" class="text-xl text-white/90 dark:text-white/90" />
+                        <div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
+                            <Icon icon="material-symbols:folder" class="text-xl text-gray-800 dark:text-white/90" />
                         </div>
                         <span class="text-gray-800 dark:text-white/90 font-medium flex-1">{item.name}</span>
                         <div class="text-gray-400 dark:text-white/50 group-hover:text-gray-600 dark:group-hover:text-white transition-colors">
@@ -244,8 +202,8 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
                         class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors group no-underline"
                     >
                         <div class="flex items-center gap-2 flex-1">
-                            <div class="w-8 h-8 flex items-center justify-center bg-white/30 dark:bg-white/20 backdrop-blur-sm rounded-full transition-all group-hover:scale-110 group-hover:bg-white/50 dark:group-hover:bg-white/30">
-                                <Icon icon={getFileIcon(item.name)} class="text-xl text-white/90 dark:text-white/90" />
+                            <div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
+                                <Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90" />
                             </div>
                             <span class="text-gray-700 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{item.name}</span>
                         </div>
@@ -274,11 +232,9 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
         display: flex;
         flex-direction: column;
     }
-    
     .item-row {
         width: 100%;
     }
-
     .breadcrumb-bar::-webkit-scrollbar {
         height: 2px;
     }
