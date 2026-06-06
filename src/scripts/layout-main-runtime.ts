@@ -131,6 +131,18 @@ init();
 bindPostInlineDiff();
 
 const setup = () => {
+	// Preserve astro-icon SVG sprite across Swup page transitions
+	let savedSprite: Element | null = null;
+	window.swup.hooks.on("content:replace", () => {
+		savedSprite = document.querySelector("body > svg[aria-hidden='true'], body > svg[style*='display:none'], body > svg[style*='display: none']");
+		if (savedSprite) savedSprite.remove();
+	}, { before: true });
+	window.swup.hooks.on("content:replace", () => {
+		if (savedSprite && !document.querySelector("body > svg[aria-hidden='true']")) {
+			document.body.insertBefore(savedSprite, document.body.firstChild);
+		}
+	});
+
 	const SORT_PATHS = [
 		"/",
 		"/date-asc/",
