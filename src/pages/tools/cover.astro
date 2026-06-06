@@ -1,0 +1,23 @@
+---
+export const toolMeta = {
+	title: "封面",
+	description: "在线生成文章封面图",
+	icon: "material-symbols:image-rounded",
+	order: 3,
+};
+
+import PageCardHeader from "@components/misc/PageCardHeader.astro";
+import CoverGenerator from "@components/CoverGenerator.svelte";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { siteConfig } from "@/config";
+
+const title = "封面生成";
+const hue = siteConfig.themeColor.hue;
+---
+
+<MainGridLayout title={title}>
+	<div class="p-6 md:p-8 border-b border-white/10">
+		<PageCardHeader title={title} icon="material-symbols:image-rounded" pathname="/cover/" />
+		<CoverGenerator client:visible hue={hue} />
+	</div>
+</MainGridLayout>
