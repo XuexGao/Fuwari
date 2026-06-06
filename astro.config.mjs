@@ -94,6 +94,12 @@ function remarkSpoiler() {
 
 // https://astro.build/config
 export default defineConfig({
+	redirects: {
+		"/donate": {
+			status: 302,
+			destination: "/sponsors",
+		},
+	},
 image: {
                 service: passthroughImageService()
         },
