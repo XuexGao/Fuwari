@@ -13,7 +13,7 @@ import FileExplorer from "@components/FileExplorer.svelte";
 import OneDriveExplorer from "@components/OneDriveExplorer.svelte";
 import ViewsCounter from "@components/ViewsCounter.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { Icon } from "astro-icon/components";
+import Icon from "@components/Icon.astro";
 
 
 interface FileItem {
@@ -91,25 +91,25 @@ const breadcrumbSchema = {
 
 <MainGridLayout title="文件">
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
-    <div class="p-6 md:p-8 border-b border-white/10">
+    <div class="card-base p-6 md:p-8 bg-white dark:bg-transparent border border-gray-200 dark:border-white/10 rounded-xl">
         <div class="flex items-center justify-between gap-3 flex-wrap mb-6">
             <div class="flex items-center gap-2">
                 <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70">
                     <Icon name="material-symbols:folder-open" class="text-[1.5rem]" />
                 </div>
-                <h1 class="text-2xl font-bold text-white">文件索引</h1>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">文件索引</h1>
                 <ViewsCounter pathname="/files/" />
             </div>
         </div>
 
-        <div class="mb-4 text-white/50 text-sm flex flex-col gap-1">
+        <div class="mb-4 text-gray-600 dark:text-white/50 text-sm flex flex-col gap-1">
             <p>这里展示了本站托管的各项公开资源，你可以点击查看并下载。</p>
-            <p class="text-red-400/80 text-xs italic">
+            <p class="text-red-600 dark:text-red-400/80 text-xs italic">
                 免责声明：本站不对任何文件的安全性做保证，请在下载或运行前自行核实，风险自担。
             </p>
         </div>
 
-        <div class="flex gap-2 mb-6 border-b border-white/5 pb-1 overflow-x-auto no-scrollbar">
+        <div class="flex gap-2 mb-6 border-b border-gray-200 dark:border-white/5 pb-1 overflow-x-auto no-scrollbar">
             <button 
                 id="tab-local"
                 class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap active-tab"
@@ -119,7 +119,7 @@ const breadcrumbSchema = {
             </button>
             <button 
                 id="tab-onedrive"
-                class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap text-white/50 hover:bg-white/5"
+                class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap text-gray-600 dark:text-white/50 hover:bg-gray-100 dark:hover:bg-white/5"
             >
                 <Icon name="simple-icons:microsoftonedrive" class="text-lg" />
                 OneDrive
@@ -145,10 +145,10 @@ const breadcrumbSchema = {
 
                 function switchTab(activeTab, inactiveTab, activeContent, inactiveContent) {
                     activeTab.classList.add('active-tab');
-                    activeTab.classList.remove('text-white/50', 'hover:bg-white/5');
+                    activeTab.classList.remove('text-gray-600', 'dark:text-white/50', 'hover:bg-gray-100', 'dark:hover:bg-white/5');
                     
                     inactiveTab.classList.remove('active-tab');
-                    inactiveTab.classList.add('text-white/50', 'hover:bg-white/5');
+                    inactiveTab.classList.add('text-gray-600', 'dark:text-white/50', 'hover:bg-gray-100', 'dark:hover:bg-white/5');
 
                     activeContent.classList.remove('hidden');
                     inactiveContent.classList.add('hidden');
