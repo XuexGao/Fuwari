@@ -1,7 +1,7 @@
 <script lang="ts">
 import Icon from "@iconify/svelte";
 
-export let apiBase = "https://e3.2x.nz/api/";
+export let apiBase = "https://e3.xiegao.top/api/";
 
 interface FileItem {
 	id: string;
