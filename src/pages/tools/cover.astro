@@ -16,7 +16,7 @@ const hue = siteConfig.themeColor.hue;
 ---
 
 <MainGridLayout title={title}>
-	<div class="p-6 md:p-8 border-b border-white/10">
+	<div class="card-base p-6 md:p-8 bg-white dark:bg-transparent border border-gray-200 dark:border-white/10 rounded-xl">
 		<PageCardHeader title={title} icon="material-symbols:image-rounded" pathname="/cover/" />
 		<CoverGenerator client:visible hue={hue} />
 	</div>
