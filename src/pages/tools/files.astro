@@ -13,8 +13,7 @@ import FileExplorer from "@components/FileExplorer.svelte";
 import OneDriveExplorer from "@components/OneDriveExplorer.svelte";
 import ViewsCounter from "@components/ViewsCounter.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { Icon } from "astro-icon/components";
-
+import { Icon } from "astro-icon/components";   // ✅ 修正导入
 
 interface FileItem {
 	name: string;
@@ -29,7 +28,6 @@ function getFiles(dir: string, baseDir = ""): FileItem[] {
 	const files = fs.readdirSync(dir);
 	const result: FileItem[] = [];
 
-	// 排除列表
 	const exclude = [".DS_Store", "favicon", "icons", "js", "cdn", "aff"];
 
 	for (const file of files) {
@@ -57,7 +55,6 @@ function getFiles(dir: string, baseDir = ""): FileItem[] {
 		}
 	}
 
-	// 文件夹排在前面，按名称排序
 	return result.sort((a, b) => {
 		if (a.type === b.type) {
 			return a.name.localeCompare(b.name);
