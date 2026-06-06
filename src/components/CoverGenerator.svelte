@@ -10,7 +10,6 @@ let fontSize = 64;
 let iconSize = 64;
 let gap = 20;
 
-// Font state
 let customFont: string | null = null;
 let customFontName = "";
 let fontWeight = 400;
@@ -24,14 +23,12 @@ let localFontSearchQuery = "";
 let isLoadingLocalFonts = false;
 let localFontError = "";
 
-// Color state
 let color = "#000000";
 let bgColor = "#ffffff";
 let bgColorOpacity = 1;
 let iconColor = "#000000";
 let useOriginalIconColor = true;
 
-// Shadows
 let textShadow = { x: 0, y: 0, blur: 0, color: "#000000", alpha: 0 };
 let iconShadow = { x: 0, y: 0, blur: 0, color: "#000000", alpha: 0 };
 let shadowTarget = "both";
@@ -542,7 +539,6 @@ function downloadLink(url: string, filename: string) {
 </script>
 
 <div class="flex flex-col items-center gap-8 w-full max-w-6xl mx-auto relative">
-  <!-- Preview Area -->
   <div 
       class="w-full overflow-hidden flex justify-center bg-white dark:bg-[var(--card-bg)] p-4 rounded-xl select-none transition-colors duration-300 touch-none"
       on:pointerdown={handlePointerDown}
@@ -689,10 +685,8 @@ function downloadLink(url: string, filename: string) {
       </svg>
   </div>
 
-  <!-- Controls -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full bg-white dark:bg-[var(--card-bg)] p-6 rounded-xl transition-colors duration-300 shadow-sm border border-gray-200 dark:border-[var(--line-color)]" style="--hue: {hue}">
     
-    <!-- Left Column: Content -->
     <div class="flex flex-col gap-6">
       <h3 class="text-lg font-bold text-[var(--primary)] flex items-center gap-2">
           <Icon icon="material-symbols:edit-outline" class="w-5 h-5" />
@@ -893,7 +887,6 @@ function downloadLink(url: string, filename: string) {
         </div>
     </div>
 
-    <!-- Middle Column: Style -->
     <div class="flex flex-col gap-6">
         <h3 class="text-lg font-bold text-[var(--primary)] flex items-center gap-2 justify-between">
             <div class="flex items-center gap-2">
@@ -979,7 +972,6 @@ function downloadLink(url: string, filename: string) {
         </div>
     </div>
 
-    <!-- Right Column: Effects & Export -->
     <div class="flex flex-col gap-6 md:col-span-2 lg:col-span-1">
         <h3 class="text-lg font-bold text-[var(--primary)] flex items-center gap-2">
             <Icon icon="material-symbols:auto-fix" class="w-5 h-5" />
@@ -1220,7 +1212,7 @@ function downloadLink(url: string, filename: string) {
 
 <style>
     .input-field {
-        @apply px-3 py-2 rounded-lg bg-white dark:bg-transparent border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-[var(--primary)] outline-none transition-colors text-gray-900 dark:text-gray-100;
+        @apply px-3 py-2 rounded-lg bg-white dark:bg-gray-800/80 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-[var(--primary)] outline-none transition-colors text-gray-900 dark:text-gray-100;
     }
     .range-slider {
         @apply w-full accent-[var(--primary)] cursor-pointer;
