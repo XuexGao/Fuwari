@@ -329,7 +329,7 @@ const jsonLd = [
             // Assuming postUrl is correct path.
             
             // But wait, the previous code used `url: postUrl` which suggests postUrl is what we want.
-            // However, the new API is specific: `https://t.2x.nz/share?pathname=/posts/${slug}/`
+            // However, the new API is specific: `https://u.xiegao.top/share?pathname=/posts/${slug}/`
             // Let's use the same logic as PostMeta: construct path from slug if possible, or use postUrl if it's already a path.
             // In define:vars, we have `postUrl`. Let's check `getPostUrlBySlug` implementation or just rely on slug if available.
             // Looking at define:vars, `entry.slug` is not passed directly but `postUrl` is.
@@ -349,7 +349,7 @@ const jsonLd = [
             // Ensure trailing slash if needed? The user example `/` has no trailing slash but it's root.
             // The user said `/posts/wpwebplayer/`.
             
-            const response = await fetch(`https://t.2x.nz/share?pathname=${pathname}`);
+            const response = await fetch(`https://u.xiegao.top/share?pathname=${pathname}`);
             if (!response.ok) return;
             const data = await response.json();
             const pageviews = data.views || 0;
