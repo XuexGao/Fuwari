@@ -1,6 +1,6 @@
 ---
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import Icon from "@components/Icon.astro";
+import { Icon } from "astro-icon/components";
 
 // 自动发现所有工具页面
 const toolPagesModules = import.meta.glob('./tools/**/*.astro', { eager: true });
