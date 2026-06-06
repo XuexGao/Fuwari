@@ -240,7 +240,7 @@ image: {
 	},
 	vite: {
 		server: {
-		allowedHosts: ['2x.nz']
+		allowedHosts: ['xiegao.top']
 	},
 		build: {
 			rollupOptions: {
