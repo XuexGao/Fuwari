@@ -1,38 +1,58 @@
 ---
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { Icon } from "astro-icon/components";
+import Icon from "@components/Icon.astro";
 
-const tools = [
-	{
-		title: "封面",
-		desc: "在线生成文章封面图",
-		href: "/cover/",
-		icon: "material-symbols:image-rounded",
-	},
-];
+// 自动发现所有工具页面
+const toolPagesModules = import.meta.glob('./tools/**/*.astro', { eager: true });
+
+// 过滤并提取工具页面信息
+const tools = Object.entries(toolPagesModules)
+	.map(([path, module]: [string, any]) => {
+		if (!module.toolMeta) return null;
+		const meta = module.toolMeta;
+		// 从文件路径提取路由路径
+		// path 格式: ./tools/cover.astro 或 ./tools/s/index.astro
+		const fileName = path.replace('./tools/', '').replace('.astro', '');
+		// 如果是 index.astro，使用目录名；否则使用文件名
+		const routePath = fileName === 'index' ? '' : fileName.replace(/\/index$/, '');
+		return {
+			title: meta.title,
+			desc: meta.description,
+			href: `/tools/${routePath}/`,
+			icon: meta.icon,
+			isCustom: meta.isCustomIcon,
+			order: meta.order || 999,
+		};
+	})
+	.filter((tool): tool is NonNullable<typeof tool> => tool !== null)
+	.sort((a, b) => a.order - b.order);
 ---
 
 <MainGridLayout title="工具">
-	<div class="card-base p-6 md:p-8">
+	<div class="p-6 md:p-8 border-b border-white/10">
 		<div class="flex items-center gap-2 mb-6">
 			<Icon name="material-symbols:build-circle-rounded" class="text-[var(--primary)] w-7 h-7" />
 			<h1 class="text-2xl font-bold text-75">工具</h1>
 		</div>
 		<p class="text-sm text-50 mb-8 leading-relaxed">
-			本站提供的实用工具入口，点击卡片即可跳转使用。
+			本站提供的实用工具入口，点击即可跳转使用。
 		</p>
 
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+		<div class="space-y-0">
 			{tools.map((t) => (
 				<a
 					href={t.href}
-					class="group block rounded-xl border border-[var(--line-color)] bg-transparent p-5 hover:bg-[var(--btn-regular-bg)] hover:border-[var(--primary)] transition-all"
+					class="group block p-5 hover:bg-white/5 transition-all border-b border-white/10 last:border-b-0"
 				>
-					<div class="flex items-center gap-3 mb-2">
-						<Icon name={t.icon} class="w-6 h-6 text-[var(--primary)] group-hover:scale-110 transition-transform" />
-						<span class="text-lg font-bold text-75">{t.title}</span>
+					<div class="flex items-center gap-3 mb-1">
+						{t.isCustom ? (
+							<img src={t.icon} alt="" class="w-6 h-6 text-[var(--primary)]" style="filter: brightness(0) saturate(100%) invert(56%) sepia(89%) saturate(2476%) hue-rotate(191deg) brightness(101%) contrast(101%);" />
+						) : (
+							<Icon name={t.icon} class="w-6 h-6 text-[var(--primary)]" />
+						)}
+						<span class="text-lg font-bold text-75 group-hover:text-[var(--primary)] transition">{t.title}</span>
 					</div>
-					<p class="text-sm text-50">{t.desc}</p>
+					<p class="text-sm text-50 ml-9">{t.desc}</p>
 				</a>
 			))}
 		</div>
