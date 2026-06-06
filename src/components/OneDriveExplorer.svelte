@@ -22,7 +22,7 @@ let initialized = false;
 
 async function fetchItems(currentPath = "/") {
 	loading = true;
-	items = []; // 立即清空当前列表，防止显示旧数据
+	items = [];
 	error = "";
 	try {
 		const url = `${apiBase}?path=${encodeURIComponent(currentPath)}`;
@@ -38,7 +38,6 @@ async function fetchItems(currentPath = "/") {
 		items = folderValue
 			.map((item: any) => {
 				const isFolder = !!item.folder;
-				// 拼接完整路径用于下载或下级导航
 				const fullPath =
 					currentPath === "/" ? `/${item.name}` : `${currentPath}/${item.name}`;
 
@@ -48,7 +47,6 @@ async function fetchItems(currentPath = "/") {
 					path: fullPath,
 					type: isFolder ? "directory" : "file",
 					size: item.size,
-					// 下载链接拼接规则
 					downloadUrl: isFolder
 						? undefined
 						: `${apiBase}raw/?path=${encodeURIComponent(fullPath)}`,
@@ -167,13 +165,13 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
 
 <div class="onedrive-explorer-container">
     <!-- 面包屑导航 -->
-    <div class="breadcrumb-bar flex items-center gap-1 mb-4 p-2 bg-white/5 rounded-lg text-sm overflow-x-auto whitespace-nowrap">
+    <div class="breadcrumb-bar flex items-center gap-1 mb-4 p-2 bg-gray-100 dark:bg-white/5 rounded-lg text-sm overflow-x-auto whitespace-nowrap">
         {#each pathStack as folder, i}
             {#if i > 0}
-                <Icon icon="material-symbols:chevron-right" class="text-white/50 flex-shrink-0" />
+                <Icon icon="material-symbols:chevron-right" class="text-gray-400 dark:text-white/50 flex-shrink-0" />
             {/if}
             <button 
-                class="px-2 py-1 rounded hover:bg-white/10 transition-colors {i === pathStack.length - 1 ? 'text-[var(--primary)] font-bold' : 'text-white/70'}"
+                class="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors {i === pathStack.length - 1 ? 'text-[var(--primary)] font-bold' : 'text-gray-600 dark:text-white/70'}"
                 on:click={() => navigateToLevel(i)}
             >
                 {folder.name}
@@ -181,7 +179,7 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
         {/each}
         
         {#if loading}
-            <div class="ml-auto flex items-center gap-2 text-white/30 text-xs">
+            <div class="ml-auto flex items-center gap-2 text-gray-500 dark:text-white/30 text-xs">
                 <Icon icon="svg-spinners:ring-resize" class="text-lg" />
                 正在加载...
             </div>
@@ -189,14 +187,14 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
     </div>
 
     {#if error}
-        <div class="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm flex items-center gap-2">
+        <div class="mb-4 p-3 bg-red-100 dark:bg-red-500/10 border border-red-300 dark:border-red-500/20 rounded-lg text-red-700 dark:text-red-400 text-sm flex items-center gap-2">
             <Icon icon="material-symbols:error-outline" class="text-lg" />
             {error}
             <button on:click={() => fetchItems(currentView.path)} class="ml-auto underline">重试</button>
         </div>
     {/if}
 
-    <div class="file-list-header flex items-center px-3 py-2 text-xs font-bold text-white/30 uppercase tracking-wider border-b border-white/5 mb-1">
+    <div class="file-list-header flex items-center px-3 py-2 text-xs font-bold text-gray-500 dark:text-white/30 uppercase tracking-wider border-b border-gray-200 dark:border-white/5 mb-1">
         <span class="flex-1">名称</span>
         <span class="w-24 text-right">大小</span>
         <span class="w-12"></span>
@@ -204,7 +202,7 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
 
     <div class="file-list min-h-[200px] relative">
         {#if loading && items.length === 0}
-            <div class="absolute inset-0 flex items-center justify-center text-white/20">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-white/20">
                 <Icon icon="svg-spinners:ring-resize" class="text-4xl" />
             </div>
         {/if}
@@ -212,13 +210,13 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
         <!-- 返回上一级 -->
         {#if pathStack.length > 1}
             <div 
-                class="item-row flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-white/5 cursor-pointer transition-colors group"
+                class="item-row flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
                 on:click={goBack}
             >
-                <div class="flex items-center justify-center w-6 h-6 text-white/50 group-hover:text-[var(--primary)] transition-colors">
+                <div class="flex items-center justify-center w-6 h-6 text-gray-500 dark:text-white/50 group-hover:text-[var(--primary)] transition-colors">
                     <Icon icon="material-symbols:arrow-upward-alt-rounded" class="text-xl" />
                 </div>
-                <span class="text-white/70 font-medium group-hover:text-white transition-colors">... (返回上一级)</span>
+                <span class="text-gray-700 dark:text-white/70 font-medium group-hover:text-gray-900 dark:group-hover:text-white transition-colors">... (返回上一级)</span>
             </div>
         {/if}
 
@@ -226,14 +224,14 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
             <div class="item-row">
                 {#if item.type === 'directory'}
                     <div 
-                        class="folder-item flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-white/5 cursor-pointer transition-colors group"
+                        class="folder-item flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
                         on:click={() => navigateInto(item)}
                     >
-                        <div class="flex items-center justify-center w-6 h-6 text-[var(--primary)] group-hover:scale-110 transition-transform">
-                            <Icon icon="material-symbols:folder" class="text-xl" />
+                        <div class="w-8 h-8 flex items-center justify-center bg-white/30 dark:bg-white/20 backdrop-blur-sm rounded-full transition-all group-hover:scale-110 group-hover:bg-white/50 dark:group-hover:bg-white/30">
+                            <Icon icon="material-symbols:folder" class="text-xl text-white/90 dark:text-white/90" />
                         </div>
-                        <span class="text-white/90 font-medium flex-1">{item.name}</span>
-                        <div class="text-white/50 group-hover:text-white transition-colors">
+                        <span class="text-gray-800 dark:text-white/90 font-medium flex-1">{item.name}</span>
+                        <div class="text-gray-400 dark:text-white/50 group-hover:text-gray-600 dark:group-hover:text-white transition-colors">
                             <Icon icon="material-symbols:chevron-right" class="text-xl" />
                         </div>
                     </div>
@@ -243,17 +241,17 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
                         download={item.name}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-white/5 transition-colors group no-underline"
+                        class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors group no-underline"
                     >
                         <div class="flex items-center gap-2 flex-1">
-                            <div class="flex items-center justify-center w-6 h-6 text-white/30 group-hover:text-[var(--primary)] transition-colors">
-                                <Icon icon={getFileIcon(item.name)} class="text-xl" />
+                            <div class="w-8 h-8 flex items-center justify-center bg-white/30 dark:bg-white/20 backdrop-blur-sm rounded-full transition-all group-hover:scale-110 group-hover:bg-white/50 dark:group-hover:bg-white/30">
+                                <Icon icon={getFileIcon(item.name)} class="text-xl text-white/90 dark:text-white/90" />
                             </div>
-                            <span class="text-white/70 group-hover:text-white transition-colors">{item.name}</span>
+                            <span class="text-gray-700 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{item.name}</span>
                         </div>
-                        <div class="flex items-center gap-4 text-xs text-white/30">
+                        <div class="flex items-center gap-4 text-xs text-gray-500 dark:text-white/30">
                             <span class="w-24 text-right">{formatSize(item.size)}</span>
-                            <div class="opacity-0 group-hover:opacity-100 p-1 hover:bg-white/10 rounded transition-all text-white/50 hover:text-white w-12 flex justify-center" title="下载">
+                            <div class="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-all text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white w-12 flex justify-center" title="下载">
                                 <Icon icon="material-symbols:download" class="text-lg" />
                             </div>
                         </div>
@@ -263,7 +261,7 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
         {/each}
 
         {#if !loading && items.length === 0}
-            <div class="py-12 text-center text-white/20">
+            <div class="py-12 text-center text-gray-400 dark:text-white/20">
                 <Icon icon="material-symbols:folder-off-outline" class="text-4xl mx-auto mb-2" />
                 <p>文件夹为空</p>
             </div>
@@ -285,7 +283,9 @@ $: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
         height: 2px;
     }
     .breadcrumb-bar::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+    }
+    .dark .breadcrumb-bar::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
     }
 </style>
