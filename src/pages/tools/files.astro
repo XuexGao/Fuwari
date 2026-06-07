@@ -11,7 +11,6 @@ import path from "node:path";
 import { siteConfig } from "@/config";
 import FileExplorer from "@components/FileExplorer.svelte";
 import OneDriveExplorer from "@components/OneDriveExplorer.svelte";
-import ViewsCounter from "@components/ViewsCounter.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { Icon } from "astro-icon/components";
 
@@ -95,7 +94,6 @@ const breadcrumbSchema = {
                     <Icon name="material-symbols:folder-open" class="text-[1.5rem] text-[var(--primary)]" />
                 </div>
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">文件索引</h1>
-                <ViewsCounter pathname="/files/" />
             </div>
         </div>
 
