@@ -56,8 +56,9 @@ const prefix = sort ? `/${sort}` : "";
 
 <div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
     <a href={page.url.prev || ""} aria-label="Previous Page"
-       class:list={["overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md bg-black/20 hover:bg-black/30 dark:bg-white/10 dark:hover:bg-white/20 transition active:scale-90",
-           {"disabled": page.url.prev == undefined}
+       class:list={[
+           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 border border-[var(--line-color)] hover:border-[var(--primary)]",
+           { "opacity-60 cursor-not-allowed pointer-events-none": page.url.prev == undefined }
        ]}
     >
         <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]"></Icon>
@@ -80,8 +81,9 @@ const prefix = sort ? `/${sort}` : "";
         })}
     </div>
     <a href={page.url.next || ""} aria-label="Next Page"
-       class:list={["overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md bg-black/20 hover:bg-black/30 dark:bg-white/10 dark:hover:bg-white/20 transition active:scale-90",
-           {"disabled": page.url.next == undefined}
+       class:list={[
+           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 border border-[var(--line-color)] hover:border-[var(--primary)]",
+           { "opacity-60 cursor-not-allowed pointer-events-none": page.url.next == undefined }
        ]}
     >
         <Icon name="material-symbols:chevron-right-rounded" class="text-[1.75rem]"></Icon>
