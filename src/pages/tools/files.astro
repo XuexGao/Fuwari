@@ -13,7 +13,7 @@ import FileExplorer from "@components/FileExplorer.svelte";
 import OneDriveExplorer from "@components/OneDriveExplorer.svelte";
 import ViewsCounter from "@components/ViewsCounter.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { Icon } from "astro-icon/components";   // ✅ 修正导入
+import { Icon } from "astro-icon/components";
 
 interface FileItem {
 	name: string;
@@ -91,8 +91,8 @@ const breadcrumbSchema = {
     <div class="card-base p-6 md:p-8 bg-white dark:bg-transparent border border-gray-200 dark:border-white/10 rounded-xl">
         <div class="flex items-center justify-between gap-3 flex-wrap mb-6">
             <div class="flex items-center gap-2">
-                <div class="h-8 w-8 rounded-lg bg-[var(--primary)] flex items-center justify-center text-black/70">
-                    <Icon name="material-symbols:folder-open" class="text-[1.5rem]" />
+                <div class="h-8 w-8 rounded-lg flex items-center justify-center backdrop-blur-md border border-[var(--line-color)] bg-white/60 dark:bg-black/60">
+                    <Icon name="material-symbols:folder-open" class="text-[1.5rem] text-[var(--primary)]" />
                 </div>
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">文件索引</h1>
                 <ViewsCounter pathname="/files/" />
