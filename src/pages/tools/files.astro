@@ -111,14 +111,18 @@ const breadcrumbSchema = {
                 id="tab-local"
                 class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap active-tab"
             >
-                <Icon name="material-symbols:home-storage-rounded" class="text-lg" />
+                <span class="h-7 w-7 rounded-lg flex items-center justify-center backdrop-blur-md border border-[var(--line-color)] bg-white/60 dark:bg-black/60">
+                    <Icon name="material-symbols:home-storage-rounded" class="text-base text-[var(--primary)]" />
+                </span>
                 本站
             </button>
             <button 
                 id="tab-onedrive"
                 class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap text-gray-600 dark:text-white/50 hover:bg-gray-100 dark:hover:bg-white/5"
             >
-                <Icon name="simple-icons:microsoftonedrive" class="text-lg" />
+                <span class="h-7 w-7 rounded-lg flex items-center justify-center backdrop-blur-md border border-[var(--line-color)] bg-white/60 dark:bg-black/60">
+                    <Icon name="simple-icons:microsoftonedrive" class="text-base text-[var(--primary)]" />
+                </span>
                 OneDrive
             </button>
         </div>
