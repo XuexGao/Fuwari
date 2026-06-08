@@ -71,8 +71,6 @@
     }
     .float-panel {
         @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-none;
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
     }
     .toc-panel {
         @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] border border-white/10 transition shadow-none;
@@ -168,6 +166,12 @@
     html[lang^="zh"] .i18n-en {
         display: none !important;
     }
+}
+
+/* ===== float-panel backdrop-filter (outside @layer to avoid Tailwind purge) ===== */
+.float-panel {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
 html {
