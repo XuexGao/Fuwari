@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/onedrive/(.*)",
+      "destination": "https://e3.xiegao.top/api/$1"
+    },
+    {
+      "source": "/api/onedrive",
+      "destination": "https://e3.xiegao.top/api/"
+    }
+  ]
+}

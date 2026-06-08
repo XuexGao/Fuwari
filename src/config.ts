@@ -76,7 +76,7 @@ export const umamiConfig: UmamiConfig = {
 };
 
 export const onedriveApiConfig: OnedriveApiConfig = {
-	baseUrl: "https://e3.xiegao.top/api/",
+	baseUrl: "/api/onedrive/",
 };
 
 export const navBarConfig: NavBarConfig = {
