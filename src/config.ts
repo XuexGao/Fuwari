@@ -4,6 +4,7 @@ import type {
 	ImageFallbackConfig,
 	LicenseConfig,
 	NavBarConfig,
+	OnedriveApiConfig,
 	ProfileConfig,
 	SiteConfig,
 	UmamiConfig,
@@ -72,6 +73,10 @@ export const umamiConfig: UmamiConfig = {
 	shareId: "IoWiNCvTUPxaDg5x",
 	websiteId: "4696c062-4271-4b8b-8ed7-b481f5961f28",
 	timezone: "Asia/Shanghai",
+};
+
+export const onedriveApiConfig: OnedriveApiConfig = {
+	baseUrl: "https://e3.xiegao.top/api/",
 };
 
 export const navBarConfig: NavBarConfig = {

@@ -1,7 +1,8 @@
 <script lang="ts">
 import Icon from "@iconify/svelte";
+import { onedriveApiConfig } from "@/config";
 
-export let apiBase = "https://e3.xiegao.top/api/";
+export let apiBase = onedriveApiConfig.baseUrl;
 
 interface FileItem {
 	id: string;
@@ -51,7 +52,12 @@ async function fetchItems(currentPath = "/") {
 			});
 		pathStack[pathStack.length - 1].items = items;
 	} catch (err: any) {
-		error = `加载失败: ${err.message}`;
+		const msg = err.message || String(err);
+		if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
+			error = `加载失败: 无法连接到 ${apiBase}，可能是 CORS 跨域限制。请在 API 服务端 (Vercel/onedrive-index) 配置 Access-Control-Allow-Origin 响应头。`;
+		} else {
+			error = `加载失败: ${msg}`;
+		}
 		console.error(err);
 	} finally {
 		loading = false;

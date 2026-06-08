@@ -111,6 +111,10 @@ export type BlogPostData = {
 	nextSlug?: string;
 };
 
+export type OnedriveApiConfig = {
+	baseUrl: string;
+};
+
 export type ExpressiveCodeConfig = {
 	theme: string | string[];
 };
