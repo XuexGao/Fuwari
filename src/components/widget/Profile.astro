@@ -79,7 +79,7 @@ for (const post of posts) {
     }
 </style>
 
-<script>
+<script define:vars={{ umamiConfig }}>
     // 保留你的专属动画特效
     function animateValue(obj, start, end, duration) {
         let startTimestamp = null;
@@ -98,9 +98,7 @@ for (const post of posts) {
 
     // 完美保留你自己的 Umami 获取逻辑
     async function loadSiteStats() {
-        const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28";
-        const baseUrl = "https://u.xiegao.top";
-        const shareId = "IoWiNCvTUPxaDg5x";
+        const { baseUrl, shareId, websiteId } = umamiConfig;
         
         try {
             const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);

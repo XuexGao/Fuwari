@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { umamiConfig } from "../config";
 
 type Props = {
 	pathname: string;
@@ -19,13 +20,13 @@ const id =
 	<span class="text-50 text-sm font-medium" id={id}>0 {suffix}</span>
 </div>
 
-<script define:vars={{ pathname, id, suffix }}>
+<script define:vars={{ pathname, id, suffix, umamiConfig }}>
 	async function loadViews() {
 		const el = document.getElementById(id);
 		if (!el) return;
 		try {
 			const res = await fetch(
-				`https://u.xiegao.top/share?pathname=${encodeURIComponent(pathname)}`,
+				`${umamiConfig.baseUrl}/share?pathname=${encodeURIComponent(pathname)}`,
 			);
 			if (!res.ok) return;
 			const data = await res.json();

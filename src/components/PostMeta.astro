@@ -67,7 +67,7 @@ const className = Astro.props.class;
 </div>
 
 {slug && (
-    <script define:vars={{ slug }}>
+    <script define:vars={{ slug, umamiConfig }}>
     function animateValue(obj, start, end, duration, suffix = "") {
         let startTimestamp = null;
         const step = (timestamp) => {
@@ -84,9 +84,7 @@ const className = Astro.props.class;
     }
 
     async function fetchPageViews() {
-        const websiteId = "4696c062-4271-4b8b-8ed7-b481f5961f28";
-        const baseUrl = "https://u.xiegao.top";
-        const shareId = "IoWiNCvTUPxaDg5x";
+        const { baseUrl, shareId, websiteId } = umamiConfig;
 
         try {
             const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);

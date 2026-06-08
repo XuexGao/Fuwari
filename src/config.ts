@@ -147,6 +147,7 @@ export const umamiConfig: UmamiConfig = {
 	enable: true,
 	baseUrl: "https://u.xiegao.top",
 	shareId: "IoWiNCvTUPxaDg5x",
+	websiteId: "4696c062-4271-4b8b-8ed7-b481f5961f28",
 	timezone: "Asia/Shanghai",
 };
 

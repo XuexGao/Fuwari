@@ -9,7 +9,7 @@ import "../styles/markdown.css";
 import "../styles/markdown-extend.styl";
 import "../styles/transition.css";
 
-import { profileConfig, siteConfig } from "@/config";
+import { profileConfig, siteConfig, umamiConfig } from "@/config";
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import BodyThirdPartyScripts from "@components/layout/BodyThirdPartyScripts.astro";
 import DashLoaderScript from "@components/layout/DashLoaderScript.astro";
@@ -101,8 +101,8 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 		<meta name="twitter:description" content={description}>
 		<meta name="generator" content={Astro.generator} />
 
-        <link rel="preconnect" href="https://u.xiegao.top" />
-        <script data-swup-ignore-script defer src="https://u.xiegao.top/script.js" data-website-id="4696c062-4271-4b8b-8ed7-b481f5961f28"></script>
+        <link rel="preconnect" href={umamiConfig.baseUrl} />
+        <script data-swup-ignore-script defer src={`${umamiConfig.baseUrl}/script.js`} data-website-id={umamiConfig.websiteId}></script>
 
 		<script>import "../scripts/animate-value.js";</script>
 
