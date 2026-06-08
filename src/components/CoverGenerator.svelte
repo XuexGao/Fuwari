@@ -540,7 +540,7 @@ function downloadLink(url: string, filename: string) {
 
 <div class="flex flex-col items-center gap-8 w-full max-w-6xl mx-auto relative">
   <div 
-      class="w-full overflow-hidden flex justify-center bg-white dark:bg-[var(--card-bg)] p-4 rounded-xl select-none transition-colors duration-300 touch-none"
+      class="w-full overflow-hidden flex justify-center dark:bg-[var(--card-bg)] p-4 rounded-xl select-none transition-colors duration-300 touch-none"
       on:pointerdown={handlePointerDown}
       on:pointermove={handlePointerMove}
       on:pointerup={handlePointerUp}
@@ -685,7 +685,7 @@ function downloadLink(url: string, filename: string) {
       </svg>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full bg-white dark:bg-[var(--card-bg)] p-6 rounded-xl transition-colors duration-300 shadow-sm border border-gray-200 dark:border-[var(--line-color)]" style="--hue: {hue}">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full dark:bg-[var(--card-bg)] p-6 rounded-xl transition-colors duration-300 shadow-sm border border-gray-200 dark:border-[var(--line-color)]" style="--hue: {hue}">
     
     <div class="flex flex-col gap-6">
       <h3 class="text-lg font-bold text-[var(--primary)] flex items-center gap-2">
@@ -1212,7 +1212,7 @@ function downloadLink(url: string, filename: string) {
 
 <style>
     .input-field {
-        @apply px-3 py-2 rounded-lg bg-white dark:bg-gray-800/80 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-[var(--primary)] outline-none transition-colors text-gray-900 dark:text-gray-100;
+        @apply px-3 py-2 rounded-lg bg-white dark:bg-gray-900/80 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-[var(--primary)] outline-none transition-colors text-gray-900 dark:text-gray-100;
     }
     .range-slider {
         @apply w-full accent-[var(--primary)] cursor-pointer;
