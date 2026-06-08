@@ -2,7 +2,7 @@
 title: 从零打造国内直连的专属 Telegram Web
 published: 2026-03-02
 description: TG Web采用前后端分离，前端可以部署到静态托管平台，而后端可以用各种服务反代
-image: https://img.xiegao.top/file/s3:s3_1774059414759_2efaq3.jpg
+image: /images/tgweb/cover.jpg
 tags:
   - Telegram
   - Nginx
@@ -33,7 +33,7 @@ pnpm run build && mv public/index.html public/xiegao.html && echo '<!DOCTYPE htm
 npx wrangler deploy --assets=public --compatibility-date=2026-02-22
 ```
 
-![图1：构建配置页面](https://img.xiegao.top/file/s3:s3_1774059414737_ku762a.jpg)
+![图1：构建配置页面](/images/tgweb/01-build-config.jpg)
 
 此时，当其他人访问你的前端主域名时，只能看到 `Welcome to nginx!`，而你自己访问 `/xiegao.html` 时，熟悉的登录界面就会出现。
 
@@ -122,7 +122,7 @@ server {
 }
 ```
 
-![图2：1Panel 面板网站配置界面](https://img.xiegao.top/file/s3:s3_1774059414754_vqpmm6.jpg)
+![图2：1Panel 面板网站配置界面](/images/tgweb/02-1panel-site.jpg)
 
 
 
@@ -183,8 +183,8 @@ jobs:
           git push origin master --force
 ```
 
-![图3：GitHub Actions 页面运行成功](https://img.xiegao.top/file/s3:s3_1774059416357_ype7ys.jpg)
+![图3：GitHub Actions 页面运行成功](/images/tgweb/03-gh-actions.jpg)
 
 至此，只要你的服务器稳定，这套系统就能~~稳定运行~~。
 
-![图4：成功截图](https://img.xiegao.top/file/s3:s3_1774059416511_x30x7v.jpg)
+![图4：成功截图](/images/tgweb/04-success.jpg)

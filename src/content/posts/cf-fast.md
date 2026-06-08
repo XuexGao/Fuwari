@@ -2,7 +2,7 @@
 title: 如何使用CloudFlare优选，让网站跑的更快
 description: 使用SaaS、Worker以及各种方法来让你的网站解析的IP进行优选，提高网站速度
 draft: false
-image: https://img.xiegao.top/file/s3:s3_1775977357750_v6v08q.jpg
+image: /images/cf-fast/cover.jpg
 lang: ""
 published: 2026-04-12
 tags:
@@ -36,11 +36,11 @@ tags:
 
 接下来编写Worker路由，直接填写 `你的域名+ /*`
 
-![](https://img.xiegao.top/file/s3:s3_1775977418970_z3l24a.jpg)
+![](/images/cf-fast/01-worker-route.jpg)
 
 最后写一条DNS解析到想要的优选域名，完事！
 
-![](https://img.xiegao.top/file/s3:s3_1775977470028_6p98vi.jpg)
+![](/images/cf-fast/02-dns-record.jpg)
 
 不需要折腾SaaS，更不需要多域名，就这么简单！
 
@@ -141,11 +141,11 @@ function getProxyPrefix(hostname) {
 
 创建路由：
 
-![](https://img.xiegao.top/file/s3:s3_1775977680977_vu2q6v.jpg)
+![](/images/cf-fast/03-create-route.jpg)
 
 类似这样填写：
 
-![](https://img.xiegao.top/file/s3:s3_1775977738797_e4za28.jpg)
+![](/images/cf-fast/04-route-detail.jpg)
 
 最后写一条DNS解析 `CNAME pan.0721234.xyz --> 优选域名` 即可
 
@@ -168,7 +168,7 @@ function getProxyPrefix(hostname) {
 
 > [!WARNING]
 > Cloudflare最近将新接入的域名SSL默认设为了完全，记得将 SSL 改为灵活。
-> ![](https://img.xiegao.top/file/s3:s3_1775977851802_ssv78w.webp)
+> ![](/images/cf-fast/05-ssl-flexible.webp)
 
 #### 准备工作
 
@@ -180,12 +180,12 @@ function getProxyPrefix(hostname) {
 
 单域名效果：
 
-![](https://img.xiegao.top/file/s3:s3_1775977922434_gl7j4i.jpg)
+![](/images/cf-fast/06-single-domain.jpg)
 
 #### 具体步骤
 
 1. 首先新建一个DNS解析，指向你的**源站**，**开启cf代理**
-   ![](https://img.xiegao.top/file/s3:s3_1775977968819_3vpcqt.webp)
+   ![](/images/cf-fast/07-saas-dns.webp)
 
 2. 前往**辅助域名**的 SSL/TLS -> 自定义主机名。设置回退源为你刚才的DNS解析的域名：pan.xiegao.top（推荐 **HTTP 验证**）
 
@@ -194,10 +194,10 @@ function getProxyPrefix(hostname) {
    如果你想要创建多个优选也就这样添加，一个自定义主机名对应一个自定义源服务器。如果你将源服务器设为默认，则源服务器是回退源指定的服务器，即 `saas.xiegao.top`
    
 3. 继续在你的辅助域名添加一条解析。CNAME到优选节点：如cf.877774.xyz，**不开启cf代理**
-   ![](https://img.xiegao.top/file/s3:s3_1775978089061_abchur.jpg)
+   ![](/images/cf-fast/08-cname-optimize.jpg)
 
 4. 最后在你的主力域名添加解析。域名为之前在辅助域名的自定义主机名（pan.xiegao.top），目标为刚才的cdn.xiegao.top，**不开启cf代理**
-   ![](https://img.xiegao.top/file/s3:s3_1775978153445_sgowll.jpg)
+   ![](/images/cf-fast/09-final-cname.jpg)
 
 5. 优选完毕，确保优选有效后尝试访问
 
@@ -216,14 +216,14 @@ function getProxyPrefix(hostname) {
 
 请先参照 [传统SaaS优选](#传统saas优选) 设置完毕，源站即为 Cloudflare Tunnel。正常做完SaaS接入即可：
 
-![](https://img.xiegao.top/file/s3:s3_1775978433845_cvgw8w.jpg)
+![](/images/cf-fast/10-tunnel-saas.jpg)
 
-![](https://img.xiegao.top/file/s3:s3_1775978461098_zowx4d.jpg)
+![](/images/cf-fast/11-tunnel-detail.jpg)
 
 
 接下来我们需要让 **最终访问的域名** 打到 Cloudflare Tunnel 的流量正确路由，否则访问时主机名不在Tunnel中，会触发 **catch: all** 规则，总之就是没法访问。再创建一个Tunnel规则，域名为 **你最终访问的域名** ，源站指定和刚才的一致即可。
 
-![](https://img.xiegao.top/file/s3:s3_1775978153445_sgowll.jpg)
+![](/images/cf-fast/09-final-cname.jpg)
 
 最后写一条 `pan.xiegao.top` CNAME **你自己的优选域名** 的DNS记录即可
 
