@@ -317,38 +317,13 @@ const jsonLd = [
 </script>
 
 <script define:vars={{ umamiConfig, postUrl: getPostUrlBySlug(entry.slug) }}>
-    // New Logic
     async function loadPageViews() {
-        // if (!umamiConfig.enable) return; // Optional check
         try {
-            // Note: postUrl might need to be adjusted if it doesn't match the new API expectations.
-            // The user's new API expects pathname like /posts/slug/
-            // postUrl from getPostUrlBySlug usually returns the full path.
-            
-            // Extract pathname if postUrl is absolute, though getPostUrlBySlug usually returns relative path or full URL depending on implementation.
-            // Assuming postUrl is correct path.
-            
-            // But wait, the previous code used `url: postUrl` which suggests postUrl is what we want.
-            // However, the new API is specific: `https://u.xiegao.top/share?pathname=/posts/${slug}/`
-            // Let's use the same logic as PostMeta: construct path from slug if possible, or use postUrl if it's already a path.
-            // In define:vars, we have `postUrl`. Let's check `getPostUrlBySlug` implementation or just rely on slug if available.
-            // Looking at define:vars, `entry.slug` is not passed directly but `postUrl` is.
-            // But wait, `entry` is available in the component props, but not passed to `define:vars` except via `postUrl`.
-            // Let's modify define:vars to include `slug: entry.slug`.
-            
-            // Wait, I can't easily modify define:vars in SearchReplace without replacing the whole script tag opening.
-            // Let's look at `postUrl`. If it's `/posts/slug/`, then we can use it.
-            // The previous API usage was `url: postUrl`.
-            // The new API usage in PostMeta was `/posts/${slug}/`.
-            
-            // Let's assume postUrl is the path.
             let pathname = postUrl;
             if (pathname.startsWith('http')) {
                 pathname = new URL(pathname).pathname;
             }
-            // Ensure trailing slash if needed? The user example `/` has no trailing slash but it's root.
-            // The user said `/posts/wpwebplayer/`.
-            
+
             const response = await fetch(`${umamiConfig.baseUrl}/share?pathname=${pathname}`);
             if (!response.ok) return;
             const data = await response.json();

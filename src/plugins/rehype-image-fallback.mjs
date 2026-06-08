@@ -3,7 +3,7 @@ import { visit } from "unist-util-visit";
 export default function rehypeImageFallback(options = {}) {
 	const {
 		enable = true,
-		originalDomain = "sb-eo-r2.2x.nz",
+		originalDomain = "",
 		fallbackDomain = "pub-d433ca7edaa74994b3d7c40a7fd7d9ac.r2.dev",
 	} = options;
 

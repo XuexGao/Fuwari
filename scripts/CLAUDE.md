@@ -9,7 +9,6 @@
 常用脚本（由 `package.json scripts` 触发）：
 - `scripts/new-post.js`：新建文章模板
 - `scripts/clean-unused-images.js`：扫描并删除未引用图片
-- `scripts/cdnify-images.js`：批量将本地图片路径替换为 CDN 并在满足条件后删除本地 assets
 - `scripts/generate-ai-summary.js`：为文章生成 AI 摘要块
 - `scripts/check-links.js`：友链/头像/回链可达性检查（含删除逻辑）
 
@@ -40,7 +39,7 @@
 
 ## 常见问题 (FAQ)
 - Q: 哪些脚本风险最高？
-  A: `clean-unused-images.js`、`cdnify-images.js`、`check-links.js`（均包含删除或批量改写）。
+  A: `clean-unused-images.js`、`check-links.js`（均包含删除或批量改写）。
 
 - Q: 如何降低误删风险？
   A: 先跑只读扫描、确认输出统计，再执行写入/删除操作，并使用 Git 快速回滚。
@@ -48,7 +47,6 @@
 ## 相关文件清单
 - `scripts/new-post.js`
 - `scripts/clean-unused-images.js`
-- `scripts/cdnify-images.js`
 - `scripts/check-links.js`
 - `scripts/generate-ai-summary.js`
 - `scripts/utils/content-files.js`

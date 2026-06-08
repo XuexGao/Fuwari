@@ -49,7 +49,7 @@
 
 ## Security
 
-- 高风险脚本：`scripts/cdnify-images.js`、`scripts/clean-unused-images.js`、`scripts/check-links.js`（包含批量改写或删除）。
+- 高风险脚本：`scripts/clean-unused-images.js`、`scripts/check-links.js`（包含批量改写或删除）。
 - 执行写回/删除类脚本前，先确认扫描结果并确保可回滚。
 - `scripts/generate-ai-summary.js` 依赖 `GEMINI_API_KEY`，使用环境变量，不要硬编码密钥。
 - 推送远端前必须启用系统代理（`127.0.0.1:10808`）。

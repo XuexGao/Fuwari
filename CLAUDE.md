@@ -30,7 +30,7 @@ graph TD
 |---|---|---|---|---|---|
 | `src` | 站点应用层（页面、布局、组件、插件、工具） | TypeScript/Astro/Svelte | `src/pages/[...page].astro`, `src/layouts/MainGridLayout.astro`, `src/config.ts` | 未发现专门测试目录 | `src/CLAUDE.md` |
 | `src/content` | 内容域（文章、公告、内容 schema、素材） | Markdown/TypeScript/JSON | `src/content/config.ts`, `src/content/posts/*.md`, `src/content/spec/announcement.md` | 未发现内容校验测试 | `src/content/CLAUDE.md` |
-| `scripts` | 运维与内容自动化脚本 | Node.js/Python | `scripts/new-post.js`, `scripts/clean-unused-images.js`, `scripts/cdnify-images.js` | 未发现脚本测试 | `scripts/CLAUDE.md` |
+| `scripts` | 运维与内容自动化脚本 | Node.js/Python | `scripts/new-post.js`, `scripts/clean-unused-images.js` | 未发现脚本测试 | `scripts/CLAUDE.md` |
 
 ## 运行与开发
 - 安装依赖：`pnpm install`

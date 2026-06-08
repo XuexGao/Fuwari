@@ -48,7 +48,6 @@
 - `src/content/spec/announcement.md`
 - `src/content/assets/images/*`
 - `scripts/clean-unused-images.js`（跨模块依赖）
-- `scripts/cdnify-images.js`（跨模块依赖）
 
 ## 变更记录 (Changelog)
 - 2026-03-06 11:22:44：初始化模块文档，记录集合模型、数据结构与资源治理关系。

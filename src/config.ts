@@ -66,6 +66,14 @@ export const siteConfig: SiteConfig = {
 	],
 };
 
+export const umamiConfig: UmamiConfig = {
+	enable: true,
+	baseUrl: "https://u.xiegao.top",
+	shareId: "IoWiNCvTUPxaDg5x",
+	websiteId: "4696c062-4271-4b8b-8ed7-b481f5961f28",
+	timezone: "Asia/Shanghai",
+};
+
 export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
@@ -90,7 +98,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "统计",
-			url: "https://u.xiegao.top/share/IoWiNCvTUPxaDg5x",
+			url: `${umamiConfig.baseUrl}/share/${umamiConfig.shareId}`,
 			external: true,
 			icon: "material-symbols:table-chart",
 		},
@@ -141,14 +149,6 @@ export const imageFallbackConfig: ImageFallbackConfig = {
 	enable: false,
 	originalDomain: "https://eopfapi.acofork.com/pic?img=ua",
 	fallbackDomain: "https://eopfapi.acofork.com/pic?img=ua",
-};
-
-export const umamiConfig: UmamiConfig = {
-	enable: true,
-	baseUrl: "https://u.xiegao.top",
-	shareId: "IoWiNCvTUPxaDg5x",
-	websiteId: "4696c062-4271-4b8b-8ed7-b481f5961f28",
-	timezone: "Asia/Shanghai",
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
