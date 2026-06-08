@@ -111,7 +111,7 @@ export type BlogPostData = {
 };
 
 export type ExpressiveCodeConfig = {
-	theme: string;
+	theme: string | string[];
 };
 
 export type GitHubEditConfig = {

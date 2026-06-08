@@ -1,4 +1,3 @@
-import { expressiveCodeConfig } from "@/config";
 import { AUTO_MODE, DARK_MODE, LIGHT_MODE } from "@constants/constants.ts";
 
 export function getDefaultHue(): number {
@@ -93,13 +92,11 @@ export function getStoredTheme(): string {
 export function applyThemeToDocument(theme: string) {
 	if (theme === DARK_MODE || (theme === AUTO_MODE && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
 		document.documentElement.classList.add("dark");
+		document.documentElement.setAttribute("data-theme", "dark");
 	} else {
 		document.documentElement.classList.remove("dark");
+		document.documentElement.setAttribute("data-theme", "light");
 	}
-	document.documentElement.setAttribute(
-		"data-theme",
-		expressiveCodeConfig.theme,
-	);
 }
 
 export function setTheme(theme: string): void {

@@ -130,7 +130,7 @@ image: {
 		}),
 		svelte(),
 		expressiveCode({
-			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
+			themes: [expressiveCodeConfig.theme].flat(),
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
