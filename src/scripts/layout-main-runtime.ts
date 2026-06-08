@@ -131,16 +131,44 @@ init();
 bindPostInlineDiff();
 
 const setup = () => {
-	// Preserve astro-icon SVG sprite across Swup page transitions
+	// Preserve astro-icon SVG sprite across Swup page transitions.
+	// Strategy: defer old sprite removal until new sprite is available.
+	// If new page's sprite is immediately available (sync), just remove old one.
+	// If new page's sprite is NOT available, keep old one as fallback until new one loads.
 	let savedSprite: Element | null = null;
 	window.swup.hooks.on("content:replace", () => {
 		savedSprite = document.querySelector("body > svg[aria-hidden='true'], body > svg[style*='display:none'], body > svg[style*='display: none']");
 		if (savedSprite) savedSprite.remove();
 	}, { before: true });
 	window.swup.hooks.on("content:replace", () => {
-		if (savedSprite && !document.querySelector("body > svg[aria-hidden='true']")) {
-			document.body.insertBefore(savedSprite, document.body.firstChild);
+		if (!savedSprite) return;
+		// If new page already has its own sprite, discard the old one
+		const newSprite = document.querySelector("body > svg[aria-hidden='true'], body > svg[style*='display:none'], body > svg[style*='display: none']");
+		if (newSprite) {
+			// New page has its own sprite — old one is obsolete
+			savedSprite = null;
+			return;
 		}
+		// New page doesn't have a sprite yet — restore old one as fallback,
+		// then observe for new sprite arrival and swap
+		document.body.insertBefore(savedSprite, document.body.firstChild);
+		const observer = new MutationObserver(() => {
+			const freshSprite = document.querySelector("body > svg[aria-hidden='true'], body > svg[style*='display:none'], body > svg[style*='display: none']");
+			if (freshSprite && freshSprite !== savedSprite) {
+				// New sprite arrived — remove old fallback
+				if (savedSprite && savedSprite.parentNode) {
+					savedSprite.remove();
+				}
+				savedSprite = null;
+				observer.disconnect();
+			}
+		});
+		observer.observe(document.body, { childList: true });
+		// Safety cleanup after 1 second
+		setTimeout(() => {
+			observer.disconnect();
+			savedSprite = null;
+		}, 1000);
 	});
 
 	const SORT_PATHS = [
