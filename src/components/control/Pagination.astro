@@ -57,8 +57,8 @@ const prefix = sort ? `/${sort}` : "";
 <div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
     <a href={page.url.prev || ""} aria-label="Previous Page"
        class:list={[
-           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
-           "bg-[var(--card-bg)] hover:bg-[var(--btn-regular-bg-hover)]",
+           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
+           "bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]",
            { "opacity-40 cursor-not-allowed pointer-events-none": page.url.prev == undefined }
        ]}
     >
@@ -83,8 +83,8 @@ const prefix = sort ? `/${sort}` : "";
     </div>
     <a href={page.url.next || ""} aria-label="Next Page"
        class:list={[
-           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
-           "bg-[var(--card-bg)] hover:bg-[var(--btn-regular-bg-hover)]",
+           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
+           "bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]",
            { "opacity-40 cursor-not-allowed pointer-events-none": page.url.next == undefined }
        ]}
     >
