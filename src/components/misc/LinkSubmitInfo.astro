@@ -15,12 +15,39 @@ const dataName = dataType === "friends" ? "友链" : "赞助";
 ---
 
 <div class:list={["text-sm text-black/60 dark:text-white/60", className]}>
-    <p>
-        如果您已{dataType === 'friends' ? '添加' : '赞助'}，并且想加入{dataName}名单，<a target="_blank" href={linkText} class="transition link text-[var(--primary)] font-medium underline">请点击这里提交 PR</a>
-    </p>
     {dataType === 'friends' && (
-        <p class="mt-2">
-            我们会定期通过 Github Action 运行一个工作流，使用 Github 的 IP 对这里的所有站点做访问性测试，如果不通过测试（如网站无法访问），该条目将被<strong>自动删除</strong>。当您再次做好准备时，欢迎再次提交 PR 申请。访问性测试结果可以<a target="_blank" href="https://github.com/afoim/fuwari/actions/workflows/check-links.yml" class="transition link text-[var(--primary)] font-medium underline">访问此 URL 来得知</a>。
+        <div class="space-y-4">
+            <div>
+                <p class="font-semibold text-black/80 dark:text-white/80 mb-2">本站信息：</p>
+                <div class="space-y-1 pl-2 border-l-2 border-[var(--primary)]/30">
+                    <p>· 网站名称：XieGao Blog</p>
+                    <p>· 网站地址：https://xiegao.top</p>
+                    <p>· 网站描述：Protect What You Love</p>
+                    <p>· 网站头像：<a href="https://q2.qlogo.cn/headimg_dl?dst_uin=3764350108&spec=0" target="_blank" class="transition link text-[var(--primary)] underline">点击查看</a></p>
+                </div>
+            </div>
+            <div>
+                <p class="font-semibold text-black/80 dark:text-white/80 mb-2">申请方式：</p>
+                <div class="space-y-1.5 pl-2 border-l-2 border-[var(--primary)]/30">
+                    <p>1. Fork <a target="_blank" href="https://github.com/XuexGao/Fuwari" class="transition link text-[var(--primary)] font-medium underline">本仓库</a></p>
+                    <p>2. 在 <code class="rounded bg-black/10 dark:bg-white/10 px-1 py-0.5">src/data/friends/</code> 目录下创建 JSON 文件（<a target="_blank" href="https://github.com/XuexGao/Fuwari/tree/main/src/data/friends" class="transition link text-[var(--primary)] font-medium underline">查看目录</a>）</p>
+                    <p>3. 文件格式：</p>
+                    <pre class="mt-1 rounded bg-black/5 dark:bg-white/5 p-3 text-xs overflow-x-auto">{`{
+  "name": "你的网站名称",
+  "avatar": "你的头像 URL",
+  "description": "网站描述",
+  "url": "你的网站地址"
+}`}</pre>
+                    <p>4. 提交 Pull Request，GitHub Actions 会自动验证并合并</p>
+                    <p>5. 请在你的友链页面添加本站链接（<span class="text-[var(--primary)]">https://xiegao.top</span>），支持双向链接验证</p>
+                    <p>6. 我们会定期通过 GitHub Action 对所有站点做访问性测试，无法访问的条目将被<strong>自动删除</strong>，测试结果可<a target="_blank" href="https://github.com/XuexGao/Fuwari/actions/workflows/check-links.yml" class="transition link text-[var(--primary)] font-medium underline">在此查看</a></p>
+                </div>
+            </div>
+        </div>
+    )}
+    {dataType === 'sponsors' && (
+        <p>
+            如果您已赞助，并且想加入赞助名单，<a target="_blank" href={linkText} class="transition link text-[var(--primary)] font-medium underline">请点击这里提交 PR</a>
         </p>
     )}
 </div>
