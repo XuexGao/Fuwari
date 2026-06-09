@@ -58,7 +58,7 @@ const prefix = sort ? `/${sort}` : "";
     <a href={page.url.prev || ""} aria-label="Previous Page"
        class:list={[
            "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
-           "bg-white/70 hover:bg-white/85 dark:bg-black/40 dark:hover:bg-black/55",
+           "bg-white/85 hover:bg-white/95 dark:bg-black/55 dark:hover:bg-black/70",
            { "opacity-40 cursor-not-allowed pointer-events-none": page.url.prev == undefined }
        ]}
     >
@@ -84,7 +84,7 @@ const prefix = sort ? `/${sort}` : "";
     <a href={page.url.next || ""} aria-label="Next Page"
        class:list={[
            "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
-           "bg-white/70 hover:bg-white/85 dark:bg-black/40 dark:hover:bg-black/55",
+           "bg-white/85 hover:bg-white/95 dark:bg-black/55 dark:hover:bg-black/70",
            { "opacity-40 cursor-not-allowed pointer-events-none": page.url.next == undefined }
        ]}
     >
