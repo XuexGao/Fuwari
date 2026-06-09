@@ -57,7 +57,7 @@ const prefix = sort ? `/${sort}` : "";
 <div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
     <a href={page.url.prev || ""} aria-label="Previous Page"
        class:list={[
-           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
+           "overflow-hidden rounded-lg text-[oklch(0.85_0.18_var(--hue))] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
            "bg-white hover:bg-white dark:bg-black/80 dark:hover:bg-black/90",
            { "opacity-40 cursor-not-allowed pointer-events-none": page.url.prev == undefined }
        ]}
@@ -83,7 +83,7 @@ const prefix = sort ? `/${sort}` : "";
     </div>
     <a href={page.url.next || ""} aria-label="Next Page"
        class:list={[
-           "overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
+           "overflow-hidden rounded-lg text-[oklch(0.85_0.18_var(--hue))] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
            "bg-white hover:bg-white dark:bg-black/80 dark:hover:bg-black/90",
            { "opacity-40 cursor-not-allowed pointer-events-none": page.url.next == undefined }
        ]}
