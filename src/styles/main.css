@@ -170,18 +170,8 @@
 
 /* ===== float-panel backdrop-filter (outside @layer to avoid Tailwind purge) ===== */
 .float-panel {
-    position: relative;
-    isolation: isolate;
-}
-.float-panel::before {
-    content: '';
-    position: absolute;
-    inset: 0;
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
-    z-index: -1;
-    border-radius: inherit;
-    pointer-events: none;
 }
 
 html {
