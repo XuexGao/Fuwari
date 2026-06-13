@@ -12,7 +12,7 @@ pinned: true
 # XieGaoのBlog
 
 ## 说明
-- 此为CloudFla托管的静态网站，访问速度可能有点慢，[GitHub仓库](https://github.com/XuexGao/Fuwari)，如果有bug可以提[Issues](https://github.com/XuexGao/Fuwari/issues)
+- 此为CloudFlare托管的静态网站，访问速度可能有点慢，[GitHub仓库](https://github.com/XuexGao/Fuwari)，如果有bug可以提[Issues](https://github.com/XuexGao/Fuwari/issues)
 
 ## 联系方式
 - **QQ群**: [点击加入](https://qm.qq.com/q/IgRdeRFEiW) (OPPO R9s/sk/A57)
