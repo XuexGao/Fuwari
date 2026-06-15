@@ -2,13 +2,7 @@
 import { getEntry } from "astro:content";
 import Markdown from "../misc/Markdown.astro";
 
-const { lang } = Astro.params;
-const announcementId = `announcement-${lang}`;
-let announcement = await getEntry("spec", announcementId as any);
-
-if (!announcement) {
-	announcement = await getEntry("spec", "announcement-zh-cn");
-}
+const announcement = await getEntry("spec", "announcement");
 let enable = false;
 let level = "info";
 let Content = null;

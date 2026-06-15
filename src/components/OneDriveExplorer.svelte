@@ -1,5 +1,6 @@
 <script lang="ts">
 import Icon from "@iconify/svelte";
+import "../icons/client-icons.ts";
 import { onedriveApiConfig } from "@/config";
 
 export let apiBase = onedriveApiConfig.baseUrl;

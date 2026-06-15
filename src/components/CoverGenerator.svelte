@@ -1,5 +1,6 @@
 <script lang="ts">
 import Icon from "@iconify/svelte";
+import "../icons/client-icons.ts";
 import { getHue } from "@utils/setting-utils";
 import { onMount } from "svelte";
 

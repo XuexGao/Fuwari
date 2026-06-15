@@ -127,10 +127,20 @@ image: {
 		}),
 		icon({
 			iconDir: "public/icons",
+			include: {
+				"fa6-regular": [],
+				"material-symbols-light": [],
+				"material-symbols": ['archive-outline-rounded', 'arrow-downward-rounded', 'arrow-upward-alt-rounded', 'article-outline', 'audio-file-outline', 'auto-fix', 'brightness-auto-outline-rounded', 'build-circle-rounded', 'build-outline-rounded', 'check-box', 'check-box-outline-blank', 'chevron-left-rounded', 'chevron-right', 'chevron-right-rounded', 'close', 'close-rounded', 'cloud-outline', 'code-blocks-outline', 'comment', 'computer', 'contact-mail-outline', 'copyright-outline-rounded', 'dark-mode-outline-rounded', 'delete-rounded', 'description', 'diversity-3', 'download', 'edit-calendar-outline-rounded', 'edit-outline', 'error-outline', 'favorite', 'favorite-outline', 'folder', 'folder-off-outline', 'folder-open', 'folder-open-rounded', 'font-download', 'format-list-numbered', 'group', 'group-outline-rounded', 'help-outline', 'help-outline-rounded', 'history-rounded', 'home-outline-rounded', 'home-rounded', 'home-storage-rounded', 'image-outline', 'image-rounded', 'info-outline-rounded', 'inventory-2-outline', 'keyboard-arrow-up-rounded', 'menu-rounded', 'more-horiz', 'movie-outline', 'notes-rounded', 'open-in-new', 'palette-outline', 'person', 'picture-as-pdf-outline', 'schedule-outline-rounded', 'search', 'settings-applications', 'share', 'slideshow', 'sort-by-alpha-rounded', 'star', 'table-chart', 'text-snippet', 'upload-file', 'visibility-outline', 'visibility-outline-rounded', 'volunteer-activism-outline-rounded', 'wb-sunny-outline-rounded'],
+				"fa6-solid": ['arrow-rotate-left', 'arrow-up-right-from-square', 'box-archive', 'chevron-right', 'clock-rotate-left', 'face-sad-tear', 'house', 'microchip', 'people-group', 'wand-magic-sparkles'],
+				"fa6-brands": ["github"],
+				"simple-icons": ["alipay", "microsoftonedrive", "wechat"],
+				"mingcute": ["comment-fill"],
+			},
 		}),
 		svelte(),
 		expressiveCode({
 			themes: [expressiveCodeConfig.theme].flat(),
+			useDarkModeMediaQuery: false,
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
@@ -243,6 +253,11 @@ image: {
 		allowedHosts: ['xiegao.top']
 	},
 		build: {
+			target: "esnext",
+			cssMinify: "esbuild",
+			modulePreload: {
+				polyfill: false,
+			},
 			rollupOptions: {
 				onwarn(warning, warn) {
 					// temporarily suppress this warning

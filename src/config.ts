@@ -157,7 +157,7 @@ export const imageFallbackConfig: ImageFallbackConfig = {
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
-	theme: ["github-dark", "github-light"],
+	theme: ["github-dark"],
 };
 
 export const gitHubEditConfig: GitHubEditConfig = {
