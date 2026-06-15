@@ -6,8 +6,8 @@
 
 提交问题时，请选择合适的模板：
 
-- [🐛 问题报告](https://github.com/afoim/fuwari/issues/new?template=1-bug_report.yml) - 报告网站或代码中的问题
-- [🚀 功能请求](https://github.com/afoim/fuwari/issues/new?template=2-feature_request.yml) - 提出改进网站的想法
+- [🐛 问题报告](https://github.com/XuexGao/Fuwari/issues/new?template=1-bug_report.yml) - 报告网站或代码中的问题
+- [🚀 功能请求](https://github.com/XuexGao/Fuwari/issues/new?template=2-feature_request.yml) - 提出改进网站的想法
 
 ---
 
@@ -27,7 +27,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/afoim/fuwari.git
+git clone https://github.com/XuexGao/Fuwari.git
 cd fuwari
 
 # 安装依赖

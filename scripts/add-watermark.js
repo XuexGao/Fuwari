@@ -15,7 +15,7 @@ async function getSiteUrl() {
     });
     if (!siteUrl) {
         console.error("Error reading site URL from astro.config.mjs");
-        return "https://acofork.com";
+        return "https://xiegao.top";
     }
     return siteUrl;
 }

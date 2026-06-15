@@ -4,7 +4,7 @@ export default function rehypeImageFallback(options = {}) {
 	const {
 		enable = true,
 		originalDomain = "",
-		fallbackDomain = "pub-d433ca7edaa74994b3d7c40a7fd7d9ac.r2.dev",
+		fallbackDomain = "",
 	} = options;
 
 	return (tree) => {

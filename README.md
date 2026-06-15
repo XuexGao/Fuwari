@@ -217,4 +217,4 @@ themeColor: {
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=afoim/fuwari&type=date&legend=top-left)](https://www.star-history.com/#afoim/fuwari&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=XuexGao/Fuwari&type=date&legend=top-left)](https://www.star-history.com/#XuexGao/Fuwari&type=date&legend=top-left)

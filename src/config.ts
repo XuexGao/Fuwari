@@ -152,8 +152,8 @@ export const licenseConfig: LicenseConfig = {
 
 export const imageFallbackConfig: ImageFallbackConfig = {
 	enable: false,
-	originalDomain: "https://eopfapi.acofork.com/pic?img=ua",
-	fallbackDomain: "https://eopfapi.acofork.com/pic?img=ua",
+	originalDomain: "",
+	fallbackDomain: "",
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {

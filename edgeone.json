@@ -41,11 +41,6 @@
 			"statusCode": 302
 		},
 		{
-			"source": "/yyb",
-			"destination": "https://www.rainyun.com/acofork_?s=bilibili",
-			"statusCode": 302
-		},
-		{
 			"source": "/iku",
 			"destination": "https://ikuuu.de/auth/register?code=Bjou",
 			"statusCode": 302
