@@ -1,9 +1,24 @@
 # Fuwari For XieGao
 
 
-<img width="1915" height="1077" alt="image" src="https://img.xiegao.top/file/s3:s3_1781574106141_nlvjm1.jpg" />
+<img width="1915" height="1077" alt="Fuwari 截图" style="max-width: 100%; height: auto;" src="https://img.xiegao.top/file/s3:s3_1781574106141_nlvjm1.jpg" />
 
 一个基于 Astro 构建的现代化个人博客主题，专注于技术分享与实践。
+
+🔗 在线演示：[xiegao.top](https://xiegao.top)
+
+## 📑 目录
+
+- [✨ 特性](#-特性)
+- [🛠️ 技术栈](#️-技术栈)
+- [🚀 快速开始](#-快速开始)
+- [📝 使用指南](#-使用指南)
+- [📁 项目结构](#-项目结构)
+- [🎨 自定义](#-自定义)
+- [📦 部署](#-部署)
+- [🤝 贡献](#-贡献)
+- [📄 许可证](#-许可证)
+- [🙏 致谢](#-致谢)
 
 ## ✨ 特性
 
@@ -101,6 +116,39 @@ pnpm imgf
 pnpm imgf --check
 ```
 
+### 类型检查
+
+```bash
+pnpm type-check
+```
+
+### 代码格式化与 Lint
+
+```bash
+pnpm format
+pnpm lint
+```
+
+### 图片添加水印
+
+```bash
+pnpm watermark
+```
+
+### 生成 AI 摘要
+
+批量为文章生成 AI 摘要块：
+
+```bash
+pnpm ai-summary
+```
+
+### 更新文章 Diff
+
+```bash
+pnpm update-diff
+```
+
 ### 配置博客
 
 编辑 `src/config.ts` 文件来自定义博客配置：
@@ -160,9 +208,9 @@ draft: false
 │   ├── pages/             # 页面
 │   ├── styles/            # 样式
 │   ├── plugins/           # 自定义插件
-│   ├── scripts/           # 脚本工具
+│   ├── scripts/           # 客户端/运行时脚本
 │   └── config.ts          # 配置文件
-├── scripts/               # 构建脚本
+├── scripts/               # 构建与内容管理脚本
 └── package.json
 ```
 
