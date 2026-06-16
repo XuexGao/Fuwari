@@ -11,6 +11,9 @@ tags:
   - GitHub Actions
 ---
 
+> [!ai] claude
+> 在国内直连访问 Telegram 的三阶段自部署方案：前端基于 Telegram Web K 源码部署到 Cloudflare Pages，通过修改构建命令将真实入口重命名为私密路径并在根目录放置 Nginx 伪装页规避扫描；后端在海外服务器上用 Nginx 反向代理 WebSocket 至 Telegram 官方 API，使用独立二级泛域名隔离服务，配置 WebSocket 升级与 CORS 头；通过 GitHub Actions 每 3 天自动拉取官方最新源码、全局替换 API 域名为自己的代理域名并自动部署，实现一劳永逸的免翻墙 TG 访问。
+
 如果你想在没有任何翻墙工具的国内网络环境下，随时随地流畅访问 Telegram，自己动手部署一套专属的 Telegram Web（基于官方的 Web K 版本）绝对是最一劳永逸的选择。
 
 

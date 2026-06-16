@@ -10,6 +10,9 @@ tags:
   - Cloudflare Workers
 ---
 
+> [!ai] claude
+> Cloudflare 优选通过选择国内延迟更低的节点 IP 或域名来加速网站访问。Worker 项目优选最简单：将 Page 转为 Worker，添加路由指向优选域名即可。Worker 路由反代方案通过编写域名前缀映射脚本实现多站点全球反代与优选。SaaS 优选需准备辅助域名，在辅助域名的自定义主机名中配置回退源与自定义源服务器，主力域名最终 CNAME 到优选节点。Tunnel 用户先完成 SaaS 接入，再创建 Tunnel 规则确保最终访问域名路由正确。核心要点：优选本质是 DNS 层面的 CDN 节点选择，配合不同的 Cloudflare 产品接入方式实现。
+
 # 相关视频
 
 - **全解**： https://www.bilibili.com/video/BV1QpSoBqERj 
