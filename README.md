@@ -1,7 +1,7 @@
 # Fuwari For XieGao
 
 
-<img width="1915" height="1077" alt="Fuwari 截图" style="max-width: 100%; height: auto;" src="https://img.xiegao.top/file/s3:s3_1781574106141_nlvjm1.jpg" />
+<img width="1920" height="1080" alt="Fuwari 截图" style="max-width: 100%; height: auto;" src="https://img.xiegao.top/file/AgACAgUAAyEGAATeotMCAAMNajSudcxdyvUdYdceQyGSD-WoxgYAAq0OaxuMm6BVwR7uYCISKYEBAAMCAAN3AAM8BA.png" />
 
 一个基于 Astro 构建的现代化个人博客主题，专注于技术分享与实践。
 
