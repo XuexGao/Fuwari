@@ -171,4 +171,10 @@ const { remarkPluginFrontmatter } = await entry.render();
     
     document.addEventListener('DOMContentLoaded', loadCardStats);
     document.addEventListener('swup:contentReplaced', loadCardStats);
+    // Handle bfcache restore (mobile back-swipe)
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            loadCardStats();
+        }
+    });
 </script>

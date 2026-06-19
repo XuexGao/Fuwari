@@ -112,6 +112,13 @@ const getSortUrl = (type: string, descending: boolean) => {
     document.addEventListener('swup:page:view', updateSortControls);
     document.addEventListener('swup:contentReplaced', updateSortControls);
 
+    // Handle bfcache restore (mobile back-swipe may trigger pageshow)
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            updateSortControls();
+        }
+    });
+
     // Also run immediately for initial page load (non-Swup navigation)
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', updateSortControls);

@@ -121,4 +121,10 @@ const prefix = sort ? `/${sort}` : "";
 
     initJumpButtons();
     document.addEventListener('swup:contentReplaced', initJumpButtons);
+    // Handle bfcache restore (mobile back-swipe)
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            initJumpButtons();
+        }
+    });
 </script>

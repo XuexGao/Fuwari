@@ -125,7 +125,7 @@ const mainPanelTop = siteConfig.banner.enable
     </div>
 </div>
 
-<script is:inline>
+<script is:inline data-swup-ignore-script>
     (() => {
         const tocInner = document.getElementById("toc-inner-wrapper");
         const commentsBtn = document.getElementById("go-to-comments-btn");
@@ -142,7 +142,7 @@ const mainPanelTop = siteConfig.banner.enable
     })();
 </script>
 
-<script is:inline>
+<script is:inline data-swup-ignore-script>
     (() => {
     const ONLOAD_ANIMATION_CONTAINERS = ['#sort-container', '#swup-container', '#toc'];
 
@@ -229,6 +229,13 @@ const mainPanelTop = siteConfig.banner.enable
     document.addEventListener('swup:contentReplaced', () => {
         cleanupContainerAnimations();
         initializePageEffects();
+    });
+    // Handle bfcache restore (mobile back-swipe may trigger pageshow)
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            cleanupContainerAnimations();
+            initializePageEffects();
+        }
     });
 
     // Google Ads Anchor Ad support
