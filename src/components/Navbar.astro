@@ -59,6 +59,11 @@ let links: NavBarLink[] = navBarConfig.links.map(
 
 <script>
 function loadButtonScript() {
+    // Helper: close a float panel by id
+    function closePanel(id: string) {
+        const panel = document.getElementById(id);
+        if (panel) panel.classList.add("float-panel-closed");
+    }
 
     let settingBtn = document.getElementById("display-settings-switch");
     if (settingBtn) {
@@ -67,6 +72,8 @@ function loadButtonScript() {
             if (settingPanel) {
                 settingPanel.classList.toggle("float-panel-closed");
             }
+            // Close the other mobile menu
+            closePanel("nav-menu-panel");
         };
     }
 
@@ -77,6 +84,8 @@ function loadButtonScript() {
             if (menuPanel) {
                 menuPanel.classList.toggle("float-panel-closed");
             }
+            // Close the other mobile menu
+            closePanel("display-setting");
         };
     }
 }

@@ -57,10 +57,21 @@ const toggleType = (typeId: string) => {
 	}
 };
 
+	// Helper: close other float panels when a menu opens
+	function closeOtherMenus() {
+		["nav-menu-panel", "display-setting"].forEach((id) => {
+			document.getElementById(id)?.classList.add("float-panel-closed");
+		});
+	}
+
 const togglePanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
 	panel?.classList.toggle("float-panel-closed");
+	// Close other mobile menus when search opens
+	if (!panel?.classList.contains("float-panel-closed")) {
+		closeOtherMenus();
+	}
 };
 
 const closePanel = () => {
@@ -73,6 +84,8 @@ const openPanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
 	panel?.classList.remove("float-panel-closed");
+	// Close other mobile menus when search opens
+	closeOtherMenus();
 };
 
 const setPanelVisibility = (show: boolean): void => {

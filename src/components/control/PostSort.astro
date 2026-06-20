@@ -21,7 +21,7 @@ const getSortUrl = (type: string, descending: boolean) => {
 };
 ---
 <div class:list={["post-sort-container flex flex-wrap items-center gap-2 mb-4  text-neutral-600 dark:text-neutral-400", className]} style={style}>
-    <div class="flex bg-[var(--card-bg)] rounded-lg p-1 shadow-sm border border-white/5">
+    <div class="flex bg-[var(--card-bg)] rounded-lg p-1 shadow-sm border border-white/5" style="backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);">
         <a href={url(getSortUrl("date", isDescending))} 
            class:list={["sort-btn", { "active": isDate }]} 
            title="按发布日期排序">
@@ -47,7 +47,7 @@ const getSortUrl = (type: string, descending: boolean) => {
         @apply p-1.5 rounded-md transition-all flex items-center justify-center hover:bg-white/5 active:scale-90;
     }
     .sort-btn.active {
-        @apply bg-[var(--primary)] text-white/80 dark:text-black/80 shadow-sm hover:bg-[var(--primary)];
+        @apply bg-[var(--primary)] text-white dark:text-black shadow-sm hover:bg-[var(--primary)];
     }
 </style>
 
