@@ -56,36 +56,34 @@ const prefix = sort ? `/${sort}` : "";
 
 <div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
     <a href={page.url.prev || ""} aria-label="Previous Page"
-       class:list={[
-           "overflow-hidden rounded-lg text-[oklch(0.85_0.18_var(--hue))] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
-           "bg-white hover:bg-white dark:bg-black/80 dark:hover:bg-black/90",
-           { "opacity-40 cursor-not-allowed pointer-events-none": page.url.prev == undefined }
+       class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
+           {"disabled": page.url.prev == undefined}
        ]}
     >
         <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]"></Icon>
     </a>
-    <div class="card-base flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold shadow-none">
+    <div class="card-base flex flex-row rounded-lg items-center text-neutral-300 font-bold shadow-none">
         {pages.map((p) => {
             if (p == HIDDEN)
                 return <button aria-label="Jump to page"
-                               class="jump-btn transition flex items-center justify-center w-8 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-black/75 dark:text-white/75"
+                               class="jump-btn transition flex items-center justify-center w-8 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-white/75"
                 >
                     <Icon name="material-symbols:more-horiz" class="mx-1"/>
                 </button>;
             if (p == page.currentPage)
-                return <div class="h-11 w-11 rounded-lg bg-[var(--primary)] flex items-center justify-center font-bold text-white/80 dark:text-black/70">
+                return <div class="h-11 w-11 rounded-lg bg-[var(--primary)] flex items-center justify-center
+                    font-bold text-black/70"
+                >
                     {p}
                 </div>
             return <a href={url(getPageUrl(p))} aria-label=`Page ${p}`
-                class="transition flex items-center justify-center w-11 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-black/75 dark:text-white/75"
+                class="transition flex items-center justify-center w-11 h-11 rounded-lg overflow-hidden active:scale-[0.85] hover:bg-[var(--btn-card-bg-hover)] active:bg-[var(--btn-card-bg-active)] text-white/75"
             >{p}</a>
         })}
     </div>
     <a href={page.url.next || ""} aria-label="Next Page"
-       class:list={[
-           "overflow-hidden rounded-lg text-[oklch(0.85_0.18_var(--hue))] w-11 h-11 flex items-center justify-center backdrop-blur-md transition active:scale-90 border border-[var(--line-color)] hover:border-[var(--primary)]",
-           "bg-white hover:bg-white dark:bg-black/80 dark:hover:bg-black/90",
-           { "opacity-40 cursor-not-allowed pointer-events-none": page.url.next == undefined }
+       class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
+           {"disabled": page.url.next == undefined}
        ]}
     >
         <Icon name="material-symbols:chevron-right-rounded" class="text-[1.75rem]"></Icon>
@@ -121,10 +119,4 @@ const prefix = sort ? `/${sort}` : "";
 
     initJumpButtons();
     document.addEventListener('swup:contentReplaced', initJumpButtons);
-    // Handle bfcache restore (mobile back-swipe)
-    window.addEventListener('pageshow', (event) => {
-        if (event.persisted) {
-            initJumpButtons();
-        }
-    });
 </script>
