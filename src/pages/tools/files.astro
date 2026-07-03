@@ -105,7 +105,7 @@ const breadcrumbSchema = {
         </div>
 
         <div class="flex gap-2 mb-6 border-b border-gray-200 dark:border-white/5 pb-1 overflow-x-auto no-scrollbar">
-            <button 
+            <button
                 id="tab-local"
                 class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap active-tab"
             >
@@ -114,43 +114,30 @@ const breadcrumbSchema = {
                 </span>
                 本站
             </button>
-                        <button 
+            <button
                 id="tab-tianyi"
                 class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap text-gray-600 dark:text-white/50 hover:bg-gray-100 dark:hover:bg-white/5"
             >
                 <span class="h-7 w-7 rounded-lg flex items-center justify-center backdrop-blur-md border border-[var(--line-color)] bg-white/60 dark:bg-black/60">
-                    <Icon name="material-symbols:folder-open-rounded" class="text-base text-[var(--primary)]" />
+                    <Icon name="material-symbols:cloud-outline" class="text-base text-[var(--primary)]" />
                 </span>
                 天翼云
-            </button>
-            <button 
-                id="tab-onedrive"
-                class="tab-btn px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap text-gray-600 dark:text-white/50 hover:bg-gray-100 dark:hover:bg-white/5"
-            >
-                <span class="h-7 w-7 rounded-lg flex items-center justify-center backdrop-blur-md border border-[var(--line-color)] bg-white/60 dark:bg-black/60">
-                    <Icon name="simple-icons:microsoftonedrive" class="text-base text-[var(--primary)]" />
-                </span>
-                                OneDrive
             </button>
         </div>
         <div id="content-local" class="tab-content">
             <FileExplorer client:visible items={fileTree} />
         </div>
 
-                <div id="content-tianyi" class="tab-content hidden">
+        <div id="content-tianyi" class="tab-content hidden">
             <OneDriveExplorer client:only="svelte" apiBase={tianyiApiConfig.baseUrl} rootName="天翼云根目录" />
-        </div>
-        <div id="content-onedrive" class="tab-content hidden">
-            <OneDriveExplorer client:only="svelte" />
         </div>
 
 
         <script is:inline>
-                        function setupTabs() {
+            function setupTabs() {
                 const tabs = [
                     { tab: document.getElementById('tab-local'), content: document.getElementById('content-local') },
                     { tab: document.getElementById('tab-tianyi'), content: document.getElementById('content-tianyi') },
-                    { tab: document.getElementById('tab-onedrive'), content: document.getElementById('content-onedrive') },
                 ].filter(t => t.tab && t.content);
 
                 if (tabs.length === 0) return;
@@ -173,7 +160,6 @@ const breadcrumbSchema = {
                     t.tab.addEventListener('click', () => activateTab(i));
                 });
             }
-
 
             setupTabs();
         </script>

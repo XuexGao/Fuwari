@@ -65,16 +65,16 @@ function goToIndex(idx: number) {
 
 function getFileIcon(name: string) {
 	const ext = name.split(".").pop()?.toLowerCase() ?? "";
-	if (["jpg", "jpeg", "png", "gif", "webp", "bmp"].includes(ext)) return "fa6-solid:image";
-	if (["mp4", "mkv", "avi", "mov", "flv", "webm"].includes(ext)) return "fa6-solid:film";
-	if (["mp3", "wav", "flac", "ogg", "m4a"].includes(ext)) return "fa6-solid:music";
-	if (["pdf"].includes(ext)) return "fa6-solid:file-pdf";
-	if (["zip", "rar", "7z", "tar", "gz"].includes(ext)) return "fa6-solid:file-zipper";
-	if (["doc", "docx"].includes(ext)) return "fa6-solid:file-word";
-	if (["xls", "xlsx"].includes(ext)) return "fa6-solid:file-excel";
-	if (["ppt", "pptx"].includes(ext)) return "fa6-solid:file-powerpoint";
-	if (["txt", "md"].includes(ext)) return "fa6-solid:file-lines";
-	return "fa6-solid:file";
+	if (["jpg", "jpeg", "png", "gif", "webp", "bmp"].includes(ext)) return "material-symbols:image-outline";
+	if (["mp4", "mkv", "avi", "mov", "flv", "webm"].includes(ext)) return "material-symbols:movie-outline";
+	if (["mp3", "wav", "flac", "ogg", "m4a"].includes(ext)) return "material-symbols:audio-file-outline";
+	if (["pdf"].includes(ext)) return "material-symbols:picture-as-pdf-outline";
+	if (["zip", "rar", "7z", "tar", "gz"].includes(ext)) return "material-symbols:inventory-2-outline";
+	if (["doc", "docx"].includes(ext)) return "material-symbols:description";
+	if (["xls", "xlsx"].includes(ext)) return "material-symbols:table-chart";
+	if (["ppt", "pptx"].includes(ext)) return "material-symbols:slideshow";
+	if (["txt", "md"].includes(ext)) return "material-symbols:text-snippet";
+	return "material-symbols:description";
 }
 
 function formatSize(size?: number) {
@@ -114,7 +114,7 @@ async function onMount() {
 	<!-- 加载中 -->
 	{#if loading}
 		<div class="flex items-center justify-center py-12 text-sm opacity-60">
-			<Icon icon="fa6-solid:spinner" class="animate-spin mr-2" />
+			<Icon icon="material-symbols:progress-activity" class="animate-spin mr-2" />
 			加载中...
 		</div>
 	{/if}
@@ -133,7 +133,7 @@ async function onMount() {
 						class="flex items-center gap-3 p-3 rounded-lg border border-[var(--line-color)] hover:bg-[var(--btn-regular-bg)] transition-colors text-left"
 						on:click={() => enterDirectory(item)}
 					>
-						<Icon icon="fa6-solid:folder" class="text-xl text-yellow-500 shrink-0" />
+						<Icon icon="material-symbols:folder" class="text-xl text-gray-800 dark:text-white/90 shrink-0" />
 						<span class="flex-1 truncate text-sm">{item.name}</span>
 					</button>
 				{:else}
@@ -143,7 +143,7 @@ async function onMount() {
 						rel="noopener noreferrer"
 						class="flex items-center gap-3 p-3 rounded-lg border border-[var(--line-color)] hover:bg-[var(--btn-regular-bg)] transition-colors"
 					>
-						<Icon icon={getFileIcon(item.name)} class="text-xl text-[var(--primary)] shrink-0" />
+						<Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90 shrink-0" />
 						<div class="flex-1 min-w-0">
 							<div class="truncate text-sm">{item.name}</div>
 							{#if item.size}
