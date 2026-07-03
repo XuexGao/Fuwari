@@ -17,8 +17,7 @@ interface FileItem {
 
 let items: FileItem[] = [];
 let pathStack: { name: string; path: string; items: FileItem[] }[] = [
-		{ name: rootName, path: "/", items: [] },
- [] },
+	{ name: rootName, path: "/", items: [] },
 ];
 let loading = false;
 let error = "";
@@ -29,228 +28,138 @@ async function fetchItems(currentPath = "/") {
 	items = [];
 	error = "";
 	try {
-		const url = `${apiBase}?path=${encodeURIComponent(currentPath)}`;
-		const response = await fetch(url);
-		if (!response.ok) {
-			throw new Error(`API 请求失败: ${response.status}`);
-		}
-		const data = await response.json();
-		const folderValue = data.folder?.value || data.value || [];
-		items = folderValue
-			.map((item: any) => {
-				const isFolder = !!item.folder;
-				const fullPath = currentPath === "/" ? `/${item.name}` : `${currentPath}/${item.name}`;
-				return {
-					id: item.id,
-					name: item.name,
-					path: fullPath,
-					type: isFolder ? "directory" : "file",
-					size: item.size,
-					downloadUrl: isFolder ? undefined : `${apiBase}raw/?path=${encodeURIComponent(fullPath)}`,
-				};
-			})
-			.sort((a: FileItem, b: FileItem) => {
-				if (a.type === b.type) return a.name.localeCompare(b.name);
-				return a.type === "directory" ? -1 : 1;
-			});
-		pathStack[pathStack.length - 1].items = items;
-	} catch (err: any) {
-		const msg = err.message || String(err);
-		if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
-			error = `加载失败: 无法连接到 ${apiBase}，可能是 CORS 跨域限制。请在 API 服务端 (Vercel/onedrive-index) 配置 Access-Control-Allow-Origin 响应头。`;
-		} else {
-			error = `加载失败: ${msg}`;
-		}
-		console.error(err);
+		const sep = currentPath.endsWith("/") ? "" : "/";
+		const url = apiBase + "?path=" + encodeURIComponent(currentPath + sep);
+		const res = await fetch(url);
+		if (!res.ok) throw new Error(`HTTP ${res.status}`);
+		const data = await res.json();
+		const value = data.folder?.value ?? [];
+		items = value.map((c: any) => ({
+			id: c.id ?? c.name,
+			name: c.name,
+			path: currentPath.replace(/\/$/, "") + "/" + c.name,
+			type: c.folder ? "directory" : "file",
+			size: c.size,
+			downloadUrl: c["@microsoft.graph.downloadUrl"],
+		}));
+	} catch (e: any) {
+		error = e.message || "加载失败";
 	} finally {
 		loading = false;
 	}
 }
 
-async function navigateInto(item: FileItem) {
-	if (item.type === "directory") {
-		pathStack = [...pathStack, { name: item.name, path: item.path, items: [] }];
-		await fetchItems(item.path);
+function enterDirectory(item: FileItem) {
+	if (item.type !== "directory") return;
+	pathStack.push({ name: item.name, path: item.path, items: [] });
+	items = [];
+	fetchItems(item.path);
+}
+
+function goToIndex(idx: number) {
+	if (idx < 0 || idx >= pathStack.length) return;
+	pathStack = pathStack.slice(0, idx + 1);
+	items = pathStack[pathStack.length - 1].items;
+	fetchItems(pathStack[pathStack.length - 1].path);
+}
+
+function getFileIcon(name: string) {
+	const ext = name.split(".").pop()?.toLowerCase() ?? "";
+	if (["jpg", "jpeg", "png", "gif", "webp", "bmp"].includes(ext)) return "fa6-solid:image";
+	if (["mp4", "mkv", "avi", "mov", "flv", "webm"].includes(ext)) return "fa6-solid:film";
+	if (["mp3", "wav", "flac", "ogg", "m4a"].includes(ext)) return "fa6-solid:music";
+	if (["pdf"].includes(ext)) return "fa6-solid:file-pdf";
+	if (["zip", "rar", "7z", "tar", "gz"].includes(ext)) return "fa6-solid:file-zipper";
+	if (["doc", "docx"].includes(ext)) return "fa6-solid:file-word";
+	if (["xls", "xlsx"].includes(ext)) return "fa6-solid:file-excel";
+	if (["ppt", "pptx"].includes(ext)) return "fa6-solid:file-powerpoint";
+	if (["txt", "md"].includes(ext)) return "fa6-solid:file-lines";
+	return "fa6-solid:file";
+}
+
+function formatSize(size?: number) {
+	if (size == null) return "";
+	const units = ["B", "KB", "MB", "GB", "TB"];
+	let i = 0;
+	while (size >= 1024 && i < units.length - 1) {
+		size /= 1024;
+		i++;
 	}
+	return size.toFixed(i === 0 ? 0 : 1) + " " + units[i];
 }
 
-async function navigateToLevel(index: number) {
-	pathStack = pathStack.slice(0, index + 1);
-	await fetchItems(pathStack[index].path);
-}
-
-async function goBack() {
-	if (pathStack.length > 1) {
-		pathStack = pathStack.slice(0, -1);
-		await fetchItems(pathStack[pathStack.length - 1].path);
-	}
-}
-
-function formatSize(bytes?: number) {
-	if (bytes === undefined || bytes === 0) return "";
-	const k = 1024;
-	const sizes = ["B", "KB", "MB", "GB", "TB"];
-	const i = Math.floor(Math.log(bytes) / Math.log(k));
-	return (
-		Number.parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i]
-	);
-}
-
-function getFileIcon(filename: string) {
-	const ext = filename.split(".").pop()?.toLowerCase();
-	switch (ext) {
-		case "jpg": case "jpeg": case "png": case "gif": case "svg": case "webp": case "avif":
-			return "material-symbols:image-outline";
-		case "mp4": case "webm": case "mkv": case "mov": case "avi":
-			return "material-symbols:movie-outline";
-		case "mp3": case "wav": case "flac": case "ogg":
-			return "material-symbols:audio-file-outline";
-		case "zip": case "rar": case "7z": case "tar": case "gz": case "zpaq":
-			return "material-symbols:inventory-2-outline";
-		case "pdf":
-			return "material-symbols:picture-as-pdf-outline";
-		case "doc": case "docx":
-			return "material-symbols:description";
-		case "xls": case "xlsx":
-			return "material-symbols:table-chart";
-		case "ppt": case "pptx":
-			return "material-symbols:slideshow";
-		case "js": case "ts": case "html": case "css": case "py": case "go": case "json": case "md":
-			return "material-symbols:code-blocks-outline";
-		case "exe": case "msi": case "iso":
-			return "material-symbols:settings-applications";
-		case "txt":
-			return "material-symbols:text-snippet";
-		default:
-			return "material-symbols:description";
-	}
-}
-
-$: if (!initialized && typeof window !== "undefined") {
+async function onMount() {
+	await fetchItems("/");
 	initialized = true;
-	fetchItems("/");
 }
-$: currentView = pathStack[pathStack.length - 1] || { path: "/", items: [] };
 </script>
 
-<div class="onedrive-explorer-container">
-    <div class="breadcrumb-bar flex items-center gap-1 mb-4 p-2 bg-gray-100 dark:bg-white/5 rounded-lg text-sm overflow-x-auto whitespace-nowrap">
-        {#each pathStack as folder, i}
-            {#if i > 0}
-                <Icon icon="material-symbols:chevron-right" class="text-gray-400 dark:text-white/50 flex-shrink-0" />
-            {/if}
-            <button 
-                class="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors {i === pathStack.length - 1 ? 'text-[var(--primary)] font-bold' : 'text-gray-600 dark:text-white/70'}"
-                on:click={() => navigateToLevel(i)}
-            >
-                {folder.name}
-            </button>
-        {/each}
-        {#if loading}
-            <div class="ml-auto flex items-center gap-2 text-gray-500 dark:text-white/30 text-xs">
-                <Icon icon="svg-spinners:ring-resize" class="text-lg" />
-                正在加载...
-            </div>
-        {/if}
-    </div>
+<div class="min-h-[300px]">
+	<!-- 面包屑 -->
+	<div class="flex flex-wrap items-center gap-1 mb-4 text-sm">
+		{#each pathStack as crumb, i}
+			{#if i > 0}
+				<span class="opacity-40">/</span>
+			{/if}
+			{#if i === pathStack.length - 1}
+				<span class="font-semibold text-[var(--primary)]">{crumb.name}</span>
+			{:else}
+				<button class="opacity-70 hover:opacity-100 hover:text-[var(--primary)] transition-colors" on:click={() => goToIndex(i)}>
+					{crumb.name}
+				</button>
+			{/if}
+		{/each}
+	</div>
 
-    {#if error}
-        <div class="mb-4 p-3 bg-red-100 dark:bg-red-500/10 border border-red-300 dark:border-red-500/20 rounded-lg text-red-700 dark:text-red-400 text-sm flex items-center gap-2">
-            <Icon icon="material-symbols:error-outline" class="text-lg" />
-            {error}
-            <button on:click={() => fetchItems(currentView.path)} class="ml-auto underline">重试</button>
-        </div>
-    {/if}
+	<!-- 加载中 -->
+	{#if loading}
+		<div class="flex items-center justify-center py-12 text-sm opacity-60">
+			<Icon icon="fa6-solid:spinner" class="animate-spin mr-2" />
+			加载中...
+		</div>
+	{/if}
 
-    <div class="file-list-header flex items-center px-3 py-2 text-xs font-bold text-gray-500 dark:text-white/30 uppercase tracking-wider border-b border-gray-200 dark:border-white/5 mb-1">
-        <span class="flex-1">名称</span>
-        <span class="w-24 text-right">大小</span>
-        <span class="w-12"></span>
-    </div>
+	<!-- 错误 -->
+	{#if error}
+		<div class="text-center py-12 text-red-500 text-sm">{error}</div>
+	{/if}
 
-    <div class="file-list min-h-[200px] relative">
-        {#if loading && items.length === 0}
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 dark:text-white/20">
-                <Icon icon="svg-spinners:ring-resize" class="text-4xl" />
-            </div>
-        {/if}
+	<!-- 文件列表 -->
+	{#if !loading && !error && items.length > 0}
+		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+			{#each items as item (item.id)}
+				{#if item.type === "directory"}
+					<button
+						class="flex items-center gap-3 p-3 rounded-lg border border-[var(--line-color)] hover:bg-[var(--btn-regular-bg)] transition-colors text-left"
+						on:click={() => enterDirectory(item)}
+					>
+						<Icon icon="fa6-solid:folder" class="text-xl text-yellow-500 shrink-0" />
+						<span class="flex-1 truncate text-sm">{item.name}</span>
+					</button>
+				{:else}
+					<a
+						href={item.downloadUrl || apiBase + "raw/?path=" + encodeURIComponent(item.path)}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-3 p-3 rounded-lg border border-[var(--line-color)] hover:bg-[var(--btn-regular-bg)] transition-colors"
+					>
+						<Icon icon={getFileIcon(item.name)} class="text-xl text-[var(--primary)] shrink-0" />
+						<div class="flex-1 min-w-0">
+							<div class="truncate text-sm">{item.name}</div>
+							{#if item.size}
+								<div class="text-xs opacity-50">{formatSize(item.size)}</div>
+							{/if}
+						</div>
+					</a>
+				{/if}
+			{/each}
+		</div>
+	{/if}
 
-        {#if pathStack.length > 1}
-            <div 
-                class="item-row flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
-                on:click={goBack}
-            >
-                <div class="flex items-center justify-center w-6 h-6 text-gray-500 dark:text-white/50 group-hover:text-[var(--primary)] transition-colors">
-                    <Icon icon="material-symbols:arrow-upward-alt-rounded" class="text-xl" />
-                </div>
-                <span class="text-gray-700 dark:text-white/70 font-medium group-hover:text-gray-900 dark:group-hover:text-white transition-colors">... (返回上一级)</span>
-            </div>
-        {/if}
-
-        {#each items as item}
-            <div class="item-row">
-                {#if item.type === 'directory'}
-                    <div 
-                        class="folder-item flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
-                        on:click={() => navigateInto(item)}
-                    >
-                        <div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
-                            <Icon icon="material-symbols:folder" class="text-xl text-gray-800 dark:text-white/90" />
-                        </div>
-                        <span class="text-gray-800 dark:text-white/90 font-medium flex-1">{item.name}</span>
-                        <div class="text-gray-400 dark:text-white/50 group-hover:text-gray-600 dark:group-hover:text-white transition-colors">
-                            <Icon icon="material-symbols:chevron-right" class="text-xl" />
-                        </div>
-                    </div>
-                {:else}
-                    <a 
-                        href={item.downloadUrl} 
-                        download={item.name}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors group no-underline"
-                    >
-                        <div class="flex items-center gap-2 flex-1">
-                            <div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
-                                <Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90" />
-                            </div>
-                            <span class="text-gray-700 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">{item.name}</span>
-                        </div>
-                        <div class="flex items-center gap-4 text-xs text-gray-500 dark:text-white/30">
-                            <span class="w-24 text-right">{formatSize(item.size)}</span>
-                            <div class="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-all text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white w-12 flex justify-center" title="下载">
-                                <Icon icon="material-symbols:download" class="text-lg" />
-                            </div>
-                        </div>
-                    </a>
-                {/if}
-            </div>
-        {/each}
-
-        {#if !loading && items.length === 0}
-            <div class="py-12 text-center text-gray-400 dark:text-white/20">
-                <Icon icon="material-symbols:folder-off-outline" class="text-4xl mx-auto mb-2" />
-                <p>文件夹为空</p>
-            </div>
-        {/if}
-    </div>
+	<!-- 空目录 -->
+	{#if !loading && !error && initialized && items.length === 0}
+		<div class="text-center py-12 text-sm opacity-50">此目录为空</div>
+	{/if}
 </div>
 
-<style>
-    .onedrive-explorer-container {
-        display: flex;
-        flex-direction: column;
-    }
-    .item-row {
-        width: 100%;
-    }
-    .breadcrumb-bar::-webkit-scrollbar {
-        height: 2px;
-    }
-    .breadcrumb-bar::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
-    }
-    .dark .breadcrumb-bar::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.1);
-    }
-</style>
+<svelte:window on:load={onMount} />
