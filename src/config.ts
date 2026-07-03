@@ -79,6 +79,11 @@ export const onedriveApiConfig: OnedriveApiConfig = {
 	baseUrl: "/api/onedrive/",
 };
 
+export const tianyiApiConfig: OnedriveApiConfig = {
+	baseUrl: "/api/tianyi/",
+};
+
+
 export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
