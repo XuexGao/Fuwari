@@ -278,6 +278,24 @@ const search = async (
 
 onMount(() => {
 	scheduleSearchDataPreload();
+
+	// 点击搜索面板/搜索栏外部时关闭搜索面板。
+	// layout-main-runtime.ts 里的 setClickOutsideToClose 因 script 未被打包
+	// 而无法执行，这里由组件自身实现可靠的点击外部关闭。
+	const handleOutsideClick = (event: MouseEvent) => {
+		const panel = document.getElementById("search-panel");
+		if (!panel || panel.classList.contains("float-panel-closed")) return;
+		const target = event.target as Node;
+		if (panel.contains(target)) return;
+		const searchBar = document.getElementById("search-bar");
+		if (searchBar && searchBar.contains(target)) return;
+		panel.classList.add("float-panel-closed");
+	};
+	document.addEventListener("click", handleOutsideClick);
+
+	return () => {
+		document.removeEventListener("click", handleOutsideClick);
+	};
 });
 
 $: {
@@ -413,7 +431,7 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
     outline: 0;
   }
   .search-panel {
-    background-color: var(--float-panel-bg-opaque);
+    background-color: var(--float-panel-bg);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     max-height: calc(100vh - 100px);
