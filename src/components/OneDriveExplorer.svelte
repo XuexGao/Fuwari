@@ -4,6 +4,7 @@ import "../icons/client-icons.ts";
 import { onedriveApiConfig } from "@/config";
 
 export let apiBase = onedriveApiConfig.baseUrl;
+export let rootName = "OneDrive 根目录";
 
 interface FileItem {
 	id: string;
@@ -16,7 +17,8 @@ interface FileItem {
 
 let items: FileItem[] = [];
 let pathStack: { name: string; path: string; items: FileItem[] }[] = [
-	{ name: "OneDrive 根目录", path: "/", items: [] },
+		{ name: rootName, path: "/", items: [] },
+ [] },
 ];
 let loading = false;
 let error = "";
