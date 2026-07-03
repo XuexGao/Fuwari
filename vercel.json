@@ -2,11 +2,11 @@
   "rewrites": [
     {
       "source": "/api/onedrive/(.*)",
-      "destination": "https://e3.xiegao.top/api/$1"
+      "destination": "https://tianyi.xiegao.top/api/$1"
     },
     {
       "source": "/api/onedrive",
-      "destination": "https://e3.xiegao.top/api/"
+      "destination": "https://tianyi.xiegao.top/api/"
     }
   ]
 }
