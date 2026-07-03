@@ -168,10 +168,14 @@
     }
 }
 
-/* ===== float-panel backdrop-filter (outside @layer to avoid Tailwind purge) ===== */
+/* ===== backdrop-filter (outside @layer to avoid Tailwind purge) ===== */
 .float-panel {
     backdrop-filter: blur(32px);
     -webkit-backdrop-filter: blur(32px);
+}
+.btn-card {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 html {
