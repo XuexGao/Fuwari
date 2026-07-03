@@ -67,15 +67,11 @@ let navLinks: NavBarLink[] = navBarConfig.links.map(
     <Navbar></Navbar>
 </div>
 
-<!-- Float panels host: matches #navbar-wrapper width/centering/padding so
-     absolutely-positioned panels (e.g. search results) align with the
-     navbar. Deliberately has NO z-index — position:relative without
-     z-index does not create a stacking context, so children's
-     backdrop-filter can blur page content outside this wrapper. -->
-<div id="float-panel-host" class="relative max-w-[var(--page-width)] px-0 md:px-4 mx-auto">
-    <NavMenuPanel links={navLinks}></NavMenuPanel>
-    <DisplaySettings client:only="svelte"></DisplaySettings>
-</div>
+<!-- Float panels: rendered outside the Navbar's card-base so backdrop-filter
+     can blur page content. The card-base's own backdrop-filter creates a
+     stacking context that would otherwise trap the panel's blur. -->
+<NavMenuPanel links={navLinks}></NavMenuPanel>
+<DisplaySettings client:only="svelte"></DisplaySettings>
 
 <!-- Banner -->
 {siteConfig.banner.enable && <div id="banner-wrapper" class=`absolute z-10 w-full transition duration-700 overflow-hidden` style=`top: -${BANNER_HEIGHT_EXTEND}vh`>

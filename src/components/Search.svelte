@@ -64,19 +64,6 @@ const toggleType = (typeId: string) => {
 		});
 	}
 
-	// Teleport the search panel out of the Navbar's card-base so its
-	// backdrop-filter can blur the actual page content. The card-base's
-	// own backdrop-filter creates a stacking context that would otherwise
-	// trap the panel's blur. The panel is moved to #float-panel-host which
-	// matches the navbar's width/centering/padding (so absolute positioning
-	// still aligns with the navbar) but has no z-index, so it does NOT create
-	// a stacking context — the panel's backdrop-filter can still blur the
-	// page content behind it.
-	const teleportToBody = (node: HTMLElement) => {
-		const host = document.getElementById("float-panel-host");
-		(host ?? document.body).appendChild(node);
-	};
-
 const togglePanel = () => {
 	if (typeof document === "undefined") return;
 	const panel = document.getElementById("search-panel");
@@ -340,7 +327,7 @@ $: {
 </div>
 
 <!-- search panel -->
-<div id="search-panel" use:teleportToBody class="float-panel float-panel-closed search-panel absolute fixed z-[90] md:w-[30rem]
+<div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
 top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
 
     <!-- search bar inside panel for phone/tablet -->
