@@ -1,12 +1,20 @@
 {
   "rewrites": [
     {
-      "source": "/api/onedrive/(.*)",
+      "source": "/api/tianyi/(.*)",
       "destination": "https://tianyi.xiegao.top/api/$1"
     },
     {
-      "source": "/api/onedrive",
+      "source": "/api/tianyi",
       "destination": "https://tianyi.xiegao.top/api/"
+    },
+    {
+      "source": "/api/onedrive/(.*)",
+      "destination": "https://tianyi.xiegao.top/api/od/$1"
+    },
+    {
+      "source": "/api/onedrive",
+      "destination": "https://tianyi.xiegao.top/api/od/"
     }
   ]
 }
