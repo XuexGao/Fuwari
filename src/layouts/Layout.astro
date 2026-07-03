@@ -251,8 +251,12 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 }
 </style>
 
-<script src="../scripts/layout-main-runtime.ts" data-swup-ignore-script></script>
-<script src="../scripts/layout-fancybox-runtime.ts" data-swup-ignore-script></script>
+<script>
+	import "../scripts/layout-main-runtime.ts";
+</script>
+<script>
+	import "../scripts/layout-fancybox-runtime.ts";
+</script>
 
 <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
   <defs>

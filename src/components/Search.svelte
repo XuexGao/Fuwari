@@ -279,9 +279,7 @@ const search = async (
 onMount(() => {
 	scheduleSearchDataPreload();
 
-	// 点击搜索面板/搜索栏外部时关闭搜索面板。
-	// layout-main-runtime.ts 里的 setClickOutsideToClose 因 script 未被打包
-	// 而无法执行，这里由组件自身实现可靠的点击外部关闭。
+	// 点击搜索面板/搜索栏外部时关闭搜索面板，组件自包含不依赖外部脚本。
 	const handleOutsideClick = (event: MouseEvent) => {
 		const panel = document.getElementById("search-panel");
 		if (!panel || panel.classList.contains("float-panel-closed")) return;
@@ -297,6 +295,13 @@ onMount(() => {
 		document.removeEventListener("click", handleOutsideClick);
 	};
 });
+
+// 将搜索面板移到 document.body，脱离 Navbar card-base 的层叠上下文。
+// card-base 自身带 backdrop-filter，会形成层叠上下文，把搜索面板的
+// backdrop-filter 困在 navbar 局部，导致无法模糊背后的页面内容。
+const teleportToBody = (node: HTMLElement) => {
+	document.body.appendChild(node);
+};
 
 $: {
 	if (keywordDesktop) {
@@ -345,7 +350,7 @@ $: {
 </div>
 
 <!-- search panel -->
-<div id="search-panel" class="float-panel float-panel-closed search-panel absolute md:w-[30rem]
+<div id="search-panel" use:teleportToBody class="float-panel float-panel-closed search-panel absolute fixed z-[90] md:w-[30rem]
 top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
 
     <!-- search bar inside panel for phone/tablet -->
