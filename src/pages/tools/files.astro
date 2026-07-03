@@ -147,33 +147,34 @@ const breadcrumbSchema = {
 
 
         <script is:inline>
-            function setupTabs() {
-                const localTab = document.getElementById('tab-local');
-                const onedriveTab = document.getElementById('tab-onedrive');
-                const localContent = document.getElementById('content-local');
-                const onedriveContent = document.getElementById('content-onedrive');
+                        function setupTabs() {
+                const tabs = [
+                    { tab: document.getElementById('tab-local'), content: document.getElementById('content-local') },
+                    { tab: document.getElementById('tab-tianyi'), content: document.getElementById('content-tianyi') },
+                    { tab: document.getElementById('tab-onedrive'), content: document.getElementById('content-onedrive') },
+                ].filter(t => t.tab && t.content);
 
-                if (!localTab || !onedriveTab) return;
+                if (tabs.length === 0) return;
 
-                function switchTab(activeTab, inactiveTab, activeContent, inactiveContent) {
-                    activeTab.classList.add('active-tab');
-                    activeTab.classList.remove('text-gray-600', 'dark:text-white/50', 'hover:bg-gray-100', 'dark:hover:bg-white/5');
-                    
-                    inactiveTab.classList.remove('active-tab');
-                    inactiveTab.classList.add('text-gray-600', 'dark:text-white/50', 'hover:bg-gray-100', 'dark:hover:bg-white/5');
-
-                    activeContent.classList.remove('hidden');
-                    inactiveContent.classList.add('hidden');
+                function activateTab(activeIndex) {
+                    tabs.forEach((t, i) => {
+                        if (i === activeIndex) {
+                            t.tab.classList.add('active-tab');
+                            t.tab.classList.remove('text-gray-600', 'dark:text-white/50', 'hover:bg-gray-100', 'dark:hover:bg-white/5');
+                            t.content.classList.remove('hidden');
+                        } else {
+                            t.tab.classList.remove('active-tab');
+                            t.tab.classList.add('text-gray-600', 'dark:text-white/50', 'hover:bg-gray-100', 'dark:hover:bg-white/5');
+                            t.content.classList.add('hidden');
+                        }
+                    });
                 }
 
-                localTab.addEventListener('click', () => {
-                    switchTab(localTab, onedriveTab, localContent, onedriveContent);
-                });
-
-                onedriveTab.addEventListener('click', () => {
-                    switchTab(onedriveTab, localTab, onedriveContent, localContent);
+                tabs.forEach((t, i) => {
+                    t.tab.addEventListener('click', () => activateTab(i));
                 });
             }
+
 
             setupTabs();
         </script>
