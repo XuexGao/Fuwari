@@ -100,6 +100,36 @@ function formatSize(size?: number) {
 	return size.toFixed(i === 0 ? 0 : 1) + " " + units[i];
 }
 
+// 下载文件：fetch /api/tianyi/raw/ 拿到 cloudcube 签名 URL，再用 window.open 直连下载
+// 不能用 <a href>，因为浏览器导航请求会触发 Cloudflare Assets 静态资源匹配，
+// 未命中直接返回 404-page，不会调用 worker.js 代理
+let downloadingId: string | null = null;
+async function downloadFile(item: FileItem, event: MouseEvent) {
+	event.preventDefault();
+	if (downloadingId) return;
+	// 如果有直链（如 OneDrive 的 @microsoft.graph.downloadUrl），直接打开
+	if (item.downloadUrl) {
+		window.open(item.downloadUrl, "_blank");
+		return;
+	}
+	downloadingId = item.id;
+	try {
+		const url = apiBase + "raw/?path=" + encodeURIComponent(item.path);
+		const res = await fetch(url);
+		if (!res.ok) throw new Error(`HTTP ${res.status}`);
+		const data = await res.json();
+		if (data.downloadUrl) {
+			window.open(data.downloadUrl, "_blank");
+		} else {
+			throw new Error("未获取到下载链接");
+		}
+	} catch (e: any) {
+		error = `下载失败：${e.message || e}`;
+	} finally {
+		downloadingId = null;
+	}
+}
+
 onMount(async () => {
 	await fetchItems("/");
 	initialized = true;
@@ -184,25 +214,28 @@ onMount(async () => {
 							</div>
 						</div>
 					{:else}
-						<a
-							href={item.downloadUrl || apiBase + "raw/?path=" + encodeURIComponent(item.path)}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors group no-underline"
-						>
-							<div class="flex items-center gap-2 flex-1">
-								<div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
-									<Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90" />
-								</div>
-								<span class="text-gray-700 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors truncate">{item.name}</span>
+				<a
+					href="#"
+					on:click={(e) => downloadFile(item, e)}
+					class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors group no-underline cursor-pointer"
+				>
+						<div class="flex items-center gap-2 flex-1">
+							<div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
+								<Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90" />
 							</div>
-							<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-white/30">
-								<span class="w-24 text-right">{formatSize(item.size)}</span>
-								<div class="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-all text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white w-12 flex justify-center" title="下载">
+							<span class="text-gray-700 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors truncate">{item.name}</span>
+						</div>
+						<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-white/30">
+							<span class="w-24 text-right">{formatSize(item.size)}</span>
+							<div class="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-all text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white w-12 flex justify-center" title="下载">
+								{#if downloadingId === item.id}
+									<Icon icon="material-symbols:progress-activity" class="text-lg animate-spin" />
+								{:else}
 									<Icon icon="material-symbols:download" class="text-lg" />
-								</div>
+								{/if}
 							</div>
-						</a>
+						</div>
+					</a>
 					{/if}
 				</div>
 			{/each}
