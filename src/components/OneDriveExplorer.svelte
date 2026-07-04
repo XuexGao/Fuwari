@@ -1,5 +1,6 @@
 <script lang="ts">
 import Icon from "@iconify/svelte";
+import { onMount } from "svelte";
 import "../icons/client-icons.ts";
 import { onedriveApiConfig } from "@/config";
 
@@ -42,6 +43,9 @@ async function fetchItems(currentPath = "/") {
 			size: c.size,
 			downloadUrl: c["@microsoft.graph.downloadUrl"],
 		}));
+		// 同步当前层级的缓存
+		pathStack[pathStack.length - 1] = { ...pathStack[pathStack.length - 1], items };
+		pathStack = pathStack;
 	} catch (e: any) {
 		error = e.message || "加载失败";
 	} finally {
@@ -51,7 +55,7 @@ async function fetchItems(currentPath = "/") {
 
 function enterDirectory(item: FileItem) {
 	if (item.type !== "directory") return;
-	pathStack.push({ name: item.name, path: item.path, items: [] });
+	pathStack = [...pathStack, { name: item.name, path: item.path, items: [] }];
 	items = [];
 	fetchItems(item.path);
 }
@@ -61,6 +65,14 @@ function goToIndex(idx: number) {
 	pathStack = pathStack.slice(0, idx + 1);
 	items = pathStack[pathStack.length - 1].items;
 	fetchItems(pathStack[pathStack.length - 1].path);
+}
+
+function goBack() {
+	if (pathStack.length > 1) {
+		pathStack = pathStack.slice(0, -1);
+		items = pathStack[pathStack.length - 1].items;
+		fetchItems(pathStack[pathStack.length - 1].path);
+	}
 }
 
 function getFileIcon(name: string) {
@@ -88,78 +100,142 @@ function formatSize(size?: number) {
 	return size.toFixed(i === 0 ? 0 : 1) + " " + units[i];
 }
 
-async function onMount() {
+onMount(async () => {
 	await fetchItems("/");
 	initialized = true;
-}
+});
 </script>
 
-<div class="min-h-[300px]">
+<div class="file-explorer-container">
 	<!-- 面包屑 -->
-	<div class="flex flex-wrap items-center gap-1 mb-4 text-sm">
+	<div class="breadcrumb-bar flex items-center gap-1 mb-4 p-2 bg-gray-100 dark:bg-white/5 rounded-lg text-sm overflow-x-auto whitespace-nowrap">
 		{#each pathStack as crumb, i}
 			{#if i > 0}
-				<span class="opacity-40">/</span>
+				<Icon icon="material-symbols:chevron-right" class="text-gray-400 dark:text-white/50 flex-shrink-0" />
 			{/if}
 			{#if i === pathStack.length - 1}
-				<span class="font-semibold text-[var(--primary)]">{crumb.name}</span>
+				<span class="px-2 py-1 text-[var(--primary)] font-bold">{crumb.name}</span>
 			{:else}
-				<button class="opacity-70 hover:opacity-100 hover:text-[var(--primary)] transition-colors" on:click={() => goToIndex(i)}>
+				<button
+					class="px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-white/70"
+					on:click={() => goToIndex(i)}
+				>
 					{crumb.name}
 				</button>
 			{/if}
 		{/each}
 	</div>
 
-	<!-- 加载中 -->
-	{#if loading}
-		<div class="flex items-center justify-center py-12 text-sm opacity-60">
-			<Icon icon="material-symbols:progress-activity" class="animate-spin mr-2" />
-			加载中...
-		</div>
-	{/if}
-
-	<!-- 错误 -->
-	{#if error}
-		<div class="text-center py-12 text-red-500 text-sm">{error}</div>
-	{/if}
-
-	<!-- 文件列表 -->
+	<!-- 列表头 -->
 	{#if !loading && !error && items.length > 0}
-		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-			{#each items as item (item.id)}
-				{#if item.type === "directory"}
-					<button
-						class="flex items-center gap-3 p-3 rounded-lg border border-[var(--line-color)] hover:bg-[var(--btn-regular-bg)] transition-colors text-left"
-						on:click={() => enterDirectory(item)}
-					>
-						<Icon icon="material-symbols:folder" class="text-xl text-gray-800 dark:text-white/90 shrink-0" />
-						<span class="flex-1 truncate text-sm">{item.name}</span>
-					</button>
-				{:else}
-					<a
-						href={item.downloadUrl || apiBase + "raw/?path=" + encodeURIComponent(item.path)}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-3 p-3 rounded-lg border border-[var(--line-color)] hover:bg-[var(--btn-regular-bg)] transition-colors"
-					>
-						<Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90 shrink-0" />
-						<div class="flex-1 min-w-0">
-							<div class="truncate text-sm">{item.name}</div>
-							{#if item.size}
-								<div class="text-xs opacity-50">{formatSize(item.size)}</div>
-							{/if}
-						</div>
-					</a>
-				{/if}
-			{/each}
+		<div class="file-list-header flex items-center px-3 py-2 text-xs font-bold text-gray-500 dark:text-white/30 uppercase tracking-wider border-b border-gray-200 dark:border-white/5 mb-1">
+			<span class="flex-1">名称</span>
+			<span class="w-24 text-right">大小</span>
+			<span class="w-12"></span>
 		</div>
 	{/if}
 
-	<!-- 空目录 -->
-	{#if !loading && !error && initialized && items.length === 0}
-		<div class="text-center py-12 text-sm opacity-50">此目录为空</div>
-	{/if}
+	<div class="file-list">
+		<!-- 加载中 -->
+		{#if loading}
+			<div class="flex items-center justify-center py-12 text-sm opacity-60">
+				<Icon icon="material-symbols:progress-activity" class="animate-spin mr-2" />
+				加载中...
+			</div>
+		{/if}
+
+		<!-- 错误 -->
+		{#if error}
+			<div class="text-center py-12 text-red-500 text-sm">{error}</div>
+		{/if}
+
+		<!-- 返回上一级 -->
+		{#if !loading && !error && pathStack.length > 1}
+			<div
+				class="item-row flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
+				on:click={goBack}
+				role="button"
+				tabindex="0"
+			>
+				<div class="flex items-center justify-center w-6 h-6 text-gray-500 dark:text-white/50 group-hover:text-[var(--primary)] transition-colors">
+					<Icon icon="material-symbols:arrow-upward-alt-rounded" class="text-xl" />
+				</div>
+				<span class="text-gray-700 dark:text-white/70 font-medium group-hover:text-gray-900 dark:group-hover:text-white transition-colors">... (返回上一级)</span>
+			</div>
+		{/if}
+
+		<!-- 文件列表 -->
+		{#if !loading && !error && items.length > 0}
+			{#each items as item (item.id)}
+				<div class="item-row">
+					{#if item.type === "directory"}
+						<div
+							class="folder-item flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors group"
+							on:click={() => enterDirectory(item)}
+							role="button"
+							tabindex="0"
+						>
+							<div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
+								<Icon icon="material-symbols:folder" class="text-xl text-gray-800 dark:text-white/90" />
+							</div>
+							<span class="text-gray-800 dark:text-white/90 font-medium flex-1">{item.name}</span>
+							<div class="text-gray-400 dark:text-white/50 group-hover:text-gray-600 dark:group-hover:text-white transition-colors">
+								<Icon icon="material-symbols:chevron-right" class="text-xl" />
+							</div>
+						</div>
+					{:else}
+						<a
+							href={item.downloadUrl || apiBase + "raw/?path=" + encodeURIComponent(item.path)}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="file-item flex items-center justify-between py-2 px-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 transition-colors group no-underline"
+						>
+							<div class="flex items-center gap-2 flex-1">
+								<div class="w-8 h-8 flex items-center justify-center bg-gray-200/80 dark:bg-black/50 backdrop-blur-sm rounded-full transition-all group-hover:scale-110">
+									<Icon icon={getFileIcon(item.name)} class="text-xl text-gray-800 dark:text-white/90" />
+								</div>
+								<span class="text-gray-700 dark:text-white/70 group-hover:text-gray-900 dark:group-hover:text-white transition-colors truncate">{item.name}</span>
+							</div>
+							<div class="flex items-center gap-4 text-xs text-gray-500 dark:text-white/30">
+								<span class="w-24 text-right">{formatSize(item.size)}</span>
+								<div class="opacity-0 group-hover:opacity-100 p-1 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-all text-gray-600 dark:text-white/50 hover:text-gray-900 dark:hover:text-white w-12 flex justify-center" title="下载">
+									<Icon icon="material-symbols:download" class="text-lg" />
+								</div>
+							</div>
+						</a>
+					{/if}
+				</div>
+			{/each}
+		{/if}
+
+		<!-- 空目录 -->
+		{#if !loading && !error && initialized && items.length === 0}
+			<div class="py-12 text-center text-gray-400 dark:text-white/20">
+				<Icon icon="material-symbols:folder-off-outline" class="text-4xl mx-auto mb-2" />
+				<p>文件夹为空</p>
+			</div>
+		{/if}
+	</div>
 </div>
 
-<svelte:window on:load={onMount} />
+<style>
+	.file-explorer-container {
+		display: flex;
+		flex-direction: column;
+	}
+	.item-row {
+		width: 100%;
+	}
+	:global(.file-explorer-container a) {
+		text-decoration: none !important;
+	}
+	.breadcrumb-bar::-webkit-scrollbar {
+		height: 2px;
+	}
+	.breadcrumb-bar::-webkit-scrollbar-thumb {
+		background: rgba(0, 0, 0, 0.2);
+	}
+	.dark .breadcrumb-bar::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.1);
+	}
+</style>
