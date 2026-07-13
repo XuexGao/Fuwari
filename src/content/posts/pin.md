@@ -22,7 +22,7 @@ pinned: true
 
 ## 资源下载
 - **OpenList**: [点击访问](https://pan.xiegao.top)
-- **OneDrive**: [点击访问](https://tianyi.xiegao.top)
+- **OneDrive**: [点击访问](https://pan.xiegao.top)
 - **天翼云盘**: [点击访问](https://cloud.189.cn/t/zIz22qiEFjye)  
   访问码: `arg8`
 
