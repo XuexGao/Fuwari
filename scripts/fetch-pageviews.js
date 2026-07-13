@@ -5,7 +5,8 @@ import path from 'node:path';
 const umamiConfig = {
     enable: true,
     baseUrl: "https://u.xiegao.top",
-    shareId: "IoWiNCvTUPxaDg5x",
+    shareId: "My5vwwrXmJJYswdJ",
+    websiteId: "4696c062-4271-4b8b-8ed7-b481f5961f28",
     timezone: "Asia/Shanghai",
 };
 
@@ -30,22 +31,21 @@ async function getPageStats(websiteId, token, urlPath) {
         endAt: endAt.toString(),
         unit: 'hour',
         timezone: umamiConfig.timezone,
-        compare: 'false'
     });
 
     if (urlPath === '/') {
         // For root path (total site stats), do not include 'path' parameter
-        // OR if user specifically meant path=/ without eq., but usually no path means total stats
-        // Based on user instruction "直接不带eq参数即可" and context from swup-js.md
     } else {
-        params.append('path', `eq.${urlPath}`);
+        // Umami v3: path 直接用原始路径，不再支持 eq. 前缀
+        params.set('path', urlPath);
     }
 
     const apiUrl = `${umamiConfig.baseUrl}/api/websites/${websiteId}/stats?${params.toString()}`;
     
     const response = await fetch(apiUrl, {
         headers: {
-            'x-umami-share-token': token
+            'x-umami-share-token': token,
+            'x-umami-share-context': '1'
         }
     });
 

@@ -108,7 +108,7 @@ for (const post of posts) {
 
             const url = `${baseUrl}/api/websites/${websiteId}/stats?startAt=0&endAt=${Date.now()}`;
             const res = await fetch(url, {
-                headers: { 'x-umami-share-token': token }
+                headers: { 'x-umami-share-token': token, 'x-umami-share-context': '1' }
             });
             if (!res.ok) return;
             const data = await res.json();

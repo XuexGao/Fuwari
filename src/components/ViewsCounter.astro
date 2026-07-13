@@ -25,12 +25,21 @@ const id =
 		const el = document.getElementById(id);
 		if (!el) return;
 		try {
-			const res = await fetch(
-				`${umamiConfig.baseUrl}/share?pathname=${encodeURIComponent(pathname)}`,
-			);
+			// Umami v3: /share?pathname= 已失效（返回 HTML 分享页）
+			// 改用 share token 方式：先拿 token，再用 token 查 stats
+			const { baseUrl, shareId, websiteId } = umamiConfig;
+			const tokenRes = await fetch(`${baseUrl}/api/share/${shareId}`);
+			if (!tokenRes.ok) return;
+			const tokenData = await tokenRes.json();
+			const token = tokenData.token;
+
+			const statsUrl = `${baseUrl}/api/websites/${websiteId}/stats?path=${encodeURIComponent(pathname)}&startAt=0&endAt=${Date.now()}`;
+			const res = await fetch(statsUrl, {
+				headers: { 'x-umami-share-token': token, 'x-umami-share-context': '1' }
+			});
 			if (!res.ok) return;
 			const data = await res.json();
-			const views = data?.views || 0;
+			const views = data?.pageviews || 0;
 			const current = Number.parseInt(el.textContent || "0", 10) || 0;
 			if (current === 0) animateValueWithSuffix(el, 0, views, 1000, suffix);
 			else el.innerHTML = `${views} ${suffix}`;

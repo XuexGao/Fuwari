@@ -94,7 +94,7 @@ const className = Astro.props.class;
 
             const url = `${baseUrl}/api/websites/${websiteId}/stats?path=/posts/${slug}/&startAt=0&endAt=${Date.now()}`;
             const response = await fetch(url, {
-                headers: { 'x-umami-share-token': token }
+                headers: { 'x-umami-share-token': token, 'x-umami-share-context': '1' }
             });
             if (!response.ok) return;
             const data = await response.json();

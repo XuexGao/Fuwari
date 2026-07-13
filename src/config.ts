@@ -70,7 +70,7 @@ export const siteConfig: SiteConfig = {
 export const umamiConfig: UmamiConfig = {
 	enable: true,
 	baseUrl: "https://u.xiegao.top",
-	shareId: "IoWiNCvTUPxaDg5x",
+	shareId: "My5vwwrXmJJYswdJ",
 	websiteId: "4696c062-4271-4b8b-8ed7-b481f5961f28",
 	timezone: "Asia/Shanghai",
 };
