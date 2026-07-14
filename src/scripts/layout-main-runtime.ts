@@ -131,11 +131,47 @@ init();
 bindPostInlineDiff();
 
 const setup = () => {
-	// Note: astro-icon v1.1.5+ uses self-contained inline SVGs
-	// (each <Icon> renders as <svg><symbol/><use/></svg>).
-	// No global sprite needs to be preserved across Swup navigations.
-	// The inline SVGs are part of the Swup-replaced container content
-	// and are always correct for the current page.
+	// astro-icon 做了页面级 symbol 去重：同一图标只在首次出现时
+	// 生成 <symbol> 定义，后续只生成 <use> 引用。
+	// <symbol> 定义在 <main> 内部（如 PostSort 的 SVG 中），
+	// 不在 <body> 开头的全局 sprite 里。
+	// 当 Swup 替换 <main> 时，<use> 可能因 symbol 定义尚未被
+	// 浏览器索引而无法渲染。将 <main> 中的 symbol 同步到全局
+	// sprite，确保 <use> 始终能找到 symbol 定义。
+	const syncSvgSymbols = () => {
+		const main = document.querySelector("main");
+		if (!main) return;
+		let sprite = document.querySelector<SVGSVGElement>(
+			'body > svg[data-astro-icon-sprite]',
+		);
+		if (!sprite) {
+			sprite = document.createElementNS(
+				"http://www.w3.org/2000/svg",
+				"svg",
+			) as SVGSVGElement;
+			sprite.setAttribute("data-astro-icon-sprite", "");
+			sprite.setAttribute("aria-hidden", "true");
+			sprite.setAttribute(
+				"style",
+				"position:absolute;width:0;height:0;overflow:hidden",
+			);
+			document.body.insertBefore(sprite, document.body.firstChild);
+		}
+		const existing = new Set(
+			Array.from(sprite.querySelectorAll("symbol") ?? []).map((s) =>
+				s.getAttribute("id"),
+			),
+		);
+		for (const sym of Array.from(
+			main.querySelectorAll("symbol[id^='ai:']") ?? [],
+		)) {
+			const id = sym.getAttribute("id");
+			if (id && !existing.has(id)) {
+				sprite.appendChild(sym.cloneNode(true));
+				existing.add(id);
+			}
+		}
+	};
 
 	const SORT_PATHS = [
 		"/",
@@ -219,6 +255,9 @@ const setup = () => {
 			heightExtend.classList.add("hidden");
 		}
 
+		// Swup 替换 <main> 后，同步新的 symbol 定义到全局 sprite
+		syncSvgSymbols();
+
 		scrollFunction();
 		loadGiscus();
 	});
@@ -238,6 +277,9 @@ const setup = () => {
 			scrollFunction();
 		});
 	});
+
+	// 首次加载也同步一次（Swup 不会在首次加载时触发 page:view）
+	syncSvgSymbols();
 };
 if (window?.swup?.hooks) {
 	setup();
