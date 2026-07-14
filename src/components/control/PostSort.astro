@@ -42,15 +42,6 @@ const getSortUrl = (type: string, descending: boolean) => {
     </a>
 </div>
 
-<style>
-    .sort-btn {
-        @apply p-1.5 rounded-md transition-all flex items-center justify-center hover:bg-white/5 active:scale-90;
-    }
-    .sort-btn.active {
-        @apply bg-[var(--primary)] text-white dark:text-black shadow-sm hover:bg-[var(--primary)];
-    }
-</style>
-
 <script is:inline>
     function updateSortControls() {
         const path = window.location.pathname;

@@ -108,6 +108,12 @@
         @apply transition flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
         text-black/75 dark:text-white/75
     }
+    .sort-btn {
+        @apply p-1.5 rounded-md transition-all flex items-center justify-center hover:bg-white/5 active:scale-90;
+    }
+    .sort-btn.active {
+        @apply bg-[var(--primary)] text-white dark:text-black shadow-sm hover:bg-[var(--primary)];
+    }
 
     .link-underline {
         @apply transition underline decoration-2 decoration-dashed decoration-[var(--link-underline)]
