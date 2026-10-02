@@ -1,6 +1,6 @@
 ---
 import path from "node:path";
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 
 import { umamiConfig } from "../config";
@@ -41,7 +41,7 @@ const hasCover = image !== undefined && image !== null && image !== "";
 
 const coverWidth = "28%";
 
-const { remarkPluginFrontmatter } = await entry.render();
+const { remarkPluginFrontmatter } = await render(entry);
 ---
 <a
     href={url}
@@ -72,7 +72,7 @@ const { remarkPluginFrontmatter } = await entry.render();
             updated={updated}
             hideUpdateDate={true}
             hidePublishedDate={false}
-            slug={entry.slug}
+            slug={entry.id}
             class="mb-2 md:mb-4"
         ></PostMetadata>
 

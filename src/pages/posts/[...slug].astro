@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import path from "node:path";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
@@ -24,13 +25,13 @@ import {
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
 	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
+		params: { slug: entry.id },
 		props: { entry },
 	}));
 }
 
 const { entry } = Astro.props;
-const { Content, headings, remarkPluginFrontmatter } = await entry.render();
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 
 const history = getPostHistory(entry.id);
 const lastUpdateTime =
@@ -146,7 +147,7 @@ const jsonLd = [
                         published={entry.data.published}
                         updated={entry.data.updated}
                         tags={entry.data.tags}
-                        slug={entry.slug}
+                        slug={entry.id}
                 ></PostMetadata>
                 {!entry.data.image && <div class="border-[var(--line-divider)] border-dashed border-b-[1px] mb-5"></div>}
             </div>
@@ -202,7 +203,7 @@ const jsonLd = [
                             <div class="flex-1">
                                 <p class="text-black/80 dark:text-white/80 text-sm mb-1">发现错误或想要改进这篇文章？</p>
                                 <a 
-                                    href={`${gitHubEditConfig.baseUrl}/${entry.slug}.md`}
+                                    href={`${gitHubEditConfig.baseUrl}/${entry.id}.md`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="inline-flex items-center gap-1 text-[var(--primary)] hover:text-[oklch(0.65_0.16_var(--hue))] text-sm font-medium transition-colors"
@@ -247,7 +248,7 @@ const jsonLd = [
                 )}
             </div>
 
-            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {licenseConfig.enable && <License title={entry.data.title} slug={entry.id} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
             
 
             
@@ -314,7 +315,7 @@ const jsonLd = [
     document.addEventListener('swup:contentReplaced', setupImageLoading);
 </script>
 
-<script define:vars={{ umamiConfig, postUrl: getPostUrlBySlug(entry.slug) }}>
+<script define:vars={{ umamiConfig, postUrl: getPostUrlBySlug(entry.id) }}>
     async function loadPageViews() {
         try {
             let pathname = postUrl;

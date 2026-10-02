@@ -19,7 +19,7 @@ export async function GET(_context: APIContext) {
 		title: post.data.title || "",
 		description: post.data.description || "",
 		content: toPlainText(post.body || ""),
-		link: post.slug,
+		link: post.id,
 		published: post.data.published.toISOString(),
 	}));
 

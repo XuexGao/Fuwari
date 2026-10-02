@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, render } from "astro:content";
 import Markdown from "../misc/Markdown.astro";
 
 const announcement = await getEntry("spec", "announcement");
@@ -10,7 +10,7 @@ let Content = null;
 if (announcement) {
 	enable = announcement.data.enable;
 	level = announcement.data.level;
-	const rendered = await announcement.render();
+	const rendered = await render(announcement);
 	Content = rendered.Content;
 }
 

@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import { getSortedPosts } from "@utils/content-utils";
 import { Icon } from "astro-icon/components";
 import { profileConfig, siteConfig, umamiConfig } from "../../config";
@@ -10,7 +11,7 @@ const totalPosts = posts.length;
 let totalWords = 0;
 
 for (const post of posts) {
-	const { remarkPluginFrontmatter } = await post.render();
+	const { remarkPluginFrontmatter } = await render(post);
 	if (remarkPluginFrontmatter?.words) {
 		totalWords += remarkPluginFrontmatter.words;
 	}

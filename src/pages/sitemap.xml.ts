@@ -23,7 +23,7 @@ export const GET: APIRoute = async () => {
 	];
 
 	const postPages: SitemapPage[] = posts.map((post) => ({
-		url: `/posts/${post.slug}/`,
+		url: `/posts/${post.id}/`,
 		priority: 0.7,
 		changefreq: "weekly",
 		lastmod: post.data.updated || post.data.published,

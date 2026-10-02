@@ -11,8 +11,11 @@ export interface Commit {
 
 export function getPostHistory(postId: string): Commit[] {
 	try {
-		// Normalize ID to match keys in JSON (forward slashes)
-		const normalizedId = postId.replace(/\\/g, "/");
+		// Content Layer 的 entry.id 不含扩展名，而 update-diff.js 以含 .md 的路径为 key
+		let normalizedId = postId.replace(/\\/g, "/");
+		if (!/\.[a-z0-9]+$/i.test(normalizedId)) {
+			normalizedId = `${normalizedId}.md`;
+		}
 
 		// Look up in the pre-generated history map
 		if (gitHistory?.[normalizedId]) {
