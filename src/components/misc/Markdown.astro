@@ -60,14 +60,18 @@ const transformMermaidBlocks = () => {
         const isMermaid = className.includes("language-mermaid") || lang === "mermaid";
         if (!isMermaid) return;
 
+        // 使用 innerText 而不是 textContent，以正确还原 HTML 实体（上游 f09aed7b）
         const sourceByLines = code
             ? Array.from(code.querySelectorAll(".code:not(summary *)"))
-                .map((el) => el.textContent)
+                .map((el) => (el as HTMLElement).innerText || el.textContent)
                 .map((text) => (text === "\n" ? "" : text))
                 .join("\n")
                 .trim()
             : "";
-        const source = sourceByLines || code?.textContent?.trim();
+        const source =
+            sourceByLines ||
+            (code as HTMLElement)?.innerText?.trim() ||
+            code?.textContent?.trim();
         if (!source) return;
 
         const container = document.createElement("div");
