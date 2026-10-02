@@ -624,7 +624,7 @@ function applySimpleDiff(container: HTMLElement, diffParts: DiffPart[]) {
 	}
 }
 
-export function initPostInlineDiff() {
+export function initPostInlineDiff(): void {
 	const log = isLogEnabled();
 	const sp = new URLSearchParams(window.location.search);
 	const isDebug = sp.get(DEBUG_PARAM_KEY) === "1";
@@ -734,7 +734,7 @@ export function initPostInlineDiff() {
 		anchor.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-export function bindPostInlineDiff() {
+export function bindPostInlineDiff(): void {
 	const w = window as any;
 	if (w.__fuwariPostInlineDiffBound) return;
 	w.__fuwariPostInlineDiffBound = true;

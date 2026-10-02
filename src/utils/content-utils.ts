@@ -1,6 +1,6 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
-export async function getSortedPosts(lang?: string) {
+export async function getSortedPosts(lang?: string): Promise<CollectionEntry<"posts">[]> {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
 		const isDraft = import.meta.env.PROD ? data.draft !== true : true;
 		if (!isDraft) return false;

@@ -16,7 +16,7 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
 	"/src/content/**/*.{jpeg,jpg,png,gif,webp}", // include posts and assets
 );
 
-export async function GET(context: APIContext) {
+export async function GET(context: APIContext): Promise<Response> {
 	if (!context.site) {
 		throw Error("site not set");
 	}

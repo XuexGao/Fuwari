@@ -13,7 +13,7 @@ function toPlainText(markdown: string): string {
 		.trim();
 }
 
-export async function GET(_context: APIContext) {
+export async function GET(_context: APIContext): Promise<Response> {
 	const posts = await getSortedPosts();
 	const payload = posts.map((post) => ({
 		title: post.data.title || "",

@@ -89,7 +89,7 @@ export function getStoredTheme(): string {
 	return localStorage.getItem("theme") || AUTO_MODE;
 }
 
-export function applyThemeToDocument(theme: string) {
+export function applyThemeToDocument(theme: string): void {
 	if (theme === DARK_MODE || (theme === AUTO_MODE && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
 		document.documentElement.classList.add("dark");
 		document.documentElement.setAttribute("data-theme", "dark");
