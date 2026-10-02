@@ -14,6 +14,7 @@ interface SearchResult {
 	urlPath?: string;
 	highlightQuery?: string;
 	matchCount: number;
+	published: string;
 }
 
 interface SearchPost {
@@ -21,12 +22,15 @@ interface SearchPost {
 	description: string;
 	content: string;
 	link: string;
+	published?: string;
 }
 
 let keywordDesktop = "";
 let keywordMobile = "";
 let result: SearchResult[] = [];
 let isSearching = false;
+// 搜索结果排序方向：false = 最新优先（默认），true = 最旧优先
+let sortAsc = false;
 let posts: SearchPost[] = [];
 let hasLoadedPosts = false;
 let isLoadingPosts = false;
@@ -122,6 +126,7 @@ const loadPostsFromRss = async (): Promise<SearchPost[]> => {
 			title: item.querySelector("title")?.textContent || "",
 			description: item.querySelector("description")?.textContent || "",
 			content,
+			published: item.querySelector("pubDate")?.textContent || "",
 			link:
 				item
 					.querySelector("link")
@@ -261,9 +266,9 @@ const search = async (
 					urlPath: `/posts/${post.link}`,
 					highlightQuery: keyword,
 					matchCount,
+					published: post.published || "",
 				};
-			})
-			.sort((a, b) => b.matchCount - a.matchCount);
+			});
 
 		result = searchResults;
 		setPanelVisibility(true);
@@ -275,6 +280,24 @@ const search = async (
 		isSearching = false;
 	}
 };
+
+// 按发布日期排序：默认最新优先，可切换为最旧优先；
+// 日期相同（或命中旧缓存缺少 published 字段）时回退到关键词命中次数。
+const sortResults = (items: SearchResult[], ascending: boolean): SearchResult[] => {
+	const toTimestamp = (value: string): number => {
+		const time = new Date(value).getTime();
+		return Number.isNaN(time) ? 0 : time;
+	};
+
+	return [...items].sort((a, b) => {
+		const dateDiff = toTimestamp(b.published) - toTimestamp(a.published);
+		if (dateDiff !== 0) return ascending ? -dateDiff : dateDiff;
+		return b.matchCount - a.matchCount;
+	});
+};
+
+let sortedResult: SearchResult[] = [];
+$: sortedResult = sortResults(result, sortAsc);
 
 onMount(() => {
 	scheduleSearchDataPreload();
@@ -392,13 +415,21 @@ top-20 left-4 md:left-[unset] right-4 shadow-none rounded-2xl p-2">
     {#if keywordDesktop || keywordMobile}
         <!-- search results header -->
         {#if result.length > 0}
-            <div class="text-xs text-black/40 dark:text-white/40 px-3 py-2 border-b border-black/5 dark:border-white/5">
-                {result.length} 条搜索结果
+            <div class="flex items-center justify-between text-xs text-black/40 dark:text-white/40 px-3 py-2 border-b border-black/5 dark:border-white/5">
+                <span>{sortedResult.length} 条搜索结果</span>
+                <button
+                    class="px-2 py-1 rounded-md transition-all bg-black/5 dark:bg-white/5 text-black/50 dark:text-white/50 hover:bg-black/10 dark:hover:bg-white/10 flex items-center gap-1"
+                    on:click={() => { sortAsc = !sortAsc; }}
+                    title={sortAsc ? "切换为最新优先" : "切换为最旧优先"}
+                >
+                    <Icon icon="material-symbols:arrow-upward-alt-rounded" class="text-sm {sortAsc ? '' : 'rotate-180'}"></Icon>
+                    {sortAsc ? "最旧优先" : "最新优先"}
+                </button>
             </div>
         {/if}
 
         <!-- search results -->
-        {#each result as item}
+        {#each sortedResult as item}
             <a href={item.url} on:click={closePanel}
                class="transition first-of-type:mt-2 lg:first-of-type:mt-0 group block
            rounded-xl text-lg px-3 py-2 hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]">
