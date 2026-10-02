@@ -1,0 +1,31 @@
+---
+export const toolMeta = {
+	title: "幻影坦克",
+	description: "本地生成支持白底/黑底显隐效果的 PNG",
+	icon: "material-symbols:layers-rounded",
+	order: 4,
+};
+
+import PhantomTankGenerator from "@components/PhantomTankGenerator.svelte";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+
+const title = "光棱坦克 / 幻影坦克图片工具";
+---
+
+<MainGridLayout title={title}>
+	<div class="card-base p-6 md:p-8 border border-gray-200 dark:border-white/10 rounded-xl">
+		<div class="flex items-center justify-between gap-3 flex-wrap mb-6">
+			<div class="flex items-center gap-2">
+				<div class="h-8 w-8 rounded-lg flex items-center justify-center backdrop-blur-md border border-[var(--line-color)] bg-white/60 dark:bg-black/60">
+					<Icon name="material-symbols:layers-rounded" class="text-[1.5rem] text-[var(--primary)]" />
+				</div>
+				<h1 class="text-2xl font-bold text-gray-900 dark:text-white">{title}</h1>
+			</div>
+		</div>
+		<p class="mb-6 text-sm leading-relaxed text-50">
+			同页支持光棱坦克与幻影坦克两种模式：可在浏览器本地完成双图上传、生成、预览与 PNG 下载；所有处理均在前端完成，不会上传到服务端。
+		</p>
+		<PhantomTankGenerator client:visible />
+	</div>
+</MainGridLayout>
