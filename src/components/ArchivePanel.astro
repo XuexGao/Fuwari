@@ -33,6 +33,8 @@ const groups: { year: number; posts: typeof posts }[] = (() => {
 	return groupedPostsArray;
 })();
 
+const years = groups.map((group) => group.year);
+
 function formatDate(date: Date) {
 	const month = (date.getMonth() + 1).toString().padStart(2, "0");
 	const day = date.getDate().toString().padStart(2, "0");
@@ -41,9 +43,29 @@ function formatDate(date: Date) {
 ---
 
 <div class="card-base px-8 py-6">
+    <div class="mb-6 flex flex-wrap items-center gap-2" data-archive-filters>
+        <button
+            type="button"
+            class="archive-filter-btn is-active"
+            data-year-filter="all"
+            aria-pressed="true"
+        >
+            全部
+        </button>
+        {years.map((year) => (
+            <button
+                type="button"
+                class="archive-filter-btn"
+                data-year-filter={String(year)}
+                aria-pressed="false"
+            >
+                {year}
+            </button>
+        ))}
+    </div>
     {
         groups.map(group => (
-            <div>
+            <div data-archive-year={String(group.year)}>
                 <div class="flex flex-row w-full items-center h-[3.75rem]">
                     <div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75">{group.year}</div>
                     <div class="w-[15%] md:w-[10%]">
@@ -91,3 +113,67 @@ function formatDate(date: Date) {
         ))
     }
 </div>
+
+<style>
+	.archive-filter-btn {
+		@apply px-3 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)] text-black/75 dark:text-white/75 active:scale-95;
+	}
+
+	.archive-filter-btn.is-active {
+		@apply bg-[var(--primary)] text-white dark:text-black shadow-sm hover:bg-[var(--primary)];
+	}
+</style>
+
+<script is:inline>
+	function setupArchiveFilters() {
+		const filterRoot = document.querySelector("[data-archive-filters]");
+		if (!filterRoot) return;
+		// Swup 每次替换内容都会重新执行内联脚本，这里做幂等保护，避免重复绑定监听
+		if (filterRoot.dataset.archiveFiltersBound === "true") return;
+		filterRoot.dataset.archiveFiltersBound = "true";
+
+		const buttons = Array.from(filterRoot.querySelectorAll("[data-year-filter]"));
+		const groupNodes = Array.from(document.querySelectorAll("[data-archive-year]"));
+		if (buttons.length === 0 || groupNodes.length === 0) return;
+
+		const applyFilter = (year) => {
+			const normalizedYear = year === "all" ? "all" : String(year);
+
+			buttons.forEach((button) => {
+				const isActive = button.getAttribute("data-year-filter") === normalizedYear;
+				button.classList.toggle("is-active", isActive);
+				button.setAttribute("aria-pressed", String(isActive));
+			});
+
+			groupNodes.forEach((group) => {
+				const matches =
+					normalizedYear === "all" ||
+					group.getAttribute("data-archive-year") === normalizedYear;
+				group.toggleAttribute("hidden", !matches);
+			});
+
+			const nextHash = normalizedYear === "all" ? "" : "#" + normalizedYear;
+			if (window.location.hash !== nextHash) {
+				history.replaceState(
+					null,
+					"",
+					window.location.pathname + window.location.search + nextHash,
+				);
+			}
+		};
+
+		buttons.forEach((button) => {
+			button.addEventListener("click", () => {
+				applyFilter(button.getAttribute("data-year-filter") || "all");
+			});
+		});
+
+		const initialYear = window.location.hash.replace("#", "");
+		const hasInitialYear = buttons.some(
+			(button) => button.getAttribute("data-year-filter") === initialYear,
+		);
+		applyFilter(hasInitialYear ? initialYear : "all");
+	}
+
+	setupArchiveFilters();
+</script>
