@@ -26,6 +26,7 @@ interface Props {
 	description?: string;
 	lang?: string;
 	setOGTypeArticle?: boolean;
+	ogImage?: string;
 	headings?: MarkdownHeading[];
 }
 
@@ -35,6 +36,7 @@ const {
 	description,
 	lang,
 	setOGTypeArticle,
+	ogImage,
 	headings = [],
 } = Astro.props;
 const hasBannerCredit =
@@ -59,7 +61,7 @@ let navLinks: NavBarLink[] = navBarConfig.links.map(
 );
 ---
 
-<Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle}>
+<Layout title={title} banner={banner} description={description} lang={lang} setOGTypeArticle={setOGTypeArticle} ogImage={ogImage}>
 
 <!-- Navbar -->
 <slot slot="head" name="head"></slot>

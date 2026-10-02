@@ -31,9 +31,10 @@ interface Props {
 	description?: string;
 	lang?: string;
 	setOGTypeArticle?: boolean;
+	ogImage?: string;
 }
 
-let { title, banner, description, lang, setOGTypeArticle } = Astro.props;
+let { title, banner, description, lang, setOGTypeArticle, ogImage } = Astro.props;
 
 if (!lang) {
 	lang = `${siteConfig.lang}`;
@@ -94,11 +95,14 @@ const bannerOffset = bannerOffsetByPosition[siteConfig.banner.position || "cente
 		<meta property="og:title" content={pageTitle}>
 		<meta property="og:description" content={description}>
 		<meta property="og:type" content={setOGTypeArticle ? "article" : "website"} />
+		{ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />}
+		{ogImage && <meta property="og:image:alt" content={pageTitle} />}
 
 		<meta name="twitter:card" content="summary_large_image">
 		<meta property="twitter:url" content={Astro.url}>
 		<meta name="twitter:title" content={pageTitle}>
 		<meta name="twitter:description" content={description}>
+		{ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />}
 		<meta name="generator" content={Astro.generator} />
 
         <link rel="preconnect" href={umamiConfig.baseUrl} />
