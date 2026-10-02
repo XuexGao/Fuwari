@@ -1,1 +1,705 @@
-{}
+{
+  "oppo-r9s-bl.md": [
+    {
+      "hash": "3ff01452a351fa3c6344bc477c33fca8ca1360d8",
+      "date": "2026-06-16 10:03:57 +0800",
+      "message": "feat: 为三篇文章添加 AI 摘要"
+    },
+    {
+      "hash": "17bbad7670c6b6d20bcc00ac215ee3215c0320d5",
+      "date": "2026-06-08 02:30:55 +0000",
+      "message": "refactor: 文章图片从外部CDN迁移至 /public/images 本地托管"
+    },
+    {
+      "hash": "976416a835aafb1e28a04bde8c74860ede0c714b",
+      "date": "2026-05-31 16:01:26 +0800",
+      "message": "创建 oppo-r9s-bl.md"
+    }
+  ],
+  "pin.md": [
+    {
+      "hash": "3e70f2e5b87d3ef98b4f0d52a9e2405040f296bb",
+      "date": "2026-08-14 12:46:21 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "e5234a294a4a778daaf537949731b3a98ea94a4b",
+      "date": "2026-07-13 03:37:15 +0000",
+      "message": "fix: 文件 API 上游域名 tianyi.xiegao.top → pan.xiegao.top"
+    },
+    {
+      "hash": "935fc44701f744bc22eb1f2c9012671760a3cad1",
+      "date": "2026-07-03 08:53:06 +0000",
+      "message": "chore: 将 e3.xiegao.top 替换为 tianyi.xiegao.top"
+    },
+    {
+      "hash": "7beb06e258d2d5519784ba8f04d5d9e9cfbe0e9c",
+      "date": "2026-06-13 09:01:11 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "9fc1cfe297164c1141b23233ff451409ab2e863b",
+      "date": "2026-05-31 16:05:52 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "f1d04d54517d1349a4c5897af2c44b66596fc734",
+      "date": "2026-04-12 15:29:05 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "ed474404c809d21a1f65158b1138fba7fe628940",
+      "date": "2026-03-18 18:25:03 +0800",
+      "message": "fix: 更新图片链接并禁用背景图片加载函数"
+    },
+    {
+      "hash": "2e8ac90884266a758b4c0797a0b6e28da91892cc",
+      "date": "2026-03-10 20:23:00 +0800",
+      "message": "chore: remove AI summaries from posts"
+    },
+    {
+      "hash": "376b329f5279aebad563b8664168d607d77c14ec",
+      "date": "2026-03-03 13:23:24 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "aa7102592cf6cb5767559ead7c7173c9aab4f6f8",
+      "date": "2026-02-26 22:30:37 +0800",
+      "message": "docs: 将文章中的AI摘要模型从qwen切换为gemini-3-flash-preview"
+    },
+    {
+      "hash": "818735aa4d75f643f1d256035fc4e56bd0a30aca",
+      "date": "2026-02-25 22:23:08 +0800",
+      "message": "feat(posts): 为所有文章添加AI摘要并支持AI类型提示块"
+    },
+    {
+      "hash": "8170b47345c186e9c952c9463f2e9e8616a83870",
+      "date": "2026-02-25 16:15:01 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "78529af895bd2509081015ef6c7473b3eb1bb6d1",
+      "date": "2026-02-25 13:21:13 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "6207ab87f6a257a31373d4e40e0af15b877d7097",
+      "date": "2026-02-25 13:05:40 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "8aaa2dc774db24611a17925a90749b79cf8f9843",
+      "date": "2026-02-25 13:00:02 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "a4fdf86fb6a55a5430a4ac025eaf15d2b6b7ee3b",
+      "date": "2026-02-25 12:57:56 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "1aca19bdbcfd978e1c44d47931bd95f7cde11c73",
+      "date": "2026-02-25 10:40:50 +0800",
+      "message": "Final cleanup of merge conflicts in sponsors page"
+    },
+    {
+      "hash": "bfef54645403ef49aa26ed3d7b8dabe8b77eb954",
+      "date": "2026-02-25 04:36:30 +0800",
+      "message": "feat(i18n): close #215添加文章AI摘要和多语言支持"
+    },
+    {
+      "hash": "7329689b20d620b388964d5c3beb80e9d13045b3",
+      "date": "2026-02-13 12:26:11 +0800",
+      "message": "Update pin.md"
+    },
+    {
+      "hash": "2a2a54fc91c0ca8875507119ce380bd71d1b6f3e",
+      "date": "2026-02-11 13:06:15 +0800",
+      "message": "Create pin.md"
+    },
+    {
+      "hash": "69a3782ac5c6ba82b6f555c01aa0733084199e6e",
+      "date": "2026-02-11 12:58:55 +0800",
+      "message": "Delete src/content/posts directory"
+    },
+    {
+      "hash": "f6e3e174da195c05ef0feecca16cf79496e3374b",
+      "date": "2026-02-09 07:50:52 +0800",
+      "message": "压缩图片"
+    },
+    {
+      "hash": "7deafa112126f32e71159d824b334ec63b93fa59",
+      "date": "2026-01-25 21:43:53 +0800",
+      "message": "fix(NewPostNotification): 修复更新检测逻辑以包含标题和描述变更"
+    },
+    {
+      "hash": "75be2cc6528b9e78e1c99dce8e54696a22c6146b",
+      "date": "2026-01-25 21:37:05 +0800",
+      "message": "fix: 为RSS请求添加缓存禁用选项以获取最新内容"
+    },
+    {
+      "hash": "702c1ca11398a44c839d8526f84e62cae4f8ee07",
+      "date": "2026-01-25 21:25:57 +0800",
+      "message": "feat(widget): 增强新文章通知组件的交互和视觉效果"
+    },
+    {
+      "hash": "ddd201a7f44003c305a045b73f944ad281606dbf",
+      "date": "2026-01-25 21:02:10 +0800",
+      "message": "style(Markdown): 为 Markdown 组件添加断词样式"
+    },
+    {
+      "hash": "c507a478cd602102821915caeb5e7b81165383a2",
+      "date": "2026-01-25 20:28:34 +0800",
+      "message": "fix(通知组件): 修复查看更新按钮点击失效问题并优化滚动条样式"
+    },
+    {
+      "hash": "d77c485f00c192de3bfd9f40ed75afe313d0cc1b",
+      "date": "2026-01-24 16:19:25 +0800",
+      "message": "fix: 更新默认图片链接为本地路径"
+    },
+    {
+      "hash": "29afb7adb5c91dfb0904cdccbc08b48ce73e7245",
+      "date": "2026-01-15 16:04:10 +0800",
+      "message": "fix: 更新图片链接并移除无用脚本"
+    },
+    {
+      "hash": "056b5c79a5f5cf9ac2fc24d7c920e51506fc5d93",
+      "date": "2025-12-28 14:28:33 +0800",
+      "message": "refactor(背景): 重构背景图片实现并更新相关配置"
+    },
+    {
+      "hash": "65545d5bdc99669a8f9ee1e09c60d2a31f8348fa",
+      "date": "2025-12-27 13:34:10 +0800",
+      "message": "fix(背景图片): 更新背景图片URL并优化加载逻辑"
+    },
+    {
+      "hash": "3dd60b36f58ce56051bd9c4f0334accbf06d6bb7",
+      "date": "2025-12-23 18:55:47 +0800",
+      "message": "refactor(背景图片): 重构背景图片加载逻辑并添加随机图片功能"
+    },
+    {
+      "hash": "a5f2a9d9d984d200200b01da251a6f157726c772",
+      "date": "2025-12-16 14:43:30 +0800",
+      "message": "fix: 修复背景图片URL中的重复https协议问题"
+    },
+    {
+      "hash": "34e737e075950335ba33daae2d4cbc293d39f716",
+      "date": "2025-12-16 14:20:58 +0800",
+      "message": "chore: 更新图片链接和统计服务域名"
+    },
+    {
+      "hash": "b686b56e40ed4bc315138388c287978ec17e76c7",
+      "date": "2025-12-15 23:34:34 +0800",
+      "message": "docs: 更新文章中的图片链接"
+    },
+    {
+      "hash": "20219bdfbcd3bbc8433735fb10442145c2f4ac80",
+      "date": "2025-12-15 23:23:09 +0800",
+      "message": "chore: 更新图片链接和添加重定向配置"
+    },
+    {
+      "hash": "f56b74002051b924f43b57b2cfb85ea18c30608c",
+      "date": "2025-12-12 11:09:48 +0800",
+      "message": "feat: 更新赞助链接并添加多个重定向规则"
+    },
+    {
+      "hash": "ee5358dfa870b5e3939fbf20549df5cf5767a3d6",
+      "date": "2025-12-09 21:00:08 +0800",
+      "message": "docs: 更新文章中的图片链接域名"
+    },
+    {
+      "hash": "12232a712b6d2297b8fcca34ac691c025114de0d",
+      "date": "2025-12-02 11:17:59 +0800",
+      "message": "docs(posts): 更新置顶文章图片链接和工作区配置"
+    },
+    {
+      "hash": "216b0fb3bdd981b5330aa8d06cabd87db1f11900",
+      "date": "2025-11-26 22:15:32 +0800",
+      "message": "fix: 移除Layout.astro中的多余字符并更新pin.md元数据"
+    },
+    {
+      "hash": "e8d0852948f0f7e732fee42b83e7d7cb71ddf815",
+      "date": "2025-10-11 20:14:57 +0800",
+      "message": "chore: 更新Obsidian工作区配置中的文件引用"
+    },
+    {
+      "hash": "833e311e7b4995765a7686bd20e9da00a6353097",
+      "date": "2025-09-26 14:13:22 +0800",
+      "message": "docs: 更新文档内容和Obsidian工作区配置"
+    },
+    {
+      "hash": "8831eebda2d8c2ff7ac6fe54dec6a3b288900f08",
+      "date": "2025-08-30 04:58:47 +0800",
+      "message": "docs(posts): 更新pin.md标题并移除抽书活动内容"
+    },
+    {
+      "hash": "625aa7397e7e12e5743c5d0f86fb1c2bea13a64a",
+      "date": "2025-08-29 02:43:29 +0800",
+      "message": "posts: 更新置顶文章标题并添加抽书活动信息"
+    },
+    {
+      "hash": "825709a5ea08a7925f67de64f5c2166d9528ec96",
+      "date": "2025-08-27 22:45:16 +0800",
+      "message": "docs: 更新文档中的链接并添加视频教程"
+    },
+    {
+      "hash": "8f283d0b1aa772c16f9ef82025a10c62b64ec124",
+      "date": "2025-08-26 00:16:42 +0800",
+      "message": "docs(posts): 更新联系信息并添加论坛链接"
+    },
+    {
+      "hash": "cbf7993a485c291c30be2c9a7edcc17cb9e9ac9d",
+      "date": "2025-08-22 02:14:49 +0800",
+      "message": "fix: 更新图片链接从h到ua版本"
+    },
+    {
+      "hash": "60319f590f3a568fb5d98c2211f1e2bbe0c661be",
+      "date": "2025-08-22 01:23:34 +0800",
+      "message": "docs(posts): 移除Misskey群组链接并保留Telegram群组"
+    },
+    {
+      "hash": "b7289e9d572fb5712643b87b9ef3021b424679f2",
+      "date": "2025-08-21 21:26:52 +0800",
+      "message": "docs(posts): 添加Misskey官方群链接"
+    },
+    {
+      "hash": "5b0bb1836f20a14c4de65528e5b0e7b44e1a21a3",
+      "date": "2025-08-20 21:19:23 +0800",
+      "message": "posts: 已回退为Fuwari"
+    },
+    {
+      "hash": "5b5c534cea45a6876f3751c5953818fcdbd38c1f",
+      "date": "2025-08-15 03:24:26 +0800",
+      "message": "docs(posts): 在pin.md中添加图片链接并修复文件结尾"
+    },
+    {
+      "hash": "2bf265cd253e8b9750863ce35809bca9af2f366e",
+      "date": "2025-08-15 03:21:59 +0800",
+      "message": "docs(posts): 更新联系方式为赞助后加群方式"
+    },
+    {
+      "hash": "2c93c8fdc966644ad85cba0ac691568d604db332",
+      "date": "2025-08-14 20:49:31 +0800",
+      "message": "docs: 更新联系方式为Telegram链接"
+    },
+    {
+      "hash": "b7b6f1ad56cb294d79429a7c044e715f7799df52",
+      "date": "2025-08-13 23:03:38 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "095989c9b548be52b16e8dfbb845c74a5fdb2a51",
+      "date": "2025-08-13 22:29:14 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "1b2d1c5af3e68ba2bc5e5466ebdd96540a5a8f18",
+      "date": "2025-08-13 22:20:22 +0800",
+      "message": "docs(posts): 更新联系方式并添加微信群二维码图片"
+    },
+    {
+      "hash": "c3ec89f1b68c9788dab15f0b4f41974031975f75",
+      "date": "2025-08-12 21:17:11 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "611928dc21cab89a68f20c06f01745870574e2c4",
+      "date": "2025-08-12 20:58:41 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "59ff470b4b15cd120f69e0cd838131690d051f62",
+      "date": "2025-08-12 12:19:53 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "356a3abbd4bcba1d4f1179e44277106db9d5cc1a",
+      "date": "2025-08-12 01:30:38 +0800",
+      "message": "update: 更新图片链接域名从eo-pic到eopageapi"
+    },
+    {
+      "hash": "2b0a738a37716e922451b617b9f96e6855accdab",
+      "date": "2025-08-10 23:57:26 +0000",
+      "message": "合并上游8个commit"
+    },
+    {
+      "hash": "cae4e1ee89622d2744cb0fbb459ce76b36896fa2",
+      "date": "2025-08-10 18:36:03 +0800",
+      "message": "update: 添加Discord交流频道 https://discord.gg/qaCDqsGA"
+    },
+    {
+      "hash": "c8463e38eea56ff4af68d6b0a0241978bf280d37",
+      "date": "2025-08-07 03:21:51 +0800",
+      "message": "docs(posts): 添加微信群二维码图片到pin.md"
+    },
+    {
+      "hash": "64dff2f320defb95cf9d0bdf5a8bacf92fb2fcc3",
+      "date": "2025-08-07 03:06:16 +0800",
+      "message": "更新 pin.md。添加Microsoft team"
+    },
+    {
+      "hash": "dde041a81bb73cbae3de430ca31249f6aef6956d",
+      "date": "2025-08-06 20:53:21 +0800",
+      "message": "posts: 复活Matrix！现在也顺便支持了联邦！ 家服务器： m.2x.nz 教程： https://2x.nz/posts/element/"
+    },
+    {
+      "hash": "cff805c2fab1d65f2f9daedfe6ed8c6270ab8ad9",
+      "date": "2025-08-05 22:16:16 +0800",
+      "message": "docs(posts): 添加Telegram联系方式到pin.md"
+    },
+    {
+      "hash": "4daa8a2d58a874ac928836125ba88a959814e484",
+      "date": "2025-08-04 14:50:00 +0800",
+      "message": "docs(posts): 移除TG联系方式和直连信息"
+    },
+    {
+      "hash": "bc6ec2d50c31dad0d8e7eb440ff3700577be384e",
+      "date": "2025-08-04 14:25:09 +0800",
+      "message": "posts: 复活QQ群"
+    },
+    {
+      "hash": "285da7d6d7906a37acc170bf4dda0ad61bdd2c49",
+      "date": "2025-08-03 21:43:53 +0800",
+      "message": "posts: 添加飞机直连"
+    },
+    {
+      "hash": "d68d59a13542252545b11294703b545553ace746",
+      "date": "2025-08-03 17:46:48 +0800",
+      "message": "docs(posts): 移除过时的联系方式和教程信息"
+    },
+    {
+      "hash": "867fc33293e9a28d8109c8aa6fc96ddcc0349942",
+      "date": "2025-08-03 16:39:19 +0800",
+      "message": "docs(posts): 格式化pin.md中的代码块以提高可读性"
+    },
+    {
+      "hash": "f3c34a7999a4e92bc5ffcd2fefff90ffb7c55665",
+      "date": "2025-08-03 16:34:23 +0800",
+      "message": "posts: Add Free Magic"
+    },
+    {
+      "hash": "170b0fd58ff0903b889468db5658fb7c849c4cc6",
+      "date": "2025-08-03 16:04:05 +0800",
+      "message": "docs(posts): 更新联系方式并调整格式"
+    },
+    {
+      "hash": "c40370ccf6b66dd41e32f5b7d662896844af4eed",
+      "date": "2025-08-03 12:43:49 +0800",
+      "message": "docs(posts): 更新联系方式并移除无效QQ群信息"
+    },
+    {
+      "hash": "b7650b948579d311f3af6a937a490a9c977f5441",
+      "date": "2025-08-03 10:34:15 +0800",
+      "message": "docs(posts): 更新联系方式中的QQ群状态信息"
+    },
+    {
+      "hash": "a69afdfbcc4d71adcc578062e8a86c0416e77ecc",
+      "date": "2025-08-02 18:31:14 +0800",
+      "message": "docs(posts): 更新TG Web链接并添加警告图片"
+    },
+    {
+      "hash": "0f0fc34a2059e640ecbc2e288c8d8020ef065713",
+      "date": "2025-08-02 16:54:23 +0800",
+      "message": "posts: 添加大陆直连TG Web链接"
+    },
+    {
+      "hash": "2a5bb4aae529f3c55be8381e282b1b0fdc8852d6",
+      "date": "2025-08-02 03:10:25 +0800",
+      "message": "update: 强烈推荐前往 2x.nz/tit 并加入我们的矩阵!!!"
+    },
+    {
+      "hash": "11b58dcdf06f8829300cbcb5376189e8032a6270",
+      "date": "2025-08-01 08:39:22 +0800",
+      "message": "docs(posts): 更新联系信息并移除无效内容"
+    },
+    {
+      "hash": "e3b81673d34ff1a3ffc9991316819a4d3076d765",
+      "date": "2025-08-01 08:35:10 +0800",
+      "message": "posts: 更新随机图源为EdgeOne Function(测试)"
+    },
+    {
+      "hash": "5b56b8f23233600b24bd942f964c7ab7c7e783be",
+      "date": "2025-07-31 11:43:11 +0800",
+      "message": "fix: 更新图片和背景的URL域名"
+    },
+    {
+      "hash": "0877137908a9ead680048904e2f2ad0e5d5149e4",
+      "date": "2025-07-30 20:40:04 +0800",
+      "message": "posts: 更新QQ群状态信息"
+    },
+    {
+      "hash": "3738a736b89f01c10d281f0f91d9a279800aee7f",
+      "date": "2025-07-28 20:00:52 +0800",
+      "message": "docs(posts): 更新Telegram群组链接为最新地址"
+    },
+    {
+      "hash": "92cdc9d0c15802f7f7f185501510dea84d32b7e4",
+      "date": "2025-07-26 09:59:47 +0800",
+      "message": "docs(posts): 加粗临时QQ群信息以提高可见性"
+    },
+    {
+      "hash": "98609b59922cf0452718413306e784dd28156b69",
+      "date": "2025-07-26 09:15:27 +0800",
+      "message": "feat: 更改域名为2x.nz"
+    },
+    {
+      "hash": "948fc72856ad55dae1608c8e955836c1ca54056e",
+      "date": "2025-07-24 16:19:51 +0800",
+      "message": "posts: 更新联系方式，添加临时QQ群"
+    },
+    {
+      "hash": "03bffe46c2d81e0f25d225a9e1c0001881873de0",
+      "date": "2025-07-24 15:57:14 +0800",
+      "message": "posts: 恢复Matrix链接并移除后端崩溃注释"
+    },
+    {
+      "hash": "07c58c2a8712873584f4834fe14e69fcc93cd297",
+      "date": "2025-07-24 15:23:47 +0800",
+      "message": "docs(posts): 更新pin.md中Matrix链接状态为已废弃"
+    },
+    {
+      "hash": "4ee5526bf1fa80f454707ac817b2dec0a08997e6",
+      "date": "2025-07-24 06:35:45 +0800",
+      "message": "docs(posts): 更新QQ群解封日期信息"
+    },
+    {
+      "hash": "78d76cfccf371656b58e8d4fa9ff851188ea2b58",
+      "date": "2025-07-23 20:20:21 +0800",
+      "message": "docs(posts): 更新群聊信息为暂时封禁状态"
+    },
+    {
+      "hash": "9b282585dd9eade192e9fa259ac636156a62b439",
+      "date": "2025-07-22 13:43:02 +0800",
+      "message": "docs: 更新个人域名和联系方式信息"
+    },
+    {
+      "hash": "80fa5d3139b9a0d4437aace331d8504e3fd718de",
+      "date": "2025-07-21 18:26:53 +0800",
+      "message": "docs(posts): 更新联系方式并调整格式"
+    },
+    {
+      "hash": "c11267763954808153c9dbed8ffd033d4f958e76",
+      "date": "2025-07-21 17:20:41 +0800",
+      "message": "docs(posts): 更新置顶文章图片链接域名"
+    },
+    {
+      "hash": "2a629a64e85261dc79c716f1a8fdf3d7aca2cde0",
+      "date": "2025-07-20 07:55:59 +0800",
+      "message": "docs(posts): 在pin.md中添加QQ群图片链接"
+    },
+    {
+      "hash": "3b5556e2aba2b4996227c1bb1423d942cb5fcab4",
+      "date": "2025-07-20 05:06:12 +0800",
+      "message": "docs(posts): 更新置顶文章图片链接和格式"
+    },
+    {
+      "hash": "c7e56a366c6f7fc17fe6c4de1bd013bff0515d20",
+      "date": "2025-07-18 12:27:16 +0800",
+      "message": "1"
+    },
+    {
+      "hash": "3bcc944a476ccfd7d3744bdf98a2cc9ab141a454",
+      "date": "2025-07-18 03:46:20 +0800",
+      "message": "docs(posts): 更新pin.md中的链接内容"
+    },
+    {
+      "hash": "cacaac3ff4c58378e6a79b65c7cab5d0c91d3e5d",
+      "date": "2025-07-18 03:09:07 +0800",
+      "message": "docs(posts): 更新置顶文章中的图片链接"
+    },
+    {
+      "hash": "25ca6652c8589d32ca022aa04b6b3c0901a7084e",
+      "date": "2025-07-17 19:53:38 +0800",
+      "message": "docs(posts): 在联系方式中添加Telegram群组链接"
+    },
+    {
+      "hash": "ec24d80fa9e37a617164c2302e9becad71cef452",
+      "date": "2025-07-17 18:49:23 +0800",
+      "message": "docs(posts): 更新Matrix链接并添加详细教程"
+    },
+    {
+      "hash": "36f22ea565fa57990329a89d84404c60a76753af",
+      "date": "2025-07-17 00:39:10 +0800",
+      "message": "docs(posts): 在pin.md中添加Matrix联系方式"
+    },
+    {
+      "hash": "7020d95f8e7ef71caba42190ce750b49865ac6a7",
+      "date": "2025-07-16 22:47:31 +0800",
+      "message": "docs(posts): 移除pin.md中的神秘链接"
+    },
+    {
+      "hash": "20a4380a07690f842248dd1513b63315fa8c4ce1",
+      "date": "2025-07-16 21:07:33 +0800",
+      "message": "posts: 更新联系方式和其他网站链接"
+    },
+    {
+      "hash": "822067089d50cd337a2411267927c9ff069303f9",
+      "date": "2025-07-16 15:53:52 +0800",
+      "message": "docs(posts): 更新联系方式并添加新网站链接"
+    },
+    {
+      "hash": "6fbda7f0cbf469969ac9459521bf0804d7bae2f1",
+      "date": "2025-07-16 09:30:57 +0800",
+      "message": "docs(posts): 更新pin.md中的链接和日期信息"
+    },
+    {
+      "hash": "6b6070de0ece0bd6827c9b8a53c04ae54251c8c4",
+      "date": "2025-07-15 11:55:48 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "ae414a74f0c869ee62693907d382508461e77fb4",
+      "date": "2025-07-15 10:29:18 +0800",
+      "message": "docs(置顶文章): 更新图片链接并添加二次元随机图链接"
+    },
+    {
+      "hash": "d10b414797c602725213accc7740f51f0515fefa",
+      "date": "2025-07-14 03:09:34 +0800",
+      "message": "posts: 更新pin文档标题并添加其他网站信息"
+    },
+    {
+      "hash": "356bee5c7a7ef28b8de792e9a9f5a7754a62f3b9",
+      "date": "2025-07-10 21:48:03 +0800",
+      "message": "docs(posts): 更新pin.md中的常见问题解答"
+    },
+    {
+      "hash": "5769bdfbbfc2bf52e13f256f6e39bdd1c22c9422",
+      "date": "2025-07-10 05:17:55 +0800",
+      "message": "docs(posts): 更新pin.md常见问题解答内容"
+    },
+    {
+      "hash": "38b08c97bdd5e7ada4a9a0b0041dcf68f6b1b569",
+      "date": "2025-07-09 20:40:01 +0800",
+      "message": "docs(posts): 更新加群向导文档并添加常见问题解答"
+    },
+    {
+      "hash": "b3d16dea96eaff0d44957aaf54a2eabcc0db9eef",
+      "date": "2025-07-04 07:43:02 +0800",
+      "message": "posts: 更新图片链接和文档说明"
+    },
+    {
+      "hash": "4e3e7e820c3e22534fac00e3a6c89d524b75d3c9",
+      "date": "2025-07-01 23:29:28 +0800",
+      "message": "posts: 更改图源CDN为Secbit MCDN，并且页脚放置赞助信息"
+    },
+    {
+      "hash": "4b0129195bb0a838d202f9921a3b167e14f4aa8c",
+      "date": "2025-06-30 06:02:30 +0800",
+      "message": "docs(posts): 为置顶文章添加分类和标签信息"
+    },
+    {
+      "hash": "b480111c6c6201df9ea64bbc8bba0630b48e529e",
+      "date": "2025-06-26 21:07:29 +0800",
+      "message": "update: 更新R2源。删除302"
+    },
+    {
+      "hash": "25dfb07d167028d9595971089ab80b7bee2b1833",
+      "date": "2025-06-18 22:45:02 +0800",
+      "message": "更新 pin.md"
+    },
+    {
+      "hash": "606d5d7c4b5970fce2e7018465c7acf41a7b546b",
+      "date": "2025-06-18 10:11:24 +0800",
+      "message": "posts: 更新关于页面，优化排版"
+    },
+    {
+      "hash": "1ce02769588ee4d2424c786ff44f2a69212351c6",
+      "date": "2025-06-14 14:19:41 +0800",
+      "message": "posts: 置顶文章添加雨云服务器aff"
+    },
+    {
+      "hash": "896359fa64b3c8f946dbbfb515e674b6b10a5d41",
+      "date": "2025-06-05 19:51:45 +0800",
+      "message": "posts: 更新 pin.md。提醒用户入群后需尽快验证，否则会被踢出"
+    },
+    {
+      "hash": "1c28812a237a1e07dea3a471e701be34a8917330",
+      "date": "2025-05-29 00:45:36 +0800",
+      "message": "Re: 添加置顶文章的一处换行"
+    },
+    {
+      "hash": "6c89c5aed7743974111e01ca887adaad66d166c8",
+      "date": "2025-05-29 00:42:10 +0800",
+      "message": "添加置顶文章的一处换行"
+    },
+    {
+      "hash": "cf4ca74c5c9fabe476aaaa548e5eb5caadd60c5e",
+      "date": "2025-05-28 21:16:31 +0800",
+      "message": "post: 在加群向导中添加了关于新号被风控的说明及手动拉群的联系方式"
+    },
+    {
+      "hash": "850e7cfe81bed9dbd565956e523c8c45bb6ce0d2",
+      "date": "2025-05-26 17:42:54 +0800",
+      "message": "posts: 更新置顶文章中直播地址格式，直接展示原链接"
+    },
+    {
+      "hash": "c2932fe942cb102388a6ef155852b9b61e91fee4",
+      "date": "2025-05-26 17:29:07 +0800",
+      "message": "posts: 修改置顶文章使其链接符合MD语法规范，避免Astro构建错误"
+    },
+    {
+      "hash": "d316c0fa8373daddd7163c19b23918a6bda0c4d1",
+      "date": "2025-05-26 17:18:18 +0800",
+      "message": "posts: 置顶添加直播地址"
+    },
+    {
+      "hash": "5814b98694d6236c9b3e597da94cf0c3777804ed",
+      "date": "2025-05-24 20:59:34 +0800",
+      "message": "posts: 添加置顶功能，更新帖子排序逻辑，新增加群向导文档"
+    }
+  ],
+  "cf-fast.md": [
+    {
+      "hash": "3ff01452a351fa3c6344bc477c33fca8ca1360d8",
+      "date": "2026-06-16 10:03:57 +0800",
+      "message": "feat: 为三篇文章添加 AI 摘要"
+    },
+    {
+      "hash": "17bbad7670c6b6d20bcc00ac215ee3215c0320d5",
+      "date": "2026-06-08 02:30:55 +0000",
+      "message": "refactor: 文章图片从外部CDN迁移至 /public/images 本地托管"
+    },
+    {
+      "hash": "a72fd2b37458feaef2d2aee5ec5381ec12e91983",
+      "date": "2026-04-12 15:28:29 +0800",
+      "message": "Add files via upload"
+    }
+  ],
+  "tgweb.md": [
+    {
+      "hash": "3ff01452a351fa3c6344bc477c33fca8ca1360d8",
+      "date": "2026-06-16 10:03:57 +0800",
+      "message": "feat: 为三篇文章添加 AI 摘要"
+    },
+    {
+      "hash": "17bbad7670c6b6d20bcc00ac215ee3215c0320d5",
+      "date": "2026-06-08 02:30:55 +0000",
+      "message": "refactor: 文章图片从外部CDN迁移至 /public/images 本地托管"
+    },
+    {
+      "hash": "3f10af08113e03975b35da4717108e814aeea804",
+      "date": "2026-04-12 15:29:39 +0800",
+      "message": "Update tgweb.md"
+    },
+    {
+      "hash": "b2e5a02e059c7fdd4bb965cc15d84c8933a52ddf",
+      "date": "2026-03-21 10:30:46 +0800",
+      "message": "Update tgweb.md"
+    },
+    {
+      "hash": "e2001883c7d65bb5cf8504d752a1e3a740c97408",
+      "date": "2026-03-21 10:26:54 +0800",
+      "message": "Update tgweb.md"
+    },
+    {
+      "hash": "1a4ff076c834896bec3f3a769a824b11b27d7ad0",
+      "date": "2026-03-02 13:26:09 +0800",
+      "message": "Update tgweb.md"
+    },
+    {
+      "hash": "e208dc1d7eba075a23c0af230615d48cefc00a9c",
+      "date": "2026-03-02 12:48:13 +0800",
+      "message": "Create tgweb.md"
+    }
+  ]
+}
