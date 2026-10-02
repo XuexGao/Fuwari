@@ -1,25 +1,32 @@
-import { Fancybox, type FancyboxOptions } from "@fancyapps/ui";
+import { Fancybox, PanzoomAction, type FancyboxOptions } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
-// 注意：下面仍是 FancyBox v5 的选项名（wheel / clickContent / Panels / Images）。
-// v6 已改为 Carousel.Zoomable（Panzoom.wheel 等）与 Carousel.Toolbar（display 分 left/middle/right 列），
-// v6 运行时不认识这些旧键、会直接忽略，因此当前实际生效的是 v6 默认行为。
-// 这里先按兼容形态保留（不改运行时行为），迁移到 v6 选项应另行确认交互效果。
-const fancyboxOptions = {
-	wheel: "zoom",
-	clickContent: "close",
-	dblclickContent: "zoom",
-	click: "close",
-	dblclick: "zoom",
-	Panels: {
-		display: ["counter", "zoom"],
+// FancyBox v6 选项：v5 的 wheel / clickContent / dblclickContent / Panels / Images
+// 在 v6 已改名到 Carousel.Zoomable(Panzoom) 与 Carousel.Toolbar，旧键会被运行时静默忽略。
+// 这里按原配置的意图迁移：
+// - wheel: "zoom"                → Panzoom.wheelAction（v6 默认即 zoom，显式写出）
+// - dblclick: "zoom"             → Panzoom.dblClickAction（v6 默认关闭，按原意开启）
+// - Panels.display: [counter, zoom] → Toolbar.display，缩放按钮放 middle 列
+//   （FancyBox 自带的 display 默认值会覆盖 Toolbar 插件默认的 middle 缩放按钮，必须显式列出）
+// - click: "close"               → v6 无对应动作（单击默认为 ToggleFull 铺满），保持默认
+// - Images.protect               → v6 无对应项，去掉
+const fancyboxOptions: Partial<FancyboxOptions> = {
+	Carousel: {
+		Zoomable: {
+			Panzoom: {
+				wheelAction: PanzoomAction.Zoom,
+				dblClickAction: PanzoomAction.Zoom,
+			},
+		},
+		Toolbar: {
+			display: {
+				left: ["counter"],
+				middle: ["zoomIn", "zoomOut"],
+				right: ["toggleFull", "fullscreen", "thumbs", "close"],
+			},
+		},
 	},
-	Images: {
-		panning: true,
-		zoom: true,
-		protect: false,
-	},
-} as unknown as Partial<FancyboxOptions>;
+};
 
 Fancybox.bind(".custom-md img, #post-cover img", fancyboxOptions);
 
