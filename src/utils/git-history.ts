@@ -1,13 +1,16 @@
 import { gitHubEditConfig } from "../config";
 // Import json directly - Vite/Astro handles JSON imports
 // @ts-ignore
-import gitHistory from "../json/git-history.json";
+import gitHistoryRaw from "../json/git-history.json";
 
 export interface Commit {
 	hash: string;
 	date: string;
 	message: string;
 }
+
+// git-history.json 由 scripts/update-diff.js 生成，键为含扩展名的文章相对路径
+const gitHistory = gitHistoryRaw as Record<string, Commit[]>;
 
 export function getPostHistory(postId: string): Commit[] {
 	try {

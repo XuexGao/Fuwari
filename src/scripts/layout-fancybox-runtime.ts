@@ -1,6 +1,10 @@
-import { Fancybox } from "@fancyapps/ui";
+import { Fancybox, type FancyboxOptions } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
+// 注意：下面仍是 FancyBox v5 的选项名（wheel / clickContent / Panels / Images）。
+// v6 已改为 Carousel.Zoomable（Panzoom.wheel 等）与 Carousel.Toolbar（display 分 left/middle/right 列），
+// v6 运行时不认识这些旧键、会直接忽略，因此当前实际生效的是 v6 默认行为。
+// 这里先按兼容形态保留（不改运行时行为），迁移到 v6 选项应另行确认交互效果。
 const fancyboxOptions = {
 	wheel: "zoom",
 	clickContent: "close",
@@ -15,7 +19,7 @@ const fancyboxOptions = {
 		zoom: true,
 		protect: false,
 	},
-};
+} as unknown as Partial<FancyboxOptions>;
 
 Fancybox.bind(".custom-md img, #post-cover img", fancyboxOptions);
 
